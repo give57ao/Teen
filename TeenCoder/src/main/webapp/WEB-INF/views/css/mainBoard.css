@@ -1,0 +1,236 @@
+@charset "utf-8";
+
+/* Header */
+#header_nav ul li:nth-child(2) {
+    color: #111;
+}
+
+/* Main Board - Contents */
+#contents_detail {
+    background: #eee;
+}
+
+#contents_wrap {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.select {
+    font-weight: bold;
+    color: #111;
+}
+
+/* Main Board - Contents Category */
+#contents_category {
+    width: 250px;
+    font-size: 1.2em;
+    text-align: left;
+    color: #999;
+}
+
+#contents_category li {
+    margin-bottom: 30px;
+}
+
+#contents_category li:hover {
+    color: #111;
+    transition: all 0.2s;
+}
+
+/* Main Board - Board List */
+#board_list {
+	position: relative;
+    background: #fff;
+    height: 100%;
+    margin: 0 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: left;
+    flex: 1;
+}
+
+#board_list_title {
+    margin-bottom: 20px;
+    color: #999;
+    overflow: hidden;
+}
+
+#board_list_title h2 {
+    float: left;
+    font-size: 1.4em;
+}
+
+#board_list_menu {
+    float: right;
+}
+
+#board_list_search {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+#board_list_search .dropdown {
+    width: 200px;
+    height: 100%;
+    background: #111 url(../images/icon/icon_down_arrow.svg) no-repeat right 10px center;
+    background-size: 12px;
+    margin-right: 10px;
+    padding: 10px;
+    border: 2px solid #111;
+    border-radius: 10px;
+    color: #fff;
+}
+
+#board_list_search .search {
+    position: relative;
+    width: 100%;
+}
+
+#board_list_search .search input {
+    flex: 1;
+}
+
+#board_list_search .btn_search {
+    position: absolute;
+    right: 15px;
+    width: 20px;
+    height: 100%;
+    background: url(../images/icon/icon_search_n.svg) no-repeat center;
+    border: none;
+}
+
+#board_list_search .btn_search:hover {
+    background: url(../images/icon/icon_search_s.svg) no-repeat center;
+    transition: all 0.2s;
+}
+
+#board_list_row {
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+#board_list_row img {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+}
+
+#board_list_row .row {
+    width: 100%;
+    padding: 15px 0;
+}
+
+#board_list_row .row_info .row_top {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+#board_list_row .row_info .row_top:last-child {
+    margin-right: 0;
+}
+
+#board_list_row .row_info .tag_category li {
+    float: left;
+    background: #111;
+    margin-right: 3px;
+    padding: 1px 5px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    color: #fff;
+}
+
+#board_list_row .row_info .member img {
+    width: 20px;
+    height: 20px;
+}
+
+#board_list_row .row_info .member span {
+    margin-right: 3px;
+    color: #19C19F;
+}
+
+#board_list_row .row_info .date {
+    color: #ccc;
+}
+
+#board_list_row .row_info .number {
+    float: right;
+}
+
+#board_list_row .row_info .number li {
+    float: left;
+    margin-right: 10px;
+}
+
+#board_list_row .row_info .number li img {
+    margin-right: 3px;
+}
+
+#board_list_row .row_info .number li:first-child img {
+    margin-right: 5px;
+}
+
+#board_list_row .row_title a {
+    width: 100%;
+    display: inline-block;
+}
+
+#board_list_row .row_title .tag_hit {
+    color: #FF0151;
+}
+
+#board_list_pagination {
+    width: 100%;
+    line-height: 15px;
+    text-align: center;
+}
+
+#board_list_pagination ul {
+    display: inline-block;
+}
+
+#board_list_pagination ul li {
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    color: #ccc;
+}
+
+#board_list_pagination ul li:hover {
+    text-decoration: underline;
+    transition: all 0.2s;
+}
+
+#board_list_pagination ul li a {
+    padding: 0 5px;
+    display: inline-block;
+}
+
+#board_list_pagination .prev {
+    background: url(../images/icon/icon_left_arrow.svg) no-repeat center;
+}
+
+#board_list_pagination .next {
+    background: url(../images/icon/icon_right_arrow.svg) no-repeat center;
+}
+
+/* Main Board - Member Info */
+#member_info {
+    width: 250px;
+}
+
+#member_info .mycard {
+    width: 100%;
+    height: 250px;
+    background: #fff;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
