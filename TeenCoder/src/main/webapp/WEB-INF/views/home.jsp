@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>
-	fuck world 
+	fuck world *2
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
