@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.ez.teen">
+	<logger name="com.ez.board">
 		<level value="info" />
 	</logger>
 	

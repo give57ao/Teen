@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.ez.board.mapper.CommentMapper">
+ 
+ <!-- 댓글 조회 -->
+	<select id="readComment" resultType="com.ez.board.model.CommentModel" parameterType="int">
+    	SELECT
+    		  BCOMMENT_NO, CONTENT, REF_NO, REF_STEP, REF_LEVEL
+    	 FROM BCOMMENT1
+    	WHERE BNO = #{bno}
+	</select>
+ 
+ 
+  </mapper>
