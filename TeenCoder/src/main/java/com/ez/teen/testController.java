@@ -8,4 +8,5 @@ public class testController {
 //ƾ�ڴ�ȭ����
 // ����-push
 	//test junsickboy
+	//test minsoo
 }
