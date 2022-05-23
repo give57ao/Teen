@@ -10,7 +10,7 @@
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="../template/header.jsp" flush="false" />
+	<jsp:include page="/jsp/template/header.jsp" flush="false" />
 
 	<!-- Contents -->
 	<div id="contents">
@@ -37,6 +37,6 @@
     </div>
     
 	<!-- Footer -->
-	<jsp:include page="../template/footer.jsp" flush="false" />
+	<jsp:include page="/jsp/template/footer.jsp" flush="false" />
 </body>
 </html>
