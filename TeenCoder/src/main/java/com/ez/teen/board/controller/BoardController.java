@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.service.BoardService;
 
+// 동혁 - 브랜치 만들고 확인작업
 @Controller
 public class BoardController {
 
