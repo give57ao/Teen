@@ -17,15 +17,17 @@ public class BoardController {
 	BoardService boardService;
 
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
-	
+
 	//Get Main Page
 	@GetMapping("/")
-	public String main(BoardModel boardModel, Model model) {
-		
+	public String main(Model model) {
+		log.info("count" + boardService.getUserCount());
 		model.addAttribute("allMemberCount", boardService.getUserCount());
 		model.addAttribute("allBoardCount", boardService.getBoardCount());
 		model.addAttribute("allCommentCount", boardService.getCommentCount());
 		
 		return "main";
 	}
+	
+	
 }

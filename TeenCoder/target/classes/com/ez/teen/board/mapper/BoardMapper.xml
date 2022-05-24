@@ -20,6 +20,41 @@
 	</select>
 	
 	
+ <select id ="boardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.common.PagingModel">
+
+ SELECT rn, BOARD_TITLE, BOARD_DATE, BOARD_HIT_COUNT, BOARD_LIKE_COUNT, BOARD_REPORT_COUNT , BOARD_FILE_CHECK ,TAG_NAME , BGROUP_NAME , MEMBER_NICK
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+                SELECT 
+B.BOARD_TITLE
+,B.BOARD_DATE
+,B.BOARD_HIT_COUNT
+,B.BOARD_LIKE_COUNT
+,B.BOARD_REPORT_COUNT
+,B.BOARD_FILE_CHECK
+,T.TAG_NAME
+,G.BGROUP_NAME
+,M.MEMBER_NICK
+--JOIN
+FROM BOARD B
+INNER JOIN BTAG T
+ON B.BOARD_TAG_NO = T.BOARD_TAG_NO
+INNER JOIN BGROUP G
+ON B.BOARD_GROUP_NO = G.BOARD_GROUP_NO
+INNER JOIN MEMBER M
+ON B.MEMBER_NO = M.MEMBER_NO
+ 
+<if test='memberNo != null'>
+	WHERE B.MEMBER_NO = #{memberNo}
+</if>
+
+	) A
+	)
+	WHERE RN BETWEEN #{start} AND #{end}
+ </select>
+	
+	
 	
 	
 	

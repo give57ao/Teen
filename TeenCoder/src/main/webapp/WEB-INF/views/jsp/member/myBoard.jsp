@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 내가 작성한 게시글</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/reset.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/board.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/myInfo.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/board.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/myInfo.css">
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="/jsp/template/header.jsp" flush="false" />
+	<jsp:include page="../template/header.jsp" flush="false" />
 
 	<!-- Contents -->
     <div id="contents">
@@ -72,15 +72,15 @@
                                 </ul>
                                 <div class="row_top member">
                                     <h4>
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_badge.png" class="i_badge">
+                                        <img src="../resources/images/icon/icon_badge.png" class="i_badge">
                                         <span class="rank">[Expert]</span>TeenCoder
                                     </h4>
                                 </div>
                                 <span class="row_top date">2022-05-10</span>
                                 <ul class="row_top number">
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_hit.svg" class="i_hit">0</li>
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_comment.svg" class="i_cmt">0</li>
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_like.svg" class="i_like">0</li>
+                                    <li><img src="../resources/images/icon/icon_hit.svg" class="i_hit">0</li>
+                                    <li><img src="../resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
+                                    <li><img src="../resources/images/icon/icon_like.svg" class="i_like">0</li>
                                 </ul>
                             </div>
                             <div class="row_title">
@@ -88,8 +88,8 @@
                                     <a href="<%= request.getContextPath() %>/jsp/board/boardDetail.jsp">
                                         <span class="tag_hit">[추천]</span>
                                         HTML / CSS 학습 중 궁금한 점이 있습니다.
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_image.svg" class="i_image">
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_file.svg" class="i_file">
+                                        <img src="../resources/images/icon/icon_image.svg" class="i_image">
+                                        <img src="../resources/images/icon/icon_file.svg" class="i_file">
                                     </a>
                                 </h3>
                                 <input type="button" value="삭제" class="btn_com btn_del_list">
@@ -118,6 +118,6 @@
     </div>
     
 	<!-- Footer -->
-	<jsp:include page="/jsp/template/footer.jsp" flush="false" />
+	<jsp:include page="../template/footer.jsp" flush="false" />
 </body>
 </html>
