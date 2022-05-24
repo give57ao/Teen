@@ -1,5 +1,23 @@
 package com.ez.teen.member.mapper;
 
-public interface MemberMapper {
+import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
+
+import com.ez.teen.member.service.loginService;
+import com.ez.teen.member.model.MemberModel;
+
+@Mapper
+public interface MemberMapper {
+	
+	MemberModel login(MemberModel memberModel) throws Exception;
+	
+	MemberModel loginCheck(MemberModel memberModel) throws  Exception;
+	
+	MemberModel findId(MemberModel memberModel) throws Exception;
+	
+	MemberModel findPw(MemberModel memberModel) throws Exception;
+	
+	
 }

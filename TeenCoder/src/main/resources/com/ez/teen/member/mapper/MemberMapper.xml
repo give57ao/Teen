@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ez.teen.member.mapper.MemberMapper">
+	
+	<select id="login" 
+		resultType="com.ez.teen.member.model.MemberModel">
+		SELECT MEMBER_ID, MEMBER_PW
+		FROM MEMBER
+		WHERE MEMBER_NO = 1
+	</select> 
+	
+	<select id="findId" resultType="com.ez.teen.member.model.MemberModel">
+		SELECT MEMBER_ID
+		FROM MEMBER
+		WHERE MEMBER_NAME = #{MEMBER_NAME}
+		AND MEMBER_EMAIL = #{MEMBER_EMAIL}
+	</select>
+	
+	<select id="findPw" resultType="com.ez.teen.member.model.MemberModel">
+		SELECT MEMBER_PW
+		FROM MEMBER
+		WHERE MEMBER_ID = #{MEMBER_ID}
+		AND MEMBER_EMAIL = #{MEMBER_EMAIL}
+	</select>
+	
+	
+	
+	
+
+
+</mapper>

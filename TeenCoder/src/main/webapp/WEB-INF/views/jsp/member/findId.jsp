@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +12,11 @@
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
-
+	
+	<p>회원ID:<c:out value="${findId.MEMBER_ID }" default="null."/></p>
+	
 	<!-- Contents -->
-	<div id="contents">
+	<%-- <div id="contents">
         <div id="contents_title">
             <h1>아이디 찾기</h1>
             <h2>이름과 이메일을 입력하시면 아이디를 찾으실 수 있습니다.</h2>
@@ -28,7 +31,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --%>
     
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />

@@ -20,25 +20,25 @@
         </div>
         <div id="contents_detail">
             <!-- Form -->
-            <form id="join_form" class="find_form">
+            <form id="join_form" class="find_form" action="findId" method="post">
                 <table>
                 	<tbody>
 	                    <tr>
 	                        <th>이름</th>
 	                        <td>
-	                            <input type="text" name="name" placeholder="이름">
+	                            <input type="text" name="MEMBER_NAME" placeholder="이름">
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>이메일</th>
 	                        <td>
-	                            <input type="text" name="email" placeholder="이메일">
+	                            <input type="text" name="MEMBER_EMAIL" placeholder="이메일">
 	                        </td>
 	                    </tr>
                     </tbody>
                 </table>
                 <div id="btn_wrap">
-                    <input type="button" value="취소" class="btn_com btn_main" onClick="location.href='loginForm.jsp'">
+                    <input type="button" value="취소" class="btn_com btn_main">
                     <input type="submit" value="확인" class="btn_com btn_main">
                 </div>
             </form>
