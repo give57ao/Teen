@@ -54,10 +54,11 @@ public class MyPageController {
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
 
-		//세션값을 받아옴 -> int 타입으로 받는다 int a = 세션값
-		int member_no = 2;
+		//		int member_no = 2;
+		session.setAttribute("member_no", 1);  //이건 로그인로직이 생기면 없어져야 할 내용
+		int member_no = (Integer)session.getAttribute("member_no");
 		
-		int total = boardService.getBoardCount(member_no); //(이안에) <-- a
+		int total = boardService.getBoardCount(member_no); 
 		System.out.println("total :" + total);
 		
 		if (nowPage == null && cntPerPage == null) {
@@ -68,19 +69,12 @@ public class MyPageController {
 		} else if (cntPerPage == null) {
 			cntPerPage = "10";
 		}
-		pm = new PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage)); // 0,1,10
+		pm = new PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage)); 
 		pm.setMember_no(member_no);
-		//session값 받아오는 로직으로 변경해야함
-//		int member_no = 1;
-//		memberModel.setMember_no(member_no);
+
 		
 		model.addAttribute("paging", pm);
 		model.addAttribute("board", boardService.boardList(pm));
-		
-//		System.out.println("startPage :" + pm.getStartPage());
-//		System.out.println("endPage :" + pm.getEndPage());
-//		System.out.println("nowPage : " + pm.getNowPage());
-//		System.out.println("lastPage : " +  pm.getLastPage());
 
 		return "member/myBoard";
 	}

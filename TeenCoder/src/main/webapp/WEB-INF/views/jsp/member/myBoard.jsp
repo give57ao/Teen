@@ -26,9 +26,9 @@
             <div id="contents_wrap">
                 <!-- Category -->
                 <ul id="contents_category">
-                    <li><a href="/teen/resources/jsp/member/myPage.jsp">마이페이지</a></li>
-                    <li><a href="/teen/resources/jsp/member/myBoard.jsp" class="select">내가 작성한 게시글</a></li>
-                    <li><a href="/teen/resources/jsp/member/myCmt.jsp">내가 작성한 댓글</a></li>
+                    <li><a href="/teen/member">마이페이지</a></li>
+                    <li><a href="/teen/member/boardList" class="select">내가 작성한 게시글</a></li>
+                    <li><a href="/teen/member/comment">내가 작성한 댓글</a></li>
                     <li><a href="#">나의 포인트</a></li>
                     <li><a href="#">팔로잉</a></li>
                     <li><a href="#">스크랩</a></li>
@@ -70,15 +70,15 @@
                                 </ul>
                                 <div class="row_top member">
                                     <h4>
-                                        <img src="../resources/images/icon/icon_badge.png" class="i_badge">
+                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
                                         <span class="rank">[Expert]</span>${board.member_nick}	
                                     </h4>
                                 </div>
                                 <span class="row_top date"><fmt:formatDate value="${board.board_date }" pattern="yyyy.MM.dd"/></span>
                                 <ul class="row_top number">
-                                    <li><img src="../resources/images/icon/icon_hit.svg" class="i_hit">${board.board_hit_count}</li>
-                                    <li><img src="../resources/images/icon/icon_comment.svg" class="i_cmt">${board.board_comment_count}</li>
-                                    <li><img src="../resources/images/icon/icon_like.svg" class="i_like">${board.board_like_count}</li>
+                                    <li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">${board.board_hit_count}</li>
+                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${board.board_comment_count}</li>
+                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${board.board_like_count}</li>
                                 </ul>
                             </div>
                             <div class="row_title">
@@ -88,7 +88,7 @@
                                         ${board.board_title}
                                         <!-- <img src="../resources/images/icon/icon_image.svg" class="i_image">  -->
                                         <c:if test="${board.board_file_check eq 'Y'}">
-                                        <img src="../resources/images/icon/icon_file.svg" class="i_file">
+                                        <img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
                                         </c:if>
 										
                                     	
