@@ -26,9 +26,9 @@
             <div id="contents_wrap">
                 <!-- Category -->
                 <ul id="contents_category">
-                    <li><a href="<%= request.getContextPath() %>/jsp/member/myPage.jsp">마이페이지</a></li>
-                    <li><a href="<%= request.getContextPath() %>/jsp/member/myBoard.jsp" class="select">내가 작성한 게시글</a></li>
-                    <li><a href="<%= request.getContextPath() %>/jsp/member/myCmt.jsp">내가 작성한 댓글</a></li>
+                    <li><a href="/teen/resources/jsp/member/myPage.jsp">마이페이지</a></li>
+                    <li><a href="/teen/resources/jsp/member/myBoard.jsp" class="select">내가 작성한 게시글</a></li>
+                    <li><a href="/teen/resources/jsp/member/myCmt.jsp">내가 작성한 댓글</a></li>
                     <li><a href="#">나의 포인트</a></li>
                     <li><a href="#">팔로잉</a></li>
                     <li><a href="#">스크랩</a></li>
@@ -83,7 +83,7 @@
                             </div>
                             <div class="row_title">
                                 <h3>
-                                    <a href="<%= request.getContextPath() %>/jsp/board/boardDetail.jsp">
+                                    <a href="/teen/resources/jsp/board/boardDetail.jsp">
                                         <span class="tag_hit">[추천]</span>
                                         ${board.board_title}
                                         <!-- <img src="../resources/images/icon/icon_image.svg" class="i_image">  -->
@@ -110,7 +110,7 @@
 		<!-- 왼쪽 버튼 -->
 		<!-- 시작페이지가 1이 아닐 때 -->
 		<c:if test="${paging.nowPage != 1 }">
-			<li class="prev"><a href="<%= request.getContextPath() %>/member/boardList?nowPage=${paging.nowPage - 1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+			<li class="prev"><a href="/teen/resources/member/boardList?nowPage=${paging.nowPage - 1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
 		</c:if>
 		
 		<!-- 페이징 숫자가 나오는 부분 -->
@@ -120,13 +120,13 @@
 					<li><a  class="select">${p }</a></li>
 				</c:when>
 				<c:when test="${p != paging.nowPage }">
-					<li><a href="<%= request.getContextPath() %>/member/boardList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+					<li><a href="/teen/resources/member/boardList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		<!-- 오른쪽 버튼 -->
 		<c:if test="${paging.endPage != paging.nowPage}">
-			<li class="next"><a href="<%= request.getContextPath() %>/member/boardList?nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+			<li class="next"><a href="/teen/resources/member/boardList?nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
 		</c:if>
 		</ul>
 	</div>
@@ -135,7 +135,7 @@
 				</div>
                 <!-- Member Info -->
                 <div id="member_info">
-                    <a href="<%= request.getContextPath() %>/jsp/board/boardWrite.jsp" class="btn_com btn_main">게시글 작성</a>
+                    <a href="/teen/resources/jsp/board/boardWrite.jsp" class="btn_com btn_main">게시글 작성</a>
                     <div class="mycard"></div>
                 </div>
             </div>

@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 게시판 상세</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/reset.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/board.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 </head>
 <body>
 	<!-- Header -->
@@ -36,7 +36,7 @@
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2><a href="<%= request.getContextPath() %>/jsp/board/mainBoard.jsp">< 리스트로 이동</a></h2>
+                        <h2><a href="/teen/resources/jsp/board/mainBoard.jsp">< 리스트로 이동</a></h2>
                     </div>
                 	<!-- List Row -->
                     <div id="board_list_row">
@@ -53,7 +53,7 @@
                                 </ul>
                                 <div class="row_top member">
                                     <h4>
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_badge.png" class="i_badge">
+                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
                                         <span class="rank">[Expert]</span>TeenCoder
                                     </h4>
                                 </div>
@@ -61,11 +61,11 @@
                             </div>
                             <div class="row_title">
                                 <h3>
-                                    <a href="<%= request.getContextPath() %>/jsp/board/boardDetail.jsp">
+                                    <a href="/teen/resources/jsp/board/boardDetail.jsp">
                                         <span class="tag_hit">[추천]</span>
                                         HTML / CSS 학습 중 궁금한 점이 있습니다.
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_image.svg" class="i_image">
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_file.svg" class="i_file">
+                                        <img src="/teen/resources/images/icon/icon_image.svg" class="i_image">
+                                        <img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
                                     </a>
                                 </h3>
                             </div>
@@ -76,13 +76,13 @@
 	                            	Text Text Text Text Text Text Text Text Text Text
 	                            	Text Text Text Text Text Text Text Text Text Text
                             	</p>
-                            	<img src="<%= request.getContextPath() %>/images/bg/bg_sample.jpg">
+                            	<img src="/teen/resources/images/bg/bg_sample.jpg">
                             	<span><a href="#">첨부파일 다운로드</a></span>
                             </div>
                             <ul class="row_top number">
-                                <li><img src="<%= request.getContextPath() %>/images/icon/icon_hit.svg" class="i_hit">0</li>
-                                <li><img src="<%= request.getContextPath() %>/images/icon/icon_comment.svg" class="i_cmt">0</li>
-                                <li><img src="<%= request.getContextPath() %>/images/icon/icon_like.svg" class="i_like">0</li>
+                                <li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">0</li>
+                                <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
+                                <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">0</li>
                             </ul>
                             <div class="btn_group">
                             	<input type="button" value="스크랩" class="btn_com btn_board">
@@ -106,7 +106,7 @@
 	                            <div class="row_info">
 	                                <div class="row_top member">
 	                                    <h4>
-	                                        <img src="<%= request.getContextPath() %>/images/icon/icon_badge.png" class="i_badge">
+	                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
 	                                        <span class="rank">[Expert]</span>TeenCoder
 	                                    </h4>
 	                                </div>
@@ -119,8 +119,8 @@
 	                            	</p>
 	                            </div>
 	                            <ul class="row_top number">
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_comment.svg" class="i_cmt">0</li>
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_like.svg" class="i_like">0</li>
+                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
+                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">0</li>
                                 </ul>
                                 <div class="btn_group">
 	                            	<input type="button" value="신고" class="btn_com btn_board">
@@ -137,7 +137,7 @@
 	                            <div class="row_info">
 	                                <div class="row_top member">
 	                                    <h4>
-	                                        <img src="<%= request.getContextPath() %>/images/icon/icon_badge.png" class="i_badge">
+	                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
 	                                        <span class="rank">[Expert]</span>TeenCoder
 	                                    </h4>
 	                                </div>
@@ -150,8 +150,8 @@
 	                            	</p>
 	                            </div>
 	                            <ul class="row_top number">
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_comment.svg" class="i_cmt">0</li>
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_like.svg" class="i_like">0</li>
+                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
+                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">0</li>
                                 </ul>
                                 <div class="btn_group">
 	                            	<input type="button" value="신고" class="btn_com btn_board">
@@ -167,7 +167,7 @@
 		                            <div class="row_info">
 		                                <div class="row_top member">
 		                                    <h4>
-		                                        <img src="<%= request.getContextPath() %>/images/icon/icon_badge.png" class="i_badge">
+		                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
 		                                        <span class="rank">[Expert]</span>TeenCoder
 		                                    </h4>
 		                                </div>
@@ -180,8 +180,8 @@
 		                            	</p>
 		                            </div>
 		                            <ul class="row_top number">
-	                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_comment.svg" class="i_cmt">0</li>
-	                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_like.svg" class="i_like">0</li>
+	                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
+	                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">0</li>
 	                                </ul>
 	                                <div class="btn_group">
 		                            	<input type="button" value="신고" class="btn_com btn_board">
@@ -202,7 +202,7 @@
                 </div>
                 <!-- Member Info -->
                 <div id="member_info">
-                    <a href="<%= request.getContextPath() %>/jsp/board/boardWrite.jsp" class="btn_com btn_main">게시글 작성</a>
+                    <a href="/teen/resources/jsp/board/boardWrite.jsp" class="btn_com btn_main">게시글 작성</a>
                     <div class="mycard"></div>
                 </div>
             </div>
