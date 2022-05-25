@@ -18,7 +18,7 @@ public interface BoardMapper {
 	public int getBoardCount(int member_no);
 
 	// 전체 댓글 수
-	public int getCommentCount(MemberModel memberModel);
+	public int getCommentCount(int member_no);
 
 	// 게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(PagingModel pm);

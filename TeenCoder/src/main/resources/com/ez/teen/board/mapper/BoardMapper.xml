@@ -20,10 +20,10 @@
 	</select>
 	
 	<!-- 전체 댓글 수 -->
-	<select id="getCommentCount" resultType="int" parameterType="com.ez.teen.member.model.MemberModel">
+	<select id="getCommentCount" resultType="int" parameterType="Integer">
 		SELECT COUNT(*) AS allCommentCount FROM BCOMMENT
 		<!-- 내가 작성한 게시글 수 조건 -->
-		<if test='member_no != null'>
+		<if test='member_no != 0'>
 			WHERE MEMBER_NO = #{member_no}
  		</if>
 	</select>

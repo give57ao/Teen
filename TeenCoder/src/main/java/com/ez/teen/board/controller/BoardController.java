@@ -25,11 +25,10 @@ public class BoardController {
 	public String main(BoardModel boardModel, MemberModel memberModel, Model model) {
 		
 		int member_no = 0;
-//		memberModel.setMember_no(member_no);
 		
 		model.addAttribute("allMemberCount", boardService.getUserCount());
 		model.addAttribute("allBoardCount", boardService.getBoardCount(member_no));
-		model.addAttribute("allCommentCount", boardService.getCommentCount(memberModel));
+		model.addAttribute("allCommentCount", boardService.getCommentCount(member_no));
 		
 		return "main";
 	}

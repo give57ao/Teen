@@ -31,8 +31,8 @@ public class BoardServiceImpl implements BoardService {
 
 	// 전체 댓글 수
 	@Override
-	public int getCommentCount(MemberModel memberModel) {
-		return boardMapper.getCommentCount(memberModel);
+	public int getCommentCount(int member_no) {
+		return boardMapper.getCommentCount(member_no);
 	}
 
 	// 게시글 리스트 (BGROUP 구별 없이)
