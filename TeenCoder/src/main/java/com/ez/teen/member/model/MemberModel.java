@@ -7,6 +7,7 @@ public class MemberModel {
 	private int member_no; // 회원 고유 번호
 	private String member_id; // 회원 아이디
 	private String member_pw; // 비밀번호
+	private String member_pw1; // 비밀번호 확인
 	private String member_name; // 회원 이름
 	private String member_email; // 회원 이메일
 	private String member_email_check; // 회원 이메일 체크
@@ -33,6 +34,12 @@ public class MemberModel {
 	}
 	public void setMember_pw(String member_pw) {
 		this.member_pw = member_pw;
+	}
+	public String getMember_pw1() {
+		return member_pw1;
+	}
+	public void setMember_pw1(String member_pw1) {
+		this.member_pw1 = member_pw1;
 	}
 	public String getMember_name() {
 		return member_name;
@@ -85,7 +92,7 @@ public class MemberModel {
 
 	@Override
 	public String toString() {
-		return "MemberModel [member_no=" + member_no + ", member_id=" + member_id + ", member_pw=" + member_pw
+		return "MemberModel [member_no=" + member_no + ", member_id=" + member_id + ", member_pw=" + member_pw + ", member_pw1=" + member_pw1
 				+ ", member_name=" + member_name + ", member_email=" + member_email + ", member_email_check="
 				+ member_email_check + ", member_nick=" + member_nick + ", member_admin=" + member_admin + ", member_date="
 				+ member_date + ", member_pro_check=" + member_pro_check + ", member_point=" + member_point + "]";

@@ -23,4 +23,14 @@ public interface MemberMapper {
 	// 비밀번호 찾기
 	MemberModel findPw(MemberModel memberModel) throws Exception;
 	
+	void insertMember(MemberModel model);
+	
+	int checkId(String memberId);
+	
+	int checkNick(String memberNick);
+	
+	int checkEmail(String memberEmail);
+	
+	void deleteMember(MemberModel model);
+	
 }

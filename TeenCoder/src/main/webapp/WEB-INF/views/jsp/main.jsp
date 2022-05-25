@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder</title>
-<link rel="stylesheet" type="text/css" href="resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/main.css">
+<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -40,7 +41,7 @@
         </div>
         <div id="contents_detail">
             <div id="btn_wrap">
-                <a href="<%= request.getContextPath() %>/jsp/board/mainBoard.jsp" class="btn_com btn_main">카테고리로 이동</a>
+                <a href="#" class="btn_com btn_main">카테고리로 이동</a>
             </div>
         </div>
     </div>
