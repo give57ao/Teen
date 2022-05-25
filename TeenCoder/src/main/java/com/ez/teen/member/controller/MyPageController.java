@@ -35,7 +35,7 @@ public class MyPageController {
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
 
 		int total = boardService.getBoardCount(memberModel);
-		// userno 를 받아야함
+		// userno 를 받아야함.
 
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
