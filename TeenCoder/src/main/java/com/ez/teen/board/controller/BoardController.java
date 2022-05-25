@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.service.BoardService;
+import com.ez.teen.member.model.MemberModel;
 
 @Controller
 public class BoardController {
@@ -20,11 +21,11 @@ public class BoardController {
 	
 	//Get Main Page
 	@GetMapping("/")
-	public String main(BoardModel boardModel, Model model) {
+	public String main(BoardModel boardModel, MemberModel memberModel, Model model) {
 		
 		model.addAttribute("allMemberCount", boardService.getUserCount());
-		model.addAttribute("allBoardCount", boardService.getBoardCount());
-		model.addAttribute("allCommentCount", boardService.getCommentCount());
+		model.addAttribute("allBoardCount", boardService.getBoardCount(memberModel));
+		model.addAttribute("allCommentCount", boardService.getCommentCount(memberModel));
 		
 		return "main";
 	}

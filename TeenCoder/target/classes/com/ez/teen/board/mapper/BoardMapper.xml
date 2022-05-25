@@ -7,16 +7,25 @@
 	<!-- 전체 이용자 수 -->
 	<select id="getUserCount" resultType="int">
 		SELECT COUNT(*) AS allMemberCount FROM MEMBER
+		
 	</select>
 	
 	<!-- 전체 게시글 수 -->
-	<select id="getBoardCount" resultType="int">
+	<select id="getBoardCount" resultType="int" parameterType="com.ez.teen.member.model.MemberModel">
 		SELECT COUNT(*) AS allBoardCount FROM BOARD
+		<!-- 내가 작성한 게시글 수 조건 -->
+		<if test='member_no != null'>
+			WHERE MEMBER_NO = #{member_no}
+ 		</if>
 	</select>
 	
 	<!-- 전체 댓글 수 -->
-	<select id="getCommentCount" resultType="int">
+	<select id="getCommentCount" resultType="int" parameterType="com.ez.teen.member.model.MemberModel">
 		SELECT COUNT(*) AS allCommentCount FROM BCOMMENT
+		<!-- 내가 작성한 게시글 수 조건 -->
+		<if test='member_no != null'>
+			WHERE MEMBER_NO = #{member_no}
+ 		</if>
 	</select>
 	
 	

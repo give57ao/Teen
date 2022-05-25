@@ -24,15 +24,15 @@
             <div id="contents_pro">
                 <ul>
                     <li>
-                        <div><span>100</span></div>
+                        <div><span>${allMemberCount}</span></div>
                         <h2>전체 사용자</h2>
                     </li>
                     <li>
-                        <div><span>50</span></div>
+                        <div><span>${allBoardCount}</span></div>
                         <h2>전체 게시글</h2>
                     </li>
                     <li>
-                        <div><span>10</span></div>
+                        <div><span>${allCommentCount}</span></div>
                         <h2>전체 댓글</h2>
                     </li>
                 </ul>
