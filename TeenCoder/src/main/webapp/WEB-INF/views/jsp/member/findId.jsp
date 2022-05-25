@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 아이디 찾기</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/reset.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/memberForm.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/memberForm.css">
+<script src="../resources/js/login.js"></script>
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="/jsp/template/header.jsp" flush="false" />
+	<jsp:include page="../template/header.jsp" flush="false" />
 
 	<!-- Contents -->
 	<div id="contents">
@@ -21,16 +24,15 @@
         <div id="contents_detail">
             <!-- Form -->
             <form id="join_form" class="find_form">
-                <h2>해당 회원의 아이디는 <b>TeenCoder</b> 입니다.</h2>
-                <!-- 해당 회원의 아이디는 <b><%= request.getParameter("id") %></b> 입니다. -->
+                <h2>해당 회원의 아이디는 <b><c:out value="${findId.member_id}" default="null"/></b> 입니다.</h2>
                 <div id="btn_wrap">
-                    <input type="button" value="로그인 화면으로 이동" class="btn_com btn_main" onClick="location.href='loginForm.jsp'">
+                    <input type="button" value="로그인 화면으로 이동" class="btn_com btn_main" onClick="goLogin()">
                 </div>
             </form>
         </div>
     </div>
     
 	<!-- Footer -->
-	<jsp:include page="/jsp/template/footer.jsp" flush="false" />
+	<jsp:include page="../template/footer.jsp" flush="false" />
 </body>
 </html>
