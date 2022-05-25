@@ -40,6 +40,7 @@ public class MemberController {
     		mv.setViewName("redirect:/");
     	} else {
 	    	mv.setViewName("member/loginForm");
+	    	mv.addObject("fail", "fail");
 	    	mv.addObject("msg", "로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.");
     	}
     			
