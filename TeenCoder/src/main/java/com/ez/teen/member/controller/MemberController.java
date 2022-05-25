@@ -1,5 +1,8 @@
 package com.ez.teen.member.controller;
 
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -31,20 +34,24 @@ public class MemberController {
 	
 	// 로그인 체크
 	@RequestMapping("/login")
-	public ModelAndView loginCheck(MemberModel memberModel, HttpSession session) throws Exception {
+	public ModelAndView loginCheck(MemberModel memberModel, HttpSession session, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		MemberModel member = loginService.login(memberModel);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
 		
-		session.setAttribute("member_no", 1);  //이건 로그인 로직이 생기면 없어져야 할 내용
+		session.setAttribute("member_no", 1);
         int member_no = (Integer)session.getAttribute("member_no");
 		
     	if(member != null) {
-    		// session.setAttribute("member", member);
             session.setAttribute("member_no", member.getMember_no());
     		mv.setViewName("redirect:/");
     	} else {
+    		session.setAttribute("member_no", null);
+    		out.println("<script type='text/javascript'>alert('로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.')</script>");
+    		out.flush();
 	    	mv.setViewName("member/loginForm");
-	    	mv.addObject("msg", "로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.");
+	    	mv.addObject("msg", false);
     	}
     			
     	return mv;

@@ -17,7 +17,7 @@
             </ul>
         </nav>
         <!-- 로그인 전 : 세션 값이 없을 경우 -->
-        <c:if test="${sessionScope.member == null}">
+        <c:if test="${sessionScope.member_no == null}">
 	        <div id="header_menu">
 	            <ul>
 	                <li><a href="/teen/member/login" class="log">로그인</a></li>
@@ -26,7 +26,7 @@
 	        </div>
         </c:if>
         <!-- 로그인 후 : 세션 값이 있을 경우 -->
-        <c:if test="${sessionScope.member != null}">
+        <c:if test="${sessionScope.member_no != null}">
 	        <div id="header_menu">
 	            <ul>
 	            	<li><a href="/teen/member/logout" class="log" onCLick="logout()">로그아웃</a></li>
