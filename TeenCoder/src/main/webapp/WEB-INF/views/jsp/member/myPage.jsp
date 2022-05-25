@@ -56,10 +56,10 @@
                 		<div class="member_board">
 	                		<hr>
 		                	<ul>
-		                		<li>내가 작성한 게시글<a href="<%= request.getContextPath() %>/jsp/member/myBoard.jsp">${allBoardCount}</a></li>
-		                		<li>내가 작성한 댓글<a href="<%= request.getContextPath() %>/jsp/member/myCmt.jsp">${allCommentCount}</a></li>
-		                		<li>나의 포인트<a href="#">${list[0].member_point}</a></li>
-		                	</ul>
+								<li><a href="/teen/member">마이페이지</a></li>
+								<li><a href="/teen/member/boardList" class="select">내가작성한 게시글</a></li>
+								<li><a href="/teen/member/comment">내가 작성한 댓글</a></li>
+							</ul>
 		                	<hr>
 	                	</div>
 	                	<a href="<%= request.getContextPath() %>/jsp/member/deleteForm.jsp" class="btn_del_member">회원탈퇴</a>
