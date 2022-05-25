@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.ez.teen.member.model.MemberModel;
-
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.common.PagingModel;
+import com.ez.teen.member.model.MemberModel;
 
 @Mapper
 public interface BoardMapper {
@@ -16,7 +15,7 @@ public interface BoardMapper {
 	public int getUserCount();
 
 	// 전체 게시글 수
-	public int getBoardCount(MemberModel memberModel);
+	public int getBoardCount(int member_no);
 
 	// 전체 댓글 수
 	public int getCommentCount(MemberModel memberModel);

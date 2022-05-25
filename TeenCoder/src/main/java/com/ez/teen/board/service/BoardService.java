@@ -12,12 +12,13 @@ public interface BoardService {
 	public int  getUserCount();
 	
 	//전체 게시글 수
-	public int  getBoardCount(MemberModel memberModel);
+	public int  getBoardCount(int member_no);
 
 	public int  getCommentCount(MemberModel memberModel);
 
 	
 	//게시글 리스트 (BGROUP 구별 없이)
+	
 	public List<BoardModel> boardList(PagingModel pm);
 
 }

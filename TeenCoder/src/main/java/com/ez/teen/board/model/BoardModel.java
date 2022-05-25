@@ -18,10 +18,32 @@ public class BoardModel {
 	private String board_file_check;
 	private String board_group_no;
 	private String board_tag_no;
+	private String tag_name;
+	private String member_nick;
+	private int board_comment_count;
+
+	public int getBoard_comment_count() {
+		return board_comment_count;
+	}
+	public void setBoard_comment_count(int board_comment_count) {
+		this.board_comment_count = board_comment_count;
+	}
+	public String getMember_nick() {
+		return member_nick;
+	}
+	public void setMember_nick(String member_nick) {
+		this.member_nick = member_nick;
+	}
 	
 	
 	public int getBoard_no() {
 		return board_no;
+	}
+	public String getTag_name() {
+		return tag_name;
+	}
+	public void setTag_name(String tag_name) {
+		this.tag_name = tag_name;
 	}
 	public void setBoard_no(int board_no) {
 		this.board_no = board_no;
@@ -86,14 +108,13 @@ public class BoardModel {
 	public void setBoard_tag_no(String board_tag_no) {
 		this.board_tag_no = board_tag_no;
 	}
-	
 	@Override
 	public String toString() {
 		return "BoardModel [board_no=" + board_no + ", member_no=" + member_no + ", board_title=" + board_title
 				+ ", board_content=" + board_content + ", board_date=" + board_date + ", board_hit_count="
 				+ board_hit_count + ", board_like_count=" + board_like_count + ", board_report_count="
 				+ board_report_count + ", board_file_check=" + board_file_check + ", board_group_no=" + board_group_no
-				+ ", board_tag_no=" + board_tag_no + "]";
+				+ ", board_tag_no=" + board_tag_no + ", tag_name=" + tag_name + "]";
+	}
 
-}
 }

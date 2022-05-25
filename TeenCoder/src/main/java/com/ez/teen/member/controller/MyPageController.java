@@ -30,13 +30,16 @@ public class MyPageController {
 	private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
 
 	@GetMapping("/boardList")
-	public String myBoardList(PagingModel pm,MemberModel memberModel ,Model model,
+	public String myBoardList(Model model, PagingModel pm,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
 
-		int total = boardService.getBoardCount(memberModel);
-		// userno 를 받아야함.
-
+		//세션값을 받아옴 -> int 타입으로 받는다 int a = 세션값
+		int member_no = 1;
+		
+		int total = boardService.getBoardCount(member_no); //(이안에) <-- a
+		System.out.println("total :" + total);
+		
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -46,10 +49,14 @@ public class MyPageController {
 			cntPerPage = "10";
 		}
 		pm = new PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage)); // 0,1,10
-		int member_no = 1;
 		pm.setMember_no(member_no);
+		//session값 받아오는 로직으로 변경해야함
+//		int member_no = 1;
+//		memberModel.setMember_no(member_no);
+		
 		model.addAttribute("paging", pm);
 		model.addAttribute("board", boardService.boardList(pm));
+		
 //		System.out.println("startPage :" + pm.getStartPage());
 //		System.out.println("endPage :" + pm.getEndPage());
 //		System.out.println("nowPage : " + pm.getNowPage());
@@ -58,16 +65,17 @@ public class MyPageController {
 		return "member/myBoard";
 	}
 
-	@RequestMapping("member")
+	@GetMapping("/")
 	public String myPageList(MemberModel memberModel, Model model) throws Exception {
-
+		
+		//session값 받아오는 로직으로 변경해야함
 		int member_no = 1;
-		memberModel.setMember_no(member_no);
+//		memberModel.setMember_no(member_no);
 
 		List<MemberModel> myPageList = memberService.myPageList(memberModel);
 		model.addAttribute("list", myPageList);
 
-		model.addAttribute("allBoardCount", boardService.getBoardCount(memberModel));
+		model.addAttribute("allBoardCount", boardService.getBoardCount(member_no));
 		model.addAttribute("allCommentCount", boardService.getCommentCount(memberModel));
 
 		System.out.println(myPageList);

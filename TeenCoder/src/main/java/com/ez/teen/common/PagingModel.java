@@ -5,6 +5,7 @@ public class PagingModel {
 	private int cntPage = 5;
 	private int member_no;
 	
+	
 
 	public PagingModel() {
 	}

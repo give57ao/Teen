@@ -11,10 +11,10 @@
 	</select>
 	
 	<!-- 전체 게시글 수 -->
-	<select id="getBoardCount" resultType="int" parameterType="com.ez.teen.member.model.MemberModel">
+	<select id="getBoardCount" resultType="int" parameterType="Integer"> 
 		SELECT COUNT(*) AS allBoardCount FROM BOARD
 		<!-- 내가 작성한 게시글 수 조건 -->
-		<if test='member_no != null'>
+		<if test='member_no != 0'>
 			WHERE MEMBER_NO = #{member_no}
  		</if>
 	</select>
@@ -56,9 +56,9 @@ INNER JOIN MEMBER M
 ON B.MEMBER_NO = M.MEMBER_NO
 LEFT OUTER JOIN BCOMMENT C
 ON B.BOARD_NO = C.BOARD_NO
-	<if test='member_no != null'>
-	WHERE B.MEMBER_NO = #{member_no}
-</if>
+<if test='member_no != 0'>
+WHERE B.MEMBER_NO = #{member_no}
+ </if>
     GROUP BY B.BOARD_NO, B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,T.TAG_NAME,G.BGROUP_NAME,M.MEMBER_NICK
 	) A
 	)
