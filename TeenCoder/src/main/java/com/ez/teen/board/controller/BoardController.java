@@ -21,7 +21,6 @@ public class BoardController {
 	//Get Main Page
 	@GetMapping("/")
 	public String main(Model model) {
-		log.info("count" + boardService.getUserCount());
 		model.addAttribute("allMemberCount", boardService.getUserCount());
 		model.addAttribute("allBoardCount", boardService.getBoardCount());
 		model.addAttribute("allCommentCount", boardService.getCommentCount());

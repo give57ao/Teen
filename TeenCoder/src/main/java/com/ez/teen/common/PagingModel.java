@@ -3,16 +3,18 @@ package com.ez.teen.common;
 public class PagingModel {
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
 	private int cntPage = 5;
-	private int memberNo;
-	public int getMemberNo() {
-		return memberNo;
-	}
-
-	public void setMemberNo(int memberNo) {
-		this.memberNo = memberNo;
-	}
+	private int member_no;
+	
 
 	public PagingModel() {
+	}
+
+	public int getMember_no() {
+		return member_no;
+	}
+
+	public void setMember_no(int member_no) {
+		this.member_no = member_no;
 	}
 
 	public PagingModel(int total, int nowPage, int cntPerPage) {
@@ -20,7 +22,7 @@ public class PagingModel {
 		setCntPerPage(cntPerPage);
 		setTotal(total);
 		calcLastPage(getTotal(), getCntPerPage());
-		calcStartEndPage(getNowPage(), cntPage);
+		calcStartEndPage(getNowPage(), cntPage); //(1,10)
 		calcStartEnd(getNowPage(), getCntPerPage());
 	}
 
@@ -28,14 +30,18 @@ public class PagingModel {
 		setLastPage((int) Math.ceil((double) total / (double) cntPerPage));
 	}
 
-	public void calcStartEndPage(int nowPage, int cntPage) {
-		setEndPage(((int) Math.ceil((double) nowPage / (double) cntPage)) * cntPage);
-		if (getLastPage() < getEndPage()) {
+	public void calcStartEndPage(int nowPage, int cntPage) { //(1,10)
+		setEndPage(((int) Math.ceil((double) nowPage / (double) cntPage)) * cntPage); //0
+		
+		//Math.ceil() 함수는 주어진 숫자보다 크거나 같은 숫자 중 가장 작은 숫자를 integer 로 반환
+		if (getLastPage() < getEndPage()) { //0 < 0
 			setEndPage(getLastPage());
 		}
-		setStartPage(getEndPage() - cntPage + 1);
+		//아닐 시
+		setStartPage(getEndPage() - cntPage + 1); //0-5+1 = -4 
 		if (getStartPage() < 1) {
 			setStartPage(1);
+		
 		}
 	}
 
