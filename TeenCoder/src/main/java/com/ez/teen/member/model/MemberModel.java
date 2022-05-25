@@ -91,8 +91,5 @@ public class MemberModel {
 				+ ", member_date=" + member_date + ", member_procheck=" + member_procheck + ", member_point="
 				+ member_point + "]";
 	}
-	
-	
-	
-	
+
 }

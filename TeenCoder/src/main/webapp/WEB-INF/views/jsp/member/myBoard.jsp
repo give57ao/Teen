@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 내가 작성한 게시글</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/reset.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/board.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/myInfo.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/board.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/myInfo.css">
 </head>
 <body>
 	<!-- Header -->
@@ -59,55 +61,78 @@
                 	<!-- List Row -->
                     <div id="board_list_row">
                         <!-- Row1 -->
-                        <div class="row">
+                        	<c:forEach items="${board }" var="board">
+                        
+	                        <div class="row">
                             <div class="row_info">
                                 <ul class="row_top tag_category">
-                                    <li>#HTML</li>
-                                    <li>#CSS</li>
-                                    <li>#JS</li>
-                                    <li>#Java</li>
-                                    <li>#C</li>
-                                    <li>#Python</li>
-                                    <li>#SQL</li>
+                                    <li>#${board.tag_name}</li>
                                 </ul>
                                 <div class="row_top member">
                                     <h4>
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_badge.png" class="i_badge">
-                                        <span class="rank">[Expert]</span>TeenCoder
+                                        <img src="../resources/images/icon/icon_badge.png" class="i_badge">
+                                        <span class="rank">[Expert]</span>${board.member_nick}	
                                     </h4>
                                 </div>
-                                <span class="row_top date">2022-05-10</span>
+                                <span class="row_top date"><fmt:formatDate value="${board.board_date }" pattern="yyyy.MM.dd"/></span>
                                 <ul class="row_top number">
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_hit.svg" class="i_hit">0</li>
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_comment.svg" class="i_cmt">0</li>
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_like.svg" class="i_like">0</li>
+                                    <li><img src="../resources/images/icon/icon_hit.svg" class="i_hit">${board.board_hit_count}</li>
+                                    <li><img src="../resources/images/icon/icon_comment.svg" class="i_cmt">${board.board_comment_count}</li>
+                                    <li><img src="../resources/images/icon/icon_like.svg" class="i_like">${board.board_like_count}</li>
                                 </ul>
                             </div>
                             <div class="row_title">
                                 <h3>
                                     <a href="<%= request.getContextPath() %>/jsp/board/boardDetail.jsp">
                                         <span class="tag_hit">[추천]</span>
-                                        HTML / CSS 학습 중 궁금한 점이 있습니다.
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_image.svg" class="i_image">
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_file.svg" class="i_file">
+                                        ${board.board_title}
+                                        <!-- <img src="../resources/images/icon/icon_image.svg" class="i_image">  -->
+                                        <c:if test="${board.board_file_check eq 'Y'}">
+                                        <img src="../resources/images/icon/icon_file.svg" class="i_file">
+                                        </c:if>
+										
+                                    	
                                     </a>
                                 </h3>
                                 <input type="button" value="삭제" class="btn_com btn_del_list">
                             </div>
                         </div>
                         <hr>
+                       </c:forEach>
+                         
                     </div>
-                    <!-- Pagination -->
-                    <div id="board_list_pagination">
-                        <ul>
-                            <li class="prev"><a href="#"></a></li>
-                            <li><a href="#" class="select">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="next"><a href="#"></a></li>
-                        </ul>
-                    </div>
-                </div>
+                    
+                    
+   <!-- Pagination -->
+                      
+<div id="board_list_pagination">
+		<ul>		
+		<!-- 왼쪽 버튼 -->
+		<!-- 시작페이지가 1이 아닐 때 -->
+		<c:if test="${paging.nowPage != 1 }">
+			<li class="prev"><a href="<%= request.getContextPath() %>/member/boardList?nowPage=${paging.nowPage - 1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+		</c:if>
+		
+		<!-- 페이징 숫자가 나오는 부분 -->
+		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<li><a  class="select">${p }</a></li>
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<li><a href="<%= request.getContextPath() %>/member/boardList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<!-- 오른쪽 버튼 -->
+		<c:if test="${paging.endPage != paging.nowPage}">
+			<li class="next"><a href="<%= request.getContextPath() %>/member/boardList?nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+		</c:if>
+		</ul>
+	</div>
+                      
+					
+				</div>
                 <!-- Member Info -->
                 <div id="member_info">
                     <a href="<%= request.getContextPath() %>/jsp/board/boardWrite.jsp" class="btn_com btn_main">게시글 작성</a>

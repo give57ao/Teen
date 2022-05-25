@@ -18,15 +18,20 @@ public class BoardController {
 	BoardService boardService;
 
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
-	
-	//Get Main Page
+
+	// Get Main Page
 	@GetMapping("/")
+
 	public String main(BoardModel boardModel, MemberModel memberModel, Model model) {
 		
+
 		model.addAttribute("allMemberCount", boardService.getUserCount());
 		model.addAttribute("allBoardCount", boardService.getBoardCount(memberModel));
 		model.addAttribute("allCommentCount", boardService.getCommentCount(memberModel));
 		
 		return "main";
 	}
-}
+	
+	
+	}
+

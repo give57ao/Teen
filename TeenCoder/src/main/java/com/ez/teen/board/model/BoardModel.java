@@ -18,6 +18,8 @@ public class BoardModel {
 	private String board_file_check;
 	private String board_group_no;
 	private String board_tag_no;
+	
+	
 	public int getBoard_no() {
 		return board_no;
 	}
@@ -92,8 +94,6 @@ public class BoardModel {
 				+ board_hit_count + ", board_like_count=" + board_like_count + ", board_report_count="
 				+ board_report_count + ", board_file_check=" + board_file_check + ", board_group_no=" + board_group_no
 				+ ", board_tag_no=" + board_tag_no + "]";
-	}
-	
-	
-	
+
+}
 }
