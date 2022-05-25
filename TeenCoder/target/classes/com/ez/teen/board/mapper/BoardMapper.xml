@@ -2,86 +2,67 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.ez.board.mapper.BoardMapper">
- 
- <select id="getList" resultType="com.ez.board.model.BoardModel">
-	select * from mp_board
-  </select>
- 
- <select id ="selectBoard" resultType="com.ez.board.model.BoardModel">
- SELECT bno, title, writer, regdate 
+<mapper namespace="com.ez.teen.board.mapper.BoardMapper">
+
+	<!-- 전체 이용자 수 -->
+	<select id="getUserCount" resultType="int">
+		SELECT COUNT(*) AS allMemberCount FROM MEMBER
+	</select>
+	
+	<!-- 전체 게시글 수 -->
+	<select id="getBoardCount" resultType="int">
+		SELECT COUNT(*) AS allBoardCount FROM BOARD
+	</select>
+	
+	<!-- 전체 댓글 수 -->
+	<select id="getCommentCount" resultType="int">
+		SELECT COUNT(*) AS allCommentCount FROM BCOMMENT
+	</select>
+	
+	
+ <select id ="boardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.common.PagingModel">
+SELECT rn, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check,tag_name, bgroup_name, member_nick, board_comment_count
 		FROM (
 			SELECT ROWNUM RN, A.* 
 				FROM (
-						SELECT *
-						FROM mp_board 
-						ORDER BY bno DESC 
-						) A
-				)
+                SELECT
+ B.BOARD_NO                
+,B.BOARD_TITLE
+,B.BOARD_DATE
+,B.BOARD_HIT_COUNT
+,B.BOARD_LIKE_COUNT
+,B.BOARD_REPORT_COUNT
+,B.BOARD_FILE_CHECK
+,T.TAG_NAME
+,G.BGROUP_NAME
+,M.MEMBER_NICK
+,COUNT(C.BOARD_NO) AS board_comment_count
+
+FROM BOARD B
+INNER JOIN BTAG T
+ON B.BOARD_TAG_NO = T.BOARD_TAG_NO
+INNER JOIN BGROUP G
+ON B.BOARD_GROUP_NO = G.BOARD_GROUP_NO
+INNER JOIN MEMBER M
+ON B.MEMBER_NO = M.MEMBER_NO
+LEFT OUTER JOIN BCOMMENT C
+ON B.BOARD_NO = C.BOARD_NO
+	<if test='member_no != null'>
+	WHERE B.MEMBER_NO = #{member_no}
+</if>
+    GROUP BY B.BOARD_NO, B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,T.TAG_NAME,G.BGROUP_NAME,M.MEMBER_NICK
+	) A
+	)
 	WHERE RN BETWEEN #{start} AND #{end}
+    
+    
+
  </select>
- 
- <select id="countBoard" resultType="int">
- SELECT COUNT(*) FROM mp_board
- </select>
- 
- <insert id="registNewBoard" parameterType="com.ez.board.model.BoardModel" useGeneratedKeys="true" keyProperty="bno">
- <selectKey keyProperty="bno" resultType="int" order="BEFORE">
- 	    	SELECT MP_BOARD_SEQ.NEXTVAL FROM DUAL
- </selectKey>
- INSERT INTO MP_BOARD(
- 								BNO 
-	   					      , TITLE 
-	   					      , CONTENT 
-	   					      , WRITER  )	
-	                 VALUES(   
-	                 			 MP_BOARD_SEQ.NEXTVAL 
-	                 		  , #{title}
-	                 		  , #{content}
-	                 		  , #{writer}  )
- </insert>
- 
-   <insert id="insertFile" parameterType="hashMap">
-		INSERT INTO MP_FILE(
-			FILE_NO,
-			BNO,
-			ORG_FILE_NAME,
-			STORED_FILE_NAME,
-			FILE_SIZE
-		)VALUES(
-			SEQ_MP_FILE_NO.NEXTVAL,
-			#{BNO},
-			#{ORG_FILE_NAME},
-			#{STORED_FILE_NAME},
-			#{FILE_SIZE}
-		)
-    </insert>
-    
-    <select id="readBoard" parameterType="int" resultType="com.ez.board.model.BoardModel">
-		SELECT	BNO
-			  , TITLE
-			  , CONTENT
-			  , WRITER
-			  , REGDATE
-		 FROM MP_BOARD
-		 WHERE BNO = #{bno}
-	</select>
-    
-    <select id="selectFileList" parameterType="int" resultType="hashMap">
-	SELECT FILE_NO,
-		   ORG_FILE_NAME,
-		   ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
-	  FROM MP_FILE
-	 WHERE BNO = #{BNO}
-	   AND DEL_GB = 'N'
-</select>
-    
-    <select id="selectFileInfo" parameterType="hashMap" resultType="hashMap">
-    SELECT 
-		STORED_FILE_NAME,
-		ORG_FILE_NAME
-	FROM MP_FILE
-	WHERE FILE_NO = #{FILE_NO}
-	</select>
-    
-  </mapper>
+	
+	
+	
+	
+	
+
+
+</mapper>

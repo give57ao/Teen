@@ -35,9 +35,9 @@
     </bean>   
  
  
- 
- 	<mybatis-spring:scan base-package="com.ez.teen.board.mapper"/>
-    
+  	<mybatis-spring:scan base-package="com.ez.teen/**/mapper"/>
+
+   
     <!-- 
  <mybatis-spring:scan base-package="com.ez.board.mapper"/>
  <mybatis-spring:scan base-package="com.ez.login.mapper"/>

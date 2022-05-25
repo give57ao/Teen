@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/reset.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/main.css">
+<link rel="stylesheet" type="text/css" href="resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="resources/css/main.css">
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="../jsp/template/header.jsp" flush="false" />
+	<jsp:include page="template/header.jsp" flush="false" />
 
 	<!-- Contents -->
     <div id="contents">
@@ -24,15 +24,15 @@
             <div id="contents_pro">
                 <ul>
                     <li>
-                        <div><span>100</span></div>
+                        <div><span>${allMemberCount}</span></div>
                         <h2>전체 사용자</h2>
                     </li>
                     <li>
-                        <div><span>50</span></div>
+                        <div><span>${allBoardCount}</span></div>
                         <h2>전체 게시글</h2>
                     </li>
                     <li>
-                        <div><span>10</span></div>
+                        <div><span>${allCommentCount}</span></div>
                         <h2>전체 댓글</h2>
                     </li>
                 </ul>
@@ -46,6 +46,6 @@
     </div>
     
 	<!-- Footer -->
-	<jsp:include page="../jsp/template/footer.jsp" flush="false" />
+	<jsp:include page="template/footer.jsp" flush="false" />
 </body>
 </html>
