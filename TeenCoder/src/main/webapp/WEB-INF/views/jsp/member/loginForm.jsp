@@ -9,8 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
-
-
+<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -42,10 +41,5 @@
     
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
-	<script type="text/javascript">
-var message = "${msg}";
-var fail = "${fail}";
-</script>
-<script src="/teen/resources/js/member.js"></script>
 </body>
 </html>
