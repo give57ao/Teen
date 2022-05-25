@@ -1,5 +1,3 @@
-
-
 // 로그인 화면으로 이동
 function goLogin() {
 	location.href = "/teen/member/login";
@@ -33,7 +31,6 @@ function loginProcess() {
 		alert("로그인 실패");
 	}
 	*/
-	
 }
 
 // 로그아웃

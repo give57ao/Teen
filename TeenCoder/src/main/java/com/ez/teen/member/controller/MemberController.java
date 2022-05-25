@@ -35,8 +35,12 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		MemberModel member = loginService.login(memberModel);
 		
+		session.setAttribute("member_no", 1);  //이건 로그인 로직이 생기면 없어져야 할 내용
+        int member_no = (Integer)session.getAttribute("member_no");
+		
     	if(member != null) {
-    		session.setAttribute("member", member);
+    		// session.setAttribute("member", member);
+            session.setAttribute("member_no", member.getMember_no());
     		mv.setViewName("redirect:/");
     	} else {
 	    	mv.setViewName("member/loginForm");
