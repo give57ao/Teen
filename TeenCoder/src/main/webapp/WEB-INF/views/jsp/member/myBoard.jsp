@@ -7,33 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 내가 작성한 게시글</title>
-<<<<<<< HEAD
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/reset.css">
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/common.css">
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/board.css">
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/myInfo.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-=======
-<link rel="stylesheet" type="text/css" href="../resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/board.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/myInfo.css">
-<script src="/teen/resources/js/member.js"></script>
->>>>>>> JUN
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/myInfo.css">
 </head>
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> JUN
 	<!-- Contents -->
 	<div id="contents">
 		<div id="contents_title">
@@ -80,7 +62,7 @@
 				<!-- List Row -->
 				<div id="board_list_row">
 					<!-- Row1 -->
-					<c:forEach items="${board }" var="board">
+					<c:forEach items="${board}" var="board">
 	
 						<div class="row">
 							<div class="row_info">
@@ -123,10 +105,7 @@
 						</div>
 						<hr>
 					</c:forEach>
-	
 				</div>
-	
-	
 				<!-- Pagination -->
 				<div id="board_list_pagination">
 					<ul>
@@ -169,10 +148,7 @@
 	
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
-<<<<<<< HEAD
 	<script type="text/javascript"
 		src="/teen/resources/js/member/myPage/myBoard.js"></script>
-=======
->>>>>>> JUN
 </body>
 </html>

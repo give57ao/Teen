@@ -52,39 +52,39 @@ public class MyPageController {
 	}
 
 	
-	@GetMapping("member/boardList")
-	public String myBoardList(Model model, BoardParam boardParam,
-			@RequestParam(value = "nowPage", required = false) String nowPage,
-			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
-
-		session.setAttribute("member_no", 1);
-		int member_no = (Integer)session.getAttribute("member_no");
-		
-		int total = boardService.getBoardCount(member_no); 
-		System.out.println("total :" + total);
-		
-		if (nowPage == null && cntPerPage == null) {
-			nowPage = "1";
-			cntPerPage = "10";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) {
-			cntPerPage = "10";
-		}
-		boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));  
-		boardParam.setMember_no(member_no);
-			
-		model.addAttribute("paging", boardParam);
-		model.addAttribute("board", boardService.boardList(boardParam));
-
-		return "member/myBoard";
-	}
+	/*
+	 * @GetMapping("member/boardList") public String myBoardList(Model model,
+	 * BoardParam boardParam,
+	 * 
+	 * @RequestParam(value = "nowPage", required = false) String nowPage,
+	 * 
+	 * @RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+	 * HttpSession session) {
+	 * 
+	 * session.setAttribute("member_no", 1); int member_no =
+	 * (Integer)session.getAttribute("member_no");
+	 * 
+	 * int total = boardService.getBoardCount(member_no);
+	 * System.out.println("total :" + total);
+	 * 
+	 * if (nowPage == null && cntPerPage == null) { nowPage = "1"; cntPerPage =
+	 * "10"; } else if (nowPage == null) { nowPage = "1"; } else if (cntPerPage ==
+	 * null) { cntPerPage = "10"; } boardParam.PagingModel(total,
+	 * Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+	 * boardParam.setMember_no(member_no);
+	 * 
+	 * model.addAttribute("paging", boardParam); model.addAttribute("board",
+	 * boardService.boardList(boardParam));
+	 * 
+	 * return "member/myBoard"; }
+	 */
 	
-	@GetMapping("member/boardList/recent")
+	@GetMapping("member/boardList")
 	public String myBoardListRecent(Model model, BoardParam boardParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
- 
+		
 		session.setAttribute("member_no", 2);
 		int member_no = (Integer)session.getAttribute("member_no");
 		
@@ -104,7 +104,8 @@ public class MyPageController {
 		boardParam.setRecent("recent");	
 		model.addAttribute("paging", boardParam);
 		model.addAttribute("board", boardService.boardList(boardParam));
-
+		
+		System.out.println(sort);
 		return "member/myBoard";
 	}
 

@@ -59,7 +59,7 @@ public class MemberJoinController {
 
 	// 회원가입 완료
 	@PostMapping(value = "/joinForm")
-	public String insertMember(MemberModel model, String member_id, String member_nick, String member_email)
+	public String insertMember(MemberModel memberModel, String member_id, String member_nick, String member_email)
 			throws Exception {
 
 		int idResult = memberService.checkId(member_id);
@@ -72,7 +72,7 @@ public class MemberJoinController {
 
 			} else if (idResult == 0 && nickResult == 0 && emailResult == 0) {
 
-				memberService.insertMember(model);
+				memberService.insertMember(memberModel);
 				return "/member/loginForm";
 			}
 
@@ -84,32 +84,31 @@ public class MemberJoinController {
 
 	}
 
-	// 회원탈퇴 홈페이지
-	@GetMapping(value = "delete")
-	public String deleteMemberForm() throws Exception {
-
-		return "/member/deleteForm";
-	}
-
-	// 회원 탈퇴 구현
-	@PostMapping(value = "delete")
-	public String deleteMember(MemberModel model, HttpSession session, RedirectAttributes rttr) throws Exception {
-
-		MemberModel member = (MemberModel) session.getAttribute("member");
-
-		String sessionPw = member.getMember_pw();
-		String modelPw = model.getMember_pw();
-
-		if (!(sessionPw.equals(modelPw))) {
-			rttr.addFlashAttribute("msg", false);
-
-			return "/member/delete";
-		}
-
-		memberService.deleteMember(model);
-		session.invalidate();
-
-		return "redirect:/";
-	}
+	/*
+	 * // 회원탈퇴 홈페이지
+	 * 
+	 * @GetMapping(value = "/delete") public String deleteMemberForm() throws
+	 * Exception {
+	 * 
+	 * return "/member/deleteForm"; }
+	 * 
+	 * // 회원 탈퇴 구현
+	 * 
+	 * @PostMapping(value = "/delete") public String deleteMember(MemberModel model,
+	 * HttpSession session, RedirectAttributes rttr) throws Exception {
+	 * 
+	 * MemberModel member = (MemberModel) session.getAttribute("member");
+	 * 
+	 * String sessionPw = member.getMember_pw(); String modelPw =
+	 * model.getMember_pw();
+	 * 
+	 * if (!(sessionPw.equals(modelPw))) { rttr.addFlashAttribute("msg", false);
+	 * 
+	 * return "/member/delete"; }
+	 * 
+	 * memberService.deleteMember(model); session.invalidate();
+	 * 
+	 * return "redirect:/"; }
+	 */
 
 }

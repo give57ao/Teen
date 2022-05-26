@@ -21,6 +21,6 @@ public interface LoginService {
 	MemberModel findPw(MemberModel memberModel)throws Exception;
 	
 	// 마이페이지
-	MemberModel myPage(MemberModel memberModel)throws Exception;
+	MemberModel myPageModify(MemberModel memberModel)throws Exception;
 }
 

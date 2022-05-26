@@ -43,9 +43,9 @@ public class LoginServiceImpl implements LoginService {
 	}
 	
 	@Override
-	public MemberModel myPage(MemberModel memberModel) throws Exception {
+	public MemberModel myPageModify(MemberModel memberModel) throws Exception {
 		
-		return memberMapper.myPage(memberModel);
+		return memberMapper.mypageModify(memberModel);
 	}
 	
 	/*

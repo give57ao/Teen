@@ -139,7 +139,7 @@ public class MemberController {
 	}
 	
 	// 회원탈퇴 홈페이지
-	@GetMapping(value = "delete")
+	@GetMapping(value = "/delete")
 	public String deleteMemberForm() throws Exception {
 
 		return "/member/deleteForm";
@@ -147,7 +147,7 @@ public class MemberController {
 
 	
 	// 회원 탈퇴 구현
-	@PostMapping(value = "delete")
+	@PostMapping(value = "/delete")
 	public String deleteMember(MemberModel memberModel, HttpSession session, RedirectAttributes rttr) throws Exception{
 	
 		MemberModel member = (MemberModel)session.getAttribute("member");
