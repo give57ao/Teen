@@ -32,8 +32,8 @@
             <div id="contents_wrap">
                 <!-- Category -->
                 <ul id="contents_category">
-                    <li><a href="<%= request.getContextPath() %>/jsp/member/myPage.jsp" class="select">마이페이지</a></li>
-                    <li><a href="<%= request.getContextPath() %>/jsp/member/myBoard.jsp">내가 작성한 게시글</a></li>
+                    <li><a href="/teen/member" class="log">마이페이지</a></li>
+                    <li><a href="/teen/member/boardList" class="log">내가 작성한 게시글</a></li>
                     <li><a href="<%= request.getContextPath() %>/jsp/member/myCmt.jsp">내가 작성한 댓글</a></li>
                     <li><a href="#">나의 포인트</a></li>
                     <li><a href="#">팔로잉</a></li>

@@ -8,10 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/main.css">
-<<<<<<< HEAD
-=======
 <script src="/teen/resources/js/member.js"></script>
->>>>>>> ho_ong8
 </head>
 <body>
 	<!-- Header -->
@@ -44,7 +41,6 @@
         </div>
         <div id="contents_detail">
             <div id="btn_wrap">
-<<<<<<< HEAD
                 <a href="board/main" class="btn_com btn_main">카테고리로 이동</a>
             </div>
         </div>

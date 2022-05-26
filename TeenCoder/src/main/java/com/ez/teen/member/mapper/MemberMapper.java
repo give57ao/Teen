@@ -9,7 +9,7 @@ import com.ez.teen.member.model.MemberModel;
 @Mapper
 public interface MemberMapper {
 
-		List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
+	List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
 
 	// 로그인
 	MemberModel login(MemberModel memberModel) throws Exception;
