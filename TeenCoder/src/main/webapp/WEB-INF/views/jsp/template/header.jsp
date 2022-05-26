@@ -1,38 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
 <body>
 	<header id="header">
         <div id="header_logo">
-            <a href="<%= request.getContextPath() %>/jsp/main.jsp">TeenCoder</a>
+            <a href="/teen">TeenCoder</a>
         </div>
         <nav id="header_nav">
             <ul>
-                <li><a href="<%= request.getContextPath() %>/jsp/main.jsp">Home</a></li>
-                <li><a href="<%= request.getContextPath() %>/jsp/board/mainBoard.jsp">Community</a></li>
-                <li><a href="<%= request.getContextPath() %>/jsp/board/qnaBoard.jsp">Q&A</a></li>
-                <li><a href="<%= request.getContextPath() %>/jsp/board/noticeBoard.jsp">Notice</a></li>
+                <li><a href="/teen">Home</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Q&amp;A</a></li>
+                <li><a href="#">Notice</a></li>
             </ul>
         </nav>
-        <!-- 로그인 전 -->
-        <div id="header_menu">
-            <ul>
-                <li><a href="<%= request.getContextPath() %>/jsp/member/loginForm.jsp" class="log">로그인</a></li>
-                <li><a href="<%= request.getContextPath() %>/jsp/member/joinForm.jsp" class="btn_com btn_join">가입</a></li>
-            </ul>
-        </div>
-        <!-- 로그인 후 -->
-        <!--
-        <div id="header_menu">
-            <ul>
-            	<li><a href="#" class="log">로그아웃</a></li>
-                <li><a href="<%= request.getContextPath() %>/jsp/member/myPage.jsp" class="log">마이페이지</a></li>
-                <li><a href="#"></a><img src="<%= request.getContextPath() %>/images/icon/icon_alarm_n.svg"></li>
-                <li><a href="#"></a><img src="<%= request.getContextPath() %>/images/icon/icon_badge.png"></li>
-            </ul>
-        </div>
-        -->
+        <!-- 로그인 전 : 세션 값이 없을 경우 -->
+        <c:if test="${sessionScope.member == null}">
+	        <div id="header_menu">
+	            <ul>
+	                <li><a href="/teen/member/login" class="log">로그인</a></li>
+	                <li><a href="/teen/member/join" class="btn_com btn_join">가입</a></li>
+	            </ul>
+	        </div>
+        </c:if>
+        <!-- 로그인 후 : 세션 값이 있을 경우 -->
+        <c:if test="${sessionScope.member != null}">
+	        <div id="header_menu">
+	            <ul>
+	            	<li><a href="/teen/member/logout" class="log" onCLick="logout()">로그아웃</a></li>
+	                <li><a href="/teen/member/myPage" class="log">마이페이지</a></li>
+	                <li><a href="#"><img src="/teen/resources/images/icon/icon_alarm_n.svg"></a></li>
+	                <li><a href="#"><img src="/teen/resources/images/icon/icon_badge.png"></a></li>
+	            </ul>
+	        </div>
+        </c:if>
     </header>
 </body>
 </html>

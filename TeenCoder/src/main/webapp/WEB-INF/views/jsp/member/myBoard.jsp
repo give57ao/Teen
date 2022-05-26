@@ -5,14 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 내가 작성한 게시글</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/reset.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/board.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/myInfo.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/board.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/myInfo.css">
+<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="/jsp/template/header.jsp" flush="false" />
+	<jsp:include page="../template/header.jsp" flush="false" />
 
 	<!-- Contents -->
     <div id="contents">
@@ -118,6 +119,6 @@
     </div>
     
 	<!-- Footer -->
-	<jsp:include page="/jsp/template/footer.jsp" flush="false" />
+	<jsp:include page="../template/footer.jsp" flush="false" />
 </body>
 </html>

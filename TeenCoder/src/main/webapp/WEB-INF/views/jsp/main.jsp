@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
