@@ -17,11 +17,13 @@ public interface LoginService {
 	
 	MemberModel test(MemberModel memberModel)throws Exception;
 	
-	MemberModel findMemberId(List<MemberModel> memberModel)throws Exception;
-	
-	MemberModel findMemberEmail(List<MemberModel> memberModel)throws Exception;
-	
-	MemberModel findMemberName(List<MemberModel> memberModel)throws Exception;
+	/*
+	 * MemberModel findMemberId(List<MemberModel> memberModel)throws Exception;
+	 * 
+	 * MemberModel findMemberEmail(List<MemberModel> memberModel)throws Exception;
+	 * 
+	 * MemberModel findMemberName(List<MemberModel> memberModel)throws Exception;
+	 */
 	
 	
 }

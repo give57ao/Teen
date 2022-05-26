@@ -27,7 +27,7 @@
 		AND MEMBER_EMAIL = #{MEMBER_EMAIL}
 	</select>
 	
-	<select id="findMemberName"  resultType="com.ez.teen.member.model.MemberModel">
+	<!-- <select id="findMemberName"  resultType="com.ez.teen.member.model.MemberModel">
 		SELECT MEMBER_NAME
 		FROM MEMBER
 	</select>
@@ -45,7 +45,7 @@
 		SELECT MEMBER_ID
 		FROM MEMBER
 		WHERE MEMBER_ID = #{MEMBER_ID}
-	</select>
+	</select> -->
 	
 	
 	

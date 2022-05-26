@@ -2,9 +2,6 @@ package com.ez.teen.board.model;
 
 import java.util.Date;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class BoardModel {
 
 	private int boardNo;
