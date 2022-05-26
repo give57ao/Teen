@@ -23,4 +23,5 @@ public interface BoardService {
 	//내가 작성한 게시글 
 	public List<BoardModel> myBoardList(BoardParam boardParam);
 	
+	//05/26 병합
 }

@@ -48,4 +48,5 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.myBoardList(boardParam);
 	}
 
+	//05/26 병합
 }

@@ -137,4 +137,6 @@ public class PagingModel {
 				+ ", cntPerPage=" + cntPerPage + ", lastPage=" + lastPage + ", start=" + start + ", end=" + end
 				+ ", cntPage=" + cntPage + "]";
 	}
+	
+	//05/26 병합
 }

@@ -25,4 +25,5 @@ public interface BoardMapper {
 	
 	public List<BoardModel> myBoardList(BoardParam boardParam);
 
+	//05/26 병합
 }

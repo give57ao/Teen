@@ -116,5 +116,6 @@ public class BoardModel {
 				+ board_report_count + ", board_file_check=" + board_file_check + ", board_group_no=" + board_group_no
 				+ ", board_tag_no=" + board_tag_no + ", tag_name=" + tag_name + "]";
 	}
-
+	
+	//05/26 병합
 }

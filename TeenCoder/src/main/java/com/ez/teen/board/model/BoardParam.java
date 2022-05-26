@@ -160,7 +160,7 @@ public class BoardParam {
 
 	
 	
-	
+	//05/26 병합
 	
 	
 	

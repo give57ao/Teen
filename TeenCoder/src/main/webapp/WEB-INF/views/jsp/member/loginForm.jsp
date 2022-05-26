@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,10 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
+<<<<<<< HEAD
+=======
+<script src="/teen/resources/js/member.js"></script>
+>>>>>>> ho_ong8
 </head>
 <body>
 	<!-- Header -->
@@ -21,16 +27,16 @@
         <div id="contents_detail">
             <h1>TeenCoder</h1>
             <!-- Form -->
-            <form id="login_form">
-                <input type="text" name="id" placeholder="아이디">
-                <input type="password" name="password" placeholder="비밀번호">
+            <form id="login_form" name="login_form" action="login" method="post" onSubmit="return loginProcess()">
+                <input id="member_id" type="text" name="member_id" placeholder="아이디">
+                <input type="password" name="member_pw" placeholder="비밀번호">
                 <ul id="login_menu" class="side_menu">
-                    <li><a href="/teen/resources/jsp/member/findIdForm.jsp">아이디 찾기</a></li>
-                    <li><a href="/teen/resources/jsp/member/findPwForm.jsp">비밀번호 찾기</a></li>
-                    <li><a href="/teen/resources/jsp/member/joinForm.jsp">회원가입</a></li>
+                    <li><a href="/teen/member/findIdForm">아이디 찾기</a></li>
+                    <li><a href="/teen/member/findPwForm">비밀번호 찾기</a></li>
+                    <li><a href="/teen/member/joinForm">회원가입</a></li>
                 </ul>
                 <div id="btn_wrap">
-                    <input type="submit" value="로그인" class="btn_com btn_main">
+                    <input id="btn_sumit" type="submit" value="로그인" class="btn_com btn_main">
                 </div>
             </form>
         </div>
