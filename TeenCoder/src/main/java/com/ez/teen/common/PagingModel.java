@@ -4,8 +4,16 @@ public class PagingModel {
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
 	private int cntPage = 5;
 	private int member_no;
+	private String recent;
 	
-	
+
+	public String getRecent() {
+		return recent;
+	}
+
+	public void setRecent(String recent) {
+		this.recent = recent;
+	}
 
 	public PagingModel() {
 	}

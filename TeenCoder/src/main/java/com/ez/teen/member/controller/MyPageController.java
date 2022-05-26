@@ -30,12 +30,11 @@ public class MyPageController {
 	private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
 	
 	@GetMapping("")
-	public String myPageList(MemberModel memberModel, Model model) throws Exception {
+	public String myPageList(MemberModel memberModel, Model model ,HttpSession session) throws Exception {
 		
-		//session값 받아오는 로직으로 변경해야함
-		int member_no = 1;
-//		memberModel.setMember_no(member_no);
-
+		session.setAttribute("member_no", 2);  //이건 로그인로직이 생기면 없어져야 할 내용
+		int member_no = (Integer)session.getAttribute("member_no");
+		
 		List<MemberModel> myPageList = memberService.myPageList(memberModel);
 		model.addAttribute("list", myPageList);
 
@@ -55,7 +54,7 @@ public class MyPageController {
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
 
 		//		int member_no = 2;
-		session.setAttribute("member_no", 1);  //이건 로그인로직이 생기면 없어져야 할 내용
+		session.setAttribute("member_no", 2);  //이건 로그인로직이 생기면 없어져야 할 내용
 		int member_no = (Integer)session.getAttribute("member_no");
 		
 		int total = boardService.getBoardCount(member_no); 
@@ -71,6 +70,8 @@ public class MyPageController {
 		}
 		pm = new PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage)); 
 		pm.setMember_no(member_no);
+		// pm.setRecent("recent"); 최신순 클릭했을 때 recent가 보내지면서 쿼리문이 바뀜
+		
 
 		
 		model.addAttribute("paging", pm);
