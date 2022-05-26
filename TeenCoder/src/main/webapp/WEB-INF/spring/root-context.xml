@@ -40,17 +40,10 @@
 	<mybatis-spring:scan
 		base-package="com.ez.teen.member.mapper" />
 
-	<context:component-scan
-		base-package="com.ez.teen.member.model"></context:component-scan>
-	<context:component-scan
-		base-package="com.ez.teen.member.service"></context:component-scan>
-
-	<!-- Root Context: defines shared resources visible to all other web components -->
-
 	<mybatis-spring:scan
 		base-package="com.ez.teen.**.mapper" />
 
 	<context:component-scan
 		base-package="com.ez.teen.**" /> 
-	
+
 </beans>

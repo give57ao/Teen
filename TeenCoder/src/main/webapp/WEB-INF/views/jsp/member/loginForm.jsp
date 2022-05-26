@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,11 +25,12 @@
             <!-- Form -->
             <form id="login_form" name="login_form" action="login" method="post" onSubmit="return loginProcess()">
                 <input id="member_id" type="text" name="member_id" placeholder="아이디">
+
                 <input type="password" name="member_pw" placeholder="비밀번호">
                 <ul id="login_menu" class="side_menu">
                     <li><a href="/teen/member/findIdForm">아이디 찾기</a></li>
                     <li><a href="/teen/member/findPwForm">비밀번호 찾기</a></li>
-                    <li><a href="/teen/member/joinForm">회원가입</a></li>
+                    <li><a href="/teen/member/join">회원가입</a></li>
                 </ul>
                 <div id="btn_wrap">
                     <input id="btn_sumit" type="submit" value="로그인" class="btn_com btn_main">

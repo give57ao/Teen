@@ -36,6 +36,7 @@ public interface MemberMapper {
 	
 	void deleteMember(MemberModel model);
 
+	void mypageModify(MemberModel memberModel);
 	/*
 	 * MemberModel login(MemberModel memberModel) throws Exception;
 	 * 
@@ -52,7 +53,8 @@ public interface MemberMapper {
 	 * MemberModel findMemberEmail(List<MemberModel> memberModel);
 	 * 
 	 * MemberModel findMemberId(List<MemberModel> memberModel);
+	 * 
+	 * MemberModel myPage(MemberModel memberModel) throws Exception;
 	 */
-	
-	
+
 }

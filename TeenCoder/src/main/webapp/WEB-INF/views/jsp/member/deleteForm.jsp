@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
+<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -20,19 +21,22 @@
         </div>
         <div id="contents_detail">
             <!-- Form -->
-            <form id="join_form" class="find_form">
+            <form id="join_form" class="find_form" method="post">
                 <table>
                 	<tbody>
 	                    <tr>
 	                        <th>비밀번호</th>
 	                        <td>
-	                            <input type="password" name="password" placeholder="비밀번호">
+	                            <input type="password" name="member_pw" placeholder="비밀번호">
 	                        </td>
 	                    </tr>
+	                    <div style="display:none;">
+	                   		<input type="text" name="member_no" value="${member.member_no }">
+	                	</div>
                     </tbody>
                 </table>
                 <div id="btn_wrap">
-                    <input type="button" value="취소" class="btn_com btn_main" onClick="location.href='loginForm.jsp'">
+                    <input type="button" value="취소" class="btn_com btn_main" onClick="location.href='myPage.jsp'">
                     <input type="submit" value="탈퇴" class="btn_com btn_main">
                 </div>
             </form>

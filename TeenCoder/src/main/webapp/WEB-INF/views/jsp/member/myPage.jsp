@@ -44,10 +44,10 @@
                 	<div class="profile">
                 		<div class="member_info">
                 			<img src="resources/images/icon/icon_badge.png" class="badge">
+                			<img src="../resources/images/icon/icon_badge.png" class="badge">
                 			<div class="info_box">
 	                			<h4>나의 등급<span class="rank">[Expert]</span></h4>
 	                			<h3>TeenCoder</h3>
-	                			
 	                			<p>
 	                				환영합니다! <b>${board.member_name}</b>님 (ID : ${board.member_id} )<br>
 	                				가입일 : <fmt:formatDate value="${board.member_date}" pattern="yyyy.MM.dd"/> | 이메일 : ${board.member_email}
@@ -59,7 +59,7 @@
                                 <li><img src="resources/images/icon/icon_follow.svg" class="i_follow">0</li>
                                 <li><img src="resources/images/icon/icon_scrap.svg" class="i_scrap">0</li>
                             </ul>
-                			<a href="<%= request.getContextPath() %>/jsp/member/modifyForm.jsp" class="btn_com btn_mod_member">회원정보 수정</a>
+                			<a href="/teen/member/mypageModifyForm" class="btn_com btn_mod_member">회원정보 수정</a>
                 		</div>
                 		<div class="member_board">
 	                		<hr>
@@ -70,7 +70,7 @@
 							</ul>
 		                	<hr>
 	                	</div>
-	                	<a href="<%= request.getContextPath() %>/jsp/member/deleteForm.jsp" class="btn_del_member">회원탈퇴</a>
+	                	<a href="/teen/member/delete" class="btn_del_member">회원탈퇴</a>
                 	</div>
                 </div>
                 <!-- Member Info -->

@@ -42,6 +42,12 @@ public class LoginServiceImpl implements LoginService {
 		return memberMapper.findPw(memberModel);
 	}
 	
+	@Override
+	public MemberModel myPage(MemberModel memberModel) throws Exception {
+		
+		return memberMapper.myPage(memberModel);
+	}
+	
 	/*
 	 * @Override public MemberModel login(MemberModel memberModel) throws Exception
 	 * { return memberMapper.login(memberModel); }
@@ -73,3 +79,4 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	
 }
+

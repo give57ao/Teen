@@ -1,23 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
-
-=======
->>>>>>> dong_hyuk
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 아이디 찾기</title>
-<link rel="stylesheet" type="text/css" href="../resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/memberForm.css">
-<script src="../resources/js/login.js"></script>
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/tenn/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
 </head>
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
 	<p>회원ID:<c:out value="${findId.MEMBER_ID }" default="null."/></p>
+
 	<!-- Contents -->
 	<%-- <div id="contents">
         <div id="contents_title">

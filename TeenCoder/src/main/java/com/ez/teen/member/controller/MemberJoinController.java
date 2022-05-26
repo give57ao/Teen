@@ -92,20 +92,24 @@ public class MemberJoinController {
 	}
 
 	// 회원 탈퇴 구현
-	@PostMapping(value = "delete") public String deleteMember(MemberModel model,
-	HttpSession session, RedirectAttributes rttr) throws Exception {
-		
+	@PostMapping(value = "delete")
+	public String deleteMember(MemberModel model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
 		MemberModel member = (MemberModel) session.getAttribute("member");
-		  
-		String sessionPw = member.getMember_pw(); String modelPw =
-		model.getMember_pw();
-		  
-		if(!(sessionPw.equals(modelPw))) { rttr.addFlashAttribute("msg", false);
-		  
-		return "/member/delete"; }
-		  
-		memberService.deleteMember(model); session.invalidate();
-		  
-		return "redirect:/"; }
-	 
+
+		String sessionPw = member.getMember_pw();
+		String modelPw = model.getMember_pw();
+
+		if (!(sessionPw.equals(modelPw))) {
+			rttr.addFlashAttribute("msg", false);
+
+			return "/member/delete";
+		}
+
+		memberService.deleteMember(model);
+		session.invalidate();
+
+		return "redirect:/";
+	}
+
 }

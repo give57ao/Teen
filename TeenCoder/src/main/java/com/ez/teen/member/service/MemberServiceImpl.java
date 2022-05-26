@@ -20,13 +20,6 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public void insertMember(MemberModel model) {
-		
-		memberMapper.insertMember(model);
-		
-	}
-
-	@Override
 	public int checkId(String member_id) {
 		
 		int result = memberMapper.checkId(member_id);
@@ -49,12 +42,23 @@ public class MemberServiceImpl implements MemberService{
 		
 		return result;
 	}
-
+	
 	@Override
-	public void deleteMember(MemberModel model) {
-		
-		memberMapper.deleteMember(model);
-		
+	public void insertMember(MemberModel memberModel) {
+		memberMapper.insertMember(memberModel);
+	
+	}
+	
+	//회원정보 삭제
+	@Override
+	public void deleteMember(MemberModel memberModel) {
+		memberMapper.deleteMember(memberModel);
 	}
 
+	// 회원정보수정
+	@Override
+	public void mypageModify(MemberModel memberModel){
+		
+		memberMapper.mypageModify(memberModel);
+	}	
 }

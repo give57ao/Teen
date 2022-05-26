@@ -1,3 +1,4 @@
+
 package com.ez.teen.member.service;
 
 import com.ez.teen.member.model.MemberModel;
@@ -19,5 +20,7 @@ public interface LoginService {
 	// 비밀번호 찾기
 	MemberModel findPw(MemberModel memberModel)throws Exception;
 	
+	// 마이페이지
+	MemberModel myPage(MemberModel memberModel)throws Exception;
 }
 
