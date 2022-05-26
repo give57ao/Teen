@@ -7,11 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 내가 작성한 게시글</title>
-<link rel="stylesheet" type="text/css" href="../resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/board.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/myInfo.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/myInfo.css">
 
 
 </head>
@@ -42,10 +41,10 @@
                     <div id="board_list_title">
                         <h2>내가 작성한 게시글</h2>
                         <ul id="board_list_menu" class="side_menu">
-                            <li><a onclick="boardSearchRecent()" style="cursor: pointer;"><input type="hidden" id="recent" value="recent">최신순</a></li>
-                            <li><a onclick="boardSearchView()" style="cursor: pointer;"><input type="hidden" id="view" value="view">조회순</a></li>
-                            <li><a onclick="boardSearchRecommend()" style="cursor: pointer;"><input type="hidden" id="recommend" value="recommend">추천순</a></li>
-                            <li><a onclick="boardSearchComment()" style="cursor: pointer;"><input type="hidden" id="comment" value="comment">댓글순</a></li>
+                            <li><a href="boardList/recent">최신순</a></li>
+                            <li><a href="boardList/view">조회순</a></li>
+                            <li><a href="boardList/recommend">추천순</a></li>
+                            <li><a href="boardList/comment">댓글순</a></li>
                         </ul>
                     </div>
                     <!-- Search -->
