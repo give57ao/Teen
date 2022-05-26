@@ -34,9 +34,10 @@ public class MyPageController {
 	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request) throws Exception {
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("member_no", 1);
+		session.setAttribute("member_no", 2);
 		int member_no = (Integer)session.getAttribute("member_no");
 		memberModel.setMember_no(member_no);
+		
 		List<MemberModel> myPageList = memberService.myPageList(memberModel);
 		model.addAttribute("list", myPageList);
 

@@ -21,6 +21,7 @@
 	<jsp:include page="../template/header.jsp" flush="false" />
 
 	<!-- Contents -->
+	<c:forEach items="${list}" var="board">
     <div id="contents">
         <div id="contents_title">
             <h1>마이페이지</h1>
@@ -45,12 +46,12 @@
                 			<div class="info_box">
 	                			<h4>나의 등급<span class="rank">[Expert]</span></h4>
 	                			<h3>TeenCoder</h3>
-	                			<c:forEach items="${list}" var="board">
+	                			
 	                			<p>
 	                				환영합니다! <b>${board.member_name}</b>님 (ID : ${board.member_id} )<br>
 	                				가입일 : <fmt:formatDate value="${board.member_date}" pattern="yyyy.MM.dd"/> | 이메일 : ${board.member_email}
 	                			</p>
-	                			</c:forEach>
+	                		
                 			</div>
                 			<ul class="info_icon number">
                                 <li><img src="resources/images/icon/icon_message.svg" class="i_msg">0</li>
@@ -62,9 +63,9 @@
                 		<div class="member_board">
 	                		<hr>
 		                	<ul>
-								<li><a href="/teen/member">마이페이지</a></li>
-								<li><a href="/teen/member/boardList" class="select">내가작성한 게시글</a></li>
-								<li><a href="/teen/member/comment">내가 작성한 댓글</a></li>
+								<li>내가 작성한 게시글<a href="../jsp/member/myBoard.jsp">${allBoardCount}</a></li>
+		                		<li>내가 작성한 댓글<a href="../jsp/member/myCmt.jsp">${allCommentCount}</a></li>
+		                		<li>나의 포인트<a href="#">${board.member_point}point</a></li>
 							</ul>
 		                	<hr>
 	                	</div>
@@ -79,7 +80,7 @@
             </div>
         </div>
     </div>
-    
+    </c:forEach>
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
 </body>
