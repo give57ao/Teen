@@ -8,7 +8,7 @@ import com.ez.teen.member.model.MemberModel;
 
 @Mapper
 public interface MemberMapper {
-	
+
 		List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
 
 	// 로그인
@@ -35,5 +35,24 @@ public interface MemberMapper {
 	int checkEmail(String memberEmail);
 	
 	void deleteMember(MemberModel model);
+
+	/*
+	 * MemberModel login(MemberModel memberModel) throws Exception;
+	 * 
+	 * MemberModel loginCheck(MemberModel memberModel) throws Exception;
+	 * 
+	 * MemberModel findId(MemberModel memberModel) throws Exception;
+	 * 
+	 * MemberModel findPw(MemberModel memberModel) throws Exception;
+	 * 
+	 * MemberModel test(MemberModel memberModel) throws Exception;
+	 * 
+	 * MemberModel findMemberName(List<MemberModel> memberModel);
+	 * 
+	 * MemberModel findMemberEmail(List<MemberModel> memberModel);
+	 * 
+	 * MemberModel findMemberId(List<MemberModel> memberModel);
+	 */
+	
 	
 }

@@ -1,8 +1,5 @@
 package com.ez.teen.member.service;
 
-import java.util.List;
-import java.util.Map;
-
 import com.ez.teen.member.model.MemberModel;
 
 public interface LoginService {
@@ -23,3 +20,4 @@ public interface LoginService {
 	MemberModel findPw(MemberModel memberModel)throws Exception;
 	
 }
+

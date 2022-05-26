@@ -8,57 +8,49 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
-	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-		
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig"> 
-    <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-	<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
-    <!--  
-    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> 
-    <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property> 
-    -->
-    <!-- Oracle 11g 경우 value="jdbc:oracle:thin:@localhost:1521:XE" --> 
-    <!-- Oracle 19 경우 value="jdbc:oracle:thin:@localhost:1521:orcl" --> 
-    <property name="username" value="teen"></property> 
-    <!-- Oracle 버전에 따라 계정명에 c##을 붙여주어야 하는 경우가 있습니다. -->
-    <property name="password" value="oracle"></property> 
-</bean> 
- 
-<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close"> 
-    <constructor-arg ref="hikariConfig"></constructor-arg> 
-</bean>	
-		
-<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    <property name="dataSource" ref="datasource"></property>
-    <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
-</bean>   
- 
-<mybatis-spring:scan base-package="com.ez.teen.**.mapper"/>
 
-<context:component-scan base-package="com.ez.teen.**"/> 
-   
-    <!-- 
- <mybatis-spring:scan base-package="com.ez.board.mapper"/>
->>>>>>> develop
- <mybatis-spring:scan base-package="com.ez.login.mapper"/>
- <mybatis-spring:scan base-package="com.ez.cboard.mapper"/>
- 
- 
-    <context:component-scan base-package="com.ez.board.model"></context:component-scan>
-    <context:component-scan base-package="com.ez.board.service"></context:component-scan>   
-    
-    <context:component-scan base-package="com.ez.cboard.model"></context:component-scan>
-    <context:component-scan base-package="com.ez.cboard.service"></context:component-scan>   
-    
-    
-    <context:component-scan base-package="com.ez.login.model"></context:component-scan>
-    <context:component-scan base-package="com.ez.login.service"></context:component-scan>   
-    
-	<context:component-scan base-package="com.ez.common.aop"></context:component-scan>
- 
-	<context:component-scan base-package="com.ez.common.file"></context:component-scan>
-	 
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>	
-		 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName"
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl"
+			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
+		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> 
+			<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property> -->
+		<!-- Oracle 11g 경우 value="jdbc:oracle:thin:@localhost:1521:XE" -->
+		<!-- Oracle 19 경우 value="jdbc:oracle:thin:@localhost:1521:oracle" -->
+		<!-- Oracle 버전에 따라 계정명에 c##을 붙여주어야 하는 경우가 있습니다. -->
+		<property name="username" value="teen"></property>
+		<property name="password" value="oracle"></property>
+	</bean>
+
+	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
+
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"></property>
+		<property name="configLocation"
+			value="classpath:/mybatis-config.xml"></property>
+	</bean>
+
+	<mybatis-spring:scan
+		base-package="com.ez.teen.board.mapper" />
+	<mybatis-spring:scan
+		base-package="com.ez.teen.member.mapper" />
+
+	<context:component-scan
+		base-package="com.ez.teen.member.model"></context:component-scan>
+	<context:component-scan
+		base-package="com.ez.teen.member.service"></context:component-scan>
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<mybatis-spring:scan
+		base-package="com.ez.teen.**.mapper" />
+
+	<context:component-scan
+		base-package="com.ez.teen.**" /> 
+	
 </beans>

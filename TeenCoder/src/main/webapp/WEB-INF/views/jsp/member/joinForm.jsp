@@ -86,10 +86,7 @@
         </div>
     </div>
 	<!-- Footer -->
-	<jsp:include page="../template/footer.jsp" flush="false" />
-<<<<<<< HEAD
-=======
-	
+	<jsp:include page="../template/footer.jsp" flush="false" />	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#checkId").on("click", function(e) {
@@ -151,7 +148,5 @@
 			});
 		}
 	</script>
-	
->>>>>>> ho_ong8
 </body>
 </html>
