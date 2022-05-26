@@ -2,6 +2,7 @@ package com.ez.teen.member.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -19,7 +20,7 @@ import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.service.MemberService;
 
 @Controller
-@RequestMapping("/member")
+@RequestMapping("/")
 public class MyPageController {
 	@Autowired
 	private MemberService memberService;
@@ -29,11 +30,13 @@ public class MyPageController {
 
 	private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
 	
-	@GetMapping("")
-	public String myPageList(MemberModel memberModel, Model model ,HttpSession session) throws Exception {
+	@GetMapping("member")
+	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request) throws Exception {
 		
-		session.setAttribute("member_no", 2);  //이건 로그인로직이 생기면 없어져야 할 내용
+		HttpSession session = request.getSession();
+		session.setAttribute("member_no", 2);
 		int member_no = (Integer)session.getAttribute("member_no");
+		memberModel.setMember_no(member_no);
 		
 		List<MemberModel> myPageList = memberService.myPageList(memberModel);
 		model.addAttribute("list", myPageList);
@@ -41,20 +44,19 @@ public class MyPageController {
 		model.addAttribute("allBoardCount", boardService.getBoardCount(member_no));
 		model.addAttribute("allCommentCount", boardService.getCommentCount(member_no));
 
-		System.out.println(myPageList);
-
+		System.out.println(member_no);
+		
 		return "member/myPage";
 
 	}
 
 	
-	@GetMapping("/boardList")
+	@GetMapping("member/boardList")
 	public String myBoardList(Model model, PagingModel pm,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
 
-		//		int member_no = 2;
-		session.setAttribute("member_no", 2);  //이건 로그인로직이 생기면 없어져야 할 내용
+		session.setAttribute("member_no", 2);
 		int member_no = (Integer)session.getAttribute("member_no");
 		
 		int total = boardService.getBoardCount(member_no); 
