@@ -84,7 +84,7 @@ public class MyPageController {
 	public String myBoardListRecent(Model model, BoardParam boardParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
-
+ 
 		session.setAttribute("member_no", 2);
 		int member_no = (Integer)session.getAttribute("member_no");
 		
