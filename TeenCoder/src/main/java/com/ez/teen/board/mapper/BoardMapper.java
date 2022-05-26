@@ -21,9 +21,8 @@ public interface BoardMapper {
 	public int getCommentCount(int member_no);
 
 	// 게시글 리스트 (BGROUP 구별 없이)
-	public List<BoardModel> boardList(PagingModel pm);
+	public List<BoardModel> boardList(BoardParam boardParam);
 	
-	public List<BoardModel> myBoardList(BoardParam boardParam);
 
 	//05/26 병합
 }

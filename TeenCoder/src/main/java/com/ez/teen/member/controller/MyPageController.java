@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.service.BoardService;
 import com.ez.teen.common.PagingModel;
 import com.ez.teen.member.model.MemberModel;
@@ -52,10 +53,38 @@ public class MyPageController {
 
 	
 	@GetMapping("member/boardList")
-	public String myBoardList(Model model, PagingModel pm,
+	public String myBoardList(Model model, BoardParam boardParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
 
+		session.setAttribute("member_no", 1);
+		int member_no = (Integer)session.getAttribute("member_no");
+		
+		int total = boardService.getBoardCount(member_no); 
+		System.out.println("total :" + total);
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));  
+		boardParam.setMember_no(member_no);
+			
+		model.addAttribute("paging", boardParam);
+		model.addAttribute("board", boardService.boardList(boardParam));
+
+		return "member/myBoard";
+	}
+	
+	@GetMapping("member/boardList/recent")
+	public String myBoardListRecent(Model model, BoardParam boardParam,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
+ 
 		session.setAttribute("member_no", 2);
 		int member_no = (Integer)session.getAttribute("member_no");
 		
@@ -70,14 +99,11 @@ public class MyPageController {
 		} else if (cntPerPage == null) {
 			cntPerPage = "10";
 		}
-		pm = new PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage)); 
-		pm.setMember_no(member_no);
-		// pm.setRecent("recent"); 최신순 클릭했을 때 recent가 보내지면서 쿼리문이 바뀜
-		
-
-		
-		model.addAttribute("paging", pm);
-		model.addAttribute("board", boardService.boardList(pm));
+		boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));  
+		boardParam.setMember_no(member_no);
+		boardParam.setRecent("recent");	
+		model.addAttribute("paging", boardParam);
+		model.addAttribute("board", boardService.boardList(boardParam));
 
 		return "member/myBoard";
 	}
