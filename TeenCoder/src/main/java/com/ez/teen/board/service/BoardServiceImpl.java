@@ -42,4 +42,5 @@ public class BoardServiceImpl implements BoardService {
 
 
 
+	//05/26 병합
 }

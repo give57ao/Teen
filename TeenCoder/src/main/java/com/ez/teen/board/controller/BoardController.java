@@ -32,7 +32,7 @@ public class BoardController {
 		
 		return "main";
 	}
-	
+	//05/26 병합
 	
 	}
 

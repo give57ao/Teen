@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 비밀번호 찾기</title>
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/memberForm.css">
+<script src="../resources/js/login.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -21,10 +24,9 @@
         <div id="contents_detail">
             <!-- Form -->
             <form id="join_form" class="find_form">
-                <h2>해당 회원의 비밀번호는 <b>T1234567890</b> 입니다.</h2>
-                <!-- 해당 회원의 비밀번호는 <b><%= request.getParameter("password") %></b> 입니다. -->
+                <h2>해당 회원의 비밀번호는 <b><c:out value="${findPw.member_pw}" default="null"/></b> 입니다.</h2>
                 <div id="btn_wrap">
-                    <input type="button" value="로그인 화면으로 이동" class="btn_com btn_main" onClick="location.href='loginForm.jsp'">
+                    <input type="button" value="로그인 화면으로 이동" class="btn_com btn_main" onClick="goLogin()">
                 </div>
             </form>
         </div>
