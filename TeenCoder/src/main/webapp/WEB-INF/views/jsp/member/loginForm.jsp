@@ -47,17 +47,7 @@
             <h1>로그인</h1>
             <h2>로그인 후 커뮤니티 이용이 가능합니다.</h2>
         </div>
-        <div id="contents_detail">
-            <h1>TeenCoder</h1>
-            <!-- Form -->
-            <form id="login_form" name="login_form" action="login" method="post" onSubmit="return loginProcess()">
-                <input id="member_id" type="text" name="member_id" placeholder="아이디">
-                <input type="password" name="member_pw" placeholder="비밀번호">
-		<div id="contents_title">
-			<h1>로그인</h1>
-			<h2>로그인 후 커뮤니티 이용이 가능합니다.</h2>
-		</div>
-		<div id="contents_detail">
+			<div id="contents_detail">
 			<h1>TeenCoder</h1>
 			<!-- Form -->
 			<form id="login_form" action="testCheck" method="post" onsubmit="return formChk()">
