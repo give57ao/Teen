@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ez.teen.member.mapper.MemberMapper">
-
+	
+	<!-- 마이페이지 리스트 -->
 	<select id="myPageList" resultType="com.ez.teen.member.model.MemberModel" parameterType="com.ez.teen.member.model.MemberModel">
 		SELECT MEMBER_NAME, MEMBER_ID, MEMBER_EMAIL,
 		MEMBER_DATE, MEMBER_POINT FROM MEMBER
@@ -96,7 +96,7 @@
 	]]>
 	</select>
 	
-		<!-- <select id="findMemberName"  resultType="com.ez.teen.member.model.MemberModel">
+	<!-- <select id="findMemberName"  resultType="com.ez.teen.member.model.MemberModel">
 		SELECT MEMBER_NAME
 		FROM MEMBER
 	</select>
@@ -107,13 +107,6 @@
 	<select id="findMemberId" resultType="com.ez.teen.member.model.MemberModel">
 		SELECT MEMBER_ID
 		FROM MEMBER
-	</select>
-	
-	<select id="test" 
-		resultType="com.ez.teen.member.model.MemberModel">
-		SELECT MEMBER_ID
-		FROM MEMBER
-		WHERE MEMBER_ID = #{MEMBER_ID}
 	</select> -->
 
 </mapper>
