@@ -11,6 +11,9 @@
 <link rel="stylesheet" type="text/css" href="../resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/myInfo.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
 </head>
 <body>
 	<!-- Header -->
@@ -39,11 +42,10 @@
                     <div id="board_list_title">
                         <h2>내가 작성한 게시글</h2>
                         <ul id="board_list_menu" class="side_menu">
-                            <li><a onclick="boardListSearch()"><input type="hidden" name="recent" value="recent">최신순</a></li>
-                            <!-- 버튼을 누르면  -->
-                            <li><a href="#">조회순</a></li>
-                            <li><a href="#">추천순</a></li>
-                            <li><a href="#">댓글순</a></li>
+                            <li><a onclick="boardSearchRecent()" style="cursor: pointer;"><input type="hidden" id="recent" value="recent">최신순</a></li>
+                            <li><a onclick="boardSearchView()" style="cursor: pointer;"><input type="hidden" id="view" value="view">조회순</a></li>
+                            <li><a onclick="boardSearchRecommend()" style="cursor: pointer;"><input type="hidden" id="recommend" value="recommend">추천순</a></li>
+                            <li><a onclick="boardSearchComment()" style="cursor: pointer;"><input type="hidden" id="comment" value="comment">댓글순</a></li>
                         </ul>
                     </div>
                     <!-- Search -->
@@ -145,5 +147,7 @@
     
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
+	<script type="text/javascript" src="/teen/resources/js/member/myPage/myBoard.js"></script> 
+	
 </body>
 </html>

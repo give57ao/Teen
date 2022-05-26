@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ez.teen.board.mapper.BoardMapper;
 import com.ez.teen.board.model.BoardModel;
+import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.common.PagingModel;
 import com.ez.teen.member.model.MemberModel;
 
@@ -40,6 +41,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardModel> boardList(PagingModel pm) {
 
 		return boardMapper.boardList(pm);
+	}
+
+	@Override
+	public List<BoardModel> myBoardList(BoardParam boardParam) {
+		return boardMapper.myBoardList(boardParam);
 	}
 
 }

@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ez.teen.board.model.BoardModel;
+import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.common.PagingModel;
-import com.ez.teen.member.model.MemberModel;
 
 @Mapper
 public interface BoardMapper {
@@ -22,5 +22,7 @@ public interface BoardMapper {
 
 	// 게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(PagingModel pm);
+	
+	public List<BoardModel> myBoardList(BoardParam boardParam);
 
 }

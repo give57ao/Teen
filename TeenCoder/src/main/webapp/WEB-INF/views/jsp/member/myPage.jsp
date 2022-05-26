@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/myInfo.css">
 </head>
 <body>
+
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
 

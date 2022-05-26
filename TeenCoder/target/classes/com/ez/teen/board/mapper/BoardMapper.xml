@@ -58,15 +58,61 @@ LEFT OUTER JOIN BCOMMENT C
 ON B.BOARD_NO = C.BOARD_NO
 <if test='member_no != 0'>
 WHERE B.MEMBER_NO = #{member_no}
- </if>
+</if>
+ 
     GROUP BY B.BOARD_NO, B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,T.TAG_NAME,G.BGROUP_NAME,M.MEMBER_NICK
 
-	<if test='recent != null'>
-    ORDER BY B.BOARD_DATE DESC
-    </if>
 	) A
 	)
 	WHERE RN BETWEEN #{start} AND #{end}
+    
+    
+
+ </select>
+ 
+ 
+ <!-- param값 받는 부분 -->
+ <select id ="myBoardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.board.model.BoardParam">
+SELECT rn, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check,tag_name, bgroup_name, member_nick, board_comment_count
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+                SELECT
+ B.BOARD_NO                
+,B.BOARD_TITLE
+,B.BOARD_DATE
+,B.BOARD_HIT_COUNT
+,B.BOARD_LIKE_COUNT
+,B.BOARD_REPORT_COUNT
+,B.BOARD_FILE_CHECK
+,T.TAG_NAME
+,G.BGROUP_NAME
+,M.MEMBER_NICK
+,COUNT(C.BOARD_NO) AS board_comment_count
+
+FROM BOARD B
+INNER JOIN BTAG T
+ON B.BOARD_TAG_NO = T.BOARD_TAG_NO
+INNER JOIN BGROUP G
+ON B.BOARD_GROUP_NO = G.BOARD_GROUP_NO
+INNER JOIN MEMBER M
+ON B.MEMBER_NO = M.MEMBER_NO
+LEFT OUTER JOIN BCOMMENT C
+ON B.BOARD_NO = C.BOARD_NO
+ 
+<if test='member_no != 0'>
+WHERE B.MEMBER_NO = #{member_no}
+ </if>
+ 
+    GROUP BY B.BOARD_NO, B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,T.TAG_NAME,G.BGROUP_NAME,M.MEMBER_NICK
+
+	<if test="!recent.equals('') and recent!=null">
+    ORDER BY B.BOARD_DATE DESC
+    </if>
+    
+	) A
+	)
+	WHERE RN BETWEEN 1 AND 10
     
     
 
