@@ -1,5 +1,7 @@
 package com.ez.teen.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +9,7 @@ import com.ez.teen.member.mapper.MemberMapper;
 import com.ez.teen.member.model.MemberModel;
 
 @Service
-public class loginServiceImpl implements loginService{
+public class LoginServiceImpl implements LoginService{
 	
 	@Autowired
 	private MemberMapper memberMapper;
@@ -30,6 +32,26 @@ public class loginServiceImpl implements loginService{
 	@Override
 	public MemberModel findPw(MemberModel memberModel) throws Exception {
 		return memberMapper.findPw(memberModel);
+	}
+
+	@Override
+	public MemberModel test(MemberModel memberModel) throws Exception {
+		return memberMapper.test(memberModel);
+	}
+
+	@Override
+	public MemberModel findMemberId(List<MemberModel> memberModel) throws Exception {
+		return memberMapper.findMemberId(memberModel);
+	}
+
+	@Override
+	public MemberModel findMemberEmail(List<MemberModel> memberModel) throws Exception {
+		return memberMapper.findMemberEmail(memberModel);
+	}
+
+	@Override
+	public MemberModel findMemberName(List<MemberModel> memberModel) throws Exception {
+		return memberMapper.findMemberName(memberModel);
 	}
 
 	

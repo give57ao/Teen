@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,31 @@
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/memberForm.css">
  -->
+<script type="text/javascript">
+	function formChk() { 
+		var in_id = document.getElementById("id").value;
+		var in_pw = document.getElementById("password").value;
+		
+		var db_id = '<c:out value="${login.MEMBER_ID }"/>'; 
+		var db_pw = '<c:out value="${login.MEMBER_ID }"/>'; 
+		
+		alert(db_id);
+		alert(db_pw);
+		
+		if (in_id != db_id) {
+			alert("id 불일치");
+			return false;
+		}
+		if (in_id != db_pw) {
+			alert("pw 불일치");
+			return false;
+		}
+		
+		alert("다 안됨!");
+		return true;
+
+	}
+</script>
 </head>
 
 <body>
@@ -18,30 +44,30 @@
 
 	<!-- Contents -->
 	<div id="contents">
-        <div id="contents_title">
-            <h1>로그인</h1>
-            <h2>로그인 후 커뮤니티 이용이 가능합니다.</h2>
-        </div>
-        <div id="contents_detail">
-            <h1>TeenCoder</h1>
-            <!-- Form -->
-            <form id="login_form">
-                <input type="text" name="id" placeholder="아이디">
-                <input type="password" name="password" placeholder="비밀번호">
-                <!-- 
+		<div id="contents_title">
+			<h1>로그인</h1>
+			<h2>로그인 후 커뮤니티 이용이 가능합니다.</h2>
+		</div>
+		<div id="contents_detail">
+			<h1>TeenCoder</h1>
+			<!-- Form -->
+			<form id="login_form" action="testCheck" method="post" onsubmit="return formChk()">
+				<input type="text" name="id" id ="id" placeholder="아이디"> 
+				<input type="password" name="password" id="password" placeholder="비밀번호">
+				<!-- 
                 <ul id="login_menu" class="side_menu">
                     <li><a href="<%= request.getContextPath() %>/jsp/member/findIdForm.jsp">아이디 찾기</a></li>
                     <li><a href="<%= request.getContextPath() %>/jsp/member/findPwForm.jsp">비밀번호 찾기</a></li>
                     <li><a href="<%= request.getContextPath() %>/jsp/member/joinForm.jsp">회원가입</a></li>
                 </ul>
                  -->
-                <div id="btn_wrap">
-                    <input type="submit" value="로그인" class="btn_com btn_main">
-                </div>
-            </form>
-        </div>
-    </div>
-    
+				<div id="btn_wrap">
+					<input type="submit" value="로그인" class="btn_com btn_main">
+				</div>
+			</form>
+		</div>
+	</div>
+
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
 </body>

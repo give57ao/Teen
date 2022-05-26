@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.ez.teen.member.model.MemberModel;
 
-public interface loginService {
+public interface LoginService {
 
 	MemberModel login(MemberModel memberModel) throws Exception;
 	
@@ -14,5 +14,14 @@ public interface loginService {
 	MemberModel findId(MemberModel memberModel)throws Exception;
 	
 	MemberModel findPw(MemberModel memberModel)throws Exception;
+	
+	MemberModel test(MemberModel memberModel)throws Exception;
+	
+	MemberModel findMemberId(List<MemberModel> memberModel)throws Exception;
+	
+	MemberModel findMemberEmail(List<MemberModel> memberModel)throws Exception;
+	
+	MemberModel findMemberName(List<MemberModel> memberModel)throws Exception;
+	
 	
 }

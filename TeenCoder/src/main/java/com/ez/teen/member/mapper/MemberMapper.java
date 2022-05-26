@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.ez.teen.member.service.loginService;
+import com.ez.teen.member.service.LoginService;
 import com.ez.teen.member.model.MemberModel;
 
 @Mapper
@@ -18,6 +18,16 @@ public interface MemberMapper {
 	MemberModel findId(MemberModel memberModel) throws Exception;
 	
 	MemberModel findPw(MemberModel memberModel) throws Exception;
+	
+	MemberModel test(MemberModel memberModel) throws Exception;
+
+	MemberModel findMemberName(List<MemberModel> memberModel);
+
+	MemberModel findMemberEmail(List<MemberModel> memberModel);
+
+	MemberModel findMemberId(List<MemberModel> memberModel);
+	
+	
 	
 	
 }

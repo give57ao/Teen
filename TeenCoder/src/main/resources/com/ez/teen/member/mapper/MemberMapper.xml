@@ -8,22 +8,47 @@
 		resultType="com.ez.teen.member.model.MemberModel">
 		SELECT MEMBER_ID, MEMBER_PW
 		FROM MEMBER
-		WHERE MEMBER_NO = 1
+		WHERE MEMBER_ID = #{MEMBER_ID}
+			AND MEMBER_PW = #{MEMBER_PW}
 	</select> 
 	
 	<select id="findId" resultType="com.ez.teen.member.model.MemberModel">
-		SELECT MEMBER_ID
+		SELECT MEMBER_ID, MEMBER_NAME,MEMBER_EMAIL
 		FROM MEMBER
-		WHERE MEMBER_NAME = #{MEMBER_NAME}
+		WHERE MEMBER_NAME = #{MEMBER_NAME} <!-- jsp의 input의 name속성값의 문자열과 동일해야한다 -->
 		AND MEMBER_EMAIL = #{MEMBER_EMAIL}
 	</select>
 	
+	
 	<select id="findPw" resultType="com.ez.teen.member.model.MemberModel">
-		SELECT MEMBER_PW
+		SELECT MEMBER_ID,MEMBER_EMAIL
 		FROM MEMBER
 		WHERE MEMBER_ID = #{MEMBER_ID}
 		AND MEMBER_EMAIL = #{MEMBER_EMAIL}
 	</select>
+	
+	<select id="findMemberName"  resultType="com.ez.teen.member.model.MemberModel">
+		SELECT MEMBER_NAME
+		FROM MEMBER
+	</select>
+	<select id="findMemberEmail" resultType="com.ez.teen.member.model.MemberModel">
+		SELECT MEMBER_EMAIL
+		FROM MEMBER
+	</select>
+	<select id="findMemberId" resultType="com.ez.teen.member.model.MemberModel">
+		SELECT MEMBER_ID
+		FROM MEMBER
+	</select>
+	
+	<select id="test" 
+		resultType="com.ez.teen.member.model.MemberModel">
+		SELECT MEMBER_ID
+		FROM MEMBER
+		WHERE MEMBER_ID = #{MEMBER_ID}
+	</select>
+	
+	
+	
 	
 	
 	
