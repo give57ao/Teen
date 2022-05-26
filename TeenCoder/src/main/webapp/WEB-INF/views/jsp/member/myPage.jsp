@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="com.ez.teen.member.service.MemberServiceImpl"%>
+<%@page import="java.util.List"%>
+<%@page import="com.ez.teen.member.service.MemberService"%>
+<%@page import="com.ez.teen.member.model.MemberModel"%>
 
 <!DOCTYPE html>
 <html>
@@ -41,10 +45,12 @@
                 			<div class="info_box">
 	                			<h4>나의 등급<span class="rank">[Expert]</span></h4>
 	                			<h3>TeenCoder</h3>
+	                			<c:forEach items="${list}" var="board">
 	                			<p>
-	                				환영합니다! <b>${list[0].member_name}</b>님 (ID : ${list[0].member_id} )<br>
-	                				가입일 : <fmt:formatDate value="${list[0].member_date}" pattern="yyyy.MM.dd"/> | 이메일 : ${list[0].member_email}
+	                				환영합니다! <b>${board.member_name}</b>님 (ID : ${board.member_id} )<br>
+	                				가입일 : <fmt:formatDate value="${board.member_date}" pattern="yyyy.MM.dd"/> | 이메일 : ${board.member_email}
 	                			</p>
+	                			</c:forEach>
                 			</div>
                 			<ul class="info_icon number">
                                 <li><img src="resources/images/icon/icon_message.svg" class="i_msg">0</li>
