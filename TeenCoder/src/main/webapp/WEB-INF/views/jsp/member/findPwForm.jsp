@@ -5,30 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 비밀번호 찾기</title>
-<script src="../resources/js/login.js"></script>
+<script src="../resources/js/member/login/login.js"></script>
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
-<script type="text/javascript">
-	function formChk() { 
-		var in_id = document.getElementById("inid").value;
-		var in_email = document.getElementById("inEmail").value;
-		
-		
-		if (in_id == "") {
-			alert("이름 입력");
-			return false;
-		}
-		if (in_email == "") {
-			alert("이메일입력");
-			return false;
-		}
-		
-		return true;
-
-	}
-</script>
 </head>
+
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -40,17 +22,17 @@
 		</div>
 		<div id="contents_detail">
 			<!-- Form -->
-			<form id="join_form" class="find_form" action="findPw" method="post" onsubmit="return formChk()">
+			<form id="join_form" class="find_form" action="findPw" method="post" onsubmit="return PwFormChk()">
 				<table>
 					<tbody>
 						<tr>
 							<th>아이디</th>
-							<td><input type="text" name="MEMBER_ID" id="inId"placeholder="아이디">
+							<td><input type="text" name="member_id" id="inId"placeholder="아이디">
 							</td>
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input type="text" name="MEMBER_EMAIL" id="inEmail"placeholder="이메일">
+							<td><input type="text" name="member_email" id="inEmail"placeholder="이메일">
 							</td>
 						</tr>
 					</tbody>

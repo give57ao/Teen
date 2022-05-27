@@ -6,30 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 아이디 찾기</title>
+<script src="../resources/js/member/login/login.js"></script>
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
-<script src="../resources/js/login.js"></script>
-<script type="text/javascript">
-	function formChk() { 
-		var in_name = document.getElementById("inName").value;
-		var in_email = document.getElementById("inEmail").value;
-		
-		
-		if (in_name == "") {
-			alert("이름 입력");
-			return false;
-		}
-		if (in_email == "") {
-			alert("이메일입력");
-			return false;
-		}
-		
-		return true;
-
-	}
-</script>
 </head>
+
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -43,17 +25,17 @@
 		<div id="contents_detail">
 			<!-- Form -->
 			<form id="join_form" class="find_form" action="findId" method="post"
-				onsubmit="return formChk()">
+				onsubmit="return IdFormChk()">
 				<table>
 					<tbody>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" id="inName" name="MEMBER_NAME"
+							<td><input type="text" id="inName" name="member_name"
 								placeholder="이름"></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input type="text" id="inEmail" name="MEMBER_EMAIL"
+							<td><input type="text" id="inEmail" name="member_email"
 								placeholder="이메일"></td>
 						</tr>
 					</tbody>

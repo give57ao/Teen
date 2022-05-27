@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,10 +71,7 @@
                             </div>
                             <div class="row_contents">
                             	<p>
-	                            	Text Text Text Text Text Text Text Text Text Text
-	                            	Text Text Text Text Text Text Text Text Text Text
-	                            	Text Text Text Text Text Text Text Text Text Text
-	                            	Text Text Text Text Text Text Text Text Text Text
+	                            	"${"Content" }"
                             	</p>
                             	<img src="<%= request.getContextPath() %>/images/bg/bg_sample.jpg">
                             	<span><a href="#">첨부파일 다운로드</a></span>

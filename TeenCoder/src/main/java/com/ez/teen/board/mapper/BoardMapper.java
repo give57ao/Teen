@@ -2,6 +2,8 @@ package com.ez.teen.board.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ez.teen.board.model.BoardModel;
+
 @Mapper
 public interface BoardMapper {
 	
@@ -13,7 +15,7 @@ public interface BoardMapper {
 	
 	//전체 댓글 수
 	public int getCommentCount();
-	
-	
 
+	BoardModel getContent(int boardNum)throws Exception;
+	
 }

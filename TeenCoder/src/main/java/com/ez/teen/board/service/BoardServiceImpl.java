@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ez.teen.board.mapper.BoardMapper;
+import com.ez.teen.board.model.BoardModel;
 
 @Service
 public class BoardServiceImpl  implements BoardService{
@@ -27,6 +28,11 @@ public class BoardServiceImpl  implements BoardService{
 	@Override
 	public int getCommentCount() {
 		return boardMapper.getCommentCount();
+	}
+
+	@Override
+	public BoardModel getContent(BoardModel boardModel, int boardNum) throws Exception {
+		return boardMapper.getContent(boardNum);
 	}
 
 }
