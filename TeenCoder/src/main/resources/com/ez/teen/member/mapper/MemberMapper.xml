@@ -27,26 +27,6 @@
 		AND MEMBER_EMAIL = #{MEMBER_EMAIL}
 	</select>
 	
-	<select id="findMemberName"  resultType="List">
-		SELECT MEMBER_NAME
-		FROM MEMBER
-	</select>
-	<select id="findMemberEmail" resultType="List">
-		SELECT MEMBER_EMAIL
-		FROM MEMBER
-	</select>
-	<select id="findMemberId" resultType="List">
-		SELECT MEMBER_ID
-		FROM MEMBER
-	</select>
-	
-	<select id="test" 
-		resultType="com.ez.teen.member.model.MemberModel">
-		SELECT MEMBER_ID
-		FROM MEMBER
-		WHERE MEMBER_ID = #{MEMBER_ID}
-	</select>
-	
 	
 	
 	

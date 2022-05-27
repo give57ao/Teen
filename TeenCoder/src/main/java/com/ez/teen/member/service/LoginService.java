@@ -16,11 +16,7 @@ public interface LoginService {
 	
 	MemberModel test(MemberModel memberModel)throws Exception;
 	
-	List<String> findMemberId(MemberModel memberModel)throws Exception;
-	
-	List<String> findMemberEmail(MemberModel memberModel)throws Exception;
-	
-	List<String> findMemberName(MemberModel memberModel)throws Exception;
+
 	
 	
 }
