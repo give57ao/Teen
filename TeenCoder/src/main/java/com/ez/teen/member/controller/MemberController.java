@@ -46,8 +46,8 @@ public class MemberController {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		session.setAttribute("member_no", 1);
-        int member_no = (Integer)session.getAttribute("member_no");
+		// session.setAttribute("member_no", 1);
+        // int member_no = (Integer)session.getAttribute("member_no");
 		
     	if(member != null) {
             session.setAttribute("member_no", member.getMember_no());
