@@ -16,4 +16,5 @@ public interface LoginService {
 	public MemberModel findPw(MemberModel memberModel) throws Exception;
 
 	public MemberModel myPageModify(MemberModel memberModel) throws Exception;
+	
 }

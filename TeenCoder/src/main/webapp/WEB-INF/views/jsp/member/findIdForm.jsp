@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
 </head>
-
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -41,8 +40,8 @@
 					</tbody>
 				</table>
 				<div id="btn_wrap">
-					<input type="button" value="취소" class="btn_com btn_main"> <input
-						type="submit" value="확인" class="btn_com btn_main">
+					<input type="button" value="취소" class="btn_com btn_main"> 
+					<input type="submit" value="확인" class="btn_com btn_main">
 				</div>
 			</form>
 		</div>
