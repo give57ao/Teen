@@ -7,11 +7,11 @@
 <meta charset="UTF-8">
 <title>TeenCoder 아이디 찾기</title>
 <link rel="stylesheet" type="text/css"
-	href="<%= request.getContextPath() %>/css/reset.css">
+	href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css"
-	href="<%= request.getContextPath() %>/css/common.css">
+	href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css"
-	href="<%= request.getContextPath() %>/css/memberForm.css">
+	href="/teen/resources/css/memberForm.css">
 <script type="text/javascript">
 	function formChk() { 
 		var in_name = document.getElementById("inName").value;
@@ -44,31 +44,30 @@
 		</div>
 		<div id="contents_detail">
 			<!-- Form -->
-			<form id="join_form" class="find_form" action="findId" method="post" onsubmit="return formChk()">
-                <table>
-                	<tbody>
-	                    <tr>
-	                        <th>이름</th>
-	                        <td>
-	                            <input type="text" id="inName" name="MEMBER_NAME" placeholder="이름">
-	                        </td>
-	                    </tr>
-	                    <tr>
-	                        <th>이메일</th>
-	                        <td>
-	                            <input type="text" id="inEmail" name="MEMBER_EMAIL" placeholder="이메일">
-	                        </td>
-	                    </tr>
-                    </tbody>
-                </table>
-                <div id="btn_wrap">
-                    <input type="button" value="취소" class="btn_com btn_main">
-                    <input type="submit" value="확인" class="btn_com btn_main">
-                </div>
-            </form>
-        </div>
-    </div>
-    
+			<form id="join_form" class="find_form" action="findId" method="post"
+				onsubmit="return formChk()">
+				<table>
+					<tbody>
+						<tr>
+							<th>이름</th>
+							<td><input type="text" id="inName" name="MEMBER_NAME"
+								placeholder="이름"></td>
+						</tr>
+						<tr>
+							<th>이메일</th>
+							<td><input type="text" id="inEmail" name="MEMBER_EMAIL"
+								placeholder="이메일"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div id="btn_wrap">
+					<input type="button" value="취소" class="btn_com btn_main"> <input
+						type="submit" value="확인" class="btn_com btn_main">
+				</div>
+			</form>
+		</div>
+	</div>
+
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
 </body>

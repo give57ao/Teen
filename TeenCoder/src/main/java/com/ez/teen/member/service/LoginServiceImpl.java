@@ -40,19 +40,21 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public MemberModel findMemberId(List<MemberModel> memberModel) throws Exception {
+	public List<String> findMemberId(MemberModel memberModel) throws Exception {
 		return memberMapper.findMemberId(memberModel);
 	}
 
 	@Override
-	public MemberModel findMemberEmail(List<MemberModel> memberModel) throws Exception {
+	public List<String> findMemberEmail(MemberModel memberModel) throws Exception {
 		return memberMapper.findMemberEmail(memberModel);
 	}
 
 	@Override
-	public MemberModel findMemberName(List<MemberModel> memberModel) throws Exception {
+	public List<String> findMemberName(MemberModel memberModel) throws Exception {
 		return memberMapper.findMemberName(memberModel);
 	}
+
+	
 
 	
 	

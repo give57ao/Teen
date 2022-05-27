@@ -32,6 +32,7 @@ public class MemberController {
 	// 컨트롤 시작
 	// 로그인
 
+	
 	/*
 	 * @GetMapping("/login") public String login() throws Exception { return
 	 * "member/loginForm"; }
@@ -57,6 +58,7 @@ public class MemberController {
 	 * 
 	 * return mv; }
 	 */
+	 
 
 	@RequestMapping("/findIdForm")
 	public ModelAndView findIdForm(MemberModel memberModel, HttpServletRequest req)
@@ -104,6 +106,7 @@ public class MemberController {
 			 * mv.setViewName("member/findIdForm"); return mv; }
 			 */
 			out.println("<script type='text/javascript'>alert('입력정보 일치x')</script>");
+			out.flush();
 			mv.setViewName("member/findIdForm");
 			return mv;
 		}
@@ -132,6 +135,7 @@ public class MemberController {
 			return mv;
 		} else {
 			out.println("<script type='text/javascript'>alert('입력정보 일치x')</script>");
+			out.flush();
 			mv.setViewName("member/findPwForm");
 			return mv;
 		}

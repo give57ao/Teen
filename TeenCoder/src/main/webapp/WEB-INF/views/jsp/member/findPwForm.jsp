@@ -6,11 +6,11 @@
 <meta charset="UTF-8">
 <title>TeenCoder 비밀번호 찾기</title>
 <link rel="stylesheet" type="text/css"
-	href="<%= request.getContextPath() %>/css/reset.css">
+	href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css"
-	href="<%= request.getContextPath() %>/css/common.css">
+	href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css"
-	href="<%= request.getContextPath() %>/css/memberForm.css">
+	href="/teen/resources/css/memberForm.css">
 
 <script type="text/javascript">
 	function formChk() { 

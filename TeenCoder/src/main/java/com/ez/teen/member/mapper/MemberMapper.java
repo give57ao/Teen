@@ -21,11 +21,11 @@ public interface MemberMapper {
 	
 	MemberModel test(MemberModel memberModel) throws Exception;
 
-	MemberModel findMemberName(List<MemberModel> memberModel);
+	List<String> findMemberName(MemberModel memberModel);
 
-	MemberModel findMemberEmail(List<MemberModel> memberModel);
+	List<String> findMemberEmail(MemberModel memberModel);
 
-	MemberModel findMemberId(List<MemberModel> memberModel);
+	List<String> findMemberId(MemberModel memberModel);
 	
 	
 	

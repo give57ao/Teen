@@ -1,7 +1,6 @@
 package com.ez.teen.member.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.ez.teen.member.model.MemberModel;
 
@@ -17,11 +16,11 @@ public interface LoginService {
 	
 	MemberModel test(MemberModel memberModel)throws Exception;
 	
-	MemberModel findMemberId(List<MemberModel> memberModel)throws Exception;
+	List<String> findMemberId(MemberModel memberModel)throws Exception;
 	
-	MemberModel findMemberEmail(List<MemberModel> memberModel)throws Exception;
+	List<String> findMemberEmail(MemberModel memberModel)throws Exception;
 	
-	MemberModel findMemberName(List<MemberModel> memberModel)throws Exception;
+	List<String> findMemberName(MemberModel memberModel)throws Exception;
 	
 	
 }
