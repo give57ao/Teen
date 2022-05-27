@@ -1,17 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 비밀번호 찾기</title>
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/reset.css">
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/common.css">
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/memberForm.css">
-
+<script src="../resources/js/login.js"></script>
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
 <script type="text/javascript">
 	function formChk() { 
 		var in_id = document.getElementById("inid").value;
@@ -35,7 +32,6 @@
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
-
 	<!-- Contents -->
 	<div id="contents">
 		<div id="contents_title">
@@ -66,7 +62,6 @@
 			</form>
 		</div>
 	</div>
-
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
 </body>

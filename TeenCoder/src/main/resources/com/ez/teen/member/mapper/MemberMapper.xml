@@ -1,38 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ez.teen.member.mapper.MemberMapper">
 	
-	<select id="login" 
-		resultType="com.ez.teen.member.model.MemberModel">
-		SELECT MEMBER_ID, MEMBER_PW
-		FROM MEMBER
-		WHERE MEMBER_ID = #{MEMBER_ID}
-			AND MEMBER_PW = #{MEMBER_PW}
-	</select> 
+	<!-- 마이페이지 리스트 -->
+	<select id="myPageList" resultType="com.ez.teen.member.model.MemberModel" parameterType="com.ez.teen.member.model.MemberModel">
+		SELECT MEMBER_NAME, MEMBER_ID, MEMBER_EMAIL,
+		MEMBER_DATE, MEMBER_POINT FROM MEMBER
+		WHERE MEMBER_NO = #{member_no}
+	</select>
 	
+	<!-- 로그인 -->
+	<select id="login" resultType="com.ez.teen.member.model.MemberModel">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ID = #{member_id}
+		AND MEMBER_PW = #{member_pw}
+	</select>
+	
+	<!-- 아이디 찾기 -->
 	<select id="findId" resultType="com.ez.teen.member.model.MemberModel">
-		SELECT MEMBER_ID, MEMBER_NAME,MEMBER_EMAIL
+		SELECT MEMBER_ID
 		FROM MEMBER
-		WHERE MEMBER_NAME = #{MEMBER_NAME} <!-- jsp의 input의 name속성값의 문자열과 동일해야한다 -->
-		AND MEMBER_EMAIL = #{MEMBER_EMAIL}
+		WHERE MEMBER_NAME = #{member_name}
+		AND MEMBER_EMAIL = #{member_email}
 	</select>
 	
-	
+	<!-- 비밀번호 찾기 -->
 	<select id="findPw" resultType="com.ez.teen.member.model.MemberModel">
-		SELECT MEMBER_ID,MEMBER_EMAIL
+		SELECT MEMBER_PW
 		FROM MEMBER
-		WHERE MEMBER_ID = #{MEMBER_ID}
-		AND MEMBER_EMAIL = #{MEMBER_EMAIL}
+		WHERE MEMBER_ID = #{member_id}
+		AND MEMBER_EMAIL = #{member_email}
 	</select>
-	
-	
-	
-	
-	
-	
-	
 
-
+	<!-- 회원 가입 -->
+	<insert id="insertMember"
+		parameterType="com.ez.teen.member.model.MemberModel">
+			<![CDATA[INSERT INTO MEMBER(
+			 MEMBER_NO
+			,MEMBER_ID
+			,MEMBER_PW
+			,MEMBER_NAME
+			,MEMBER_EMAIL
+			,MEMBER_NICK
+			,MEMBER_DATE
+			,MEMBER_POINT
+			,MEMBER_PRO_CHECK
+			)
+			VALUES(
+			SEQ_MEMBER_NO.nextval
+			,#{member_id}
+			,#{member_pw}
+			,#{member_name}
+			,#{member_email}
+			,#{member_nick}
+			,sysdate
+			,0
+			,#{member_pro_check}
+			)
+			]]>
+	</insert>
+	
+	<!-- 회원정보 수정 -->
+ 	<update id="mypageModify" parameterType="com.ez.teen.member.model.MemberModel">
+		 <![CDATA[UPDATE MEMBER SET
+		 MEMBER_PW = #{member_pw}
+		 ,MEMBER_EMAIL = #{member_email}
+		 WHERE MEMBER_NO = #{member_no} ]]>
+	</update>
+	 
+	<!-- 회원 탈퇴 -->
+	 <delete id="deleteMember" parameterType="com.ez.teen.member.model.MemberModel">
+	 <![CDATA[
+	 DELETE FROM MEMBER 
+	 WHERE MEMBER_NO = #{member_no} 
+	 AND MEMBER_PW = #{member_pw} 
+	 ]]>
+ 	</delete>
+ 	
+	 <!-- 아이디 중복검사 -->
+	 <select id="checkId" resultType="int" parameterType="com.ez.teen.member.model.MemberModel">
+		 <![CDATA[
+		 SELECT COUNT(*) FROM MEMBER WHERE MEMBER_ID = #{member_id}
+		 ]]>
+	 </select>
+	 
+	 <!-- 닉네임 중복검사 -->
+	 <select id="checkNick" resultType="int" parameterType="com.ez.teen.member.model.MemberModel">
+		 <![CDATA[
+		 SELECT COUNT(*) FROM MEMBER WHERE MEMBER_NICK = #{member_nick}
+		 ]]>
+	 </select>
+	 
+	<!-- 이메일 중복검사 -->
+	 <select id="checkEmail" resultType="int" parameterType="com.ez.teen.member.model.MemberModel">
+		 <![CDATA[
+		 SELECT COUNT(*) FROM MEMBER WHERE MEMBER_EMAIL = #{member_email}
+		 ]]>
+	 </select>
 </mapper>

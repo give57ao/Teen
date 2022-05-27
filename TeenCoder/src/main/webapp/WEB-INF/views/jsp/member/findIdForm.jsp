@@ -6,12 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 아이디 찾기</title>
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/reset.css">
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/common.css">
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/memberForm.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
+<script src="../resources/js/login.js"></script>
 <script type="text/javascript">
 	function formChk() { 
 		var in_name = document.getElementById("inName").value;

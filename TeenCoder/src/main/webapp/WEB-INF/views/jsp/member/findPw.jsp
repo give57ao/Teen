@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
+<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -22,10 +23,9 @@
         <div id="contents_detail">
             <!-- Form -->
             <form id="join_form" class="find_form">
-                <h2>해당 회원의 비밀번호는 <b>T1234567890</b> 입니다.</h2>
-                <!-- 해당 회원의 비밀번호는 <b><%= request.getParameter("password") %></b> 입니다. -->
+                <h2>해당 회원의 비밀번호는 <b><c:out value="${findPw.member_pw}" default="null"/></b> 입니다.</h2>
                 <div id="btn_wrap">
-                    <input type="button" value="로그인 화면으로 이동" class="btn_com btn_main" onClick="location.href='loginForm.jsp'">
+                    <input type="button" value="로그인 화면으로 이동" class="btn_com btn_main" onClick="goLogin()">
                 </div>
             </form>
         </div>

@@ -4,9 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 회원정보 수정</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/reset.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/memberForm.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
+<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -20,59 +21,60 @@
         </div>
         <div id="contents_detail">
             <!-- Form -->
-            <form id="join_form" class="modify_form">
+            <form id="join_form" class="modify_form" method="post">
                 <table>
                 	<tbody>
+                	<div style="display:none;">
+	                   	<input type="text" name="member_no" value="${member.member_no }">
+	                </div>
 	                    <tr>
 	                        <th>아이디</th>
 	                        <td>
-	                            TeenCoder
-	                            <%-- <%= request.getParameter("id") %> --%>
+	                            ${member.member_id }
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>비밀번호</th>
 	                        <td>
-	                            <input type="password" name="password" placeholder="비밀번호">
+	                            <input type="password" name="member_pw" placeholder="비밀번호">
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>비밀번호 확인</th>
 	                        <td>
-	                            <input type="password" name="password2" placeholder="비밀번호 확인">
+	                            <input type="password" name="member_pw1" placeholder="비밀번호 확인">
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>이름</th>
 	                        <td>
-	                            TeenCoder
-	                            <%-- <%= request.getParameter("name") %> --%>
+	                            ${member.member_name }
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>닉네임</th>
 	                        <td>
-	                        	TeenCoder
-	                            <%-- <%= request.getParameter("nick") %> --%>
+	                            ${member.member_nick }
 	                        </td>
 	                    </tr>
 	                    <tr class="check">
 	                        <th>이메일</th>
 	                        <td>
-	                            <input type="text" name="email" placeholder="이메일">
+	                            <input type="text" name="member_email" placeholder="이메일">
 	                            <input type="submit" value="인증" class="btn_com btn_check">
 	                        </td>
 	                    </tr>
 	                    <tr class="checkbox">
 	                        <th>개발직군 유무</th>
 	                        <td>
-	                            <input type="checkbox" name="dev" value="yes" id="yes">
+	                            <input type="checkbox" name="member_pro_check" value="Y" id="yes">
 	                            <label for="yes">네</label>
-	                            <input type="checkbox" name="dev" value="no" id="no">
+	                            <input type="checkbox" name="member_pro_check" value="N" id="no">
 	                            <label for="no">아니오</label>
 	                            <input type="submit" value="인증" class="btn_com btn_check">
 	                        </td>
 	                    </tr>
+	                    
                     </tbody>
                 </table>
                 <div id="btn_wrap">

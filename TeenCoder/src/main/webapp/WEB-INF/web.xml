@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://Java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee; https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+
 
 	<!-- 컨텍스트가 생성되었을 때 공통적으로 적용되는 root-context.xml파일을 빈객체로 등록 -->
 	<context-param>
@@ -27,5 +29,33 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Session Timeout -->
+	<session-config>
+	  <session-timeout>60</session-timeout>
+	</session-config>
+
+<filter> 
+    <filter-name>encodingFilter</filter-name> 
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> 
+    <init-param> 
+       <param-name>encoding</param-name> 
+       <param-value>UTF-8</param-value> 
+    </init-param> 
+    <init-param> 
+       <param-name>forceEncoding</param-name> 
+       <param-value>true</param-value> 
+    </init-param> 
+ </filter> 
+ <filter-mapping> 
+    <filter-name>encodingFilter</filter-name> 
+    <url-pattern>/*</url-pattern> 
+ </filter-mapping> 
+
+
+
+
+
+
 
 </web-app>

@@ -5,7 +5,7 @@
 <body>
 	<footer id="footer">
         <div id="footer_logo">
-            <a href="<%= request.getContextPath() %>/jsp/main.jsp">TeenCoder</a>
+            <a href="/teen">TeenCoder</a>
         </div>
         <div id="footer_info">
             <p>© 2022 TeenCoder. All rights reserved.</p>
