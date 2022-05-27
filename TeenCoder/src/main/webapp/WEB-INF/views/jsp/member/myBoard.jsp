@@ -49,14 +49,14 @@
 				<!-- Search -->
 				<div id="board_list_search">
 					<select class="dropdown">
-						<option value="all" selected>전체</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="name">작성자</option>
+						<option value="all" id="search" selected>전체</option>
+						<option value="title" id="search">제목</option>
+						<option value="content" id="search">내용</option>
+						<option value="name" id="search">작성자</option>
 					</select>
 					<div class="search">
-						<input type="text" placeholder="검색">
-						<button class="btn_search"></button>
+						<input type="text" id="keyword" placeholder="검색">
+						<button class="btn_search" onClick ="searchBoard()">&nbsp;</button>
 					</div>
 				</div>
 				<!-- List Row -->
@@ -128,6 +128,7 @@
 								href="/teen/member/boardList?sort=${sort}&nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
 						</c:if>
 					</ul>
+				</div>
 				</div>
 				<!-- Member Info -->
 				<div id="member_info">

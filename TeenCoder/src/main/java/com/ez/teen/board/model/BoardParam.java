@@ -3,10 +3,28 @@ package com.ez.teen.board.model;
 public class BoardParam {
 
 	private int member_no;
-	private String sort;
+	private String sort; //정렬
+	String search; //검색 타입 
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	String keyword; //검색내용
 	
 
 		
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public String getSort() {
 		return sort;
 	}

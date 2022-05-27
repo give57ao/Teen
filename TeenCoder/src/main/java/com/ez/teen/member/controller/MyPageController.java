@@ -55,8 +55,11 @@ public class MyPageController {
 	@GetMapping("member/boardList")
 	public String myBoardListRecent(Model model, BoardParam boardParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort,
-			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, HttpSession session) {
+			@RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "keyword", required = false) String keyword,
+			HttpSession session) {
 		
 		session.setAttribute("member_no", 1);
 		int member_no = (Integer)session.getAttribute("member_no");
