@@ -62,9 +62,24 @@ WHERE B.MEMBER_NO = #{member_no}
  
     GROUP BY B.BOARD_NO, B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,T.TAG_NAME,G.BGROUP_NAME,M.MEMBER_NICK
 
-<if test='recent != null'>
+<if test='sort == "recent"'>
 ORDER BY B.BOARD_DATE DESC
 </if>
+
+<if test='sort == "view"'>
+ORDER BY B.BOARD_HIT_COUNT DESC
+</if>
+
+<if test='sort == "recommend"'>
+ORDER BY B.BOARD_LIKE_COUNT DESC
+</if>
+
+<if test='sort == "comment"'>
+ORDER BY board_comment_count DESC
+</if>
+
+
+
 
 	) A
 	)

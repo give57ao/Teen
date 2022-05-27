@@ -3,44 +3,20 @@ package com.ez.teen.board.model;
 public class BoardParam {
 
 	private int member_no;
-	private String recent;
-	private String comment;
-	private String view;
-	private String recommend;
+	private String sort;
 	
 
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	public String getView() {
-		return view;
-	}
-	public void setView(String view) {
-		this.view = view;
-	}
-	public String getRecommend() {
-		return recommend;
-	}
-	public void setRecommend(String recommend) {
-		this.recommend = recommend;
+		
+	public String getSort() {
+		return sort;
 	}
 
-	
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
 	private int cntPage = 5;
-
-	
-
-	public String getRecent() {
-		return recent;
-	}
-
-	public void setRecent(String recent) {
-		this.recent = recent;
-	}
 
 	public void PagingModel() {
 	}

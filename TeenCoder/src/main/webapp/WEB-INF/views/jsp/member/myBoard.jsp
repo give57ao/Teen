@@ -40,10 +40,10 @@
 				<div id="board_list_title">
 					<h2>내가 작성한 게시글</h2>
 					<ul id="board_list_menu" class="side_menu">
-						<li><a href="boardList/recent">최신순</a></li>
-						<li><a href="boardList/view">조회순</a></li>
-						<li><a href="boardList/recommend">추천순</a></li>
-						<li><a href="boardList/comment">댓글순</a></li>
+						<li><a href="boardList?sort=recent">최신순</a></li>
+						<li><a href="boardList?sort=view">조회순</a></li>
+						<li><a href="boardList?sort=recommend">추천순</a></li>
+						<li><a href="boardList?sort=comment">댓글순</a></li>
 					</ul>
 				</div>
 				<!-- Search -->
@@ -75,26 +75,20 @@
 											class="i_badge"> <span class="rank">[Expert]</span>${board.member_nick}
 									</h4>
 								</div>
-								<span class="row_top date"><fmt:formatDate
-										value="${board.board_date }" pattern="yyyy.MM.dd" /></span>
+								<span class="row_top date"><fmt:formatDate value="${board.board_date }" pattern="yyyy.MM.dd" /></span>
 								<ul class="row_top number">
-									<li><img src="/teen/resources/images/icon/icon_hit.svg"
-										class="i_hit">${board.board_hit_count}</li>
-									<li><img
-										src="/teen/resources/images/icon/icon_comment.svg"
-										class="i_cmt">${board.board_comment_count}</li>
-									<li><img src="/teen/resources/images/icon/icon_like.svg"
-										class="i_like">${board.board_like_count}</li>
+									<li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">${board.board_hit_count}</li>
+									<li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${board.board_comment_count}</li>
+									<li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${board.board_like_count}</li>
 								</ul>
 							</div>
 							<div class="row_title">
 								<h3>
-									<a href="/teen/resources/jsp/board/boardDetail.jsp"> <span
-										class="tag_hit">[추천]</span> ${board.board_title} 
+									<a href="/teen/resources/jsp/board/boardDetail.jsp"> 
+									<span 	class="tag_hit">[추천]</span> ${board.board_title} 
 										<!-- <img src="../resources/images/icon/icon_image.svg" class="i_image">  -->
 										<c:if test="${board.board_file_check eq 'Y'}">
-											<img src="/teen/resources/images/icon/icon_file.svg"
-												class="i_file">
+											<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
 										</c:if>
 	
 	
@@ -113,7 +107,7 @@
 						<!-- 시작페이지가 1이 아닐 때 -->
 						<c:if test="${paging.nowPage != 1 }">
 							<li class="prev"><a
-								href="/teen/resources/member/boardList?nowPage=${paging.nowPage - 1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+								href="/teen/member/boardList?sort=${sort}&nowPage=${paging.nowPage - 1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
 						</c:if>
 	
 						<!-- 페이징 숫자가 나오는 부분 -->
@@ -124,22 +118,20 @@
 									<li><a class="select">${p }</a></li>
 								</c:when>
 								<c:when test="${p != paging.nowPage }">
-									<li><a
-										href="/teen/resources/member/boardList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+									<li><a href="/teen/member/boardList?sort=${sort}&nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
 								</c:when>
 							</c:choose>
 						</c:forEach>
 						<!-- 오른쪽 버튼 -->
 						<c:if test="${paging.endPage != paging.nowPage}">
 							<li class="next"><a
-								href="/teen/resources/member/boardList?nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+								href="/teen/member/boardList?sort=${sort}&nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
 						</c:if>
 					</ul>
 				</div>
 				<!-- Member Info -->
 				<div id="member_info">
-					<a href="/teen/resources/jsp/board/boardWrite.jsp"
-						class="btn_com btn_main">게시글 작성</a>
+					<a href="#"class="btn_com btn_main">게시글 작성</a>
 					<div class="mycard"></div>
 				</div>
 			</div>
@@ -148,7 +140,6 @@
 	
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
-	<script type="text/javascript"
-		src="/teen/resources/js/member/myPage/myBoard.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/member/myPage/myBoard.js"></script>
 </body>
 </html>
