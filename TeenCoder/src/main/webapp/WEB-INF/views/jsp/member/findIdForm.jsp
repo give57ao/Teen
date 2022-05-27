@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 아이디 찾기</title>
-<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
@@ -37,7 +36,6 @@
 
 	<!-- Contents -->
 	<div id="contents">
-<<<<<<< HEAD
 		<div id="contents_title">
 			<h1>아이디 찾기</h1>
 			<h2>이름과 이메일을 입력하시면 아이디를 찾으실 수 있습니다.</h2>
