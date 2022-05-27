@@ -44,7 +44,6 @@
                 	<div class="profile">
                 		<div class="member_info">
                 			<img src="resources/images/icon/icon_badge.png" class="badge">
-                			<img src="../resources/images/icon/icon_badge.png" class="badge">
                 			<div class="info_box">
 	                			<h4>나의 등급<span class="rank">[Expert]</span></h4>
 	                			<h3>TeenCoder</h3>
