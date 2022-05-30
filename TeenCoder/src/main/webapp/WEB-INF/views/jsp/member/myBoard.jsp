@@ -40,10 +40,10 @@
 				<div id="board_list_title">
 					<h2>내가 작성한 게시글</h2>
 					<ul id="board_list_menu" class="side_menu">
-						<li><a href="boardList?sort=recent">최신순</a></li>
-						<li><a href="boardList?sort=view">조회순</a></li>
-						<li><a href="boardList?sort=recommend">추천순</a></li>
-						<li><a href="boardList?sort=comment">댓글순</a></li>
+						<li><a href="boardList?sort=recent&search=${paging.search}&keyword=${paging.keyword}">최신순</a></li>
+						<li><a href="boardList?sort=view&search=${paging.search}&keyword=${paging.keyword}">조회순</a></li>
+						<li><a href="boardList?sort=recommend&search=${paging.search}&keyword=${paging.keyword}">추천순</a></li>
+						<li><a href="boardList?sort=comment&search=${paging.search}&keyword=${paging.keyword}">댓글순</a></li>
 					</ul>
 				</div>
 				<!-- Search -->
