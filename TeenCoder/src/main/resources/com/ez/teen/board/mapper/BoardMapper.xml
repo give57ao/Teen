@@ -19,7 +19,7 @@
 		SELECT COUNT(*) AS allCommentCount FROM BCOMMENT
 	</select>
 	
-	<select id="getContent" parameterType ="int" resultType="com.ez.teen.board.model.BoardModel">
+	<select id="selectBoardDetail" parameterType ="int" resultType="com.ez.teen.board.model.BoardModel">
 		SELECT BOARD_CONTENT
 		FROM BOARD
 		WHERE BOARD_NO = #{boardNum}

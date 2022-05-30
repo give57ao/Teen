@@ -13,6 +13,6 @@ public interface BoardService {
 	//전체 댓글 수
 	public int  getCommentCount();
 	
-	BoardModel getContent(BoardModel boardModel, int boardNum) throws Exception;
+	public BoardModel selectBoardDetail(BoardModel boardModel, int boardNum) throws Exception;
 		
 }

@@ -16,6 +16,6 @@ public interface BoardMapper {
 	//전체 댓글 수
 	public int getCommentCount();
 
-	BoardModel getContent(int boardNum)throws Exception;
+	public BoardModel selectBoardDetail(int boardNum)throws Exception;
 	
 }

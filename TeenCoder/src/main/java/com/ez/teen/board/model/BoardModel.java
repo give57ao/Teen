@@ -15,6 +15,7 @@ public class BoardModel {
 	private String BOARD_FILE_CHECK;
 	private String BOARD_GROUP_NO;
 	private String BOARD_TAG_NO;
+	
 	public int getBOARD_NO() {
 		return BOARD_NO;
 	}

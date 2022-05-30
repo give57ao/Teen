@@ -37,15 +37,15 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board/detail")
-	public ModelAndView boardDetail(BoardModel boardModel, HttpSession session, HttpServletResponse response) throws Exception {
+	public ModelAndView selectBoardDetail(BoardModel boardModel, HttpSession session, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int boardNum = (int) session.getAttribute("member_no");
 		
-		BoardModel model = boardService.getContent(boardModel, boardNum);
+		BoardModel model = boardService.selectBoardDetail(boardModel, boardNum);
 		
 		
-		mv.addObject("Content", model);
-
+		mv.addObject("content", model);
+		mv.setViewName("board/boardDetail");
 		return mv;
 	}
 }

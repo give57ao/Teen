@@ -53,7 +53,7 @@ public class MemberController {
             session.setAttribute("member_no", member.getMember_no());
     		mv.setViewName("redirect:/");
     	} else {
-    		// session.setAttribute("member_no", null);
+    		session.setAttribute("member_no", null);
     		out.println("<script type='text/javascript'>alert('로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.')</script>");
     		out.flush();
 	    	mv.setViewName("member/loginForm");

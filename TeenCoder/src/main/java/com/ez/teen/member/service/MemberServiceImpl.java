@@ -1,8 +1,11 @@
 
   package com.ez.teen.member.service;
 
+import org.springframework.stereotype.Service;
+
 import com.ez.teen.member.model.MemberModel;
 
+@Service
 public class MemberServiceImpl implements MemberService{
 
 	@Override

@@ -31,8 +31,8 @@ public class BoardServiceImpl  implements BoardService{
 	}
 
 	@Override
-	public BoardModel getContent(BoardModel boardModel, int boardNum) throws Exception {
-		return boardMapper.getContent(boardNum);
+	public BoardModel selectBoardDetail(BoardModel boardModel, int boardNum) throws Exception {
+		return boardMapper.selectBoardDetail(boardNum);
 	}
 
 }
