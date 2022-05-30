@@ -32,9 +32,9 @@
             <div id="contents_wrap">
                 <!-- Category -->
                 <ul id="contents_category">
-                    <li><a href="/teen/member" class="log">마이페이지</a></li>
-                    <li><a href="/teen/member/boardList" class="log">내가 작성한 게시글</a></li>
-                    <li><a href="<%= request.getContextPath() %>/jsp/member/myCmt.jsp">내가 작성한 댓글</a></li>
+                    <li><a href="/teen/member" class="select">마이페이지</a></li>
+                    <li><a href="/teen/member/boardList">내가 작성한 게시글</a></li>
+                    <li><a href="#">내가 작성한 댓글</a></li>
                     <li><a href="#">나의 포인트</a></li>
                     <li><a href="#">팔로잉</a></li>
                     <li><a href="#">스크랩</a></li>
@@ -43,7 +43,7 @@
                 <div id="board_list" class="my_page">
                 	<div class="profile">
                 		<div class="member_info">
-                			<img src="resources/images/icon/icon_badge.png" class="badge">
+                			<img src="/teen/resources/images/icon/icon_badge.png" class="badge">
                 			<div class="info_box">
 	                			<h4>나의 등급<span class="rank">[Expert]</span></h4>
 	                			<h3>TeenCoder</h3>
@@ -54,17 +54,17 @@
 	                		
                 			</div>
                 			<ul class="info_icon number">
-                                <li><img src="resources/images/icon/icon_message.svg" class="i_msg">0</li>
-                                <li><img src="resources/images/icon/icon_follow.svg" class="i_follow">0</li>
-                                <li><img src="resources/images/icon/icon_scrap.svg" class="i_scrap">0</li>
+                                <li><img src="/teen/resources/images/icon/icon_message.svg" class="i_msg">0</li>
+                                <li><img src="/teen/resources/images/icon/icon_follow.svg" class="i_follow">0</li>
+                                <li><img src="/teen/resources/images/icon/icon_scrap.svg" class="i_scrap">0</li>
                             </ul>
                 			<a href="/teen/member/mypageModifyForm" class="btn_com btn_mod_member">회원정보 수정</a>
                 		</div>
                 		<div class="member_board">
 	                		<hr>
 		                	<ul>
-								<li>내가 작성한 게시글<a href="../jsp/member/myBoard.jsp">${allBoardCount}</a></li>
-		                		<li>내가 작성한 댓글<a href="../jsp/member/myCmt.jsp">${allCommentCount}</a></li>
+								<li>내가 작성한 게시글<a href="#">${allBoardCount}</a></li>
+		                		<li>내가 작성한 댓글<a href="#">${allCommentCount}</a></li>
 		                		<li>나의 포인트<a href="#">${board.member_point}point</a></li>
 							</ul>
 		                	<hr>
@@ -74,13 +74,14 @@
                 </div>
                 <!-- Member Info -->
                 <div id="member_info">
-                    <a href="<%= request.getContextPath() %>/jsp/board/boardWrite.jsp" class="btn_com btn_main">게시글 작성</a>
+                    <a href="#" class="btn_com btn_main">게시글 작성</a>
                     <div class="mycard"></div>
                 </div>
             </div>
         </div>
     </div>
     </c:forEach>
+    
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
 </body>
