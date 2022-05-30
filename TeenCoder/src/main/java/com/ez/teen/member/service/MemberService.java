@@ -8,16 +8,16 @@ public interface MemberService {
 	
 	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
 
-	int checkId(String member_id);
+	public int checkId(String member_id);
 	
-	int checkNick(String member_nick);
+	public int checkNick(String member_nick);
 	
-	int checkEmail(String member_email);
+	public int checkEmail(String member_email);
 	
-	void deleteMember(MemberModel memberModel);
+	public void deleteMember(MemberModel memberModel);
 	
-	void insertMember(MemberModel memberModel);
+	public void insertMember(MemberModel memberModel);
 	
-	void mypageModify(MemberModel memberModel);
+	public void mypageModify(MemberModel memberModel);
 
 }

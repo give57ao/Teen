@@ -20,7 +20,7 @@ import com.ez.teen.member.service.MemberService;
 public class MemberJoinController {
 
 	@Autowired
-	MemberService memberService;
+	private MemberService memberService;
 
 	private static final Logger log = LoggerFactory.getLogger(MemberJoinController.class);
 

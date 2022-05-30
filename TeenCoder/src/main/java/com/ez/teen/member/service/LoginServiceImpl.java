@@ -44,7 +44,6 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	public MemberModel myPageModify(MemberModel memberModel) throws Exception {
-		
 		return memberMapper.mypageModify(memberModel);
 	}
 	
@@ -79,4 +78,3 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	
 }
-

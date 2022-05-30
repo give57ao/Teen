@@ -12,7 +12,7 @@ import com.ez.teen.member.model.MemberModel;
 public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
-	MemberMapper memberMapper;
+	private MemberMapper memberMapper;
 	
 	@Override
 	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception {
