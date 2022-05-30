@@ -36,9 +36,8 @@ public class MyPageController {
 	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request, BoardParam boardParam) throws Exception {
 		
 		HttpSession session = request.getSession();
-		//session.setAttribute("member_no", 1); //윤목씨바보 바보맞네../
 		int member_no = (Integer)session.getAttribute("member_no");
-//		memberModel.setMember_no(member_no);
+		memberModel.setMember_no(member_no);
 		boardParam.setMember_no(member_no);
 		
 		List<MemberModel> myPageList = memberService.myPageList(memberModel);
