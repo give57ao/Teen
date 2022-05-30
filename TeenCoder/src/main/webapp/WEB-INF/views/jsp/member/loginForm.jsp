@@ -23,10 +23,9 @@
         <div id="contents_detail">
             <h1>TeenCoder</h1>
             <!-- Form -->
-            <form id="login_form" name="login_form" action="login" method="post" onSubmit="return loginProcess()">
+            <form id="login_form" action="login" method="post" onSubmit="return loginProcess()">
                 <input id="member_id" type="text" name="member_id" placeholder="아이디">
-
-                <input type="password" name="member_pw" placeholder="비밀번호">
+                <input id="member_pw" type="password" name="member_pw" placeholder="비밀번호">
                 <ul id="login_menu" class="side_menu">
                     <li><a href="/teen/member/findIdForm">아이디 찾기</a></li>
                     <li><a href="/teen/member/findPwForm">비밀번호 찾기</a></li>
