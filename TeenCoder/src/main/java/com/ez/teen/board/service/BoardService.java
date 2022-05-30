@@ -10,7 +10,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
+ 
 public interface BoardService {
 
 	//전체 이용자 수

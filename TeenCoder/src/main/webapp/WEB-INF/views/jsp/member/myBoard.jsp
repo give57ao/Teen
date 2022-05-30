@@ -107,7 +107,7 @@
 						<!-- 시작페이지가 1이 아닐 때 -->
 						<c:if test="${paging.nowPage != 1 }">
 							<li class="prev"><a
-								href="/teen/member/boardList?sort=${sort}&nowPage=${paging.nowPage - 1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+								href="/teen/member/boardList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage - 1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
 						</c:if>
 	
 						<!-- 페이징 숫자가 나오는 부분 -->
@@ -118,14 +118,14 @@
 									<li><a class="select">${p }</a></li>
 								</c:when>
 								<c:when test="${p != paging.nowPage }">
-									<li><a href="/teen/member/boardList?sort=${sort}&nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+									<li><a href="/teen/member/boardList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
 								</c:when>
 							</c:choose>
 						</c:forEach>
 						<!-- 오른쪽 버튼 -->
 						<c:if test="${paging.startPage < paging.endPage}">
 							<li class="next"><a
-								href="/teen/member/boardList?sort=${sort}&nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+								href="/teen/member/boardList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
 						</c:if>
 					</ul>
 				</div>

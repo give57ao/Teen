@@ -1,14 +1,15 @@
-console.log("myBoard.js 진입");
 
 function searchBoard(){
 
-console.log('searchBoard() 진입');
 
 var search = document.getElementById('search').value;
 var keyword = document.getElementById('keyword').value;
 
+
+
 console.log(search);
 console.log(keyword);
+
 
 //검색 내용 확인
 if(keyword == null){
@@ -16,7 +17,7 @@ if(keyword == null){
 	return false;
 }
 
-location.href='boardList?search='+search+'&keyword='+keyword	
+location.href='boardList?search='+search+'&keyword='+keyword
 
 
 
