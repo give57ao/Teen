@@ -1,7 +1,5 @@
 package com.ez.teen.member.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.service.MemberService;
@@ -84,31 +82,5 @@ public class MemberJoinController {
 
 	}
 
-	/*
-	 * // 회원탈퇴 홈페이지
-	 * 
-	 * @GetMapping(value = "/delete") public String deleteMemberForm() throws
-	 * Exception {
-	 * 
-	 * return "/member/deleteForm"; }
-	 * 
-	 * // 회원 탈퇴 구현
-	 * 
-	 * @PostMapping(value = "/delete") public String deleteMember(MemberModel model,
-	 * HttpSession session, RedirectAttributes rttr) throws Exception {
-	 * 
-	 * MemberModel member = (MemberModel) session.getAttribute("member");
-	 * 
-	 * String sessionPw = member.getMember_pw(); String modelPw =
-	 * model.getMember_pw();
-	 * 
-	 * if (!(sessionPw.equals(modelPw))) { rttr.addFlashAttribute("msg", false);
-	 * 
-	 * return "/member/delete"; }
-	 * 
-	 * memberService.deleteMember(model); session.invalidate();
-	 * 
-	 * return "redirect:/"; }
-	 */
 
 }

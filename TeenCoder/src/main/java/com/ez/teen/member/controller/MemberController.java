@@ -59,13 +59,12 @@ public class MemberController {
     		out.flush();
 	    	mv.setViewName("member/loginForm");
 	    	mv.addObject("msg", false);
-    	}
-    			
+    	}    			
     	return mv;
 	}
 	
-	// 로그아웃
-	@GetMapping("/logout")
+    // 로그아웃
+    @GetMapping("/logout")
     public String logout(HttpSession session) throws Exception {
 		session.invalidate();
         return "redirect:/";
@@ -132,13 +131,6 @@ public class MemberController {
 		}
 	}
 	
-	// 마이페이지 가기
-	@RequestMapping("/myPage")
-	public String myPage() throws Exception{
-		
-		return "member/myPage";
-	}
-	
 	// 회원탈퇴 홈페이지
 	@GetMapping(value = "/delete")
 	public String deleteMemberForm() throws Exception {
@@ -146,7 +138,6 @@ public class MemberController {
 		return "/member/deleteForm";
 	}
 
-	
 	// 회원 탈퇴 구현
 	@PostMapping(value = "/delete")
 	public String deleteMember(MemberModel memberModel, HttpSession session, RedirectAttributes rttr) throws Exception{
@@ -168,24 +159,6 @@ public class MemberController {
 		return "redirect:/"; 
 	}
 	
-	// 회원정보 수정 폼
-	@GetMapping(value = "mypageModifyForm")
-	public String mypageModifyForm() throws Exception {
-		
-		return "/member/modifyForm";
-		
-	}
-	
-	// 회원정보 수정
-	@PostMapping(value = "mypageModifyForm")
-	public String mypageModify(MemberModel memberModel) throws Exception {
-		
-		
-		memberService.mypageModify(memberModel);
-		
-		return "redirect:/member/myPage";
-		
-		
-	}
+
 
 }

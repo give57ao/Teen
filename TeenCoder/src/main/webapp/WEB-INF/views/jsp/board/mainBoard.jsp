@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
+<script src="/teen/resources/js/member.js"></script>
+
 </head>
 <body>
 	<!-- Header -->
@@ -74,6 +76,7 @@
                                 <div class="row_top member">
                                     <h4>
                                         <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
+
                                         <span class="rank">[Expert]</span>TeenCoder
                                     </h4>
                                 </div>
@@ -82,7 +85,7 @@
                                     <li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">0</li>
                                     <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
                                     <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">0</li>
-                                </ul>
+</ul>
                             </div>
                             <div class="row_title">
                                 <h3>
@@ -91,6 +94,7 @@
                                         HTML / CSS 학습 중 궁금한 점이 있습니다.
                                         <img src="/teen/resources/images/icon/icon_image.svg" class="i_image">
                                         <img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
+
                                     </a>
                                 </h3>
                             </div>

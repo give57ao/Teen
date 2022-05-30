@@ -17,10 +17,9 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/myInfo.css">
 </head>
 <body>
-
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
-
+	
 	<!-- Contents -->
 	<c:forEach items="${list}" var="board">
     <div id="contents">
@@ -43,7 +42,7 @@
                 <div id="board_list" class="my_page">
                 	<div class="profile">
                 		<div class="member_info">
-                			<img src="/teen/resources/images/icon/icon_badge.png" class="badge">
+                			<img src="../resources/images/icon/icon_badge.png" class="badge">
                 			<div class="info_box">
 	                			<h4>나의 등급<span class="rank">[Expert]</span></h4>
 	                			<h3>TeenCoder</h3>
@@ -54,9 +53,9 @@
 	                		
                 			</div>
                 			<ul class="info_icon number">
-                                <li><img src="/teen/resources/images/icon/icon_message.svg" class="i_msg">0</li>
-                                <li><img src="/teen/resources/images/icon/icon_follow.svg" class="i_follow">0</li>
-                                <li><img src="/teen/resources/images/icon/icon_scrap.svg" class="i_scrap">0</li>
+                                <li><img src="../resources/images/icon/icon_message.svg" class="i_msg">0</li>
+                                <li><img src="../resources/images/icon/icon_follow.svg" class="i_follow">0</li>
+                                <li><img src="../resources/images/icon/icon_scrap.svg" class="i_scrap">0</li>
                             </ul>
                 			<a href="/teen/member/mypageModifyForm" class="btn_com btn_mod_member">회원정보 수정</a>
                 		</div>
@@ -74,13 +73,14 @@
                 </div>
                 <!-- Member Info -->
                 <div id="member_info">
-                    <a href="#" class="btn_com btn_main">게시글 작성</a>
+                    <a href="/teen/board/boardWrite" class="btn_com btn_main">게시글 작성</a>
                     <div class="mycard"></div>
                 </div>
             </div>
         </div>
     </div>
-    </c:forEach>
+  </c:forEach>
+    
     
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />

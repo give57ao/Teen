@@ -9,8 +9,6 @@ import com.ez.teen.member.model.MemberModel;
 @Mapper
 public interface MemberMapper {
 
-	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
-
 	// 로그인
 	public MemberModel login(MemberModel memberModel) throws Exception;
 	
@@ -25,18 +23,9 @@ public interface MemberMapper {
 	
 	// 비밀번호 찾기
 	public MemberModel findPw(MemberModel memberModel) throws Exception;
-	
-	public void insertMember(MemberModel model);
-	
-	public int checkId(String memberId);
-	
-	public int checkNick(String memberNick);
-	
-	public int checkEmail(String memberEmail);
-	
-	public void deleteMember(MemberModel model);
 
-	public void mypageModify(MemberModel memberModel);
+	//마이페이지
+	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
 	
 	/*
 	 * MemberModel login(MemberModel memberModel) throws Exception;
@@ -58,4 +47,23 @@ public interface MemberMapper {
 	 * MemberModel myPage(MemberModel memberModel) throws Exception;
 	 */
 
+	
+	// 회원가입
+	public void insertMember(MemberModel memberModel);
+	
+	// 아이디 중복체크
+	int checkId(String member_id);
+	
+	// 닉네임 중복체크
+	int checkNick(String member_nick);
+	
+	// 이메일 중복체크
+	int checkEmail(String member_email);
+	
+	// 회원 탈퇴
+	void deleteMember(MemberModel memberModel);
+	
+	// 내정보 수정
+	void mypageModify(MemberModel memberModel);
+	
 }

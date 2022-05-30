@@ -9,6 +9,8 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/boardForm.css">
+<script src="/teen/resources/js/member.js"></script>
+
 </head>
 <body>
 	<!-- Header -->

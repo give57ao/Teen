@@ -1,10 +1,13 @@
 package com.ez.teen.board.mapper;
 
+
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ez.teen.board.model.BoardModel;
+
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.common.PagingModel;
 
@@ -26,4 +29,18 @@ public interface BoardMapper {
 	public void updateBoard(BoardModel boardModel);
 
 	//05/26 병합
+
+	//전체 게시글 수
+	public int getBoardCount();
+	
+	//전체 댓글 수
+	public int getCommentCount();
+	
+	//게시글 작성
+	public void insertBoard(BoardModel boardModel) throws Exception;
+	
+	//첨부파일 업로드
+	public void insertFile(Map<String, Object> map) throws Exception;
+	
+	
 }

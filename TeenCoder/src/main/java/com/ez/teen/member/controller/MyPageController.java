@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -35,7 +36,7 @@ public class MyPageController {
 	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request) throws Exception {
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("member_no", 2);
+		//session.setAttribute("member_no", 1);
 		int member_no = (Integer)session.getAttribute("member_no");
 		memberModel.setMember_no(member_no);
 		
@@ -61,7 +62,7 @@ public class MyPageController {
 			@RequestParam(value = "keyword", required = false) String keyword,
 			HttpSession session) {
 		
-		session.setAttribute("member_no", 1);
+		//session.setAttribute("member_no", 1);
 		int member_no = (Integer)session.getAttribute("member_no");
 		
 		
@@ -96,6 +97,27 @@ public class MyPageController {
 		return "member/myBoard";
 		
 		
+	}
+	
+	
+	// 회원정보 수정 폼
+	@GetMapping(value = "member/mypageModifyForm")
+	public String mypageModifyForm(HttpSession session, Model model, MemberModel memberModel) throws Exception {
+		
+		int member_no = (Integer)session.getAttribute("member_no");
+		
+		
+		return "member/modifyForm";
+	}
+	
+	// 회원정보 수정
+	@PostMapping(value = "member/mypageModifyForm")
+	public String mypageModify(MemberModel memberModel) throws Exception {
+		
+		
+		memberService.mypageModify(memberModel);
+		
+		return "redirect:/member/myPage";
 	}
 
 	

@@ -9,6 +9,7 @@ import com.ez.teen.member.model.MemberModel;
 @Service
 public class LoginServiceImpl implements LoginService {
 
+
 	@Autowired
 	private MemberMapper memberMapper;
 	
@@ -42,11 +43,6 @@ public class LoginServiceImpl implements LoginService {
 		return memberMapper.findPw(memberModel);
 	}
 	
-	@Override
-	public MemberModel myPageModify(MemberModel memberModel) throws Exception {
-		return memberMapper.mypageModify(memberModel);
-	}
-	
 	/*
 	 * @Override public MemberModel login(MemberModel memberModel) throws Exception
 	 * { return memberMapper.login(memberModel); }
@@ -77,4 +73,5 @@ public class LoginServiceImpl implements LoginService {
 	 * throws Exception { return memberMapper.findMemberName(memberModel); }
 	 */
 	
+
 }

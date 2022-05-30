@@ -42,6 +42,7 @@
         <div id="contents_detail">
             <div id="btn_wrap">
                 <a href="board/main" class="btn_com btn_main">카테고리로 이동</a>
+
             </div>
         </div>
     </div>

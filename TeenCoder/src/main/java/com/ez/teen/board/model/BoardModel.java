@@ -18,6 +18,14 @@ public class BoardModel {
 	private String tag_name;
 	private String member_nick;
 	private int board_comment_count;
+	
+	//첨부파일 업로드 추가
+	private int file_no;
+	private String org_file_name;
+	private String stored_file_name;
+	private int file_size;
+	private Date file_date;
+	private String del_gb;
 
 	public int getBoard_comment_count() {
 		return board_comment_count;
@@ -105,14 +113,56 @@ public class BoardModel {
 	public void setBoard_tag_no(String board_tag_no) {
 		this.board_tag_no = board_tag_no;
 	}
+
+	public int getFile_no() {
+		return file_no;
+	}
+	public void setFile_no(int file_no) {
+		this.file_no = file_no;
+	}
+	public String getOrg_file_name() {
+		return org_file_name;
+	}
+	public void setOrg_file_name(String org_file_name) {
+		this.org_file_name = org_file_name;
+	}
+	public String getStored_file_name() {
+		return stored_file_name;
+	}
+	public void setStored_file_name(String stored_file_name) {
+		this.stored_file_name = stored_file_name;
+	}
+	public int getFile_size() {
+		return file_size;
+	}
+	public void setFile_size(int file_size) {
+		this.file_size = file_size;
+	}
+	public Date getFile_date() {
+		return file_date;
+	}
+	public void setFile_date(Date file_date) {
+		this.file_date = file_date;
+	}
+	public String getDel_gb() {
+		return del_gb;
+	}
+	public void setDel_gb(String del_gb) {
+		this.del_gb = del_gb;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "BoardModel [board_no=" + board_no + ", member_no=" + member_no + ", board_title=" + board_title
 				+ ", board_content=" + board_content + ", board_date=" + board_date + ", board_hit_count="
 				+ board_hit_count + ", board_like_count=" + board_like_count + ", board_report_count="
 				+ board_report_count + ", board_file_check=" + board_file_check + ", board_group_no=" + board_group_no
-				+ ", board_tag_no=" + board_tag_no + ", tag_name=" + tag_name + "]";
+				+ ", board_tag_no=" + board_tag_no + ", tag_name=" + tag_name + ", member_nick=" + member_nick
+				+ ", board_comment_count=" + board_comment_count + ", file_no=" + file_no + ", org_file_name="
+				+ org_file_name + ", stored_file_name=" + stored_file_name + ", file_size=" + file_size + ", file_date="
+				+ file_date + ", del_gb=" + del_gb + "]";
 	}
+
 	
-	//05/26 병합
 }

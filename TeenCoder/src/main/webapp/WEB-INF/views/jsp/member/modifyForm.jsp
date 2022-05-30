@@ -24,9 +24,6 @@
             <form id="join_form" class="modify_form" method="post">
                 <table>
                 	<tbody>
-                	<div style="display:none;">
-	                   	<input type="text" name="member_no" value="${member.member_no }">
-	                </div>
 	                    <tr>
 	                        <th>아이디</th>
 	                        <td>
