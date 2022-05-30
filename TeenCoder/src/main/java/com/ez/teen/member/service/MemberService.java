@@ -7,6 +7,8 @@
   
   void deleteMember(MemberModel memberModel);
   
+  public void mypageModify(MemberModel memberModel);
+  
 	/*
 	 * public void mypageModify(MemberModel memberModel);
 	 * 
