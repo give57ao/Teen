@@ -64,9 +64,10 @@ public class MyPageController {
 		session.setAttribute("member_no", 1);
 		int member_no = (Integer)session.getAttribute("member_no");
 		
-		int total = boardService.getBoardCount(member_no); 
-		System.out.println("total :" + total);
 		
+		int total = boardService.getBoardCount(member_no);
+		
+		System.out.println("total :" + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -74,15 +75,27 @@ public class MyPageController {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
 			cntPerPage = "10";
+		} 
+		boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		if(total == 0) {
+			boardParam.setEndPage(1);
 		}
-		boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));  
 		boardParam.setMember_no(member_no);
 		model.addAttribute("paging", boardParam);
 		model.addAttribute("sort", sort);
 		model.addAttribute("board", boardService.boardList(boardParam));
 		
-		System.out.println(sort);
+		
+		System.out.println("total : " + total);
+        System.out.println("startPage :" + boardParam.getStartPage());
+        System.out.println("endPage :" + boardParam.getEndPage());
+        System.out.println("cntPerPage :" + boardParam.getCntPerPage());
+        System.out.println("nowPage :" + boardParam.getNowPage());
+        System.out.println("lastPage :" + boardParam.getLastPage());
+        
 		return "member/myBoard";
+		
+		
 	}
 
 	

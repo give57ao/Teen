@@ -1,11 +1,16 @@
 package com.ez.teen.board.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.service.BoardService;
@@ -32,5 +37,29 @@ public class BoardController {
 		return "main";
 	}
 	
+	@GetMapping("/member/modify")
+	public String updateBoard(BoardModel boardModel, Model model , HttpServletRequest request)throws Exception{
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("member_no", 2);
+		int member_no = (Integer)session.getAttribute("member_no");
+		boardModel.setMember_no(member_no);
+		
+		/* model.addAttribute("update", ); */
+		return "board/boardModify";
+	}
+	
+	@PostMapping("/member/modify")
+	public String updateBoard(BoardModel boardModel, Model model , HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("member_no", 2);
+		int member_no = (Integer)session.getAttribute("member_no");
+		boardModel.setMember_no(member_no);
+		
+		boardService.updateBoard(boardModel);
+		
+		return "redirect:/board/main";
+	}
 }
 

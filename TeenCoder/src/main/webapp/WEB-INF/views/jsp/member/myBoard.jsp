@@ -123,7 +123,7 @@
 							</c:choose>
 						</c:forEach>
 						<!-- 오른쪽 버튼 -->
-						<c:if test="${paging.endPage != paging.nowPage}">
+						<c:if test="${paging.startPage < paging.endPage}">
 							<li class="next"><a
 								href="/teen/member/boardList?sort=${sort}&nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
 						</c:if>

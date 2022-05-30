@@ -19,5 +19,6 @@ public interface BoardService {
 	//게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
 	
-	//05/26 병합
+	
+	public void updateBoard(BoardModel boardModel);
 }

@@ -39,6 +39,13 @@ public class BoardServiceImpl implements BoardService {
 
 		return boardMapper.boardList(boardParam);
 	}
+	
+	// 게시글 수정
+	@Override
+	public void updateBoard(BoardModel boardModel) {
+		
+		boardMapper.updateBoard(boardModel);
+	}
 
 
 
