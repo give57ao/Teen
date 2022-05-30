@@ -26,7 +26,7 @@ import com.ez.teen.member.service.MemberService;
 public class MyPageController {
 	@Autowired
 	private MemberService memberService;
-
+  
 	@Autowired
 	private BoardService boardService;
 
@@ -36,14 +36,14 @@ public class MyPageController {
 	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request) throws Exception {
 		
 		HttpSession session = request.getSession();
-		//session.setAttribute("member_no", 1);
+		//session.setAttribute("member_no", 1); 윤목씨바보 바보맞네
 		int member_no = (Integer)session.getAttribute("member_no");
 		memberModel.setMember_no(member_no);
 		
 		List<MemberModel> myPageList = memberService.myPageList(memberModel);
 		model.addAttribute("list", myPageList);
 
-		model.addAttribute("allBoardCount", boardService.getBoardCount(member_no));
+		model.addAttribute("allBoardCount", boardService.getBoardCount(member_no)); 
 		model.addAttribute("allCommentCount", boardService.getCommentCount(member_no));
 
 		System.out.println(member_no);
