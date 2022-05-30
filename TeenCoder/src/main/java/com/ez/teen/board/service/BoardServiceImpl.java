@@ -34,8 +34,8 @@ public class BoardServiceImpl implements BoardService {
 
 	// 전체 게시글 수
 	@Override
-	public int getBoardCount(int member_no) {
-		return boardMapper.getBoardCount(member_no);
+	public int getBoardCount(BoardParam boardParam) {
+		return boardMapper.getBoardCount(boardParam);
 	}
 
 	// 전체 댓글 수

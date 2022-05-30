@@ -11,12 +11,34 @@
 	</select>
 	
 	<!-- 전체 게시글 수 -->
-	<select id="getBoardCount" resultType="int" parameterType="Integer"> 
-		SELECT COUNT(*) AS allBoardCount FROM BOARD
-		<!-- 내가 작성한 게시글 수 조건 -->
+	<select id="getBoardCount" resultType="int" parameterType="com.ez.teen.board.model.BoardParam"> 
+		SELECT COUNT(*) AS allBoardCount FROM BOARD B
+		INNER JOIN MEMBER M
+		ON B.MEMBER_NO = M.MEMBER_NO
+		
 		<if test='member_no != 0'>
-			WHERE MEMBER_NO = #{member_no}
+		WHERE B.MEMBER_NO = #{member_no}
  		</if>
+ 		
+ 		<if test='search == "title"'>
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		</if>
+
+		<if test='search == "content"'>
+		AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+		</if>
+		
+		<if test='search == "member_nick"'>
+		AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+		</if>	
+		
+		<if test='search == "all"'>
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+		OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+		</if>
+ 		
+ 		
 	</select>
 	
 	<!-- 전체 댓글 수 -->

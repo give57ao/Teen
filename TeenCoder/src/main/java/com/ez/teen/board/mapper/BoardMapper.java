@@ -31,7 +31,7 @@ public interface BoardMapper {
 	//05/26 병합
 
 	//전체 게시글 수
-	public int getBoardCount();
+	public int getBoardCount(BoardParam boardParam);
 	
 	//전체 댓글 수
 	public int getCommentCount();

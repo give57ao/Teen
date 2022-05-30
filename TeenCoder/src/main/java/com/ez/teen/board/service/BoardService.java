@@ -17,7 +17,7 @@ public interface BoardService {
 	public int  getUserCount();
 	
 	//전체 게시글 수
-	public int  getBoardCount(int member_no);
+	public int  getBoardCount(BoardParam boardParam);
 
 	//전체 댓글 수
 	public int  getCommentCount(int member_no);
