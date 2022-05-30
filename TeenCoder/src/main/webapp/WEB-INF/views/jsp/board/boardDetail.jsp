@@ -71,7 +71,7 @@
                             </div>
                             <div class="row_contents">
                             	<p>
-	                            	"${content.BOARD_CONTENT }"
+	                            	"${content.board_content }"
                             	</p>
                             	<img src="/teen/resources/images/bg/bg_sample.jpg">
                             	<span><a href="#">첨부파일 다운로드</a></span>

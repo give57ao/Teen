@@ -4,84 +4,86 @@ import java.util.Date;
 
 public class BoardModel {
 
-	private int BOARD_NO;
-	private int MEMBER_NO;
-	private String BOARD_TITLE;
-	private String BOARD_CONTENT;
-	private Date BOARD_DATE;
-	private int BOARD_HIT_COUNT;
-	private int BOARD_LIKE_COUNT;
-	private int BOARD_REPORT_COUNT;
-	private String BOARD_FILE_CHECK;
-	private String BOARD_GROUP_NO;
-	private String BOARD_TAG_NO;
+	private int board_no; 
+	private int member_no; 
+	private String board_title; 
+	private String board_content; 
+	private Date board_date; 
+	private int board_hit_count; 
+	private int board__like_count;
+	private int board_report_count;
+	private String board_file_check;
+	private String board_group_no;
+	private String board_tag_no;
 	
-	public int getBOARD_NO() {
-		return BOARD_NO;
+	public int getBoard_no() {
+		return board_no;
 	}
-	public void setBOARD_NO(int bOARD_NO) {
-		BOARD_NO = bOARD_NO;
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
 	}
-	public int getMEMBER_NO() {
-		return MEMBER_NO;
+	public int getMember_no() {
+		return member_no;
 	}
-	public void setMEMBER_NO(int mEMBER_NO) {
-		MEMBER_NO = mEMBER_NO;
+	public void setMember_no(int member_no) {
+		this.member_no = member_no;
 	}
-	public String getBOARD_TITLE() {
-		return BOARD_TITLE;
+	public String getBoard_title() {
+		return board_title;
 	}
-	public void setBOARD_TITLE(String bOARD_TITLE) {
-		BOARD_TITLE = bOARD_TITLE;
+	public void setBoard_title(String board_title) {
+		this.board_title = board_title;
 	}
-	public String getBOARD_CONTENT() {
-		return BOARD_CONTENT;
+	public String getBoard_content() {
+		return board_content;
 	}
-	public void setBOARD_CONTENT(String bOARD_CONTENT) {
-		BOARD_CONTENT = bOARD_CONTENT;
+	public void setBoard_content(String board_content) {
+		this.board_content = board_content;
 	}
-	public Date getBOARD_DATE() {
-		return BOARD_DATE;
+	public Date getBoard_date() {
+		return board_date;
 	}
-	public void setBOARD_DATE(Date bOARD_DATE) {
-		BOARD_DATE = bOARD_DATE;
+	public void setBoard_date(Date board_date) {
+		this.board_date = board_date;
 	}
-	public int getBOARD_HIT_COUNT() {
-		return BOARD_HIT_COUNT;
+	public int getBoard_hit_count() {
+		return board_hit_count;
 	}
-	public void setBOARD_HIT_COUNT(int bOARD_HIT_COUNT) {
-		BOARD_HIT_COUNT = bOARD_HIT_COUNT;
+	public void setBoard_hit_count(int board_hit_count) {
+		this.board_hit_count = board_hit_count;
 	}
-	public int getBOARD_LIKE_COUNT() {
-		return BOARD_LIKE_COUNT;
+	public int getBoard__like_count() {
+		return board__like_count;
 	}
-	public void setBOARD_LIKE_COUNT(int bOARD_LIKE_COUNT) {
-		BOARD_LIKE_COUNT = bOARD_LIKE_COUNT;
+	public void setBoard__like_count(int board__like_count) {
+		this.board__like_count = board__like_count;
 	}
-	public int getBOARD_REPORT_COUNT() {
-		return BOARD_REPORT_COUNT;
+	public int getBoard_report_count() {
+		return board_report_count;
 	}
-	public void setBOARD_REPORT_COUNT(int bOARD_REPORT_COUNT) {
-		BOARD_REPORT_COUNT = bOARD_REPORT_COUNT;
+	public void setBoard_report_count(int board_report_count) {
+		this.board_report_count = board_report_count;
 	}
-	public String getBOARD_FILE_CHECK() {
-		return BOARD_FILE_CHECK;
+	public String getBoard_file_check() {
+		return board_file_check;
 	}
-	public void setBOARD_FILE_CHECK(String bOARD_FILE_CHECK) {
-		BOARD_FILE_CHECK = bOARD_FILE_CHECK;
+	public void setBoard_file_check(String board_file_check) {
+		this.board_file_check = board_file_check;
 	}
-	public String getBOARD_GROUP_NO() {
-		return BOARD_GROUP_NO;
+	public String getBoard_group_no() {
+		return board_group_no;
 	}
-	public void setBOARD_GROUP_NO(String bOARD_GROUP_NO) {
-		BOARD_GROUP_NO = bOARD_GROUP_NO;
+	public void setBoard_group_no(String board_group_no) {
+		this.board_group_no = board_group_no;
 	}
-	public String getBOARD_TAG_NO() {
-		return BOARD_TAG_NO;
+	public String getBoard_tag_no() {
+		return board_tag_no;
 	}
-	public void setBOARD_TAG_NO(String bOARD_TAG_NO) {
-		BOARD_TAG_NO = bOARD_TAG_NO;
+	public void setBoard_tag_no(String board_tag_no) {
+		this.board_tag_no = board_tag_no;
 	}
+	
+	
 	
 	
 	
