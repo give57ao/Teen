@@ -8,18 +8,32 @@ public class MemberModel {
 	private String member_pw; // 비밀번호
 	private String member_name; // 회원 이름
 	private String member_email; // 회원 이메일
-	private String member_emailcheck; // 회원 이메일 체크
+	private String member_email_check; // 회원 이메일 체크
 	private String member_nick; // 회원 닉네임
 	private String member_admin; // 관리자 확인
 	private Date member_date; // 회원가입 날짜
-	private String member_procheck; // 전문가 유무 확인,
+	private String member_pro_check; // 전문가 유무 확인,
 	private Integer member_point; // 멤버 포인트
+	
+	
 	
 	public int getMember_no() {
 		return member_no;
 	}
-	public void setMember_no(Integer member_no) {
+	public void setMember_no(int member_no) {
 		this.member_no = member_no;
+	}
+	public String getMember_email_check() {
+		return member_email_check;
+	}
+	public void setMember_email_check(String member_email_check) {
+		this.member_email_check = member_email_check;
+	}
+	public String getMember_pro_check() {
+		return member_pro_check;
+	}
+	public void setMember_pro_check(String member_pro_check) {
+		this.member_pro_check = member_pro_check;
 	}
 	public String getMember_id() {
 		return member_id;
@@ -45,12 +59,7 @@ public class MemberModel {
 	public void setMember_email(String member_email) {
 		this.member_email = member_email;
 	}
-	public String getMember_emailcheck() {
-		return member_emailcheck;
-	}
-	public void setMember_emailcheck(String member_emailcheck) {
-		this.member_emailcheck = member_emailcheck;
-	}
+
 	public String getMember_nick() {
 		return member_nick;
 	}
@@ -69,12 +78,7 @@ public class MemberModel {
 	public void setMember_date(Date member_date) {
 		this.member_date = member_date;
 	}
-	public String getMember_procheck() {
-		return member_procheck;
-	}
-	public void setMember_procheck(String member_procheck) {
-		this.member_procheck = member_procheck;
-	}
+
 	public Integer getMember_point() {
 		return member_point;
 	}
@@ -82,13 +86,18 @@ public class MemberModel {
 		this.member_point = member_point;
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "MemberModel [member_no=" + member_no + ", member_id=" + member_id + ", member_pw=" + member_pw
-				+ ", member_name=" + member_name + ", member_email=" + member_email + ", member_emailcheck="
-				+ member_emailcheck + ", member_nick=" + member_nick + ", member_admin=" + member_admin
-				+ ", member_date=" + member_date + ", member_procheck=" + member_procheck + ", member_point="
+				+ ", member_name=" + member_name + ", member_email=" + member_email + ", member_email_check="
+				+ member_email_check + ", member_nick=" + member_nick + ", member_admin=" + member_admin
+				+ ", member_date=" + member_date + ", member_pro_check=" + member_pro_check + ", member_point="
 				+ member_point + "]";
 	}
+	
+
+	
+
 }
 

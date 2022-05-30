@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
-<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -23,6 +23,7 @@
             <!-- Form -->
             <form id="join_form" class="modify_form" method="post">
                 <table>
+                	<c:forEach var="member" items="${list }">
                 	<tbody>
 	                    <tr>
 	                        <th>아이디</th>
@@ -57,7 +58,7 @@
 	                    <tr class="check">
 	                        <th>이메일</th>
 	                        <td>
-	                            <input type="text" name="member_email" placeholder="이메일">
+	                            <input type="text" name="member_email" placeholder="이메일" value="${member.member_email }">
 	                            <input type="submit" value="인증" class="btn_com btn_check">
 	                        </td>
 	                    </tr>
@@ -71,7 +72,7 @@
 	                            <input type="submit" value="인증" class="btn_com btn_check">
 	                        </td>
 	                    </tr>
-	                    
+	                    </c:forEach>
                     </tbody>
                 </table>
                 <div id="btn_wrap">
@@ -81,7 +82,6 @@
             </form>
         </div>
     </div>
-    
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
 </body>

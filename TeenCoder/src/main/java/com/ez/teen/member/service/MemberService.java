@@ -21,9 +21,6 @@ public interface MemberService {
 	// 닉네임 중복체크
 	public int checkNick(String member_nick);
 	
-	// 이메일 중복체크
-	public int checkEmail(String member_email);
-	
 	// 회원정보 수정
 	public void mypageModify(MemberModel memberModel);
 	

@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	<!-- 마이페이지 리스트 -->
 	<select id="myPageList" resultType="com.ez.teen.member.model.MemberModel" parameterType="com.ez.teen.member.model.MemberModel">
 		SELECT MEMBER_NAME, MEMBER_ID, MEMBER_EMAIL,
-		MEMBER_DATE, MEMBER_POINT FROM MEMBER
+		MEMBER_DATE, MEMBER_NICK, MEMBER_POINT FROM MEMBER
 		WHERE MEMBER_NO = #{member_no}
 	</select>
 	
@@ -35,8 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	</select>
 
 	<!-- 회원 가입 -->
-	<insert id="insertMember"
-		parameterType="com.ez.teen.member.model.MemberModel">
+	<insert id="insertMember" parameterType="com.ez.teen.member.model.MemberModel">
 			<![CDATA[INSERT INTO MEMBER(
 			 MEMBER_NO
 			,MEMBER_ID
@@ -65,9 +64,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	<!-- 회원정보 수정 -->
  	<update id="mypageModify" parameterType="com.ez.teen.member.model.MemberModel">
 		 <![CDATA[UPDATE MEMBER SET
-		 MEMBER_PW = #{member_pw}
+		  MEMBER_PW = #{member_pw}
 		 ,MEMBER_EMAIL = #{member_email}
-		 WHERE MEMBER_NO = #{member_no} ]]>
+		 ,MEMBER_PRO_CHECK = #{member_pro_check}
+		  WHERE MEMBER_NO = #{member_no}
+		  ]]>
 	</update>
 	 
 	<!-- 회원 탈퇴 -->
@@ -93,10 +94,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		 ]]>
 	 </select>
 	 
-	<!-- 이메일 중복검사 -->
-	 <select id="checkEmail" resultType="int" parameterType="com.ez.teen.member.model.MemberModel">
-		 <![CDATA[
-		 SELECT COUNT(*) FROM MEMBER WHERE MEMBER_EMAIL = #{member_email}
-		 ]]>
-	 </select>
+
 </mapper>

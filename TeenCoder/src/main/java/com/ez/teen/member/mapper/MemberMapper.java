@@ -49,16 +49,13 @@ public interface MemberMapper {
 
 	
 	// 회원가입
-	public void insertMember(MemberModel memberModel);
+	void insertMember(MemberModel memberModel);
 	
 	// 아이디 중복체크
 	int checkId(String member_id);
 	
 	// 닉네임 중복체크
 	int checkNick(String member_nick);
-	
-	// 이메일 중복체크
-	int checkEmail(String member_email);
 	
 	// 회원 탈퇴
 	void deleteMember(MemberModel memberModel);

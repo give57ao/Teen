@@ -45,14 +45,6 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
-	//이메일 중복체크
-	@Override
-	public int checkEmail(String member_email) {
-
-		int result = memberMapper.checkEmail(member_email);
-		
-		return result;
-	}
 
 	
 	//회원정보 삭제
