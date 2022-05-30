@@ -10,6 +10,12 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		
 	}
-  
+
+	@Override
+	public void mypageModify(MemberModel memberModel) {
+		// TODO Auto-generated method stub
+		
+	}
+	
   }
  
