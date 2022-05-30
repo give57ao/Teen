@@ -19,7 +19,59 @@
 		SELECT COUNT(*) AS allCommentCount FROM BCOMMENT
 	</select>
 	
+	<!-- 게시글 작성 -->
+	<insert id="insertBoard" parameterType="com.ez.teen.board.mapper.BoardMapper" useGeneratedKeys="true" keyProperty="board_no" >
+	<selectKey keyProperty="board_no" resultType="int" order="BEFORE" >
+		SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+	</selectKey>
+	<![CDATA[
+	INSERT INTO BOARD(
+	 BOARD_NO
+	,MEMBER_NO
+	,BOARD_TITLE
+	,BOARD_DATE
+	,BOARD_CONTENT
+	,BOARD_HIT_COUNT
+	,BOARD_LIKE_COUNT
+	,BOARD_REPORT_COUNT
+	,BOARD_GROUP_NO
+	,BOARD_TAG_NO
+	,BOARD_FILE_CHECK
+	)
+	VALUES(
+	 #{board_no}
+	,#{member_no}
+	,#{board_title}
+	,SYSDATE
+	,#{board_content}
+	,0
+	,0
+	,0
+	,#{board_group_no}
+	,#{board_tag_no}
+	,'Y'
+	)
+]]>
+	</insert>
 	
+	<!-- 첨부파일 업로드 -->
+	<insert id="insertFile" parameterType="hashMap">
+	<![CDATA[ INSERT INTO BFILE(
+	 FILE_NO
+	,BOARD_NO
+	,ORG_FILE_NAME
+	,STORED_FILE_NAME
+	,FILE_SIZE
+	)
+	VALUES(
+	 SEQ_FILE_NO.NEXTVAL
+	,#{board_no}
+	,#{org_file_name}
+	,#{stored_file_name}
+	,#{file_size}
+	)
+	]]>
+	</insert>
 	
 	
 	

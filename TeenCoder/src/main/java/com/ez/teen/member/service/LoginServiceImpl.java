@@ -42,6 +42,7 @@ public class LoginServiceImpl implements LoginService {
 		return memberMapper.findPw(memberModel);
 	}
 
+	// 마이페이지 홈
 	@Override
 	public MemberModel myPage(MemberModel memberModel) throws Exception {
 		

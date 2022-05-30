@@ -14,13 +14,14 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	MemberMapper memberMapper;
 
+	//회원가입
 	@Override
 	public void insertmember(MemberModel model) {
 		
 		memberMapper.insertMember(model);
-		
 	}
 
+	//아이디 중복체크
 	@Override
 	public int checkId(String member_id) {
 		
@@ -28,7 +29,8 @@ public class MemberServiceImpl implements MemberService{
 		
 		return result; 
 	}
-
+	
+	// 닉네임 중복체크
 	@Override
 	public int checkNick(String member_nick) {
 
@@ -37,6 +39,7 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	//이메일 중복체크
 	@Override
 	public int checkEmail(String member_email) {
 
@@ -50,7 +53,6 @@ public class MemberServiceImpl implements MemberService{
 	public void deletemember(MemberModel memberModel) {
 		
 		memberMapper.deleteMember(memberModel);
-		
 	}
 
 	// 회원정보수정
@@ -58,7 +60,6 @@ public class MemberServiceImpl implements MemberService{
 	public void mypageModify(MemberModel memberModel){
 		
 		memberMapper.mypageModify(memberModel);
-		
 	}
 
 	

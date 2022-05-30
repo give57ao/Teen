@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 게시판</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/reset.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/board.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
+<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -73,15 +74,15 @@
                                 </ul>
                                 <div class="row_top member">
                                     <h4>
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_badge.png" class="i_badge">
+                                        <img src="../resources/images/icon/icon_badge.png" class="i_badge">
                                         <span class="rank">[Expert]</span>TeenCoder
                                     </h4>
                                 </div>
                                 <span class="row_top date">2022-05-10</span>
                                 <ul class="row_top number">
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_hit.svg" class="i_hit">0</li>
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_comment.svg" class="i_cmt">0</li>
-                                    <li><img src="<%= request.getContextPath() %>/images/icon/icon_like.svg" class="i_like">0</li>
+                                    <li><img src="../resources/images/icon/icon_hit.svg" class="i_hit">0</li>
+                                    <li><img src="../resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
+                                    <li><img src="../resources/images/icon/icon_like.svg" class="i_like">0</li>
                                 </ul>
                             </div>
                             <div class="row_title">
@@ -89,8 +90,8 @@
                                     <a href="<%= request.getContextPath() %>/jsp/board/boardDetail.jsp">
                                         <span class="tag_hit">[추천]</span>
                                         HTML / CSS 학습 중 궁금한 점이 있습니다.
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_image.svg" class="i_image">
-                                        <img src="<%= request.getContextPath() %>/images/icon/icon_file.svg" class="i_file">
+                                        <img src="../resources/images/icon/icon_image.svg" class="i_image">
+                                        <img src="../resources/images/icon/icon_file.svg" class="i_file">
                                     </a>
                                 </h3>
                             </div>

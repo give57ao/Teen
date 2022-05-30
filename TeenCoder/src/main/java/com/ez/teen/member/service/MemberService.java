@@ -5,15 +5,21 @@ import com.ez.teen.member.model.MemberModel;
 
 public interface MemberService {
 	
-	void insertmember(MemberModel model);
+	//회원가입
+	public void insertmember(MemberModel model);
 	
-	int checkId(String member_id);
+	// 아이디중복체크
+	public int checkId(String member_id);
 	
-	int checkNick(String member_nick);
+	// 닉네임 중복체크
+	public int checkNick(String member_nick);
 	
-	int checkEmail(String member_email);
+	// 이메일 중복체크
+	public int checkEmail(String member_email);
 	
-	void deletemember(MemberModel memberModel);
+	// 회원탈퇴
+	public void deletemember(MemberModel memberModel);
 
-	void mypageModify(MemberModel memberModel);
+	// 회원정보 수정
+	public void mypageModify(MemberModel memberModel);
 }

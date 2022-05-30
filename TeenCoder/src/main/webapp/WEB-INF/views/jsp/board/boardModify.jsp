@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/board.css">
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/boardForm.css">
+<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->

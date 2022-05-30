@@ -66,7 +66,7 @@
                 </div>
                 <!-- Member Info -->
                 <div id="member_info">
-                    <a href="<%= request.getContextPath() %>/jsp/board/boardWrite.jsp" class="btn_com btn_main">게시글 작성</a>
+                    <a href="/teen/board/boardWrite" class="btn_com btn_main">게시글 작성</a>
                     <div class="mycard"></div>
                 </div>
             </div>
