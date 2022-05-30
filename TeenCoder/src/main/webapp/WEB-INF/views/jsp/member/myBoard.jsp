@@ -28,7 +28,7 @@
 			<ul id="contents_category">
 				<li><a href="/teen/member/	">마이페이지</a></li>
 				<li><a href="/teen/member/boardList" class="select">내가 작성한 게시글</a></li>
-				<li><a href="/teen/member/comment">내가 작성한 댓글</a></li>
+				<li><a href="/teen/member/commentList">내가 작성한 댓글</a></li>
 				<li><a href="#">나의 포인트</a></li>
 				<li><a href="#">팔로잉</a></li>
 				<li><a href="#">스크랩</a></li>

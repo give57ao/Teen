@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.ez.teen.board.mapper.BoardMapper;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
-
+import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.common.file.FileUtils;
 
 
@@ -40,8 +40,8 @@ public class BoardServiceImpl implements BoardService {
 
 	// 전체 댓글 수
 	@Override
-	public int getCommentCount(int member_no) {
-		return boardMapper.getCommentCount(member_no);
+	public int getCommentCount(CommentParam commentParam) {
+		return boardMapper.getCommentCount(commentParam);
 	}
 
 	// 게시글 리스트 (BGROUP 구별 없이)

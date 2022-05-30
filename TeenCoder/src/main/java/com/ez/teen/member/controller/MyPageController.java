@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
-import com.ez.teen.common.PagingModel;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.service.MemberService;
 
@@ -33,7 +33,7 @@ public class MyPageController {
 	private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
 	
 	@GetMapping("/")
-	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request, BoardParam boardParam) throws Exception {
+	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request, BoardParam boardParam, CommentParam commentParam) throws Exception {
 		
 		HttpSession session = request.getSession();
 		int member_no = (Integer)session.getAttribute("member_no");
@@ -44,7 +44,7 @@ public class MyPageController {
 		model.addAttribute("list", myPageList);
 
 		model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam)); 
-		model.addAttribute("allCommentCount", boardService.getCommentCount(member_no));
+		model.addAttribute("allCommentCount", boardService.getCommentCount(commentParam));
 
 		System.out.println(member_no);
 		
@@ -98,6 +98,50 @@ public class MyPageController {
 		
 		
 	}
+	
+	@GetMapping("/commentList")
+	public String myCommentList(Model model, CommentParam commentParam,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "keyword", required = false) String keyword,
+			HttpSession session) {
+		
+		
+		int member_no = (Integer)session.getAttribute("member_no");
+		commentParam.setMember_no(member_no);
+		
+		int total = boardService.getCommentCount(commentParam);
+		
+		System.out.println("total :" + total);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "10";
+		} 
+		commentParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		if(total == 0) {
+			commentParam.setEndPage(1);
+		}
+		commentParam.setMember_no(member_no);
+		model.addAttribute("paging", commentParam);
+		model.addAttribute("sort", sort);
+//		model.addAttribute("comment", boardService.commentList(commentParam));
+		
+		
+		System.out.println("total : " + total);
+        
+		return "member/myComment";
+		
+		
+	}
+	
+	
+	
 	
 	
 	// 회원정보 수정 폼

@@ -42,12 +42,36 @@
 	</select>
 	
 	<!-- 전체 댓글 수 -->
-	<select id="getCommentCount" resultType="int" parameterType="Integer">
-		SELECT COUNT(*) AS allCommentCount FROM BCOMMENT
+	<select id="getCommentCount" resultType="int" parameterType="com.ez.teen.board.model.CommentParam">
+		SELECT COUNT(*) AS allCommentCount FROM BCOMMENT C
+		INNER JOIN BOARD B
+        ON C.BOARD_NO = B.BOARD_NO
+        INNER JOIN MEMBER M
+        ON C.MEMBER_NO = M.MEMBER_NO
 		<!-- 내가 작성한 게시글 수 조건 -->
 		<if test='member_no != 0'>
-			WHERE MEMBER_NO = #{member_no}
+			WHERE C.MEMBER_NO = #{member_no}
  		</if>
+ 		
+ 		<if test='search == "title"'>
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		</if>
+
+		<if test='search == "content"'>
+		AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+		</if>
+		
+		<if test='search == "member_nick"'>
+		AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+		</if>	
+		
+		<if test='search == "all"'>
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+		OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+		</if>
+ 		
+ 		
 	</select>
 	
 	<!-- 게시글 작성 -->

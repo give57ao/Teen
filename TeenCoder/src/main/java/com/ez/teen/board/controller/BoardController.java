@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
 import com.ez.teen.member.model.MemberModel;
 
@@ -30,15 +31,16 @@ public class BoardController {
 
 	// 메인 홈
 	@GetMapping("/")
-	public String main(BoardModel boardModel, MemberModel memberModel, Model model, BoardParam boardParam) {
+	public String main(BoardModel boardModel, MemberModel memberModel, Model model, BoardParam boardParam, CommentParam commentParam) {
 		log.info("메인페이지 실행");
 		
 		int member_no =0;
 		boardParam.setMember_no(0);
+		commentParam.setMember_no(0);
 		
 		model.addAttribute("allMemberCount", boardService.getUserCount());
 		model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam));
-		model.addAttribute("allCommentCount", boardService.getCommentCount(member_no));
+		model.addAttribute("allCommentCount", boardService.getCommentCount(commentParam));
 		
 		return "main";
 	}

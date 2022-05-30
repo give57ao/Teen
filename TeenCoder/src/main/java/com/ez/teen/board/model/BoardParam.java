@@ -4,7 +4,7 @@ public class BoardParam {
 
    private int member_no;
    private String sort; //정렬
-   String search; //검색 타입 
+   private String search; //검색 타입 
    public String getSearch() {
       return search;
    }
@@ -56,7 +56,6 @@ public class BoardParam {
       calcStartEnd(getNowPage(), getCntPerPage());
    }
 
-   //문제
    public void calcLastPage(int total, int cntPerPage) {
       setLastPage((int) Math.ceil((double) total / (double) cntPerPage));
    }

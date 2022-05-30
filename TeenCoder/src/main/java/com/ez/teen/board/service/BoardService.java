@@ -1,14 +1,13 @@
 package com.ez.teen.board.service;
 
 import java.util.List;
-
-import com.ez.teen.board.model.BoardModel;
-import com.ez.teen.board.model.BoardParam;
-
-
 import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.ez.teen.board.model.BoardModel;
+import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentParam;
 
  
 public interface BoardService {
@@ -20,7 +19,7 @@ public interface BoardService {
 	public int  getBoardCount(BoardParam boardParam);
 
 	//전체 댓글 수
-	public int  getCommentCount(int member_no);
+	public int  getCommentCount(CommentParam commentParam);
 
 	
 	//게시글 리스트 (BGROUP 구별 없이)
