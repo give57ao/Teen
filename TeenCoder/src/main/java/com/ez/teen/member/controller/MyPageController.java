@@ -39,7 +39,7 @@ public class MyPageController {
 		int member_no = (Integer)session.getAttribute("member_no");
 		memberModel.setMember_no(member_no);
 		boardParam.setMember_no(member_no);
-		
+		commentParam.setMember_no(member_no);
 		List<MemberModel> myPageList = memberService.myPageList(memberModel);
 		model.addAttribute("list", myPageList);
 
