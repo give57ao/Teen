@@ -43,6 +43,7 @@ public class BoardController {
 	@GetMapping(value = "board/boardWrite")
 	public String insertBoardForm() {
 		
+
 		return "board/boardWrite";
 	}
 	
@@ -51,10 +52,10 @@ public class BoardController {
 	  
 	@PostMapping(value = "board/boardWrite")
 	public String insertBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest) throws Exception{
-	
-	session.setAttribute("member_no", 21);
+//	HttpSession sesssion = request.getSession();
+	//	session.setAttribute("member_no", 21);
 	int member_no = (Integer)session.getAttribute("member_no");
-	
+	System.out.println(member_no);
 	boardModel.setMember_no(member_no);
 	
 	boardService.insertBoard(boardModel, mpRequest);

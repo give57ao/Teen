@@ -47,7 +47,7 @@ public class MemberController {
     	}
     	
     	if(member != null) { // 로그인 성공
-    		session.setAttribute("member", member);
+    		session.setAttribute("member_no", member.getMember_no());
     		rttr.addFlashAttribute("msg", "success");
     		return "redirect:/";
     	} else { // 로그인 실패
