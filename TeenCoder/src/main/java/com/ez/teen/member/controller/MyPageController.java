@@ -22,7 +22,7 @@ import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.service.MemberService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/member")
 public class MyPageController {
 	@Autowired
 	private MemberService memberService;
@@ -32,7 +32,7 @@ public class MyPageController {
 
 	private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
 	
-	@GetMapping("member")
+	@GetMapping("/")
 	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request) throws Exception {
 		
 		HttpSession session = request.getSession();
@@ -53,8 +53,8 @@ public class MyPageController {
 	}
 
 	
-	@GetMapping("member/boardList")
-	public String myBoardListRecent(Model model, BoardParam boardParam,
+	@GetMapping("/boardList")
+	public String myBoardList(Model model, BoardParam boardParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort,
