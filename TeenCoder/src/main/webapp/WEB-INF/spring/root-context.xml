@@ -44,9 +44,7 @@
 		base-package="com.ez.teen.member.model"></context:component-scan>
 	<context:component-scan
 		base-package="com.ez.teen.member.service"></context:component-scan>
-	
-	<mybatis-spring:scan base-package="com.ez.teen.member.mapper"/>
-	
+		
 	<!-- <mybatis-spring:scan base-package="com.ez.board.mapper"/> <mybatis-spring:scan 
 		base-package="com.ez.login.mapper"/> <mybatis-spring:scan base-package="com.ez.cboard.mapper"/> 
 		<context:component-scan base-package="com.ez.board.model"></context:component-scan> 

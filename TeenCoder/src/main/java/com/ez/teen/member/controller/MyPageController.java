@@ -62,7 +62,6 @@ public class MyPageController {
 			@RequestParam(value = "keyword", required = false) String keyword,
 			HttpSession session) {
 		
-		//session.setAttribute("member_no", 1);
 		int member_no = (Integer)session.getAttribute("member_no");
 		boardParam.setMember_no(member_no);
 		
@@ -85,7 +84,7 @@ public class MyPageController {
 		model.addAttribute("paging", boardParam);
 		model.addAttribute("sort", sort);
 		model.addAttribute("board", boardService.boardList(boardParam));
-		
+		System.out.println(boardService.boardList(boardParam)); //왜 null이지?
 		
 		System.out.println("total : " + total);
         System.out.println("startPage :" + boardParam.getStartPage());
