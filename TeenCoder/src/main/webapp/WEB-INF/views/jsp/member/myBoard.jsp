@@ -62,7 +62,7 @@
 				<div id="board_list_row">
 					<!-- Row1 -->
 					<c:forEach items="${board}" var="board">
-	
+			
 						<div class="row">
 							<div class="row_info">
 								<ul class="row_top tag_category">
@@ -83,18 +83,16 @@
 							</div>
 							<div class="row_title">
 								<h3>
-								${board.board_no }
 									<a href="/teen/board/detail?board_no=${board.board_no}"> 
 									<span 	class="tag_hit">[추천]</span> ${board.board_title} 
 										<!-- <img src="../resources/images/icon/icon_image.svg" class="i_image">  -->
 										<c:if test="${board.board_file_check eq 'Y'}">
 											<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
 										</c:if>
-	
-	
 									</a>
 								</h3>
-								<input type="button" value="삭제" class="btn_com btn_del_list">
+								<p id="board_no" style= display:none;>${board.board_no}</p>
+								<input type="button" value="삭제" class="btn_com btn_del_list" onClick = "deleteBoard()" >
 							</div>
 						</div>
 						<hr>

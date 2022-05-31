@@ -24,7 +24,15 @@
         <div id="contents_detail">
             <!-- Form -->
             <form id="join_form" class="find_form">
-                <h2>해당 회원의 아이디는 <b><c:out value="${findId.member_id}"/></b> 입니다.</h2>
+                    <c:choose>
+            		<c:when test="${findId.member_id eq null }"> 
+				    <h2>해당 회원의 아이디를 찾을 수 없습니다.</h2>
+					</c:when>
+					<c:otherwise>
+					<h2>해당 회원의 아이디는 <b><c:out value="${findId.member_id}"/></b> 입니다.</h2>
+					</c:otherwise>
+					</c:choose>
+            	  
                 <div id="btn_wrap">
                     <input type="button" value="로그인 화면으로 이동" class="btn_com btn_main" onClick="goLogin()">
                 </div>
