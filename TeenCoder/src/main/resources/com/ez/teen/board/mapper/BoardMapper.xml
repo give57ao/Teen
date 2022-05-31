@@ -243,10 +243,6 @@ ORDER BY board_comment_count DESC
 			OR C.COMMENT_CONTENT LIKE '%'||#{keyword}||'%'
 			</if>
 			
-			<if test='sort == "recent"'>
-			ORDER BY B.BOARD_DATE DESC
-			</if>
-			
 			
 			<if test='sort == "recommend"'>
 			ORDER BY C.BCOMMENT_LIKE_COUNT DESC
