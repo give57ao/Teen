@@ -44,10 +44,5 @@ public class LoginServiceImpl implements LoginService {
 	}
 	
 	
-	@Override
-	public MemberModel myPageModify(MemberModel memberModel) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -142,30 +142,30 @@ public class MyPageController {
 	
 	
 	// 회원정보 수정 폼
-		@GetMapping(value = "/mypageModifyForm")
-		public String mypageModifyForm(MemberModel memberModel, Model model,HttpServletRequest request) throws Exception {
-			
-			HttpSession session = request.getSession();
-			int member_no = (Integer)session.getAttribute("member_no");
-			memberModel.setMember_no(member_no);
-			
-			List<MemberModel> member = memberService.myPageList(memberModel);
-			model.addAttribute("list", member);
-			
-			return "member/modifyForm";
-		}
-		
-		// 회원정보 수정
-		@PostMapping(value = "/mypageModifyForm")
-		public String mypageModify(MemberModel memberModel, HttpSession session) throws Exception {
-			
-			int member_no = (Integer)session.getAttribute("member_no");
-			memberModel.setMember_no(member_no);
-			
-			memberService.mypageModify(memberModel);
-			
-			return "redirect:/member/";
-		}
+	 @GetMapping(value = "/mypageModifyForm")
+     public String mypageModifyForm(MemberModel memberModel, Model model,HttpServletRequest request) throws Exception {
+
+         HttpSession session = request.getSession();
+         int member_no = (Integer)session.getAttribute("member_no");
+         memberModel.setMember_no(member_no);
+
+         List<MemberModel> member = memberService.myPageList(memberModel);
+         model.addAttribute("list", member);
+
+         return "member/modifyForm";
+     }
+
+     // 회원정보 수정
+     @PostMapping(value = "/mypageModifyForm")
+     public String mypageModify(MemberModel memberModel, HttpSession session) throws Exception {
+
+         int member_no = (Integer)session.getAttribute("member_no");
+         memberModel.setMember_no(member_no);
+
+         memberService.mypageModify(memberModel);
+
+         return "redirect:/member";
+     }
 		
 
 

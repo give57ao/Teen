@@ -164,26 +164,6 @@ public class MemberController {
 		
 		return "redirect:/"; 
 	}
-	
-	// 회원정보 수정 폼
-	@GetMapping(value = "mypageModifyForm")
-	public String mypageModifyForm() throws Exception {
-		
-		return "/member/modifyForm";
-		
-	}
-	
-	// 회원정보 수정
-	@PostMapping(value = "mypageModifyForm")
-	public String mypageModify(MemberModel memberModel) throws Exception {
-		
-		
-		memberService.mypageModify(memberModel);
-		
-		return "redirect:/member/myPage";
-		
-		
-	}
 
 
 }
