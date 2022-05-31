@@ -83,7 +83,8 @@
 							</div>
 							<div class="row_title">
 								<h3>
-									<a href="/teen/resources/jsp/board/boardDetail.jsp"> 
+								${board.board_no }
+									<a href="/teen/board/detail?board_no=${board.board_no}"> 
 									<span 	class="tag_hit">[추천]</span> ${board.board_title} 
 										<!-- <img src="../resources/images/icon/icon_image.svg" class="i_image">  -->
 										<c:if test="${board.board_file_check eq 'Y'}">
