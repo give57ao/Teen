@@ -27,8 +27,8 @@
                 <input id="member_id" type="text" name="member_id" placeholder="아이디">
                 <input id="member_pw" type="password" name="member_pw" placeholder="비밀번호">
                 <ul id="login_menu" class="side_menu">
-                    <li><a href="/teen/member/findIdForm">아이디 찾기</a></li>
-                    <li><a href="/teen/member/findPwForm">비밀번호 찾기</a></li>
+                    <li><a href="/teen/member/findId">아이디 찾기</a></li>
+                    <li><a href="/teen/member/findPw">비밀번호 찾기</a></li>
                     <li><a href="/teen/member/join">회원가입</a></li>
                 </ul>
                 <div id="btn_wrap">
