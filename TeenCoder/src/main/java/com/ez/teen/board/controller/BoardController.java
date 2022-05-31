@@ -22,6 +22,7 @@ import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
+import com.ez.teen.member.model.MemberModel;
 
 // 동혁 - 브랜치 만들고 확인작업
 @Controller

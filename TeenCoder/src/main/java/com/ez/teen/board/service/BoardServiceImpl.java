@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.board.mapper.BoardMapper;
 import com.ez.teen.board.model.BoardModel;
+import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.common.file.FileUtils;
 
@@ -77,6 +78,24 @@ public class BoardServiceImpl  implements BoardService{
 		
 		boardMapper.insertFile(map);
 		
+	}
+
+	@Override
+	public int getBoardCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getCommentCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<BoardModel> boardList(BoardParam boardParam) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

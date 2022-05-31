@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -207,40 +206,5 @@ ORDER BY board_comment_count DESC
 	
 	
 
-
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ez.teen.board.mapper.BoardMapper">
-
-	<!-- 전체 이용자 수 -->
-	<select id="getUserCount" resultType="int">
-		SELECT COUNT(*) AS allMemberCount FROM MEMBER
-	</select>
 	
-	<!-- 전체 게시글 수 -->
-	<select id="getBoardCount" resultType="int">
-		SELECT COUNT(*) AS allBoardCount FROM BOARD
-	</select>
-	
-	<!-- 전체 댓글 수 -->
-	<select id="getCommentCount" resultType="int">
-		SELECT COUNT(*) AS allCommentCount FROM BCOMMENT
-	</select>
-	
-	<select id="selectBoardDetail" parameterType ="int" resultType="com.ez.teen.board.model.BoardModel">
-		SELECT BOARD_CONTENT
-		FROM BOARD
-		WHERE BOARD_NO = #{boardNum}
-	</select>
-	
-	
-	
-	
-	
-
-
->>>>>>> refs/remotes/origin/dong_hyuk
 </mapper>
