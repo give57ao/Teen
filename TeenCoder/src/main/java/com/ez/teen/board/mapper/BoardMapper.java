@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 
 @Mapper
@@ -24,6 +25,7 @@ public interface BoardMapper {
 
 	// 게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
+	public List<CommentModel> commentList(CommentParam commentParam);
 	public BoardModel selectBoardDetail(int boardNum)throws Exception;
 	
 	public void updateBoard(BoardModel boardModel);

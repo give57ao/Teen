@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.ez.teen.board.mapper.BoardMapper;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.common.file.FileUtils;
 
@@ -80,6 +81,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardModel> boardList(BoardParam boardParam) {
 		return boardMapper.boardList(boardParam);
+	}
+
+	@Override
+	public List<CommentModel> commentList(CommentParam commentParam) {
+		return boardMapper.commentList(commentParam);
 	}
 
 

@@ -129,10 +129,10 @@ public class MyPageController {
 		commentParam.setMember_no(member_no);
 		model.addAttribute("paging", commentParam);
 		model.addAttribute("sort", sort);
-//		model.addAttribute("comment", boardService.commentList(commentParam));
+		model.addAttribute("comment", boardService.commentList(commentParam));
 		
 		
-		System.out.println("total : " + total);
+		System.out.println(member_no);
         
 		return "member/myComment";
 		

@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 
  
@@ -28,6 +29,8 @@ public interface BoardService {
 	
 	//게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
+	
+	public List<CommentModel> commentList(CommentParam commentParam);
 	
 	// 게시글 수정
 	public void updateBoard(BoardModel boardModel);
