@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+/* Admin Board List */
+#admin_board_list {
+    margin-bottom: 50px;
+}
+
+#admin_board_list table {
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+}
+
+#admin_board_list table thead {
+    height: 30px;
+    background: #eee;
+    border-top: 1px solid #ccc;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+#admin_board_list table tr {
+    height: 30px;
+    border-bottom: 1px solid #ccc;
+    vertical-align: middle;
+}
+
+#admin_board_list table td a {
+    color: #5573E8;
+    text-decoration: underline;
+}
+
+#admin_board_list table td a:hover {
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+/* Admin Board List : Notice만 해당 */
+.admin_board_list_title .side_menu li:nth-child(2)::after {
+    content: "";
+    margin-left: 0;
+}
+
+.admin_board_list_title .side_menu .btn_notice {
+    margin-left: 15px;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Admin Form */
+#admin_form {
+    margin: 50px auto 30px;
+    text-align: center;
+}
+
+#admin_form .admin_board_form {
+    width: 800px !important;
+}
+
+#admin_form #board_form table tr:nth-child(2) {
+	margin-bottom: 110px;
+}
+
+#admin_form #board_form table tr:nth-child(2) th {
+	margin-top: -10px;
+	vertical-align: top;
+}
+
+#board_form table tr:nth-child(3) {
+	margin-bottom: 0;
+}
