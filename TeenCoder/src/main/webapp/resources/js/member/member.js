@@ -23,3 +23,35 @@ function loginProcess() {
 function logout() {
 	alert("로그아웃을 하시겠습니까?");
 }
+
+// Id 찾기
+function idCheck() {
+	var name = document.getElementById("member_name").value;
+	var email = document.getElementById("member_email").value;
+
+	if(name == "") {
+		alert("이름을 입력해주세요.");
+		return false;
+	}
+	
+	if(email == "") {
+		alert("이메일을 입력해주세요.");
+		return false;
+	}
+}
+
+// Pw 찾기
+function pwCheck() {
+	var id = document.getElementById("member_id").value;
+	var email = document.getElementById("member_email").value;
+
+	if(id == "") {
+		alert("아이디를 입력해주세요.");
+		return false;
+	}
+	
+	if(email == "") {
+		alert("이메일을 입력해주세요.");
+		return false;
+	}
+}

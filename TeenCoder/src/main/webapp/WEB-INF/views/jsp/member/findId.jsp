@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 아이디 찾기</title>
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="/tenn/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
+<script src="/teen/resources/js/member/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
-	<p>회원ID:<c:out value="${findId.member_id }" default="null."/></p>
 
 	<!-- Contents -->
 	<div id="contents">
@@ -23,7 +24,7 @@
         <div id="contents_detail">
             <!-- Form -->
             <form id="join_form" class="find_form">
-                <h2>해당 회원의 아이디는 <b><c:out value="${findId.member_id}" default="null"/></b> 입니다.</h2>
+                <h2>해당 회원의 아이디는 <b><c:out value="${findId.member_id}"/></b> 입니다.</h2>
                 <div id="btn_wrap">
                     <input type="button" value="로그인 화면으로 이동" class="btn_com btn_main" onClick="goLogin()">
                 </div>
