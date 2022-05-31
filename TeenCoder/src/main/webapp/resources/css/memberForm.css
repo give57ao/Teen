@@ -57,7 +57,7 @@
     width: 310px;
 }
 
-#join_form table .check .btn_check {
+#join_form table .check input[type="submit"] {
     width: 100px;
 }
 

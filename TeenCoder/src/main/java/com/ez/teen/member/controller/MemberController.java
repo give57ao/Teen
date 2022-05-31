@@ -29,7 +29,6 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
-	
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 	
@@ -47,14 +46,14 @@ public class MemberController {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		// session.setAttribute("member_no", 1);
-        // int member_no = (Integer)session.getAttribute("member_no");
+		session.setAttribute("member_no", 1);
+        int member_no = (Integer)session.getAttribute("member_no");
 		
     	if(member != null) {
             session.setAttribute("member_no", member.getMember_no());
     		mv.setViewName("redirect:/");
     	} else {
-    		// session.setAttribute("member_no", null);
+    		session.setAttribute("member_no", null);
     		out.println("<script type='text/javascript'>alert('로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.')</script>");
     		out.flush();
 	    	mv.setViewName("member/loginForm");
@@ -131,6 +130,13 @@ public class MemberController {
 		}
 	}
 	
+	// 마이페이지 가기
+	@RequestMapping("/myPage")
+	public String myPage() throws Exception{
+		
+		return "member/myPage";
+	}
+	
 	// 회원탈퇴 홈페이지
 	@GetMapping(value = "/delete")
 	public String deleteMemberForm() throws Exception {
@@ -159,6 +165,25 @@ public class MemberController {
 		return "redirect:/"; 
 	}
 	
+	// 회원정보 수정 폼
+	@GetMapping(value = "mypageModifyForm")
+	public String mypageModifyForm() throws Exception {
+		
+		return "/member/modifyForm";
+		
+	}
+	
+	// 회원정보 수정
+	@PostMapping(value = "mypageModifyForm")
+	public String mypageModify(MemberModel memberModel) throws Exception {
+		
+		
+		memberService.mypageModify(memberModel);
+		
+		return "redirect:/member/myPage";
+		
+		
+	}
 
 
 }

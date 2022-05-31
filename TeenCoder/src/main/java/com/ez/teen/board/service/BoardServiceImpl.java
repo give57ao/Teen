@@ -11,13 +11,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.board.mapper.BoardMapper;
 import com.ez.teen.board.model.BoardModel;
-import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.common.file.FileUtils;
 
 
 @Service
-public class BoardServiceImpl implements BoardService {
+public class BoardServiceImpl  implements BoardService{
 
 	@Autowired
 	BoardMapper boardMapper;
@@ -32,23 +31,21 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.getUserCount();
 	}
 
-	// 전체 게시글 수
+	//전체 게시글 수
 	@Override
 	public int getBoardCount(BoardParam boardParam) {
 		return boardMapper.getBoardCount(boardParam);
 	}
 
-	// 전체 댓글 수
+	//전체 댓글 수
 	@Override
 	public int getCommentCount(CommentParam commentParam) {
 		return boardMapper.getCommentCount(commentParam);
 	}
 
-	// 게시글 리스트 (BGROUP 구별 없이)
 	@Override
-	public List<BoardModel> boardList(BoardParam boardParam) {
-
-		return boardMapper.boardList(boardParam);
+	public BoardModel selectBoardDetail(BoardModel boardModel, int boardNum) throws Exception {
+		return boardMapper.selectBoardDetail(boardNum);
 	}
 	
 	// 게시글 수정

@@ -74,6 +74,20 @@ public class BoardParam {
       
       }
    }
+	public void calcStartEndPage(int nowPage, int cntPage) { // (1,10)
+		setEndPage(((int) Math.ceil((double) nowPage / (double) cntPage)) * cntPage); // 0
+
+		// Math.ceil() 함수는 주어진 숫자보다 크거나 같은 숫자 중 가장 작은 숫자를 integer 로 반환
+		if (getLastPage() < getEndPage()) { // 0 < 0
+			setEndPage(getLastPage());
+		}
+		// 아닐 시
+		setStartPage(getEndPage() - cntPage + 1); // 0-5+1 = -4
+		if (getStartPage() < 1) {
+			setStartPage(1);
+
+		}
+	}
 
    public void calcStartEnd(int nowPage, int cntPerPage) {
       setEnd(nowPage * cntPerPage);

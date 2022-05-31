@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.ez.teen.member.controller;
 
 import org.slf4j.Logger;
@@ -74,3 +75,10 @@ public class MemberJoinController {
 
 
 }
+=======
+package com.ez.teen.member.controller;
+
+public class MemberJoinController {
+
+}
+>>>>>>> refs/remotes/origin/dong_hyuk

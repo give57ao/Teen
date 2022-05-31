@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +36,7 @@
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2><a href="/teen/resources/jsp/board/mainBoard.jsp">< 리스트로 이동</a></h2>
+                        <h2><a href="../jsp/board/mainBoard.jsp">< 리스트로 이동</a></h2>
                     </div>
                 	<!-- List Row -->
                     <div id="board_list_row">
@@ -61,7 +61,7 @@
                             </div>
                             <div class="row_title">
                                 <h3>
-                                    <a href="/teen/resources/jsp/board/boardDetail.jsp">
+                                    <a href="../jsp/board/boardDetail.jsp">
                                         <span class="tag_hit">[추천]</span>
                                         HTML / CSS 학습 중 궁금한 점이 있습니다.
                                         <img src="/teen/resources/images/icon/icon_image.svg" class="i_image">
@@ -71,10 +71,7 @@
                             </div>
                             <div class="row_contents">
                             	<p>
-	                            	Text Text Text Text Text Text Text Text Text Text
-	                            	Text Text Text Text Text Text Text Text Text Text
-	                            	Text Text Text Text Text Text Text Text Text Text
-	                            	Text Text Text Text Text Text Text Text Text Text
+	                            	"${content.board_content }"
                             	</p>
                             	<img src="/teen/resources/images/bg/bg_sample.jpg">
                             	<span><a href="#">첨부파일 다운로드</a></span>
@@ -202,7 +199,7 @@
                 </div>
                 <!-- Member Info -->
                 <div id="member_info">
-                    <a href="/teen/resources/jsp/board/boardWrite.jsp" class="btn_com btn_main">게시글 작성</a>
+                    <a href="../jsp/board/boardWrite.jsp" class="btn_com btn_main">게시글 작성</a>
                     <div class="mycard"></div>
                 </div>
             </div>

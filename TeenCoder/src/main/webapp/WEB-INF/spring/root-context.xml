@@ -40,10 +40,22 @@
 	<mybatis-spring:scan
 		base-package="com.ez.teen.member.mapper" />
 
-	<mybatis-spring:scan
-		base-package="com.ez.teen.**.mapper" />
-
 	<context:component-scan
-		base-package="com.ez.teen.**" /> 
-
+		base-package="com.ez.teen.member.model"></context:component-scan>
+	<context:component-scan
+		base-package="com.ez.teen.member.service"></context:component-scan>
+	
+	<mybatis-spring:scan base-package="com.ez.teen.member.mapper"/>
+	
+	<!-- <mybatis-spring:scan base-package="com.ez.board.mapper"/> <mybatis-spring:scan 
+		base-package="com.ez.login.mapper"/> <mybatis-spring:scan base-package="com.ez.cboard.mapper"/> 
+		<context:component-scan base-package="com.ez.board.model"></context:component-scan> 
+		<context:component-scan base-package="com.ez.board.service"></context:component-scan> 
+		<context:component-scan base-package="com.ez.cboard.model"></context:component-scan> 
+		<context:component-scan base-package="com.ez.cboard.service"></context:component-scan> 
+		<context:component-scan base-package="com.ez.login.model"></context:component-scan> 
+		<context:component-scan base-package="com.ez.login.service"></context:component-scan> 
+		<context:component-scan base-package="com.ez.common.aop"></context:component-scan> 
+		<context:component-scan base-package="com.ez.common.file"></context:component-scan> 
+		<aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
 </beans>

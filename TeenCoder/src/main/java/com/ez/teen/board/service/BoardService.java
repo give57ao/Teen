@@ -21,6 +21,13 @@ public interface BoardService {
 	//전체 댓글 수
 	public int  getCommentCount(CommentParam commentParam);
 
+	public int  getBoardCount();
+	
+	//전체 댓글 수
+	public int  getCommentCount();
+	
+	//게시글 컨텐츠
+	public BoardModel selectBoardDetail(BoardModel boardModel, int boardNum) throws Exception;
 	
 	//게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);

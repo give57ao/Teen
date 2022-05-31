@@ -13,7 +13,7 @@
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
-	<p>회원ID:<c:out value="${findPw.MEMBER_PW }" default="null."/></p>
+	<p>회원 PW:<c:out value="${findPw.member_pw }" default="null."/></p>
 	<!-- Contents -->
 	<%-- <div id="contents">
         <div id="contents_title">
