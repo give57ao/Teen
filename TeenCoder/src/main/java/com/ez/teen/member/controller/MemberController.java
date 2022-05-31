@@ -165,33 +165,6 @@ public class MemberController {
 		return "member/myPage";
 	}
 	
-	// 회원탈퇴 홈페이지
-	@GetMapping(value = "/delete")
-	public String deleteMemberForm() throws Exception {
-
-		return "/member/deleteForm";
-	}
-
-	// 회원 탈퇴 구현
-	@PostMapping(value = "/delete")
-	public String deleteMember(MemberModel memberModel, HttpSession session, RedirectAttributes rttr) throws Exception{
-	
-		MemberModel member = (MemberModel)session.getAttribute("member");
-		
-		String oldPass = member.getMember_pw();
-		String newPass = memberModel.getMember_pw();
-		
-		if(!(oldPass.equals(newPass))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:/member/myPage";
-		}
-		
-		memberService.deleteMember(memberModel);
-		
-		session.invalidate();
-		
-		return "redirect:/"; 
-	}
 
 
 }

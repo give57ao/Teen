@@ -25,12 +25,13 @@ public interface BoardMapper {
 
 	// 게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
+	
 	public List<CommentModel> commentList(CommentParam commentParam);
+	
 	public BoardModel selectBoardDetail(int boardNum)throws Exception;
 	
 	public void updateBoard(BoardModel boardModel);
 
-	//05/26 병합
 
 	
 

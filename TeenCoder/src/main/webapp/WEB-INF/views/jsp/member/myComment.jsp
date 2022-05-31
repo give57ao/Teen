@@ -78,7 +78,7 @@
 									<a href="/teen/resources/jsp/board/boardDetail.jsp"> 
 									<span 	class="tag_hit">[추천]</span> ${comment.bcomment_content} 
 										<!-- <img src="../resources/images/icon/icon_image.svg" class="i_image">  -->
-										<c:if test="${board.board_file_check eq 'Y'}">
+										<c:if test="${comment.board_file_check eq 'Y'}">
 											<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
 										</c:if>
 	

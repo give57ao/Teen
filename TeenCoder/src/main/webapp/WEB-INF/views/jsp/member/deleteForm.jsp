@@ -30,13 +30,10 @@
 	                            <input type="password" name="member_pw" placeholder="비밀번호">
 	                        </td>
 	                    </tr>
-	                    <div style="display:none;">
-	                   		<input type="text" name="member_no" value="${member.member_no }">
-	                	</div>
                     </tbody>
                 </table>
                 <div id="btn_wrap">
-                    <input type="button" value="취소" class="btn_com btn_main" onClick="location.href='myPage.jsp'">
+                    <input type="button" value="취소" class="btn_com btn_main" onClick="location.href='/teen/member/'">
                     <input type="submit" value="탈퇴" class="btn_com btn_main">
                 </div>
             </form>

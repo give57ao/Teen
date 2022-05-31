@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentParam;
@@ -132,7 +133,7 @@ public class MyPageController {
 		model.addAttribute("comment", boardService.commentList(commentParam));
 		
 		
-		System.out.println(member_no);
+		System.out.println("total : " + total);
         
 		return "member/myComment";
 		
@@ -166,8 +167,32 @@ public class MyPageController {
          return "redirect:/member";
      }
 		
+    @GetMapping("/delete")
+ 	public String deleteMemberForm() throws Exception{
+    	
+ 		return "member/deleteForm";
+ 	}
 
-
-	
+    @PostMapping("/delete")
+	public String deleteMember(MemberModel memberModel, RedirectAttributes rttr,HttpServletRequest request) throws Exception{
+    	
+    	HttpSession session = request.getSession();
+		int member_no = (Integer)session.getAttribute("member_no");
+		memberModel.setMember_no(member_no);
+    	
+		MemberModel model = (MemberModel) session.getAttribute("member");
+		
+		String sessionPass = model.getMember_pw();
+		
+		String modelPass = memberModel.getMember_pw();
+		
+		if(!(sessionPass.equals(modelPass))) {
+			rttr.addFlashAttribute("msg", false);
+			return "member/deleteForm";
+		}
+		memberService.deleteMember(memberModel);
+		session.invalidate();
+		return "redirect:/";
+	}
 }
 

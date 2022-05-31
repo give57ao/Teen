@@ -59,8 +59,7 @@ public class MemberServiceImpl implements MemberService{
 	public void mypageModify(MemberModel memberModel){
 		
 		memberMapper.mypageModify(memberModel);
-	}	
-
+	}
 
 
 }
