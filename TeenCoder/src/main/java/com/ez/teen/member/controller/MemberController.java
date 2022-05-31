@@ -85,6 +85,7 @@ public class MemberController {
 			return mv;
 		} else {
 			out.println("<script type='text/javascript'>alert('입력정보 일치x')</script>");
+			out.flush();
 			mv.setViewName("member/findIdForm");
 			return mv;
 		}
