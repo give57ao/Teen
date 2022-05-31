@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/myInfo.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/myPage.css">
 </head>
 <body>
 	<!-- Header -->
