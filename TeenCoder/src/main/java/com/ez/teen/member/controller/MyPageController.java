@@ -85,7 +85,6 @@ public class MyPageController {
 		model.addAttribute("paging", boardParam);
 		model.addAttribute("sort", sort);
 		model.addAttribute("board", boardService.boardList(boardParam));
-		System.out.println(boardService.boardList(boardParam)); //왜 null이지?
 		
 		System.out.println("total : " + total);
         System.out.println("startPage :" + boardParam.getStartPage());

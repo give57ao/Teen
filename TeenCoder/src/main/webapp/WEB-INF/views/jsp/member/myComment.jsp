@@ -64,9 +64,12 @@
 							<div class="row_info">
 								<div class="row_top member">
 									<h4>
-										<img src="/teen/resources/images/icon/icon_badge.png"
-											class="i_badge"> <span class="rank">[Expert]</span>${comment.member_nick}
-									</h4>
+											${comment.board_title}
+											<c:if test="${comment.board_file_check eq 'Y'}">
+												<img src="/teen/resources/images/icon/icon_file.svg"
+													class="i_file">
+											</c:if>
+										</h4>
 								</div>
 								<span class="row_top date"><fmt:formatDate value="${comment.bcomment_date }" pattern="yyyy.MM.dd" /></span>
 								<ul class="row_top number">
@@ -85,7 +88,8 @@
 	
 									</a>
 								</h3>
-								<input type="button" value="삭제" class="btn_com btn_del_list">
+								<input type="button" value="삭제" class="btn_com btn_del_list"> ${comment.member_nick}
+								
 							</div>
 						</div>
 						<hr>

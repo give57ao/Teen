@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -121,4 +122,40 @@ public class BoardController {
 		mv.setViewName("board/boardDetail");
 		return mv;
 	}
+	
+	//게시판
+	@GetMapping("/board")
+	public String goBoard(Model model, BoardParam boardParam, HttpSession session,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "keyword", required = false) String keyword) {
+		
+			int total = boardService.getBoardCount(boardParam);
+			
+			if (nowPage == null && cntPerPage == null) {
+				nowPage = "1";
+				cntPerPage = "10";
+			} else if (nowPage == null) {
+				nowPage = "1";
+			} else if (cntPerPage == null) {
+				cntPerPage = "10";
+			} 
+			boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			if(total == 0) {
+				boardParam.setEndPage(1);
+			}
+			
+			model.addAttribute("paging", boardParam);
+			model.addAttribute("sort", sort);
+			model.addAttribute("board", boardService.boardList(boardParam));
+			
+			
+			
+			return "board/mainBoard";
+	}
+	
+	
+	
 }
