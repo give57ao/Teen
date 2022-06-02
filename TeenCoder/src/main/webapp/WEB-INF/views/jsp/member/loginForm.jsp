@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
-<script src="/teen/resources/js/member.js"></script>
+<script src="/teen/resources/js/member/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -27,8 +28,8 @@
                 <input id="member_id" type="text" name="member_id" placeholder="아이디">
                 <input id="member_pw" type="password" name="member_pw" placeholder="비밀번호">
                 <ul id="login_menu" class="side_menu">
-                    <li><a href="/teen/member/findIdForm">아이디 찾기</a></li>
-                    <li><a href="/teen/member/findPwForm">비밀번호 찾기</a></li>
+                    <li><a href="/teen/member/findId">아이디 찾기</a></li>
+                    <li><a href="/teen/member/findPw">비밀번호 찾기</a></li>
                     <li><a href="/teen/member/join">회원가입</a></li>
                 </ul>
                 <div id="btn_wrap">
@@ -37,10 +38,8 @@
             </form>
         </div>
     </div>
-    <!-- asd ll-->
+    
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
-	
-	<script src="/teen/resources/js/member/member.js"></script>
 </body>
 </html>

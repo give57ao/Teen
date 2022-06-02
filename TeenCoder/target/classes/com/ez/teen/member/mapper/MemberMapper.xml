@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	<!-- 마이페이지 리스트 -->
 	<select id="myPageList" resultType="com.ez.teen.member.model.MemberModel" parameterType="com.ez.teen.member.model.MemberModel">
 		SELECT MEMBER_NAME, MEMBER_ID, MEMBER_EMAIL,
-		MEMBER_DATE, MEMBER_NICK, MEMBER_POINT FROM MEMBER
+		MEMBER_DATE, MEMBER_NICK, MEMBER_POINT,MEMBER_PW FROM MEMBER
 		WHERE MEMBER_NO = #{member_no}
 	</select>
 	
@@ -72,7 +72,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	</update>
 	 
 	<!-- 회원 탈퇴 -->
-	 <delete id="deleteMember">
+	 <delete id="deleteMember" parameterType="com.ez.teen.member.model.MemberModel">
 	 DELETE FROM MEMBER 
 	 WHERE MEMBER_NO = #{member_no} 
 	 AND MEMBER_PW = #{member_pw}
@@ -91,6 +91,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		 SELECT COUNT(*) FROM MEMBER WHERE MEMBER_NICK = #{member_nick}
 		 ]]>
 	 </select>
-	 
-
+	  
+	 <select id="passChk" resultType="int" parameterType="com.ez.teen.member.model.MemberModel">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_NO = #{member_no}
+		AND MEMBER_PW = #{member_pw}
+	 </select>
 </mapper>

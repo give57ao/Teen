@@ -61,6 +61,14 @@ public class MemberServiceImpl implements MemberService{
 		memberMapper.mypageModify(memberModel);
 	}
 
+	
+	 @Override public int passChk(MemberModel memberModel){
+	 
+		 int result = memberMapper.passChk(memberModel); 
+	     return result; 
+	 }
+	 
+
 
 }
 

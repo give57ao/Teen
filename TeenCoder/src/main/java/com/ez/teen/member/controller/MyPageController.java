@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ez.teen.board.model.BoardParam;
@@ -27,47 +28,46 @@ import com.ez.teen.member.service.MemberService;
 public class MyPageController {
 	@Autowired
 	private MemberService memberService;
-  
+
 	@Autowired
 	private BoardService boardService;
 
 	private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
-	
+
 	@GetMapping("/")
-	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request, BoardParam boardParam, CommentParam commentParam) throws Exception {
-		
+	public String myPageList(MemberModel memberModel, Model model, HttpServletRequest request, BoardParam boardParam,
+			CommentParam commentParam) throws Exception {
+
 		HttpSession session = request.getSession();
-		int member_no = (Integer)session.getAttribute("member_no");
+		int member_no = (Integer) session.getAttribute("member_no");
 		memberModel.setMember_no(member_no);
 		boardParam.setMember_no(member_no);
 		commentParam.setMember_no(member_no);
 		List<MemberModel> myPageList = memberService.myPageList(memberModel);
 		model.addAttribute("list", myPageList);
 
-		model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam)); 
+		model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam));
 		model.addAttribute("allCommentCount", boardService.getCommentCount(commentParam));
 
 		System.out.println(member_no);
-		
+
 		return "member/myPage";
 
 	}
 
-	
 	@GetMapping("/boardList")
 	public String myBoardList(Model model, BoardParam boardParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "keyword", required = false) String keyword,
-			HttpSession session) {
-		
-		int member_no = (Integer)session.getAttribute("member_no");
+			@RequestParam(value = "keyword", required = false) String keyword, HttpSession session) {
+
+		int member_no = (Integer) session.getAttribute("member_no");
 		boardParam.setMember_no(member_no);
-		
+
 		int total = boardService.getBoardCount(boardParam);
-		
+
 		System.out.println("total :" + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -76,43 +76,40 @@ public class MyPageController {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
 			cntPerPage = "10";
-		} 
+		}
 		boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		if(total == 0) {
+		if (total == 0) {
 			boardParam.setEndPage(1);
 		}
 		boardParam.setMember_no(member_no);
 		model.addAttribute("paging", boardParam);
 		model.addAttribute("sort", sort);
 		model.addAttribute("board", boardService.boardList(boardParam));
-		
+
 		System.out.println("total : " + total);
-        System.out.println("startPage :" + boardParam.getStartPage());
-        System.out.println("endPage :" + boardParam.getEndPage());
-        System.out.println("cntPerPage :" + boardParam.getCntPerPage());
-        System.out.println("nowPage :" + boardParam.getNowPage());
-        System.out.println("lastPage :" + boardParam.getLastPage());
-        
+		System.out.println("startPage :" + boardParam.getStartPage());
+		System.out.println("endPage :" + boardParam.getEndPage());
+		System.out.println("cntPerPage :" + boardParam.getCntPerPage());
+		System.out.println("nowPage :" + boardParam.getNowPage());
+		System.out.println("lastPage :" + boardParam.getLastPage());
+
 		return "member/myBoard";
-		
-		
+
 	}
-	
+
 	@GetMapping("/commentList")
 	public String myCommentList(Model model, CommentParam commentParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "keyword", required = false) String keyword,
-			HttpSession session) {
-		
-		
-		int member_no = (Integer)session.getAttribute("member_no");
+			@RequestParam(value = "keyword", required = false) String keyword, HttpSession session) {
+
+		int member_no = (Integer) session.getAttribute("member_no");
 		commentParam.setMember_no(member_no);
-		
+
 		int total = boardService.getCommentCount(commentParam);
-		
+
 		System.out.println("total :" + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -121,79 +118,88 @@ public class MyPageController {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
 			cntPerPage = "10";
-		} 
+		}
 		commentParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		if(total == 0) {
+		if (total == 0) {
 			commentParam.setEndPage(1);
 		}
 		commentParam.setMember_no(member_no);
 		model.addAttribute("paging", commentParam);
 		model.addAttribute("sort", sort);
 		model.addAttribute("comment", boardService.commentList(commentParam));
-		
-		
+
 		System.out.println("total : " + total);
-        
+
 		return "member/myComment";
-		
-		
+
 	}
-	
-	
-	// 회원정보 수정 폼
-	 @GetMapping(value = "/mypageModifyForm")
-     public String mypageModifyForm(MemberModel memberModel, Model model,HttpServletRequest request) throws Exception {
 
-         HttpSession session = request.getSession();
-         int member_no = (Integer)session.getAttribute("member_no");
-         memberModel.setMember_no(member_no);
+// 회원정보 수정 폼
+	@GetMapping(value = "/mypageModifyForm")
+	public String mypageModifyForm(MemberModel memberModel, Model model, HttpServletRequest request) throws Exception {
 
-         List<MemberModel> member = memberService.myPageList(memberModel);
-         model.addAttribute("list", member);
+		HttpSession session = request.getSession();
+		int member_no = (Integer) session.getAttribute("member_no");
+		memberModel.setMember_no(member_no);
 
-         return "member/modifyForm";
-     }
+		List<MemberModel> member = memberService.myPageList(memberModel);
+		model.addAttribute("list", member);
 
-     // 회원정보 수정
-     @PostMapping(value = "/mypageModifyForm")
-     public String mypageModify(MemberModel memberModel, HttpSession session) throws Exception {
+		return "member/modifyForm";
+	}
 
-         int member_no = (Integer)session.getAttribute("member_no");
-         memberModel.setMember_no(member_no);
+	// 회원정보 수정
+	@PostMapping(value = "/mypageModifyForm")
+	public String mypageModify(MemberModel memberModel, HttpSession session) throws Exception {
 
-         memberService.mypageModify(memberModel);
+		int member_no = (Integer) session.getAttribute("member_no");
+		memberModel.setMember_no(member_no);
 
-         return "redirect:/member";
-     }
-		
-    @GetMapping("/delete")
- 	public String deleteMemberForm() throws Exception{
-    	
- 		return "member/deleteForm";
- 	}
+		memberService.mypageModify(memberModel);
 
-    @PostMapping("/delete")
+		return "redirect:/member";
+	}
+
+	@GetMapping("/delete")
+	public String deleteMemberForm() throws Exception {
+
+		return "member/deleteForm";
+	}
+
+	@PostMapping("/delete")
 	public String deleteMember(MemberModel memberModel, RedirectAttributes rttr,HttpServletRequest request) throws Exception{
     	
     	HttpSession session = request.getSession();
-		/*
-		 * int member_no = (Integer)session.getAttribute("member_no");
-		 * memberModel.setMember_no(member_no);
-		 */
-    	
-		MemberModel model = (MemberModel) session.getAttribute("member");
+		int member_no = (Integer)session.getAttribute("member_no");
+		memberModel.setMember_no(member_no);
+		MemberModel model = (MemberModel) session.getAttribute("member"); //기존 로그인했을 때 회원 정보 값
+		
+		
+		System.out.println("asdasdasd :" + model);
 		
 		String sessionPass = model.getMember_pw();
 		
-		String modelPass = memberModel.getMember_pw();
+		String modelPass = memberModel.getMember_pw(); //사용자 입력값
+		
+		System.out.println(sessionPass);
+		System.out.println(modelPass);
 		
 		if(!(sessionPass.equals(modelPass))) {
 			rttr.addFlashAttribute("msg", false);
-			return "member/deleteForm";
+			return "redirect:/member/delete";
 		}
 		memberService.deleteMember(memberModel);
 		session.invalidate();
 		return "redirect:/";
 	}
-}
 
+	@ResponseBody
+	@PostMapping("/passChk")
+	public int passChk(MemberModel memberModel, HttpSession session) {
+		int member_no = (Integer) session.getAttribute("member_no");
+		memberModel.setMember_no(member_no);
+		int result = memberService.passChk(memberModel);
+		System.out.println("result : " + result);
+		return result;
+	}
+}

@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/admin.css">
 </head>
 <body>
-	<!-- Header! -->
+	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
 
 	<!-- Contents -->
