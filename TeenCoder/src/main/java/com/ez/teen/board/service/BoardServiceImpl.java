@@ -22,7 +22,7 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardMapper boardMapper;
 
-	@Resource(name = "fileUtils")
+	@Autowired
 	FileUtils fileUtils;
 
 	// 전체 이용자 수

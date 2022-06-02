@@ -34,6 +34,7 @@ public class MyPageController {
 
 	private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
 
+	//마이페이지 홈
 	@GetMapping("/")
 	public String myPageList(MemberModel memberModel, Model model, HttpServletRequest request, BoardParam boardParam,
 			CommentParam commentParam) throws Exception {
@@ -55,6 +56,7 @@ public class MyPageController {
 
 	}
 
+	// 내가만든 게시글 
 	@GetMapping("/boardList")
 	public String myBoardList(Model model, BoardParam boardParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
@@ -134,32 +136,6 @@ public class MyPageController {
 
 	}
 
-// 회원정보 수정 폼
-	@GetMapping(value = "/mypageModifyForm")
-	public String mypageModifyForm(MemberModel memberModel, Model model, HttpServletRequest request) throws Exception {
-
-		HttpSession session = request.getSession();
-		int member_no = (Integer) session.getAttribute("member_no");
-		memberModel.setMember_no(member_no);
-
-		List<MemberModel> member = memberService.myPageList(memberModel);
-		model.addAttribute("list", member);
-
-		return "member/modifyForm";
-	}
-
-	// 회원정보 수정
-	@PostMapping(value = "/mypageModifyForm")
-	public String mypageModify(MemberModel memberModel, HttpSession session) throws Exception {
-
-		int member_no = (Integer) session.getAttribute("member_no");
-		memberModel.setMember_no(member_no);
-
-		memberService.mypageModify(memberModel);
-
-		return "redirect:/member";
-	}
-
 	@GetMapping("/delete")
 	public String deleteMemberForm() throws Exception {
 
@@ -173,8 +149,7 @@ public class MyPageController {
 		int member_no = (Integer)session.getAttribute("member_no");
 		memberModel.setMember_no(member_no);
 		MemberModel model = (MemberModel) session.getAttribute("member"); //기존 로그인했을 때 회원 정보 값
-		
-		
+
 		System.out.println("asdasdasd :" + model);
 		
 		String sessionPass = model.getMember_pw();
@@ -188,10 +163,38 @@ public class MyPageController {
 			rttr.addFlashAttribute("msg", false);
 			return "redirect:/member/delete";
 		}
+
 		memberService.deleteMember(memberModel);
 		session.invalidate();
 		return "redirect:/";
-	}
+	}		
+			
+		// 회원정보 수정 폼
+		@GetMapping(value = "/mypageModify")
+		public String mypageModifyForm(MemberModel memberModel, Model model,HttpServletRequest request) throws Exception {
+	
+			HttpSession session = request.getSession();
+			int member_no = (Integer)session.getAttribute("member_no");
+			memberModel.setMember_no(member_no);
+	
+			List<MemberModel> member = memberService.myPageList(memberModel);
+			model.addAttribute("list", member);
+	
+			return "member/modifyForm";
+		}
+
+		// 회원정보 수정
+		@PostMapping(value = "/mypageModify")
+		public String mypageModify(MemberModel memberModel, HttpSession session) throws Exception {
+			
+			int member_no = (Integer)session.getAttribute("member_no");
+			memberModel.setMember_no(member_no);
+			
+			memberService.mypageModify(memberModel);
+			
+			return "redirect:/member/";
+		}
+	
 
 	@ResponseBody
 	@PostMapping("/passChk")

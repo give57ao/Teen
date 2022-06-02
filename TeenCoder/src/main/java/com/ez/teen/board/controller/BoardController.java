@@ -1,5 +1,7 @@
 package com.ez.teen.board.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -51,7 +53,7 @@ public class BoardController {
 		return "main";
 	}
 
-	//
+
 	@GetMapping("/member/modify")
 	public String updateBoardForm(BoardModel boardModel, Model model , HttpServletRequest request)throws Exception{
 		
@@ -91,13 +93,12 @@ public class BoardController {
 	@PostMapping(value = "board/boardWrite")
 	public String insertBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest) throws Exception{
 
-		
 	int member_no = (Integer)session.getAttribute("member_no");
-
 	boardModel.setMember_no(member_no);
 	
 	boardService.insertBoard(boardModel, mpRequest);
 
+	
 	return "board/mainBoard"; 
 	}
 	

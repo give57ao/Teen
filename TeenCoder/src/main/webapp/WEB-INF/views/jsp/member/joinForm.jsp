@@ -23,14 +23,15 @@
         </div>
         <div id="contents_detail">
             <!-- Form -->
-            <form id="join_form" method="post">
+            <form id="join_form" name="userInfo" method="post" onsubmit="return checkValue()" >
                 <table>
                 	<tbody>
 	                    <tr class="check">
 	                        <th>아이디</th>
 	                        <td>
 	                            <input type="text" name="member_id" id="member_id" placeholder="아이디">
-	                            <button class="btn_com btn_check" type="button" name="checkId" id="checkId" value="N"  >중복 체크</button>
+	                            <button class="btn_com btn_check" type="button" name="checkId" id="checkId"  >중복 체크</button>
+	                            <input type="hidden" name="idDuplication" id="idDuplication"/>
 	                        </td>
 	                    </tr>
 	                    <tr>
@@ -54,25 +55,26 @@
 	                    <tr class="check">
 	                        <th>닉네임</th>
 	                        <td>
-	                            <input type="text" name="member_nick" placeholder="닉네임">
-	                            <button class="btn_com btn_check" type="button" name="checkNick" id="checkNick"  value="N" >중복 체크</button>
+	                            <input type="text" name="member_nick" id="member_nick" placeholder="닉네임">
+	                            <button class="btn_com btn_check" type="button" name="checkNick" id="checkNick"  >중복 체크</button>
+	                            <input type="hidden" name="nickDuplication" id="nickDuplication"/>
 	                        </td>
 	                    </tr>
 	                    <tr class="check">
 	                        <th>이메일</th>
 	                        <td>
 	                            <input type="text" name="member_email" placeholder="이메일">
-	                            <input type="submit" value="인증" class="btn_com btn_check">
+	                       <!-- <input type="submit" value="인증" class="btn_com btn_check"> -->
 	                        </td>
 	                    </tr>
 	                    <tr class="checkbox">
 	                        <th>개발직군 유무</th>
 	                        <td>
-	                            <input type="checkbox" name="member_pro_check" value="Y">
+	                            <input type="checkbox" name="member_pro_check" id="member_pro_check1" value="Y" onclick="checkOne(this);" >
 	                            <label for="yes">네</label>
-	                            <input type="checkbox" name="member_pro_check" value="N">
+	                            <input type="checkbox" name="member_pro_check" id="member_pro_check2" value="N" onclick="checkOne(this);" >
 	                            <label for="no">아니오</label>
-	                            <input type="submit" value="인증" class="btn_com btn_check">
+	                       <!-- <input type="submit" value="인증" class="btn_com btn_check"> --> 
 	                        </td>
 	                    </tr>
                     </tbody>
@@ -100,8 +102,7 @@
 		});
 
 		function fn_checkId() {
-			var member_id = {
-				member_id : $('#member_id').val()
+			var member_id = {member_id : $("#member_id").val()
 			};
 
 			if ($("#member_id").val() == "") {
@@ -116,19 +117,18 @@
 				data : {
 					"member_id" : $("#member_id").val()
 				},
-				success : function(data) {
-					if (data == 1) {
+				success : function(result) {
+					if (result == 1) {
 						alert("중복된 아이디입니다.");
-					} else if (data == 0) {
-						$("#checkId").attr("value", "Y");
-						alert("사용가능한 아이디 입니다.")
+					} else if (result == 0) {
+						$("#idDuplication").attr("value", true);
+						alert("사용가능한 아이디 입니다.");
 					}
 				}
 			})
 		}
 		function fn_checkNick() {
-			var member_nick = {
-				member_nick : $('#member_nick').val()
+			var member_nick = {member_nick : $("#member_nick").val()
 			};
 
 			if ($("#member_nick").val() == "") {
@@ -140,19 +140,75 @@
 				url : "/teen/member/checkNick",
 				type : "post",
 				dataType : "json",
-				data : {
-					"member_nick" : $("#member_nick").val()
-				},
+				data : {"member_nick" : $("#member_nick").val()},
 				success : function(data) {
 					if (data == 1) {
 						alert("중복된 닉네임입니다.");
 					} else if (data == 0) {
-						$("#checkNick").attr("value", "Y");
-						alert("사용가능한 닉네임 입니다.")
+						$("#nickDuplication").attr("value", true);
+						alert("사용가능한 닉네임 입니다.");
+						
 					}
 				}
 			});
 		}
+		
+		function checkValue() {
+			var form = document.userInfo;
+			var test = $("input:checkbox[name='member_pro_check']").is(":checked");
+
+			if(!form.member_id.value){
+				alert("아이디를 입력하세요.")
+				return false;
+			}
+			
+			if(form.idDuplication.value != "true"){
+				alert("아이디 중복 체크를 해주세요.");
+				return false;
+			}
+			
+			if(form.nickDuplication.value != "true"){
+				alert("닉네임 중복 체크를 해주세요.");
+				return false;
+			}
+			
+			if(!form.member_pw.value){
+				alert("비밀번호를 입력해 주세요");
+				return false;
+			}
+			
+			if(form.member_pw.value != form.member_pw1.value){
+				alert("동일한 비밀번호를 입력해주세요");
+				return false;
+			}
+			
+			if(!form.member_name.value){
+				alert("이름을 입력해 주세요");
+				return false;
+			}
+			
+			if(!form.member_email.value){
+				alert("이메일을 입력해 주세요");
+				return false;
+			}		
+			
+			if(test == false){
+				alert("전문성 체크를 해주세요.");
+				return false;
+			}
+			
+		}
+
+		function checkOne(chk) {
+			var obj = document.getElementsByName("member_pro_check");
+			for(var i = 0; i<obj.length; i++) {
+				if(obj[i] != chk) {
+					obj[i].checked = false;
+				}
+			}
+		}
+	
+		
 	</script>
 </body>
 </html>

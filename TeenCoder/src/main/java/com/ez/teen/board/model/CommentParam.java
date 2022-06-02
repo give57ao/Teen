@@ -1,7 +1,7 @@
 package com.ez.teen.board.model;
 
 public class CommentParam {
-
+	//
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
 	
 	private String keyword;

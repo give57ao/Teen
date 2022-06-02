@@ -14,6 +14,7 @@ import com.ez.teen.board.model.CommentParam;
 @Mapper
 public interface BoardMapper {
 
+	
 	// 전체 이용자 수
 	public int getUserCount();
 
