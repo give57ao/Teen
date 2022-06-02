@@ -11,9 +11,9 @@
         <nav id="header_nav">
             <ul>
                 <li><a href="/teen">Home</a></li>
-                <li><a href="/teen/board">Community</a></li>
-                <li><a href="/teen/board/qna">Q&amp;A</a></li>
-                <li><a href="/teen/board/notice">Notice</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Q&amp;A</a></li>
+                <li><a href="#">Notice</a></li>
             </ul>
         </nav>
         <!-- 로그인 전 : 세션 값이 없을 경우 -->
@@ -21,7 +21,7 @@
 	        <div id="header_menu">
 	            <ul>
 	                <li><a href="/teen/member/login" class="log">로그인</a></li>
-	                <li><a href="/teen/member/join" class="btn_com btn_join">가입</a></li>
+	                <li><a href="/teen/member/joinForm" class="btn_com btn_join">가입</a></li>
 	            </ul>
 	        </div>
         </c:if>
@@ -30,9 +30,8 @@
 	        <div id="header_menu">
 	            <ul>
 	            	<%-- <li><c:out value="${sessionScope.member_no}"/></li> 세션 값 확인 --%>
-	            	<!--  <li><a href="#">관리자페이지</a></li> -->
 	            	<li><a href="/teen/member/logout" class="log" onCLick="logout()">로그아웃</a></li>
-	                <li><a href="/teen/member" class="log">마이페이지</a></li>
+	                <li><a href="/teen/member/" class="log">마이페이지</a></li>
 	                <li><a href="#"><img src="/teen/resources/images/icon/icon_alarm_n.svg"></a></li>
 	                <li><a href="#"><img src="/teen/resources/images/icon/icon_badge.png"></a></li>
 	            </ul>
