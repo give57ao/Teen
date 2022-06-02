@@ -1,8 +1,19 @@
 package com.ez.teen.board.model;
 
 public class CommentParam {
-	//
+	
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
+	
+	private String keyword;
+	
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	private int cntPage = 10;
 	
 	public int getMember_no() {

@@ -23,7 +23,7 @@ public class MemberJoinController {
 	private static final Logger log = LoggerFactory.getLogger(MemberJoinController.class);
 
 	// 회원가입 화면
-	@GetMapping(value = "/joinForm")
+	@GetMapping(value = "/join")
 	public String insertMember() throws Exception {
 		return "/member/joinForm";
 	}

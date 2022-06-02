@@ -2,16 +2,19 @@
 <%@ page isErrorPage="true" %>
 
 <html>
+
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="refresh" content="1; url=/teen"> <!-- 1초 후에 자동으로 홈으로 이동 -->
-<title>TeenCoder 알림</title>
+<title>에러 발생</title>
 <script>
-alert("로그인 정보를 다시 입력해주세요. 1초 후에 홈으로 돌아갑니다.")
+alert("에러가 발생하였습니다. 1초 후에 홈으로 돌아갑니다.")
 </script>
 </head>
+
 <body>
 </body>
+
 </html>
 
 <!--

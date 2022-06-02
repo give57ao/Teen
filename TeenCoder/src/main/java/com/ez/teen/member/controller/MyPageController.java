@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ez.teen.board.model.BoardParam;
@@ -35,9 +36,6 @@ public class MyPageController {
 
 
 	//마이페이지 홈
-
-	
-
 	@GetMapping("/")
 	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request, BoardParam boardParam, CommentParam commentParam) throws Exception {
 		
@@ -60,9 +58,6 @@ public class MyPageController {
 
 
 	// 내가만든 게시글 
-
-
-
 	@GetMapping("/boardList")
 	public String myBoardList(Model model, BoardParam boardParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
@@ -105,8 +100,6 @@ public class MyPageController {
         System.out.println("lastPage :" + boardParam.getLastPage());
         
 		return "member/myBoard";
-		
-		
 	}
 	
 	@GetMapping("/commentList")
@@ -208,9 +201,17 @@ public class MyPageController {
 			
 			return "redirect:/member/";
 		}
-
-
-
-	
+		
+		@ResponseBody
+	    @PostMapping("/passChk")
+	    public int passChk(MemberModel memberModel, HttpSession session) {
+	        int member_no = (Integer) session.getAttribute("member_no");
+	        memberModel.setMember_no(member_no);
+	        int result = memberService.passChk(memberModel);
+	        System.out.println("result : " + result);
+	        return result;
+	    }
 }
+
+
 

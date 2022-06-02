@@ -5,6 +5,15 @@ public class BoardParam {
 	private int member_no;
 	private String sort; // 정렬
 	private String search; // 검색 타입
+	private int board_no; // 게시글 상세보기 할 때 uri로 get방식의 파라미터로 board_no를 가져오기 때문
+	
+	public int getBoard_no() {
+		return board_no;
+	}
+
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
+	}
 
 	public String getSearch() {
 		return search;

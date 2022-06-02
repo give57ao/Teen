@@ -94,5 +94,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		 ]]>
 	 </select>
 	 
+	 <!-- 비밀번호 체크 -->
+	 <select id="passChk" resultType="int" parameterType="com.ez.teen.member.model.MemberModel">
+	 <![CDATA[
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_NO = #{member_no}
+		AND MEMBER_PW = #{member_pw}
+	 ]]>
+	 </select>
 
 </mapper>

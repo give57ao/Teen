@@ -5,8 +5,10 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 
  
@@ -20,12 +22,15 @@ public interface BoardService {
 
 	//전체 댓글 수
 	public int  getCommentCount(CommentParam commentParam);
-	
-	//게시글 컨텐츠
-	public BoardModel selectBoardDetail(BoardModel boardModel, int boardNum) throws Exception;
-	
+
 	//게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
+	
+	// 댓글 가져오기
+	public List<BoardCommentModel> selectComment(BoardParam boardParam);
+	
+	//댓글 리스트
+	public List<CommentModel> commentList(CommentParam commentParam);
 	
 	// 게시글 수정
 	public void updateBoard(BoardModel boardModel);
@@ -35,5 +40,12 @@ public interface BoardService {
 	
 	//첨부파일 추가
 	public void insertFile(Map<String, Object> map) throws Exception;
+	
+	/* 기존 게시글 컨텐츠
+	 * //게시글 컨텐츠 public BoardModel selectBoardDetail(BoardModel boardModel, int
+	 * boardNum) throws Exception;
+	 */	
 		
+	// 게시글 자세히 보기
+	public List<BoardModel> selectBoardDetail(BoardParam boardParam);
 }

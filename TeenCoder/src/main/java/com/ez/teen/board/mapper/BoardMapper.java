@@ -6,8 +6,10 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 
 @Mapper
@@ -25,11 +27,22 @@ public interface BoardMapper {
 
 	// 게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
-	public BoardModel selectBoardDetail(int boardNum)throws Exception;
 	
+	//게시글 디테일(dh)
+	public List<BoardModel> selectBoardDetail(BoardParam boardParam);
+	
+	//댓글 리스트
+	public List<CommentModel> commentList(CommentParam commentParam);
+	
+	//게시글 댓글 불러오기
+	public List<BoardCommentModel> selectComment(BoardParam boardParam);
+	
+	/*
+	 * // 기존에 있던 셀렉 보드 디테일 public BoardModel selectBoardDetail(int boardNum)throws
+	 * Exception;
+	 */	
 	public void updateBoard(BoardModel boardModel);
 
-	//05/26 병합
 
 	
 

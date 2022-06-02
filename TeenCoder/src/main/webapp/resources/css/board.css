@@ -108,6 +108,10 @@
     vertical-align: middle;
 }
 
+.row_title .tag_hit {
+    color: #FF0151;
+}
+
 .row_contents {
 	margin: 15px 0;
 	display: inline-block;
@@ -122,12 +126,6 @@
 	margin-top: 10px;
 	display: inline-block;
 	color: #5573E8;
-}
-
-.row .tag_hit,
-.row .tag_notice {
-	font-weight: bold;
-    color: #FF0151;
 }
 
 .btn_group {

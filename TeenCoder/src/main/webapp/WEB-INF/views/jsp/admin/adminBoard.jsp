@@ -11,7 +11,11 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/admin.css">
 </head>
 <body>
+<<<<<<< HEAD
 	<!-- Header -->
+=======
+	<!-- Header! -->
+>>>>>>> branch 'develop' of https://github.com/give57ao/Teen.git
 	<jsp:include page="../template/header.jsp" flush="false" />
 
 	<!-- Contents -->

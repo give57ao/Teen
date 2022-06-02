@@ -1,12 +1,11 @@
 package com.ez.teen.board.controller;
 
-import java.util.Map;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,17 +15,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
 import com.ez.teen.member.model.MemberModel;
 
-// 동혁 - 브랜치 만들고 확인작업
 @Controller
 public class BoardController {
 
@@ -52,8 +51,8 @@ public class BoardController {
 		return "main";
 	}
 
-
-	@GetMapping("/member/modify")
+	//게시글 수정
+	@GetMapping("/board/modify")
 	public String updateBoardForm(BoardModel boardModel, Model model , HttpServletRequest request)throws Exception{
 		
 		HttpSession session = request.getSession();
@@ -65,7 +64,8 @@ public class BoardController {
 		return "board/boardModify";
 	}
 	
-	@PostMapping("/member/modify")
+	//게시글 수정
+	@PostMapping("/board/modify")
 	public String updateBoard(BoardModel boardModel, Model model , HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
@@ -88,7 +88,6 @@ public class BoardController {
 	
 	
 	//게시글 작성 완료
-	  
 	@PostMapping(value = "board/boardWrite")
 	public String insertBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest) throws Exception{
 
@@ -109,17 +108,75 @@ public class BoardController {
 		return "board/mainBoard";
 	}
 	 
+	//동현씨 게시글 디테일 복붙
+	@RequestMapping("board/detail")
+	public String selectBoardDetail(BoardModel boardModel, HttpSession session, HttpServletResponse response,
+			BoardParam boardParam, Model model, @RequestParam(value = "board_no") int board_no) {
+		// 파라미터 분석 : BoardParam의 board_no로 게시글 특정지음
+		// @RequestParam으로 uri의 board_no? 뒤의 값을 가져옴
 
-	@RequestMapping("/board/detail")
-	public ModelAndView selectBoardDetail(BoardModel boardModel, HttpSession session, HttpServletResponse response) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		int boardNum = (int) session.getAttribute("member_no");
-		
-		BoardModel model = boardService.selectBoardDetail(boardModel, boardNum);
-		
-		
-		mv.addObject("content", model);
-		mv.setViewName("board/boardDetail");
-		return mv;
+		int member_no = (int) session.getAttribute("member_no"); // member_no가져옴
+		boardParam.setBoard_no(board_no); // 위 파라미터에서 선언한 board_no(uri파라미터)를 setter를 통해 값 설정
+		boardParam.setMember_no(member_no);
+		List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
+		List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
+
+		System.out.println(boardDetail);
+
+		model.addAttribute("boardDetail", boardDetail);
+		model.addAttribute("boardComment", boardComment);
+
+		return "board/boardDetail";
 	}
+	
+	/*
+	 * //기존에 있던 게시글 디테일
+	 * 
+	 * @RequestMapping("/board/detail") public ModelAndView
+	 * selectBoardDetail(BoardModel boardModel, HttpSession session,
+	 * HttpServletResponse response) throws Exception { ModelAndView mv = new
+	 * ModelAndView(); int boardNum = (int) session.getAttribute("member_no");
+	 * 
+	 * BoardModel model = boardService.selectBoardDetail(boardModel, boardNum);
+	 * 
+	 * 
+	 * mv.addObject("content", model); mv.setViewName("board/boardDetail"); return
+	 * mv; }
+	 */
+	
+	//게시판
+	@GetMapping("/board")
+	public String goBoard(Model model, BoardParam boardParam, HttpSession session,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "keyword", required = false) String keyword) {
+		
+			int total = boardService.getBoardCount(boardParam);
+			
+			if (nowPage == null && cntPerPage == null) {
+				nowPage = "1";
+				cntPerPage = "10";
+			} else if (nowPage == null) {
+				nowPage = "1";
+			} else if (cntPerPage == null) {
+				cntPerPage = "10";
+			} 
+			boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			if(total == 0) {
+				boardParam.setEndPage(1);
+			}
+			
+			model.addAttribute("paging", boardParam);
+			model.addAttribute("sort", sort);
+			model.addAttribute("board", boardService.boardList(boardParam));
+			
+			
+			
+			return "board/mainBoard";
+	}
+	
+	
+	
 }

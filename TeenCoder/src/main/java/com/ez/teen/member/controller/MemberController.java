@@ -29,7 +29,10 @@ public class MemberController {
 	private LoginService loginService;
 
 	@Autowired
+
 	private MemberService memberService;
+	
+
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 
@@ -46,19 +49,22 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		MemberModel member = loginService.login(memberModel);
 		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
 
-		if (member != null) {
-			session.setAttribute("member_no", member.getMember_no());
-			session.setAttribute("member_pw", member.getMember_pw());
-			mv.setViewName("redirect:/");
-		} else {
-			out.println("<script type='text/javascript'>alert('로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.')</script>");
-			out.flush();
-			mv.setViewName("member/loginForm");
-			mv.addObject("msg", false);
-		}
-		return mv;
+		PrintWriter out = response.getWriter();
+			
+    	if(member != null) {
+    		session.setAttribute("member", member);
+            session.setAttribute("member_no", member.getMember_no());
+            session.setAttribute("member_admin", member.getMember_admin());
+    		mv.setViewName("redirect:/");
+    	} else {
+    		out.println("<script type='text/javascript'>alert('로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.')</script>");
+    		out.flush();
+	    	mv.setViewName("member/loginForm");
+	    	mv.addObject("msg", false);
+    	}    			
+    	
+    	return mv;
 	}
 
 	// 로그아웃
@@ -69,9 +75,7 @@ public class MemberController {
         return "redirect:/";
     }
 	
-	// 아이디 찾기 폼
-
-
+	//아이디 찾기 폼
     @GetMapping("/findId")
     public String findId() {
     	return "member/findIdForm";
@@ -85,8 +89,8 @@ public class MemberController {
     	System.out.println(loginService.findId(memberModel));
     	return "member/findId";
     }
-
-    // 비밀번호 찾기 폼 
+    
+    //비밀번호 찾기 폼
     @GetMapping("/findPw")
     public String findPw() {
     	return "member/findPwForm";
@@ -101,7 +105,6 @@ public class MemberController {
     	return "member/findPw";
     }
 
-	
-
+    
 
 }
