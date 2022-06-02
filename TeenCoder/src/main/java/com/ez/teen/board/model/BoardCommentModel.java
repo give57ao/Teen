@@ -1,4 +1,4 @@
- package com.ez.teen.board.model;
+package com.ez.teen.board.model;
 
 import java.util.Date;
 

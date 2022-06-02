@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/myPage.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/myInfo.css">
 </head>
 <body>
 	<!-- Header -->
@@ -61,8 +61,8 @@
 				<!-- List Row -->
 				<div id="board_list_row">
 					<!-- Row1 -->
-					<c:forEach items="${board}" var="board" varStatus="status">
-			
+					<c:forEach items="${board}" var="board">
+	
 						<div class="row">
 							<div class="row_info">
 								<ul class="row_top tag_category">
@@ -83,16 +83,17 @@
 							</div>
 							<div class="row_title">
 								<h3>
-									<a href="/teen/board/detail?board_no=${board.board_no}"> 
+									<a href="/teen/resources/jsp/board/boardDetail.jsp"> 
 									<span 	class="tag_hit">[추천]</span> ${board.board_title} 
 										<!-- <img src="../resources/images/icon/icon_image.svg" class="i_image">  -->
 										<c:if test="${board.board_file_check eq 'Y'}">
 											<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
 										</c:if>
+	
+	
 									</a>
 								</h3>
-								<%-- <input type="hidden"  id="board_no" value="${board.board_no }"> --%>
-								<input type="button" value="삭제" class="btn_com btn_del_list" onClick = "deleteBoard(${board.board_no})" >
+								<input type="button" value="삭제" class="btn_com btn_del_list">
 							</div>
 						</div>
 						<hr>
