@@ -110,7 +110,7 @@
 	</insert>
 	
 <select id ="boardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.board.model.BoardParam">
-SELECT rn, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check,tag_name, bgroup_name, member_nick, board_comment_count
+SELECT rn, board_no, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check,tag_name, bgroup_name, member_nick, board_comment_count
 		FROM (
 			SELECT ROWNUM RN, A.* 
 				FROM (

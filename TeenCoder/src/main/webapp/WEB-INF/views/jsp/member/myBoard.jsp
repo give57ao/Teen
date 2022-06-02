@@ -61,7 +61,7 @@
 				<!-- List Row -->
 				<div id="board_list_row">
 					<!-- Row1 -->
-					<c:forEach items="${board}" var="board">
+					<c:forEach items="${board}" var="board" varStatus="status">
 			
 						<div class="row">
 							<div class="row_info">
@@ -91,8 +91,8 @@
 										</c:if>
 									</a>
 								</h3>
-								<p id="board_no" style= display:none;>${board.board_no}</p>
-								<input type="button" value="삭제" class="btn_com btn_del_list" onClick = "deleteBoard()" >
+								<%-- <input type="hidden"  id="board_no" value="${board.board_no }"> --%>
+								<input type="button" value="삭제" class="btn_com btn_del_list" onClick = "deleteBoard(${board.board_no})" >
 							</div>
 						</div>
 						<hr>

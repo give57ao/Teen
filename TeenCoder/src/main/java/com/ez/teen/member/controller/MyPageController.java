@@ -176,8 +176,10 @@ public class MyPageController {
 	public String deleteMember(MemberModel memberModel, RedirectAttributes rttr,HttpServletRequest request) throws Exception{
     	
     	HttpSession session = request.getSession();
-		int member_no = (Integer)session.getAttribute("member_no");
-		memberModel.setMember_no(member_no);
+		/*
+		 * int member_no = (Integer)session.getAttribute("member_no");
+		 * memberModel.setMember_no(member_no);
+		 */
     	
 		MemberModel model = (MemberModel) session.getAttribute("member");
 		

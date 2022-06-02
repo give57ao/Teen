@@ -51,6 +51,7 @@ public class MemberController {
 		
     	if(member != null) {
             session.setAttribute("member_no", member.getMember_no());
+            session.setAttribute("member", member);
     		mv.setViewName("redirect:/");
     	} else {
     		session.setAttribute("member_no", null);
