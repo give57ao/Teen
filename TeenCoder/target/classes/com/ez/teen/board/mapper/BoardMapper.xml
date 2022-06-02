@@ -185,24 +185,25 @@ ORDER BY board_comment_count DESC
  
 
 	<!-- 첨부파일 업로드 -->
-	<insert id="insertFile" parameterType="hashMap">
-	<![CDATA[ INSERT INTO BFILE(
-	 FILE_NO
-	,BOARD_NO
-	,ORG_FILE_NAME
-	,STORED_FILE_NAME
-	,FILE_SIZE
-	)
-	VALUES(
-	 SEQ_FILE_NO.NEXTVAL
-	,#{board_no}
-	,#{org_file_name}
-	,#{stored_file_name}
-	,#{file_size}
-	)
-	]]>
-	</insert>
-	
+   <insert id="insertFile" parameterType="hashMap">
+   <![CDATA[ INSERT INTO BFILE(
+    FILE_NO
+   ,BOARD_NO
+   ,ORG_FILE_NAME
+   ,STORED_FILE_NAME
+   ,FILE_SIZE
+   ,FILE_DATE
+   )
+   VALUES(
+    SEQ_FILE_NO.NEXTVAL
+   ,#{BOARD_NO}
+   ,#{ORG_FILE_NAME}
+   ,#{STORED_FILE_NAME}
+   ,#{FILE_SIZE}
+   ,#{FILE_DATE}
+   )
+   ]]>
+   </insert>
 		<select id ="commentList" resultType="com.ez.teen.board.model.CommentModel" parameterType="com.ez.teen.board.model.CommentParam">
 	SELECT rn, board_no, board_title, board_file_check, member_nick, bcomment_no, bcomment_content, bcomment_date, bcomment_like_count
       FROM (
