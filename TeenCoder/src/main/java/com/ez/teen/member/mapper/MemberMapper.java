@@ -26,7 +26,7 @@ public interface MemberMapper {
 
 	//마이페이지
 	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
-	
+
 
 	
 	// 회원가입
@@ -44,7 +44,6 @@ public interface MemberMapper {
 	// 내정보 수정
 	void mypageModify(MemberModel memberModel);
 
-	public int passChk(MemberModel memberModel);
-
-	
+	public int passChk(MemberModel memberModel);	
 }
+

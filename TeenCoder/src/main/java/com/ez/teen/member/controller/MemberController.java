@@ -70,7 +70,9 @@ public class MemberController {
     }
 	
 	// 아이디 찾기 폼
-	@GetMapping("/findId")
+
+
+    @GetMapping("/findId")
     public String findId() {
     	return "member/findIdForm";
     }

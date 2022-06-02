@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ez.teen.board.model.BoardParam;
@@ -28,48 +27,57 @@ import com.ez.teen.member.service.MemberService;
 public class MyPageController {
 	@Autowired
 	private MemberService memberService;
-
+  
 	@Autowired
 	private BoardService boardService;
 
 	private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
 
-	//마이페이지 홈
-	@GetMapping("/")
-	public String myPageList(MemberModel memberModel, Model model, HttpServletRequest request, BoardParam boardParam,
-			CommentParam commentParam) throws Exception {
 
+	//마이페이지 홈
+
+	
+
+	@GetMapping("/")
+	public String myPageList(MemberModel memberModel, Model model , HttpServletRequest request, BoardParam boardParam, CommentParam commentParam) throws Exception {
+		
 		HttpSession session = request.getSession();
-		int member_no = (Integer) session.getAttribute("member_no");
+		int member_no = (Integer)session.getAttribute("member_no");
 		memberModel.setMember_no(member_no);
 		boardParam.setMember_no(member_no);
 		commentParam.setMember_no(member_no);
 		List<MemberModel> myPageList = memberService.myPageList(memberModel);
 		model.addAttribute("list", myPageList);
 
-		model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam));
+		model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam)); 
 		model.addAttribute("allCommentCount", boardService.getCommentCount(commentParam));
 
 		System.out.println(member_no);
-
+		
 		return "member/myPage";
 
 	}
 
+
 	// 내가만든 게시글 
+
+
+
 	@GetMapping("/boardList")
 	public String myBoardList(Model model, BoardParam boardParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "keyword", required = false) String keyword, HttpSession session) {
-
-		int member_no = (Integer) session.getAttribute("member_no");
+			@RequestParam(value = "keyword", required = false) String keyword,
+			HttpSession session) {
+		
+		//session.setAttribute("member_no", 1);
+		int member_no = (Integer)session.getAttribute("member_no");
 		boardParam.setMember_no(member_no);
-
+		
 		int total = boardService.getBoardCount(boardParam);
-
+		
 		System.out.println("total :" + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -78,40 +86,44 @@ public class MyPageController {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
 			cntPerPage = "10";
-		}
+		} 
 		boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		if (total == 0) {
+		if(total == 0) {
 			boardParam.setEndPage(1);
 		}
 		boardParam.setMember_no(member_no);
 		model.addAttribute("paging", boardParam);
 		model.addAttribute("sort", sort);
 		model.addAttribute("board", boardService.boardList(boardParam));
-
+		
+		
 		System.out.println("total : " + total);
-		System.out.println("startPage :" + boardParam.getStartPage());
-		System.out.println("endPage :" + boardParam.getEndPage());
-		System.out.println("cntPerPage :" + boardParam.getCntPerPage());
-		System.out.println("nowPage :" + boardParam.getNowPage());
-		System.out.println("lastPage :" + boardParam.getLastPage());
-
+        System.out.println("startPage :" + boardParam.getStartPage());
+        System.out.println("endPage :" + boardParam.getEndPage());
+        System.out.println("cntPerPage :" + boardParam.getCntPerPage());
+        System.out.println("nowPage :" + boardParam.getNowPage());
+        System.out.println("lastPage :" + boardParam.getLastPage());
+        
 		return "member/myBoard";
-
+		
+		
 	}
-
+	
 	@GetMapping("/commentList")
 	public String myCommentList(Model model, CommentParam commentParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "keyword", required = false) String keyword, HttpSession session) {
-
-		int member_no = (Integer) session.getAttribute("member_no");
+			@RequestParam(value = "keyword", required = false) String keyword,
+			HttpSession session) {
+		
+		
+		int member_no = (Integer)session.getAttribute("member_no");
 		commentParam.setMember_no(member_no);
-
+		
 		int total = boardService.getCommentCount(commentParam);
-
+		
 		System.out.println("total :" + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -120,19 +132,21 @@ public class MyPageController {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
 			cntPerPage = "10";
-		}
+		} 
 		commentParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		if (total == 0) {
+		if(total == 0) {
 			commentParam.setEndPage(1);
 		}
 		commentParam.setMember_no(member_no);
 		model.addAttribute("paging", commentParam);
 		model.addAttribute("sort", sort);
-		model.addAttribute("comment", boardService.commentList(commentParam));
-
+//		model.addAttribute("comment", boardService.commentList(commentParam));
+		
+		
 		System.out.println("total : " + total);
-
+        
 		return "member/myComment";
+
 
 	}
 
@@ -194,15 +208,9 @@ public class MyPageController {
 			
 			return "redirect:/member/";
 		}
-	
 
-	@ResponseBody
-	@PostMapping("/passChk")
-	public int passChk(MemberModel memberModel, HttpSession session) {
-		int member_no = (Integer) session.getAttribute("member_no");
-		memberModel.setMember_no(member_no);
-		int result = memberService.passChk(memberModel);
-		System.out.println("result : " + result);
-		return result;
-	}
+
+
+	
 }
+

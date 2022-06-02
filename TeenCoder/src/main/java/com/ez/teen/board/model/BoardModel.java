@@ -4,11 +4,7 @@ package com.ez.teen.board.model;
 import java.util.Date;
 
 public class BoardModel {
-	
 
-
-
-	private int rn;
 	private int board_no;
 	private int member_no;
 	private String board_title;
@@ -19,9 +15,6 @@ public class BoardModel {
 	private int board_report_count;
 	private String board_file_check;
 	private String board_group_no;
-	private String bgroup_name;
-
-
 	private String board_tag_no;
 	private String tag_name;
 	private String member_nick;
@@ -48,12 +41,7 @@ public class BoardModel {
 		this.member_nick = member_nick;
 	}
 	
-	public String getBgroup_name() {
-		return bgroup_name;
-	}
-	public void setBgroup_name(String bgroup_name) {
-		this.bgroup_name = bgroup_name;
-	}
+	
 	public int getBoard_no() {
 		return board_no;
 	}
@@ -162,13 +150,6 @@ public class BoardModel {
 	}
 	public void setDel_gb(String del_gb) {
 		this.del_gb = del_gb;
-	}
-	
-	public int getRn() {
-		return rn;
-	}
-	public void setRn(int rn) {
-		this.rn = rn;
 	}
 	
 	

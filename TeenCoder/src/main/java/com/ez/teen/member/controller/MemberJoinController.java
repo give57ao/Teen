@@ -23,7 +23,7 @@ public class MemberJoinController {
 	private static final Logger log = LoggerFactory.getLogger(MemberJoinController.class);
 
 	// 회원가입 화면
-	@GetMapping(value = "/join")
+	@GetMapping(value = "/joinForm")
 	public String insertMember() throws Exception {
 		return "/member/joinForm";
 	}
@@ -49,6 +49,7 @@ public class MemberJoinController {
 	}
 
 	// 회원가입 완료
+
 	@PostMapping(value = "/join")
 	public String insertMember(MemberModel memberModel) throws Exception {
 

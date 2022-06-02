@@ -18,7 +18,6 @@ public class MemberModel {
 	
 	
 	
-	
 	public int getMember_no() {
 		return member_no;
 	}

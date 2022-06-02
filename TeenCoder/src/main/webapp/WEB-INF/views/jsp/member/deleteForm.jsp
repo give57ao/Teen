@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,44 +7,8 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/teen/resources/js/member.js"></script>
 </head>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			// 취소
-			$(".btn_com").on("click", function(){
-				
-				location.href = "/teen/member/";
-						    
-			})
-		
-			$("#submit").on("click", function(){
-				if($("#member_pw").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#member_pw").focus();
-					location.href = "/teen/member/delete";
-					return false;
-				}
-				$.ajax({
-					url : "/teen/member/passChk",
-					type : "POST",
-					dataType : "json",
-					data : $("#join_form").serializeArray(),
-					success: function(data){
-						console.log(data);
-						if(data == 0){
-							alert("패스워드가 틀렸습니다.");
-							return false;
-						}else{
-							if(confirm("회원탈퇴하시겠습니까?")){
-								$("#join_form").submit();
-							}
-						}
-					}
-				})
-			});
-		})
-	</script>
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -65,18 +27,22 @@
 	                    <tr>
 	                        <th>비밀번호</th>
 	                        <td>
-	                            <input type="password" name="member_pw" id="member_pw" placeholder="비밀번호">
+	                            <input type="password" name="member_pw" placeholder="비밀번호">
 	                        </td>
 	                    </tr>
+	                    <div style="display:none;">
+	                   		<input type="text" name="member_no" value="${member.member_no }">
+	                	</div>
                     </tbody>
                 </table>
                 <div id="btn_wrap">
-                    <input type="button" value="취소" class="btn_com btn_main" >
-                    <input type="submit" value="탈퇴" class="btn_com btn_main" id="submit">
+                    <input type="button" value="취소" class="btn_com btn_main" onClick="location.href='myPage.jsp'">
+                    <input type="submit" value="탈퇴" class="btn_com btn_main">
                 </div>
             </form>
         </div>
     </div>
+    
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
 </body>

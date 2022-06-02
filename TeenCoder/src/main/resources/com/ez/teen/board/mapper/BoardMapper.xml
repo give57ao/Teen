@@ -145,7 +145,7 @@
 	</select>
 	
 <select id ="boardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.board.model.BoardParam">
-SELECT rn, board_no, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check,tag_name, bgroup_name, member_nick, board_comment_count
+SELECT rn, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check,tag_name, bgroup_name, member_nick, board_comment_count
 		FROM (
 			SELECT ROWNUM RN, A.* 
 				FROM (
@@ -220,60 +220,8 @@ ORDER BY board_comment_count DESC
  
 
 	
-		<select id ="commentList" resultType="com.ez.teen.board.model.CommentModel" parameterType="com.ez.teen.board.model.CommentParam">
-	SELECT rn, board_no, board_title, board_file_check, member_nick, bcomment_no, bcomment_content, bcomment_date, bcomment_like_count
-      FROM (
-         SELECT ROWNUM RN, A.* 
-            FROM (
-
-			SELECT
-			B.BOARD_NO
-			,B.BOARD_TITLE
-			,B.BOARD_FILE_CHECK
-			,M.MEMBER_NICK
-			,C.BCOMMENT_NO
-			,C.BCOMMENT_CONTENT
-			,C.BCOMMENT_DATE
-			,C.BCOMMENT_LIKE_COUNT
-			
-			
-			FROM BOARD B
-			INNER JOIN BCOMMENT C
-			ON B.BOARD_NO = C.BOARD_NO
-			INNER JOIN MEMBER M
-			ON B.MEMBER_NO = M.MEMBER_NO
-			
-			<if test='member_no != 0'>
-			WHERE C.MEMBER_NO = 2
-			</if>
-			
-			<if test='search == "title"'>
-			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
-			</if>
-			
-			<if test='search == "content"'>
-			AND C.COMMENT_CONTENT LIKE '%'||#{keyword}||'%'
-			</if>
-			
-			<if test='search == "all"'>
-			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
-			OR C.COMMENT_CONTENT LIKE '%'||#{keyword}||'%'
-			</if>
-			
-			
-			<if test='sort == "recommend"'>
-			ORDER BY C.BCOMMENT_LIKE_COUNT DESC
-			</if>
-			
-			<if test='sort == "recent"'>
-			ORDER BY C.BCOMMENT_DATE DESC
-			</if>
-			
-			   ) A
-			   )
-			   WHERE RN BETWEEN #{start} AND #{end}
 	
-	</select>
+	
 
 	
 </mapper>
