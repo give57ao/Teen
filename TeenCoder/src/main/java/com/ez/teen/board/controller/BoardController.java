@@ -28,7 +28,7 @@ import com.ez.teen.member.model.MemberModel;
 // 동혁 - 브랜치 만들고 확인작업
 @Controller
 public class BoardController {
-	//제발돼라
+	//제발돼라123
 	@Autowired
 	BoardService boardService;
 
