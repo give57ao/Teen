@@ -1,8 +1,8 @@
 package com.ez.teen.member.controller;
 
 import java.io.PrintWriter;
+import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,11 +47,11 @@ public class MemberController {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		session.setAttribute("member_no", 1);
-        int member_no = (Integer)session.getAttribute("member_no");
+//		session.setAttribute("member_no", 1);
 		
     	if(member != null) {
             session.setAttribute("member_no", member.getMember_no());
+            session.setAttribute("member", member);
     		mv.setViewName("redirect:/");
     	} else {
     		session.setAttribute("member_no", null);
@@ -68,69 +69,36 @@ public class MemberController {
 		session.invalidate();
         return "redirect:/";
     }
-	
-	
-	@RequestMapping("/findId")
-	public ModelAndView FindId(MemberModel memberModel, HttpServletRequest req, HttpServletResponse response)
-			throws Exception {
-		ModelAndView mv = new ModelAndView();
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
-		
-		MemberModel member = loginService.findId(memberModel);
-		
-		if (member != null) {
-			mv.setViewName("member/findId");
-			mv.addObject("findId", member);
-			return mv;
-		} else {
-			out.println("<script type='text/javascript'>alert('입력정보 일치x')</script>");
-			out.flush();
-			mv.setViewName("member/findIdForm");
-			return mv;
-		}
-		
-	}
 
-	@RequestMapping("/findIdForm")
-	public ModelAndView findIdForm(MemberModel memberModel, HttpServletRequest req)
-			throws Exception {
-		ModelAndView mv = new ModelAndView();
-		MemberModel member = loginService.findId(memberModel);
-		
-
-		mv.setViewName("member/findIdForm");
-		
-		return mv;
-	}    
-
-	@RequestMapping(value = "/findPwForm")
-	public ModelAndView findPwForm(HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-		ModelAndView mv = new ModelAndView();
-
-		mv.setViewName("member/findPwForm");
-		return mv;
-	}
-
-	@RequestMapping("/findPw")
-	public ModelAndView FindPw(MemberModel memberModel, HttpServletRequest req, HttpServletResponse response)
-			throws Exception {
-		ModelAndView mv = new ModelAndView();
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
-		MemberModel member = loginService.findPw(memberModel);
-
-		if (member != null) {
-			mv.setViewName("member/findPw");
-			mv.addObject("findPw", member);
-			return mv;
-		} else {
-			out.println("<script type='text/javascript'>alert('입력정보 일치x')</script>");
-			mv.setViewName("member/findPwForm");
-			return mv;
-		}
-	}
-	
+    @GetMapping("/findId")
+    public String findId() {
+    	return "member/findIdForm";
+    }
+    
+    @PostMapping("/findId")
+    public String findIdResult(Model model, MemberModel memberModel) throws Exception {
+    	
+    	model.addAttribute("findId", loginService.findId(memberModel));
+    	System.out.println(loginService.findId(memberModel));
+    	return "member/findId";
+    }
+    
+    
+    @GetMapping("/findPw")
+    public String findPw() {
+    	return "member/findPwForm";
+    }
+    
+    @PostMapping("/findPw")
+    public String findPwResult(Model model, MemberModel memberModel) throws Exception {
+    	
+    	model.addAttribute("findPw", loginService.findPw(memberModel));
+    	System.out.println(loginService.findPw(memberModel));
+    	return "member/findPw";
+    }
+    
+    
+    
 	// 마이페이지 가기
 	@RequestMapping("/myPage")
 	public String myPage() throws Exception{
@@ -138,33 +106,6 @@ public class MemberController {
 		return "member/myPage";
 	}
 	
-	// 회원탈퇴 홈페이지
-	@GetMapping(value = "/delete")
-	public String deleteMemberForm() throws Exception {
-
-		return "/member/deleteForm";
-	}
-
-	// 회원 탈퇴 구현
-	@PostMapping(value = "/delete")
-	public String deleteMember(MemberModel memberModel, HttpSession session, RedirectAttributes rttr) throws Exception{
-	
-		MemberModel member = (MemberModel)session.getAttribute("member");
-		
-		String oldPass = member.getMember_pw();
-		String newPass = memberModel.getMember_pw();
-		
-		if(!(oldPass.equals(newPass))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:/member/myPage";
-		}
-		
-		memberService.deleteMember(memberModel);
-		
-		session.invalidate();
-		
-		return "redirect:/"; 
-	}
 
 
 }
