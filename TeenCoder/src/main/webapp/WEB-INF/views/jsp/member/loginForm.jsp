@@ -37,7 +37,7 @@
             </form>
         </div>
     </div>
-    
+    <!-- asd -->
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
