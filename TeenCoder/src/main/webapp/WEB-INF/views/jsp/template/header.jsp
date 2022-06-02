@@ -21,7 +21,7 @@
 	        <div id="header_menu">
 	            <ul>
 	                <li><a href="/teen/member/login" class="log">로그인</a></li>
-	                <li><a href="/teen/member/joinForm" class="btn_com btn_join">가입</a></li>
+	                <li><a href="/teen/member/join" class="btn_com btn_join">가입</a></li>
 	            </ul>
 	        </div>
         </c:if>

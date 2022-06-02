@@ -52,10 +52,10 @@ public interface MemberMapper {
 	void insertMember(MemberModel memberModel);
 	
 	// 아이디 중복체크
-	int checkId(String member_id);
+	int checkId(MemberModel memberModel);
 	
 	// 닉네임 중복체크
-	int checkNick(String member_nick);
+	int checkNick(MemberModel memberModel);
 	
 	// 회원 탈퇴
 	void deleteMember(MemberModel memberModel);

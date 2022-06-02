@@ -109,6 +109,41 @@
 ]]>
 	</insert>
 	
+	
+	<!-- 첨부파일 업로드 -->
+	<insert id="insertFile" parameterType="hashMap">
+	<![CDATA[ INSERT INTO BFILE(
+	 FILE_NO
+	,BOARD_NO
+	,ORG_FILE_NAME
+	,STORED_FILE_NAME
+	,FILE_SIZE
+	,FILE_DATE
+	)
+	VALUES(
+	 SEQ_FILE_NO.NEXTVAL
+	,#{BOARD_NO}
+	,#{ORG_FILE_NAME}
+	,#{STORED_FILE_NAME}
+	,#{FILE_SIZE}
+	,#{FILE_DATE} 
+	)
+	]]>
+	</insert>
+	
+	<!-- 첨부파일 다운로드 -->
+	<select id="downfile" parameterType="hashMap" resultType="hashMap">
+	<![CDATA[ 
+	SELECT 
+	 STORED_FILE_NAME
+	,ORG_FILE_NAME
+	FROM BFILE
+	WHERE FILE_NO = #{FILE_NO}
+	]]>
+	
+	
+	</select>
+	
 <select id ="boardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.board.model.BoardParam">
 SELECT rn, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check,tag_name, bgroup_name, member_nick, board_comment_count
 		FROM (
@@ -184,24 +219,6 @@ ORDER BY board_comment_count DESC
  </select>
  
 
-	<!-- 첨부파일 업로드 -->
-	<insert id="insertFile" parameterType="hashMap">
-	<![CDATA[ INSERT INTO BFILE(
-	 FILE_NO
-	,BOARD_NO
-	,ORG_FILE_NAME
-	,STORED_FILE_NAME
-	,FILE_SIZE
-	)
-	VALUES(
-	 SEQ_FILE_NO.NEXTVAL
-	,#{board_no}
-	,#{org_file_name}
-	,#{stored_file_name}
-	,#{file_size}
-	)
-	]]>
-	</insert>
 	
 	
 	

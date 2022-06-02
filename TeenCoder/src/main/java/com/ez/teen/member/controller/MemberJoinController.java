@@ -23,35 +23,37 @@ public class MemberJoinController {
 	private static final Logger log = LoggerFactory.getLogger(MemberJoinController.class);
 
 	// 회원가입 화면
-	@GetMapping(value = "/joinForm")
+	@GetMapping(value = "/join")
 	public String insertMember() throws Exception {
 		return "/member/joinForm";
 	}
 
 	// 아이디 중복확인
-	@PostMapping(value = "/checkId")
 	@ResponseBody
-	public int checkId(String member_id) throws Exception {
+	@PostMapping(value = "/checkId")
+	public int checkId(MemberModel memberModel) throws Exception {
 
-		int result = memberService.checkId(member_id);
+		int result = memberService.checkId(memberModel);
+		
 		return result;
 	}
 
 	// 닉네임 중복확인
-	@PostMapping(value = "/checkNick")
 	@ResponseBody
-	public int checkNick(String member_nick) throws Exception {
+	@PostMapping(value = "/checkNick")
+	public int checkNick(MemberModel memberModel) throws Exception {
 
-		int result = memberService.checkNick(member_nick);
+		int result = memberService.checkNick(memberModel);
+
 		return result;
 	}
 
 	// 회원가입 완료
-	@PostMapping(value = "/joinForm")
-	public String insertMember(MemberModel memberModel, String member_id, String member_nick) throws Exception {
+	@PostMapping(value = "/join")
+	public String insertMember(MemberModel memberModel) throws Exception {
 
-		int idResult = memberService.checkId(member_id);
-		int nickResult = memberService.checkNick(member_nick);
+		int idResult = memberService.checkId(memberModel);
+		int nickResult = memberService.checkNick(memberModel);
 
 		try {
 			if (idResult == 1 || nickResult == 1) {

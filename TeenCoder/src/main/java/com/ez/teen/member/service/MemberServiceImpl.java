@@ -29,18 +29,18 @@ public class MemberServiceImpl implements MemberService{
 	
 	//아이디 중복체크
 	@Override
-	public int checkId(String member_id) {
+	public int checkId(MemberModel memberModel) {
 		
-		int result = memberMapper.checkId(member_id);
+		int result = memberMapper.checkId(memberModel);
 		
 		return result; 
 	}
 	
 	// 닉네임 중복체크
 	@Override
-	public int checkNick(String member_nick) {
+	public int checkNick(MemberModel memberModel) {
 
-		int result = memberMapper.checkNick(member_nick);
+		int result = memberMapper.checkNick(memberModel);
 		
 		return result;
 	}

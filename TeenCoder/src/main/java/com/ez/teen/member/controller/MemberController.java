@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,60 +27,61 @@ public class MemberController {
 
 	@Autowired
 	private LoginService loginService;
-	
+
 	@Autowired
 	private MemberService memberService;
-	
+
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
-	
+
 	// 로그인
 	@GetMapping("/login")
 	public String login() throws Exception {
 		return "member/loginForm";
 	}
-	
+
 	// 로그인 체크
 	@RequestMapping("/login")
-	public ModelAndView loginCheck(MemberModel memberModel, HttpSession session, HttpServletResponse response) throws Exception {
+	public ModelAndView loginCheck(MemberModel memberModel, HttpSession session, HttpServletResponse response)
+			throws Exception {
 		ModelAndView mv = new ModelAndView();
 		MemberModel member = loginService.login(memberModel);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
+
 		// session.setAttribute("member_no", 1);
-        // int member_no = (Integer)session.getAttribute("member_no");
-		
-    	if(member != null) {
-            session.setAttribute("member_no", member.getMember_no());
-    		mv.setViewName("redirect:/");
-    	} else {
-    		// session.setAttribute("member_no", null);
-    		out.println("<script type='text/javascript'>alert('로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.')</script>");
-    		out.flush();
-	    	mv.setViewName("member/loginForm");
-	    	mv.addObject("msg", false);
-    	}    			
-    	return mv;
+		// int member_no = (Integer)session.getAttribute("member_no");
+
+		if (member != null) {
+			session.setAttribute("member_no", member.getMember_no());
+			session.setAttribute("member_pw", member.getMember_pw());
+			mv.setViewName("redirect:/");
+		} else {
+			// session.setAttribute("member_no", null);
+			out.println("<script type='text/javascript'>alert('로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.')</script>");
+			out.flush();
+			mv.setViewName("member/loginForm");
+			mv.addObject("msg", false);
+		}
+		return mv;
 	}
-	
-    // 로그아웃
-    @GetMapping("/logout")
-    public String logout(HttpSession session) throws Exception {
+
+	// 로그아웃
+	@GetMapping("/logout")
+	public String logout(HttpSession session) throws Exception {
 		session.invalidate();
-        return "redirect:/";
-    }
-	
-	
+		return "redirect:/";
+	}
+
 	@RequestMapping("/findId")
 	public ModelAndView FindId(MemberModel memberModel, HttpServletRequest req, HttpServletResponse response)
 			throws Exception {
 		ModelAndView mv = new ModelAndView();
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
+
 		MemberModel member = loginService.findId(memberModel);
-		
+
 		if (member != null) {
 			mv.setViewName("member/findId");
 			mv.addObject("findId", member);
@@ -89,20 +91,18 @@ public class MemberController {
 			mv.setViewName("member/findIdForm");
 			return mv;
 		}
-		
+
 	}
 
 	@RequestMapping("/findIdForm")
-	public ModelAndView findIdForm(MemberModel memberModel, HttpServletRequest req)
-			throws Exception {
+	public ModelAndView findIdForm(MemberModel memberModel, HttpServletRequest req) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		MemberModel member = loginService.findId(memberModel);
-		
 
 		mv.setViewName("member/findIdForm");
-		
+
 		return mv;
-	}    
+	}
 
 	@RequestMapping(value = "/findPwForm")
 	public ModelAndView findPwForm(HttpServletRequest req, RedirectAttributes rttr) throws Exception {
@@ -130,35 +130,37 @@ public class MemberController {
 			return mv;
 		}
 	}
-	
+
 	// 회원탈퇴 홈페이지
 	@GetMapping(value = "/delete")
-	public String deleteMemberForm() throws Exception {
+	public String deleteMemberForm(MemberModel memberModel, HttpSession session) throws Exception {
+
+		int member_no = (Integer) session.getAttribute("member_no");
+		memberModel.setMember_no(member_no);
 
 		return "/member/deleteForm";
 	}
 
 	// 회원 탈퇴 구현
 	@PostMapping(value = "/delete")
-	public String deleteMember(MemberModel memberModel, HttpSession session, RedirectAttributes rttr) throws Exception{
-	
-		MemberModel member = (MemberModel)session.getAttribute("member");
-		
-		String oldPass = member.getMember_pw();
-		String newPass = memberModel.getMember_pw();
-		
-		if(!(oldPass.equals(newPass))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:/member/myPage";
-		}
-		
-		memberService.deleteMember(memberModel);
-		
-		session.invalidate();
-		
-		return "redirect:/"; 
-	}
-	
+	public String deleteMember(MemberModel memberModel, HttpSession session) throws Exception {
 
+		int member_no = (Integer) session.getAttribute("member_no");
+		memberModel.setMember_no(member_no);
+		
+		String oldPw = (String)session.getAttribute("member_pw");
+		String newPw = memberModel.getMember_pw();
+		
+		if(oldPw.equals(newPw)) {
+			
+			memberService.deleteMember(memberModel);
+			session.invalidate();
+		} else {
+			return "/member/";
+			
+		}
+
+		return "redirect:/";
+	}
 
 }

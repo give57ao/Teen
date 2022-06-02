@@ -142,7 +142,7 @@ public class MyPageController {
 	
 	
 	// 회원정보 수정 폼
-		@GetMapping(value = "/mypageModifyForm")
+		@GetMapping(value = "/mypageModify")
 		public String mypageModifyForm(MemberModel memberModel, Model model,HttpServletRequest request) throws Exception {
 			
 			HttpSession session = request.getSession();
@@ -156,7 +156,7 @@ public class MyPageController {
 		}
 		
 		// 회원정보 수정
-		@PostMapping(value = "/mypageModifyForm")
+		@PostMapping(value = "/mypageModify")
 		public String mypageModify(MemberModel memberModel, HttpSession session) throws Exception {
 			
 			int member_no = (Integer)session.getAttribute("member_no");

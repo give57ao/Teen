@@ -30,9 +30,6 @@
 	                            <input type="password" name="member_pw" placeholder="비밀번호">
 	                        </td>
 	                    </tr>
-	                    <div style="display:none;">
-	                   		<input type="text" name="member_no" value="${member.member_no }">
-	                	</div>
                     </tbody>
                 </table>
                 <div id="btn_wrap">

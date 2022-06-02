@@ -16,10 +16,10 @@ public interface MemberService {
 	public void insertMember(MemberModel memberModel);
 
 	// 아이디중복체크
-	public int checkId(String member_id);
+	public int checkId(MemberModel memberModel);
 	
 	// 닉네임 중복체크
-	public int checkNick(String member_nick);
+	public int checkNick(MemberModel memberModel);
 	
 	// 회원정보 수정
 	public void mypageModify(MemberModel memberModel);
