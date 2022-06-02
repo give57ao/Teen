@@ -32,7 +32,7 @@
 	            	<%-- <li><c:out value="${sessionScope.member_no}"/></li> 세션 값 확인 --%>
 	            	<!--  <li><a href="#">관리자페이지</a></li> -->
 	            	<li><a href="/teen/member/logout" class="log" onCLick="logout()">로그아웃</a></li>
-	                <li><a href="/teen/member" class="log">마이페이지</a></li>
+	                <li><a href="/teen/member/" class="log">마이페이지</a></li>
 	                <li><a href="#"><img src="/teen/resources/images/icon/icon_alarm_n.svg"></a></li>
 	                <li><a href="#"><img src="/teen/resources/images/icon/icon_badge.png"></a></li>
 	            </ul>
