@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ez.teen.board.mapper.BoardMapper">
+
+<!-- 회원 관리 -->	
+<select id ="memberList" resultType="com.ez.teen.member.model.MemberModel" parameterType="com.ez.teen.board.model.BoardParam">
+SELECT rn, member_no, member_id, member_name, member_nick, member_email, member_date, member_pro_check
+	FROM (
+		SELECT ROWNUM RN, A.* 
+		FROM (
+			SELECT member_no, member_id, member_name, member_nick, member_email, member_date, member_pro_check
+
+			<if test='member_no != 0'>
+			WHERE B.MEMBER_NO = #{member_no}
+			</if>
+			
+			<if test='search == "title"'>
+			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+			</if>
+			
+			<if test='search == "content"'>
+			AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+			</if>
+			
+			<if test='search == "member_nick"'>
+			AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+			</if>
+			
+			<if test='search == "all"'>
+			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+			OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+			OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+			</if>
+
+			GROUP BY B.BOARD_NO, B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,T.TAG_NAME,G.BGROUP_NAME,M.MEMBER_NICK
+			
+			) A
+		)
+		WHERE RN BETWEEN #{start} AND #{end}
+</select>
+ 
+</mapper>

@@ -30,6 +30,7 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 	
@@ -47,19 +48,20 @@ public class MemberController {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-//		session.setAttribute("member_no", 1);
+		// session.setAttribute("member_no", 1);
 		
     	if(member != null) {
+    		session.setAttribute("member", member);
             session.setAttribute("member_no", member.getMember_no());
-            session.setAttribute("member", member);
+            session.setAttribute("member_admin", member.getMember_admin());
     		mv.setViewName("redirect:/");
     	} else {
-    		session.setAttribute("member_no", null);
     		out.println("<script type='text/javascript'>alert('로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.')</script>");
     		out.flush();
 	    	mv.setViewName("member/loginForm");
 	    	mv.addObject("msg", false);
     	}    			
+    	
     	return mv;
 	}
 	
@@ -69,7 +71,6 @@ public class MemberController {
 		session.invalidate();
         return "redirect:/";
     }
-	
 	
 //	@RequestMapping("/findId")
 //	public ModelAndView FindId(MemberModel memberModel, HttpServletRequest req, HttpServletResponse response) throws Exception {
@@ -143,7 +144,6 @@ public class MemberController {
     	return "member/findId";
     }
     
-    
     @GetMapping("/findPw")
     public String findPw() {
     	return "member/findPwForm";
@@ -157,8 +157,6 @@ public class MemberController {
     	return "member/findPw";
     }
     
-    
-    
 	// 마이페이지 가기
 	@RequestMapping("/myPage")
 	public String myPage() throws Exception{
@@ -166,6 +164,4 @@ public class MemberController {
 		return "member/myPage";
 	}
 	
-
-
 }
