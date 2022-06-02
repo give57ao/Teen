@@ -2,6 +2,15 @@ package com.ez.teen.board.model;
 
 public class BoardParam {
 
+	private int board_no;
+	public int getBoard_no() {
+		return board_no;
+	}
+
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
+	}
+
 	private int member_no;
 	private String sort; // 정렬
 	private String search; // 검색 타입

@@ -3,13 +3,12 @@ package com.ez.teen.board.service;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.board.mapper.BoardMapper;
+import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentModel;
@@ -22,7 +21,7 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardMapper boardMapper;
 
-	@Resource(name = "fileUtils")
+	@Autowired
 	FileUtils fileUtils;
 
 	// 전체 이용자 수
@@ -43,11 +42,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.getCommentCount(commentParam);
 	}
 
-	@Override
-	public BoardModel selectBoardDetail(BoardModel boardModel, int boardNum) throws Exception {
-		return boardMapper.selectBoardDetail(boardNum);
-	}
-
+	
 	// 게시글 수정
 	@Override
 	public void updateBoard(BoardModel boardModel) {
@@ -89,6 +84,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 
+	@Override
+	public List<BoardModel> selectBoardDetail(BoardParam boardParam) {
+		return boardMapper.selectBoardDetail(boardParam);
+	}
+
+	@Override
+	public List<BoardCommentModel> selectComment(BoardParam boardParam) {
+		return boardMapper.selectComment(boardParam);
+	}
 
 	
 

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentModel;
@@ -23,13 +24,16 @@ public interface BoardService {
 	public int  getCommentCount(CommentParam commentParam);
 
 
+	//게시글 상세
+	public List<BoardModel> selectBoardDetail(BoardParam boardParam);
 	
-	//게시글 컨텐츠
-	public BoardModel selectBoardDetail(BoardModel boardModel, int boardNum) throws Exception;
-	
+	//게시글 상세 댓글
+	public List<BoardCommentModel> selectComment(BoardParam boardParam);
+
 	//게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
 	
+	//내가 작성한 댓글
 	public List<CommentModel> commentList(CommentParam commentParam);
 	
 	// 게시글 수정

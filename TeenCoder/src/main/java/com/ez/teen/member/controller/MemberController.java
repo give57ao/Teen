@@ -46,9 +46,7 @@ public class MemberController {
 		MemberModel member = loginService.login(memberModel);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
-//		session.setAttribute("member_no", 1);
-		
+				
     	if(member != null) {
             session.setAttribute("member_no", member.getMember_no());
             session.setAttribute("member", member);
@@ -69,66 +67,7 @@ public class MemberController {
 		session.invalidate();
         return "redirect:/";
     }
-	
-	
-//	@RequestMapping("/findId")
-//	public ModelAndView FindId(MemberModel memberModel, HttpServletRequest req, HttpServletResponse response) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		response.setContentType("text/html; charset=utf-8");
-//		PrintWriter out = response.getWriter();
-//		
-//		MemberModel member = loginService.findId(memberModel);
-//		System.out.println(member);
-//		if (member != null) {
-//			mv.setViewName("member/findId");
-//			mv.addObject("findId", member);
-//			return mv;
-//		} else {
-//			out.println("<script type='text/javascript'>alert('입력정보 일치x')</script>");
-//			mv.setViewName("member/findIdForm");
-//			return mv;
-//		}
-//		
-//	}
-//
-//	@RequestMapping("/findIdForm")
-//	public ModelAndView findIdForm(MemberModel memberModel, HttpServletRequest req)
-//			throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		MemberModel member = loginService.findId(memberModel);
-//		
-//
-//		mv.setViewName("member/findIdForm");
-//		
-//		return mv;
-//	}    
-//
-//	@RequestMapping(value = "/findPwForm")
-//	public ModelAndView findPwForm(HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//
-//		mv.setViewName("member/findPwForm");
-//		return mv;
-//	}
-//
-//	@RequestMapping("/findPw")
-//	public ModelAndView FindPw(MemberModel memberModel, HttpServletRequest req, HttpServletResponse response)
-//			throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		response.setContentType("text/html; charset=utf-8");
-//		PrintWriter out = response.getWriter();
-//		MemberModel member = loginService.findPw(memberModel);
-//
-//		if (member != null) {
-//			mv.setViewName("member/findPw");
-//			mv.addObject("findPw", member);
-//			return mv;
-//		} else {
-//			out.println("<script type='text/javascript'>alert('입력정보 일치x')</script>");
-//			mv.setViewName("member/findPwForm");
-//			return mv;
-//		}
-//	}
+
 
     @GetMapping("/findId")
     public String findId() {

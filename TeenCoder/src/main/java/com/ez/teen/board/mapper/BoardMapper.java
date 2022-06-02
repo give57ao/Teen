@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentModel;
@@ -27,13 +28,14 @@ public interface BoardMapper {
 	public List<BoardModel> boardList(BoardParam boardParam);
 	
 	public List<CommentModel> commentList(CommentParam commentParam);
-	
-	public BoardModel selectBoardDetail(int boardNum)throws Exception;
-	
+		
 	public void updateBoard(BoardModel boardModel);
 
-
 	
+	public List<BoardModel> selectBoardDetail(BoardParam boardParam);
+
+	public List<BoardCommentModel> selectComment(BoardParam boardParam);
+
 
 	
 	//게시글 작성

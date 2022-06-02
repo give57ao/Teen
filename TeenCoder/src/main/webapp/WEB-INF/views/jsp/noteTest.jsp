@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <!-- include libraries(jQuery, bootstrap) -->

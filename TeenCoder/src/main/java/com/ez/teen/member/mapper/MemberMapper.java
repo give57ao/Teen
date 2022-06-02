@@ -28,26 +28,6 @@ public interface MemberMapper {
 	// 마이페이지
 	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
 
-	/*
-	 * MemberModel login(MemberModel memberModel) throws Exception;
-	 * 
-	 * MemberModel loginCheck(MemberModel memberModel) throws Exception;
-	 * 
-	 * MemberModel findId(MemberModel memberModel) throws Exception;
-	 * 
-	 * MemberModel findPw(MemberModel memberModel) throws Exception;
-	 * 
-	 * MemberModel test(MemberModel memberModel) throws Exception;
-	 * 
-	 * MemberModel findMemberName(List<MemberModel> memberModel);
-	 * 
-	 * MemberModel findMemberEmail(List<MemberModel> memberModel);
-	 * 
-	 * MemberModel findMemberId(List<MemberModel> memberModel);
-	 * 
-	 * MemberModel myPage(MemberModel memberModel) throws Exception;
-	 */
-
 	// 회원가입
 	void insertMember(MemberModel memberModel);
 

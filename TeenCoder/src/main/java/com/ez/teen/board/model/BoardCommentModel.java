@@ -15,7 +15,15 @@ public class BoardCommentModel {
 	private int ref_no;
 	private int ref_step;
 	private int ref_level;
+	private int board_comment_count;
 	
+	
+	public int getBoard_comment_count() {
+		return board_comment_count;
+	}
+	public void setBoard_comment_count(int board_comment_count) {
+		this.board_comment_count = board_comment_count;
+	}
 	public int getBcomment_no() {
 		return bcomment_no;
 	}

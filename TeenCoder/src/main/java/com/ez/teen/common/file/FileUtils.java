@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.Date;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,7 +38,7 @@ public class FileUtils {
 		File file = new File(filePath);
 		if(file.exists() == false) {
 			file.mkdirs();
-		}  //따란
+		} 
 		
 		while (iterator.hasNext()) {
 			multpartFile = mpRequest.getFile(iterator.next());
@@ -47,6 +48,7 @@ public class FileUtils {
 				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
 				
 				storedFileName = getRandomString() + originalFileExtension;
+				Date date = new Date();
 				
 				file = new File(filePath + storedFileName);
 				multpartFile.transferTo(file);
@@ -55,6 +57,7 @@ public class FileUtils {
 				listMap.put("ORG_FILE_NAME", originalFileName);
 				listMap.put("STORED_FILE_NAME", storedFileName);
 				listMap.put("FILE_SIZE", multpartFile.getSize());
+				listMap.put("FILE_DATE", date);
 				list.add(listMap);
 			}
 		}

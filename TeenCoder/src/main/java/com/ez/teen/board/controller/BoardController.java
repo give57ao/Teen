@@ -1,8 +1,8 @@
 package com.ez.teen.board.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -16,19 +16,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
 import com.ez.teen.member.model.MemberModel;
 
-// 동혁 - 브랜치 만들고 확인작업
 @Controller
 public class BoardController {
-	//제발돼라123
+
 	@Autowired
 	BoardService boardService;
 
@@ -40,7 +38,6 @@ public class BoardController {
 	public String main(BoardModel boardModel, MemberModel memberModel, Model model, BoardParam boardParam, CommentParam commentParam) {
 		log.info("메인페이지 실행");
 		
-		int member_no =0;
 		boardParam.setMember_no(0);
 		commentParam.setMember_no(0);
 		
@@ -56,11 +53,10 @@ public class BoardController {
 	public String updateBoardForm(BoardModel boardModel, Model model , HttpServletRequest request)throws Exception{
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("member_no", 2);
 		int member_no = (Integer)session.getAttribute("member_no");
 		boardModel.setMember_no(member_no);
 		
-		/* model.addAttribute("update", ); */
+		
 		return "board/boardModify";
 	}
 	
@@ -68,7 +64,6 @@ public class BoardController {
 	public String updateBoard(BoardModel boardModel, Model model , HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("member_no", 2);
 		int member_no = (Integer)session.getAttribute("member_no");
 		boardModel.setMember_no(member_no);
 		
@@ -80,8 +75,7 @@ public class BoardController {
 	//게시글 작성 폼
 	@GetMapping(value = "board/boardWrite")
 	public String insertBoardForm() {
-		
-
+	
 		return "board/boardWrite";
 	}
 	
@@ -109,19 +103,28 @@ public class BoardController {
 		return "board/mainBoard";
 	}
 	 
+	@RequestMapping("board/detail")
+	public String selectBoardDetail(BoardModel boardModel, HttpSession session,
+			HttpServletResponse response, BoardParam boardParam, Model model,
+			@RequestParam(value="board_no")int board_no) {
+		// 파라미터 분석 : BoardParam의 board_no로 게시글 특정지음
+		// @RequestParam으로 uri의 board_no? 뒤의 값을 가져옴
+		
+		int member_no = (int)session.getAttribute("member_no"); // member_no가져옴
+		boardParam.setBoard_no(board_no); // 위 파라미터에서 선언한 board_no(uri파라미터)를 setter를 통해 값 설정
+		boardParam.setMember_no(member_no);
+		List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
+		List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
+				
+		System.out.println(boardDetail);
 
-	@RequestMapping("/board/detail")
-	public ModelAndView selectBoardDetail(BoardModel boardModel, HttpSession session, HttpServletResponse response) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		int boardNum = (int) session.getAttribute("member_no");
 		
-		BoardModel model = boardService.selectBoardDetail(boardModel, boardNum);
+		model.addAttribute("boardDetail", boardDetail);
+		model.addAttribute("boardComment", boardComment);
 		
-		
-		mv.addObject("content", model);
-		mv.setViewName("board/boardDetail");
-		return mv;
+		return "board/boardDetail";
 	}
+
 	
 	//게시판
 	@GetMapping("/board")
