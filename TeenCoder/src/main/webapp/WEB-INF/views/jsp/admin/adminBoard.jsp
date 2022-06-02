@@ -44,35 +44,37 @@
                     </div>
                 	<!-- List Row -->
                     <div id="admin_board_list">
-                        <table>
-                            <thead>
-                                <tr class="row_title">
-                                    <td>번호</td>
-                                    <td>제목</td>
-                                    <td>작성자</td>
-                                    <td>작성일</td>
-                                    <td>조회</td>
-                                    <td>추천</td>
-                                    <td>첨부파일</td>
-                                    <td>글 관리</td>
-                                </tr>
-                            </thead>
-                            <br>
-                            <!-- List Row -->
-                            <tbody>
-                                <!-- Row1 -->
-                                <tr class="row">
-                                   <td>1</td>
-                                   <td>게시글 제목</td>
-                                   <td>TeenCoder</td>
-                                   <td>2022-05-25</td>
-                                   <td>0</td>
-                                   <td>0</td>
-                                   <td>Y</td>
-                                   <td><a href="#">삭제</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    	<form>
+	                        <table>
+	                            <thead>
+	                                <tr class="row_title">
+	                                    <td>번호</td>
+	                                    <td>제목</td>
+	                                    <td>작성자</td>
+	                                    <td>작성일</td>
+	                                    <td>조회</td>
+	                                    <td>추천</td>
+	                                    <td>첨부파일</td>
+	                                    <td>글 관리</td>
+	                                </tr>
+	                            </thead>
+	                            <br>
+	                            <!-- List Row -->
+	                            <tbody>
+	                                <!-- Row1 -->
+	                                <tr class="row">
+	                                   <td>1</td>
+	                                   <td>게시글 제목</td>
+	                                   <td>TeenCoder</td>
+	                                   <td>2022-05-25</td>
+	                                   <td>0</td>
+	                                   <td>0</td>
+	                                   <td>Y</td>
+	                                   <td><a href="#">삭제</a></td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+                        </form>
                     </div>
                     <!-- Pagination -->
                     <div id="board_list_pagination">
