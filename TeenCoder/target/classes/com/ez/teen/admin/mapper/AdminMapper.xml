@@ -18,26 +18,22 @@
             	SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_NICK, MEMBER_EMAIL, MEMBER_DATE, MEMBER_PRO_CHECK
 				FROM MEMBER
 				
-				<if test='member_no != 0'>
-				WHERE MEMBER_NO = #{member_no}
-				</if>
-				
 				<if test='search == "member_id"'>
-				AND MEMBER_ID LIKE '%'||#{keyword}||'%'
+				WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
 				</if>
 		
 				<if test='search == "member_nick"'>
-				AND MEMBER_NICK LIKE '%'||#{keyword}||'%'
+				WHERE MEMBER_NICK LIKE '%'||#{keyword}||'%'
 				</if>
 				
 				<if test='search == "all"'>
-				AND MEMBER_ID LIKE '%'||#{keyword}||'%'
+				WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
 				OR MEMBER_NICK LIKE '%'||#{keyword}||'%'
 				</if>
 				
 				) A
 		) WHERE RN BETWEEN #{start} AND #{end}
-		ORDER BY MEMBER_NO DESC
+	
 	</select>
 	
 	<!-- 회원정보 수정 -->
