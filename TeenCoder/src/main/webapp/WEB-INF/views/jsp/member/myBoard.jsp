@@ -66,7 +66,7 @@
 						<div class="row">
 							<div class="row_info">
 								<ul class="row_top tag_category">
-									<li>#${board.tag_name}</li>
+									<li>#${board.board_tag_name}</li>
 								</ul>
 								<div class="row_top member">
 									<h4>
