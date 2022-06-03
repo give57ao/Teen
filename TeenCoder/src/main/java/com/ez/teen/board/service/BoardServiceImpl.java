@@ -54,7 +54,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception {
 		
-		//받아온 태그 번호가 (1,2,3)으로 들어온다면
+		//받아온 태그 이름이 (java,c,html)으로 들어온다면 쉼표를 해시태그로 변경하면 된다
+		String replaceTagName = boardModel.getBoard_tag_name();
+		//replace([기존문자],[바꿀문자])
+		replaceTagName = replaceTagName.replace(",", " #");
+		boardModel.setBoard_tag_name(replaceTagName);
 		
 		boardMapper.insertBoard(boardModel);
 
