@@ -9,7 +9,6 @@ import com.ez.teen.member.model.MemberModel;
 @Service
 public class LoginServiceImpl implements LoginService {
 
-
 	@Autowired
 	private MemberMapper memberMapper;
 	

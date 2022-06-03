@@ -8,12 +8,6 @@ import com.ez.teen.member.model.MemberModel;
 
 @Mapper
 public interface MemberMapper {
-	
-	// 전체 회원 수
-	public int getMemberCount();
-	
-	// 회원 리스트
-	public List<MemberModel> memberList(MemberModel memberModel);
 
 	// 로그인
 	public MemberModel login(MemberModel memberModel) throws Exception;
