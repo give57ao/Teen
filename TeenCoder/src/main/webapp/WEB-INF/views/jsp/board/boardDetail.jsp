@@ -82,6 +82,7 @@
 								<div class="row_contents">
 									<h1>${boardDetail.board_content}</h1>
 									<h5>TEST1</h5>
+<!--*********************************************************** 파일 구간********************************************************************* -->
 								<c:forEach var="file" items="${file }">
                             		<span><a href="#" onclick="fn_fileDown('${file.FILE_NO}'); return false;">${file.ORG_FILE_NAME }</a>(${file.FILE_SIZE }kb)</span>
                             	</c:forEach>
@@ -225,8 +226,8 @@
 		
 		<script type="text/javascript">
 		function fn_fileDown(fileNo){
-		var formObj = document.downFile;
-		$('#FILE_NO').attr('value', fileNo);
+			var formObj = $("form[name='downFile']");
+		$("#FILE_NO").attr("value", fileNo);
 		formObj.attr("action", "/teen/downFile");
 		formObj.submit();
 	}
