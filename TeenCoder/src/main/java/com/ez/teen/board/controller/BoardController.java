@@ -96,7 +96,7 @@ public class BoardController {
 	
 	boardService.insertBoard(boardModel, mpRequest);
 
-	return "board/mainBoard"; 
+	return "redirect:/board"; 
 	}
 	
 	
@@ -140,7 +140,7 @@ public class BoardController {
 			String storedFileName = (String)resultMap.get("STORED_FILE_NAME");
 			String originalFileName = (String)resultMap.get("ORG_FILE_NAME");
 			
-			byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("E:\\JAVA\\SpringTool"+storedFileName));
+			byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("E:\\JAVA\\SpringTool\\"+storedFileName));
 			
 			response.setContentType("application/octet-stream");
 			response.setContentLength(fileByte.length);
