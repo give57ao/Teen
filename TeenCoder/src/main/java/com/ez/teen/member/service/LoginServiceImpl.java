@@ -41,5 +41,5 @@ public class LoginServiceImpl implements LoginService {
 	public MemberModel findPw(MemberModel memberModel) throws Exception {
 		return memberMapper.findPw(memberModel);
 	}
-
+	
 }

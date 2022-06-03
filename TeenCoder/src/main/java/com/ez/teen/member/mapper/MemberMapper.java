@@ -8,7 +8,7 @@ import com.ez.teen.member.model.MemberModel;
 
 @Mapper
 public interface MemberMapper {
-
+	
 	// 로그인
 	public MemberModel login(MemberModel memberModel) throws Exception;
 

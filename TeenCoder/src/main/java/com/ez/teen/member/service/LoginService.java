@@ -18,5 +18,5 @@ public interface LoginService {
 	
 	// 비밀번호 찾기
 	public MemberModel findPw(MemberModel memberModel)throws Exception;
-	
+
 }
