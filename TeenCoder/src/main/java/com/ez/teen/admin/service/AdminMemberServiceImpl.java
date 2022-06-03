@@ -18,8 +18,8 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	
 	// 전체 회원 수
 	@Override
-	public int getMemberCount() {
-		return adminMapper.getMemberCount();
+	public int getMemberCount(MemberParam memberParam) {
+		return adminMapper.getMemberCount(memberParam);
 	}
 	
 	// 회원 리스트

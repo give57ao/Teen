@@ -5,8 +5,23 @@
 <mapper namespace="com.ez.teen.admin.mapper.AdminMapper">
 	
 	<!-- 전체 회원 수 -->
-	<select id="getMemberCount" resultType="int">
+	<select id="getMemberCount" resultType="int" parameterType="com.ez.teen.member.model.MemberParam">
 		SELECT COUNT(*) AS allMemberCount FROM MEMBER
+		
+				<if test='search == "member_id"'>
+				WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
+				</if>
+		
+				<if test='search == "member_nick"'>
+				WHERE MEMBER_NICK LIKE '%'||#{keyword}||'%'
+				</if>
+				
+				<if test='search == "all"'>
+				WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
+				OR MEMBER_NICK LIKE '%'||#{keyword}||'%'
+				</if>
+		
+		
 	</select>
 	
 	<!-- 회원 리스트 -->

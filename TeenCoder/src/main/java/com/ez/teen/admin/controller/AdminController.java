@@ -34,7 +34,7 @@ public class AdminController {
 			@RequestParam(value = "search", required = false) String search,
 			@RequestParam(value = "keyword", required = false) String keyword) throws Exception {
 		
-		int total = adminMemberService.getMemberCount();
+		int total = adminMemberService.getMemberCount(memberParam);
 		
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";

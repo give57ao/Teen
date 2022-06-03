@@ -8,7 +8,7 @@ import com.ez.teen.member.model.MemberParam;
 public interface AdminMemberService {
 	
 	// 전체 회원 수
-	public int getMemberCount();
+	public int getMemberCount(MemberParam memberParam);
 		
 	// 회원 리스트
 	public List<MemberModel> memberList(MemberParam memberParam) throws Exception;
