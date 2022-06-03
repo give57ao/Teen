@@ -10,6 +10,7 @@ public class BoardCommentModel {
 	private String bcomment_content;
 	private Date bcomment_date;
 	private int member_no;
+	private String member_nick;
 	private int bcomment_report_count;
 	private int bcomment_like_count;;
 	private int ref_no;
@@ -17,7 +18,13 @@ public class BoardCommentModel {
 	private int ref_level;
 	private int board_comment_count;
 	
-	
+
+	public String getMember_nick() {
+		return member_nick;
+	}
+	public void setMember_nick(String member_nick) {
+		this.member_nick = member_nick;
+	}
 	public int getBoard_comment_count() {
 		return board_comment_count;
 	}

@@ -3,6 +3,7 @@ package com.ez.teen.board.model;
 public class BoardParam {
 
 	private int board_no;
+	
 	public int getBoard_no() {
 		return board_no;
 	}
