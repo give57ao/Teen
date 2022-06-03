@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  
 <!DOCTYPE html>
 <html>
@@ -24,12 +26,12 @@
             <div id="contents_wrap">
                 <!-- Category -->
                 <ul id="contents_category">
-                    <li><a href="#" class="select">회원 관리</a></li>
-                    <li><a href="#">공지글 관리</a></li>
-                    <li><a href="#">게시글 관리</a></li>
-                    <li><a href="#">신고글 관리</a></li>
-                    <li><a href="#">댓글 관리</a></li>
-                    <li><a href="#">답글 관리</a></li>
+                    <li><a href="/teen/admin/memberList" class="select">회원 관리</a></li>
+                    <li><a href="/teen/admin/noticeBoard">공지글 관리</a></li>
+                    <li><a href="/teen/admin/adminBoard">게시글 관리</a></li>
+                    <li><a href="/teen/admin/reportBoard">신고글 관리</a></li>
+                    <li><a href="/teen/admin/reportCmtList">댓글 관리</a></li>
+                    <li><a href="/teen/admin/reportAnsList">답글 관리</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">
@@ -37,46 +39,78 @@
                     <div id="board_list_title">
                         <h2>회원 관리</h2>
                     </div>
+                    <!-- Search -->
+                    <div id="board_list_search">
+                        <select class="dropdown">
+                            <option value="all" id="search" selected>전체</option>
+                            <option value="id" id="search">아이디</option>
+                            <option value="nick" id="search">닉네임</option>
+                        </select>
+                        <div class="search">
+                            <input type="text" id="keyword" placeholder="검색">
+                            <button class="btn_search"></button>
+                        </div>
+                    </div>
                 	<!-- List Row -->
                     <div id="admin_board_list">
-                        <table>
-                            <thead>
-                                <tr class="row_title">
-                                    <td>아이디</td>
-                                    <td>이름</td>
-                                    <td>닉네임</td>
-                                    <td>이메일</td>
-                                    <td>가입일</td>
-                                    <td>개발직군</td>
-                                    <td>회원정보</td>
-                                </tr>
-                            </thead>
-                            <br>
-                            <!-- List Row -->
-                            <tbody>
-                                <!-- Row1 -->
-                                <tr class="row">
-                                   <td>TeenCoder</td>
-                                   <td>TeenCoder</td>
-                                   <td>TeenCoder</td>
-                                   <td>TeenCoder@gmail.com</td>
-                                   <td>2022-05-25</td>
-                                   <td>Y</td>
-                                   <td><a href="#">수정</a> / <a href="#">삭제</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    	<form action="memberList" method="post">
+	                        <table>
+	                            <thead>
+	                                <tr class="row_title">
+	                                	<td>번호</td>
+	                                    <td>아이디</td>
+	                                    <td>이름</td>
+	                                    <td>닉네임</td>
+	                                    <td>이메일</td>
+	                                    <td>가입일</td>
+	                                    <td>개발직군</td>
+	                                    <td>회원정보</td>
+	                                </tr>
+	                            </thead>
+	                            <br>
+	                            <!-- List Row -->
+	                            <tbody>
+	                                <!-- Row1 -->
+	                                <tr class="row">
+	                                   <td style="width: 5%;">${member.member_no}</td>
+	                                   <td style="width: 10%;">${member.member_id}</td>
+	                                   <td style="width: 10%;">${member.member_name}</td>
+	                                   <td style="width: 10%;">${member.member_nick}</td>
+	                                   <td style="width: 20%;">${member.member_email}</td>
+	                                   <td style="width: 10%;"><fmt:formatDate value="${member.member_date}" pattern="yyyy.MM.dd" /></td>
+	                                   <td style="width: 10%;">${member.member_pro_check}</td>
+	                                   <td style="width: 10%;"><a href="/teen/admin/memberModify">수정</a> / <a href="/teen/admin/memberDelete" onClick="memberDeletePopup()">삭제</a></td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+                        </form>
                     </div>
-                    <!-- Pagination -->
                     <div id="board_list_pagination">
-                        <ul>
-                            <li class="prev"><a href="#"></a></li>
-                            <li><a href="#" class="select">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="next"><a href="#"></a></li>
-                        </ul>
-                    </div>
+						<ul>
+							<!-- 왼쪽 버튼 -->
+							<!-- 시작페이지가 1이 아닐 때 -->
+							<c:if test="${paging.nowPage != 1}">
+								<li class="prev"><a
+									href="/teen/admin/memberList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage - 1}&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+							</c:if>
+							<!-- 페이징 숫자가 나오는 부분 -->
+							<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
+								var="p">
+								<c:choose>
+									<c:when test="${p == paging.nowPage}">
+										<li><a class="select">${p}</a></li>
+									</c:when>
+									<c:when test="${p != paging.nowPage}">
+										<li><a href="/teen/admin/memberList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a></li>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<!-- 오른쪽 버튼 -->
+							<c:if test="${paging.startPage < paging.endPage}">
+								<li class="next"><a href="/teen/admin/memberList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage+1}&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+							</c:if>
+						</ul>
+					</div>
                 </div>
             </div>
         </div>
@@ -84,5 +118,9 @@
     
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
+	
+	<!-- JS -->
+	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/admin/admin.js"></script>
 </body>
 </html>

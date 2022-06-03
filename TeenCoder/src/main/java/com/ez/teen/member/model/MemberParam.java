@@ -3,6 +3,7 @@ package com.ez.teen.member.model;
 public class MemberParam {
 
 	private int member_no;
+	
 	private String search; // 검색 타입
 
 	public String getSearch() {
@@ -24,6 +25,7 @@ public class MemberParam {
 	}
 
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
+	
 	private int cntPage = 10;
 
 	public void PagingModel() {

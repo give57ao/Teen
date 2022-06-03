@@ -1,4 +1,3 @@
-
 package com.ez.teen.member.service;
 
 import java.util.List;
@@ -8,27 +7,34 @@ import org.springframework.stereotype.Service;
 
 import com.ez.teen.member.mapper.MemberMapper;
 import com.ez.teen.member.model.MemberModel;
+import com.ez.teen.member.model.MemberParam;
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	//마이페이지
+	// 전체 회원 수
+	@Override
+	public int getMemberCount() {
+		return memberMapper.getMemberCount();
+	}
+	
+	// 마이페이지
 	@Override
 	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception {
 		return memberMapper.myPageList(memberModel);
 	}
 
-	//회원가입
+	// 회원가입
 	@Override
 	public void insertMember(MemberModel memberModel) {
 		memberMapper.insertMember(memberModel);
 	
 	}
 	
-	//아이디 중복체크
+	// 아이디 중복체크
 	@Override
 	public int checkId(String member_id) {
 		
@@ -46,9 +52,7 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
-
-	
-	//회원정보 삭제
+	// 회원정보 삭제
 	@Override
 	public void deleteMember(MemberModel memberModel) {
 		memberMapper.deleteMember(memberModel);
@@ -61,15 +65,16 @@ public class MemberServiceImpl implements MemberService{
 		memberMapper.mypageModify(memberModel);
 	}
 
-	
-	 @Override public int passChk(MemberModel memberModel){
+	@Override public int passChk(MemberModel memberModel){
 	 
-		 int result = memberMapper.passChk(memberModel); 
-	     return result; 
-	 }
+		int result = memberMapper.passChk(memberModel); 
+	    return result; 
+	}
+
+	@Override
+	public List<MemberModel> memberList(MemberParam memberParam) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	 
-
-
 }
-
-

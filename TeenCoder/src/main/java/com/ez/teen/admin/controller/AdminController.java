@@ -1,5 +1,7 @@
 package com.ez.teen.admin.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 import com.ez.teen.member.service.MemberService;
-import com.ez.teen.board.model.BoardParam;
-import com.ez.teen.board.service.BoardService;
 import com.ez.teen.admin.service.AdminMemberService;
 
 @Controller
@@ -27,29 +27,21 @@ public class AdminController {
 	private AdminMemberService adminMemberService;
 	
 	@Autowired
-	private BoardService boardService;
-	
-	@Autowired
 	private MemberService memberService;
 	
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 	
-	// 회원 관리
+	// 회원 리스트
 	@GetMapping("/memberList")
-	public String memberList(Model model, MemberParam memberParam, BoardParam boardParam,
+	public String memberList(Model model, MemberParam memberParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "keyword", required = false) String keyword,
-			HttpSession session) {
+			@RequestParam(value = "keyword", required = false) String keyword) {
 		
-		int member_no = (Integer)session.getAttribute("member_no");
-		memberParam.setMember_no(member_no);
+		int total = memberService.getMemberCount();
 		
-		int total = boardService.getUserCount();
-		
-		System.out.println("total :" + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -62,18 +54,31 @@ public class AdminController {
 		if(total == 0) {
 			memberParam.setEndPage(1);
 		}
-		memberParam.setMember_no(member_no);
-		model.addAttribute("paging", memberParam);
-		model.addAttribute("member", boardService.getUserCount());
 		
-		System.out.println("total : " + total);
-        System.out.println("startPage :" + memberParam.getStartPage());
-        System.out.println("endPage :" + memberParam.getEndPage());
-        System.out.println("cntPerPage :" + memberParam.getCntPerPage());
-        System.out.println("nowPage :" + memberParam.getNowPage());
-        System.out.println("lastPage :" + memberParam.getLastPage());
+		model.addAttribute("paging", memberParam);
+		model.addAttribute("member", memberService.memberList(memberParam));
         
         return "admin/memberList";
+	}
+	
+	// 회원정보 수정 폼
+	@GetMapping("/memberModify")
+	public String memberModifyForm() throws Exception {
+		return "admin/memberModify";
+	}
+	
+	// 회원정보 수정
+	@PostMapping("/memberModify")
+	public String memberModify(MemberModel memberModel) throws Exception {
+		adminMemberService.memberModify(memberModel);
+		return "redirect:/admin/memberList";
+	}
+	
+	// 회원정보 삭제
+	@GetMapping("/memberDelete")
+	public String memberDelete(MemberModel memberModel) throws Exception {
+		adminMemberService.memberDelete(memberModel);
+		return "redirect:/admin/memberList";
 	}
 	
 }

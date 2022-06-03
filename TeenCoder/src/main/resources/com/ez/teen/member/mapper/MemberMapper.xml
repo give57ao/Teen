@@ -2,6 +2,11 @@
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ez.teen.member.mapper.MemberMapper">
+
+	<!-- 전체 회원 수 -->
+	<select id="getMemberCount" resultType="int">
+		SELECT COUNT(*) AS allMemberCount FROM MEMBER
+	</select>
 	
 	<!-- 마이페이지 리스트 -->
 	<select id="myPageList" resultType="com.ez.teen.member.model.MemberModel" parameterType="com.ez.teen.member.model.MemberModel">
@@ -18,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		AND MEMBER_PW = #{member_pw}
 	</select>
 
-<!-- 아이디 찾기 -->
+	<!-- 아이디 찾기 -->
 	<select id="findId" resultType="com.ez.teen.member.model.MemberModel">
 		SELECT MEMBER_ID
 		FROM MEMBER
@@ -26,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		AND MEMBER_EMAIL = #{member_email}
 	</select>
 	
-<!-- 비밀번호 찾기 -->
+	<!-- 비밀번호 찾기 -->
 	<select id="findPw" resultType="com.ez.teen.member.model.MemberModel">
 		SELECT MEMBER_PW
 		FROM MEMBER
@@ -97,4 +102,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		WHERE MEMBER_NO = #{member_no}
 		AND MEMBER_PW = #{member_pw}
 	 </select>
+	 
 </mapper>

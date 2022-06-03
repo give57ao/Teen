@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TeenCoder 관리자 회원 관리 > 회원정보 수정</title>
+<title>TeenCoder 관리자 공지글 관리 > 공지글 작성</title>
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
@@ -19,52 +19,55 @@
 	<!-- Contents -->
     <div id="contents">
         <div id="contents_title">
-            <h1>회원 관리</h1>
-            <h2>회원 리스트 조회 및 회원정보 수정 및 탈퇴</h2>
+            <h1>공지글 관리</h1>
+            <h2>공지글 작성 / 수정 / 삭제</h2>
         </div>
         <div id="contents_detail">
             <div id="contents_wrap">
                 <!-- Category -->
                 <ul id="contents_category">
-                    <li><a href="/teen/admin/memberList" class="select">회원 관리</a></li>
-                    <li><a href="/teen/admin/noticeBoard">공지글 관리</a></li>
-                    <li><a href="/teen/admin/adminBoard">게시글 관리</a></li>
-                    <li><a href="/teen/admin/reportBoard">신고글 관리</a></li>
-                    <li><a href="/teen/admin/reportCmtList">댓글 관리</a></li>
-                    <li><a href="/teen/admin/reportAnsList">답글 관리</a></li>
+                    <li><a href="#">회원 관리</a></li>
+                    <li><a href="#" class="select">공지글 관리</a></li>
+                    <li><a href="#">게시글 관리</a></li>
+                    <li><a href="#">신고글 관리</a></li>
+                    <li><a href="#">댓글 관리</a></li>
+                    <li><a href="#">답글 관리</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2>회원 관리 > 회원정보 수정</h2>
+                        <h2>공지글 관리 > 공지글 작성</h2>
                     </div>
                 	<!-- Form -->
                 	<div id="admin_form">
-                        <form id="join_form" action="memberModify" method="post">
+                        <form id="board_form" class="admin_board_form">
                             <table>
                                 <tbody>
                                     <tr>
-                                        <th>아이디</th>
-                                        <td>${member.member_id}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>비밀번호</th>
+                                        <th>제목</th>
                                         <td>
-                                            <input type="password" name="member_pw" placeholder="비밀번호">
+                                           <input type="text" name="title" placeholder="제목"> 
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>닉네임</th>
+                                        <th>내용</th>
                                         <td>
-                                            <input type="text" name="member_nick" placeholder="닉네임">
+                                            <textarea name="contents" placeholder="내용"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr class="file_upload">
+                                        <th>첨부파일</th>
+                                        <td>
+                                            <input type="file" name="file_add" value="파일 추가" class="btn_add_file">
+                                            <input type="button" name="file_del" value="파일 삭제" class="btn_com btn_del_file">
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div id="btn_wrap">
-                                <input type="button" value="취소" class="btn_com btn_main" onClick="goMemberList()">
-                                <input type="submit" value="수정" class="btn_com btn_main">
+                                <input type="submit" value="공지글 작성" class="btn_com btn_main">
+                                <input type="button" value="취소" class="btn_com btn_main" onClick="#">
                             </div>
                         </form>
                     </div>

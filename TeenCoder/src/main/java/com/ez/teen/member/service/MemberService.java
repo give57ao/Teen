@@ -1,19 +1,25 @@
-
 package com.ez.teen.member.service;
 
 import java.util.List;
 
 import com.ez.teen.member.model.MemberModel;
+import com.ez.teen.member.model.MemberParam;
 
 public interface MemberService {
 	
-	//마이페이지
+	// 전체 회원 수
+	public int getMemberCount();
+	
+	// 회원 리스트 (BGROUP 구별 없이)
+	public List<MemberModel> memberList(MemberParam memberParam);
+	
+	// 마이페이지
 	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
 
-	//회원탈퇴
+	// 회원탈퇴
 	public void deleteMember(MemberModel memberModel);
 
-	//회원가입
+	// 회원가입
 	public void insertMember(MemberModel memberModel);
 
 	// 아이디중복체크
@@ -26,6 +32,5 @@ public interface MemberService {
 	public void mypageModify(MemberModel memberModel);
 
 	public int passChk(MemberModel memberModel);
+	
 }
-
-
