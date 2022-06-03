@@ -25,6 +25,7 @@ import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
+import com.ez.teen.common.file.FileUtils;
 import com.ez.teen.member.model.MemberModel;
 
 @Controller
@@ -140,7 +141,8 @@ public class BoardController {
 			String storedFileName = (String)resultMap.get("STORED_FILE_NAME");
 			String originalFileName = (String)resultMap.get("ORG_FILE_NAME");
 			
-			byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("E:\\JAVA\\SpringTool\\"+storedFileName));
+			FileUtils fileUtils = new FileUtils();
+			byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(fileUtils.getFilePath()+storedFileName));
 			
 			response.setContentType("application/octet-stream");
 			response.setContentLength(fileByte.length);

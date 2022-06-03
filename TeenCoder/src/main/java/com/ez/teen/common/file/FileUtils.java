@@ -18,7 +18,10 @@ import com.ez.teen.board.model.BoardModel;
 @Component("fileUtils")
 public class FileUtils {
 	
-	private static final String filePath = "E:\\JAVA\\SpringTool";
+	private static final String filePath = "C:\\upload\\";
+	public String getFilePath() {
+		return filePath;
+	}
 	
 	public List<Map<String, Object>> parseInsertFileInfo(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception{
 		

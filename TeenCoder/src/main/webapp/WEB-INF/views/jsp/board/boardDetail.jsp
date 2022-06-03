@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,8 @@
 	href="/teen/resources/css/board.css">
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
 
@@ -84,11 +87,12 @@
 									<h5>TEST1</h5>
 <!--*********************************************************** 파일 구간********************************************************************* -->
 								<c:forEach var="file" items="${file }">
-                            		<span><a href="#" onclick="fn_fileDown('${file.FILE_NO}'); return false;">${file.ORG_FILE_NAME }</a>(${file.FILE_SIZE }kb)</span>
-                            	</c:forEach>
                             	<form name="downFile" role="form" method="post">
                             				<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
+                            					<span><a href="#" onclick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME }</a>(${file.FILE_SIZE }kb)</span>
                             	</form>
+                            	</c:forEach>
+                            	
 								</div>
 								<ul class="row_top number">
 									<li><img src="/teen/resources/images/icon/icon_hit.svg"
@@ -224,13 +228,7 @@
 		<!-- Footer -->
 		<jsp:include page="../template/footer.jsp" flush="false" />
 		
-		<script type="text/javascript">
-		function fn_fileDown(fileNo){
-			var formObj = $("form[name='downFile']");
-		$("#FILE_NO").attr("value", fileNo);
-		formObj.attr("action", "/teen/downFile");
-		formObj.submit();
-	}
-	</script>
+	
+<script type="text/javascript" src="/teen/resources/js/board/detail/boardDetail.js"></script>
 </body>
 </html>
