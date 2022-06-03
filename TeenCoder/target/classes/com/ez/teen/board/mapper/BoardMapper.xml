@@ -44,8 +44,8 @@
  		
 
 		
- 		<if test='board_tag_no == null'>
-		AND B.BOARD_TAG_NO IN ('1','2','3','4','5','6','7')
+ 		<if test='board_tag_name == null'>
+		AND B.BOARD_TAG_NAME IN ('1','2','3','4','5','6','7')
 		</if>
  		
 	</select>
@@ -99,7 +99,7 @@
 	,BOARD_LIKE_COUNT
 	,BOARD_REPORT_COUNT
 	,BOARD_GROUP_NO
-	,BOARD_TAG_NO
+	,BOARD_TAG_NAME
 	,BOARD_FILE_CHECK
 	)
 	VALUES(
@@ -112,7 +112,7 @@
 	,0
 	,0
 	,#{board_group_no}
-	,#{board_tag_no}
+	,#{board_tag_name}
 	,'Y'
 	)
 ]]>
@@ -164,28 +164,25 @@
 	</select>
 	
 <select id ="boardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.board.model.BoardParam">
-SELECT rn, board_no, board_group_no, board_tag_no, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check,tag_name, bgroup_name, member_nick, board_comment_count
+SELECT rn, board_no, board_group_no, board_tag_name, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check, bgroup_name, member_nick, board_comment_count
 		FROM (
 			SELECT ROWNUM RN, A.* 
 				FROM (
                 SELECT
  B.BOARD_NO                
  ,B.BOARD_GROUP_NO
- ,B.BOARD_TAG_NO
+ ,B.BOARD_TAG_NAME
 ,B.BOARD_TITLE
 ,B.BOARD_DATE
 ,B.BOARD_HIT_COUNT
 ,B.BOARD_LIKE_COUNT
 ,B.BOARD_REPORT_COUNT
 ,B.BOARD_FILE_CHECK
-,T.TAG_NAME
 ,G.BGROUP_NAME
 ,M.MEMBER_NICK
 ,COUNT(C.BOARD_NO) AS board_comment_count
 
 FROM BOARD B
-INNER JOIN BTAG T
-ON B.BOARD_TAG_NO = T.BOARD_TAG_NO
 INNER JOIN BGROUP G
 ON B.BOARD_GROUP_NO = G.BOARD_GROUP_NO
 INNER JOIN MEMBER M
@@ -198,8 +195,8 @@ ON B.BOARD_NO = C.BOARD_NO
 WHERE B.BOARD_GROUP_NO = #{board_group_no}
 </if>
 		
- 		<if test='board_tag_no == null'>
-		AND B.BOARD_TAG_NO IN ('1','2','3','4','5','6','7')
+ 		<if test='board_tag_name == null'>
+		AND B.BOARD_TAG_NAME IN ('1','2','3','4','5','6','7')
 		</if>
 
 <if test='member_no != 0'>
@@ -230,7 +227,7 @@ OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 
 
 
-GROUP BY B.BOARD_NO, B.BOARD_GROUP_NO, B.BOARD_TAG_NO,  B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,T.TAG_NAME,G.BGROUP_NAME,M.MEMBER_NICK
+GROUP BY B.BOARD_NO, B.BOARD_GROUP_NO, B.BOARD_TAG_NAME,  B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,G.BGROUP_NAME,M.MEMBER_NICK
 
 <if test='sort == "recent"'>
 ORDER BY B.BOARD_DATE DESC
@@ -323,13 +320,11 @@ ORDER BY board_comment_count DESC
 		,B.BOARD_DATE AS BOARD_DATE
 		,B.BOARD_HIT_COUNT AS BOARD_HIT_COUNT
 		,B.BOARD_LIKE_COUNT AS BOARD_LIKE_COUNT
-		,T.TAG_NAME AS TAG_NAME
+		,B.BOARD_TAG_NAME AS BOARD_TAG_NAME
 		,M.MEMBER_NICK AS MEMBER_NICK
 		,COUNT(C.BOARD_NO) AS board_comment_count
 
 		FROM BOARD B 
-		INNER JOIN BTAG T
-		ON B.BOARD_TAG_NO = T.BOARD_TAG_NO
 		INNER JOIN BGROUP G
 		ON B.BOARD_GROUP_NO = G.BOARD_GROUP_NO
 		INNER JOIN MEMBER M
@@ -345,7 +340,7 @@ ORDER BY board_comment_count DESC
 		,B.BOARD_DATE
 		,B.BOARD_HIT_COUNT
 		,B.BOARD_LIKE_COUNT
-		,T.TAG_NAME
+		,B.BOARD_TAG_NAME
 		,M.MEMBER_NICK
 
 	</select>

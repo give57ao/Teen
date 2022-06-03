@@ -3,7 +3,7 @@ package com.ez.teen.board.model;
 public class BoardParam {
 	
 	private String board_group_no;
-	private String board_tag_no;
+	private String board_tag_name;
 	
 	private int board_no;
 	private String sort; // 정렬
@@ -174,12 +174,12 @@ public class BoardParam {
 		this.board_group_no = board_group_no;
 	}
 
-	public String getBoard_tag_no() {
-		return board_tag_no;
+	public String getBoard_tag_name() {
+		return board_tag_name;
 	}
 
-	public void setBoard_tag_no(String board_tag_no) {
-		this.board_tag_no = board_tag_no;
+	public void setBoard_tag_name(String board_tag_name) {
+		this.board_tag_name = board_tag_name;
 	}
 
 

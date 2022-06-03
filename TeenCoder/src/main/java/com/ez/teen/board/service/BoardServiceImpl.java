@@ -53,7 +53,9 @@ public class BoardServiceImpl implements BoardService {
 	// 게시글 작성
 	@Override
 	public void insertBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception {
-
+		
+		//받아온 태그 번호가 (1,2,3)으로 들어온다면
+		
 		boardMapper.insertBoard(boardModel);
 
 		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(boardModel, mpRequest);

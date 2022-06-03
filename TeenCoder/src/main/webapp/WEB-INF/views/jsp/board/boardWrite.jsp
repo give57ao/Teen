@@ -81,19 +81,19 @@
 			                    <tr class="checkbox">
 			                        <th>태그</th>
 			                        <td>
-			                            <input type="checkbox" name="board_tag_no" value="7" id="html">
+			                            <input type="checkbox" name="board_tag_name" value="HTML" id="html">
 			                            <label for="html">HTML</label>
-			                            <input type="checkbox" name="board_tag_no" value="5" id="css">
+			                            <input type="checkbox" name="board_tag_name" value="CSS" id="css">
 			                            <label for="css">CSS</label>
-			                            <input type="checkbox" name="board_tag_no" value="6" id="js">
+			                            <input type="checkbox" name="board_tag_name" value="JS" id="js">
 			                            <label for="js">JS</label>
-			                            <input type="checkbox" name="board_tag_no" value="1" id="java">
+			                            <input type="checkbox" name="board_tag_name" value="Java" id="java">
 			                            <label for="java">Java</label>
-			                            <input type="checkbox" name="board_tag_no" value="2" id="c">
+			                            <input type="checkbox" name="board_tag_name" value="C" id="c">
 			                            <label for="c">C</label>
-			                            <input type="checkbox" name="board_tag_no" value="3" id="pyton">
+			                            <input type="checkbox" name="board_tag_name" value="Python" id="pyton">
 			                            <label for="python">Python</label>
-			                            <input type="checkbox" name="board_tag_no" value="7" id="sql">
+			                            <input type="checkbox" name="board_tag_name" value="SQL" id="sql">
 			                            <label for="sql">SQL</label>
 			                        </td>
 			                    </tr>
