@@ -7,12 +7,6 @@ import com.ez.teen.member.model.MemberParam;
 
 public interface MemberService {
 	
-	// 전체 회원 수
-	public int getMemberCount();
-	
-	// 회원 리스트 (BGROUP 구별 없이)
-	public List<MemberModel> memberList(MemberParam memberParam);
-	
 	// 마이페이지
 	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
 

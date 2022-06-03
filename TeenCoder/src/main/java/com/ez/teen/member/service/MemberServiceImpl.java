@@ -15,12 +15,6 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	// 전체 회원 수
-	@Override
-	public int getMemberCount() {
-		return memberMapper.getMemberCount();
-	}
-	
 	// 마이페이지
 	@Override
 	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception {
@@ -69,12 +63,6 @@ public class MemberServiceImpl implements MemberService {
 	 
 		int result = memberMapper.passChk(memberModel); 
 	    return result; 
-	}
-
-	@Override
-	public List<MemberModel> memberList(MemberParam memberParam) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	 
 }

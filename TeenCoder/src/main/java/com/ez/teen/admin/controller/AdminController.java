@@ -1,7 +1,5 @@
 package com.ez.teen.admin.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
-import com.ez.teen.member.service.MemberService;
 import com.ez.teen.admin.service.AdminMemberService;
 
 @Controller
@@ -26,21 +23,18 @@ public class AdminController {
 	@Autowired
 	private AdminMemberService adminMemberService;
 	
-	@Autowired
-	private MemberService memberService;
-	
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 	
 	// 회원 리스트
 	@GetMapping("/memberList")
-	public String memberList(Model model, MemberParam memberParam,
+	public String memberList(HttpSession session, MemberModel memberModel, Model model, MemberParam memberParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "keyword", required = false) String keyword) {
+			@RequestParam(value = "keyword", required = false) String keyword) throws Exception {
 		
-		int total = memberService.getMemberCount();
+		int total = adminMemberService.getMemberCount();
 		
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -56,7 +50,7 @@ public class AdminController {
 		}
 		
 		model.addAttribute("paging", memberParam);
-		model.addAttribute("member", memberService.memberList(memberParam));
+		model.addAttribute("member", adminMemberService.memberList(memberParam));
         
         return "admin/memberList";
 	}

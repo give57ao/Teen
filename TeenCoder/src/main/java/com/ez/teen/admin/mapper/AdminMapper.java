@@ -1,19 +1,25 @@
 package com.ez.teen.admin.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ez.teen.member.model.MemberModel;
+import com.ez.teen.member.model.MemberParam;
 
 @Mapper
 public interface AdminMapper {
 
+	// 전체 회원 수
+	public int getMemberCount();
+	
 	// 회원 리스트
-	public MemberModel memberList(MemberModel memberModel) throws Exception;
+	public List<MemberModel> memberList(MemberParam memberParam) throws Exception;
 	
 	// 회원정보 수정
-	public MemberModel memberModify(MemberModel memberModel) throws Exception;
+	public void memberModify(MemberModel memberModel) throws Exception;
 	
 	// 회원정보 삭제
-	public MemberModel memberDelete(MemberModel memberModel) throws Exception;
-	
+	public void memberDelete(MemberModel memberModel) throws Exception;
+
 }
