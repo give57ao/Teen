@@ -133,8 +133,16 @@ public class BoardController {
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "keyword", required = false) String keyword) {
+			@RequestParam(value = "keyword", required = false) String keyword,
+			@RequestParam(value="board_tag_no", required = false)String board_tag_no,
+			@RequestParam(value="board_group_no", required = false)String board_group_no) {
 		
+
+			if(board_group_no == null) {
+				boardParam.setBoard_group_no("1");
+			}
+			
+			
 			int total = boardService.getBoardCount(boardParam);
 			
 			if (nowPage == null && cntPerPage == null) {
@@ -149,6 +157,7 @@ public class BoardController {
 			if(total == 0) {
 				boardParam.setEndPage(1);
 			}
+			
 			
 			model.addAttribute("paging", boardParam);
 			model.addAttribute("sort", sort);

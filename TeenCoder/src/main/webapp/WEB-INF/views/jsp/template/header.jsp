@@ -11,8 +11,8 @@
         <nav id="header_nav">
             <ul>
                 <li><a href="/teen">Home</a></li>
-                <li><a href="/teen/board">Community</a></li>
-                <li><a href="/teen/board?broup=qna">Q&amp;A</a></li>
+                <li><a href="/teen/board?board_group_no=1">Community</a></li>
+                <li><a href="/teen/board?board_group_no=2">Q&amp;A</a></li>
                 <li><a href="/teen/board/notice">Notice</a></li>
             </ul>
         </nav>

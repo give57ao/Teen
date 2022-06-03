@@ -1,20 +1,29 @@
 package com.ez.teen.board.model;
 
 public class BoardParam {
-
+	
+	private String board_group_no;
+	private String board_tag_no;
+	
 	private int board_no;
-	public int getBoard_no() {
-		return board_no;
-	}
-
-	public void setBoard_no(int board_no) {
-		this.board_no = board_no;
-	}
-
-	private int member_no;
 	private String sort; // 정렬
 	private String search; // 검색 타입
 
+	private int member_no;
+	private String keyword; // 검색내용
+
+	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
+	private int cntPage = 10;
+
+	
+	public int getBoard_no() {
+		return board_no;
+	}
+	
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
+	}
+	
 	public String getSearch() {
 		return search;
 	}
@@ -22,8 +31,6 @@ public class BoardParam {
 	public void setSearch(String search) {
 		this.search = search;
 	}
-
-	String keyword; // 검색내용
 
 	public String getKeyword() {
 		return keyword;
@@ -40,9 +47,6 @@ public class BoardParam {
 	public void setSort(String sort) {
 		this.sort = sort;
 	}
-
-	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
-	private int cntPage = 10;
 
 	public void PagingModel() {
 	}
@@ -162,6 +166,21 @@ public class BoardParam {
 		this.cntPage = cntPage;
 	}
 
-	// 05/26 병합
+	public String getBoard_group_no() {
+		return board_group_no;
+	}
+
+	public void setBoard_group_no(String board_group_no) {
+		this.board_group_no = board_group_no;
+	}
+
+	public String getBoard_tag_no() {
+		return board_tag_no;
+	}
+
+	public void setBoard_tag_no(String board_tag_no) {
+		this.board_tag_no = board_tag_no;
+	}
+
 
 }
