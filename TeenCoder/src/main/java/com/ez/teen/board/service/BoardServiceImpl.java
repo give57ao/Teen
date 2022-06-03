@@ -72,7 +72,21 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.insertFile(map);
 
 	}
+	//첨부파일 조회
+	@Override
+	public List<Map<String, Object>> selectFile(int board_no) throws Exception {
 
+		return boardMapper.selectFile(board_no);
+	}
+
+	//첨부파일 다운로드
+	@Override
+	public Map<String, Object> downFile(Map<String, Object> map) throws Exception {
+
+		return boardMapper.downFile(map);
+	}
+
+	
 	@Override
 	public List<BoardModel> boardList(BoardParam boardParam) {
 		return boardMapper.boardList(boardParam);

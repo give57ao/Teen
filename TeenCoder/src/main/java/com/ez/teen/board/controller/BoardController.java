@@ -1,6 +1,9 @@
 package com.ez.teen.board.controller;
 
+import java.io.File;
+import java.net.URLEncoder;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,8 +51,8 @@ public class BoardController {
 		return "main";
 	}
 
-	//
-	@GetMapping("/member/modify")
+	//게시글 수정 폼
+	@GetMapping("/board/modify")
 	public String updateBoardForm(BoardModel boardModel, Model model , HttpServletRequest request)throws Exception{
 		
 		HttpSession session = request.getSession();
@@ -60,7 +63,8 @@ public class BoardController {
 		return "board/boardModify";
 	}
 	
-	@PostMapping("/member/modify")
+	//게시글 수정 기능
+	@PostMapping("/board/modify")
 	public String updateBoard(BoardModel boardModel, Model model , HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
@@ -103,10 +107,11 @@ public class BoardController {
 		return "board/mainBoard";
 	}
 	 
+	//게시글 내용 디테일
 	@RequestMapping("board/detail")
 	public String selectBoardDetail(BoardModel boardModel, HttpSession session,
 			HttpServletResponse response, BoardParam boardParam, Model model,
-			@RequestParam(value="board_no")int board_no) {
+			@RequestParam(value="board_no")int board_no) throws Exception{
 		// 파라미터 분석 : BoardParam의 board_no로 게시글 특정지음
 		// @RequestParam으로 uri의 board_no? 뒤의 값을 가져옴
 		
@@ -118,13 +123,34 @@ public class BoardController {
 				
 		System.out.println(boardDetail);
 
+		List<Map<String, Object>> fileList = boardService.selectFile(board_no);
 		
+		model.addAttribute("file", fileList);
 		model.addAttribute("boardDetail", boardDetail);
 		model.addAttribute("boardComment", boardComment);
 		
 		return "board/boardDetail";
 	}
 
+	//첨부파일 다운로드 구현
+		@RequestMapping(value = "board/downFile")
+		public void downFile(@RequestParam Map<String, Object> map, HttpServletResponse response) throws Exception{
+			Map<String, Object> resultMap = boardService.downFile(map);
+			
+			String storedFileName = (String)resultMap.get("STORED_FILE_NAME");
+			String originalFileName = (String)resultMap.get("ORG_FILE_NAME");
+			
+			byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("E:\\JAVA\\SpringTool"+storedFileName));
+			
+			response.setContentType("application/octet-stream");
+			response.setContentLength(fileByte.length);
+			response.setHeader("Content-Disposition",  "attachment; fileName=\""+URLEncoder.encode(originalFileName, "UTF-8")+"\";");
+			response.getOutputStream().write(fileByte);
+			response.getOutputStream().flush();
+			response.getOutputStream().close();
+			
+		}
+	
 	
 	//게시판
 	@GetMapping("/board")

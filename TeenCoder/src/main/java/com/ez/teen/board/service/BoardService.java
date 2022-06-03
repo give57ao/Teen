@@ -42,6 +42,12 @@ public interface BoardService {
 	//게시글 작성
 	public void insertBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception;
 	
+	//첨부파일 조회
+	public List<Map<String, Object>> selectFile(int board_no)throws Exception;
+		
+	//첨부파일 다운로드
+	public Map<String, Object> downFile(Map<String, Object> map) throws Exception;
+	
 	//첨부파일 추가
 	public void insertFile(Map<String, Object> map) throws Exception;
 		

@@ -27,13 +27,16 @@ public interface BoardMapper {
 	// 게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
 	
+	// 댓글 리스트
 	public List<CommentModel> commentList(CommentParam commentParam);
 		
+	// 게시글 수정
 	public void updateBoard(BoardModel boardModel);
 
-	
+	// 게시글 디테일 
 	public List<BoardModel> selectBoardDetail(BoardParam boardParam);
 
+	// 게시글 디테일 속 댓글
 	public List<BoardCommentModel> selectComment(BoardParam boardParam);
 
 
@@ -44,5 +47,10 @@ public interface BoardMapper {
 	//첨부파일 업로드
 	public void insertFile(Map<String, Object> map) throws Exception;
 	
+	//첨부파일 조회
+	public List<Map<String, Object>>selectFile(int board_no) throws Exception;
+		
+	//첨부파일 다운로드
+	public Map<String, Object> downFile(Map<String, Object> map) throws Exception;
 	
 }

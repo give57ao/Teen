@@ -98,13 +98,7 @@ public class MemberController {
     }
     
     
-    
-	// 마이페이지 가기
-	@RequestMapping("/myPage")
-	public String myPage() throws Exception{
-		
-		return "member/myPage";
-	}
+   
 	
 
 
