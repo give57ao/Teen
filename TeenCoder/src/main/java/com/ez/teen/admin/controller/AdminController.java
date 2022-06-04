@@ -25,7 +25,7 @@ public class AdminController {
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 	
-	// 회원 리스트
+	// 회원관리 리스트
 	@GetMapping("/memberList")
 	public String memberList(MemberModel memberModel, MemberParam memberParam, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,

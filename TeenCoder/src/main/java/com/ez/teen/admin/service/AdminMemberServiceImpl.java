@@ -22,7 +22,7 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		return adminMapper.getMemberCount(memberParam);
 	}
 	
-	// 회원 리스트
+	// 회원관리 리스트
 	@Override
 	public List<MemberModel> memberList(MemberParam memberParam) throws Exception {
 		return adminMapper.memberList(memberParam);
