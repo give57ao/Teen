@@ -14,6 +14,8 @@ public interface AdminMemberService {
 	public List<MemberModel> memberList(MemberParam memberParam) throws Exception;
 	
 	// 회원정보 수정
+	public List<MemberModel> memberModifyForm(MemberModel memberModel) throws Exception;
+	
 	public void memberModify(MemberModel memberModel) throws Exception;
 	
 	// 회원정보 삭제

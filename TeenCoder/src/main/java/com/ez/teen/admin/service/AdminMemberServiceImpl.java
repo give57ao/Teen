@@ -30,6 +30,11 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	
 	// 회원정보 수정
 	@Override
+	public List<MemberModel> memberModifyForm(MemberModel memberModel) throws Exception {
+		return adminMapper.memberModifyForm(memberModel);
+	}
+	
+	@Override
 	public void memberModify(MemberModel memberModel) throws Exception {
 		adminMapper.memberModify(memberModel);
 	}
