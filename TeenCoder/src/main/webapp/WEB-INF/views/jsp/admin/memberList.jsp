@@ -13,8 +13,6 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/admin.css">
 </head>
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
 
@@ -83,7 +81,7 @@
 		                                   <td style="width: 10%;"><fmt:formatDate value="${member.member_date}" pattern="yyyy.MM.dd"/></td>
 		                                   <td style="width: 10%;">${member.member_pro_check}</td>
 		                                   <td style="width: 10%;">
-		                                   	    <a href="/teen/admin/memberModify">수정</a> /
+		                                   	    <a href="/teen/admin/memberModify?member_no=${member.member_no}">수정</a> /
 		                                   	    <a href="" onClick="memberDeletePopup(${member.member_no})">삭제</a>
 	                                   	   </td>
 		                                </tr>
@@ -127,6 +125,7 @@
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
 	<!-- JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/admin/admin.js"></script>
 </body>
