@@ -52,7 +52,7 @@
 	
 	<!-- 회원정보 수정 -->
 	<select id="memberModifyForm" resultType="com.ez.teen.member.model.MemberModel" parameterType="com.ez.teen.member.model.MemberModel">
-		SELECT * FROM MEMBER 
+		SELECT * FROM MEMBER
 	 	WHERE MEMBER_NO = #{member_no}
 	</select>
 	
@@ -64,11 +64,11 @@
 		 WHERE MEMBER_NO = #{member_no}
 		 ]]>
 	</update>
-	 
+	
 	<!-- 회원정보 삭제 -->
 	<delete id="memberDelete" parameterType="com.ez.teen.member.model.MemberModel">
 		DELETE FROM MEMBER 
 	 	WHERE MEMBER_NO = #{member_no}
  	</delete>
-	
+
 </mapper>

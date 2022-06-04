@@ -6,7 +6,7 @@ import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 
 public interface AdminMemberService {
-	
+
 	// 전체 회원 수
 	public int getMemberCount(MemberParam memberParam);
 		
@@ -20,5 +20,5 @@ public interface AdminMemberService {
 	
 	// 회원정보 삭제
 	public void memberDelete(MemberModel memberModel) throws Exception;
-		
+
 }

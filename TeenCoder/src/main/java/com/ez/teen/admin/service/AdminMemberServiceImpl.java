@@ -44,5 +44,5 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	public void memberDelete(MemberModel memberModel) throws Exception {
 		adminMapper.memberDelete(memberModel);
 	}
-	
+
 }
