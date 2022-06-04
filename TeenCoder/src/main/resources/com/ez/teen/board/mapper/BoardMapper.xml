@@ -348,39 +348,33 @@ ORDER BY board_comment_count DESC
 	<select id="selectComment"
 		parameterType="com.ez.teen.board.model.BoardParam"
 		resultType="com.ez.teen.board.model.BoardCommentModel">
-	  SELECT
-	  	B.BOARD_NO AS BOARD_NO,
-	  	M.MEMBER_NO AS MEMBER_NO,
+	  SELECT 
+    	C.BOARD_NO AS BOARD_NO,
 	  	M.MEMBER_NICK AS MEMBER_NICK,
-	  	C.BCOMMENT_NO AS BCOMMENT_NO,
 	  	C.BCOMMENT_DATE AS BCOMMENT_DATE,
 	  	C.BCOMMENT_CONTENT AS BCOMMENT_CONTENT,
 	  	C.BCOMMENT_LIKE_COUNT AS BCOMMENT_LIKE_COUNT,
 	  	C.REF_STEP AS REF_STEP,
-	  	C.REF_LEVEL AS REF_LEVEL,
-	  	COUNT(C.BCOMMENT_NO) AS BOARD_COMMENT_COUNT
-		
+	  	C.REF_LEVEL AS REF_LEVEL
 	  FROM
-	    BCOMMENT C LEFT OUTER JOIN MEMBER M
-		ON C.MEMBER_NO = M.MEMBER_NO
-		INNER JOIN BOARD B
-		ON C.BOARD_NO = B.BOARD_NO
-
-      WHERE 
-		C.BOARD_NO = #{board_no}
-
-	   GROUP BY
-		B.BOARD_NO,
-	  	M.MEMBER_NO,
-	  	M.MEMBER_NICK,
-	  	C.BCOMMENT_NO,
-	  	C.BCOMMENT_DATE,
-	  	C.BCOMMENT_CONTENT,
-	  	C.BCOMMENT_LIKE_COUNT,
-	  	C.REF_STEP,
-	  	C.REF_LEVEL
-
+    	MEMBER M INNER JOIN BCOMMENT C
+    	ON M.MEMBER_NO = C.MEMBER_NO
+	  WHERE 
+    	C.BOARD_NO= #{board_no}
+		
 	</select>
+
+<!-- 닉네임과 댓글내용 불러오기 기본 쿼리문
+	SELECT 
+    	M.MEMBER_NICK,
+    	C.BCOMMENT_CONTENT
+	FROM
+    	MEMBER M INNER JOIN BCOMMENT C
+    	ON M.MEMBER_NO = C.MEMBER_NO
+	WHERE 
+    	C.BOARD_NO=1; 
+    	
+-->
 
 	
 </mapper>
