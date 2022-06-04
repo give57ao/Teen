@@ -1,7 +1,5 @@
 package com.ez.teen.admin.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,7 @@ public class AdminController {
 	
 	// 회원 리스트
 	@GetMapping("/memberList")
-	public String memberList(HttpSession session, MemberModel memberModel, Model model, MemberParam memberParam,
+	public String memberList(MemberModel memberModel, MemberParam memberParam, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "search", required = false) String search,
@@ -51,13 +49,14 @@ public class AdminController {
 		
 		model.addAttribute("paging", memberParam);
 		model.addAttribute("member", adminMemberService.memberList(memberParam));
-        
+		
         return "admin/memberList";
 	}
 	
 	// 회원정보 수정 폼
 	@GetMapping("/memberModify")
-	public String memberModifyForm() throws Exception {
+	public String memberModifyForm(MemberModel memberModel, MemberParam memberParam, Model model) throws Exception {
+		model.addAttribute("member", adminMemberService.memberList(memberParam));
 		return "admin/memberModify";
 	}
 	
@@ -65,14 +64,14 @@ public class AdminController {
 	@PostMapping("/memberModify")
 	public String memberModify(MemberModel memberModel) throws Exception {
 		adminMemberService.memberModify(memberModel);
-		return "redirect:/admin/memberList";
+		return "admin/memberList";
 	}
 	
 	// 회원정보 삭제
 	@GetMapping("/memberDelete")
-	public String memberDelete(MemberModel memberModel) throws Exception {
+	public String memberDelete(MemberModel memberModel) throws Exception {	
 		adminMemberService.memberDelete(memberModel);
-		return "redirect:/admin/memberList";
+		return "admin/memberList";
 	}
 	
 }

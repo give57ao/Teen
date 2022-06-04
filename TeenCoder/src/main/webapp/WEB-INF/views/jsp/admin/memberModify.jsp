@@ -42,9 +42,9 @@
                 	<!-- Form -->
                 	<div id="admin_form">
                         <form id="join_form" action="memberModify" method="post">
-                            <table>
+                            <table>             	
                                 <tbody>
-                               		<c:forEach items="${member}" var="member">
+	                                <c:forEach items="${member}" var="member">
 	                                    <tr>
 	                                        <th>아이디</th>
 	                                        <td>${member.member_id}</td>

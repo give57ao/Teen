@@ -7,7 +7,7 @@
 	<!-- 전체 회원 수 -->
 	<select id="getMemberCount" resultType="int" parameterType="com.ez.teen.member.model.MemberParam">
 		SELECT COUNT(*) AS allMemberCount FROM MEMBER
-		
+
 				<if test='search == "member_id"'>
 				WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
 				</if>
@@ -20,35 +20,34 @@
 				WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
 				OR MEMBER_NICK LIKE '%'||#{keyword}||'%'
 				</if>
-		
-		
+				
 	</select>
 	
 	<!-- 회원 리스트 -->
 	<select id ="memberList" resultType="com.ez.teen.member.model.MemberModel" parameterType="com.ez.teen.member.model.MemberParam">
-	SELECT RN, MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_NICK, MEMBER_EMAIL, MEMBER_DATE, MEMBER_PRO_CHECK
-		FROM (
-			SELECT ROWNUM RN, A.* 
+		SELECT RN, MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_NICK, MEMBER_EMAIL, MEMBER_DATE, MEMBER_PRO_CHECK
 			FROM (
-            	SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_NICK, MEMBER_EMAIL, MEMBER_DATE, MEMBER_PRO_CHECK
-				FROM MEMBER
-				
-				<if test='search == "member_id"'>
-				WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
-				</if>
-		
-				<if test='search == "member_nick"'>
-				WHERE MEMBER_NICK LIKE '%'||#{keyword}||'%'
-				</if>
-				
-				<if test='search == "all"'>
-				WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
-				OR MEMBER_NICK LIKE '%'||#{keyword}||'%'
-				</if>
-				
-				) A
-		) WHERE RN BETWEEN #{start} AND #{end}
-	
+				SELECT ROWNUM RN, A.* 
+				FROM (
+	            	SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_NICK, MEMBER_EMAIL, MEMBER_DATE, MEMBER_PRO_CHECK
+					FROM MEMBER
+					ORDER BY MEMBER_NO DESC
+					
+					<if test='search == "member_id"'>
+					WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
+					</if>
+			
+					<if test='search == "member_nick"'>
+					WHERE MEMBER_NICK LIKE '%'||#{keyword}||'%'
+					</if>
+					
+					<if test='search == "all"'>
+					WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
+					OR MEMBER_NICK LIKE '%'||#{keyword}||'%'
+					</if>
+					
+					) A
+			) WHERE RN BETWEEN #{start} AND #{end}
 	</select>
 	
 	<!-- 회원정보 수정 -->
