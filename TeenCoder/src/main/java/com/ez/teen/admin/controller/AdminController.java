@@ -57,11 +57,10 @@ public class AdminController {
 	// 회원정보 수정 폼
 	@GetMapping("/memberModify")
 	public String memberModifyForm(MemberModel memberModel, MemberParam memberParam, Model model) throws Exception {
-		int member_no = memberModel.getMember_no();
+		int member_no = (Integer) memberModel.getMember_no();
 		memberModel.setMember_no(member_no);
-		adminMemberService.memberModify(memberModel);
 		
-		System.out.println("member_list : " + memberModel);
+		model.addAttribute("member", adminMemberService.memberModifyForm(memberModel));
 		
 		return "admin/memberModify";
 	}
@@ -69,6 +68,10 @@ public class AdminController {
 	// 회원정보 수정
 	@PostMapping("/memberModify")
 	public String memberModify(MemberModel memberModel) throws Exception {
+		int member_no = (Integer) memberModel.getMember_no();
+		System.out.println("member no : " + member_no);
+		memberModel.setMember_no(member_no);
+		
 		adminMemberService.memberModify(memberModel);
 		return "redirect:/admin/memberList";
 	}
