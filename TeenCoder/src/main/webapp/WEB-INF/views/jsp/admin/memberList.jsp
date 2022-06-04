@@ -84,7 +84,7 @@
 		                                   <td style="width: 10%;">${member.member_pro_check}</td>
 		                                   <td style="width: 10%;">
 		                                   	    <a href="/teen/admin/memberModify">수정</a> /
-		                                   	    <a href="/teen/admin/memberDelete" onClick="memberDeletePopup(${member.member_no})">삭제</a>
+		                                   	    <a href="" onClick="memberDeletePopup(${member.member_no})">삭제</a>
 	                                   	   </td>
 		                                </tr>
 	                                </c:forEach>

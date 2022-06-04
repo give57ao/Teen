@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
@@ -68,10 +69,11 @@ public class AdminController {
 	}
 	
 	// 회원정보 삭제
+	@ResponseBody
 	@PostMapping("/memberDelete")
 	public String memberDelete(MemberModel memberModel) throws Exception {	
 		adminMemberService.memberDelete(memberModel);
-		return "redirect:/";
+		return "redirect:admin/memberList";
 	}
 	
 }
