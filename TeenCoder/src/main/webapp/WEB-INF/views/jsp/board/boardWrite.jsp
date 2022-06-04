@@ -5,11 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 게시글 작성</title>
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/boardForm.css">
-<script src="/teen/resources/js/member.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -17,6 +12,10 @@
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/boardForm.css">
 </head>
 <body>
 	<!-- Header -->
@@ -82,19 +81,19 @@
 			                    <tr class="checkbox">
 			                        <th>태그</th>
 			                        <td>
-			                            <input type="checkbox" name="board_tag_no" value="7" id="html">
+			                            <input type="checkbox" name="board_tag_name" value="HTML" id="html">
 			                            <label for="html">HTML</label>
-			                            <input type="checkbox" name="board_tag_no" value="5" id="css">
+			                            <input type="checkbox" name="board_tag_name" value="CSS" id="css">
 			                            <label for="css">CSS</label>
-			                            <input type="checkbox" name="board_tag_no" value="6" id="js">
+			                            <input type="checkbox" name="board_tag_name" value="JS" id="js">
 			                            <label for="js">JS</label>
-			                            <input type="checkbox" name="board_tag_no" value="1" id="java">
+			                            <input type="checkbox" name="board_tag_name" value="Java" id="java">
 			                            <label for="java">Java</label>
-			                            <input type="checkbox" name="board_tag_no" value="2" id="c">
+			                            <input type="checkbox" name="board_tag_name" value="C" id="c">
 			                            <label for="c">C</label>
-			                            <input type="checkbox" name="board_tag_no" value="3" id="pyton">
+			                            <input type="checkbox" name="board_tag_name" value="Python" id="pyton">
 			                            <label for="python">Python</label>
-			                            <input type="checkbox" name="board_tag_no" value="7" id="sql">
+			                            <input type="checkbox" name="board_tag_name" value="SQL" id="sql">
 			                            <label for="sql">SQL</label>
 			                        </td>
 			                    </tr>
@@ -115,7 +114,7 @@
                 </div>
                 <!-- Member Info -->
                 <div id="member_info">
-                    <a href="/teen/resources/jsp/board/boardWrite.jsp" class="btn_com btn_main">게시글 작성</a>
+                    <a href="/teen/board/boardWrite" class="btn_com btn_main">게시글 작성</a>
                     <div class="mycard"></div>
                 </div>
             </div>

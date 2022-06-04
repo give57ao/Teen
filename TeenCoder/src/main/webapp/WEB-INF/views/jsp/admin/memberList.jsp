@@ -13,6 +13,8 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/admin.css">
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
 
@@ -71,16 +73,21 @@
 	                            <!-- List Row -->
 	                            <tbody>
 	                                <!-- Row1 -->
-	                                <tr class="row">
-	                                   <td style="width: 5%;">${member.member_no}</td>
-	                                   <td style="width: 10%;">${member.member_id}</td>
-	                                   <td style="width: 10%;">${member.member_name}</td>
-	                                   <td style="width: 10%;">${member.member_nick}</td>
-	                                   <td style="width: 20%;">${member.member_email}</td>
-	                                   <td style="width: 10%;"><fmt:formatDate value="${member.member_date}" pattern="yyyy.MM.dd" /></td>
-	                                   <td style="width: 10%;">${member.member_pro_check}</td>
-	                                   <td style="width: 10%;"><a href="/teen/admin/memberModify">수정</a> / <a href="/teen/admin/memberDelete" onClick="memberDeletePopup()">삭제</a></td>
-	                                </tr>
+	                               	<c:forEach items="${member}" var="member" varStatus="status">
+		                                <tr class="row">
+		                                   <td style="width: 5%;">${member.member_no}</td>
+		                                   <td style="width: 10%;">${member.member_id}</td>
+		                                   <td style="width: 10%;">${member.member_name}</td>
+		                                   <td style="width: 10%;">${member.member_nick}</td>
+		                                   <td style="width: 20%;">${member.member_email}</td>
+		                                   <td style="width: 10%;"><fmt:formatDate value="${member.member_date}" pattern="yyyy.MM.dd"/></td>
+		                                   <td style="width: 10%;">${member.member_pro_check}</td>
+		                                   <td style="width: 10%;">
+		                                   	    <a href="/teen/admin/memberModify">수정</a> /
+		                                   	    <a href="" onClick="memberDeletePopup(${member.member_no})">삭제</a>
+	                                   	   </td>
+		                                </tr>
+	                                </c:forEach>
 	                            </tbody>
 	                        </table>
                         </form>

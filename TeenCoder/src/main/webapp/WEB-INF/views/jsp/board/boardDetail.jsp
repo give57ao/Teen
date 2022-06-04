@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +16,8 @@
 	href="/teen/resources/css/board.css">
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
 
@@ -81,8 +85,14 @@
 								<div class="row_contents">
 									<h1>${boardDetail.board_content}</h1>
 									<h5>TEST1</h5>
-									<img src="/teen/resources/images/bg/bg_sample.jpg"> <span><a
-										href="#">첨부파일 다운로드</a></span>
+<!--*********************************************************** 파일 구간********************************************************************* -->
+								<c:forEach var="file" items="${file }">
+                            	<form name="downFile" role="form" method="post">
+                            				<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
+                            					<span><a href="#" onclick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME }</a>(${file.FILE_SIZE }kb)</span>
+                            	</form>
+                            	</c:forEach>
+                            	
 								</div>
 								<ul class="row_top number">
 									<li><img src="/teen/resources/images/icon/icon_hit.svg"
@@ -102,7 +112,7 @@
 							<hr>
 						</div>
 					</c:forEach>
-
+				</div>
 
 
 
@@ -217,5 +227,8 @@
 
 		<!-- Footer -->
 		<jsp:include page="../template/footer.jsp" flush="false" />
+		
+	
+<script type="text/javascript" src="/teen/resources/js/board/detail/boardDetail.js"></script>
 </body>
 </html>

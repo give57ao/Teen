@@ -53,7 +53,13 @@ public class BoardServiceImpl implements BoardService {
 	// 게시글 작성
 	@Override
 	public void insertBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception {
-
+		
+		//받아온 태그 이름이 (java,c,html)으로 들어온다면 쉼표를 해시태그로 변경하면 된다
+		String replaceTagName = boardModel.getBoard_tag_name();
+		//replace([기존문자],[바꿀문자])
+		replaceTagName = replaceTagName.replace(",", " #");
+		boardModel.setBoard_tag_name(replaceTagName);
+		
 		boardMapper.insertBoard(boardModel);
 
 		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(boardModel, mpRequest);
@@ -72,7 +78,21 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.insertFile(map);
 
 	}
+	//첨부파일 조회
+	@Override
+	public List<Map<String, Object>> selectFile(int board_no) throws Exception {
 
+		return boardMapper.selectFile(board_no);
+	}
+
+	//첨부파일 다운로드
+	@Override
+	public Map<String, Object> downFile(Map<String, Object> map) throws Exception {
+
+		return boardMapper.downFile(map);
+	}
+
+	
 	@Override
 	public List<BoardModel> boardList(BoardParam boardParam) {
 		return boardMapper.boardList(boardParam);

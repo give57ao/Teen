@@ -42,24 +42,26 @@
                 	<!-- Form -->
                 	<div id="admin_form">
                         <form id="join_form" action="memberModify" method="post">
-                            <table>
+                            <table>             	
                                 <tbody>
-                                    <tr>
-                                        <th>아이디</th>
-                                        <td>${member.member_id}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>비밀번호</th>
-                                        <td>
-                                            <input type="password" name="member_pw" placeholder="비밀번호">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>닉네임</th>
-                                        <td>
-                                            <input type="text" name="member_nick" placeholder="닉네임">
-                                        </td>
-                                    </tr>
+	                                <c:forEach items="${member}" var="member">
+	                                    <tr>
+	                                        <th>아이디</th>
+	                                        <td>${member.member_id}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <th>비밀번호</th>
+	                                        <td>
+	                                            <input type="password" name="member_pw" placeholder="비밀번호">
+	                                        </td>
+	                                    </tr>
+	                                    <tr>
+	                                        <th>닉네임</th>
+	                                        <td>
+	                                            <input type="text" name="member_nick" placeholder="닉네임">
+	                                        </td>
+	                                    </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
                             <div id="btn_wrap">

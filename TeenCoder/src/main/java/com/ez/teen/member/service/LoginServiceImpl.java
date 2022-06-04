@@ -9,7 +9,6 @@ import com.ez.teen.member.model.MemberModel;
 @Service
 public class LoginServiceImpl implements LoginService {
 
-
 	@Autowired
 	private MemberMapper memberMapper;
 	
@@ -42,5 +41,5 @@ public class LoginServiceImpl implements LoginService {
 	public MemberModel findPw(MemberModel memberModel) throws Exception {
 		return memberMapper.findPw(memberModel);
 	}
-
+	
 }

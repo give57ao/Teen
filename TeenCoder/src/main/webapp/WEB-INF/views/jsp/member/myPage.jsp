@@ -54,7 +54,7 @@
                                 <li><img src="/teen/resources/images/icon/icon_follow.svg" class="i_follow">0</li>
                                 <li><img src="/teen/resources/images/icon/icon_scrap.svg" class="i_scrap">0</li>
                             </ul>
-                			<a href="/teen/member/mypageModifyForm" class="btn_com btn_mod_member">회원정보 수정</a>
+                			<a href="/teen/member/mypageModify" class="btn_com btn_mod_member">회원정보 수정</a>
                 		</div>
                 		<div class="member_board">
 	                		<hr>

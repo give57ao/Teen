@@ -1,16 +1,22 @@
 package com.ez.teen.admin.service;
 
+import java.util.List;
+
 import com.ez.teen.member.model.MemberModel;
+import com.ez.teen.member.model.MemberParam;
 
 public interface AdminMemberService {
 	
+	// 전체 회원 수
+	public int getMemberCount(MemberParam memberParam);
+		
 	// 회원 리스트
-	public MemberModel memberList(MemberModel memberModel) throws Exception;
+	public List<MemberModel> memberList(MemberParam memberParam) throws Exception;
 	
 	// 회원정보 수정
-	public MemberModel memberModify(MemberModel memberModel) throws Exception;
+	public void memberModify(MemberModel memberModel) throws Exception;
 	
 	// 회원정보 삭제
-	public MemberModel memberDelete(MemberModel memberModel) throws Exception;
+	public void memberDelete(MemberModel memberModel) throws Exception;
 		
 }

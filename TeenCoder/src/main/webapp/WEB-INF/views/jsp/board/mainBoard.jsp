@@ -25,7 +25,13 @@
             <div id="contents_wrap">
                 <!-- Category -->
                 <ul id="contents_category">
-                    <li><a href="#" class="select">COMMUNITY</a></li>
+                	<c:if test="${paging.board_group_no eq '1'}">
+					<li><a href="/teen/board/" class="select">COMMUNITY</a></li>
+                    </c:if>
+                    <c:if test="${paging.board_group_no eq '2'}">
+					<li><a href="/teen/board?board_group_no=2" class="select">Q&A</a></li>
+                    </c:if>
+                    
                     <li><a href="#">#HTML</a></li>
                     <li><a href="#">#CSS</a></li>
                     <li><a href="#">#JS</a></li>
@@ -40,10 +46,10 @@
                     <div id="board_list_title">
                         <h2>Community</h2>
                         <ul id="board_list_menu" class="side_menu">
-                            <li><a href="?sort=recent&search=${paging.search}&keyword=${paging.keyword}">최신순</a></li>
-						<li><a href="?sort=view&search=${paging.search}&keyword=${paging.keyword}">조회순</a></li>
-						<li><a href="?sort=recommend&search=${paging.search}&keyword=${paging.keyword}">추천순</a></li>
-						<li><a href="?sort=comment&search=${paging.search}&keyword=${paging.keyword}">댓글순</a></li>
+                        <li><a href="?sort=recent&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">최신순</a></li>
+						<li><a href="?sort=view&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">조회순</a></li>
+						<li><a href="?sort=recommend&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">추천순</a></li>
+						<li><a href="?sort=comment&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">댓글순</a></li>
                         </ul>
                     </div>
                     <!-- Search -->
@@ -66,7 +72,7 @@
                         <div class="row">
                             <div class="row_info">
                                 <ul class="row_top tag_category">
-        							<li>#${board.tag_name}</li>
+        							<li>#${board.board_tag_name}</li>
                                 </ul>
                                 <div class="row_top member">
                                     <h4>
@@ -105,7 +111,7 @@
 						<!-- 시작페이지가 1이 아닐 때 -->
 						<c:if test="${paging.nowPage != 1 }">
 							<li class="prev"><a
-								href="/teen/board?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage - 1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+								href="/teen/board?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}&nowPage=${paging.nowPage - 1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
 						</c:if>
 	
 						<!-- 페이징 숫자가 나오는 부분 -->
@@ -116,14 +122,14 @@
 									<li><a class="select">${p }</a></li>
 								</c:when>
 								<c:when test="${p != paging.nowPage }">
-									<li><a href="/teen/board?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+									<li><a href="/teen/board?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}&nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
 								</c:when>
 							</c:choose>
 						</c:forEach>
 						<!-- 오른쪽 버튼 -->
 						<c:if test="${paging.startPage < paging.endPage}">
 							<li class="next"><a
-								href="/teen/board?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+								href="/teen/board?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}&nowPage=${paging.nowPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
 						</c:if>
 					</ul>
 				</div>
