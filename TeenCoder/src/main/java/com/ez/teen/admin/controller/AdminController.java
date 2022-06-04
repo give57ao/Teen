@@ -56,8 +56,32 @@ public class AdminController {
 	
 	// 회원정보 수정 폼
 	@GetMapping("/memberModify")
-	public String memberModifyForm(MemberModel memberModel, MemberParam memberParam, Model model) throws Exception {
+	public String memberModifyForm(MemberModel memberModel, MemberParam memberParam, Model model,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "keyword", required = false) String keyword) throws Exception {
+		
+		int total = adminMemberService.getMemberCount(memberParam);
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "10";
+		} 
+		memberParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		if(total == 0) {
+			memberParam.setEndPage(1);
+		}
+		
+		model.addAttribute("paging", memberParam);
 		model.addAttribute("member", adminMemberService.memberList(memberParam));
+		
+		System.out.println("member_no : " + model);
+		
 		return "admin/memberModify";
 	}
 	
@@ -65,7 +89,7 @@ public class AdminController {
 	@PostMapping("/memberModify")
 	public String memberModify(MemberModel memberModel) throws Exception {
 		adminMemberService.memberModify(memberModel);
-		return "admin/memberList";
+		return "redirect:/admin/memberList";
 	}
 	
 	// 회원정보 삭제
@@ -73,7 +97,7 @@ public class AdminController {
 	@PostMapping("/memberDelete")
 	public String memberDelete(MemberModel memberModel) throws Exception {	
 		adminMemberService.memberDelete(memberModel);
-		return "redirect:admin/memberList";
+		return "redirect:/admin/memberList";
 	}
 	
 }
