@@ -68,10 +68,10 @@ public class AdminController {
 	}
 	
 	// 회원정보 삭제
-	@GetMapping("/memberDelete")
+	@PostMapping("/memberDelete")
 	public String memberDelete(MemberModel memberModel) throws Exception {	
 		adminMemberService.memberDelete(memberModel);
-		return "admin/memberList";
+		return "redirect:/";
 	}
 	
 }
