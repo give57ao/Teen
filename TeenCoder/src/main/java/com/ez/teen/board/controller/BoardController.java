@@ -110,18 +110,13 @@ public class BoardController {
 		// 파라미터 분석 : BoardParam의 board_no로 게시글 특정지음
 		// @RequestParam으로 uri의 board_no? 뒤의 값을 가져옴
 		
-		//int member_no = (int)session.getAttribute("member_no"); // member_no가져옴
-		
-		//System.out.println(member_no);
-		
+//		int member_no = (int)session.getAttribute("member_no"); // member_no가져옴
 		boardParam.setBoard_no(board_no); // 위 파라미터에서 선언한 board_no(uri파라미터)를 setter를 통해 값 설정
-		//boardParam.setMember_no(member_no);
-		
+//		boardParam.setMember_no(member_no);
 		List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
 		List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
 				
-		System.out.println(boardComment.get(0));
-		System.out.println(boardComment.get(1));
+		System.out.println(boardDetail);
 
 		
 		model.addAttribute("boardDetail", boardDetail);

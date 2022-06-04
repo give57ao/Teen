@@ -80,19 +80,18 @@
 								</div>
 								<div class="row_contents">
 									<h1>${boardDetail.board_content}</h1>
-	
-									<!-- 게시판 그림 삭제 및 첨부파일 다운로드 기능 막기 -->
-									<!-- <img src="/teen/resources/images/bg/bg_sample.jpg"> <span><a
-										href="#">첨부파일 다운로드</a></span> -->
+									<h5>TEST1</h5>
+									<img src="/teen/resources/images/bg/bg_sample.jpg"> <span><a
+										href="#">첨부파일 다운로드</a></span>
 								</div>
 								<ul class="row_top number">
 									<li><img src="/teen/resources/images/icon/icon_hit.svg"
-										class="i_hit">${boardDetail.board_hit_count}</li>
+										class="i_hit">"${boardDetail.board_hit_count}"</li>
 									<li><img
 										src="/teen/resources/images/icon/icon_comment.svg"
-										class="i_cmt">${boardDetail.board_comment_count}</li>
+										class="i_cmt">"${boardDetail.board_comment_count}"</li>
 									<li><img src="/teen/resources/images/icon/icon_like.svg"
-										class="i_like">${boardDetail.board_like_count}</li>
+										class="i_like">"${boardDetail.board_like_count}"</li>
 								</ul>
 								<div class="btn_group">
 									<input type="button" value="스크랩" class="btn_com btn_board">
@@ -127,13 +126,13 @@
 										<div class="row_top member">
 											<h4>
 												<img src="/teen/resources/images/icon/icon_badge.png"
-													class="i_badge"> <span class="rank">[Expert]</span>${boardComment.member_nick}
+													class="i_badge"> <span class="rank">[Expert]</span>"${boardComment.member_no}"
 											</h4>
 										</div>
 										<span class="row_top date">"${boardComment.bcomment_date}"</span>
 									</div>
 									<div class="row_contents">
-										<p>${boardComment.bcomment_content}</p>
+										<p>"${boardComment.bcomment_content}"</p>
 									</div>
 									<ul class="row_top number">
 										<li><img
