@@ -43,6 +43,7 @@ public class AdminController {
 		} else if (cntPerPage == null) {
 			cntPerPage = "10";
 		} 
+		
 		memberParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		if(total == 0) {
 			memberParam.setEndPage(1);
@@ -57,7 +58,7 @@ public class AdminController {
 	// 회원정보 수정 폼
 	@GetMapping("/memberModify")
 	public String memberModifyForm(MemberModel memberModel, MemberParam memberParam, Model model) throws Exception {
-		int member_no = (Integer) memberModel.getMember_no();
+		int member_no = memberModel.getMember_no();
 		memberModel.setMember_no(member_no);
 		
 		model.addAttribute("member", adminMemberService.memberModifyForm(memberModel));
@@ -68,10 +69,6 @@ public class AdminController {
 	// 회원정보 수정
 	@PostMapping("/memberModify")
 	public String memberModify(MemberModel memberModel) throws Exception {
-		int member_no = (Integer) memberModel.getMember_no();
-		System.out.println("member no : " + member_no);
-		memberModel.setMember_no(member_no);
-		
 		adminMemberService.memberModify(memberModel);
 		return "redirect:/admin/memberList";
 	}
@@ -83,5 +80,5 @@ public class AdminController {
 		adminMemberService.memberDelete(memberModel);
 		return "redirect:/admin/memberList";
 	}
-	
+
 }

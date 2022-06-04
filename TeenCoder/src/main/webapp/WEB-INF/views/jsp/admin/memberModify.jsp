@@ -48,7 +48,7 @@
 	                                    <tr>
 	                                        <th>아이디</th>
 	                                        <td>${member.member_id}</td>
-	                                         <td><input type="hidden"  name="member_no" value="${member.member_no }"></td>
+	                                        <td><input type="hidden" name="member_no" value="${member.member_no}"></td>
 	                                    </tr>
 	                                    <tr>
 	                                        <th>비밀번호</th>
