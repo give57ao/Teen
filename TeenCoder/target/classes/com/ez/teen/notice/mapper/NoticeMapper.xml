@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ez.teen.notice.mapper.NoticeMapper">
+	
+<select id ="noticeList" resultType="com.ez.teen.notice.model.NoticeModel" parameterType="com.ez.teen.notice.model.NoticeParam">
+	
+SELECT RN, NOTI_NO, MEMBER_NO, MEMBER_NICK, NOTI_TITLE, NOTI_CONTENT, NOTI_DATE, NOTI_HIT_COUNT, NOTI_FILE_CHECK
+FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+                SELECT
+N.NOTI_NO
+,N.MEMBER_NO
+,M.MEMBER_NICK
+,N.NOTI_TITLE
+,N.NOTI_CONTENT
+,N.NOTI_DATE
+,N.NOTI_HIT_COUNT
+,N.NOTI_FILE_CHECK
+
+FROM NOTICE N
+INNER JOIN MEMBER M
+ON N.MEMBER_NO = M.MEMBER_NO
+
+<if test='search == "title"'>
+AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
+</if>
+
+<if test='search == "content"'>
+AND N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
+</if>
+
+<if test='search == "member_nick"'>
+AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+</if>
+
+<if test='search == "all"'>
+AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
+OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
+</if>
+
+)A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
+
+</select>
+
+<!-- 전체 공지글 수 -->
+<select id="getNoticeCount" resultType="int" parameterType="com.ez.teen.notice.model.NoticeParam"> 
+		
+
+SELECT COUNT(*) FROM NOTICE N
+INNER JOIN MEMBER M
+ON N.MEMBER_NO = M.MEMBER_NO
+
+<if test='search == "title"'>
+AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
+</if>
+
+<if test='search == "content"'>
+AND N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
+</if>
+
+<if test='search == "member_nick"'>
+AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+</if>
+
+<if test='search == "all"'>
+AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
+OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
+</if>		
+		
+		 		
+</select>
+
+
+
+
+</mapper>

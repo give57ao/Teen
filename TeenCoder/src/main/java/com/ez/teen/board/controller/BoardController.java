@@ -156,7 +156,7 @@ public class BoardController {
 	
 	//게시판
 	@GetMapping("/board")
-	public String goBoard(Model model, BoardParam boardParam, HttpSession session,
+	public String goBoard(Model model, BoardParam boardParam, 
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "sort", required = false) String sort,
