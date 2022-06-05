@@ -16,6 +16,7 @@
                 <li><a href="/teen/board/notice">Notice</a></li>
             </ul>
         </nav>
+        
         <!-- 로그인 전 : 세션 값이 없을 경우 -->
         <c:if test="${sessionScope.member_no == null}">
             <div id="header_menu">
@@ -25,6 +26,7 @@
                 </ul>
             </div>
         </c:if>
+        
         <!-- 로그인 후 : 세션 값이 있을 경우 -->
         <c:if test="${sessionScope.member_no != null}">
             <div id="header_menu">
@@ -42,5 +44,8 @@
             </div>
         </c:if>
     </header>
+    
+    <!-- JS -->
+	<script type="text/javascript" src="/teen/resources/js/common.js"></script>
 </body>
 </html>

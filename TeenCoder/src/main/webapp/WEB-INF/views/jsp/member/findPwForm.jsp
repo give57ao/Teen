@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
-<script src="/teen/resources/js/member/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -22,17 +21,19 @@
 		</div>
 		<div id="contents_detail">
 			<!-- Form -->
-			<form id="join_form" class="find_form" action="findPw" method="post" onsubmit="return pwCheck()">
+			<form id="join_form" class="find_form" action="findPw" method="post" onSubmit="return pwCheck()">
 				<table>
 					<tbody>
 						<tr>
 							<th>아이디</th>
-							<td><input id="member_id" type="text" name="member_id" placeholder="아이디">
+							<td>
+								<input id="member_id" type="text" name="member_id" placeholder="아이디">
 							</td>
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input id="member_email" type="text" name="member_email" placeholder="이메일">
+							<td>
+								<input id="member_email" type="text" name="member_email" placeholder="이메일">
 							</td>
 						</tr>
 					</tbody>
@@ -47,5 +48,8 @@
 	
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
+	
+	<!-- JS -->
+	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
 </body>
 </html>

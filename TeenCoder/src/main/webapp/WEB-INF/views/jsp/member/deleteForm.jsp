@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
-<script src="/teen/resources/js/member.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -33,7 +33,7 @@
                     </tbody>
                 </table>
                 <div id="btn_wrap">
-                    <input type="button" value="취소" class="btn_com btn_main" onClick="location.href='/teen/member/'">
+                    <input type="button" value="취소" class="btn_com btn_main" onClick="goMyPage()">
                     <input type="submit" value="탈퇴" class="btn_com btn_main">
                 </div>
             </form>
@@ -42,5 +42,8 @@
     
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
+	
+	<!-- JS -->
+	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
 </body>
 </html>
