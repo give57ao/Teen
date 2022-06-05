@@ -18,7 +18,8 @@ import com.ez.teen.board.model.BoardModel;
 @Component("fileUtils")
 public class FileUtils {
 	
-	private static final String filePath = "C:\\upload\\";
+	//private static final String filePath = "C:\\upload\\";
+	private static final String filePath = "C:\\Users\\com\\Desktop\\JAVA\\SpringTool\\upload\\";
 	public String getFilePath() {
 		return filePath;
 	}
@@ -62,6 +63,49 @@ public class FileUtils {
 				listMap.put("FILE_SIZE", multpartFile.getSize());
 				listMap.put("FILE_DATE", date);
 				list.add(listMap);
+			}
+		}
+		return list;
+	}
+	
+	public List<Map<String, Object>> parseUpdateFileInfo(BoardModel boardModel, String[] files,String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
+		
+		Iterator<String> iterator = mpRequest.getFileNames();
+		MultipartFile multipartFile = null; 
+		String originalFileName = null; 
+		String originalFileExtension = null; 
+		String storedFileName = null; 
+		
+		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+		Map<String, Object> listMap = null;
+		int board_no = boardModel.getBoard_no();
+		
+		while(iterator.hasNext()){ 
+			multipartFile = mpRequest.getFile(iterator.next()); 
+			if(multipartFile.isEmpty() == false){ 
+				originalFileName = multipartFile.getOriginalFilename(); 
+				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf(".")); 
+				storedFileName = getRandomString() + originalFileExtension; 
+				multipartFile.transferTo(new File(filePath + storedFileName)); 
+				
+				Date date = new Date();
+				
+				listMap = new HashMap<String,Object>();
+				listMap.put("NEW_FILE", 'Y');
+				listMap.put("BOARD_NO", board_no);
+				listMap.put("ORG_FILE_NAME", originalFileName);
+				listMap.put("STORED_FILE_NAME", storedFileName);
+				listMap.put("FILE_SIZE", multipartFile.getSize());
+				listMap.put("FILE_DATE", date);
+				list.add(listMap);
+			}
+		}
+		if(files != null && fileNames != null){ 
+			for(int i = 0; i<fileNames.length; i++) {
+					listMap = new HashMap<String,Object>();
+                    listMap.put("NEW_FILE", "N");
+					listMap.put("FILE_NO", files[i]); 
+					list.add(listMap); 
 			}
 		}
 		return list;

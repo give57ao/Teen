@@ -145,9 +145,11 @@
 	 FILE_NO
 	,ORG_FILE_NAME
 	,ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+	,DEL_GB
 	FROM BFILE
 	WHERE BOARD_NO = #{board_no}
 	AND DEL_GB = 'N'
+	ORDER BY FILE_NO ASC
 	]]>
 	</select>
 	
@@ -161,6 +163,18 @@
 	WHERE FILE_NO = #{FILE_NO}
 	]]>
 	</select>
+	
+	<!-- 다중 업로드 추가 -->
+	<update id="updateFile" parameterType="hashMap" >
+		<![CDATA[
+		UPDATE BFILE SET
+		DEL_GB = 'Y'
+		WHERE FILE_NO = #{FILE_NO}
+		]]>
+		
+	</update>
+	
+	
 	
 <select id ="boardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.board.model.BoardParam">
 SELECT rn, board_no, board_group_no, board_tag_name, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check, bgroup_name, member_nick, board_comment_count

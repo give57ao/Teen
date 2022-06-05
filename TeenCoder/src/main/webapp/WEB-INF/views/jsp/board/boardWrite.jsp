@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,11 +94,16 @@
 			                            <label for="sql">SQL</label>
 			                        </td>
 			                    </tr>
-			                    <tr class="file_upload">
+			                    <tr class="file_upload" >
 			                        <th>첨부파일</th>
 			                        <td>
-			                            <input type="file" name="file" class="btn_add_file">
-			                            <input type="button" name="file_del" value="파일 삭제" class="btn_com btn_del_file">
+									<div id="fileDiv" >
+									<p>
+			                            <input type="file" id="file" name="file_0">
+			                            <a href="#this" class="btn_com btn_del_file" id="deleteFile" >파일 삭제</a>
+			                        </p>
+			                        </div>
+			                        <a href="#this" class="btn_com btn_del_file" id="addFile" >파일 추가</a>
 			                        </td>
 			                    </tr>
 		                    </tbody>
@@ -116,14 +122,41 @@
             </div>
         </div>
     </div>
-    
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
 <script type="text/javascript">
+var files_count = 1;
 $(document).ready(function(){
+	
+	$("#addFile").on("click", function(e) {
+		e.preventDefault();
+		fn_addFile();
+		
+	});
+	
+	$("a[name='deleteFile']").on("click", function(e) {
+		e.preventDefault();
+		fn_deleteFile($(this));
+		
+	});
+	
 	$('#summernote').summernote();
 });
+
+function fn_addFile() {
+	var str = "<P><input type='file' name='file_"+(files_count++)+"'><a href='#this' class='tn_com btn_del_file' name = 'deleteFile'>파일 삭제</a>";
+	$("#fileDiv").append(str);
+	$("a[id='deleteFile']").on("click", function(e) {
+		e.preventDefault();
+		fn_deleteFile($(this));
+		
+	});
+}
+
+function fn_deleteFile(obj){
+	obj.parent().remove();
+}
 </script>
 </body>
 </html>

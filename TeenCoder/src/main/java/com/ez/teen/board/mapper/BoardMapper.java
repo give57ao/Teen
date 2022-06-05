@@ -53,4 +53,7 @@ public interface BoardMapper {
 	//첨부파일 다운로드
 	public Map<String, Object> downFile(Map<String, Object> map) throws Exception;
 	
+	//첨부파일 수정
+	public void updateFile(Map<String, Object> map) throws Exception;
+	
 }
