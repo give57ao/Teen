@@ -43,7 +43,7 @@
                 </ul>
                 <!-- Category 좌측 화면 고정 카테고리 끝-->
                 
-                <!-- Board 작성 메인화면 시작--------------------------------------------->
+                <!-- Board 작성 메인화면 시작------------------------------------------------------->
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
@@ -99,7 +99,7 @@
 			                        <td>
 									<div id="fileDiv" >
 									<p>
-			                            <input type="file" id="file" name="file_0">
+			                            <input type="file" id="file" name="file_0"/>
 			                            <a href="#this" class="btn_com btn_del_file" id="deleteFile" >파일 삭제</a>
 			                        </p>
 			                        </div>
@@ -145,7 +145,7 @@ $(document).ready(function(){
 });
 
 function fn_addFile() {
-	var str = "<P><input type='file' name='file_"+(files_count++)+"'><a href='#this' class='tn_com btn_del_file' name = 'deleteFile'>파일 삭제</a>";
+	var str = "<p><input type='file' id='file' name='file_"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></p>";
 	$("#fileDiv").append(str);
 	$("a[id='deleteFile']").on("click", function(e) {
 		e.preventDefault();
