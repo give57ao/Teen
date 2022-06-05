@@ -86,12 +86,14 @@
 									<h1>${boardDetail.board_content}</h1>
 									<h5>TEST1</h5>
 <!--*********************************************************** 파일 구간********************************************************************* -->
-								<c:forEach var="file" items="${file }">
+								
                             	<form name="downFile" role="form" method="post">
                             				<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
+                            				<c:forEach var="file" items="${file }">
                             					<span><a href="#" onclick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME }</a>(${file.FILE_SIZE }kb)</span>
+                            				</c:forEach>
                             	</form>
-                            	</c:forEach>
+                            	
                             	
 								</div>
 								<ul class="row_top number">
