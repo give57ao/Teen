@@ -41,11 +41,10 @@
 		OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 		OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 		</if>
- 		
-
-		
+ 	
+ 	
  		<if test='board_tag_name == null'>
-		AND B.BOARD_TAG_NAME LIKE ('%%')
+		AND REGEXP_LIKE (B.BOARD_TAG_NAME, '^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
 		</if>
  		
 	</select>
@@ -196,7 +195,7 @@ WHERE B.BOARD_GROUP_NO = #{board_group_no}
 </if>
 		
  		<if test='board_tag_name == null'>
-		AND B.BOARD_TAG_NAME LIKE ('%%')
+		AND REGEXP_LIKE (B.BOARD_TAG_NAME, '^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
 		</if>
 
 <if test='member_no != 0'>
