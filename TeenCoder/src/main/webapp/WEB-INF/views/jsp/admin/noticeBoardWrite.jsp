@@ -26,12 +26,12 @@
             <div id="contents_wrap">
                 <!-- Category -->
                 <ul id="contents_category">
-                    <li><a href="#">회원 관리</a></li>
-                    <li><a href="#" class="select">공지글 관리</a></li>
-                    <li><a href="#">게시글 관리</a></li>
-                    <li><a href="#">신고글 관리</a></li>
-                    <li><a href="#">댓글 관리</a></li>
-                    <li><a href="#">답글 관리</a></li>
+                    <li><a href="/teen/admin/memberList">회원 관리</a></li>
+                    <li><a href="/teen/admin/noticeBoard" class="select">공지글 관리</a></li>
+                    <li><a href="/teen/admin/adminBoard">게시글 관리</a></li>
+                    <li><a href="/teen/admin/reportBoard">신고글 관리</a></li>
+                    <li><a href="/teen/admin/reportCmtList">댓글 관리</a></li>
+                    <li><a href="/teen/admin/reportAnsList">답글 관리</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">
@@ -67,7 +67,7 @@
                             </table>
                             <div id="btn_wrap">
                                 <input type="submit" value="공지글 작성" class="btn_com btn_main">
-                                <input type="button" value="취소" class="btn_com btn_main" onClick="#">
+                                <input type="button" value="취소" class="btn_com btn_main" onClick="goNoticeBoard()">
                             </div>
                         </form>
                     </div>
@@ -80,7 +80,6 @@
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
 	<!-- JS -->
-	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/admin/admin.js"></script>
 </body>
 </html>

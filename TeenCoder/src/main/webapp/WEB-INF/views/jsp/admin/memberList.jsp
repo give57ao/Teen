@@ -90,13 +90,13 @@
 	                        </table>
                         </form>
                     </div>
+                    <!-- Pagination -->
                     <div id="board_list_pagination">
 						<ul>
 							<!-- 왼쪽 버튼 -->
 							<!-- 시작페이지가 1이 아닐 때 -->
 							<c:if test="${paging.nowPage != 1}">
-								<li class="prev"><a
-									href="/teen/admin/memberList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage - 1}&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+								<li><a class="prev" href="/teen/admin/memberList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage - 1}&cntPerPage=${paging.cntPerPage}"></a></li>
 							</c:if>
 							<!-- 페이징 숫자가 나오는 부분 -->
 							<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
@@ -112,7 +112,7 @@
 							</c:forEach>
 							<!-- 오른쪽 버튼 -->
 							<c:if test="${paging.startPage < paging.endPage}">
-								<li class="next"><a href="/teen/admin/memberList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage+1}&cntPerPage=${paging.cntPerPage}">&nbsp;</a></li>
+								<li><a class="next" href="/teen/admin/memberList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage + 1}&cntPerPage=${paging.cntPerPage}"></a></li>
 							</c:if>
 						</ul>
 					</div>
@@ -125,8 +125,7 @@
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
 	<!-- JS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/admin/admin.js"></script>
 </body>
 </html>

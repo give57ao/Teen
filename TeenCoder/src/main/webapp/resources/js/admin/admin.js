@@ -26,3 +26,8 @@ function memberDeletePopup(member_no) {
 		});
 	}
 }
+
+// 공지글 리스트 화면으로 이동
+function goNoticeBoard() {
+	location.href = "/teen/admin/noticeBoard";
+}

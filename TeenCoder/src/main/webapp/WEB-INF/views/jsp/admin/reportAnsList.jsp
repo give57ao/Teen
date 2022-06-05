@@ -24,12 +24,12 @@
             <div id="contents_wrap">
                 <!-- Category -->
                 <ul id="contents_category">
-                    <li><a href="#">회원 관리</a></li>
-                    <li><a href="#">공지글 관리</a></li>
-                    <li><a href="#">게시글 관리</a></li>
-                    <li><a href="#">신고글 관리</a></li>
-                    <li><a href="#">댓글 관리</a></li>
-                    <li><a href="#" class="select">답글 관리</a></li>
+                    <li><a href="/teen/admin/memberList">회원 관리</a></li>
+                    <li><a href="/teen/admin/noticeBoard">공지글 관리</a></li>
+                    <li><a href="/teen/admin/adminBoard">게시글 관리</a></li>
+                    <li><a href="/teen/admin/reportBoard">신고글 관리</a></li>
+                    <li><a href="/teen/admin/reportCmtList">댓글 관리</a></li>
+                    <li><a href="/teen/admin/reportAnsList" class="select">답글 관리</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">
@@ -41,6 +41,19 @@
                             <li><a href="#">추천순</a></li>
                             <li><a href="#">신고순</a></li>
                         </ul>
+                    </div>
+                    <!-- Search -->
+                    <div id="board_list_search">
+                        <select class="dropdown">
+                            <option value="all" id="search" selected>전체</option>
+                            <option value="title" id="search">제목</option>
+                            <option value="id" id="search">아이디</option>
+                            <option value="nick" id="search">닉네임</option>
+                        </select>
+                        <div class="search">
+                            <input type="text" id="keyword" placeholder="검색">
+                            <button class="btn_search"></button>
+                        </div>
                     </div>
                 	<!-- List Row -->
                     <div id="admin_board_list">
@@ -95,7 +108,6 @@
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
 	<!-- JS -->
-	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/admin/admin.js"></script>
 </body>
 </html>
