@@ -45,7 +45,7 @@
 
 		
  		<if test='board_tag_name == null'>
-		AND B.BOARD_TAG_NAME IN ('HTML','CSS','JS','JAVA','C','PYTHON','SQL')
+		AND B.BOARD_TAG_NAME LIKE ('%%')
 		</if>
  		
 	</select>
@@ -196,7 +196,7 @@ WHERE B.BOARD_GROUP_NO = #{board_group_no}
 </if>
 		
  		<if test='board_tag_name == null'>
-		AND B.BOARD_TAG_NAME IN ('1','2','3','4','5','6','7')
+		AND B.BOARD_TAG_NAME LIKE ('%%')
 		</if>
 
 <if test='member_no != 0'>
