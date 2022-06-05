@@ -56,13 +56,9 @@
 			                        <th>카테고리</th>
 			                        <td>
 			                            <select class="dropdown" id="board_group_no" name="board_group_no">
-			                            	<option value="1" selected>HTML</option>
-				                            <option value="2">CSS</option>
-				                            <option value="3">JS</option>
-				                            <option value="4">Java</option>
-				                            <option value="5">C</option>
-				                            <option value="6">Python</option>
-				                            <option value="7">SQL</option>
+			                            	<option value="1" selected>Community</option>
+				                            <option value="2">QnA</option>
+				                            <option value="3">Notice</option>
 				                        </select>
 			                        </td>
 			                    </tr>
@@ -87,11 +83,11 @@
 			                            <label for="css">CSS</label>
 			                            <input type="checkbox" name="board_tag_name" value="JS" id="js">
 			                            <label for="js">JS</label>
-			                            <input type="checkbox" name="board_tag_name" value="Java" id="java">
+			                            <input type="checkbox" name="board_tag_name" value="JAVA" id="java">
 			                            <label for="java">Java</label>
 			                            <input type="checkbox" name="board_tag_name" value="C" id="c">
 			                            <label for="c">C</label>
-			                            <input type="checkbox" name="board_tag_name" value="Python" id="pyton">
+			                            <input type="checkbox" name="board_tag_name" value="PYTHON" id="python">
 			                            <label for="python">Python</label>
 			                            <input type="checkbox" name="board_tag_name" value="SQL" id="sql">
 			                            <label for="sql">SQL</label>
