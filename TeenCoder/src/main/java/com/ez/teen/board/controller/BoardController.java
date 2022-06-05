@@ -169,7 +169,10 @@ public class BoardController {
 			if(board_group_no == null) {
 				boardParam.setBoard_group_no("1");
 			}
-			
+			System.out.println("====================================");
+			System.out.println("BOARD_TAG_NAME :" + board_tag_name );
+			System.out.println("====================================");
+
 			
 			int total = boardService.getBoardCount(boardParam);
 			

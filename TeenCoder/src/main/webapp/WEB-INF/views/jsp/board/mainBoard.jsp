@@ -32,13 +32,13 @@
 					<li><a href="/teen/board?board_group_no=2" class="select">Q&A</a></li>
                     </c:if>
                     
-                    <li><a href="#">#HTML</a></li>
-                    <li><a href="#">#CSS</a></li>
-                    <li><a href="#">#JS</a></li>
-                    <li><a href="#">#Java</a></li>
-                    <li><a href="#">#C</a></li>
-                    <li><a href="#">#Python</a></li>
-                    <li><a href="#">#SQL</a></li>
+                    <li><a href="/teen/board?board_tag_name=html">#HTML</a></li>
+                    <li><a href="/teen/board?board_tag_name=css">#CSS</a></li>
+                    <li><a href="/teen/board?board_tag_name=js">#JS</a></li>
+                    <li><a href="/teen/board?board_tag_name=java">#Java</a></li>
+                    <li><a href="/teen/board?board_tag_name=c language">#C Language</a></li>
+                    <li><a href="/teen/board?board_tag_name=python">#Python</a></li>
+                    <li><a href="/teen/board?board_tag_name=sql">#SQL</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">

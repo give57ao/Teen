@@ -86,8 +86,8 @@
 			                            <label for="js">JS</label>
 			                            <input type="checkbox" name="board_tag_name" value="JAVA" id="java">
 			                            <label for="java">Java</label>
-			                            <input type="checkbox" name="board_tag_name" value="C" id="c">
-			                            <label for="c">C</label>
+			                            <input type="checkbox" name="board_tag_name" value="C Language" id="c">
+			                            <label for="c">C&nbsp;Language</label>
 			                            <input type="checkbox" name="board_tag_name" value="PYTHON" id="python">
 			                            <label for="python">Python</label>
 			                            <input type="checkbox" name="board_tag_name" value="SQL" id="sql">

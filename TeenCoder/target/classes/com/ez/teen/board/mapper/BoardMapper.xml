@@ -46,6 +46,12 @@
  		<if test='board_tag_name == null'>
 		AND REGEXP_LIKE (B.BOARD_TAG_NAME, '^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
 		</if>
+		
+		<if test='board_tag_name != null'>
+		<![CDATA[
+		AND LOWER(B.BOARD_TAG_NAME) LIKE '%'||#{board_tag_name}||'%'
+		]]>
+		</if>
  		
 	</select>
 	
@@ -164,7 +170,7 @@
 	]]>
 	</select>
 	
-	<!-- 다중 업로드 추가 -->
+	<!-- 첨부파일 수정 -->
 	<update id="updateFile" parameterType="hashMap" >
 		<![CDATA[
 		UPDATE BFILE SET
@@ -207,10 +213,6 @@ ON B.BOARD_NO = C.BOARD_NO
 <if test='board_group_no != null'>
 WHERE B.BOARD_GROUP_NO = #{board_group_no}
 </if>
-		
- 		<if test='board_tag_name == null'>
-		AND REGEXP_LIKE (B.BOARD_TAG_NAME, '^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
-		</if>
 
 <if test='member_no != 0'>
 AND B.MEMBER_NO = #{member_no}
@@ -234,6 +236,15 @@ OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 </if>
 
+<if test='board_tag_name == null'>
+AND REGEXP_LIKE (B.BOARD_TAG_NAME, '^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
+</if>
+		
+<if test='board_tag_name != null'>
+<![CDATA[
+	AND LOWER(B.BOARD_TAG_NAME) LIKE '%'||#{board_tag_name}||'%'
+]]>
+</if>
 
 
  		
