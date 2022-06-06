@@ -20,13 +20,13 @@
 }
 
 #contents_pro .circle .chart {
-	width: 150px;
-    height: 150px;
+	width: 120px;
+    height: 120px;
     margin: 0 40px 20px;
     border: 8px solid #333;
     border-radius: 100%;
 	font-size: 3em;
-	line-height: 150px;
+	line-height: 120px;
 }
 
 #contents_pro .c1 .chart {

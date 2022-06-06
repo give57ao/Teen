@@ -209,12 +209,12 @@ button {
 }
 
 #contents_title {
-    background: linear-gradient(120deg, #111, #333);
+	padding: 80px;
+    background: linear-gradient(120deg, #000, #333);
   	background-size: 400% 400%;
-  	animation: gradient 8s ease infinite;
-    padding: 80px;
     text-align: center;
     color: #FFF;
+    animation: gradient 8s ease infinite;
 }
 
 #contents_detail {
