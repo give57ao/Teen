@@ -21,7 +21,7 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript"
-		src="/teen/resources/js/board/detail/boardDetail.js"></script>
+		src="/resources/js/board/detail/boardDetail.js"></script>
 
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -52,7 +52,8 @@
 
 
 						<!-- List Row -->
-						<c:forEach items="${boardDetail}" var="boardDetail">
+						<c:forEach items="${boardDetail}" var="boardDetail"
+							varStatus="status">
 
 							<div id="board_list_row">
 								<div class="row">
@@ -87,7 +88,8 @@
 									</div>
 									<div class="row_contents">
 										<h1>${boardDetail.board_content}</h1>
-					
+										<p>${status.current}</p>
+
 										<!--*********************************************************** 파일 구간********************************************************************* -->
 
 										<form name="downFile" role="form" method="post">
@@ -131,7 +133,7 @@
 
 					<c:forEach items="${boardComment}" var="boardComment"
 						varStatus="status">
-						
+						<c:set var="index" value="${status.index }" /> 
 						<div id="comment_list">
 							<div class="comment_box">
 								<div class="row">
@@ -146,7 +148,8 @@
 									</div>
 									<div class="row_contents">
 										<p>${boardComment.bcomment_content}</p>
-										
+										<p>${status.index}
+
 									</div>
 									<ul class="row_top number">
 										<li><img
@@ -156,24 +159,28 @@
 											class="i_like">0</li>
 									</ul>
 									<div class="btn_group">
+										<input type="hidden"  id="index" value="<c:out value="${index1}"/>">
 										<input type="button" value="신고" class="btn_com btn_board">
 										<input type="button" value="추천" class="btn_com btn_board">
-										<input type="button" value="답글" class="btn_com btn_board">
+										<input type="button" value="답글" class="btn_com btn_board"
+											onClick="answerInsert()">
 									</div>
 								</div>
 							</div>
 						</div>
 					</c:forEach>
-
 					<!-- Answer Form  -->
-					<form action="board/detail" method="get">
-					<div id="answer">
-						<div id="answer_form">
-							<textarea name="answer" placeholder="답글 작성"></textarea>
-							<input type="button" value="취소" class="btn_com btn_board btn_cmt">
-							<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
+					<form action="comment" method="get">
+						<div id="answer">
+							<div id="answer_form">
+				
+								<textarea name="answer" placeholder="답글 작성" id="bcomment_content"></textarea>
+								<input type="button" value="취소"
+									class="btn_com btn_board btn_cmt"> <input type="submit"
+									value="작성" class="btn_com btn_board btn_cmt">
+							
+							</div>
 						</div>
-					</div>
 					</form>
 				</div>
 
@@ -189,7 +196,12 @@
 
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
-
+<script type="text/javascript">
+	function answerInsert() {
+		var index = document.getElementById("index").value;
+		alert(index);
+	}
+</script>
 
 
 </body>

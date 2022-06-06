@@ -116,6 +116,14 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.selectComment(boardParam);
 	}
 
+	@Override
+	public void insertComment(CommentModel commentModel) {
+		boardMapper.insertComment(commentModel);
+		
+	}
+
+	
+
 	
 
 	

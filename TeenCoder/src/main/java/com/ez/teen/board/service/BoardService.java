@@ -53,6 +53,8 @@ public interface BoardService {
 	//첨부파일 추가
 	public void insertFile(Map<String, Object> map) throws Exception;
 
+	public void insertComment(CommentModel commentModel);
+
 	
 
 		

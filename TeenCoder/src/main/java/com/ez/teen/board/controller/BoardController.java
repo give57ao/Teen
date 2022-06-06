@@ -112,7 +112,7 @@ public class BoardController {
 	//게시글 내용 디테일
 	@RequestMapping("board/detail")
 	public String selectBoardDetail(BoardModel boardModel, HttpSession session,
-			HttpServletResponse response, BoardParam boardParam, Model model,
+			HttpServletResponse response, HttpServletRequest rq, BoardParam boardParam, Model model,
 			@RequestParam(value="board_no")int board_no) throws Exception{
 		// 파라미터 분석 : BoardParam의 board_no로 게시글 특정지음
 		// @RequestParam으로 uri의 board_no? 뒤의 값을 가져옴
@@ -134,11 +134,25 @@ public class BoardController {
 		model.addAttribute("boardDetail", boardDetail);
 		model.addAttribute("boardComment", boardComment);
 		
+		String index = rq.getParameter("index");
+		System.out.println("인덱스값: " + index);
+		
 		return "board/boardDetail";
 	}
 	
 	//댓글 작성
-	
+	@RequestMapping("board/comment")
+	public String insertComment(BoardModel boardModel, HttpSession session,
+			HttpServletResponse response, HttpServletRequest rq, CommentModel commentModel, Model model,
+			@RequestParam(value="board_no")int board_no) {
+		
+		commentModel.setBoard_no(board_no);
+		commentModel.setMember_no((int)session.getAttribute("member_no"));
+		
+		boardService.insertComment(commentModel);
+		
+		return "board/boardDetail";
+	}
 
 	//첨부파일 다운로드 구현
 		@RequestMapping(value = "board/downFile")
