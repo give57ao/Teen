@@ -3,6 +3,8 @@ package com.ez.teen.board.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.board.model.BoardCommentModel;
@@ -50,6 +52,7 @@ public interface BoardService {
 	
 	//첨부파일 추가
 	public void insertFile(Map<String, Object> map) throws Exception;
+
 	
 
 		

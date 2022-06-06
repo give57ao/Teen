@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
 import com.ez.teen.common.file.FileUtils;
@@ -119,9 +120,12 @@ public class BoardController {
 //		int member_no = (int)session.getAttribute("member_no"); // member_no가져옴
 		boardParam.setBoard_no(board_no); // 위 파라미터에서 선언한 board_no(uri파라미터)를 setter를 통해 값 설정
 //		boardParam.setMember_no(member_no);
+		
+		
+		
 		List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
 		List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
-				
+		
 		System.out.println(boardDetail);
 
 		List<Map<String, Object>> fileList = boardService.selectFile(board_no);
@@ -132,6 +136,9 @@ public class BoardController {
 		
 		return "board/boardDetail";
 	}
+	
+	//댓글 작성
+	
 
 	//첨부파일 다운로드 구현
 		@RequestMapping(value = "board/downFile")

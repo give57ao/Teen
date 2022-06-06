@@ -385,8 +385,11 @@ ORDER BY board_comment_count DESC
     	ON M.MEMBER_NO = C.MEMBER_NO
 	  WHERE 
     	C.BOARD_NO= #{board_no}
+      ORDER BY
+      	REF_STEP, REF_LEVEL 
 		
 	</select>
+	
 
 <!-- 닉네임과 댓글내용 불러오기 기본 쿼리문
 	SELECT 
@@ -399,6 +402,6 @@ ORDER BY board_comment_count DESC
     	C.BOARD_NO=1; 
     	
 -->
-
+	
 	
 </mapper>

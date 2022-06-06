@@ -4,6 +4,8 @@ package com.ez.teen.board.mapper;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ez.teen.board.model.BoardCommentModel;
@@ -55,5 +57,6 @@ public interface BoardMapper {
 	
 	//첨부파일 수정
 	public void updateFile(Map<String, Object> map) throws Exception;
+
 	
 }

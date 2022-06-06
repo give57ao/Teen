@@ -20,6 +20,8 @@
 <body>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="/teen/resources/js/board/detail/boardDetail.js"></script>
 
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -85,7 +87,7 @@
 									</div>
 									<div class="row_contents">
 										<h1>${boardDetail.board_content}</h1>
-										<h5>TEST1</h5>
+					
 										<!--*********************************************************** 파일 구간********************************************************************* -->
 
 										<form name="downFile" role="form" method="post">
@@ -119,9 +121,9 @@
 							<a href="../jsp/board/mainBoard.jsp">리스트로 이동</a>
 						</h2>
 					</div>
-					
-						
-					
+
+
+
 
 
 					<!-- @@@@@ 댓글창 시작 @@@@@ -->
@@ -129,7 +131,7 @@
 
 					<c:forEach items="${boardComment}" var="boardComment"
 						varStatus="status">
-
+						
 						<div id="comment_list">
 							<div class="comment_box">
 								<div class="row">
@@ -144,6 +146,7 @@
 									</div>
 									<div class="row_contents">
 										<p>${boardComment.bcomment_content}</p>
+										
 									</div>
 									<ul class="row_top number">
 										<li><img
@@ -163,6 +166,7 @@
 					</c:forEach>
 
 					<!-- Answer Form  -->
+					<form action="board/detail" method="get">
 					<div id="answer">
 						<div id="answer_form">
 							<textarea name="answer" placeholder="답글 작성"></textarea>
@@ -170,6 +174,7 @@
 							<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 						</div>
 					</div>
+					</form>
 				</div>
 
 				<!-- Member Info -->
@@ -186,7 +191,6 @@
 	<jsp:include page="../template/footer.jsp" flush="false" />
 
 
-	<script type="text/javascript"
-		src="/teen/resources/js/board/detail/boardDetail.js"></script>
+
 </body>
 </html>

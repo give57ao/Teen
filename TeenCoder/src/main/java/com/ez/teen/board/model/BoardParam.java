@@ -4,18 +4,24 @@ public class BoardParam {
 	
 	private String board_group_no;
 	private String board_tag_name;
-	
 	private int board_no;
 	private String sort; // 정렬
 	private String search; // 검색 타입
-
 	private int member_no;
 	private String keyword; // 검색내용
-
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
 	private int cntPage = 10;
+	private int ref_level;
 
 	
+	public int getRef_level() {
+		return ref_level;
+	}
+
+	public void setRef_level(int ref_level) {
+		this.ref_level = ref_level;
+	}
+
 	public int getBoard_no() {
 		return board_no;
 	}
