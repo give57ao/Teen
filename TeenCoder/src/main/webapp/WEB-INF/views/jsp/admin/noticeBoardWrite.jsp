@@ -6,8 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 관리자 공지글 관리 > 공지글 작성</title>
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/admin.css">
