@@ -2,18 +2,13 @@
 
 /* Board Common */
 #contents_detail {
-    background: #eee;
+    background: #EEE;
 }
 
 #contents_wrap {
     width: 100%;
     overflow: hidden;
     display: flex;
-}
-
-.select {
-    font-weight: bold;
-    color: #111;
 }
 
 .dropdown {
@@ -25,7 +20,7 @@
     padding: 10px;
     border: 2px solid #111;
     border-radius: 10px;
-    color: #fff;
+    color: #FFF;
     cursor: pointer;
 }
 
@@ -81,7 +76,7 @@
     padding: 1px 5px;
     border-radius: 5px;
     font-size: 0.8em;
-    color: #fff;
+    color: #FFF;
 }
 
 .row_info .member img {
@@ -91,7 +86,7 @@
 }
 
 .row_info .date {
-    color: #ccc;
+    color: #CCC;
 }
 
 .row_info .number {
@@ -142,17 +137,17 @@
 }
 
 .btn_cmt {
-	background: #ccc;
+	background: #CCC;
+	transition: all 0.2s;
 }
 
 .btn_cmt:hover {
 	background: #5573E8;
-    transition: all 0.2s;
 }
 
 /* Board Category */
 #contents_category {
-    width: 250px;
+    width: 200px;
     font-size: 1.4em;
     text-align: left;
     color: #999;
@@ -160,21 +155,21 @@
 
 #contents_category li {
     margin-bottom: 30px;
+    transition: all 0.2s;
 }
 
 #contents_category li:hover {
     color: #111;
-    transition: all 0.2s;
 }
 
 /* Board List */
 #board_list {
 	position: relative;
     height: 100%;
-    margin: 0 20px;
+    margin: 0 30px;
     padding: 30px;
-    background: #fff;
-    border: 1px solid #ccc;
+    background: #FFF;
+    border: 1px solid #CCC;
     border-radius: 10px;
     text-align: left;
     flex: 1;
@@ -226,11 +221,11 @@
     height: 100%;
     background: url(../images/icon/icon_search_n.svg) no-repeat center;
     border: none;
+    transition: all 0.2s;
 }
 
 #board_list_search .btn_search:hover {
     background: url(../images/icon/icon_search_s.svg) no-repeat center;
-    transition: all 0.2s;
 }
 
 #board_list_row {
@@ -253,12 +248,12 @@
     width: 15px;
     height: 15px;
     margin: 0 5px;
-    color: #ccc;
+    color: #CCC;
+    transition: all 0.2s;
 }
 
 #board_list_pagination ul li:hover {
     text-decoration: underline;
-    transition: all 0.2s;
 }
 
 #board_list_pagination ul li a {
@@ -282,7 +277,7 @@
 
 #comment_form textarea {
 	margin-bottom: 5px;
-	border: 1px solid #ccc;
+	border: 1px solid #CCC;
 }
 
 #comment_list h2 b {
@@ -293,8 +288,8 @@
 	width: 100%;
 	margin-top:15px;
 	padding: 20px 20px;
-	background: #8f784b;
-    border: 1px solid #ccc;
+	background: #FFF;
+    border: 1px solid #CCC;
     border-radius: 10px;
     box-sizing: border-box;
 }
@@ -308,8 +303,8 @@
 	width: 100%;
 	margin-top: -1px;
 	padding: 20px;
-	background: #eee;
-	border: 1px solid #ccc;
+	background: #EEE;
+	border: 1px solid #CCC;
     border-radius: 10px;
     box-sizing: border-box;
 }
@@ -320,28 +315,32 @@
 
 #answer_form textarea {
 	margin-bottom: 5px;
-	background: #eee;
-	border: 1px solid #ccc;
+	background: #EEE;
+	border: 1px solid #CCC;
 }
 
 .answer_box {
 	margin-top: -1px !important;
-	background: #eee !important;
+	background: #EEE !important;
 }
 
 /* Member Info */
 #member_info {
-    width: 250px;
+    width: 200px;
 }
 
 #member_info .mycard {
     width: 100%;
     height: 250px;
-    background: #fff;
+    background: #FFF;
     margin-top: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #CCC;
     border-radius: 10px;
     box-sizing: border-box;
     display: none;
+}
+
+#member_info a.btn_com {
+	background: #5573E8;
 }

@@ -80,12 +80,11 @@
 
 #join_form table .checkbox .btn_check {
     width: 100px;
-    visibility: hidden;
 }
 
 #join_form table .checkbox label {
     margin-left: 5px;
-    margin-right: 104px;
+    margin-right: 100px;
     vertical-align: middle;
 }
 
@@ -114,9 +113,4 @@
 .find_form h2 b {
 	font-size: 1.6em;
 	color: #5573E8;
-}
-
-/* Modify Form */
-.modify_form .checkbox .btn_check {
-	visibility: visible !important;
 }

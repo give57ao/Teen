@@ -3,6 +3,12 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8">
+<link href="" rel="shortcut icon"> <!-- 파비콘 -->
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+</head>
 <body>
     <header id="header">
         <div id="header_logo">
@@ -46,6 +52,7 @@
     </header>
     
     <!-- JS -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/common.js"></script>
 </body>
 </html>

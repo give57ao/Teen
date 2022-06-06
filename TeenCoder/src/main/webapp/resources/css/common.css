@@ -1,13 +1,17 @@
 @charset "utf-8";
 
+@keyframes gradient { 
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+}
+
 /* Common */
 html, body {
-	width: 100%;
-	height: 100%;
-    min-width: 1400px;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
     font-family: '맑은 고딕', '돋움', 'Malgun Gothic', 'Dotum', Arial, Roboto, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 150%;
     color: #111;
 }
@@ -17,13 +21,13 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 h1 {
-    margin-bottom: 10px;
-    font-size: 3.6em;
+    margin-bottom: 20px;
+    font-size: 4em;
     font-weight: bold;
 }
 
 h2 {
-    font-size: 1.2em;
+    font-size: 1.4em;
 }
 
 h3 {
@@ -37,7 +41,7 @@ h4 {
 }
 
 hr {
-    border: 0.5px solid #ccc;
+    border: 0.5px solid #CCC;
 }
 
 input[type="text"],
@@ -56,7 +60,7 @@ textarea:focus {
 
 input::placeholder,
 textarea::placeholder {
-    color: #ccc;
+    color: #CCC;
 }
 
 textarea {
@@ -73,9 +77,15 @@ button {
     cursor: pointer;
 }
 
+.select {
+    font-weight: bold;
+    color: #111;
+}
+
 .side_menu li {
     float: left;
     margin-left: 10px;
+    transition: all 0.2s;
 }
 
 .side_menu li:first-child {
@@ -94,7 +104,6 @@ button {
 
 .side_menu li:hover {
     text-decoration: underline;
-    transition: all 0.2s;
 }
 
 .btn_com {
@@ -102,13 +111,13 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
-    color: #fff;
+    color: #FFF;
     cursor: pointer;
+    transition: all 0.2s;
 }
 
 .btn_com:hover {
     background: #5573E8;
-    transition: all 0.2s;
 }
 
 .btn_main {
@@ -120,13 +129,17 @@ button {
 
 /* Header */
 #header {
+	position: fixed;
+	top: 0;
     width: 100%;
-    height: 60px;
-    background: #fff;
-    padding: 0 20px;
-    border-bottom: 1px solid #ccc;
-    line-height: 60px;
+    height: 80px;
+    min-width: 1400px;
+    background: #FFF;
+    padding: 0 80px;
+    border-bottom: 1px solid #CCC;
+    line-height: 80px;
     box-sizing: border-box;
+    box-shadow: 0 0 4px #CCC;
     z-index: 100;
 }
 
@@ -135,23 +148,31 @@ button {
     margin-right: 40px;
     font-size: 2em;
     font-weight: bold;
+    color: #5573E8;
 }
 
 #header_nav {
     float: left;
     font-size: 1.4em;
     font-weight: bold;
-    color: #999;
 }
 
 #header_nav ul li {
     float: left;
-    margin-right: 30px;
+    margin-right: 40px;
+    transition: all 0.2s;
 }
 
-#header_nav ul li:hover {
+#header_nav ul li a {
+	color: #CCC;
+}
+
+#header_nav ul li a:hover {
     color: #111;
-    transition: all 0.2s;
+}
+
+#header_nav ul li a.active {
+	color: #111;
 }
 
 #header_menu {
@@ -160,51 +181,57 @@ button {
 
 #header_menu ul li {
     float: left;
-    margin-left: 20px;
+    margin-left: 30px;
+    transition: all 0.2s;
 }
 
 #header_menu ul li img {
-	width: 30px;
-	height: 30px;
+	width: 40px;
+	height: 40px;
 	vertical-align: middle;
 	cursor: pointer;
 }
 
 #header_menu .log:hover {
     text-decoration: underline;
-    transition: all 0.2s;
+}
+
+#header_menu a.btn_com {
+	background: #5573E8;
 }
 
 /* Contents */
 #contents {
     width: 100%;
+    min-width: 1400px;
+    margin-top: 80px;
     box-sizing: border-box;
 }
 
 #contents_title {
-    background: #111;
-    background-image: url(../images/bg/bg_main.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 50px 20px;
+    background: linear-gradient(120deg, #111, #333);
+  	background-size: 400% 400%;
+  	animation: gradient 8s ease infinite;
+    padding: 80px;
     text-align: center;
-    color: #fff;
+    color: #FFF;
 }
 
 #contents_detail {
-    padding: 50px 20px;
+    padding: 80px;
     text-align: center;
 }
 
 /* Footer */
 #footer {
     width: 100%;
-    height: 60px;
-    background: #fff;
-    padding: 0 20px;
-    border-top: 1px solid #ccc;
-    line-height: 60px;
-    color: #ccc;
+    height: 80px;
+    min-width: 1400px;
+    background: #FFF;
+    padding: 0 80px;
+    border-top: 1px solid #CCC;
+    line-height: 80px;
+    color: #CCC;
     box-sizing: border-box;
 }
 
@@ -220,5 +247,5 @@ button {
 }
 
 #footer_info p {
-	line-height: 60px;
+	line-height: 80px;
 }

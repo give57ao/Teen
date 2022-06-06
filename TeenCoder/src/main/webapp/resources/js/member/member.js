@@ -62,7 +62,7 @@ $(document).ready(function() {
 function fn_checkId() {
 	var member_id = {member_id : $("#member_id").val()}
 
-	if ($("#member_id").val() == "") {
+	if($("#member_id").val() == "") {
 		alert("아이디를 입력하세요.");
 		$("#member_id").focus();
 		return false;
@@ -89,7 +89,7 @@ function fn_checkId() {
 function fn_checkNick() {
 	var member_nick = {member_nick : $("#member_nick").val()}
 
-	if ($("#member_nick").val() == "") {
+	if($("#member_nick").val() == "") {
 		alert("닉네임을 입력하세요.");
 		$("#member_nick").focus();
 		return false;

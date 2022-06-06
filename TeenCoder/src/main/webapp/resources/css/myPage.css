@@ -55,11 +55,11 @@
 .member_board ul li a {
     float: right;
     font-weight: normal;
+    transition: all 0.2s;
 }
 
 .member_board ul li a:hover {
     text-decoration: underline;
-    transition: all 0.2s;
 }
 
 .btn_mod_member {
@@ -76,7 +76,6 @@
 
 .btn_del_member:hover {
     color: #111;
-    transition: all 0.2s;
 }
 
 /* My Board */

@@ -13,26 +13,26 @@
 
 #admin_board_list table thead {
     height: 30px;
-    background: #eee;
-    border-top: 1px solid #ccc;
+    background: #EEE;
+    border-top: 1px solid #CCC;
     font-weight: bold;
     vertical-align: middle;
 }
 
 #admin_board_list table tr {
     height: 30px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #CCC;
     vertical-align: middle;
 }
 
 #admin_board_list table td a {
     color: #5573E8;
     text-decoration: underline;
+    transition: all 0.2s;
 }
 
 #admin_board_list table td a:hover {
     font-weight: bold;
-    transition: all 0.2s;
 }
 
 /* Admin Board List : Notice만 해당 */
@@ -44,7 +44,7 @@
 .admin_board_list_title .side_menu .btn_notice {
     margin-left: 15px;
     padding: 5px 10px;
-    color: #fff;
+    color: #FFF;
     border-radius: 5px;
     display: inline-block;
 }
