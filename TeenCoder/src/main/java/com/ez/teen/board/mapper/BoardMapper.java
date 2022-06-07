@@ -4,10 +4,9 @@ package com.ez.teen.board.mapper;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ez.teen.board.model.BoardAnswerModel;
 import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
@@ -40,9 +39,10 @@ public interface BoardMapper {
 
 	// 게시글 디테일 속 댓글
 	public List<BoardCommentModel> selectComment(BoardParam boardParam);
-
-
 	
+	// 게시글 디테일 속 답글
+	public List<BoardAnswerModel> selectAnswer(BoardParam boardParam);
+
 	//게시글 작성
 	public void insertBoard(BoardModel boardModel) throws Exception;
 	

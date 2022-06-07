@@ -384,10 +384,32 @@ ORDER BY board_comment_count DESC
     	MEMBER M INNER JOIN BCOMMENT C
     	ON M.MEMBER_NO = C.MEMBER_NO
 	  WHERE 
-    	C.BOARD_NO= #{board_no}
+    	C.BOARD_NO= #{board_no} AND
+    	C.REF_LEVEL = 0
       ORDER BY
       	REF_STEP, REF_LEVEL 
 		
+	</select>
+	
+	<select id="selectAnswer"
+		parameterType="com.ez.teen.board.model.BoardParam"
+		resultType="com.ez.teen.board.model.BoardAnswerModel">
+	  SELECT 
+    	C.BOARD_NO AS BOARD_NO,
+	  	M.MEMBER_NICK AS MEMBER_NICK,
+	  	C.BCOMMENT_DATE AS BCOMMENT_DATE,
+	  	C.BCOMMENT_CONTENT AS BCOMMENT_CONTENT,
+	  	C.BCOMMENT_LIKE_COUNT AS BCOMMENT_LIKE_COUNT,
+	  	C.REF_STEP AS REF_STEP,
+	  	C.REF_LEVEL AS REF_LEVEL
+	  FROM
+    	MEMBER M INNER JOIN BCOMMENT C
+    	ON M.MEMBER_NO = C.MEMBER_NO
+	  WHERE 
+    	C.BOARD_NO= #{board_no} AND
+    	C.REF_LEVEL != 0
+      ORDER BY
+      	REF_STEP, REF_LEVEL 
 	</select>
 	
 <insert id="insertComment" parameterType="com.ez.teen.board.mapper.BoardMapper" useGeneratedKeys="true" keyProperty="board_no" >

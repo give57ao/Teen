@@ -3,10 +3,9 @@ package com.ez.teen.board.service;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.board.model.BoardAnswerModel;
 import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
@@ -31,6 +30,9 @@ public interface BoardService {
 	
 	//게시글 상세 댓글
 	public List<BoardCommentModel> selectComment(BoardParam boardParam);
+	
+	// 게시글 디테일 속 답글
+	public List <BoardAnswerModel> selectAnswer(BoardParam boardParam);
 
 	//게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
@@ -59,4 +61,6 @@ public interface BoardService {
 
 	//추천수 증가
 	public void recommendBoard(BoardModel boardModel);
+	
+	
 }

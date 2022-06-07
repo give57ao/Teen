@@ -3,13 +3,12 @@ package com.ez.teen.board.service;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.board.mapper.BoardMapper;
+import com.ez.teen.board.model.BoardAnswerModel;
 import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
@@ -105,17 +104,23 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.commentList(commentParam);
 	}
 
-
+	// 게시글디테일
 	@Override
 	public List<BoardModel> selectBoardDetail(BoardParam boardParam) {
 		return boardMapper.selectBoardDetail(boardParam);
 	}
 
+	// 게시글 디테일 속 댓글
 	@Override
 	public List<BoardCommentModel> selectComment(BoardParam boardParam) {
 		return boardMapper.selectComment(boardParam);
 	}
-
+	
+	// 게시글 디테일 속 답변
+	@Override
+	public List<BoardAnswerModel> selectAnswer(BoardParam boardParam) {
+		return boardMapper.selectAnswer(boardParam);
+	}
 	@Override
 	public void insertComment(CommentModel commentModel) {
 		boardMapper.insertComment(commentModel);

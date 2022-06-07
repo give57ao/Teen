@@ -18,10 +18,7 @@
 </head>
 
 <body>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="/resources/js/board/detail/boardDetail.js"></script>
+	
 
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -46,7 +43,7 @@
 		<div id="contents_detail">
 			<div id="contents_wrap">
 				<!-- Category -->
-				
+
 				<!-- Board -->
 				<div id="board_list">
 					<!-- Title -->
@@ -115,7 +112,8 @@
 									<div class="btn_group">
 										<input type="button" value="스크랩" class="btn_com btn_board">
 										<input type="button" value="신고" class="btn_com btn_board">
-										<input type="button" value="추천" class="btn_com btn_board" id="btn_recommend">
+										<input type="button" value="추천" class="btn_com btn_board"
+											id="btn_recommend">
 									</div>
 								</div>
 								<hr>
@@ -131,12 +129,11 @@
 
 
 					<!-- @@@@@ 댓글창 시작 @@@@@ -->
-
-
 					<c:forEach items="${boardComment}" var="boardComment"
 						varStatus="status">
-						<c:set var="index" value="${status.index }" /> 
+
 						<div id="comment_list">
+
 							<div class="comment_box">
 								<div class="row">
 									<div class="row_info">
@@ -150,18 +147,15 @@
 									</div>
 									<div class="row_contents">
 										<p>${boardComment.bcomment_content}</p>
-										<p>${status.index}
-
 									</div>
 									<ul class="row_top number">
 										<li><img
 											src="/teen/resources/images/icon/icon_comment.svg"
-											class="i_cmt">0</li>
+											class="i_cmt"> ${boardComment.ref_level}</li>
 										<li><img src="/teen/resources/images/icon/icon_like.svg"
-											class="i_like">0</li>
+											class="i_like">${boardComment.bcomment_like_count }</li>
 									</ul>
 									<div class="btn_group">
-										<input type="hidden"  id="index" value="<c:out value="${index1}"/>">
 										<input type="button" value="신고" class="btn_com btn_board">
 										<input type="button" value="추천" class="btn_com btn_board">
 										<input type="button" value="답글" class="btn_com btn_board"
@@ -170,18 +164,55 @@
 								</div>
 							</div>
 						</div>
+
+						<div id="answerDiv">
+							<c:forEach items="${boardAnswer}" var="boardAnswer"
+								varStatus="status">
+								<c:if test="${boardComment.ref_step eq boardAnswer.ref_step }">
+									<div id="comment_list" class="answer_list">
+										<div class="comment_box answer_box">
+											<div class="row">
+												<div class="row_info">
+													<div class="row_top member">
+														<h4>
+															<img src="/teen/resources/images/icon/icon_badge.png"
+																class="i_badge"> <span class="rank">[Expert]</span>${boardAnswer.member_nick}
+														</h4>
+													</div>
+													<span class="row_top date">${boardAnswer.bcomment_date}</span>
+												</div>
+												<div class="row_contents">
+													<p>${boardAnswer.bcomment_content}</p>
+												</div>
+												<ul class="row_top number">
+													<li><img
+														src="/teen/resources/images/icon/icon_like.svg"
+														class="i_like">${boardAnswer.bcomment_like_count}</li>
+												</ul>
+												<div class="btn_group">
+													<input type="button" value="신고" class="btn_com btn_board">
+													<input type="button" value="추천" class="btn_com btn_board">
+												</div>
+											</div>
+										</div>
+									</div>
+								</c:if>
+							</c:forEach>
+						</div>
+						<input type="button" value="답글 더 보기..." id="getAnswerBtn" />
 					</c:forEach>
 					<!-- Answer Form  -->
 					<form action="comment" method="post">
 						<div id="answer">
 							<div id="answer_form">
-								<textarea name="answer" placeholder="답글 작성" id="bcomment_content"></textarea>
-								<input type="hidden" value="${boardcomment.board_no }"/>
-								<input type="button" value="취소"
-									class="btn_com btn_board btn_cmt"> <input type="submit"
-									value="작성" class="btn_com btn_board btn_cmt">
-								
-							
+								<textarea name="answer" placeholder="답글 작성"
+									id="bcomment_content"></textarea>
+								<input type="hidden" value="${boardcomment.board_no }" /> <input
+									type="button" value="취소" class="btn_com btn_board btn_cmt">
+								<input type="submit" value="작성"
+									class="btn_com btn_board btn_cmt">
+
+
 							</div>
 						</div>
 					</form>
@@ -199,12 +230,10 @@
 
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
-<script type="text/javascript">
-	function answerInsert() {
-		var index = document.getElementById("index").value;
-		alert(index);
-	}
-</script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="/teen/resources/js/board/detail/boardDetail.js"></script>
 
 
 </body>

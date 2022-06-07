@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.board.model.BoardAnswerModel;
 import com.ez.teen.board.model.BoardCommentModel;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
@@ -110,44 +111,47 @@ public class BoardController {
 	}
 	 
 	//게시글 내용 디테일
-	@RequestMapping("board/detail")
-	public String selectBoardDetail(BoardModel boardModel, HttpSession session,
-			HttpServletResponse response, HttpServletRequest rq, BoardParam boardParam, Model model,
-			@RequestParam(value="board_no")int board_no) throws Exception{
+		@RequestMapping("board/detail")
+		public String selectBoardDetail(BoardModel boardModel, HttpSession session,
+				HttpServletResponse response, HttpServletRequest rq, BoardParam boardParam, Model model,
+				@RequestParam(value="board_no")int board_no) throws Exception{
 
-		boardParam.setBoard_no(board_no); 
-		
-		List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
-		List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
-		
-		System.out.println(boardDetail);
+			boardParam.setBoard_no(board_no); 
+			
+			List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
+			List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
+			List<BoardAnswerModel> boardAnswer = boardService.selectAnswer(boardParam);
+			
+			System.out.println(boardDetail);
+			System.out.println(boardComment);
+			System.out.println(boardAnswer);
 
-		List<Map<String, Object>> fileList = boardService.selectFile(board_no);
+			List<Map<String, Object>> fileList = boardService.selectFile(board_no);
+			
+			model.addAttribute("file", fileList);
+			model.addAttribute("boardDetail", boardDetail);
+			model.addAttribute("boardComment", boardComment);
+			model.addAttribute("boardAnswer", boardAnswer);
+			
+			String index = rq.getParameter("index");
+			System.out.println("인덱스값: " + index);
+			
+			return "board/boardDetail";
+		}
 		
-		model.addAttribute("file", fileList);
-		model.addAttribute("boardDetail", boardDetail);
-		model.addAttribute("boardComment", boardComment);
-		boardService.hitCount(boardModel);
-		
-		String index = rq.getParameter("index");
-		System.out.println("인덱스값: " + index);
-		
-		return "board/boardDetail";
-	}
-	
-	//댓글 작성
-	@RequestMapping("board/comment")
-	public String insertComment(BoardModel boardModel, HttpSession session,
-			HttpServletResponse response, HttpServletRequest rq, CommentModel commentModel, Model model
-			) {
-		
-		
-		commentModel.setMember_no((int)session.getAttribute("member_no"));
-		
-		boardService.insertComment(commentModel);
-		
-		return "redirect:/board/boardDetail";
-	}
+		//댓글 작성
+		@RequestMapping("board/comment")
+		public String insertComment(BoardModel boardModel, HttpSession session,
+				HttpServletResponse response, HttpServletRequest rq, CommentModel commentModel, Model model
+				) {
+			
+			
+			commentModel.setMember_no((int)session.getAttribute("member_no"));
+			
+			boardService.insertComment(commentModel);
+			
+			return "redirect:/board/boardDetail";
+		}
 
 	//첨부파일 다운로드 구현
 		@RequestMapping(value = "board/downFile")
