@@ -1,22 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 게시글 작성</title>
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/boardForm.css">
+<style>
+.note-editor.note-airframe,
+.note-editor.note-frame {
+	width: 100%;
+	height: 200px;
+	border: 2px solid #111;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+	resize: none;
+}
+
+.note-resizebar,
+.note-statusbar {
+	display: none;
+}
+
+.panel {
+	box-shadow: none;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+.btn_com {
+    color: #FFF !important;
+}
+
+#header_logo a,
+#footer_logo a {
+    color: inherit !important;
+}
+
+#header_menu .log:hover {
+    text-decoration: underline !important;
+    color: inherit !important;
+}
+</style>
 </head>
 <body>
 	<!-- Header -->
@@ -25,18 +58,19 @@
 	<!-- Contents -->
     <div id="contents">
         <div id="contents_title">
-            <h1>커뮤니티</h1>
-            <h2>커뮤니티를 통해 IT 정보를 공유하고 소통할 수 있습니다.</h2>
+            <h1>게시글 작성</h1>
+            <h2>게시글을 작성할 수 있습니다.</h2>
         </div>
         <div id="contents_detail">
-                <!-- Board 작성 메인화면 시작------------------------------------------------------->
-                <div id="board_list">
+            <div id="contents_wrap">
+                <!-- Board 작성 메인화면 시작 ------------------------------------------------------->
+                <div id="board_list" class="board_form">
                     <!-- Title -->
                     <div id="board_list_title">
                         <h2>게시글 작성</h2>
                     </div>
                     <!-- Form -->
-                    <form id="board_form" method="post" enctype="multipart/form-data" >
+                    <form id="board_form" method="post" enctype="multipart/form-data">
 		                <table>
 		                	<tbody>
 			                    <tr>
@@ -44,7 +78,7 @@
 			                        <td>
 			                            <select class="dropdown" id="board_group_no" name="board_group_no">
 			                            	<option value="1" selected>Community</option>
-				                            <option value="2">QnA</option>
+				                            <option value="2">Q&amp;A</option>
 				                            <option value="3">Notice</option>
 				                        </select>
 			                        </td>
@@ -55,9 +89,9 @@
 			                           <input type="text" name="board_title" placeholder="제목"> 
 			                        </td>
 			                    </tr>
-			                    <tr>
+			                    <tr class="contents_title">
 			                        <th>내용</th>
-			                        <td>
+			                        <td >
 			                            <textarea id="summernote" name="board_content" placeholder="내용"></textarea>
 			                        </td>
 			                    </tr>
@@ -80,69 +114,34 @@
 			                            <label for="sql">SQL</label>
 			                        </td>
 			                    </tr>
-			                    <tr class="file_upload" id="fileDiv" >
-			                        <th>첨부파일</th>
+			                    <tr id="fileDiv" class="file_upload">
+			                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile">+</a></th>
 			                        <td>
-									<div>
-									<p>
-			                            <input type="file" id="file" name="file_0"/>
-			                            <a href="#this" class="btn_com btn_del_file" id="deleteFile" >파일 삭제</a>
-			                        </p>
-			                        </div>
-
+										<div>
+			                            	<input type="file" id="file" name="file_0"/>
+			                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
+				                        </div>
 			                        </td>
 			                    </tr>
 		                    </tbody>
 		                </table>
 		                <div id="btn_wrap">
-		                	<input type="button" value="취소" class="btn_com btn_main" onClick="location.href='mainBoard.jsp'">
+		                	<input type="button" value="취소" class="btn_com btn_main" onClick="goBoard()">
 		                    <input type="submit" value="게시글 작성" class="btn_com btn_main">
 		                </div>
 		            </form>
                 </div>
-                <!-- Member Info -->
-                <div id="member_info">
-                    <a href="/teen/board/boardWrite" class="btn_com btn_main">게시글 작성</a>
-                    <div class="mycard"></div>
-                </div>
             </div>
         </div>
     </div>
+    
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
-<script type="text/javascript">
-var files_count = 1;
-$(document).ready(function(){
-	
-	$("#addFile").on("click", function(e) {
-		e.preventDefault();
-		fn_addFile();
-		
-	});
-	
-	$("a[name='deleteFile']").on("click", function(e) {
-		e.preventDefault();
-		fn_deleteFile($(this));
-		
-	});
-	
-	$('#summernote').summernote();
-});
-
-function fn_addFile() {
-	var str = "<div><input type='file' id='file' name='file_"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></div>";
-	$("#fileDiv").append(str);
-	$("a[id='deleteFile']").on("click", function(e) {
-		e.preventDefault();
-		fn_deleteFile($(this));
-		
-	});
-}
-
-function fn_deleteFile(obj){
-	obj.parent().remove();
-}
-</script>
+	<!-- JS -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
 </body>
 </html>
