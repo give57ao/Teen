@@ -50,10 +50,10 @@
                     <div id="board_list_title">
                         <h2>Community</h2>
                         <ul id="board_list_menu" class="side_menu">
-                        <li><a href="?sort=recent&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">최신순</a></li>
-						<li><a href="?sort=view&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">조회순</a></li>
-						<li><a href="?sort=recommend&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">추천순</a></li>
-						<li><a href="?sort=comment&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">댓글순</a></li>
+	                        <li><a href="?sort=recent&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">최신순</a></li>
+							<li><a href="?sort=view&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">조회순</a></li>
+							<li><a href="?sort=recommend&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">추천순</a></li>
+							<li><a href="?sort=comment&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">댓글순</a></li>
                         </ul>
                     </div>
                     <!-- Search -->

@@ -48,3 +48,9 @@
     border-radius: 5px;
     display: inline-block;
 }
+
+/* Admin Form */
+#admin_form {
+    margin: 50px auto 30px;
+    text-align: center;
+}
