@@ -61,7 +61,7 @@
 								<div class="row_info">
 									<div class="row_top member">
 										<h4>
-											${comment.board_title}
+											<span class="tag_hit">[추천]</span> ${comment.board_title}
 											<c:if test="${comment.board_file_check eq 'Y'}">
 												<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
 											</c:if>
@@ -73,16 +73,12 @@
 									</ul>
 								</div>
 								<div class="row_title">
-									<h3>
-										<a href="/teen/resources/jsp/board/boardDetail.jsp"> 
-											<span class="tag_hit">[추천]</span> ${comment.bcomment_content} 
-											<!-- <img src="../resources/images/icon/icon_image.svg" class="i_image">  -->
-											<c:if test="${comment.board_file_check eq 'Y'}">
-												<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
-											</c:if>
+									<h3 class="comment_contents">
+										<a class="overtext" href="/teen/board/detail?board_no=${board.board_no}"> <!-- 링크 변경 필요! -->
+ 											${comment.bcomment_content}
 										</a>
 									</h3>
-									<input type="button" value="삭제" class="btn_com btn_del_list"> ${comment.member_nick}
+									<input type="button" value="삭제" class="btn_com btn_del_list">
 								</div>
 							</div>
 							<hr>

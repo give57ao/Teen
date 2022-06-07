@@ -11,6 +11,13 @@
     display: flex;
 }
 
+.overtext {
+	width: 800px;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .dropdown {
     width: 100%;
     height: 100%;
@@ -44,7 +51,7 @@
     vertical-align: middle;
 }
 
-.number li:first-child img {
+.number li .i_hit {
     margin-right: 5px;
 }
 
@@ -92,6 +99,7 @@
 .row_info .number {
     float: right;
 }
+
 
 .row_title a {
     display: inline-block;
@@ -147,7 +155,7 @@
 
 /* Board Category */
 #contents_category {
-    width: 200px;
+    width: 250px;
     font-size: 1.4em;
     text-align: left;
     color: #999;
@@ -298,6 +306,10 @@
 	padding: 0;
 }
 
+.comment_contents {
+	font-weight: normal;
+}
+
 /* Board Answer */
 #answer {
 	width: 100%;
@@ -326,7 +338,7 @@
 
 /* Member Info */
 #member_info {
-    width: 200px;
+    width: 250px;
 }
 
 #member_info .mycard {
