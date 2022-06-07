@@ -6,8 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <link href="" rel="shortcut icon"> <!-- 파비콘 -->
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
-<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 </head>
 <body>
     <header id="header">

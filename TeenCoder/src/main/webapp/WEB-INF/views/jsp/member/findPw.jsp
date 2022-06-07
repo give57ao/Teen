@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 비밀번호 찾기</title>
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/memberForm.css">
 </head>
 <body>
