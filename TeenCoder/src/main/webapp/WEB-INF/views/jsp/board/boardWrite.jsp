@@ -29,20 +29,6 @@
             <h2>커뮤니티를 통해 IT 정보를 공유하고 소통할 수 있습니다.</h2>
         </div>
         <div id="contents_detail">
-            <div id="contents_wrap" class="">
-                <!-- Category 좌측 화면 고정 카테고리------------------------------------------------>
-                <ul id="contents_category">
-                    <li><a href="#" class="select">COMMUNITY</a></li>
-                    <li><a href="#">#HTML</a></li>
-                    <li><a href="#">#CSS</a></li>
-                    <li><a href="#">#JS</a></li>
-                    <li><a href="#">#Java</a></li>
-                    <li><a href="#">#C</a></li>
-                    <li><a href="#">#Python</a></li>
-                    <li><a href="#">#SQL</a></li>
-                </ul>
-                <!-- Category 좌측 화면 고정 카테고리 끝-->
-                
                 <!-- Board 작성 메인화면 시작------------------------------------------------------->
                 <div id="board_list">
                     <!-- Title -->
@@ -94,16 +80,16 @@
 			                            <label for="sql">SQL</label>
 			                        </td>
 			                    </tr>
-			                    <tr class="file_upload" >
+			                    <tr class="file_upload" id="fileDiv" >
 			                        <th>첨부파일</th>
 			                        <td>
-									<div id="fileDiv" >
+									<div>
 									<p>
 			                            <input type="file" id="file" name="file_0"/>
 			                            <a href="#this" class="btn_com btn_del_file" id="deleteFile" >파일 삭제</a>
 			                        </p>
 			                        </div>
-			                        <a href="#this" class="btn_com btn_del_file" id="addFile" >파일 추가</a>
+
 			                        </td>
 			                    </tr>
 		                    </tbody>
@@ -145,7 +131,7 @@ $(document).ready(function(){
 });
 
 function fn_addFile() {
-	var str = "<p><input type='file' id='file' name='file_"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></p>";
+	var str = "<div><input type='file' id='file' name='file_"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></div>";
 	$("#fileDiv").append(str);
 	$("a[id='deleteFile']").on("click", function(e) {
 		e.preventDefault();

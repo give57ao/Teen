@@ -121,6 +121,7 @@
 ]]>
 	</insert>
 	
+	<!-- 파일 유무에 따른 체크 업데이트 -->
 	<update id="fileCk" parameterType="com.ez.teen.board.mapper.BoardMapper" >
 	UPDATE BOARD SET
 	BOARD_FILE_CHECK = 'Y'

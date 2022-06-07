@@ -1,5 +1,6 @@
 package com.ez.teen.admin.controller;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class AdminController {
 
 	@Autowired
 	private AdminMemberService adminMemberService;
+	 
+	
 	
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
@@ -80,5 +83,6 @@ public class AdminController {
 		adminMemberService.memberDelete(memberModel);
 		return "redirect:/admin/memberList";
 	}
-
+	
+		
 }

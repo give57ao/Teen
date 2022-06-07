@@ -71,4 +71,6 @@
 	 	WHERE MEMBER_NO = #{member_no}
  	</delete>
 
+
+
 </mapper>

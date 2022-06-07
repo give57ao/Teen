@@ -39,19 +39,19 @@
                     </div>
                 	<!-- Form -->
                 	<div id="admin_form">
-                        <form id="board_form" class="admin_board_form">
+                        <form id="board_form" class="admin_board_form" method="post" enctype="multipart/form-data">
                             <table>
                                 <tbody>
                                     <tr>
                                         <th>제목</th>
                                         <td>
-                                           <input type="text" name="title" placeholder="제목"> 
+                                           <input type="text" name="noti_title" placeholder="제목"> 
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>내용</th>
                                         <td>
-                                            <textarea name="contents" placeholder="내용"></textarea>
+                                            <textarea name="noti_content" placeholder="내용"></textarea>
                                         </td>
                                     </tr>
                                     <tr class="file_upload">

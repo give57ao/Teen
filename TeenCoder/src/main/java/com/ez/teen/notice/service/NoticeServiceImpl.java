@@ -1,10 +1,13 @@
 package com.ez.teen.notice.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.common.file.FileUtils;
 import com.ez.teen.notice.mapper.NoticeMapper;
 import com.ez.teen.notice.model.NoticeModel;
 import com.ez.teen.notice.model.NoticeParam;
@@ -15,6 +18,9 @@ public class NoticeServiceImpl implements NoticeService{
 	@Autowired
 	NoticeMapper noticeMapper;
 	
+	@Autowired
+	FileUtils fileUtils;
+	
 	@Override
 	public int getNoticeCount(NoticeParam noticeParam) {
 		return noticeMapper.getNoticeCount(noticeParam);
@@ -23,6 +29,37 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public List<NoticeModel> noticeList(NoticeParam noticeParam) {
 		return noticeMapper.noticeList(noticeParam);
+	}
+
+	
+	//공지사항 작성
+	@Override
+	public void insertNotice(NoticeModel noticeModel, MultipartHttpServletRequest mpRequest) throws Exception {
+	
+		noticeMapper.insertNotice(noticeModel);
+		
+		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(noticeModel, mpRequest);
+		
+		int size = list.size();
+		if(list != null) {
+			for(int i = 0; i < size; i++) {
+				noticeMapper.insertNotiFile(list.get(i));
+				noticeMapper.NotifileCk(noticeModel);
+			}
+		}
+	}
+
+	// 첨부파일 조회
+	@Override
+	public List<Map<String, Object>> selectNotiFile(int noti_no) throws Exception {
+
+		return noticeMapper.selectNotiFile(noti_no);
+	}
+
+	@Override
+	public void insertNotiFile(Map<String, Object> map) throws Exception {
+		
+		noticeMapper.insertNotiFile(map);
 	}
 
 }
