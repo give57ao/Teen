@@ -71,11 +71,76 @@ AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 WHERE N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
 OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
-</if>		
-		
-		 		
+</if>				
 </select>
 
+<!-- 게시글 작성 -->
+	<insert id="insertNotice" parameterType="com.ez.teen.notice.mapper.NoticeMapper" useGeneratedKeys="true" keyProperty="noti_no" >
+	<selectKey keyProperty="noti_no" resultType="int" order="BEFORE" >
+		SELECT SEQ_NOTICE_NO.NEXTVAL FROM DUAL
+	</selectKey>
+	<![CDATA[
+	INSERT INTO NOTICE(
+	 NOTI_NO
+	,MEMBER_NO
+	,NOTI_TITLE
+	,NOTI_DATE
+	,NOTI_CONTENT
+	,NOTI_HIT_COUNT
+	)
+	VALUES(
+	 #{noti_no}
+	,#{member_no}
+	,#{noti_title}
+	,SYSDATE
+	,#{noti_content}
+	,0
+	)
+]]>
+	</insert>
+	
+	<!-- 파일 유무에 따른 체크 업데이트 -->
+	<update id="NotifileCk" parameterType="com.ez.teen.notice.mapper.NoticeMapper" >
+	UPDATE NOTICE SET
+	NOTI_FILE_CHECK = 'Y'
+	WHERE NOTI_NO = #{noti_no}
+	</update>
+	
+	<!-- 첨부파일 업로드 -->
+	<insert id="insertNotiFile" parameterType="hashMap">
+	<![CDATA[ INSERT INTO BFILE(
+	 FILE_NO
+	,NOTI_NO
+	,ORG_FILE_NAME
+	,STORED_FILE_NAME
+	,FILE_SIZE
+	,FILE_DATE
+	)
+	VALUES(
+	 SEQ_FILE_NO.NEXTVAL
+	,#{NOTI_NO}
+	,#{ORG_FILE_NAME}
+	,#{STORED_FILE_NAME}
+	,#{FILE_SIZE}
+	,#{FILE_DATE} 
+	)
+	]]>
+	</insert>
+	
+	<!-- 첨부파일 조회 -->
+	<select id="selectNotiFile" parameterType="int" resultType="hashMap" >
+	<![CDATA[ 
+	SELECT 
+	 FILE_NO
+	,ORG_FILE_NAME
+	,ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+	,DEL_GB
+	FROM BFILE
+	WHERE NOTI_NO = #{noti_no}
+	AND DEL_GB = 'N'
+	ORDER BY FILE_NO ASC
+	]]>
+	</select>
 
 
 
