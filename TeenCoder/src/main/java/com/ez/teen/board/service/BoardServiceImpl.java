@@ -122,6 +122,18 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
+	@Override
+	public void hitCount(BoardModel boardModel) {
+		boardMapper.hitCount(boardModel);
+	}
+
+	@Override
+	public void recommendBoard(BoardModel boardModel) {
+		boardMapper.recommendBoard(boardModel);
+	}
+
+	
+
 	
 
 	

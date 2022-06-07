@@ -59,6 +59,11 @@ public interface BoardMapper {
 	public void updateFile(Map<String, Object> map) throws Exception;
 
 	public void insertComment(CommentModel commentModel);
-
+	
+	//조회수 증가
+	public void hitCount(BoardModel boardModel);
+	
+	//추천수 증가
+	public void recommendBoard(BoardModel boardModel);
 	
 }

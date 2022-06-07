@@ -127,6 +127,7 @@ public class BoardController {
 		model.addAttribute("file", fileList);
 		model.addAttribute("boardDetail", boardDetail);
 		model.addAttribute("boardComment", boardComment);
+		boardService.hitCount(boardModel);
 		
 		String index = rq.getParameter("index");
 		System.out.println("인덱스값: " + index);
@@ -214,6 +215,13 @@ public class BoardController {
 			return "board/mainBoard";
 	}
 	
-	
+	@RequestMapping("/board/recommend")
+    public String recommendBoard(BoardModel boardModel) throws Exception {
+        
+        boardService.recommendBoard(boardModel);
+    
+        return "forward:/board/detail";
+    }
+
 	
 }

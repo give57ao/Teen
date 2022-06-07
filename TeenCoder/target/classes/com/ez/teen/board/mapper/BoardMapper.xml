@@ -410,5 +410,12 @@ ORDER BY board_comment_count DESC
 ]]>
 	</insert>
 	
+	<update id="hitCount">
+		update Board set board_hit_count = board_hit_count + 1 where board_no = #{board_no}
+	</update>
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+	<update id="recommendBoard">
+		update Board set board_like_count = board_like_count + 1 where board_no = #{board_no}
+	</update>
 	
 </mapper>

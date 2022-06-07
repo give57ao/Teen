@@ -55,7 +55,8 @@ public interface BoardService {
 
 	public void insertComment(CommentModel commentModel);
 
-	
+	public void hitCount(BoardModel boardModel);
 
-		
+	//추천수 증가
+	public void recommendBoard(BoardModel boardModel);
 }

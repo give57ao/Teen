@@ -25,7 +25,18 @@
 
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
-
+	<!-- aJax -->
+	<script type="text/javascript">
+	$("#btn_recommend").click(function(){
+	    if(confirm("해당 글을 추천하시겠습니까?")){
+	        document.form.action="/teen/board/recommend";
+	        document.form.submit();
+	        
+	        alert("해당 글을 추천하였습니다.")
+	        
+	        }
+	    });
+	</script>
 	<!-- Contents -->
 	<div id="contents">
 		<div id="contents_title">
@@ -104,7 +115,7 @@
 									<div class="btn_group">
 										<input type="button" value="스크랩" class="btn_com btn_board">
 										<input type="button" value="신고" class="btn_com btn_board">
-										<input type="button" value="추천" class="btn_com btn_board">
+										<input type="button" value="추천" class="btn_com btn_board" id="btn_recommend">
 									</div>
 								</div>
 								<hr>
