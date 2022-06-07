@@ -59,17 +59,13 @@ public interface BoardMapper {
 	public void updateFile(Map<String, Object> map) throws Exception;
 
 	public void insertComment(CommentModel commentModel);
-<<<<<<< HEAD
 	
 	//조회수 증가
 	public void hitCount(BoardModel boardModel);
 	
 	//추천수 증가
 	public void recommendBoard(BoardModel boardModel);
-=======
 
 	public void fileCk(BoardModel boardModel);
-
->>>>>>> branch 'ProtoType' of https://github.com/give57ao/Teen.git
 	
 }
