@@ -18,11 +18,11 @@
     display: inline-block;
 }
 
-#board_form table tr:nth-child(3) {
-	margin-bottom: 130px;
+#board_form table .contents_title {
+	margin-bottom: 180px;
 }
 
-#board_form table tr:nth-child(3) th {
+#board_form table .contents_title th {
 	margin-top: -10px;
 	vertical-align: top;
 }
@@ -59,14 +59,13 @@
     vertical-align: middle;
 }
 
-#board_form table .file_upload .btn_add_file,
-#board_form table .file_upload .btn_del_file {
+#board_form table .btn_del_file {
 	float: right;
-	margin-left: 10px;
 }
 
 #board_form table #file {
-	width: 30%;
+	width: 50%;
+	display: inline-block;
 }
 
 #board_form #btn_wrap {
