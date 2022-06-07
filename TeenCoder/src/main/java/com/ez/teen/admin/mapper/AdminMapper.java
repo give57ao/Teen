@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
+import com.ez.teen.notice.model.NoticeModel;
 
 @Mapper
 public interface AdminMapper {
@@ -24,4 +25,6 @@ public interface AdminMapper {
 	// 회원정보 삭제
 	public void memberDelete(MemberModel memberModel) throws Exception;
 
+	public void insertNotice(NoticeModel noticeModel) throws Exception;
+	
 }

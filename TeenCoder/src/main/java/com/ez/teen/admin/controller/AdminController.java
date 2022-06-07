@@ -80,5 +80,5 @@ public class AdminController {
 		adminMemberService.memberDelete(memberModel);
 		return "redirect:/admin/memberList";
 	}
-
+	
 }
