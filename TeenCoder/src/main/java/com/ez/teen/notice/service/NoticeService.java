@@ -14,7 +14,7 @@ public interface NoticeService {
 
 	public List<NoticeModel> noticeList(NoticeParam noticeParam);
 	
-	//공지사항 작성
+	//공지사항 작성 커밋위한 추가
 	public void insertNotice(NoticeModel noticeModel, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 	//공지사항 첨부파일 조회
