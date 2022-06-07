@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+/* Summernote 충돌 방지 */
+.note-editor.note-airframe,
+.note-editor.note-frame {
+	width: 100%;
+	height: 200px;
+	border: 2px solid #111;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+	resize: none;
+}
+
+.note-resizebar,
+.note-statusbar {
+	display: none;
+}
+
+.panel {
+	box-shadow: none;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+.btn_com {
+    color: #FFF !important;
+}
+
+#header_logo a,
+#footer_logo a {
+    color: inherit !important;
+}
+
+#header_menu .log:hover {
+    text-decoration: underline !important;
+    color: inherit !important;
+}
