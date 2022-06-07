@@ -67,9 +67,12 @@ public class BoardServiceImpl implements BoardService {
 		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(boardModel, mpRequest);
 
 		int size = list.size();
+		if(list != null) {
 		for (int i = 0; i < size; i++) {
 			boardMapper.insertFile(list.get(i));
+			boardMapper.fileCk(boardModel);
 		}
+	}
 
 	}
 

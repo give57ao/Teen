@@ -60,5 +60,7 @@ public interface BoardMapper {
 
 	public void insertComment(CommentModel commentModel);
 
+	public void fileCk(BoardModel boardModel);
+
 	
 }
