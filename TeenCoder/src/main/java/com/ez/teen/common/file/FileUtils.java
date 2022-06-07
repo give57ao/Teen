@@ -18,8 +18,8 @@ import com.ez.teen.board.model.BoardModel;
 @Component("fileUtils")
 public class FileUtils {
 	
-	//private static final String filePath = "C:\\upload\\";
-	private static final String filePath = "C:\\Users\\com\\Desktop\\JAVA\\SpringTool\\upload\\";
+	private static final String filePath = "C:\\upload\\";
+//	private static final String filePath = "C:\\Users\\com\\Desktop\\JAVA\\SpringTool\\upload\\";
 	public String getFilePath() {
 		return filePath;
 	}

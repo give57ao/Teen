@@ -125,7 +125,7 @@
 	
 	<!-- 첨부파일 업로드 -->
 	<insert id="insertFile" parameterType="hashMap">
-	<![CDATA[ INSERT INTO BFILE(
+	 INSERT INTO BFILE(
 	 FILE_NO
 	,BOARD_NO
 	,ORG_FILE_NAME
@@ -141,7 +141,7 @@
 	,#{FILE_SIZE}
 	,#{FILE_DATE} 
 	)
-	]]>
+	
 	</insert>
 	
 	<!-- 첨부파일 조회 -->

@@ -125,7 +125,7 @@
 	
 	<!-- 첨부파일 업로드 -->
 	<insert id="insertFile" parameterType="hashMap">
-	<![CDATA[ INSERT INTO BFILE(
+	 INSERT INTO BFILE(
 	 FILE_NO
 	,BOARD_NO
 	,ORG_FILE_NAME
@@ -141,7 +141,7 @@
 	,#{FILE_SIZE}
 	,#{FILE_DATE} 
 	)
-	]]>
+	
 	</insert>
 	
 	<!-- 첨부파일 조회 -->
@@ -385,20 +385,30 @@ ORDER BY board_comment_count DESC
     	ON M.MEMBER_NO = C.MEMBER_NO
 	  WHERE 
     	C.BOARD_NO= #{board_no}
+      ORDER BY
+      	REF_STEP, REF_LEVEL 
 		
 	</select>
-
-<!-- 닉네임과 댓글내용 불러오기 기본 쿼리문
-	SELECT 
-    	M.MEMBER_NICK,
-    	C.BCOMMENT_CONTENT
-	FROM
-    	MEMBER M INNER JOIN BCOMMENT C
-    	ON M.MEMBER_NO = C.MEMBER_NO
-	WHERE 
-    	C.BOARD_NO=1; 
-    	
--->
-
+	
+<insert id="insertComment" parameterType="com.ez.teen.board.mapper.BoardMapper" useGeneratedKeys="true" keyProperty="board_no" >
+	<selectKey keyProperty="bcomment_no" resultType="int" order="BEFORE" >
+		SELECT SEQ_BCOMMENT_NO.NEXTVAL FROM DUAL
+	</selectKey>
+	<![CDATA[
+	INSERT INTO BCOMMENT
+	VALUES(
+	 #{bcomment_no}
+	,#{board_no}
+	,#{bcomment_content}
+	,SYSDATE
+	,#{member_no}
+	,0
+	,0
+	,0
+	,0
+	)
+]]>
+	</insert>
+	
 	
 </mapper>

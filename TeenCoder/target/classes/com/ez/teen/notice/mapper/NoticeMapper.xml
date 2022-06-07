@@ -36,7 +36,7 @@ AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 </if>
 
 <if test='search == "all"'>
-AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
+WHERE N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
 OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 </if>
@@ -68,7 +68,7 @@ AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 </if>
 
 <if test='search == "all"'>
-AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
+WHERE N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
 OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 </if>		
