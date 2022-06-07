@@ -35,16 +35,7 @@
 		<div id="contents_detail">
 			<div id="contents_wrap">
 				<!-- Category -->
-				<ul id="contents_category">
-					<li><a href="#" class="select">COMMUNITY</a></li>
-					<li><a href="#">#HTML</a></li>
-					<li><a href="#">#CSS</a></li>
-					<li><a href="#">#JS</a></li>
-					<li><a href="#">#Java</a></li>
-					<li><a href="#">#C</a></li>
-					<li><a href="#">#Python</a></li>
-					<li><a href="#">#SQL</a></li>
-				</ul>
+				
 				<!-- Board -->
 				<div id="board_list">
 					<!-- Title -->
@@ -170,14 +161,15 @@
 						</div>
 					</c:forEach>
 					<!-- Answer Form  -->
-					<form action="comment" method="get">
+					<form action="comment" method="post">
 						<div id="answer">
 							<div id="answer_form">
-				
 								<textarea name="answer" placeholder="답글 작성" id="bcomment_content"></textarea>
+								<input type="hidden" value="${boardcomment.board_no }"/>
 								<input type="button" value="취소"
 									class="btn_com btn_board btn_cmt"> <input type="submit"
 									value="작성" class="btn_com btn_board btn_cmt">
+								
 							
 							</div>
 						</div>
