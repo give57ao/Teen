@@ -19,8 +19,8 @@ import com.ez.teen.notice.model.NoticeModel;
 @Component("fileUtils")
 public class FileUtils {
 	
-	private static final String filePath = "C:\\upload\\";
-//	private static final String filePath = "C:\\Users\\com\\Desktop\\JAVA\\SpringTool\\upload\\";
+	//private static final String filePath = "C:\\upload\\";
+	private static final String filePath = "C:\\Users\\com\\Desktop\\JAVA\\SpringTool\\upload\\";
 	public String getFilePath() {
 		return filePath;
 	}
@@ -102,7 +102,7 @@ public class FileUtils {
 					file = new File(filePath + storedFileName);
 					multpartFile.transferTo(file);
 					listMap = new HashMap<String, Object>();
-					listMap.put("BOARD_NO", noti_no);
+					listMap.put("NOTI_NO", noti_no);
 					listMap.put("ORG_FILE_NAME", originalFileName);
 					listMap.put("STORED_FILE_NAME", storedFileName);
 					listMap.put("FILE_SIZE", multpartFile.getSize());

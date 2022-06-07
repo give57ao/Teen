@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -16,13 +15,12 @@ import com.ez.teen.notice.model.NoticeParam;
 import com.ez.teen.notice.service.NoticeService;
 
 @Controller
-@RequestMapping("/board")
 public class NoticeController {
 
 	@Autowired
 	NoticeService noticeService;
 	
-	@GetMapping("/notice")
+	@GetMapping("board/notice")
 	public String noticeBoard(Model model, NoticeModel noticeModel, NoticeParam noticeParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
