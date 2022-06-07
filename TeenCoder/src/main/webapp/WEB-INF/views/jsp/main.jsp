@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder</title>
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/main.css">
 </head>
 <body>
@@ -36,6 +38,7 @@
             <div id="btn_wrap">
                 <a href="/teen/board?board_group_no=1" class="btn_com btn_main">커뮤니티로 이동</a>
             </div>
+            <div id="particles-js"></div>
         </div>
     </div>
 
@@ -43,6 +46,8 @@
 	<jsp:include page="template/footer.jsp" flush="false" />
 	
 	<!-- JS -->
+	<script type="text/javascript" src="/teen/resources/js/plugin/particles.min.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/plugin/app.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
 </body>
 </html>
