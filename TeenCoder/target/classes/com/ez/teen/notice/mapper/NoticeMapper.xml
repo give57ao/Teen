@@ -164,5 +164,12 @@ OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 	
 	</select>
 
+	<!-- 신고 댓글 삭제 -->
+	<delete id="deleteCmt" parameterType="com.ez.teen.board.model.CommentModel">
+	DELETE FROM BCOMMENT
+	WHERE BCOMMENT_NO = #{bcomment_no}
+	</delete>
+
+
 
 </mapper>

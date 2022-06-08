@@ -71,7 +71,7 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public void deleteCmt(CommentModel cmtModel) {
+	public void deleteCmt(CommentModel cmtModel)throws Exception {
 		
 		noticeMapper.deleteCmt(cmtModel);
 	}

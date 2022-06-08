@@ -29,6 +29,6 @@ public interface NoticeService {
 	public List<CommentModel> reportCmtList(CommentParam cmtParam);
 	
 	//댓글 삭제
-	public void deleteCmt(CommentModel cmtModel);
+	public void deleteCmt(CommentModel cmtModel)throws Exception;
 
 }

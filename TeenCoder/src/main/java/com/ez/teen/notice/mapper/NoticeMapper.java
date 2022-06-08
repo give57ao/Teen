@@ -33,7 +33,7 @@ public interface NoticeMapper {
 	public List<CommentModel> reportCmtList(CommentParam cmtParam);
 
 	//어드민 댓글 삭제
-	public void deleteCmt(CommentModel cmtModel);
+	public void deleteCmt(CommentModel cmtModel)throws Exception;
 	
 
 	

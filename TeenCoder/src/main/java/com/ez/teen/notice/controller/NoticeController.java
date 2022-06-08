@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.board.model.BoardParam;
@@ -121,7 +122,7 @@ public class NoticeController {
 	
 	//댓글 관리 삭제
 	@PostMapping(value = "admin/reportCmtList")
-	public String reportCmtList(CommentModel cmtModel) {
+	public String reportCmtList(CommentModel cmtModel) throws Exception{
 		
 		noticeService.deleteCmt(cmtModel);
 		

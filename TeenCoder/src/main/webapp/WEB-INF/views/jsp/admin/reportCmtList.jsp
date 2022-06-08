@@ -59,7 +59,7 @@
                     </div>
                 	<!-- List Row -->
                     <div id="admin_board_list">
-                    	<form>
+                    	<form method="post" >
 	                        <table>
 	                            <thead>
 	                                <tr class="row_title">
@@ -88,7 +88,7 @@
 	                                   <td>${cmt.bcomment_like_count }</td>
 	                                   <td>${cmt.bcomment_report_count }</td>
 	                                   <td>${cmt.board_file_check }</td>
-	                                   <td><a href="#">삭제</a></td>
+	                                   <td><a href="#" >삭제</a></td>
 	                                </tr>
 	                                </c:forEach>
 	                            </tbody>
@@ -115,5 +115,7 @@
 	
 	<!-- JS -->
 	<script type="text/javascript" src="/teen/resources/js/admin/admin.js"></script>
+	
+	
 </body>
 </html>
