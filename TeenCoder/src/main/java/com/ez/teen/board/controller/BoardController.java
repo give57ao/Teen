@@ -125,7 +125,7 @@ public class BoardController {
 			System.out.println(boardDetail);
 			System.out.println(boardComment);
 			System.out.println(boardAnswer);
-
+			
 			List<Map<String, Object>> fileList = boardService.selectFile(board_no);
 			
 			model.addAttribute("file", fileList);
