@@ -47,11 +47,11 @@
 					</div>
 					<!-- Search -->
 					<div id="board_list_search">
-						<select class="dropdown">
-							<option value="all" id="search" selected>전체</option>
+						<select class="dropdown" id="selectBoxTest">
+							<option value="" id="search" disabled>선택</option>
+							<option value="all" id="search">전체</option>
 							<option value="title" id="search">제목</option>
 							<option value="content" id="search">내용</option>
-							<option value="name" id="search">작성자</option>
 						</select>
 						<div class="search">
 							<input type="text" id="keyword" placeholder="검색">

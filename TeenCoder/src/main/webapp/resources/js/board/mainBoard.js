@@ -8,15 +8,5 @@ function searchBoard() {
 		alert('검색 설정을 확인 해주세요.');
 		return false;
 	}
-	location.href = '/teen/member/boardList?search='+optionVal+'&keyword='+ keyword;
-}
-
-
-
-
-function deleteBoard(board_no) {
-	// var board_no = document.getElementById('board_no').value;
-	console.log(board_no);
-
-	//	location.href = 'teen/board/delete?' + board_no
+	location.href = '/teen/board?search='+optionVal+'&keyword='+ keyword;
 }

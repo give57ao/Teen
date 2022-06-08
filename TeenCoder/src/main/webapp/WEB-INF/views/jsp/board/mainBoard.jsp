@@ -60,7 +60,8 @@
                     </div>
                     <!-- Search -->
                     <div id="board_list_search">
-                        <select class="dropdown">
+						<select class="dropdown" id="selectBoxTest">
+                        	<option value="" id="search" disabled>선택</option>
                             <option value="all" id="search" selected>전체</option>
                             <option value="title" id="search">제목</option>
                             <option value="content" id="search">내용</option>
@@ -68,7 +69,7 @@
                         </select>
                         <div class="search">
                             <input type="text" id="keyword" placeholder="검색">
-                            <button class="btn_search"></button>
+                            <button class="btn_search" onClick="searchBoard()"></button>
                         </div>
                     </div>
                 	<!-- List Row -->
@@ -145,8 +146,7 @@
     
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
-	
 	<!-- JS -->
-	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/board/mainBoard.js"></script>
 </body>
 </html>
