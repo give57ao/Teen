@@ -50,8 +50,14 @@
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2>Community</h2>
-                        <ul id="board_list_menu" class="side_menu">
+					<c:if test="${paging.board_group_no eq '1'}">
+					<h2>COMMUNITY</h2>	
+                    </c:if>
+                    <c:if test="${paging.board_group_no eq '2'}">
+						<h2>Q&amp;A</h2>
+                    </c:if>                        
+                    
+                    <ul id="board_list_menu" class="side_menu">
 	                        <li><a href="?sort=recent&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">최신순</a></li>
 							<li><a href="?sort=view&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">조회순</a></li>
 							<li><a href="?sort=recommend&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">추천순</a></li>
@@ -75,6 +81,9 @@
                 	<!-- List Row -->
                     <div id="board_list_row">
                         <!-- Row1 -->
+                        <c:choose>
+						<c:when test="${paging.total > 0}">
+						
                         <c:forEach items="${board}" var="board">
 	                        <div class="row">
 	                            <div class="row_info">
@@ -107,7 +116,12 @@
 	                            </div>
 	                        </div>
 	                        <hr>
-                        </c:forEach>					
+                        </c:forEach>
+                        	</c:when>
+						<c:otherwise>
+						<h2>해당 내용이 없습니다.</h2>
+					</c:otherwise>
+						</c:choose>					
                     </div>
                     <!-- Pagination -->
 	                <div id="board_list_pagination">

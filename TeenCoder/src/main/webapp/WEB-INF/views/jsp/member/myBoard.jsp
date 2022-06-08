@@ -61,6 +61,8 @@
 					<!-- List Row -->
 					<div id="board_list_row">
 						<!-- Row1 -->
+						<c:choose>
+						<c:when test="${paging.total > 0}">
 						<c:forEach items="${board}" var="board" varStatus="status">
 							<div class="row">
 								<div class="row_info">
@@ -95,6 +97,11 @@
 							</div>
 							<hr>
 						</c:forEach>
+						</c:when>
+						<c:otherwise>
+						<h2>해당 내용이 없습니다.</h2>
+					</c:otherwise>
+						</c:choose>
 					</div>
 					<!-- Pagination -->
 					<div id="board_list_pagination">

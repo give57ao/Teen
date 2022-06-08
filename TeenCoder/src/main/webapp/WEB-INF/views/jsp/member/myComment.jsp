@@ -45,10 +45,11 @@
 					</div>
 					<!-- Search -->
 					<div id="board_list_search">
-						<select class="dropdown">
+						<select class="dropdown" id="selectBoxTest">
+							<option value="" id="search" disabled>선택</option>
 							<option value="all" id="search" selected>전체</option>
 							<option value="content" id="search">내용</option>
-							<option value="name" id="search">작성자</option>
+							<option value="title" id="search">제목</option>
 						</select>
 						<div class="search">
 							<input type="text" id="keyword" placeholder="검색">
@@ -58,6 +59,9 @@
 					<!-- List Row -->
 					<div id="board_list_row">
 						<!-- Row1 -->
+						<c:choose>
+						<c:when test="${paging.total > 0}">
+						
 						<c:forEach items="${comment}" var="comment">
 							<div class="row">
 								<div class="row_info">
@@ -85,6 +89,11 @@
 							</div>
 							<hr>
 						</c:forEach>
+						</c:when>
+						<c:otherwise>
+						<h2>해당 내용이 없습니다.</h2>
+					</c:otherwise>
+						</c:choose>
 					</div>
 					<!-- Pagination -->
 					<div id="board_list_pagination">
@@ -126,6 +135,6 @@
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
 	<!-- JS -->
-	<script type="text/javascript" src="/teen/resources/js/member/myPage/myBoard.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/member/myPage/myComment.js"></script>
 </body>
 </html>
