@@ -1,11 +1,5 @@
 @charset "utf-8";
 
-@keyframes gradient { 
-    0% { background-position: 0% 50% }
-    50% { background-position: 100% 50% }
-    100% { background-position: 0% 50% }
-}
-
 /* Common */
 html, body {
     width: 100%;
@@ -212,26 +206,15 @@ button {
 
 #contents_title {
 	padding: 80px;
-    background: linear-gradient(120deg, #000, #00111e, #0a2342);
+    background: #111 url(../images/bg/bg_title.jpg) no-repeat center;
   	background-size: cover;
-  	background-position: 400% 400%;
-  	background-repeat: no-repeat;
-    text-align: center;
+  	text-align: center;
     color: #FFF;
-    animation: gradient 8s ease infinite;
 }
 
 #contents_detail {
     padding: 80px;
     text-align: center;
-}
-
-#particles-js {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 80%;
 }
 
 /* Footer */

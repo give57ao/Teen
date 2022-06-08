@@ -8,6 +8,8 @@
 /* Main Contents */
 #contents_title {
     padding: 120px 40px;
+    background: #111 url(../images/bg/bg_home.jpg) no-repeat center;
+  	background-size: cover;
 }
 
 #contents_pro {
@@ -23,7 +25,7 @@
 	width: 120px;
     height: 120px;
     margin: 0 40px 20px;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.4);
     border: 8px solid #333;
     border-radius: 100%;
 	font-size: 3em;
@@ -54,4 +56,12 @@
 #btn_wrap a.btn_com:hover {
     background: #5573E8;
     border: 1px solid #5573E8;
+}
+
+#particles-js {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80%;
 }
