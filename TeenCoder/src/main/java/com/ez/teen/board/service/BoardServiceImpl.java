@@ -139,4 +139,9 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.recommendBoard(boardModel);
 	}
 
+	@Override
+	public int getRefStep(int board_no) {
+		return boardMapper.getRefStep(board_no);
+	}
+
 }

@@ -67,5 +67,7 @@ public interface BoardMapper {
 	public void recommendBoard(BoardModel boardModel);
 
 	public void fileCk(BoardModel boardModel);
+
+	public int getRefStep(int board_no);
 	
 }

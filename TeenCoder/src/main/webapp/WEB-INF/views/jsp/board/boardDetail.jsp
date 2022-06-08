@@ -205,11 +205,11 @@
 					</c:forEach>
 
 					<!-- Answer Form  -->
-					<form action="comment" method="post">
+					<form action="comment" method="post" enctype="multipart/form-data">
 						<div id="answer">
 							<div id="answer_form">
 								<textarea id="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
-								<input type="hidden" value="${boardcomment.board_no }" />
+								<input type="text" name="board_no" value="${board_no}" />
 								<input type="button" value="취소" class="btn_com btn_board btn_cmt">
 								<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 							</div>

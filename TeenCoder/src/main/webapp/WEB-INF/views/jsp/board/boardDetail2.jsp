@@ -87,9 +87,12 @@
                     </div>
                 	<!-- Comment From -->
 	                <div id="comment_form">
-	                	<textarea id="summernote" name="comment" placeholder="댓글 작성"></textarea>
+					<form action="comment" method="post" enctype="multipart/form-data">
+	                	<textarea id="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
+	                	<input type="hidden" name="board_no" value="${board_no}" />
 	                	<input type="button" value="취소" class="btn_com btn_board btn_cmt">
 	                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
+	                </form>
 	                </div>
 	                
 	                <!-- Comment List -->

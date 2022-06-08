@@ -431,7 +431,7 @@ ORDER BY board_comment_count DESC
 	,#{member_no}
 	,0
 	,0
-	,0
+	,#{ref_step}
 	,0
 	)
 ]]>
@@ -445,4 +445,8 @@ ORDER BY board_comment_count DESC
 		update Board set board_like_count = board_like_count + 1 where board_no = #{board_no}
 	</update>
 	
+	<select id="getRefStep" resultType="int" parameterType="int">
+	SELECT NVL(MAX(REF_STEP),0) FROM BCOMMENT
+	WHERE BOARD_NO = #{board_no}
+	</select>
 </mapper>
