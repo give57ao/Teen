@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	
+
 
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -165,7 +165,8 @@
 							</div>
 						</div>
 
-						<div id="answerDiv">
+						<div class="answerDiv">
+
 							<c:forEach items="${boardAnswer}" var="boardAnswer"
 								varStatus="status">
 								<c:if test="${boardComment.ref_step eq boardAnswer.ref_step }">
@@ -199,7 +200,7 @@
 								</c:if>
 							</c:forEach>
 						</div>
-						<input type="button" value="답글 더 보기..." id="getAnswerBtn" />
+						<input type="button" value="답글 더 보기..." class="getAnswerBtn" />
 					</c:forEach>
 					<!-- Answer Form  -->
 					<form action="comment" method="post">
