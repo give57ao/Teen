@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.board.model.CommentModel;
+import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.common.file.FileUtils;
 import com.ez.teen.notice.mapper.NoticeMapper;
 import com.ez.teen.notice.model.NoticeModel;
@@ -60,6 +62,22 @@ public class NoticeServiceImpl implements NoticeService{
 		
 		noticeMapper.insertNotiFile(map);
 	}
+
+	//댓글 리스트 불러오기
+	@Override
+	public List<CommentModel> reportCmtList(CommentParam cmtParam) {
+
+		return noticeMapper.reportCmtList(cmtParam);
+	}
+
+	@Override
+	public void deleteCmt(CommentModel cmtModel) {
+		
+		noticeMapper.deleteCmt(cmtModel);
+	}
+	
+	
+	
 	
 	
 

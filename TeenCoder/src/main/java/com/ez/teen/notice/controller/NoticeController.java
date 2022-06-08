@@ -10,15 +10,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentModel;
+import com.ez.teen.board.model.CommentParam;
+import com.ez.teen.board.service.BoardService;
 import com.ez.teen.notice.model.NoticeModel;
 import com.ez.teen.notice.model.NoticeParam;
 import com.ez.teen.notice.service.NoticeService;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 public class NoticeController {
 
 	@Autowired
 	NoticeService noticeService;
+	
+	@Autowired
+	BoardService boardService;
 	
 	@GetMapping("board/notice")
 	public String noticeBoard(Model model, NoticeModel noticeModel, NoticeParam noticeParam,
@@ -70,6 +79,53 @@ public class NoticeController {
 				
 				
 		return "redirect:/board/notice";
+	}
+	
+	//댓글관리 리스트
+	@GetMapping(value = "admin/reportCmtList")
+	public String notiCmtListForm(Model model, CommentParam cmtParam,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "keyword", required = false) String keyword, HttpSession session) {
+		
+		int total = boardService.getCommentCount(cmtParam);
+		
+		System.out.println("total :" + total);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		cmtParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		if (total == 0) {
+			cmtParam.setEndPage(1);
+		}
+		
+		
+		model.addAttribute("paging", cmtParam);
+		model.addAttribute("sort", sort);
+		model.addAttribute("comment", noticeService.reportCmtList(cmtParam));
+		
+		
+		System.out.println("total : " + total);
+		
+		
+		
+		return "admin/reportCmtList";
+	}
+	
+	//댓글 관리 삭제
+	@PostMapping(value = "admin/reportCmtList")
+	public String reportCmtList(CommentModel cmtModel) {
+		
+		noticeService.deleteCmt(cmtModel);
+		
+		return "redirect:/admin/reportCmtList";
 	}
 	
 }

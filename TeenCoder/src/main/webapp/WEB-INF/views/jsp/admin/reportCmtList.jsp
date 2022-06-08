@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  
 <!DOCTYPE html>
 <html>
@@ -63,6 +65,7 @@
 	                                <tr class="row_title">
 	                                    <td>번호</td>
 	                                    <td>제목</td>
+	                                    <td>내용</td>
 	                                    <td>작성자</td>
 	                                    <td>작성일</td>
 	                                    <td>추천</td>
@@ -75,16 +78,19 @@
 	                            <!-- List Row -->
 	                            <tbody>
 	                                <!-- Row1 -->
+	                                <c:forEach items="${comment}" var="cmt" >
 	                                <tr class="row">
-	                                   <td>1</td>
-	                                   <td>게시글 제목</td>
-	                                   <td>TeenCoder</td>
-	                                   <td>2022-05-25</td>
-	                                   <td>0</td>
-	                                   <td>0</td>
-	                                   <td>Y</td>
-	                                    <td><a href="#">삭제</a></td>
+	                                   <td>${cmt.bcomment_no }</td>
+	                                   <td>${cmt.board_title }</td>
+	                                   <td>${cmt.bcomment_content }</td>
+	                                   <td>${cmt.member_nick }</td>
+	                                   <td>${cmt.bcomment_date }</td>
+	                                   <td>${cmt.bcomment_like_count }</td>
+	                                   <td>${cmt.bcomment_report_count }</td>
+	                                   <td>${cmt.board_file_check }</td>
+	                                   <td><a href="#">삭제</a></td>
 	                                </tr>
+	                                </c:forEach>
 	                            </tbody>
 	                        </table>
                         </form>
