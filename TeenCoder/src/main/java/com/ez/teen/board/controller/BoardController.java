@@ -132,6 +132,7 @@ public class BoardController {
 			model.addAttribute("boardDetail", boardDetail);
 			model.addAttribute("boardComment", boardComment);
 			model.addAttribute("boardAnswer", boardAnswer);
+			boardService.hitCount(boardModel);
 			
 			String index = rq.getParameter("index");
 			System.out.println("인덱스값: " + index);

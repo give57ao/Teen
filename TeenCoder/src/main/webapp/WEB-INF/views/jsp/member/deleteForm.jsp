@@ -22,7 +22,7 @@
 			})
 		
 			$("#submit").on("click", function(){
-				if($("#member_pw").val()==""){
+				if($("#member_pw").val()== ""){
 					alert("비밀번호를 입력해주세요.");
 					$("#member_pw").focus();
 					location.href = "/teen/member/delete";
@@ -62,7 +62,7 @@
 	                    <tr>
 	                        <th>비밀번호</th>
 	                        <td>
-	                            <input type="password" name="member_pw" placeholder="비밀번호">
+	                             <input type="password" name="member_pw" id="member_pw" placeholder="비밀번호">
 	                        </td>
 	                    </tr>
                     </tbody>

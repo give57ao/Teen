@@ -139,15 +139,4 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.recommendBoard(boardModel);
 	}
 
-	
-
-	
-
-	
-
-	
-
-
-	
-
 }

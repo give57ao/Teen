@@ -170,3 +170,4 @@ function checkOne(chk) {
 function goMyPage() {
 	location.href = "/teen/member/";
 }
+

@@ -22,12 +22,12 @@
 
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
+	
 	<!-- aJax -->
 	<script type="text/javascript">
 	$("#btn_recommend").click(function(){
 	    if(confirm("해당 글을 추천하시겠습니까?")){
-	        document.form.action="/teen/board/recommend";
-	        document.form.submit();
+	        location.href="/teen/board/recommend"
 	        
 	        alert("해당 글을 추천하였습니다.")
 	        
