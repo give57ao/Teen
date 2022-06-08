@@ -30,34 +30,31 @@
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2><a href="#">< 리스트로 이동</a></h2>
+                        <h2><a href="#">리스트로 이동</a></h2>
                     </div>
                 	<!-- List Row -->
+                	<c:forEach items="${boardDetail}" var="boardDetail"
+							varStatus="status">
                     <div id="board_list_row">
                         <div class="row">
                             <div class="row_info">
                                 <ul class="row_top tag_category">
-                                    <li>#HTML</li>
-                                    <li>#CSS</li>
-                                    <li>#JS</li>
-                                    <li>#Java</li>
-                                    <li>#C</li>
-                                    <li>#Python</li>
-                                    <li>#SQL</li>
+                                    <li>${boardDetail.board_tag_name}</li>
+                                    
                                 </ul>
                                 <div class="row_top member">
                                     <h4>
                                         <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-                                        <span class="rank">[Expert]</span>TeenCoder
+                                        <span class="rank">[Expert]</span>${boardDetail.member_nick}
                                     </h4>
                                 </div>
-                                <span class="row_top date">2022-05-10</span>
+                                <span class="row_top date">${boardDetail.board_date}</span>
                             </div>
                             <div class="row_title">
                                 <h3>
                                     <a href="#">
                                         <span class="tag_hit">[추천]</span>
-                                        HTML / CSS 학습 중 궁금한 점이 있습니다.
+                                        ${boardDetail.board_title}
                                         <img src="/teen/resources/images/icon/icon_image.svg" class="i_image">
                                         <img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
                                     </a>
@@ -65,17 +62,21 @@
                             </div>
                             <div class="row_contents">
                             	<p>
-	                            	Text Text Text Text Text Text Text Text Text Text
-	                            	Text Text Text Text Text Text Text Text Text Text
-	                            	Text Text Text Text Text Text Text Text Text Text
-	                            	Text Text Text Text Text Text Text Text Text Text
+	                            	${boardDetail.board_content}
                             	</p>
                             	<span><a href="#">첨부파일 다운로드</a></span>
+                            	<form name="downFile" role="form" method="post">
+											<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
+											<c:forEach var="file" items="${file }">
+												<span><a href="#"
+													onclick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME }</a>(${file.FILE_SIZE }kb)</span>
+											</c:forEach>
+										</form>
                             </div>
                             <ul class="row_top number">
-                                <li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">0</li>
-                                <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
-                                <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">0</li>
+                                <li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">${boardDetail.board_hit_count}</li>
+                                <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${boardDetail.board_comment_count}</li>
+                                <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${boardDetail.board_like_count}</li>
                             </ul>
                             <div class="btn_group">
                             	<input type="button" value="스크랩" class="btn_com btn_board">
@@ -85,14 +86,12 @@
                         </div>
                         <hr>
                     </div>
+                    </c:forEach>
                 	<!-- Comment From -->
 	                <div id="comment_form">
-					<form action="comment" method="post" enctype="multipart/form-data">
-	                	<textarea id="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
-	                	<input type="hidden" name="board_no" value="${board_no}" />
+	                	<textarea id="summernote" name="comment" placeholder="댓글 작성"></textarea>
 	                	<input type="button" value="취소" class="btn_com btn_board btn_cmt">
 	                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
-	                </form>
 	                </div>
 	                
 	                <!-- Comment List -->
@@ -131,7 +130,7 @@
 							varStatus="status">
 						<c:if test="${boardComment.ref_step eq boardAnswer.ref_step}">
 						<c:set var="num" value="${boardAnswer.ref_step}" />
-	                	<div id="comment_list" class="answer_list">
+	                	<div id="comment_list" class="answer_list${num}">
 		                	<div class="comment_box answer_box">
 		                		<div class="row">
 		                            <div class="row_info">
