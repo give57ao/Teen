@@ -91,39 +91,10 @@
 	                	<input type="button" value="취소" class="btn_com btn_board btn_cmt">
 	                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 	                </div>
+	                
 	                <!-- Comment List -->
-	                <div id="comment_list">
-	                	<h2><b>2</b>개의 댓글</h2>
-	                	<div class="comment_box">
-	                		<div class="row">
-	                            <div class="row_info">
-	                                <div class="row_top member">
-	                                    <h4>
-	                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-	                                        <span class="rank">[Expert]</span>TeenCoder
-	                                    </h4>
-	                                </div>
-	                                <span class="row_top date">2022-05-10</span>
-	                            </div>
-	                            <div class="row_contents">
-	                            	<p>
-		                            	Text Text Text Text Text Text Text Text Text Text
-		                            	Text Text Text Text Text Text Text Text Text Text
-	                            	</p>
-	                            </div>
-	                            <ul class="row_top number">
-                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
-                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">0</li>
-                                </ul>
-                                <div class="btn_group">
-	                            	<input type="button" value="신고" class="btn_com btn_board">
-		                			<input type="button" value="추천" class="btn_com btn_board">
-		                			<input type="button" value="답글" class="btn_com btn_board">
-	                            </div>
-                            </div>
-	                	</div>
-                	</div>
-	                <!-- Comment List -->
+	                <c:forEach items="${boardComment}" var="boardComment"
+							varStatus="status">
 	                <div id="comment_list">
 	                	<div class="comment_box">
 	                		<div class="row">
@@ -131,20 +102,19 @@
 	                                <div class="row_top member">
 	                                    <h4>
 	                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-	                                        <span class="rank">[Expert]</span>TeenCoder
+	                                        <span class="rank">[Expert]</span>${boardComment.member_nick}
 	                                    </h4>
 	                                </div>
-	                                <span class="row_top date">2022-05-10</span>
+	                                <span class="row_top date">${boardComment.bcomment_date}</span>
 	                            </div>
 	                            <div class="row_contents">
 	                            	<p>
-		                            	Text Text Text Text Text Text Text Text Text Text
-		                            	Text Text Text Text Text Text Text Text Text Text
+		                            	${boardComment.bcomment_content}
 	                            	</p>
 	                            </div>
 	                            <ul class="row_top number">
-                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
-                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">0</li>
+                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${boardComment.ref_level}</li>
+                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${boardComment.bcomment_like_count}</li>
                                 </ul>
                                 <div class="btn_group">
 	                            	<input type="button" value="신고" class="btn_com btn_board">
@@ -154,6 +124,10 @@
                             </div>
 	                	</div>
 	                	<!-- Answer List -->
+	                	<c:forEach items="${boardAnswer}" var="boardAnswer"
+							varStatus="status">
+						<c:if test="${boardComment.ref_step eq boardAnswer.ref_step}">
+						<c:set var="num" value="${boardAnswer.ref_step}" />
 	                	<div id="comment_list" class="answer_list">
 		                	<div class="comment_box answer_box">
 		                		<div class="row">
@@ -161,20 +135,19 @@
 		                                <div class="row_top member">
 		                                    <h4>
 		                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-		                                        <span class="rank">[Expert]</span>TeenCoder
+		                                        <span class="rank">[Expert]</span>${boardAnswer.member_nick}
 		                                    </h4>
 		                                </div>
-		                                <span class="row_top date">2022-05-10</span>
+		                                <span class="row_top date">${boardAnswer.bcomment_date}</span>
 		                            </div>
 		                            <div class="row_contents">
 		                            	<p>
-			                            	Text Text Text Text Text Text Text Text Text Text
-			                            	Text Text Text Text Text Text Text Text Text Text
+			                            	${boardAnswer.bcomment_content}
 		                            	</p>
 		                            </div>
 		                            <ul class="row_top number">
 	                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">0</li>
-	                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">0</li>
+	                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${boardAnswer.bcomment_like_count}</li>
 	                                </ul>
 	                                <div class="btn_group">
 		                            	<input type="button" value="신고" class="btn_com btn_board">
@@ -183,6 +156,8 @@
 	                            </div>
 		                	</div>
 	                	</div>
+	                	</c:if>
+	                	</c:forEach>
 	                	<!-- Answer Form -->
 	                	<div id="answer">
 		                	<div id="answer_form">
@@ -192,6 +167,8 @@
 			                </div>
 		                </div>
 	                </div>
+	                <input type="button" value="답글 더 보기..." class="getAnswerBtn${num}"/>
+	                </c:forEach>
                 </div>
                 <!-- Member Info -->
                 <div id="member_info">
