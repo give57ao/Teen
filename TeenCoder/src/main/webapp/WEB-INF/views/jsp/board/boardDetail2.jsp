@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/summernote.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -90,9 +90,12 @@
                     </c:forEach>
                 	<!-- Comment From -->
 	                <div id="comment_form">
-	                	<textarea id="summernote" name="comment" placeholder="댓글 작성"></textarea>
+	                	<form action="comment" method="post" enctype="multipart/form-data">
+	                	<textarea id="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
+	                	<input type="hidden" name="board_no" value="${board_no}" />
 	                	<input type="button" value="취소" class="btn_com btn_board btn_cmt">
 	                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
+	                	</form>
 	                </div>
 	                
 	                <!-- Comment List -->
@@ -126,13 +129,15 @@
 	                            </div>
                             </div>
 	                	</div>
+	                	<input type="button" value="답글 더 보기..." class="getAnswerBtn" onClick="dis(${boardComment.ref_step})" />
+	                	
 	                	<!-- Answer List -->
 	                	<c:forEach items="${boardAnswer}" var="boardAnswer"
 							varStatus="status"> 
 						<c:if test="${boardComment.ref_step eq boardAnswer.ref_step}">
 						<c:set var="num" value="${boardAnswer.ref_step}" />
 						<input type="hidden" id="refNo" value="${num}"/>
-	                	<div id="comment_list" class="answer_list">
+	                	<div id="comment_list" class="answer_list-${boardComment.ref_step}">
 		                	<div class="comment_box answer_box">
 		                		<div class="row">
 		                            <div class="row_info">
@@ -171,7 +176,6 @@
 			                </div>
 		                </div>
 	                </div>
-	                <input type="button" value="답글 더 보기..." class="getAnswerBtn" />
 	                </c:forEach>
                 </div>
                 <!-- Member Info -->
@@ -187,7 +191,6 @@
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="/teen/resources/js/board/detail/boardDetail.js"></script>
 </body>

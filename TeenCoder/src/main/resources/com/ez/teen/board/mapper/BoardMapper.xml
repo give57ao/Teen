@@ -378,6 +378,7 @@ ORDER BY board_comment_count DESC
 		parameterType="com.ez.teen.board.model.BoardParam"
 		resultType="com.ez.teen.board.model.BoardCommentModel">
 	  SELECT 
+	  	C.BCOMMENT_NO AS BCOMMENT_NO,
     	C.BOARD_NO AS BOARD_NO,
 	  	M.MEMBER_NICK AS MEMBER_NICK,
 	  	C.BCOMMENT_DATE AS BCOMMENT_DATE,
