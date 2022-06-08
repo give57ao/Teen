@@ -307,7 +307,7 @@ ORDER BY board_comment_count DESC
 			ON B.MEMBER_NO = M.MEMBER_NO
 			
 			<if test='member_no != 0'>
-			WHERE C.MEMBER_NO = 2
+			WHERE C.MEMBER_NO = #{member_no}
 			</if>
 			
 			<if test='search == "title"'>

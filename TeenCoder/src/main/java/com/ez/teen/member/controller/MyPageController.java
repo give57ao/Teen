@@ -107,6 +107,7 @@ public class MyPageController {
 
 		int member_no = (Integer) session.getAttribute("member_no");
 		commentParam.setMember_no(member_no);
+		
 		int total = boardService.getCommentCount(commentParam);
 
 		System.out.println("total :" + total);
