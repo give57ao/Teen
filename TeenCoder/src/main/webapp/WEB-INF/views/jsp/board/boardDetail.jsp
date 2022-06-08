@@ -9,12 +9,15 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 게시판 상세</title>
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/reset.css">
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/common.css">
-<link rel="stylesheet" type="text/css"
-	href="/teen/resources/css/board.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/boardForm.css">
+
+<link rel="stylesheet" type="text/css" href="/teen/resources/css/summernote.css">
+
 </head>
 
 <body>
@@ -205,14 +208,10 @@
 					<form action="comment" method="post">
 						<div id="answer">
 							<div id="answer_form">
-								<textarea name="answer" placeholder="답글 작성"
-									id="bcomment_content"></textarea>
-								<input type="hidden" value="${boardcomment.board_no }" /> <input
-									type="button" value="취소" class="btn_com btn_board btn_cmt">
-								<input type="submit" value="작성"
-									class="btn_com btn_board btn_cmt">
-
-
+								<textarea id="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
+								<input type="hidden" value="${boardcomment.board_no }" />
+								<input type="button" value="취소" class="btn_com btn_board btn_cmt">
+								<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 							</div>
 						</div>
 					</form>
