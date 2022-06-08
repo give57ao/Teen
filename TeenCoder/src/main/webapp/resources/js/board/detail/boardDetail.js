@@ -8,10 +8,14 @@ function fn_fileDown(fileNo) {
 
 
 $(document).ready(function() {
-	$(".answerDiv").hide();
+	$("#answerDiv0").hide();
+	$("#answerDiv1").hide();
 	
-	$(".getAnswerBtn").click(function() {
-		$(".answerDiv").slideDown();
+	$(".getAnswerBtn0").click(function() {
+		$("#answerDiv0").toggle();
+	})
+	$(".getAnswerBtn1").click(function() {
+		$("#answerDiv1").toggle();
 	})
 })
 

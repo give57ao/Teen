@@ -58,13 +58,7 @@
 								<div class="row">
 									<div class="row_info">
 										<ul class="row_top tag_category">
-											<li>#HTML</li>
-											<li>#CSS</li>
-											<li>#JS</li>
-											<li>#Java</li>
-											<li>#C</li>
-											<li>#Python</li>
-											<li>#SQL</li>
+											<li>${boardDetail.board_tag_name}</li>
 										</ul>
 										<div class="row_top member">
 											<h4>
@@ -165,12 +159,15 @@
 							</div>
 						</div>
 
-						<div class="answerDiv">
 
-							<c:forEach items="${boardAnswer}" var="boardAnswer"
-								varStatus="status">
-								<c:if test="${boardComment.ref_step eq boardAnswer.ref_step }">
-									<div id="comment_list" class="answer_list">
+
+						<c:forEach items="${boardAnswer}" var="boardAnswer"
+							varStatus="status">
+							<c:if test="${boardComment.ref_step eq boardAnswer.ref_step}">
+							<c:set var="num" value="${boardAnswer.ref_step}" />
+								<div class="answerDiv" id="answerDiv${num}">
+									<input type="hidden" id="num" value="<c:out value="${num}"/>">
+									<div id="comment_list${num}" class="answer_list${num}">
 										<div class="comment_box answer_box">
 											<div class="row">
 												<div class="row_info">
@@ -197,11 +194,13 @@
 											</div>
 										</div>
 									</div>
-								</c:if>
-							</c:forEach>
-						</div>
-						<input type="button" value="답글 더 보기..." class="getAnswerBtn" />
+								</div>
+							</c:if>
+						</c:forEach>
+
+						<input type="button" value="답글 더 보기..." class="getAnswerBtn${num}" />
 					</c:forEach>
+
 					<!-- Answer Form  -->
 					<form action="comment" method="post">
 						<div id="answer">
