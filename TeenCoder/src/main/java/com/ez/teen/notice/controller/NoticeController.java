@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
@@ -20,7 +18,6 @@ import com.ez.teen.notice.model.NoticeModel;
 import com.ez.teen.notice.model.NoticeParam;
 import com.ez.teen.notice.service.NoticeService;
 
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 public class NoticeController {
@@ -35,6 +32,7 @@ public class NoticeController {
 	public String noticeBoard(Model model, NoticeModel noticeModel, NoticeParam noticeParam,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "search", required = false) String search,
 			@RequestParam(value = "keyword", required = false) String keyword
 			) {
@@ -56,6 +54,7 @@ public class NoticeController {
 		
 		
 		model.addAttribute("paging", noticeParam);
+		model.addAttribute("sort", sort);
 		model.addAttribute("notice", noticeService.noticeList(noticeParam));
 		
 		
@@ -121,7 +120,7 @@ public class NoticeController {
 		return "admin/reportCmtList";
 	}
 	
-	//댓글 관리 삭제
+	//댓글 관리 삭제 푸쉬
 	@RequestMapping(value = "admin/deleteCmt")
 	public String reportCmtList(CommentModel cmtModel) throws Exception{
 		

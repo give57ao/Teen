@@ -142,9 +142,9 @@ OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 	]]>
 	</select>
 
-	<!-- 신고댓글 리스트 -->
+	<!-- 신고댓글 리스트푸쉬 -->
 	<select id="reportCmtList" resultType="com.ez.teen.board.model.CommentModel" parameterType="com.ez.teen.board.model.CommentParam">
-	SELECT
+			SELECT
 			B.BOARD_NO
 			,B.BOARD_TITLE
 			,B.BOARD_FILE_CHECK
@@ -152,7 +152,10 @@ OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 			,C.BCOMMENT_NO
 			,C.BCOMMENT_CONTENT
 			,C.BCOMMENT_DATE
+			,C.BCOMMENT_REPORT_COUNT
 			,C.BCOMMENT_LIKE_COUNT
+			,C.REF_STEP
+			,C.REF_LEVEL
 			
 			
 			FROM BOARD B
@@ -160,7 +163,36 @@ OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 			ON B.BOARD_NO = C.BOARD_NO
 			INNER JOIN MEMBER M
 			ON B.MEMBER_NO = M.MEMBER_NO
-            ORDER BY C.BCOMMENT_REPORT_COUNT
+			
+			<if test='search == "content"'>
+			WHERE C.BCOMMENT_CONTENT LIKE '%'||#{keyword}||'%'
+			</if>
+			
+			<if test='search == "nick"'>
+			WHERE M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+			</if>
+					
+			<if test='search == "title"'>
+			WHERE B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+			</if>
+			
+					
+			<if test='search == "all"'>
+			WHERE C.BCOMMENT_CONTENT LIKE '%'||#{keyword}||'%'
+			OR MEMBER_NICK LIKE '%'||#{keyword}||'%'
+			OR B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+			</if>
+			
+			<if test='sort == "recent"'>
+			ORDER BY C.BCOMMENT_DATE DESC
+			</if>
+
+			<if test='sort == "report"'>
+			ORDER BY C.BCOMMENT_REPORT_COUNT DESC
+			</if>
+
+			
+		
 	
 	</select>
 
