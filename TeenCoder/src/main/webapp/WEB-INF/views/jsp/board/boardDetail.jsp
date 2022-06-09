@@ -142,8 +142,10 @@
 		                	</div>
 		                	<!-- Answer Form -->
 		                	<div id=answer  class="answer_form-${boardComment.ref_step}" style="display : none;">
-			                	<form id =answer_form>
-				                	<textarea name="answer" placeholder="답글 작성"></textarea>
+			                	<form id =answer_form action="recomment" method="post">
+				                	<textarea name="bcomment_content" placeholder="답글 작성"></textarea>
+				                	<input type="hidden" name="ref_step" value="${boardComment.ref_step}">
+				                	<input type="hidden" name="board_no" value="${boardComment.board_no}">
 				                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
 				                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 				                </form>

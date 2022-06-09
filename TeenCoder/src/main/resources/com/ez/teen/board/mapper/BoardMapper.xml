@@ -420,14 +420,14 @@ ORDER BY board_comment_count DESC
       	REF_STEP, REF_LEVEL 
 	</select>
 	
-<insert id="insertComment" parameterType="com.ez.teen.board.mapper.BoardMapper" useGeneratedKeys="true" keyProperty="board_no" >
+<insert id="insertComment" parameterType="com.ez.teen.board.mapper.BoardMapper" useGeneratedKeys="true" keyProperty="bcomment_no" >
 	<selectKey keyProperty="bcomment_no" resultType="int" order="BEFORE" >
 		SELECT SEQ_BCOMMENT_NO.NEXTVAL FROM DUAL
 	</selectKey>
 	<![CDATA[
 	INSERT INTO BCOMMENT
 	VALUES(
-	 SEQ_BCOMMENT_NO.NEXTVAL
+	 #{bcomment_no}
 	,#{board_no}
 	,#{bcomment_content}
 	,SYSDATE
@@ -462,4 +462,33 @@ ORDER BY board_comment_count DESC
 		 ,BOARD_TAG_NAME = #{board_tag_name}
 		WHERE BOARD_NO = #{board_no} AND MEMBER_NO = #{member_no}
 	</update>
+	
+	<select id="getRefLevel" resultType="int" parameterType="com.ez.teen.board.model.CommentParam">
+	SELECT NVL(MAX(REF_LEVEL),0) FROM BCOMMENT
+	WHERE BOARD_NO  = #{board_no}
+	AND REF_STEP = #{ref_step}
+	</select>
+	
+	<insert id="insertReComment" parameterType="com.ez.teen.board.mapper.BoardMapper" useGeneratedKeys="true" keyProperty="bcomment_no" >
+	<selectKey keyProperty="bcomment_no" resultType="int" order="BEFORE" >
+		SELECT SEQ_BCOMMENT_NO.NEXTVAL FROM DUAL
+	</selectKey>
+	<![CDATA[
+	INSERT INTO BCOMMENT
+	VALUES(
+	 #{bcomment_no}
+	,#{board_no}
+	,#{bcomment_content}
+	,SYSDATE
+	,#{member_no}
+	,0
+	,0
+	,#{ref_step}
+	,#{ref_level}
+	)
+]]>
+	</insert>
+	
+	
+	
 </mapper>

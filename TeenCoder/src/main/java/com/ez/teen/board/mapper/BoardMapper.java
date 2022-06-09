@@ -58,6 +58,7 @@ public interface BoardMapper {
 	//첨부파일 수정
 	public void updateFile(Map<String, Object> map) throws Exception;
 
+	//댓글 작성
 	public void insertComment(CommentModel commentModel);
 	
 	//조회수 증가
@@ -69,5 +70,10 @@ public interface BoardMapper {
 	public void fileCk(BoardModel boardModel);
 
 	public int getRefStep(int board_no);
+
+	public int getRefLevel(CommentParam commentParam);
+	
+	//답글 작성
+	public void insertReComment(CommentModel commentModel);
 	
 }

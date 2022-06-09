@@ -147,7 +147,7 @@ public class BoardController {
 			,RedirectAttributes rttr) {
 			
 			commentModel.setMember_no((int)session.getAttribute("member_no"));
-			int board_no = boardModel.getBoard_no();
+			int board_no = commentModel.getBoard_no();
 			
 			//ref_step 구별 후 댓글 작성 로직
 			int refStep = boardService.getRefStep(board_no);
@@ -165,6 +165,36 @@ public class BoardController {
 			rttr.addAttribute("board_no", board_no);
 			return "redirect:/board/detail";
 		}
+
+				//답글 작성
+				@PostMapping("board/recomment")
+				public String insertReComment(BoardModel boardModel, CommentParam commentParam,CommentModel commentModel, HttpSession session, RedirectAttributes rttr) {
+					
+					commentModel.setMember_no((int)session.getAttribute("member_no"));
+					
+					int board_no = commentParam.getBoard_no();
+					int ref_step = commentModel.getRef_step();
+					
+					commentParam.setBoard_no(board_no);
+					commentParam.setRef_step(ref_step);
+					
+					//ref_step 구별 후 답글 작성 로직
+					int ref_level = boardService.getRefLevel(commentParam);
+					System.out.println("============================================================");
+					System.out.println("board_no :"+board_no);
+					System.out.println("ref_step :"+ref_step);
+					System.out.println("ref_level :" + ref_level);
+					System.out.println("============================================================");
+
+
+						commentModel.setRef_level(ref_level+1);
+						boardService.insertReComment(commentModel);
+					
+						rttr.addAttribute("board_no", board_no);
+						return "redirect:/board/detail";
+				}
+
+		
 
 	//첨부파일 다운로드 구현
 		@RequestMapping(value = "board/downFile")
