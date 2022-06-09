@@ -56,28 +56,28 @@ public class BoardController {
 	}
 
 	//게시글 수정 폼
-	@GetMapping("/board/modify")
-	public String updateBoardForm(BoardModel boardModel, Model model , HttpServletRequest request)throws Exception{
-		
-		HttpSession session = request.getSession();
-		int member_no = (Integer)session.getAttribute("member_no");
-		boardModel.setMember_no(member_no);
-		
+	@GetMapping("board/modify")
+	public String updateBoardForm()throws Exception{
 		
 		return "board/boardModify";
 	}
 	
 	//게시글 수정 기능
-	@PostMapping("/board/modify")
-	public String updateBoard(BoardModel boardModel, Model model , HttpServletRequest request) {
+	@PostMapping("board/modify")
+	public String updateBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest, 
+			Model model, BoardParam boardParam) {
 		
-		HttpSession session = request.getSession();
 		int member_no = (Integer)session.getAttribute("member_no");
+		
 		boardModel.setMember_no(member_no);
 		
 		boardService.updateBoard(boardModel);
 		
-		return "redirect:/board/main";
+		List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
+		
+		model.addAttribute("updateBoard", boardDetail);
+		
+		return "redirect:/board";
 	}
 
 	//게시글 작성 폼

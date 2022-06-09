@@ -94,6 +94,7 @@
 	                            	<input type="button" value="스크랩" class="btn_com btn_board">
 		                			<input type="button" value="신고" class="btn_com btn_board">
 		                			<input type="button" value="추천" class="btn_com btn_board">
+		                			<input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?${boardDetail.board_no}'">
 	                            </div>
 	                        </div>
 	                        <hr>

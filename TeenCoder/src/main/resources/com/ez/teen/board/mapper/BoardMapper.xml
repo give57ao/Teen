@@ -452,4 +452,14 @@ ORDER BY board_comment_count DESC
 	SELECT NVL(MAX(REF_STEP),0) FROM BCOMMENT
 	WHERE BOARD_NO = #{board_no}
 	</select>
+	
+	<update id="updateProject">
+		UPDATE BOARD
+		SET
+		 BOARD_TITLE = #{board_title}
+		 ,BOARD_CONTENT = #{board_content}
+		 ,BOARD_GROUP_NO = #{board_group_no}
+		 ,BOARD_TAG_NAME = #{board_tag_name}
+		WHERE BOARD_NO = #{board_no} AND MEMBER_NO = #{member_no}
+	</update>
 </mapper>

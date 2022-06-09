@@ -65,5 +65,4 @@ public interface BoardService {
 	//ref_step 확인
 	public int getRefStep(int board_no);
 	
-	
 }
