@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ez.teen.board.model.BoardAnswerModel;
 import com.ez.teen.board.model.BoardCommentModel;
@@ -114,7 +115,7 @@ public class BoardController {
 		@RequestMapping("board/detail")
 		public String selectBoardDetail(BoardModel boardModel, HttpSession session,
 				HttpServletResponse response, HttpServletRequest rq, BoardParam boardParam, Model model,
-				@RequestParam(value="board_no")int board_no) throws Exception{
+				@RequestParam(value="board_no")int board_no, CommentModel commentModel) throws Exception{
 
 			boardParam.setBoard_no(board_no); 
 			
@@ -125,9 +126,9 @@ public class BoardController {
 			System.out.println(boardDetail);
 			System.out.println(boardComment);
 			System.out.println(boardAnswer);
-			
+						
 			List<Map<String, Object>> fileList = boardService.selectFile(board_no);
-			
+			model.addAttribute("board_no", board_no); //댓글 작성을 위해 board_no 받아오는 코드 추가
 			model.addAttribute("file", fileList);
 			model.addAttribute("boardDetail", boardDetail);
 			model.addAttribute("boardComment", boardComment);
@@ -141,17 +142,28 @@ public class BoardController {
 		}
 		
 		//댓글 작성
-		@RequestMapping("board/comment")
-		public String insertComment(BoardModel boardModel, HttpSession session,
-				HttpServletResponse response, HttpServletRequest rq, CommentModel commentModel, Model model
-				) {
-			
+		@PostMapping("board/comment")
+		public String insertComment(BoardModel boardModel, CommentModel commentModel, HttpSession session, MultipartHttpServletRequest mpRequest
+			,RedirectAttributes rttr) {
 			
 			commentModel.setMember_no((int)session.getAttribute("member_no"));
+			int board_no = boardModel.getBoard_no();
 			
-			boardService.insertComment(commentModel);
-			
-			return "redirect:/board/boardDetail";
+			//ref_step 구별 후 댓글 작성 로직
+			int refStep = boardService.getRefStep(board_no);
+			System.out.println("============================================================");
+			System.out.println("board_no :"+board_no);
+			System.out.println("refStep :" + refStep);
+			System.out.println("============================================================");
+
+			if(refStep == 0) {
+				boardService.insertComment(commentModel);
+			}else {
+				commentModel.setRef_step(refStep+1);
+				boardService.insertComment(commentModel);
+			}
+			rttr.addAttribute("board_no", board_no);
+			return "redirect:/board/detail";
 		}
 
 	//첨부파일 다운로드 구현
@@ -214,7 +226,7 @@ public class BoardController {
 			model.addAttribute("paging", boardParam);
 			model.addAttribute("sort", sort);
 			model.addAttribute("board", boardService.boardList(boardParam));
-			
+			model.addAttribute("board_group_no",board_group_no);
 			
 			
 			return "board/mainBoard";

@@ -32,12 +32,12 @@
 		AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 		</if>
 		
-		<if test='search == "member_nick"'>
+		<if test='search == "nick"'>
 		AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 		</if>	
 		
 		<if test='search == "all"'>
-		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		WHERE B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
 		OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 		OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 		</if>
@@ -75,7 +75,7 @@
 		AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 		</if>
 		
-		<if test='search == "member_nick"'>
+		<if test='search == "nick"'>
 		AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 		</if>	
 		
@@ -231,12 +231,12 @@ AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
 AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 </if>
 
-<if test='search == "member_nick"'>
+<if test='search == "nick"'>
 AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 </if>
 
 <if test='search == "all"'>
-AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+WHERE B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
 OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 </if>
@@ -307,7 +307,7 @@ ORDER BY board_comment_count DESC
 			ON B.MEMBER_NO = M.MEMBER_NO
 			
 			<if test='member_no != 0'>
-			WHERE C.MEMBER_NO = 2
+			WHERE C.MEMBER_NO = #{member_no}
 			</if>
 			
 			<if test='search == "title"'>
@@ -315,12 +315,12 @@ ORDER BY board_comment_count DESC
 			</if>
 			
 			<if test='search == "content"'>
-			AND C.COMMENT_CONTENT LIKE '%'||#{keyword}||'%'
+			AND C.BCOMMENT_CONTENT LIKE '%'||#{keyword}||'%'
 			</if>
 			
 			<if test='search == "all"'>
-			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
-			OR C.COMMENT_CONTENT LIKE '%'||#{keyword}||'%'
+			WHERE B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+			OR C.BCOMMENT_CONTENT LIKE '%'||#{keyword}||'%'
 			</if>
 			
 			
@@ -378,6 +378,7 @@ ORDER BY board_comment_count DESC
 		parameterType="com.ez.teen.board.model.BoardParam"
 		resultType="com.ez.teen.board.model.BoardCommentModel">
 	  SELECT 
+	  	C.BCOMMENT_NO AS BCOMMENT_NO,
     	C.BOARD_NO AS BOARD_NO,
 	  	M.MEMBER_NICK AS MEMBER_NICK,
 	  	C.BCOMMENT_DATE AS BCOMMENT_DATE,
@@ -431,7 +432,7 @@ ORDER BY board_comment_count DESC
 	,#{member_no}
 	,0
 	,0
-	,0
+	,#{ref_step}
 	,0
 	)
 ]]>
@@ -451,4 +452,9 @@ ORDER BY board_comment_count DESC
 		 WHERE BOARD_NO = #{board_no}
 	</delete>
 	
+
+	<select id="getRefStep" resultType="int" parameterType="int">
+	SELECT NVL(MAX(REF_STEP),0) FROM BCOMMENT
+	WHERE BOARD_NO = #{board_no}
+	</select>
 </mapper>
