@@ -65,5 +65,11 @@ public interface BoardService {
 	//ref_step 확인
 	public int getRefStep(int board_no);
 	
+	//ref_level 확인
+	public int getRefLevel(CommentParam commentParam);
+	
+	//답글 작성
+	public void insertReComment(CommentModel commentModel);
+	
 	
 }

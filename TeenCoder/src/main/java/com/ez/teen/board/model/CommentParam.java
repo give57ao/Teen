@@ -1,6 +1,26 @@
 package com.ez.teen.board.model;
 
 public class CommentParam {
+	
+	private int ref_step;
+	private int board_no;
+	
+	
+	public int getRef_step() {
+		return ref_step;
+	}
+
+	public void setRef_step(int ref_step) {
+		this.ref_step = ref_step;
+	}
+
+	public int getBoard_no() {
+		return board_no;
+	}
+
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
+	}
 
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
 	

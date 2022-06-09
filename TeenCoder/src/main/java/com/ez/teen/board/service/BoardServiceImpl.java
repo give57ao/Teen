@@ -138,10 +138,22 @@ public class BoardServiceImpl implements BoardService {
 	public void recommendBoard(BoardModel boardModel) {
 		boardMapper.recommendBoard(boardModel);
 	}
-
+	
+	//댓글 작성 전 순서 검사
 	@Override
 	public int getRefStep(int board_no) {
 		return boardMapper.getRefStep(board_no);
+	}
+	
+	//답글 작성 전 순서 검사
+	@Override
+	public int getRefLevel(CommentParam commentParam) {
+		return boardMapper.getRefLevel(commentParam);
+	}
+
+	@Override
+	public void insertReComment(CommentModel commentModel) {
+		 boardMapper.insertReComment(commentModel);
 	}
 
 }
