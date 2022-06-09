@@ -427,11 +427,11 @@ ORDER BY board_comment_count DESC
 	<![CDATA[
 	INSERT INTO BCOMMENT
 	VALUES(
-	 #{bcomment_no}
+	 SEQ_BCOMMENT_NO.NEXTVAL
 	,#{board_no}
-	,#{member_no}
 	,#{bcomment_content}
 	,SYSDATE
+	,#{member_no}
 	,0
 	,0
 	,#{ref_step}
