@@ -32,19 +32,19 @@
                 <!-- Category -->
                 <ul id="contents_category">
                 	<c:if test="${paging.board_group_no eq '1'}">
-						<li><a href="/teen/board/" class="select">COMMUNITY</a></li>
+						<li><a href="/teen/board?board_group_no=1" class="select">COMMUNITY</a></li>
                     </c:if>
                     <c:if test="${paging.board_group_no eq '2'}">
 						<li><a href="/teen/board?board_group_no=2" class="select">Q&amp;A</a></li>
                     </c:if>
                     
-                    <li><a href="/teen/board?board_tag_name=html">#HTML</a></li>
-                    <li><a href="/teen/board?board_tag_name=css">#CSS</a></li>
-                    <li><a href="/teen/board?board_tag_name=js">#JS</a></li>
-                    <li><a href="/teen/board?board_tag_name=java">#Java</a></li>
-                    <li><a href="/teen/board?board_tag_name=c language">#C Language</a></li>
-                    <li><a href="/teen/board?board_tag_name=python">#Python</a></li>
-                    <li><a href="/teen/board?board_tag_name=sql">#SQL</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=html">#HTML</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=css">#CSS</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=js">#JS</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=java">#Java</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=c language">#C Language</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=python">#Python</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=sql">#SQL</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">

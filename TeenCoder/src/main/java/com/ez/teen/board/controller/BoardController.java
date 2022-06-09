@@ -226,7 +226,7 @@ public class BoardController {
 			model.addAttribute("paging", boardParam);
 			model.addAttribute("sort", sort);
 			model.addAttribute("board", boardService.boardList(boardParam));
-			
+			model.addAttribute("board_group_no",board_group_no);
 			
 			
 			return "board/mainBoard";
