@@ -71,5 +71,82 @@
 		DELETE FROM MEMBER 
 	 	WHERE MEMBER_NO = #{member_no}
  	</delete>
+ 	
+ 	<select id="getReportCount" resultType="int" parameterType="com.ez.teen.admin.model.ReportParam"> 
+		SELECT COUNT(*) FROM BOARD B
+		INNER JOIN MEMBER M
+		ON B.MEMBER_NO = M.MEMBER_NO WHERE BOARD_REPORT_COUNT > 0
+		
+ 		<if test='search == "title"'>
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		</if>
 
+		<if test='search == "content"'>
+		AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+		</if>
+		
+		<if test='search == "member_nick"'>
+		AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+		</if>	
+		
+		<if test='search == "all"'>
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+		OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+		</if>
+ 	
+		<if test='board_tag_name != null'>
+		<![CDATA[
+		AND LOWER(B.BOARD_TAG_NAME) LIKE '%'||#{board_tag_name}||'%'
+		]]>
+		</if>
+ 		
+	</select>
+	
+	<select id = "reportList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.admin.model.ReportParam">
+		select 
+		rn,
+		board_no,
+		member_no,
+		board_title,
+		board_content,
+		member_nick,
+		board_date,
+		board_report_count
+		FROM(
+		SELECT ROWNUM RN, A.*
+		FROM(
+		SELECT 
+		M.MEMBER_NO,B.BOARD_NO,B.BOARD_CONTENT,B.BOARD_TITLE,
+		B.BOARD_DATE,B.BOARD_REPORT_COUNT,M.MEMBER_NICK 
+		FROM BOARD B
+		INNER JOIN MEMBER M 
+		ON B.MEMBER_NO = M.MEMBER_NO
+		
+		<if test='search == "title"'>
+		WHERE B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		</if>
+		
+		<if test='search == "nick"'>
+		WHERE M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+		</if>	
+		
+		<if test='search == "all"'>
+		WHERE B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+		OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+		</if>
+		
+		and board_report_count > 0 
+		order by board_report_count DESC
+		)A
+		)WHERE RN BETWEEN 1 AND 10
+	</select>
+	
+	<!-- 신고글 삭제 -->
+	<delete id="deleteReportBoard" parameterType="com.ez.teen.board.model.BoardModel">
+		DELETE FROM BOARD
+		WHERE BOARD_NO = #{board_no}
+	</delete>
+	
 </mapper>

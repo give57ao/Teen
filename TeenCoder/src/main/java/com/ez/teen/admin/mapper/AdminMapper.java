@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ez.teen.admin.model.ReportParam;
+import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 import com.ez.teen.notice.model.NoticeModel;
@@ -33,4 +36,11 @@ public interface AdminMapper {
 	public List<BoardModel> adminBoard(BoardParam boardParam);
 
 	
+	public List<BoardModel> reportList(ReportParam reportParam);
+	
+	//전체 게시글 수
+	public int getReportCount(ReportParam reportParam);
+	
+	//신고글 삭제
+	public void deleteReportBoard(BoardModel boardModel);
 }
