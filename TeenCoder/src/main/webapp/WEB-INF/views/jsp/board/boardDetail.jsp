@@ -29,7 +29,7 @@
             <!-- Category -->
                 <ul id="contents_category">
                 	<c:if test="${paging.board_group_no eq '1'}">
-						<li><a href="/teen/board/" class="select">COMMUNITY</a></li>
+						<li><a href="/teen/board?board_group_no=1" class="select">COMMUNITY</a></li>
                     </c:if>
                     <c:if test="${paging.board_group_no eq '2'}">
 						<li><a href="/teen/board?board_group_no=2" class="select">Q&amp;A</a></li>
@@ -102,15 +102,15 @@
                 	<!-- Comment From -->
 	                <div id="comment_form">
 	                	<form action="comment" method="post" enctype="multipart/form-data">
-		                	<textarea id="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
+		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
 		                	<input type="hidden" name="board_no" value="${board_no}">
 		                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
 		                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 	                	</form>
 	                </div>
 	                <!-- Comment List -->
-	                <h2><b class="comment_count">2</b>개의 댓글</h2>
 	                <c:forEach items="${boardComment}" var="boardComment" varStatus="status">
+	                	<h2><b class="comment_count">2</b>개의 댓글</h2> <!-- 댓글 넘버 추가 -->
 		                <div id="comment_list">
 		                	<div class="comment_box">
 		                		<div class="row">
@@ -183,11 +183,6 @@
 		                </div>
 	                </c:forEach>
                 </div>
-                <!-- Member Info -->
-                <div id="member_info">
-                    <a href="/teen/board/boardWrite" class="btn_com btn_main">게시글 작성</a>
-                    <div class="mycard"></div>
-                </div>
             </div>
         </div>
     </div>
@@ -199,5 +194,6 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/detail/boardDetail.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
 </body>
 </html>

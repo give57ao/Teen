@@ -30,7 +30,3 @@ $("#btn_recommend").click(function() {
 		alert("해당 글을 추천하였습니다.")
 	}
 });
-
-$(document).ready(function() {
-  $('#summernote').summernote();
-});

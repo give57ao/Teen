@@ -43,3 +43,8 @@ a {
     text-decoration: underline !important;
     color: inherit !important;
 }
+
+#contents_category li a:hover,
+#board_list_row .row_title a:hover {
+	color: #111 !important;
+}

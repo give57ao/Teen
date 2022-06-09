@@ -17,7 +17,7 @@ $(document).ready(function() {
 		fn_deleteFile($(this));
 	});
 	
-	$('#summernote').summernote();
+	$('.summernote').summernote();
 });
 
 // 파일 추가

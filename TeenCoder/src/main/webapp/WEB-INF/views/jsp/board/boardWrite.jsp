@@ -56,7 +56,7 @@
 			                    <tr class="contents_title">
 			                        <th>내용</th>
 			                        <td >
-			                            <textarea id="summernote" name="board_content" placeholder="내용"></textarea>
+			                            <textarea class="summernote" name="board_content" placeholder="내용"></textarea>
 			                        </td>
 			                    </tr>
 			                    <tr class="checkbox">

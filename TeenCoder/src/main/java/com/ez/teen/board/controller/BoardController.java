@@ -138,7 +138,7 @@ public class BoardController {
 			String index = rq.getParameter("index");
 			System.out.println("인덱스값: " + index);
 			
-			return "board/boardDetail2";
+			return "board/boardDetail";
 		}
 		
 		//댓글 작성
