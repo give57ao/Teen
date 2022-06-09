@@ -37,7 +37,7 @@
 		</if>	
 		
 		<if test='search == "all"'>
-		WHERE B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
 		OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 		OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 		</if>
@@ -236,7 +236,7 @@ AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 </if>
 
 <if test='search == "all"'>
-WHERE B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
 OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
 </if>
@@ -319,7 +319,7 @@ ORDER BY board_comment_count DESC
 			</if>
 			
 			<if test='search == "all"'>
-			WHERE B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
 			OR C.BCOMMENT_CONTENT LIKE '%'||#{keyword}||'%'
 			</if>
 			

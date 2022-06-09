@@ -14,7 +14,7 @@ public class MemberParam {
 		this.search = search;
 	}
 
-	String keyword; // 검색내용
+	private String keyword; // 검색내용
 
 	public String getKeyword() {
 		return keyword;
