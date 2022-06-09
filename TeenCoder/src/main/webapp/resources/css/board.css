@@ -274,10 +274,14 @@
 }
 
 #board_list_pagination .prev {
+	width: 12px;
+	height: 12px;
     background: url(../images/icon/icon_left_arrow.svg) no-repeat center;
 }
 
 #board_list_pagination .next {
+	width: 12px;
+	height: 12px;
     background: url(../images/icon/icon_right_arrow.svg) no-repeat center;
 }
 

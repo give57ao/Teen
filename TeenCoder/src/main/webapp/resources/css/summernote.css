@@ -48,3 +48,8 @@ a {
 #board_list_row .row_title a:hover {
 	color: #111 !important;
 }
+
+#comment_form .note-editor.note-airframe,
+.note-editor.note-frame {
+	border: 1px solid #CCC !important;
+}
