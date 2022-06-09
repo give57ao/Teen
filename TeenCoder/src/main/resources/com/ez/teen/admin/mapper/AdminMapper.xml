@@ -8,11 +8,11 @@
 	<select id="getMemberCount" resultType="int" parameterType="com.ez.teen.member.model.MemberParam">
 		SELECT COUNT(*) AS allMemberCount FROM MEMBER
 
-				<if test='search == "member_id"'>
+				<if test='search == "id"'>
 				WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
 				</if>
 		
-				<if test='search == "member_nick"'>
+				<if test='search == "nick"'>
 				WHERE MEMBER_NICK LIKE '%'||#{keyword}||'%'
 				</if>
 				
@@ -31,13 +31,12 @@
 				FROM (
 	            	SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_NICK, MEMBER_EMAIL, MEMBER_DATE, MEMBER_PRO_CHECK
 					FROM MEMBER
-					ORDER BY MEMBER_NO DESC
 					
-					<if test='search == "member_id"'>
+					<if test='search == "id"'>
 					WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
 					</if>
 			
-					<if test='search == "member_nick"'>
+					<if test='search == "nick"'>
 					WHERE MEMBER_NICK LIKE '%'||#{keyword}||'%'
 					</if>
 					
@@ -45,6 +44,8 @@
 					WHERE MEMBER_ID LIKE '%'||#{keyword}||'%'
 					OR MEMBER_NICK LIKE '%'||#{keyword}||'%'
 					</if>
+					
+					ORDER BY MEMBER_NO DESC
 					
 					) A
 			) WHERE RN BETWEEN #{start} AND #{end}

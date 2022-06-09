@@ -31,7 +31,7 @@ AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
 AND N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 </if>
 
-<if test='search == "member_nick"'>
+<if test='search == "nick"'>
 AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 </if>
 
@@ -63,7 +63,7 @@ AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
 AND N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 </if>
 
-<if test='search == "member_nick"'>
+<if test='search == "nick"'>
 AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 </if>
 

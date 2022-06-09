@@ -71,7 +71,7 @@
                             <option value="all" id="search" selected>전체</option>
                             <option value="title" id="search">제목</option>
                             <option value="content" id="search">내용</option>
-                            <option value="name" id="search">작성자</option>
+                            <option value="nick" id="search">작성자</option>
                         </select>
                         <div class="search">
                             <input type="text" id="keyword" placeholder="검색">

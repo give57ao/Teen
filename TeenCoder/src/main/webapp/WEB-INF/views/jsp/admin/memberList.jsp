@@ -41,14 +41,14 @@
                     </div>
                     <!-- Search -->
                     <div id="board_list_search">
-                        <select class="dropdown">
+						<select class="dropdown" id="selectBoxTest">
                             <option value="all" id="search" selected>전체</option>
                             <option value="id" id="search">아이디</option>
                             <option value="nick" id="search">닉네임</option>
                         </select>
                         <div class="search">
                             <input type="text" id="keyword" placeholder="검색">
-                            <button class="btn_search"></button>
+                            <button class="btn_search" onClick="searchBoard()"></button>
                         </div>
                     </div>
                 	<!-- List Row -->
