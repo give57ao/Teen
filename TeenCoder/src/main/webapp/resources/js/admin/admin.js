@@ -32,6 +32,8 @@ function goNoticeBoard() {
 	location.href = "/teen/admin/noticeBoard";
 }
 
+
+// 검색기능
 function searchBoard() {
 	var keyword = document.getElementById('keyword').value;
 	var selectedElement = document.getElementById("selectBoxTest");    
@@ -42,5 +44,5 @@ function searchBoard() {
 		alert('검색 설정을 확인 해주세요.');
 		return false;
 	}
-	location.href = '/teen/admin/memberList?search='+optionVal+'&keyword='+ keyword;
+	location.href = '/teen/admin/adminBoard?search='+optionVal+'&keyword='+ keyword;
 }

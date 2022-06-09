@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ez.teen.admin.mapper.AdminMapper;
 import com.ez.teen.board.model.BoardModel;
+import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 
@@ -44,5 +45,12 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	public void memberDelete(MemberModel memberModel) throws Exception {
 		adminMapper.memberDelete(memberModel);
 	}
+
+	// 게시글 관리
+	@Override
+	public List<BoardModel> adminBoard(BoardParam boardParam) {
+		return adminMapper.adminBoard(boardParam);
+	}
+
 
 }

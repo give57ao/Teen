@@ -47,7 +47,7 @@
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2><a href="#">< 리스트로 이동</a></h2>
+                        <h2><a href="../board?borad_group_no?=${boardNo}">< 리스트로 이동</a></h2>
                     </div>
                 	<!-- List Row -->
                 	<c:forEach items="${boardDetail}" var="boardDetail" varStatus="status">
@@ -69,8 +69,9 @@
 	                                <h3>
 	                                    <a href="#">
 	                                        <span class="tag_hit">[추천]</span> ${boardDetail.board_title}
-	                                        <img src="/teen/resources/images/icon/icon_image.svg" class="i_image">
-	                                        <img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
+												<c:if test="${boardDetail.board_file_check == 'Y' }">
+	                                        	<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
+	                                        	</c:if>
 	                                    </a>
 	                                </h3>
 	                            </div>
@@ -194,7 +195,8 @@
 	
 	<!-- JS -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/detail/boardDetail.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
 </body>

@@ -350,6 +350,7 @@ ORDER BY board_comment_count DESC
 		,B.BOARD_HIT_COUNT AS BOARD_HIT_COUNT
 		,B.BOARD_LIKE_COUNT AS BOARD_LIKE_COUNT
 		,B.BOARD_TAG_NAME AS BOARD_TAG_NAME
+		,B.BOARD_FILE_CHECK AS BOARD_FILE_CHECK
 		,M.MEMBER_NICK AS MEMBER_NICK
 		,COUNT(C.BOARD_NO) AS board_comment_count
 
@@ -370,6 +371,7 @@ ORDER BY board_comment_count DESC
 		,B.BOARD_HIT_COUNT
 		,B.BOARD_LIKE_COUNT
 		,B.BOARD_TAG_NAME
+		,B.BOARD_FILE_CHECK
 		,M.MEMBER_NICK
 
 	</select>
@@ -427,9 +429,9 @@ ORDER BY board_comment_count DESC
 	VALUES(
 	 #{bcomment_no}
 	,#{board_no}
+	,#{member_no}
 	,#{bcomment_content}
 	,SYSDATE
-	,#{member_no}
 	,0
 	,0
 	,#{ref_step}

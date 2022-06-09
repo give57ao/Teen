@@ -2,6 +2,8 @@ package com.ez.teen.admin.service;
 
 import java.util.List;
 
+import com.ez.teen.board.model.BoardModel;
+import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 
@@ -20,5 +22,11 @@ public interface AdminMemberService {
 	
 	// 회원정보 삭제
 	public void memberDelete(MemberModel memberModel) throws Exception;
+
+	// 게시글 관리
+	public List<BoardModel> adminBoard(BoardParam boardParam);
+
+	
+	
 
 }
