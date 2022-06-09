@@ -21,6 +21,11 @@
 	box-shadow: none;
 }
 
+.row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
 a {
 	text-decoration: none !important;
 }
@@ -37,4 +42,9 @@ a {
 #header_menu .log:hover {
     text-decoration: underline !important;
     color: inherit !important;
+}
+
+#contents_category li a:hover,
+#board_list_row .row_title a:hover {
+	color: #111 !important;
 }

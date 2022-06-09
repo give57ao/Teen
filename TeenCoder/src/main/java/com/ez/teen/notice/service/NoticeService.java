@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.board.model.CommentModel;
+import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.notice.model.NoticeModel;
 import com.ez.teen.notice.model.NoticeParam;
 
@@ -22,5 +24,11 @@ public interface NoticeService {
 	
 	//첨부파일 추가
 	public void insertNotiFile(Map<String, Object> map)throws Exception;
+	
+	//댓글 전부 불러오기
+	public List<CommentModel> reportCmtList(CommentParam cmtParam);
+	
+	//댓글 삭제
+	public void deleteCmt(CommentModel cmtModel)throws Exception;
 
 }

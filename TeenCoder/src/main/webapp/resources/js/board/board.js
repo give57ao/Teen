@@ -1,6 +1,6 @@
 // 게시글 리스트로 이동
 function goBoard() {
-	location.href = "/teen/baord/";
+	location.href = "/teen/board?board_group_no=1";
 }
 
 // 게시글 작성
@@ -17,12 +17,12 @@ $(document).ready(function() {
 		fn_deleteFile($(this));
 	});
 	
-	$('#summernote').summernote();
+	$('.summernote').summernote();
 });
 
 // 파일 추가
 function fn_addFile() {
-	var str = "<tr><th></th><td><div><input type='file' id='file' name='file_"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></div></td></tr>";
+	var str = "<tr><th></th><td><div><label class='btn_com btn_sel_file' for='file'>파일 선택</label><input type='file' id='file' name='file_"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></div></td></tr>";
 	
 	$("#fileDiv").after(str);
 	$("a[id='deleteFile']").on("click", function(e) {

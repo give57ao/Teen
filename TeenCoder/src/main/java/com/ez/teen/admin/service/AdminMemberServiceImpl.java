@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ez.teen.admin.mapper.AdminMapper;
-import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
@@ -45,15 +44,5 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	public void memberDelete(MemberModel memberModel) throws Exception {
 		adminMapper.memberDelete(memberModel);
 	}
-	
-	@Override
-	public List<BoardModel> reportList(ReportParam reportParam) {
-		return adminMapper.reportList(reportParam);
-	}
-	
-	// 전체 게시글 수
-	@Override
-	public int getReportCount(ReportParam reportParam) {
-		return adminMapper.getReportCount(reportParam);
-	}
+
 }

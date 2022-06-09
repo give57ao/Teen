@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  
 <!DOCTYPE html>
 <html>
@@ -63,6 +65,7 @@
 	                                <tr class="row_title">
 	                                    <td>번호</td>
 	                                    <td>제목</td>
+	                                    <td>내용</td>
 	                                    <td>작성자</td>
 	                                    <td>작성일</td>
 	                                    <td>추천</td>
@@ -75,29 +78,48 @@
 	                            <!-- List Row -->
 	                            <tbody>
 	                                <!-- Row1 -->
+	                                <c:forEach items="${comment}" var="cmt" >
 	                                <tr class="row">
-	                                   <td>1</td>
-	                                   <td>게시글 제목</td>
-	                                   <td>TeenCoder</td>
-	                                   <td>2022-05-25</td>
-	                                   <td>0</td>
-	                                   <td>0</td>
-	                                   <td>Y</td>
-	                                    <td><a href="#">삭제</a></td>
+	                                   <td>${cmt.bcomment_no }</td>
+	                                   <td>${cmt.board_title }</td>
+	                                   <td>${cmt.bcomment_content }</td>
+	                                   <td>${cmt.member_nick }</td>
+	                                   <td>${cmt.bcomment_date }</td>
+	                                   <td>${cmt.bcomment_like_count }</td>
+	                                   <td>${cmt.bcomment_report_count }</td>
+	                                   <td>${cmt.board_file_check }</td>
+	                                   <td><a href="/teen/admin/deleteCmt?bcomment_no=${cmt.bcomment_no }" onclick="return delCk();" >삭제</a></td>
 	                                </tr>
+	                                </c:forEach>
 	                            </tbody>
 	                        </table>
                         </form>
                     </div>
                     <!-- Pagination -->
                     <div id="board_list_pagination">
-                        <ul>
-                            <li class="prev"><a href="#"></a></li>
-                            <li><a href="#" class="select">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="next"><a href="#"></a></li>
-                        </ul>
+                       <ul>
+							<!-- 왼쪽 버튼 -->
+							<!-- 시작페이지가 1이 아닐 때 -->
+							<c:if test="${paging.nowPage != 1}">
+								<li><a class="prev" href="/teen/admin/memberList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage - 1}&cntPerPage=${paging.cntPerPage}"></a></li>
+							</c:if>
+							<!-- 페이징 숫자가 나오는 부분 -->
+							<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
+								var="p">
+								<c:choose>
+									<c:when test="${p == paging.nowPage}">
+										<li><a class="select">${p}</a></li>
+									</c:when>
+									<c:when test="${p != paging.nowPage}">
+										<li><a href="/teen/admin/memberList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a></li>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<!-- 오른쪽 버튼 -->
+							<c:if test="${paging.startPage < paging.endPage}">
+								<li><a class="next" href="/teen/admin/memberList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage + 1}&cntPerPage=${paging.cntPerPage}"></a></li>
+							</c:if>
+						</ul>
                     </div>
                 </div>
             </div>
@@ -109,5 +131,15 @@
 	
 	<!-- JS -->
 	<script type="text/javascript" src="/teen/resources/js/admin/admin.js"></script>
+	<script type="text/javascript">
+	function delCk(){
+		if(confirm("정말 삭제하시겠습니까?? 진짜? 정말??")){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	</script>
 </body>
 </html>

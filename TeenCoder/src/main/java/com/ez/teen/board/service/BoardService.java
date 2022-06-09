@@ -64,7 +64,6 @@ public interface BoardService {
 	
 	//ref_step 확인
 	public int getRefStep(int board_no);
-		
-	public void deleteBoard(int board_no);
+	
 	
 }

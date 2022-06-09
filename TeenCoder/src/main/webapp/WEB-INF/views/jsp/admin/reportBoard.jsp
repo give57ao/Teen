@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  
 <!DOCTYPE html>
 <html>
@@ -73,48 +71,30 @@
 	                            <br>
 	                            <!-- List Row -->
 	                            <tbody>
-	                            <c:forEach items="${reportList}" var="reportList">
 	                                <!-- Row1 -->
 	                                <tr class="row">
-	                                   <td>${reportList.board_no}</td>
-	                                   <td>${reportList.board_title}</td>
-	                                   <td>${reportList.member_nick}</td>
-	                                   <td><fmt:formatDate value="${reportList.board_date}" pattern="yyyy.MM.dd"/></td>
-	                                   <td>${reportList.board_report_count}</td>
-	                                    <td><a href="/teen/board/delete?board_no=${reportList.board_no}">삭제</a></td>
+	                                   <td>1</td>
+	                                   <td>게시글 제목</td>
+	                                   <td>TeenCoder</td>
+	                                   <td>2022-05-25</td>
+	                                   <td>0</td>
+	                                    <td><a href="#">삭제</a></td>
 	                                </tr>
-	                              </c:forEach>
 	                            </tbody>
 	                        </table>
-	                        
                         </form>
                     </div>
                     <!-- Pagination -->
                     <div id="board_list_pagination">
-						<ul>
-							<!-- 왼쪽 버튼 -->
-							<!-- 시작페이지가 1이 아닐 때 -->
-							<c:if test="${paging.nowPage != 1}">
-								<li><a class="prev" href="/teen/admin/reportBoard?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage - 1}&cntPerPage=${paging.cntPerPage}"></a></li>
-							</c:if>
-							<!-- 페이징 숫자가 나오는 부분 -->
-							<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
-								<c:choose>
-									<c:when test="${p == paging.nowPage}">
-										<li><a class="select">${p}</a></li>
-									</c:when>
-									<c:when test="${p != paging.nowPage}">
-										<li><a href="/teen/admin/reportBoard?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a></li>
-									</c:when>
-								</c:choose>
-							</c:forEach>
-							<!-- 오른쪽 버튼 -->
-							<c:if test="${paging.startPage < paging.endPage}">
-								<li><a class="next" href="/teen/admin/reportBoard?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage + 1}&cntPerPage=${paging.cntPerPage}"></a></li>
-							</c:if>
-						</ul>
-					</div>
-				</div>
+                        <ul>
+                            <li class="prev"><a href="#"></a></li>
+                            <li><a href="#" class="select">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li class="next"><a href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

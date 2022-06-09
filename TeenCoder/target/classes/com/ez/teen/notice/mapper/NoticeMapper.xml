@@ -31,7 +31,7 @@ AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
 AND N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 </if>
 
-<if test='search == "member_nick"'>
+<if test='search == "nick"'>
 AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 </if>
 
@@ -63,7 +63,7 @@ AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
 AND N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 </if>
 
-<if test='search == "member_nick"'>
+<if test='search == "nick"'>
 AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
 </if>
 
@@ -141,6 +141,34 @@ OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 	ORDER BY FILE_NO ASC
 	]]>
 	</select>
+
+	<!-- 신고댓글 리스트 -->
+	<select id="reportCmtList" resultType="com.ez.teen.board.model.CommentModel" parameterType="com.ez.teen.board.model.CommentParam">
+	SELECT
+			B.BOARD_NO
+			,B.BOARD_TITLE
+			,B.BOARD_FILE_CHECK
+			,M.MEMBER_NICK
+			,C.BCOMMENT_NO
+			,C.BCOMMENT_CONTENT
+			,C.BCOMMENT_DATE
+			,C.BCOMMENT_LIKE_COUNT
+			
+			
+			FROM BOARD B
+			INNER JOIN BCOMMENT C
+			ON B.BOARD_NO = C.BOARD_NO
+			INNER JOIN MEMBER M
+			ON B.MEMBER_NO = M.MEMBER_NO
+            ORDER BY C.BCOMMENT_REPORT_COUNT
+	
+	</select>
+
+	<!-- 신고 댓글 삭제 -->
+	<delete id="deleteCmt" parameterType="com.ez.teen.board.model.CommentModel">
+	DELETE FROM BCOMMENT
+	WHERE BCOMMENT_NO = #{bcomment_no}
+	</delete>
 
 
 

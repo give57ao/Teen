@@ -2,9 +2,6 @@ package com.ez.teen.admin.service;
 
 import java.util.List;
 
-import com.ez.teen.admin.model.ReportParam;
-import com.ez.teen.board.model.BoardModel;
-import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 
@@ -24,8 +21,4 @@ public interface AdminMemberService {
 	// 회원정보 삭제
 	public void memberDelete(MemberModel memberModel) throws Exception;
 
-	public List<BoardModel> reportList(ReportParam reportParam);
-	
-	//전체 게시글 수
-	public int  getReportCount(ReportParam reportParam);
 }

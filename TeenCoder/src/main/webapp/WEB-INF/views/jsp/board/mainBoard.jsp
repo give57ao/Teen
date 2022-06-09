@@ -32,26 +32,32 @@
                 <!-- Category -->
                 <ul id="contents_category">
                 	<c:if test="${paging.board_group_no eq '1'}">
-						<li><a href="/teen/board/" class="select">COMMUNITY</a></li>
+						<li><a href="/teen/board?board_group_no=1" class="select">COMMUNITY</a></li>
                     </c:if>
                     <c:if test="${paging.board_group_no eq '2'}">
 						<li><a href="/teen/board?board_group_no=2" class="select">Q&amp;A</a></li>
                     </c:if>
                     
-                    <li><a href="/teen/board?board_tag_name=html">#HTML</a></li>
-                    <li><a href="/teen/board?board_tag_name=css">#CSS</a></li>
-                    <li><a href="/teen/board?board_tag_name=js">#JS</a></li>
-                    <li><a href="/teen/board?board_tag_name=java">#Java</a></li>
-                    <li><a href="/teen/board?board_tag_name=c language">#C Language</a></li>
-                    <li><a href="/teen/board?board_tag_name=python">#Python</a></li>
-                    <li><a href="/teen/board?board_tag_name=sql">#SQL</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=html">#HTML</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=css">#CSS</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=js">#JS</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=java">#Java</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=c language">#C Language</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=python">#Python</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=sql">#SQL</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2>Community</h2>
-                        <ul id="board_list_menu" class="side_menu">
+					<c:if test="${paging.board_group_no eq '1'}">
+					<h2>COMMUNITY</h2>	
+                    </c:if>
+                    <c:if test="${paging.board_group_no eq '2'}">
+						<h2>Q&amp;A</h2>
+                    </c:if>                        
+                    
+                    <ul id="board_list_menu" class="side_menu">
 	                        <li><a href="?sort=recent&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">최신순</a></li>
 							<li><a href="?sort=view&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">조회순</a></li>
 							<li><a href="?sort=recommend&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}">추천순</a></li>
@@ -60,20 +66,24 @@
                     </div>
                     <!-- Search -->
                     <div id="board_list_search">
-                        <select class="dropdown">
+						<select class="dropdown" id="selectBoxTest">
+                        	<option value="" id="search" disabled>선택</option>
                             <option value="all" id="search" selected>전체</option>
                             <option value="title" id="search">제목</option>
                             <option value="content" id="search">내용</option>
-                            <option value="name" id="search">작성자</option>
+                            <option value="nick" id="search">작성자</option>
                         </select>
                         <div class="search">
                             <input type="text" id="keyword" placeholder="검색">
-                            <button class="btn_search"></button>
+                            <button class="btn_search" onClick="searchBoard()"></button>
                         </div>
                     </div>
                 	<!-- List Row -->
                     <div id="board_list_row">
                         <!-- Row1 -->
+                        <c:choose>
+						<c:when test="${paging.total > 0}">
+						
                         <c:forEach items="${board}" var="board">
 	                        <div class="row">
 	                            <div class="row_info">
@@ -106,7 +116,12 @@
 	                            </div>
 	                        </div>
 	                        <hr>
-                        </c:forEach>					
+                        </c:forEach>
+                        	</c:when>
+						<c:otherwise>
+						<h2>해당 내용이 없습니다.</h2>
+					</c:otherwise>
+						</c:choose>					
                     </div>
                     <!-- Pagination -->
 	                <div id="board_list_pagination">
@@ -145,8 +160,7 @@
     
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
-	
 	<!-- JS -->
-	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/board/mainBoard.js"></script>
 </body>
 </html>

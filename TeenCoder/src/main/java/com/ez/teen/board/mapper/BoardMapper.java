@@ -70,5 +70,4 @@ public interface BoardMapper {
 
 	public int getRefStep(int board_no);
 	
-	public void deleteBoard(int board_no);
 }

@@ -1,15 +1,16 @@
-/*$(document).ready(function() {
-	$("#comment_list .answer_list").hide();	
-	
-	$(".getAnswerBtn").click(function(){
-		alert("클릭 됨");
-		$(this).find("#comment_list .answer_list").toogle(500);
-	})
-})
-*/
+//답글 작성 폼 생성/제거
+function recomment(num){
+	console.log('ref_step : '  + num);
+	if ($('.answer_form-'+num).css('display') == 'none') {
+		$('.answer_form-'+num).show();
+    } else {
+		$('.answer_form-'+num).hide();
+    }
+}
 
+//댓글 접기 펼치기
 function dis(num) {
-	console.log(num);
+	console.log('ref_step : '  + num);
 	if ($('#comment_list .answer_list-'+num).css('display') == 'none') {
 		$('#comment_list .answer_list-'+num).show();
     } else {
@@ -24,26 +25,6 @@ function fn_fileDown(fileNo) {
 	formObj.submit();
 }
 
-
-$(document).ready(function() {
-	$(".answerDiv").hide();
-	
-	$(".getAnswerBtn").click(function() {
-		$(".answerDiv").slideDown();
-	})
-})
-
-
-$("#btn_delete").click(function(){
-	var board_no = document.getElementById("board_no").value
-		if(confirm("게시글을 삭제하시겠습니까?")){
-			
-			location.href="/teen/board/delete?board_no=" + board_no
-			
-			alert("게시글이 삭제되었습니다.")
-		}
-	});
-	
 $("#btn_recommend").click(function() {
 	if (confirm("해당 글을 추천하시겠습니까?")) {
 		location.href="/teen/board/recommend"

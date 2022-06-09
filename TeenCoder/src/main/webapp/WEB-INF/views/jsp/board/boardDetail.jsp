@@ -128,15 +128,24 @@
 		                            </div>
 		                            <ul class="row_top number">
 	                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${boardComment.ref_level}</li>
+	                                    <!-- boardCommen.ref_level 말고 count하는걸 새로 받아와야 할 것 같음 -->
 	                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${boardComment.bcomment_like_count}</li>
 	                                </ul>
 	                                <div class="btn_group">
 		                            	<input type="button" value="신고" class="btn_com btn_board">
 			                			<input type="button" value="추천" class="btn_com btn_board">
-			                			<input type="button" value="답글" class="btn_com btn_board">
+			                			<input type="button" value="답글" class="btn_com btn_board" onClick="recomment(${boardComment.ref_step})" >
 		                            </div>
 	                            </div>
 		                	</div>
+		                	<!-- Answer Form -->
+		                	<div id=answer  class="answer_form-${boardComment.ref_step}" style="display : none;">
+			                	<form id =answer_form>
+				                	<textarea name="answer" placeholder="답글 작성"></textarea>
+				                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
+				                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
+				                </form>
+			                </div>
 		                	<input type="button" value="답글 더 보기" class="getAnswerBtn" onClick="dis(${boardComment.ref_step})">
 		                	
 		                	<!-- Answer List -->
@@ -144,7 +153,7 @@
 								<c:if test="${boardComment.ref_step eq boardAnswer.ref_step}">
 								<c:set var="num" value="${boardAnswer.ref_step}" />
 								<input type="hidden" id="refNo" value="${num}"/>
-			                	<div id="comment_list" class="answer_list-${boardComment.ref_step}">
+			                	<div id="comment_list" class="answer_list-${boardComment.ref_step}" style="display : none;" >
 				                	<div class="comment_box answer_box">
 				                		<div class="row">
 				                            <div class="row_info">
@@ -172,14 +181,7 @@
 			                	</div>
 			                	</c:if>
 		                	</c:forEach>
-		                	<!-- Answer Form -->
-		                	<div id="answer">
-			                	<form id="answer_form">
-				                	<textarea name="answer" placeholder="답글 작성"></textarea>
-				                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
-				                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
-				                </form>
-			                </div>
+
 		                </div>
 	                </c:forEach>
                 </div>

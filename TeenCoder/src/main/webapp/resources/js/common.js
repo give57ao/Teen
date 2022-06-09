@@ -22,5 +22,3 @@ $(window).on('load', function() {
         $('#header_nav a').eq(3).addClass('active');
     }
 });
-
-// 홈 원형 프로그레스 애니메이션
