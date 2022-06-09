@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -65,7 +66,7 @@ public class NoticeController {
 	//공지사항 작성 폼
 	@GetMapping(value = "notice/boardWrite")
 	public String insertNoticeForm() {
-		return "admin/noticeBoardWrite";
+		return "notice/noticeBoardWrite";
 	}
 		
 	//공지사항 작성 기능
@@ -121,7 +122,7 @@ public class NoticeController {
 	}
 	
 	//댓글 관리 삭제
-	@PostMapping(value = "admin/reportCmtList")
+	@RequestMapping(value = "admin/deleteCmt")
 	public String reportCmtList(CommentModel cmtModel) throws Exception{
 		
 		noticeService.deleteCmt(cmtModel);
