@@ -22,18 +22,47 @@
                 TeenCoder 내 커뮤니티를 활용하여 사람들과 정보를 공유하고 소통할 수 있습니다.
             </h2>
             <div id="contents_pro">
-            	<div class="circle c1">
-            		<div class="chart" data-percent="${allMemberCount}">${allMemberCount}</div>
-				    <h2>전체 사용자</h2> 
-				</div>
-				<div class="circle c2">
-				 	<div class="chart" data-percent="${allBoardCount}">${allBoardCount}</div>
-				    <h2>전체 게시글</h2>
-				</div>
-				<div class="circle c3">
-				 	<div class="chart" data-percent="${allCommentCount}">${allCommentCount}</div>
-				    <h2>전체 댓글</h2>
-				</div>
+	            <ul class="display-container">
+				    <li class="note-display" data-note="${allMemberCount}.00">
+				    	<div class="circle">
+				    		<svg width="84" height="84" class="circle__svg">
+				    			<circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+				          		<circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+				        	</svg>
+					        <div class="percent">
+					        	<span class="percent__int">0</span>
+					       	 	<span class="percent__dec">00</span>
+					        </div>
+				      	</div>
+				      	<span class="label">전체 회원</span>
+				    </li>
+				    <li class="note-display" data-note="${allBoardCount}.00">
+				    	<div class="circle">
+				    		<svg width="84" height="84" class="circle__svg">
+				    			<circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+				          		<circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+				        	</svg>
+					        <div class="percent">
+					        	<span class="percent__int">0</span>
+					       	 	<span class="percent__dec">00</span>
+					        </div>
+				      	</div>
+				      	<span class="label">전체 게시글</span>
+				    </li>
+				    <li class="note-display" data-note="${allCommentCount}.00">
+				    	<div class="circle">
+				    		<svg width="84" height="84" class="circle__svg">
+				    			<circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+				          		<circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+				        	</svg>
+					        <div class="percent">
+					        	<span class="percent__int">0</span>
+					       	 	<span class="percent__dec">00</span>
+					        </div>
+				      	</div>
+				      	<span class="label">전체 댓글</span>
+				    </li>
+			    </ul>
             </div>
             <div id="btn_wrap">
                 <a href="/teen/board?board_group_no=1" class="btn_com btn_main">커뮤니티로 이동</a>
@@ -48,6 +77,7 @@
 	<!-- JS -->
 	<script type="text/javascript" src="/teen/resources/js/plugin/particles.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/plugin/app.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/plugin/progress.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
 </body>
 </html>

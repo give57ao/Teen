@@ -60,39 +60,40 @@
 					<div id="board_list_row">
 						<!-- Row1 -->
 						<c:choose>
-						<c:when test="${paging.total > 0}">
-						
-						<c:forEach items="${comment}" var="comment">
-							<div class="row">
-								<div class="row_info">
-									<div class="row_top member">
-										<h4>
-											<span class="tag_hit">[추천]</span> ${comment.board_title}
-											<c:if test="${comment.board_file_check eq 'Y'}">
-												<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
-											</c:if>
-										</h4>
+							<c:when test="${paging.total > 0}">
+								<c:forEach items="${comment}" var="comment">
+									<div class="row">
+										<div class="row_info">
+											<div class="row_top member">
+												<h4>
+													<a class="overtext" href="/teen/board/detail?board_no=${board.board_no}"> <!-- 링크확인필요 -->
+														<span class="tag_hit">[추천]</span> ${comment.board_title}
+														<c:if test="${comment.board_file_check eq 'Y'}">
+															<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
+														</c:if>
+													</a>
+												</h4>
+											</div>
+											<span class="row_top date"><fmt:formatDate value="${comment.bcomment_date}" pattern="yyyy.MM.dd"/></span>
+											<ul class="row_top number">
+												<li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${comment.bcomment_like_count}</li>
+											</ul>
+										</div>
+										<div class="row_title">
+											<h3 class="comment_contents">
+												<a class="overtext" href="/teen/board/detail?board_no=${board.board_no}"> <!-- 링크확인필요 -->
+		 											${comment.bcomment_content}
+												</a>
+											</h3>
+											<input type="button" value="삭제" class="btn_com btn_del_list">
+										</div>
 									</div>
-									<span class="row_top date"><fmt:formatDate value="${comment.bcomment_date}" pattern="yyyy.MM.dd"/></span>
-									<ul class="row_top number">
-										<li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${comment.bcomment_like_count}</li>
-									</ul>
-								</div>
-								<div class="row_title">
-									<h3 class="comment_contents">
-										<a class="overtext" href="/teen/board/detail?board_no=${board.board_no}"> <!-- 링크 변경 필요! -->
- 											${comment.bcomment_content}
-										</a>
-									</h3>
-									<input type="button" value="삭제" class="btn_com btn_del_list">
-								</div>
-							</div>
-							<hr>
-						</c:forEach>
-						</c:when>
-						<c:otherwise>
-						<h2>해당 내용이 없습니다.</h2>
-					</c:otherwise>
+									<hr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<h2>해당 내용이 없습니다.</h2>
+							</c:otherwise>
 						</c:choose>
 					</div>
 					<!-- Pagination -->
@@ -104,8 +105,7 @@
 								<li><a class="prev" href="/teen/member/commmentList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage - 1}&cntPerPage=${paging.cntPerPage}"></a></li>
 							</c:if>
 							<!-- 페이징 숫자가 나오는 부분 -->
-							<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
-								var="p">
+							<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
 								<c:choose>
 									<c:when test="${p == paging.nowPage}">
 										<li><a class="select">${p }</a></li>
