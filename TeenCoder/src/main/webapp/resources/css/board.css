@@ -57,7 +57,11 @@
 
 .row {
     width: 100%;
-    padding: 15px 0 5px;
+    padding: 15px 0;
+}
+
+.row_info {
+	margin-top: 5px;
 }
 
 .row_info,
@@ -112,7 +116,7 @@
 }
 
 .row_contents {
-	margin: 15px 0;
+	margin: 30px 0;
 	display: inline-block;
 }
 
@@ -279,7 +283,7 @@
 
 /* Board Comment */
 #comment_form {
-	margin-top: -35px;
+	margin: -35px 0 30px;
 	overflow: hidden;
 }
 
@@ -306,8 +310,20 @@
 	padding: 0;
 }
 
+#comment_list .getAnswerBtn {
+	width: 100%;
+	height: 40px;
+	margin-top: -1px;
+	border: 1px solid #CCC;
+	border-radius: 10px;
+}
+
 .comment_contents {
 	font-weight: normal;
+}
+
+.comment_count {
+	color: #FF0151;
 }
 
 /* Board Answer */

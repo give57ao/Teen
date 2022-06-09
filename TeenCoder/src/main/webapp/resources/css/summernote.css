@@ -21,6 +21,11 @@
 	box-shadow: none;
 }
 
+.row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
 a {
 	text-decoration: none !important;
 }
