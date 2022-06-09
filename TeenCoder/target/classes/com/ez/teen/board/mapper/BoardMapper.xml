@@ -445,4 +445,10 @@ ORDER BY board_comment_count DESC
 		update Board set board_like_count = board_like_count + 1 where board_no = #{board_no}
 	</update>
 	
+	<delete id="deleteBoard" parameterType="int">
+		 DELETE
+		 FROM BOARD
+		 WHERE BOARD_NO = #{board_no}
+	</delete>
+	
 </mapper>

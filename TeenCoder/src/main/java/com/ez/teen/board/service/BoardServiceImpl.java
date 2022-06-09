@@ -139,4 +139,10 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.recommendBoard(boardModel);
 	}
 
+	@Override
+	public void deleteBoard(int board_no) {
+		boardMapper.deleteBoard(board_no);
+		
+	}
+
 }

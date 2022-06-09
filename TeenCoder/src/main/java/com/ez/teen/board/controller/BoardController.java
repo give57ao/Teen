@@ -55,7 +55,7 @@ public class BoardController {
 	}
 
 	//게시글 수정 폼
-	@GetMapping("/board/modify")
+	@GetMapping("board/modify")
 	public String updateBoardForm(BoardModel boardModel, Model model , HttpServletRequest request)throws Exception{
 		
 		HttpSession session = request.getSession();
@@ -67,7 +67,7 @@ public class BoardController {
 	}
 	
 	//게시글 수정 기능
-	@PostMapping("/board/modify")
+	@PostMapping("board/modify")
 	public String updateBoard(BoardModel boardModel, Model model , HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
@@ -220,13 +220,21 @@ public class BoardController {
 			return "board/mainBoard";
 	}
 	
-	@RequestMapping("/board/recommend")
+	@RequestMapping("board/recommend")
     public String recommendBoard(BoardModel boardModel) throws Exception {
         
         boardService.recommendBoard(boardModel);
-    
         return "forward:/board/detail";
     }
+	
+	@RequestMapping("board/delete")
+	public String deleteBoard(@RequestParam("board_no") int board_no) {
+		
+		boardService.deleteBoard(board_no);
+		
+		return "redirect:/board";
+		
+	}
 
 	
 }

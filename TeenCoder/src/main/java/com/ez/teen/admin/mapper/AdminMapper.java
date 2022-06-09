@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ez.teen.admin.model.ReportParam;
+import com.ez.teen.board.model.BoardModel;
+import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 import com.ez.teen.notice.model.NoticeModel;
@@ -27,4 +30,8 @@ public interface AdminMapper {
 
 	public void insertNotice(NoticeModel noticeModel) throws Exception;
 	
+	public List<BoardModel> reportList(ReportParam reportParam);
+	
+	//전체 게시글 수
+	public int getReportCount(ReportParam reportParam);
 }

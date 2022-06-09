@@ -1,5 +1,7 @@
 package com.ez.teen.admin.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ez.teen.admin.model.ReportParam;
+import com.ez.teen.admin.service.AdminMemberService;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
-import com.ez.teen.admin.service.AdminMemberService;
 
 @Controller
 @RequestMapping("/admin")
@@ -81,4 +84,42 @@ public class AdminController {
 		return "redirect:/admin/memberList";
 	}
 	
+	@GetMapping("/reportBoard")
+	public String myBoardList(Model model, ReportParam reportParam,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "keyword", required = false) String keyword, HttpSession session) {
+
+		int total = adminMemberService.getReportCount(reportParam);
+
+		System.out.println("total :" + total);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		reportParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		if (total == 0) {
+			reportParam.setEndPage(1);
+		}
+		model.addAttribute("paging", reportParam);
+		model.addAttribute("sort", sort);
+		model.addAttribute("reportList", adminMemberService.reportList(reportParam));
+		
+		System.out.println("reportList");
+		System.out.println("total : " + total);
+		System.out.println("startPage :" + reportParam.getStartPage());
+		System.out.println("endPage :" + reportParam.getEndPage());
+		System.out.println("cntPerPage :" + reportParam.getCntPerPage());
+		System.out.println("nowPage :" + reportParam.getNowPage());
+		System.out.println("lastPage :" + reportParam.getLastPage());
+
+		return "admin/reportBoard";
+
+	}
 }

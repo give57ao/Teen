@@ -62,5 +62,6 @@ public interface BoardService {
 	//추천수 증가
 	public void recommendBoard(BoardModel boardModel);
 	
+	public void deleteBoard(int board_no);
 	
 }

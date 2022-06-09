@@ -23,17 +23,6 @@
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
 	
-	<!-- aJax -->
-	<script type="text/javascript">
-	$("#btn_recommend").click(function(){
-	    if(confirm("해당 글을 추천하시겠습니까?")){
-	        location.href="/teen/board/recommend"
-	        
-	        alert("해당 글을 추천하였습니다.")
-	        
-	        }
-	    });
-	</script>
 	<!-- Contents -->
 	<div id="contents">
 		<div id="contents_title">
@@ -112,8 +101,9 @@
 									<div class="btn_group">
 										<input type="button" value="스크랩" class="btn_com btn_board">
 										<input type="button" value="신고" class="btn_com btn_board">
-										<input type="button" value="추천" class="btn_com btn_board"
-											id="btn_recommend">
+										<input type="button" value="추천" class="btn_com btn_board"id="btn_recommend">
+										<input type="button" value="삭제" class="btn_com btn_board" id="btn_delete">
+										<input type="hidden" value="${boardModel.board_no}" id="board_no">
 									</div>
 								</div>
 								<hr>
@@ -160,6 +150,8 @@
 										<input type="button" value="추천" class="btn_com btn_board">
 										<input type="button" value="답글" class="btn_com btn_board"
 											onClick="answerInsert()">
+											<%-- <input type="button" value="삭제" class="btn_com btn_board" id="btn_delete"
+											onclick="location.href='/teen/board/delete?board_no=${boardModel.board_no}'"> --%>
 									</div>
 								</div>
 							</div>

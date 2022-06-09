@@ -68,4 +68,5 @@ public interface BoardMapper {
 
 	public void fileCk(BoardModel boardModel);
 	
+	public void deleteBoard(int board_no);
 }
