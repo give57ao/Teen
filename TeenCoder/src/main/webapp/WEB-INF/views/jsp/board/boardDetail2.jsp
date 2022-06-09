@@ -26,6 +26,23 @@
         </div>
         <div id="contents_detail">
             <div id="contents_wrap">
+            <!-- Category -->
+                <ul id="contents_category">
+                	<c:if test="${paging.board_group_no eq '1'}">
+						<li><a href="/teen/board/" class="select">COMMUNITY</a></li>
+                    </c:if>
+                    <c:if test="${paging.board_group_no eq '2'}">
+						<li><a href="/teen/board?board_group_no=2" class="select">Q&amp;A</a></li>
+                    </c:if>
+                    
+                    <li><a href="/teen/board?board_tag_name=html">#HTML</a></li>
+                    <li><a href="/teen/board?board_tag_name=css">#CSS</a></li>
+                    <li><a href="/teen/board?board_tag_name=js">#JS</a></li>
+                    <li><a href="/teen/board?board_tag_name=java">#Java</a></li>
+                    <li><a href="/teen/board?board_tag_name=c language">#C Language</a></li>
+                    <li><a href="/teen/board?board_tag_name=python">#Python</a></li>
+                    <li><a href="/teen/board?board_tag_name=sql">#SQL</a></li>
+                </ul>
                 <!-- Board -->
                 <div id="board_list">
                     <!-- Title -->
@@ -46,7 +63,7 @@
 	                                        <span class="rank">[Expert]</span> ${boardDetail.member_nick}
 	                                    </h4>
 	                                </div>
-	                                <span class="row_top date">${boardDetail.board_date}</span>
+	                                <span class="row_top date"><fmt:formatDate value="${boardDetail.board_date}" pattern="yyyy.MM.dd"/></span>
 	                            </div>
 	                            <div class="row_title">
 	                                <h3>
@@ -59,7 +76,7 @@
 	                            </div>
 	                            <div class="row_contents">
 	                            	<p>${boardDetail.board_content}</p>
-	                            	<span><a href="#">첨부파일 다운로드</a></span>
+	                            	
 	                            	<form name="downFile" role="form" method="post">
 	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
 										<c:forEach var="file" items="${file}">
