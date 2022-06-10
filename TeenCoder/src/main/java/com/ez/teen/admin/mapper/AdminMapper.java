@@ -40,12 +40,9 @@ public interface AdminMapper {
 	// 신고글 삭제
 	public void deleteReportBoard(BoardModel boardModel);
 	
-	// 공지글 관리
+	// 공지글 리스트
 	public List<NoticeModel> noticeBoard(NoticeParam noticeParam);
 	
 	// 공지글 삭제
 	public void noticeBoardDelete(NoticeModel noticeModel);
-	
-	public void insertNotice(NoticeModel noticeModel) throws Exception;
-	
 }

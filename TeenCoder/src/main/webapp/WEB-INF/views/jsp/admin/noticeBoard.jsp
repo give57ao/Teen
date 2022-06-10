@@ -41,7 +41,7 @@
                         <ul id="board_list_menu" class="side_menu">
                             <li><a href="?sort=recent&search=${paging.search}&keyword=${paging.keyword}">최신순</a></li>
 							<li><a href="?sort=view&search=${paging.search}&keyword=${paging.keyword}">조회순</a></li>
-                            <li><a href="/teen/admin/noticeWrite" class="btn_com btn_notice">공지글 작성</a></li>
+                            <li><a href="/teen/admin/noticeBoardWrite" class="btn_com btn_notice">공지글 작성</a></li>
                         </ul>
                     </div>
                     <!-- Search -->
@@ -84,6 +84,7 @@
 		                                   <td style="width: 10%;">${notice.noti_hit_count}</td>
 		                                   <td style="width: 10%;">${notice.noti_file_check}</td>
 		                                   <td style="width: 10%;">
+		                                   		<a href="/teen/admin/noticeBoardModify?noti_no=${notice.noti_no}">수정</a> /
 		                                   	    <a href="" onClick="noticeDeletePopup(${notice.noti_no})">삭제</a>
 	                                   	   </td>
 		                                </tr>

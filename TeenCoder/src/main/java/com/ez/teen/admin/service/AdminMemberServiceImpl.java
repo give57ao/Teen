@@ -73,7 +73,7 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		adminMapper.deleteReportBoard(boardModel);
 	}
 	
-	// 공지글 관리
+	// 공지글 리스트
 	@Override
 	public List<NoticeModel> noticeBoard(NoticeParam noticeParam) {
 		return adminMapper.noticeBoard(noticeParam);
