@@ -1,10 +1,6 @@
 const displays = document.querySelectorAll('.note-display');
 const transitionDuration = 1000;
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> branch 'ProtoType' of https://github.com/give57ao/Teen.git
 displays.forEach(display => {
   let note = parseFloat(display.dataset.note);
   let [int, dec] = display.dataset.note.split('.');
