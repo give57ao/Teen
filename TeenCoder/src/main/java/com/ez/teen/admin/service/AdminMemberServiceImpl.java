@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ez.teen.notice.model.NoticeModel;
+import com.ez.teen.notice.model.NoticeParam;
 import com.ez.teen.admin.mapper.AdminMapper;
-import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
-import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 
@@ -54,6 +54,7 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	public List<BoardModel> adminBoard(BoardParam boardParam) {
 		return adminMapper.adminBoard(boardParam);
 	}
+	
 	// 신고글 관리 리스트
 	@Override
 	public List<BoardModel> reportList(ReportParam reportParam) {
@@ -69,7 +70,12 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	// 신고글 삭제
 	@Override
 	public void deleteReportBoard(BoardModel boardModel) {
-		
 		adminMapper.deleteReportBoard(boardModel);
+	}
+	
+	// 공지글 관리
+	@Override
+	public List<NoticeModel> noticeBoard(NoticeParam noticeParam) {
+		return adminMapper.noticeBoard(noticeParam);
 	}
 }

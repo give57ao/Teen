@@ -2,6 +2,8 @@ package com.ez.teen.admin.service;
 
 import java.util.List;
 
+import com.ez.teen.notice.model.NoticeModel;
+import com.ez.teen.notice.model.NoticeParam;
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
@@ -27,13 +29,15 @@ public interface AdminMemberService {
 	// 게시글 관리
 	public List<BoardModel> adminBoard(BoardParam boardParam);
 
-	//신고 게시글 수
+	// 신고 게시글 수
 	public int getReportCount(ReportParam reportParam);
 	
-	//신고글 관리 리스트
+	// 신고글 관리 리스트
 	public List<BoardModel> reportList(ReportParam reportParam);
 	
-	//신고글 삭제
+	// 신고글 삭제
 	public void deleteReportBoard(BoardModel boardModel);
-
+	
+	// 공지글 리스트
+	public List<NoticeModel> noticeBoard(NoticeParam noticeParam);
 }

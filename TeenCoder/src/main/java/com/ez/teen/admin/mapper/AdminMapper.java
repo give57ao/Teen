@@ -4,14 +4,13 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.ez.teen.admin.model.ReportParam;
+import com.ez.teen.notice.model.NoticeModel;
+import com.ez.teen.notice.model.NoticeParam;
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
-import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
-import com.ez.teen.notice.model.NoticeModel;
 
 @Mapper
 public interface AdminMapper {
@@ -30,17 +29,19 @@ public interface AdminMapper {
 	// 회원정보 삭제
 	public void memberDelete(MemberModel memberModel) throws Exception;
 
-	public void insertNotice(NoticeModel noticeModel) throws Exception;
-
 	// 게시글 관리
 	public List<BoardModel> adminBoard(BoardParam boardParam);
 
-	
 	public List<BoardModel> reportList(ReportParam reportParam);
 	
-	//전체 게시글 수
+	// 전체 게시글 수
 	public int getReportCount(ReportParam reportParam);
 	
-	//신고글 삭제
+	// 신고글 삭제
 	public void deleteReportBoard(BoardModel boardModel);
+	
+	// 공지글 관리
+	public List<NoticeModel> noticeBoard(NoticeParam noticeParam);
+	
+	public void insertNotice(NoticeModel noticeModel) throws Exception;
 }

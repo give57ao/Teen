@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ez.teen.notice.service.NoticeService;
+import com.ez.teen.notice.model.NoticeParam;
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.admin.service.AdminMemberService;
 import com.ez.teen.board.model.BoardModel;
@@ -29,7 +31,11 @@ public class AdminController {
 	private AdminMemberService adminMemberService;
 	
 	@Autowired
-	BoardService boardService;
+	private BoardService boardService;
+	
+	@Autowired
+	private NoticeService noticeService;
+	
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 	
@@ -177,5 +183,37 @@ public class AdminController {
 		adminMemberService.deleteReportBoard(boardModel);
 		
 		return "redirect:/admin/reportBoard";
+	}
+	
+	// 공지글 관리
+	@RequestMapping("/noticeBoard")
+	public String noticeBoard(Model model, BoardParam boardParam, NoticeParam noticeParam,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "keyword", required = false) String keyword) {
+
+		int total = noticeService.getNoticeCount(noticeParam);
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "10";
+		} 
+		
+		noticeParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		if(total == 0) {
+			noticeParam.setEndPage(1);
+		}
+		
+		model.addAttribute("paging", noticeParam);
+		model.addAttribute("sort", sort);
+		model.addAttribute("notice", adminMemberService.noticeBoard(noticeParam));
+		
+		return "admin/noticeBoard";
 	}
 }
