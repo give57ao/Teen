@@ -166,12 +166,10 @@ public class BoardController {
 			System.out.println("refStep :" + refStep);
 			System.out.println("============================================================");
 
-			if(refStep == 0) {
-				boardService.insertComment(commentModel);
-			}else {
-				commentModel.setRef_step(refStep+1);
-				boardService.insertComment(commentModel);
-			}
+			
+			commentModel.setRef_step(refStep+1);
+			boardService.insertComment(commentModel);
+			
 			rttr.addAttribute("board_no", board_no);
 			return "redirect:/board/detail";
 		}
