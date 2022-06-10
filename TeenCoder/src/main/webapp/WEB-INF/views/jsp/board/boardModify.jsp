@@ -38,8 +38,8 @@
         </div>
         <div id="contents_detail">
             <div id="contents_wrap">
-                <!-- Board 작성 메인화면 시작 ------------------------------------------------------->
-                <div id="board_list" class="board_form">
+                <!-- Board 작성 -->
+                <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
                         <h2>게시글 수정</h2>

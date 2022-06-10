@@ -50,6 +50,6 @@ a {
 }
 
 #comment_form .note-editor.note-airframe,
-.note-editor.note-frame {
+#comment_form .note-editor.note-frame {
 	border: 1px solid #CCC !important;
 }
