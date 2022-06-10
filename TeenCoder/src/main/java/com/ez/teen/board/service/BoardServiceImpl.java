@@ -14,7 +14,7 @@ import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
-import com.ez.teen.common.file.FileUtils;
+import com.ez.teen.common.file.FileUtil;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -23,7 +23,7 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper boardMapper;
 
 	@Autowired
-	FileUtils fileUtils;
+	FileUtil fileUtils;
 
 	// 전체 이용자 수
 	@Override

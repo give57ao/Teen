@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
-import com.ez.teen.common.file.FileUtils;
+import com.ez.teen.common.file.FileUtil;
 import com.ez.teen.notice.mapper.NoticeMapper;
 import com.ez.teen.notice.model.NoticeModel;
 import com.ez.teen.notice.model.NoticeParam;
@@ -21,7 +21,7 @@ public class NoticeServiceImpl implements NoticeService{
 	NoticeMapper noticeMapper;
 	
 	@Autowired
-	FileUtils fileUtils;
+	FileUtil fileUtils;
 	
 	@Override
 	public int getNoticeCount(NoticeParam noticeParam) {

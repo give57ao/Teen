@@ -17,7 +17,7 @@ import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.notice.model.NoticeModel;
 
 @Component("fileUtils")
-public class FileUtils {
+public class FileUtil {
 	
 	//private static final String filePath = "C:\\upload\\";
 	private static final String filePath = "C:\\Users\\com\\Desktop\\JAVA\\SpringTool\\upload\\";
