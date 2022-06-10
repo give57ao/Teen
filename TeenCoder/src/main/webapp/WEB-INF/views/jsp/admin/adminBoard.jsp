@@ -28,20 +28,12 @@
             <div id="contents_wrap">
                 <!-- Category -->
                 <ul id="contents_category">
-                	<c:if test="${paging.board_group_no eq '1'}">
-						<li><a href="/teen/board/" class="select">COMMUNITY</a></li>
-                    </c:if>
-                    <c:if test="${paging.board_group_no eq '2'}">
-						<li><a href="/teen/board?board_group_no=2" class="select">Q&amp;A</a></li>
-                    </c:if>
-                    
-                    <li><a href="/teen/board?board_tag_name=html">#HTML</a></li>
-                    <li><a href="/teen/board?board_tag_name=css">#CSS</a></li>
-                    <li><a href="/teen/board?board_tag_name=js">#JS</a></li>
-                    <li><a href="/teen/board?board_tag_name=java">#Java</a></li>
-                    <li><a href="/teen/board?board_tag_name=c language">#C Language</a></li>
-                    <li><a href="/teen/board?board_tag_name=python">#Python</a></li>
-                    <li><a href="/teen/board?board_tag_name=sql">#SQL</a></li>
+                    <li><a href="/teen/admin/memberList" >회원 관리</a></li>
+                    <li><a href="/teen/admin/noticeBoard">공지글 관리</a></li>
+                    <li><a href="/teen/admin/adminBoard" class="select">게시글 관리</a></li>
+                    <li><a href="/teen/admin/reportBoard">신고글 관리</a></li>
+                    <li><a href="/teen/admin/reportCmtList">댓글 관리</a></li>
+                    <li><a href="/teen/admin/reportAnsList">답글 관리</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">
@@ -64,7 +56,7 @@
                     </div>
                 	<!-- List Row -->
                     <div id="admin_board_list">
-                    	<form action="memberList" method="post">
+                    	<form action="adminBoard" method="post">
 	                        <table>
 	                            <thead>
 	                                <tr class="row_title">

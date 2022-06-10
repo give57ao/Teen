@@ -142,7 +142,7 @@ public class AdminController {
 			@RequestParam(value = "keyword", required = false) String keyword, HttpSession session) {
 
 		int total = adminMemberService.getReportCount(reportParam);
-
+		
 		System.out.println("total :" + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
