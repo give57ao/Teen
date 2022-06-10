@@ -1,6 +1,6 @@
 const displays = document.querySelectorAll('.note-display');
 const transitionDuration = 1000;
-
+ 
 displays.forEach(display => {
   let note = parseFloat(display.dataset.note);
   let [int, dec] = display.dataset.note.split('.');
