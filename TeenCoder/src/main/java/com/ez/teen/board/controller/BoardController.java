@@ -57,15 +57,23 @@ public class BoardController {
 
 	//게시글 수정 폼
 	@GetMapping("board/modify")
-	public String updateBoardForm()throws Exception{
+	public String updateBoardForm(@RequestParam(value = "board_no") int board_no, 
+			Model model, BoardParam boardParam)throws Exception{
+		
+		boardParam.setBoard_no(board_no);
+		
+		List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
+		
+		model.addAttribute("updateBoard", boardDetail);
+		
+		System.out.println("asdasd + = " + boardDetail);
 		
 		return "board/boardModify";
 	}
 	
 	//게시글 수정 기능
 	@PostMapping("board/modify")
-	public String updateBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest, 
-			Model model, BoardParam boardParam) {
+	public String updateBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest) {
 		
 		int member_no = (Integer)session.getAttribute("member_no");
 		
@@ -73,9 +81,6 @@ public class BoardController {
 		
 		boardService.updateBoard(boardModel);
 		
-		List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
-		
-		model.addAttribute("updateBoard", boardDetail);
 		
 		return "redirect:/board";
 	}
