@@ -71,7 +71,7 @@
 	                                </h3>
 	                            </div>
 	                            <div class="row_contents">
-	                         
+	                         	<p>${boardDetail.board_content}</p>
 	                            	
 	                            	<form name="downFile" role="form" method="post">
 	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">

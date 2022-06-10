@@ -71,4 +71,7 @@ public interface BoardService {
 	//답글 작성
 	public void insertReComment(CommentModel commentModel);
 	
+	//summernote 
+	public void insertSummerNote(String fileName);
+	
 }

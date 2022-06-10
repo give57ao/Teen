@@ -26,19 +26,11 @@ $(document).ready(function() {
 				focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
 				lang: "ko-KR",					// 한글 설정
 				placeholder: '최대 2048자까지 쓸 수 있습니다',	//placeholder 설정
-				callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+				callbacks: {	//여기 부분이 이미지를 첨부하는 부분 
 					onImageUpload : function(files) {
 						uploadSummernoteImageFile(files[0],this);
-					},
-					onPaste: function (e) {
-						var clipboardData = e.originalEvent.clipboardData;
-						if (clipboardData && clipboardData.items && clipboardData.items.length) {
-							var item = clipboardData.items[0];
-							if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
-								e.preventDefault();
-							}
-						}
 					}
+					
 				}
 	});
         
@@ -54,17 +46,22 @@ $(document).ready(function() {
 			data : data,
 			type : "POST",
 			url : "/teen/uploadSummernoteImageFile",
+			cache : false,
 			contentType : false,
+			enctype : 'multipart/form-data',
 			processData : false,
-			success : function(data) {
-            	//항상 업로드된 파일의 url이 있어야 한다.
-				$(editor).summernote('insertImage', data.url);
+			success : function(url) {
+            $(editor).summernote('insertImage', url, function($image) {
+				$image.css('width', "25%");
+			}
+			
+			);
 			}
 		});
 	}		
 	}
 	);
-
+/*============================================================================================================================*/
 // 파일 추가
 function fn_addFile() {
 	var str = "<tr><th></th><td><div><label class='btn_com btn_sel_file' for='file'>파일 선택</label><input type='file' id='file' name='file_"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></div></td></tr>";
@@ -79,4 +76,5 @@ function fn_addFile() {
 // 파일 삭제
 function fn_deleteFile(obj){
 	obj.parent().remove();
+	
 }

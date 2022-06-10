@@ -2,27 +2,26 @@ package com.ez.teen.board.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -37,8 +36,6 @@ import com.ez.teen.board.service.BoardService;
 import com.ez.teen.common.file.FileUtil;
 import com.ez.teen.common.file.WebMvcConfig;
 import com.ez.teen.member.model.MemberModel;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.gson.JsonObject;
 
 @Controller
 public class BoardController {
@@ -114,7 +111,7 @@ public class BoardController {
 	int member_no = (Integer)session.getAttribute("member_no");
 
 	boardModel.setMember_no(member_no);
-	
+
 	boardService.insertBoard(boardModel, mpRequest);
 
 	return "redirect:/board"; 
@@ -290,35 +287,31 @@ public class BoardController {
         return "forward:/board/detail";
     }
 
-	//섬머노트 이미지 업로드
-	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
-	@ResponseBody	
-	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
+	@RequestMapping(value="/uploadSummernoteImageFile", method=RequestMethod.POST)
+	public ResponseEntity<?> summerimage(@RequestParam("file") MultipartFile img, HttpServletRequest request) 
+	throws IOException {
+		String path = "/board/summer";
+		String realname = request.getServletContext().getRealPath(path);
 		
-		JsonObject jsonObject = new JsonObject();
 		
-		String fileRoot = "C:\\summernote_image\\";	//저장될 외부 파일 경로
-		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
-				
-		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+		Random random = new Random();
+	
+		long currentTime = System.currentTimeMillis();
+		int	randomValue = random.nextInt(100);
+		String fileName = Long.toString(currentTime) + "_"+randomValue;
 		
-		File targetFile = new File(fileRoot + savedFileName);	
+		boardService.insertSummerNote(fileName);
 		
-		try {
-			InputStream fileStream = multipartFile.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-			jsonObject.addProperty("url", "/summernoteImage/"+savedFileName);
-			jsonObject.addProperty("responseCode", "success");
-				
-		} catch (IOException e) {
-			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
-			jsonObject.addProperty("responseCode", "error");
-			e.printStackTrace();
-		}
+		File file = new File(realname , fileName);
+		img.transferTo(file);
 		
-		return jsonObject;
-	}
+		//db에 저장
+		
+		return ResponseEntity.ok().body("summer/"+fileName);
+
+	}	
+	
+	
 
 	
 }

@@ -64,7 +64,7 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.insertBoard(boardModel);
 
 		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(boardModel, mpRequest);
-
+		
 		int size = list.size();
 		if(list != null) {
 		for (int i = 0; i < size; i++) {
@@ -154,6 +154,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertReComment(CommentModel commentModel) {
 		 boardMapper.insertReComment(commentModel);
+	}
+
+	@Override
+	public void insertSummerNote(String fileName) {
+		boardMapper.insertSummerNote(fileName);
 	}
 
 }

@@ -75,5 +75,7 @@ public interface BoardMapper {
 	
 	//답글 작성
 	public void insertReComment(CommentModel commentModel);
+
+	public void insertSummerNote(String fileName);
 	
 }

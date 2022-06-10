@@ -489,6 +489,16 @@ ORDER BY board_comment_count DESC
 ]]>
 	</insert>
 	
+	<insert id = "insertSummerNote" parameterType="String">
+	INSERT INTO SUMMERFILE
+	VALUES
+	(
+	SEQ_SUMMER_NO.NEXTVAL,
+	#{fileName}
+	)
+	
+	</insert>
+	
 	
 	
 </mapper>
