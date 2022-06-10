@@ -127,6 +127,8 @@ public class BoardController {
 			List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
 			List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
 			List<BoardAnswerModel> boardAnswer = boardService.selectAnswer(boardParam);
+			int boardCommentCount = boardService.getRefStep(board_no) + 1;
+			
 			
 			System.out.println(boardDetail);
 			System.out.println(boardComment);
@@ -138,10 +140,13 @@ public class BoardController {
 			model.addAttribute("boardDetail", boardDetail);
 			model.addAttribute("boardComment", boardComment);
 			model.addAttribute("boardAnswer", boardAnswer);
+			model.addAttribute("commentNum", boardComment);
+			model.addAttribute("boardCommentCount", boardCommentCount);
 			boardService.hitCount(boardModel);
 			
 			String index = rq.getParameter("index");
 			System.out.println("인덱스값: " + index);
+			System.out.println(boardCommentCount);
 			
 			return "board/boardDetail";
 		}

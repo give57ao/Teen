@@ -28,12 +28,7 @@
             <div id="contents_wrap">
             <!-- Category -->
                 <ul id="contents_category">
-                	<c:if test="${paging.board_group_no eq '1'}">
-						<li><a href="/teen/board?board_group_no=1" class="select">COMMUNITY</a></li>
-                    </c:if>
-                    <c:if test="${paging.board_group_no eq '2'}">
-						<li><a href="/teen/board?board_group_no=2" class="select">Q&amp;A</a></li>
-                    </c:if>
+                	<li><a href="/teen/board?board_group_no=1" class="select">COMMUNITY</a></li>
                     
                     <li><a href="/teen/board?board_tag_name=html">#HTML</a></li>
                     <li><a href="/teen/board?board_tag_name=css">#CSS</a></li>
@@ -67,7 +62,7 @@
 	                            </div>
 	                            <div class="row_title">
 	                                <h3>
-	                                    <a href="#">
+	                                    <a>
 	                                        <span class="tag_hit">[추천]</span> ${boardDetail.board_title}
 												<c:if test="${boardDetail.board_file_check == 'Y' }">
 	                                        	<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
@@ -76,7 +71,7 @@
 	                                </h3>
 	                            </div>
 	                            <div class="row_contents">
-	                            	<p>${boardDetail.board_content}</p>
+	                         
 	                            	
 	                            	<form name="downFile" role="form" method="post">
 	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
@@ -98,6 +93,8 @@
 	                            </div>
 	                        </div>
 	                        <hr>
+	                        <!-- 댓글갯수 -->
+	                        <h2><b class="comment_count">${boardCommentCount}</b>개의 댓글</h2>
 	                    </div>
                     </c:forEach>
                     
@@ -112,7 +109,7 @@
 	                </div>
 	                <!-- Comment List -->
 	                <c:forEach items="${boardComment}" var="boardComment" varStatus="status">
-	                	<h2><b class="comment_count">2</b>개의 댓글</h2> <!-- 댓글 넘버 추가 -->
+	                	 <!-- 댓글 넘버 추가 -->
 		                <div id="comment_list">
 		                	<div class="comment_box">
 		                		<div class="row">
