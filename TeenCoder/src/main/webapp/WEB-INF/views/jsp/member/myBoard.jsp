@@ -62,45 +62,46 @@
 					<div id="board_list_row">
 						<!-- Row1 -->
 						<c:choose>
-						<c:when test="${paging.total > 0}">
-						<c:forEach items="${board}" var="board" varStatus="status">
-							<div class="row">
-								<div class="row_info">
-									<ul class="row_top tag_category">
-										<li>#${board.board_tag_name}</li>
-									</ul>
-									<div class="row_top member">
-										<h4>
-											<img src="/teen/resources/images/icon/icon_badge.png" class="i_badge"> 
-											<span class="rank">[Expert]</span> ${board.member_nick}
-										</h4>
+							<c:when test="${paging.total > 0}">
+								<c:forEach items="${board}" var="board" varStatus="status">
+									<div class="row">
+										<div class="row_info">
+											<ul class="row_top tag_category">
+												<li>#${board.board_tag_name}</li>
+											</ul>
+											<div class="row_top member">
+												<h4>
+													<img src="/teen/resources/images/icon/icon_badge.png" class="i_badge"> 
+													<span class="rank">[Expert]</span> ${board.member_nick}
+												</h4>
+											</div>
+											<span class="row_top date"><fmt:formatDate value="${board.board_date}" pattern="yyyy.MM.dd"/></span>
+											<ul class="row_top number">
+												<li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">${board.board_hit_count}</li>
+												<li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${board.board_comment_count}</li>
+												<li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${board.board_like_count}</li>
+											</ul>
+										</div>
+										<div class="row_title">
+											<h3>
+												<a class="overtext" href="/teen/board/detail?board_no=${board.board_no}"> 
+													<span class="tag_hit">[추천]</span> ${board.board_title}
+													<c:if test="${board.board_file_check eq 'Y'}">
+														<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
+													</c:if>
+												</a>
+											</h3>
+											<%-- <input type="hidden" id="board_no" value="${board.board_no}"> --%>
+											<input type="button" value="삭제" class="btn_com btn_del_list" onClick="deleteBoard(${board.board_no})">
+										</div>
 									</div>
-									<span class="row_top date"><fmt:formatDate value="${board.board_date}" pattern="yyyy.MM.dd"/></span>
-									<ul class="row_top number">
-										<li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">${board.board_hit_count}</li>
-										<li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${board.board_comment_count}</li>
-										<li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${board.board_like_count}</li>
-									</ul>
-								</div>
-								<div class="row_title">
-									<h3>
-										<a class="overtext" href="/teen/board/detail?board_no=${board.board_no}"> 
-											<span class="tag_hit">[추천]</span> ${board.board_title}
-											<c:if test="${board.board_file_check eq 'Y'}">
-												<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
-											</c:if>
-										</a>
-									</h3>
-									<%-- <input type="hidden" id="board_no" value="${board.board_no}"> --%>
-									<input type="button" value="삭제" class="btn_com btn_del_list" onClick="deleteBoard(${board.board_no})">
-								</div>
-							</div>
-							<hr>
-						</c:forEach>
-						</c:when>
-						<c:otherwise>
-						<h2>해당 내용이 없습니다.</h2>
-					</c:otherwise>
+									<hr>
+								</c:forEach>
+							</c:when>
+						
+							<c:otherwise>
+								<p>해당 내용이 없습니다.</p>
+							</c:otherwise>
 						</c:choose>
 					</div>
 					<!-- Pagination -->

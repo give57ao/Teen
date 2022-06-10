@@ -50,43 +50,41 @@
                 	<!-- List Row -->
                     <div id="board_list_row">
                         <!-- Row1 -->
-                        	<c:choose>
-						<c:when test="${paging.total > 0}">
-                        
-                        <c:forEach items="${notice}" var="notice">
-	                        <div class="row">
-	                            <div class="row_info">
-	  
-	                                <div class="row_top member">
-	                                    <h4>
-	                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-	                                        <span class="rank">[Expert]</span> ${notice.member_nick}
-	                                    </h4>
-	                                </div>
-									<span class="row_top date"><fmt:formatDate value="${notice.noti_date}" pattern="yyyy.MM.dd"/></span>
-	                                <ul class="row_top number">
-	                                    <li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">${notice.noti_hit_count}</li>
-									</ul>
-	                            </div>
-	                            <div class="row_title">
-	                                <h3>
-										<a class="overtext" href="/teen/board/notice/detail?board_no=${notice.noti_no}"> 
-											<span class="tag_hit">[추천]</span> ${notice.noti_title}
-											<c:if test="${notice.noti_file_check eq 'Y'}">
-												<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
-											</c:if>
-	                                    </a>
-	                                </h3>
-	                               	<p id="board_no" style="display: none;">${notice.noti_no}</p>
-	                            </div>
-	                        </div>
-	                        <hr>
-                        </c:forEach>	
-                        
-                        </c:when>
-						<c:otherwise>
-						<h2>해당 내용이 없습니다.</h2>
-					</c:otherwise>
+                       	<c:choose>
+							<c:when test="${paging.total > 0}">
+		                        <c:forEach items="${notice}" var="notice">
+			                        <div class="row">
+			                            <div class="row_info">
+			                                <div class="row_top member">
+			                                    <h4>
+			                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
+			                                        <span class="rank">[Expert]</span> ${notice.member_nick}
+			                                    </h4>
+			                                </div>
+											<span class="row_top date"><fmt:formatDate value="${notice.noti_date}" pattern="yyyy.MM.dd"/></span>
+			                                <ul class="row_top number">
+			                                    <li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">${notice.noti_hit_count}</li>
+											</ul>
+			                            </div>
+			                            <div class="row_title">
+			                                <h3>
+												<a class="overtext" href="/teen/board/notice/detail?board_no=${notice.noti_no}"> 
+													<span class="tag_hit">[추천]</span> ${notice.noti_title}
+													<c:if test="${notice.noti_file_check eq 'Y'}">
+														<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
+													</c:if>
+			                                    </a>
+			                                </h3>
+			                               	<p id="board_no" style="display: none;">${notice.noti_no}</p>
+			                            </div>
+			                        </div>
+			                        <hr>
+		                        </c:forEach>
+	                        </c:when>
+	                        
+							<c:otherwise>
+								<p>해당 내용이 없습니다.</p>
+							</c:otherwise>
 						</c:choose>				
                     </div>
                     <!-- Pagination -->
