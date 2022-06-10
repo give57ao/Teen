@@ -43,5 +43,9 @@ public interface AdminMapper {
 	// 공지글 관리
 	public List<NoticeModel> noticeBoard(NoticeParam noticeParam);
 	
+	// 공지글 삭제
+	public void noticeBoardDelete(NoticeModel noticeModel);
+	
 	public void insertNotice(NoticeModel noticeModel) throws Exception;
+	
 }

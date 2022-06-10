@@ -126,6 +126,6 @@
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
 	<!-- JS -->
-	<script type="text/javascript" src="/teen/resources/js/admin/admin.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/admin/noticeBoard.js"></script>
 </body>
 </html>

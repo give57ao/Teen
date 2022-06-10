@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ez.teen.notice.service.NoticeService;
+import com.ez.teen.notice.model.NoticeModel;
 import com.ez.teen.notice.model.NoticeParam;
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.admin.service.AdminMemberService;
@@ -215,5 +216,13 @@ public class AdminController {
 		model.addAttribute("notice", adminMemberService.noticeBoard(noticeParam));
 		
 		return "admin/noticeBoard";
+	}
+	
+	// 공지글 삭제
+	@ResponseBody
+	@PostMapping("/noticeBoardDelete")
+	public String noticeBoardDelete(NoticeModel noticeModel) {	
+		adminMemberService.noticeBoardDelete(noticeModel);
+		return "redirect:/admin/noticeBoard";
 	}
 }

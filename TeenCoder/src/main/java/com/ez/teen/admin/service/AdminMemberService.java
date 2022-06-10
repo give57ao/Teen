@@ -40,4 +40,7 @@ public interface AdminMemberService {
 	
 	// 공지글 리스트
 	public List<NoticeModel> noticeBoard(NoticeParam noticeParam);
+	
+	// 공지글 삭제
+	public void noticeBoardDelete(NoticeModel noticeModel);
 }

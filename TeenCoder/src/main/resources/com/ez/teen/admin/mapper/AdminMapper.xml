@@ -286,5 +286,11 @@ ORDER BY board_comment_count DESC
 			)
 		WHERE RN BETWEEN #{start} AND #{end} 
 	</select>
+	
+	<!-- 공지글 삭제 -->
+	<delete id="noticeBoardDelete" parameterType="com.ez.teen.notice.model.NoticeModel">
+		DELETE FROM NOTICE
+	 	WHERE NOTI_NO = #{noti_no}
+ 	</delete>
 		
 </mapper>
