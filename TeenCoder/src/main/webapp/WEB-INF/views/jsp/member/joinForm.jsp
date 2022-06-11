@@ -13,6 +13,7 @@
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
+<script src="https://www.google.com/recaptcha/api.js"></script>
 
 	<!-- Contents -->
 	<div id="contents">
@@ -74,6 +75,12 @@
 	                            <label for="no">아니오</label>
 	                        </td>
 	                    </tr>
+	                    <tr>
+	                        <th></th>
+	                        <td>
+	                            <div class="g-recaptcha" data-sitekey="6Lda52AgAAAAAPkgal4uFLTpngYX6W0PeT5uf0vX"></div>
+	                        </td>
+	                    </tr>
                     </tbody>
                 </table>
                 <div id="btn_wrap">
@@ -90,5 +97,8 @@
 	<!-- JS -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/member/memberJoin.js"></script>
+	
+	
 </body>
 </html>

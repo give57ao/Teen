@@ -305,7 +305,7 @@ public class BoardController {
 		System.out.println("===============SUMMER_IMAGE END==================");
 
 		return ResponseEntity.ok().body("/summernoteImage/"+savedFileName);
-
+		
 	}	
 	
 	
