@@ -2,15 +2,17 @@ package com.ez.teen.board.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,6 @@ import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
 import com.ez.teen.common.file.FileUtil;
-import com.ez.teen.common.file.WebMvcConfig;
 import com.ez.teen.member.model.MemberModel;
 
 @Controller
@@ -42,9 +43,6 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
-
-	@Autowired
-	WebMvcConfig webMvcConfig;
 	
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
 	
@@ -290,24 +288,23 @@ public class BoardController {
 	@RequestMapping(value="/uploadSummernoteImageFile", method=RequestMethod.POST)
 	public ResponseEntity<?> summerimage(@RequestParam("file") MultipartFile img, HttpServletRequest request) 
 	throws IOException {
-		String path = "/board/summer";
-		String realname = request.getServletContext().getRealPath(path);
+		String fileRoot = "C:\\summernote_image\\";	//저장될 외부 파일 경로
+		String originalFileName = img.getOriginalFilename();	//오리지날 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
+				
+		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+		
+		File targetFile = new File(fileRoot + savedFileName);
 		
 		
-		Random random = new Random();
-	
-		long currentTime = System.currentTimeMillis();
-		int	randomValue = random.nextInt(100);
-		String fileName = Long.toString(currentTime) + "_"+randomValue;
+		InputStream fileStream = img.getInputStream();
+		FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
 		
-		boardService.insertSummerNote(fileName);
-		
-		File file = new File(realname , fileName);
-		img.transferTo(file);
-		
-		//db에 저장
-		
-		return ResponseEntity.ok().body("summer/"+fileName);
+		System.out.println("===============SUMMER_IMAGE START================");
+		System.out.println("/summernoteImage/"+savedFileName);
+		System.out.println("===============SUMMER_IMAGE END==================");
+
+		return ResponseEntity.ok().body("/summernoteImage/"+savedFileName);
 
 	}	
 	
