@@ -1,6 +1,6 @@
 
 $(function() {
-$('#join_form').submit(function() {
+$('#g-recaptcha').submit(function() {
 		var captcha = 1;
 		$.ajax({
             url: '/teen/member/VerifyRecaptcha',
@@ -29,3 +29,4 @@ $('#join_form').submit(function() {
 		} 
 });
 });
+

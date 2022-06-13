@@ -12,6 +12,7 @@ function loginProcess() {
 	    alert("비밀번호를 입력하세요.");
 	    return false;
 	}
+	
 }
 
 // Id 찾기
@@ -154,6 +155,19 @@ function checkValue() {
 		alert("전문성 체크가 필요합니다.");
 		return false;
 	}
+	
+	
+    if (typeof(grecaptcha) != 'undefined') {
+       if (grecaptcha.getResponse() == "") {
+           alert("자동 가입 방지 봇을 확인 한뒤 진행 해 주세요.");
+           return false;
+       }
+    }
+    else {
+         return false;
+    }
+
+
 }
 
 function checkOne(chk) {

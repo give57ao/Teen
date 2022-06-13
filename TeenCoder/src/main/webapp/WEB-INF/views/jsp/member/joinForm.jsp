@@ -79,7 +79,7 @@
 	                    <tr>
 	                        <th></th>
 	                        <td>
-	                            <div class="g-recaptcha" data-sitekey="6Lda52AgAAAAAPkgal4uFLTpngYX6W0PeT5uf0vX"></div>
+	                            <div id="g-recaptcha" class="g-recaptcha" data-sitekey="6Lda52AgAAAAAPkgal4uFLTpngYX6W0PeT5uf0vX"></div>
 	                        </td>
 	                    </tr>
                     </tbody>
