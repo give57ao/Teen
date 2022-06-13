@@ -77,13 +77,13 @@
 	                                <!-- Row1 -->
 	                                <c:forEach items="${notice}" var="notice" varStatus="status">
 		                                <tr class="row">
-		                                   <td style="width: 5%;">${notice.noti_no}</td>
-		                                   <td style="width: 10%;">${notice.noti_title}</td>
-		                                   <td style="width: 10%;">${notice.noti_content}</td>
-		                                   <td style="width: 10%;"><fmt:formatDate value="${notice.noti_date}" pattern="yyyy.MM.dd"/></td>
-		                                   <td style="width: 10%;">${notice.noti_hit_count}</td>
-		                                   <td style="width: 10%;">${notice.noti_file_check}</td>
-		                                   <td style="width: 10%;">
+		                                   <td class="w5">${notice.noti_no}</td>
+		                                   <td class="w20">${notice.noti_title}</td>
+		                                   <td class="w20">${notice.noti_content}</td>
+		                                   <td class="w10"><fmt:formatDate value="${notice.noti_date}" pattern="yyyy.MM.dd"/></td>
+		                                   <td class="w10">${notice.noti_hit_count}</td>
+		                                   <td class="w10">${notice.noti_file_check}</td>
+		                                   <td class="w10">
 		                                   	    <a href="/teen/admin/noticeBoardModify?noti_no=${notice.noti_no}">수정</a> /
 		                                   	    <a href="" onClick="noticeDeletePopup(${notice.noti_no})">삭제</a>
 	                                   	   </td>

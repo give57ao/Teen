@@ -73,14 +73,14 @@
 	                                <!-- Row1 -->
 	                               	<c:forEach items="${member}" var="member" varStatus="status">
 		                                <tr class="row">
-		                                   <td style="width: 5%;">${member.member_no}</td>
-		                                   <td style="width: 10%;">${member.member_id}</td>
-		                                   <td style="width: 10%;">${member.member_name}</td>
-		                                   <td style="width: 10%;">${member.member_nick}</td>
-		                                   <td style="width: 20%;">${member.member_email}</td>
-		                                   <td style="width: 10%;"><fmt:formatDate value="${member.member_date}" pattern="yyyy.MM.dd"/></td>
-		                                   <td style="width: 10%;">${member.member_pro_check}</td>
-		                                   <td style="width: 10%;">
+		                                   <td class="w5">${member.member_no}</td>
+		                                   <td class="w10">${member.member_id}</td>
+		                                   <td class="w10">${member.member_name}</td>
+		                                   <td class="w10">${member.member_nick}</td>
+		                                   <td class="w20">${member.member_email}</td>
+		                                   <td class="w10"><fmt:formatDate value="${member.member_date}" pattern="yyyy.MM.dd"/></td>
+		                                   <td class="w10">${member.member_pro_check}</td>
+		                                   <td class="w10">
 		                                   	    <a href="/teen/admin/memberModify?member_no=${member.member_no}">수정</a> /
 		                                   	    <a href="" onClick="memberDeletePopup(${member.member_no})">삭제</a>
 	                                   	   </td>
