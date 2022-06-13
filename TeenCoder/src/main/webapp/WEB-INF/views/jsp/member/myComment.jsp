@@ -91,8 +91,9 @@
 									<hr>
 								</c:forEach>
 							</c:when>
+							
 							<c:otherwise>
-								<h2>해당 내용이 없습니다.</h2>
+								<p>해당 내용이 없습니다.</p>
 							</c:otherwise>
 						</c:choose>
 					</div>
