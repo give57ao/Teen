@@ -3,9 +3,6 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-</head>
 <body>
     <header id="header">
         <div id="header_logo">
