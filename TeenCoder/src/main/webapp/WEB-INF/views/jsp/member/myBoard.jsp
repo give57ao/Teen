@@ -145,5 +145,13 @@
 	
 	<!-- JS -->
 	<script type="text/javascript" src="/teen/resources/js/member/myPage/myBoard.js"></script>
+			<script>
+function deleteBoard(num) {
+	var chk = confirm("정말 삭제?")
+	if(chk) {
+		location.href='/teen/board/delete?board_no='+num
+	}
+}
+</script>
 </body>
 </html>

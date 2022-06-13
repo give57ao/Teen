@@ -188,5 +188,11 @@ public class BoardServiceImpl implements BoardService {
 	public void updateTagName(BoardModel boardModel) {
 		boardMapper.updateTagName(boardModel);
 	}
+	
+	@Override
+	public void deleteBoard(int board_no) {
+		boardMapper.deleteBoard(board_no);
+		
+	}
 
 }

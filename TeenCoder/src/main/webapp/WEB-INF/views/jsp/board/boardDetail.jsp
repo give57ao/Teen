@@ -15,6 +15,14 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/summernote.css">
 </head>
+<script>
+function deleteBoard(num) {
+	var chk = confirm("정말 삭제?")
+	if(chk) {
+		location.href='/teen/board/delete?board_no='+num
+	}
+}
+</script>
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -72,7 +80,8 @@
 	                                </h3>
 	                            </div>
 	                            <div class="row_contents">
-	                         	<p>${boardDetail.board_content}</p>
+	                         	<p>${boardDetail.board_content} --
+	                         	 ${boardModel.board_no} -- ${ sessionScope.member_no} -- ${ boardDetail.member_no }</p>
 	                            	
 	                            	<form name="downFile" role="form" method="post">
 	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
@@ -86,12 +95,19 @@
 	                                <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${boardDetail.board_comment_count}</li>
 	                                <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${boardDetail.board_like_count}</li>
 	                            </ul>
+	                            <c:if test="${sessionScope.member_no != null}">
 	                            <div class="btn_group">
-	                            	<input type="button" value="스크랩" class="btn_com btn_board">
-		                			<input type="button" value="신고" class="btn_com btn_board">
-		                			<input type="button" value="추천" class="btn_com btn_board">
-		                			<input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
+	                            <ul>
+	                            	<li><input type="button" value="스크랩" class="btn_com btn_board">
+		                			<li><input type="button" value="신고" class="btn_com btn_board">
+		                			<li><input type="button" value="추천" class="btn_com btn_board">
+		                			<li><input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
+	                            <c:if test="${sessionScope.member_no == boardDetail.member_no }">
+										<input type="button" value="삭제" class="btn_com btn_board" onClick="deleteBoard(${boardModel.board_no})">
+									</c:if>
+									</ul>
 	                            </div>
+	                            </c:if>
 	                        </div>
 	                        <hr>
 	                        <!-- 댓글갯수 -->

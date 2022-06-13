@@ -314,8 +314,25 @@ public class BoardController {
 		return ResponseEntity.ok().body("/summernoteImage/"+savedFileName);
 		
 	}	
-	
+	@RequestMapping("board/delete")
+	public String deleteBoard(@RequestParam("board_no") int board_no, RedirectAttributes redirect) {
+		
+		try {
+		
+		boardService.deleteBoard(board_no);
+		
+		redirect.addFlashAttribute("msg", "삭제굿");
+		
+	} catch (Exception e) {
+		
+		redirect.addFlashAttribute("msg", "삭제에러");
+	}
+			
+	return "redirect:/board";
+	}
+}
+
 	
 
 	
-}
+

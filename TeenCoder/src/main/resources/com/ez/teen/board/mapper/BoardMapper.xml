@@ -352,6 +352,7 @@ ORDER BY board_comment_count DESC
 		,B.BOARD_TAG_NAME AS BOARD_TAG_NAME
 		,B.BOARD_FILE_CHECK AS BOARD_FILE_CHECK
 		,M.MEMBER_NICK AS MEMBER_NICK
+		,M.MEMBER_NO AS MEMBER_NO
 		,COUNT(C.BOARD_NO) AS board_comment_count
 
 		FROM BOARD B 
@@ -373,6 +374,7 @@ ORDER BY board_comment_count DESC
 		,B.BOARD_TAG_NAME
 		,B.BOARD_FILE_CHECK
 		,M.MEMBER_NICK
+		,M.MEMBER_NO
 
 	</select>
 	
@@ -505,6 +507,9 @@ ORDER BY board_comment_count DESC
 	WHERE BOARD_NO = #{board_no}
 	
 	</update>
-	
+		
+		<delete id="deleteBoard" parameterType="int">
+		delete from board where board_no = #{board_no}
+	</delete>
 	
 </mapper>

@@ -77,4 +77,6 @@ public interface BoardService {
 	//update Tag Name
 	public void updateTagName(BoardModel boardModel);
 	
+	public void deleteBoard(int board_no);
+	
 }

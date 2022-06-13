@@ -80,4 +80,6 @@ public interface BoardMapper {
 	
 	public void updateTagName(BoardModel boardModel);
 	
+	public void deleteBoard(int board_no);
+	
 }
