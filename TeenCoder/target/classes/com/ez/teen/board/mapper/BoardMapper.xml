@@ -453,7 +453,7 @@ ORDER BY board_comment_count DESC
 	WHERE BOARD_NO = #{board_no}
 	</select>
 	
-	<update id="updateProject">
+	<update id="updateBoard">
 		UPDATE BOARD
 		SET
 		 BOARD_TITLE = #{board_title}

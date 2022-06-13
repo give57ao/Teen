@@ -46,9 +46,22 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 게시글 수정
 	@Override
-	public void updateBoard(BoardModel boardModel) {
-
+	public void updateBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception {
+		String replaceTagName = boardModel.getBoard_tag_name();
+		replaceTagName = replaceTagName.replace(",", " #");
+		boardModel.setBoard_tag_name(replaceTagName);
+		
 		boardMapper.updateBoard(boardModel);
+		
+		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(boardModel, mpRequest);
+		
+		int size = list.size();
+		if(list != null) {
+		for (int i = 0; i < size; i++) {
+			boardMapper.insertFile(list.get(i));
+			boardMapper.fileCk(boardModel);
+		}
+	}
 	}
 
 	// 게시글 작성
