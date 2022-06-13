@@ -46,7 +46,6 @@
 		                				환영합니다! <b>${board.member_name}</b>님 (ID : ${board.member_id})<br>
 		                				가입일 : <fmt:formatDate value="${board.member_date}" pattern="yyyy.MM.dd"/> | 이메일 : ${board.member_email}
 		                			</p>
-		                		
 	                			</div>
 	                			<ul class="info_icon number">
 	                                <li><img src="/teen/resources/images/icon/icon_message.svg" class="i_msg">0</li>

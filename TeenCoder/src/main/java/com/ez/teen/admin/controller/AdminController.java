@@ -20,6 +20,9 @@ import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.service.BoardService;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
+import com.ez.teen.notice.model.NoticeModel;
+import com.ez.teen.notice.model.NoticeParam;
+import com.ez.teen.notice.service.NoticeService;
 
 @Controller
 @RequestMapping("/admin")
@@ -30,6 +33,9 @@ public class AdminController {
 	
 	@Autowired
 	BoardService boardService;
+	
+	@Autowired
+	NoticeService noticeService;
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 	
@@ -178,4 +184,46 @@ public class AdminController {
 		
 		return "redirect:/admin/reportBoard";
 	}
+	
+	// 공지글 관리
+		@RequestMapping("/noticeBoard")
+		public String noticeBoard(Model model, BoardParam boardParam, NoticeParam noticeParam,
+				@RequestParam(value = "nowPage", required = false) String nowPage,
+				@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+				@RequestParam(value = "sort", required = false) String sort,
+				@RequestParam(value = "search", required = false) String search,
+				@RequestParam(value = "keyword", required = false) String keyword) {
+
+			int total = noticeService.getNoticeCount(noticeParam);
+			
+			if (nowPage == null && cntPerPage == null) {
+				nowPage = "1";
+				cntPerPage = "10";
+			} else if (nowPage == null) {
+				nowPage = "1";
+			} else if (cntPerPage == null) {
+				cntPerPage = "10";
+			} 
+			
+			noticeParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			if(total == 0) {
+				noticeParam.setEndPage(1);
+			}
+			
+			model.addAttribute("paging", noticeParam);
+			model.addAttribute("sort", sort);
+			model.addAttribute("notice", adminMemberService.noticeBoard(noticeParam));
+			
+			return "admin/noticeBoard";
+		}
+		
+		// 공지글 삭제
+		@ResponseBody
+		@PostMapping("/noticeBoardDelete")
+		public String noticeBoardDelete(NoticeModel noticeModel) {	
+			adminMemberService.noticeBoardDelete(noticeModel);
+			return "redirect:/admin/noticeBoard";
+		}
+
+	
 }

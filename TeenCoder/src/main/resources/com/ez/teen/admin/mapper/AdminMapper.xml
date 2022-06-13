@@ -243,5 +243,55 @@ ORDER BY board_comment_count DESC
 	)
 	WHERE RN BETWEEN #{start} AND #{end}
  </select>
+ 
+ 
+ 	<!-- 공지글 리스트 -->
+	<select id ="noticeBoard" resultType="com.ez.teen.notice.model.NoticeModel" parameterType="com.ez.teen.notice.model.NoticeParam">
+		SELECT RN, NOTI_NO, MEMBER_NO, MEMBER_NICK, NOTI_TITLE, NOTI_CONTENT, NOTI_DATE, NOTI_HIT_COUNT, NOTI_FILE_CHECK
+		FROM (
+			SELECT ROWNUM RN, A.* 
+			FROM (
+				SELECT
+				N.NOTI_NO
+				,N.MEMBER_NO
+				,M.MEMBER_NICK
+				,N.NOTI_TITLE
+				,N.NOTI_CONTENT
+				,N.NOTI_DATE
+				,N.NOTI_HIT_COUNT
+				,N.NOTI_FILE_CHECK
+				
+				FROM NOTICE N
+				INNER JOIN MEMBER M
+				ON N.MEMBER_NO = M.MEMBER_NO
+			
+				<if test='search == "title"'>
+				AND N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
+				</if>
+				
+				<if test='search == "content"'>
+				AND N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
+				</if>
+				
+				<if test='search == "nick"'>
+				AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+				</if>
+				
+				<if test='search == "all"'>
+				WHERE N.NOTI_TITLE LIKE '%'||#{keyword}||'%'
+				OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+				OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
+				</if>
+			
+				)A
+			)
+		WHERE RN BETWEEN #{start} AND #{end} 
+	</select>
+	
+	<!-- 공지글 삭제 -->
+	<delete id="noticeBoardDelete" parameterType="com.ez.teen.notice.model.NoticeModel">
+		DELETE FROM NOTICE
+	 	WHERE NOTI_NO = #{noti_no}
+ 	</delete>
 	
 </mapper>

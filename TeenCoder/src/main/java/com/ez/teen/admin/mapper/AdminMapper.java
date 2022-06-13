@@ -5,13 +5,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ez.teen.admin.model.ReportParam;
-import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
-import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 import com.ez.teen.notice.model.NoticeModel;
+import com.ez.teen.notice.model.NoticeParam;
 
 @Mapper
 public interface AdminMapper {
@@ -43,4 +42,11 @@ public interface AdminMapper {
 	
 	//신고글 삭제
 	public void deleteReportBoard(BoardModel boardModel);
+	
+	// 공지글 리스트
+	public List<NoticeModel> noticeBoard(NoticeParam noticeParam);
+		
+	// 공지글 삭제
+	public void noticeBoardDelete(NoticeModel noticeModel);
+
 }
