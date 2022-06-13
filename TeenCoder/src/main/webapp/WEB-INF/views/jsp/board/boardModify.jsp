@@ -69,6 +69,7 @@
 			                    <tr class="checkbox">
 			                        <th>태그</th>
 			                        <td>
+			                        	<input type="hidden" name="updateTag" value="${updateBoard.board_tag_name}" id="updateTag">
 			                            <input type="checkbox" name="board_tag_name" value="HTML" id="html">
 			                            <label for="html">HTML</label>
 			                            <input type="checkbox" name="board_tag_name" value="CSS" id="css">
@@ -83,8 +84,7 @@
 			                            <label for="python">Python</label>
 			                            <input type="checkbox" name="board_tag_name" value="SQL" id="sql">
 			                            <label for="sql">SQL</label>
-			                            <!-- <input type="hidden" id="board_tag_name value" name="board_tag_name" value="${updateBoard.board_tag_name}">
-			                        	 -->
+			                            <%-- <input type="hidden" id="board_tag_name value" name="board_tag_name" value="${updateBoard.board_tag_name}"> --%>
 			                        </td>
 			                    </tr>
 			                    </c:forEach>
@@ -93,9 +93,7 @@
 			                        <td>
 			                        	<c:forEach var="file" items="${file}">
 										<div id="fileGroup">
-											<label class="btn_com btn_sel_file" for="file">파일 선택</label>
-											<span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a>(${file.FILE_SIZE}kb)</span>
-											 <input type="hidden" name="FILE_${file.FILE_NO}" value="true">
+											<input type="hidden" name="FILE_${file.FILE_NO}" value="true">
 			                            	<input type="file" id="file" name="file_0">
 			                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
 				                        </div>
@@ -123,35 +121,17 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
 	<script>
-		const values = document.getElementsByName("board_tag_name");
-		for (let i = 0; i < values.length; i++) {
-			if (i == 1) {
-				values[i].checked = true;
-			}
-		}
-		
-		/* $(document).ready(function() {
-			        $("a[name='deleteFile']").on("click", function(e) {
-			            e.preventDefault();
-			            deleteFile($(this));
-			        });
-			    })
-			
-		function addFile() {
-        var str = "<div id="fileGroup"><label class="btn_com btn_sel_file" for="file">파일 선택
-				  <input type="file" id="file" name="file_0">
-		<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a></div></label>";
-		
-        $("#fileGroup").append(str);
-        $("a[name='deleteFile']").on("click", function(e) {
-            e.preventDefault();
-            deleteFile($(this));
-        });
-    	}
-		
-		function deleteFile(obj) {
-			      obj.parent().remove();
-			    } */
+	$(document).ready(function() {
+		    var strData = document.getElementById('updateTag').value;
+		    var arrChk = strData.split('#');
+
+		    $('.board_tag_name').prop('checked', false); // 일단 모두 uncheck
+
+		    for (var nArrCnt in arrChk) {
+
+		                    $("input[name=board_tag_name][value="+arrChk[nArrCnt]+"]").prop("checked",true);
+		    }    
+		});
 	</script>
 </body>
 </html>
