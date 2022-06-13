@@ -30,7 +30,7 @@
         </div>
         <div id="contents_detail">
             <div id="contents_wrap">
-                <!-- Board 작성 -->
+                <!-- Board -->
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
@@ -46,7 +46,6 @@
 			                            <select class="dropdown" id="board_group_no" name="board_group_no">
 			                            	<option value="1" selected>Community</option>
 				                            <option value="2">Q&amp;A</option>
-				                            <option value="3">Notice</option>
 				                        </select>
 			                        </td>
 			                    </tr>
