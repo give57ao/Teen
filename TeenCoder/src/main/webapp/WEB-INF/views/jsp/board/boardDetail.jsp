@@ -94,8 +94,6 @@
 	                            </div>
 	                        </div>
 	                        <hr>
-	                        <!-- 댓글갯수 -->
-	                        <h2><b class="comment_count">${boardCommentCount}</b>개의 댓글</h2>
 	                    </div>
                     </c:forEach>
                     
@@ -108,6 +106,10 @@
 		                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 	                	</form>
 	                </div>
+	                
+	                <!-- 댓글갯수 -->
+                    <h2><b class="comment_count">${boardCommentCount}</b>개의 댓글</h2>
+                    
 	                <!-- Comment List -->
 	                <c:forEach items="${boardComment}" var="boardComment" varStatus="status">
 	                	 <!-- 댓글 넘버 추가 -->
@@ -138,6 +140,7 @@
 		                            </div>
 	                            </div>
 		                	</div>
+		                	
 		                	<!-- Answer Form -->
 		                	<div id=answer  class="answer_form-${boardComment.ref_step}" style="display : none;">
 			                	<form id =answer_form action="recomment" method="post">
