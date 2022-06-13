@@ -70,23 +70,28 @@ public class BoardController {
 		boardParam.setBoard_no(board_no);
 		
 		List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
+		List<Map<String, Object>> fileList = boardService.selectFile(board_no);
 		
 		model.addAttribute("updateBoard", boardDetail);
+		model.addAttribute("file", fileList);
 		
 		System.out.println("asdasd + = " + boardDetail);
 		
+
 		return "board/boardModify";
 	}
 	
 	//게시글 수정 기능
 	@PostMapping("board/modify")
-	public String updateBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest) {
+	public String updateBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest) throws Exception{
 		
 		int member_no = (Integer)session.getAttribute("member_no");
 		
 		boardModel.setMember_no(member_no);
 		
-		boardService.updateBoard(boardModel);
+		boardService.updateTagName(boardModel); //태그 삭제
+		
+		boardService.updateBoard(boardModel, mpRequest);//받아온 값을 넣어
 		
 		
 		return "redirect:/board";

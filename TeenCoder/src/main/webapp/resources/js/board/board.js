@@ -77,4 +77,13 @@ function fn_addFile() {
 function fn_deleteFile(obj){
 	obj.parent().remove();
 	
+//글 수정 썸머노트 DB에서 데이터 불러오기
+$(document).ready(function() {
+		$('#content').summernote({
+			height: 700,
+			fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
+			fontNamesIgnoreCheck : [ '맑은고딕' ],
+			focus: true
+		});
+	});	
 }

@@ -78,4 +78,6 @@ public interface BoardMapper {
 
 	public void insertSummerNote(String fileName);
 	
+	public void updateTagName(BoardModel boardModel);
+	
 }
