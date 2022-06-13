@@ -77,12 +77,12 @@
 	                            <c:forEach items="${reportList}" var="reportList">
 	                                <!-- Row1 -->
 	                                <tr class="row">
-	                                   <td>${reportList.board_no}</td>
-	                                   <td>${reportList.board_title}</td>
-	                                   <td>${reportList.board_content}</td>
-	                                   <td>${reportList.member_nick}</td>
-	                                   <td><fmt:formatDate value="${reportList.board_date}" pattern="yyyy.MM.dd"/></td>
-	                                   <td>${reportList.board_report_count}</td>
+	                                   <td class="w5">${reportList.board_no}</td>
+	                                   <td class="w20">${reportList.board_title}</td>
+	                                   <td class="w20">${reportList.board_content}</td>
+	                                   <td class="w10">${reportList.member_nick}</td>
+	                                   <td class="w10"><fmt:formatDate value="${reportList.board_date}" pattern="yyyy.MM.dd"/></td>
+	                                   <td class="w5">${reportList.board_report_count}</td>
 	                                     <td><a href="/teen/admin/deleteReportBoard?board_no=${reportList.board_no}" onclick="return deleteReportBoard();">삭제</a></td>
 	                                </tr>
 	                              </c:forEach>
