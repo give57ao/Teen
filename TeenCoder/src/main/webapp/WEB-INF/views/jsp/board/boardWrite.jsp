@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 게시글 작성</title>
+<link rel="shortcut icon" href="/teen/resources/images/icon/icon_favicon.ico" type="image/x-icon"> <!-- favicon -->
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
