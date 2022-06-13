@@ -64,7 +64,7 @@ $(document).ready(function() {
 /*============================================================================================================================*/
 // 파일 추가
 function fn_addFile() {
-	var str = "<tr><th></th><td><div><label class='btn_com btn_sel_file' for='file'>파일 선택</label><input type='file' id='file' name='file_"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></div></td></tr>";
+	var str = "<tr><th></th><td><input type='file' id='file' name='file_"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></td></tr>";
 	
 	$("#fileDiv").after(str);
 	$("a[id='deleteFile']").on("click", function(e) {

@@ -35,6 +35,18 @@
     font-weight: bold;
 }
 
+#admin_board_list .w5 {
+	width: 5%;
+}
+
+#admin_board_list .w10 {
+	width: 10%;
+}
+
+#admin_board_list .w20 {
+	width: 20%;
+}
+
 /* Admin Board List : Notice만 해당 */
 .admin_board_list_title .side_menu li:nth-child(2)::after {
     content: "";
