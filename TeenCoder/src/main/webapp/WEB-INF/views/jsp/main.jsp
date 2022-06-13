@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder</title>
+<link rel="shortcut icon" href="/teen/resources/images/icon/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/main.css">

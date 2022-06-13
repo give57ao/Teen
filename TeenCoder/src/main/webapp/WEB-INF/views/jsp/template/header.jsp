@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="" rel="shortcut icon"> <!-- 파비콘 -->
 </head>
 <body>
     <header id="header">
