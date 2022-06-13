@@ -54,10 +54,8 @@
                                     <tr id="fileDiv" class="file_upload">
 				                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile">+</a></th>
 				                        <td>
-											<div>
-				                            	<input type="file" id="file" name="file_0"/>
-				                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
-					                        </div>
+			                            	<input type="file" id="file" name="file_0"/>
+			                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
 				                        </td>
 				                    </tr>
                                 </tbody>
