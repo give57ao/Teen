@@ -80,11 +80,8 @@
 			                    <tr id="fileDiv" class="file_upload">
 			                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile">+</a></th>
 			                        <td>
-										<div id="fileGroup">
-											<label class="btn_com btn_sel_file" for="file">파일 선택</label>
-			                            	<input type="file" id="file" name="file_0">
-			                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
-				                        </div>
+		                            	<input type="file" id="file" name="file_0">
+		                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
 			                        </td>
 			                    </tr>
 		                    </tbody>

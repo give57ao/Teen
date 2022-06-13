@@ -63,15 +63,9 @@
 	float: right;
 }
 
-#board_form table .btn_sel_file {
-	margin-right: 5px;
-	border-radius: 100%;
-	font-weight: normal;
-}
-
 #board_form table #file {
 	width: auto;
-	display: none;
+	display: inline-block;
 }
 
 #board_form #btn_wrap {
