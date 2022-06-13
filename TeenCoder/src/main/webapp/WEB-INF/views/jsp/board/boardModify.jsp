@@ -83,7 +83,8 @@
 			                            <label for="python">Python</label>
 			                            <input type="checkbox" name="board_tag_name" value="SQL" id="sql">
 			                            <label for="sql">SQL</label>
-			                            <input type="hidden" id="board_tag_name value" name="board_tag_name" value="${updateBoard.board_tag_name}">
+			                            <!-- <input type="hidden" id="board_tag_name value" name="board_tag_name" value="${updateBoard.board_tag_name}">
+			                        	 -->
 			                        </td>
 			                    </tr>
 			                    </c:forEach>

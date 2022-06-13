@@ -88,10 +88,12 @@ public class BoardController {
 		int member_no = (Integer)session.getAttribute("member_no");
 		
 		boardModel.setMember_no(member_no);
+		String old_board_tag_name = boardModel.getBoard_tag_name();
+		String init_board_tag_name = "";
+		boardModel.setBoard_tag_name(init_board_tag_name);
 		
-		boardService.updateTagName(boardModel); //태그 삭제
-		
-		boardService.updateBoard(boardModel, mpRequest);//받아온 값을 넣어
+		boardModel.setBoard_tag_name(old_board_tag_name);  //init이후 posting된 값 받아오기
+		boardService.updateBoard(boardModel, mpRequest);
 		
 		
 		return "redirect:/board";
