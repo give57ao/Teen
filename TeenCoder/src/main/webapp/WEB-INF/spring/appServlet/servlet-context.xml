@@ -52,7 +52,15 @@
 			<mapping path="/*/**/boardWrite" />
 			<mapping path="/*/**/comment" />
 			<mapping path="/*/**/recomment" />
-			<mapping path="/**/admin" />
+			<mapping path="/admin/**" />
+			<mapping path="/*/**/myPage" />
+			<mapping path="/*/**/myBoard" />
+			<mapping path="/*/**/myComment" />
+			<mapping path="/*/**/modifyForm" />
+			
+			
+			
+			
 			<beans:ref bean="AuthInterceptor"/>
 		</interceptor>
 	</interceptors>

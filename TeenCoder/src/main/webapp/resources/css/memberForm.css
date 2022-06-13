@@ -88,6 +88,10 @@
     vertical-align: middle;
 }
 
+#join_form .captcha {
+	margin: 30px 0 40px;
+}
+
 #join_form #btn_wrap {
     width: 100%;
     display: inline-block;

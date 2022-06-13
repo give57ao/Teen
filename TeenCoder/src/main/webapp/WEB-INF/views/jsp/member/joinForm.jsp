@@ -61,7 +61,7 @@
 	                            <input type="hidden" name="nickDuplication" id="nickDuplication"/>
 	                        </td>
 	                    </tr>
-	                    <tr>
+	                    <tr >
 	                        <th>이메일</th>
 	                        <td>
 	                            <input type="text" name="member_email" placeholder="이메일">
@@ -76,7 +76,7 @@
 	                            <label for="no">아니오</label>
 	                        </td>
 	                    </tr>
-	                    <tr>
+	                    <tr class="captcha">
 	                        <th></th>
 	                        <td>
 	                            <div id="g-recaptcha" class="g-recaptcha" data-sitekey="6Lda52AgAAAAAPkgal4uFLTpngYX6W0PeT5uf0vX"></div>
