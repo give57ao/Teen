@@ -47,9 +47,19 @@ public class BoardServiceImpl implements BoardService {
 	// 게시글 수정
 	@Override
 	public void updateBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception {
+	
+
+		System.out.println("=========================================");
+		System.out.println("BEFORE REPLACETAGNAME : " + boardModel.getBoard_tag_name());
+		System.out.println("=========================================");
+		
+		
 		String replaceTagName = boardModel.getBoard_tag_name();
 		replaceTagName = replaceTagName.replace(",", " #");
 		boardModel.setBoard_tag_name(replaceTagName);
+		System.out.println("=========================================");
+		System.out.println("REPLACETAGNAME : " + replaceTagName);
+		System.out.println("=========================================");
 		
 		boardMapper.updateBoard(boardModel);
 		
@@ -172,6 +182,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertSummerNote(String fileName) {
 		boardMapper.insertSummerNote(fileName);
+	}
+
+	@Override
+	public void updateTagName(BoardModel boardModel) {
+		boardMapper.updateTagName(boardModel);
 	}
 
 }

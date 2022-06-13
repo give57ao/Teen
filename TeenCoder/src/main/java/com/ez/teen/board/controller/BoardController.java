@@ -77,6 +77,7 @@ public class BoardController {
 		
 		System.out.println("asdasd + = " + boardDetail);
 		
+
 		return "board/boardModify";
 	}
 	
@@ -88,7 +89,9 @@ public class BoardController {
 		
 		boardModel.setMember_no(member_no);
 		
-		boardService.updateBoard(boardModel, mpRequest);
+		boardService.updateTagName(boardModel); //태그 삭제
+		
+		boardService.updateBoard(boardModel, mpRequest);//받아온 값을 넣어
 		
 		
 		return "redirect:/board";

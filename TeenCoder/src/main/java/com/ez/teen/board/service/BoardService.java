@@ -74,4 +74,7 @@ public interface BoardService {
 	//summernote 
 	public void insertSummerNote(String fileName);
 	
+	//update Tag Name
+	public void updateTagName(BoardModel boardModel);
+	
 }

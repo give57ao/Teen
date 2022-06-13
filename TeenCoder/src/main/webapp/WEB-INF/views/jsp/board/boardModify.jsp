@@ -128,7 +128,7 @@
 			}
 		}
 		
-		$(document).ready(function() {
+		/* $(document).ready(function() {
 			        $("a[name='deleteFile']").on("click", function(e) {
 			            e.preventDefault();
 			            deleteFile($(this));
@@ -145,7 +145,11 @@
             e.preventDefault();
             deleteFile($(this));
         });
-    }
+    	}
+		
+		function deleteFile(obj) {
+			      obj.parent().remove();
+			    } */
 	</script>
 </body>
 </html>
