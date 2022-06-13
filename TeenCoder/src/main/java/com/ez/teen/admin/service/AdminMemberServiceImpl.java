@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.ez.teen.admin.mapper.AdminMapper;
 import com.ez.teen.admin.model.ReportParam;
-import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
-import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
+import com.ez.teen.notice.model.NoticeModel;
+import com.ez.teen.notice.model.NoticeParam;
 
 @Service
 public class AdminMemberServiceImpl implements AdminMemberService {
@@ -72,4 +72,18 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		
 		adminMapper.deleteReportBoard(boardModel);
 	}
+	
+
+	// 공지글 리스트
+	@Override
+	public List<NoticeModel> noticeBoard(NoticeParam noticeParam) {
+		return adminMapper.noticeBoard(noticeParam);
+	}
+	
+	// 공지글 삭제
+	@Override
+	public void noticeBoardDelete(NoticeModel noticeModel) {
+		adminMapper.noticeBoardDelete(noticeModel);
+	}
+	
 }
