@@ -1,6 +1,7 @@
 package com.ez.teen.admin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -90,6 +91,36 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	@Override
 	public void noticeBoardModify(NoticeModel noticeModel) {
 		adminMapper.noticeBoardModify(noticeModel);
+	}
+	
+	// 첨부파일 조회
+	@Override
+	public List<Map<String, Object>> selectNotiFile(int noti_no) throws Exception {
+		return adminMapper.selectNotiFile(noti_no);
+	}
+
+	// 첨부파일 추가
+	@Override
+	public void insertNotiFile(Map<String, Object> map) throws Exception {
+		adminMapper.insertNotiFile(map);
+	}
+	
+	// 첨부파일 수정
+	@Override
+	public void updateNotiFile(Map<String, Object> map) throws Exception {
+		adminMapper.updateNotiFile(map);
+	}
+	
+	// 첨부파일 다운로드
+	@Override
+	public Map<String, Object> downNotiFile(Map<String, Object> map) throws Exception {
+		return adminMapper.downNotiFile(map);
+	}
+	
+	// summernote
+	@Override
+	public void insertSummerNote(String fileName) {
+		adminMapper.insertSummerNote(fileName);
 	}
 	
 }

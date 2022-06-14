@@ -1,6 +1,7 @@
 package com.ez.teen.admin.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -48,5 +49,20 @@ public interface AdminMapper {
 	
 	// 공지글 수정
 	public void noticeBoardModify(NoticeModel noticeModel);
+	
+	// 공지글 첨부파일 조회
+	public List<Map<String, Object>> selectNotiFile(int noti_no);
+
+	// 공지글 첨부파일 추가
+	public void insertNotiFile(Map<String, Object> map);
+	
+	// 공지글 첨부파일 수정
+	public void updateNotiFile(Map<String, Object> map);
+	
+	// 공지글 첨부파일 다운로드
+	public Map<String, Object> downNotiFile(Map<String, Object> map);
+	
+	// summernote
+	public void insertSummerNote(String fileName);
 
 }

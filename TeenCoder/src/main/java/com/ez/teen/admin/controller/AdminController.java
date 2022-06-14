@@ -1,5 +1,8 @@
 package com.ez.teen.admin.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -227,20 +230,24 @@ public class AdminController {
 	
 	// 공지글 수정 폼
 	@GetMapping("/noticeBoardModify")
-	public String noticeBoardModifyForm() {
+	public String noticeBoardModifyForm(
+			@RequestParam(value = "noti_no") int noti_no,
+			Model model, NoticeParam noticeParam) throws Exception {
+		noticeParam.setNoti_no(noti_no);
+		
+		List<NoticeModel> noticeDetail = noticeService.selectNoticeDetail(noticeParam);
+		List<Map<String, Object>> fileList = noticeService.selectNotiFile(noti_no);
+		
+		model.addAttribute("noticeBoardModify", noticeDetail);
+		model.addAttribute("file", fileList);
+		
 		return "admin/noticeBoardModify";
 	}
 		
 	// 공지글 수정
 	@PostMapping("/noticeBoardModify")
-	public String noticeBoardModify(NoticeModel noticeModel, HttpSession session, MultipartHttpServletRequest mpRequest)throws Exception {
-				
-		int member_no = (Integer)session.getAttribute("member_no");
-			
-		noticeModel.setMember_no(member_no);
-			
-		noticeService.insertNotice(noticeModel, mpRequest);
-				
+	public String noticeBoardModify(NoticeModel noticeModel) {
+		adminMemberService.noticeBoardModify(noticeModel);
 		return "redirect:/admin/noticeBoard";
 	}
 	

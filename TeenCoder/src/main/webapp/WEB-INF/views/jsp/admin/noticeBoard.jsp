@@ -76,7 +76,7 @@
 	                                <c:forEach items="${notice}" var="notice" varStatus="status">
 		                                <tr class="row">
 		                                   <td class="w5">${notice.noti_no}</td>
-		                                   <td class="w30"><a href="/teen/board/notice/detail?board_no=${notice.noti_no}">${notice.noti_title}</a></td>
+		                                   <td class="w30"><a href="/teen/board/notice/detail?noti_no=${notice.noti_no}">${notice.noti_title}</a></td>
 		                                   <td class="w10"><fmt:formatDate value="${notice.noti_date}" pattern="yyyy.MM.dd"/></td>
 		                                   <td class="w10">${notice.noti_hit_count}</td>
 		                                   <td class="w10">${notice.noti_file_check}</td>

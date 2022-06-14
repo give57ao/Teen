@@ -48,7 +48,7 @@
                                     <tr class="contents_title">
 				                        <th>내용</th>
 				                        <td >
-				                            <textarea id="summernote" name="noti_content" placeholder="내용"></textarea>
+				                            <textarea class="summernote" name="noti_content" placeholder="내용"></textarea>
 				                        </td>
 				                    </tr>
                                     <tr id="fileDiv" class="file_upload">
@@ -61,8 +61,8 @@
                                 </tbody>
                             </table>
                             <div id="btn_wrap">
-                                <input type="submit" value="공지글 작성" class="btn_com btn_main">
                                 <input type="button" value="취소" class="btn_com btn_main" onClick="goNoticeBoard()">
+                                <input type="submit" value="공지글 작성" class="btn_com btn_main">
                             </div>
                         </form>
                     </div>

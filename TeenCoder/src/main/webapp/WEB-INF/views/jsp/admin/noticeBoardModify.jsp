@@ -39,30 +39,44 @@
                         <form id="board_form" class="admin_board_form" method="post" enctype="multipart/form-data">
                             <table>
                                 <tbody>
-                                    <tr>
-                                        <th>제목</th>
-                                        <td>
-                                           <input type="text" name="noti_title" placeholder="제목"> 
-                                        </td>
-                                    </tr>
-                                    <tr class="contents_title">
-				                        <th>내용</th>
-				                        <td >
-				                            <textarea id="summernote" name="noti_content" placeholder="내용"></textarea>
-				                        </td>
-				                    </tr>
-                                    <tr id="fileDiv" class="file_upload">
-				                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile">+</a></th>
-				                        <td>
-			                            	<input type="file" id="file" name="file_0"/>
-			                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
-				                        </td>
-				                    </tr>
+                                	<c:forEach items="${noticeBoardModify}" var="noticeBoardModify">
+	                                    <tr>
+	                                        <th>제목</th>
+	                                        <td>
+	                                           <input type="text" name="noti_title" value="${noticeBoardModify.noti_title}" placeholder="제목"> 
+	                                        </td>
+	                                    </tr>
+	                                    <tr class="contents_title">
+					                        <th>내용</th>
+					                        <td >
+					                            <textarea class="summernote" name="noti_content" placeholder="내용">
+					                            ${noticeBoardModify.noti_content}
+					                            </textarea>
+					                        </td>
+					                    </tr>
+	                                    <tr id="fileDiv" class="file_upload">
+					                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile">+</a></th>
+					                        <td>
+				                            	<input type="file" id="file" name="file_0">
+				                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
+					                        </td>
+					                    </tr>
+					                    <c:forEach var="file" items="${file}">
+						                    <tr class="file_upload file_modify">
+						                    	<th></th>
+					                        	<td>
+													<span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a></span>
+													<input type="hidden" name="FILE_${file.FILE_NO}" value="true"/>
+					                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
+					                        	</td>
+					                    	</tr>
+				                    	</c:forEach>
+				                    </c:forEach>
                                 </tbody>
                             </table>
                             <div id="btn_wrap">
-                                <input type="submit" value="공지글 수정" class="btn_com btn_main">
                                 <input type="button" value="취소" class="btn_com btn_main" onClick="goNoticeBoard()">
+                                <input type="submit" value="공지글 수정" class="btn_com btn_main">
                             </div>
                         </form>
                     </div>
