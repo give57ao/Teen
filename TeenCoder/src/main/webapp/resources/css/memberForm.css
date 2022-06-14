@@ -58,7 +58,15 @@
 }
 
 #join_form table .check input[type="submit"] {
+	float: right;
     width: 100px;
+    margin-top: 5px;
+}
+
+#join_form table .check button {
+	float: right;
+    width: 100px;
+    margin-top: 5px;
 }
 
 #join_form table .checkbox {
@@ -79,7 +87,9 @@
 }
 
 #join_form table .checkbox .btn_check {
+	float: right;
     width: 100px;
+    margin-top: 5px;
 }
 
 #join_form table .checkbox label {
