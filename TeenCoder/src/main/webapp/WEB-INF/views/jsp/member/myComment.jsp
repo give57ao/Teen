@@ -67,7 +67,7 @@
 										<div class="row_info">
 											<div class="row_top member">
 												<h4>
-													<a class="overtext" href="/teen/board/detail?board_no=${board.board_no}"> <!-- 링크확인필요 -->
+													<a class="overtext" href="/teen/board/detail?board_no=${comment.board_no}"> <!-- 링크확인필요 -->
 														<span class="tag_hit">[추천]</span> ${comment.board_title}
 														<c:if test="${comment.board_file_check eq 'Y'}">
 															<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
@@ -82,7 +82,7 @@
 										</div>
 										<div class="row_title">
 											<h3 class="comment_contents">
-												<a class="overtext" href="/teen/board/detail?board_no=${board.board_no}"> <!-- 링크확인필요 -->
+												<a class="overtext" href="/teen/board/detail?board_no=${comment.board_no}"> <!-- 링크확인필요 -->
 		 											${comment.bcomment_content}
 												</a>
 											</h3>
