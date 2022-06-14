@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TeenCoder 게시글 작성</title>
+<title>TeenCoder 게시글 수정</title>
 <link rel="shortcut icon" href="/teen/resources/images/icon/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
@@ -106,7 +106,7 @@
 		                </table>
 		                <div id="btn_wrap">
 		                	<input type="button" value="취소" class="btn_com btn_main" onClick="goBoard()">
-		                    <input type="submit" value="게시글 작성" class="btn_com btn_main">
+		                    <input type="submit" value="게시글 수정" class="btn_com btn_main">
 		                </div>
 		            </form>
                 </div>
