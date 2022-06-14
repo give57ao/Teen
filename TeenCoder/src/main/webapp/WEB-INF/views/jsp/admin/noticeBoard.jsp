@@ -82,7 +82,7 @@
 		                                   <td class="w10">${notice.noti_file_check}</td>
 		                                   <td class="w10">
 		                                   	    <a href="/teen/admin/noticeBoardModify?noti_no=${notice.noti_no}">수정</a> /
-		                                   	    <a href="/teen/admin/noticeBoardDelete?noti_no=${notice.noti_no}" onClick="noticeDeletePopup()">삭제</a>
+		                                   	    <a href="/teen/admin/noticeBoardDelete?noti_no=${notice.noti_no}" onClick="return noticeBoardDelete()">삭제</a>
 	                                   	   </td>
 		                                </tr>
 	                                </c:forEach>

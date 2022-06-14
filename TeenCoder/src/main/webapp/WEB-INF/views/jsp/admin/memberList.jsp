@@ -82,7 +82,7 @@
 		                                   <td class="w10">${member.member_pro_check}</td>
 		                                   <td class="w10">
 		                                   	    <a href="/teen/admin/memberModify?member_no=${member.member_no}">수정</a> /
-		                                   	    <a href="/teen/admin/memberDelete?member_no=${member.member_no}" onClick="memberDeletePopup()">삭제</a>
+		                                   	    <a href="/teen/admin/memberDelete?member_no=${member.member_no}" onClick="return memberDelete()">삭제</a>
 	                                   	   </td>
 		                                </tr>
 	                                </c:forEach>

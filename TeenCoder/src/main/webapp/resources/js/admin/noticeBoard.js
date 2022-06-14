@@ -12,7 +12,7 @@ function searchBoard() {
 }
 
 // 공지글 삭제 경고 팝업
-function noticeDeletePopup() {
+function noticeBoardDelete() {
 	if(confirm("해당 공지글을 정말 삭제하시겠습니까?")) {
 		alert("삭제되었습니다.");
 		return true;
