@@ -257,6 +257,10 @@ AND REGEXP_LIKE (B.BOARD_TAG_NAME, '^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
 
 GROUP BY B.BOARD_NO, B.BOARD_GROUP_NO, B.BOARD_TAG_NAME,  B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,G.BGROUP_NAME,M.MEMBER_NICK
 
+<if test='sort == null'>
+ORDER BY B.BOARD_DATE DESC
+</if>
+
 <if test='sort == "recent"'>
 ORDER BY B.BOARD_DATE DESC
 </if>
@@ -322,6 +326,9 @@ ORDER BY board_comment_count DESC
 			OR C.BCOMMENT_CONTENT LIKE '%'||#{keyword}||'%'
 			</if>
 			
+			<if test='sort == null'>
+			ORDER BY B.BOARD_DATE DESC
+			</if>
 			
 			<if test='sort == "recommend"'>
 			ORDER BY C.BCOMMENT_LIKE_COUNT DESC
