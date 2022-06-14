@@ -100,7 +100,7 @@
 			                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
 			                        	</td>
 			                        	</c:forEach>
-			                        	<%-- <input type="hidden" name="FILE_${file.FILE_NO}" value="true"/> --%>
+			                        	<%-- <input type="hidden" name="FILE_${file.FILE_NO}" value="true"/> --%><!-- ㅎㅇ -->
 			                    	</tr>
 			                    </div>
 		                <div id="btn_wrap">
