@@ -87,19 +87,21 @@
 			                            <%-- <input type="hidden" id="board_tag_name value" name="board_tag_name" value="${updateBoard.board_tag_name}"> --%>
 			                        </td>
 			                    </tr>
-			                    </c:forEach>
-			                   <div id="fileDiv">
 			                    <tr class="file_upload">
-			                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile" onclick="addFile()">+</a></th>
-			                         <c:forEach var="file" items="${file}">
-			                        	<td>
-											<span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a></span>
-			                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
-			                        	</td>
-			                        	</c:forEach>
-			                        	<%-- <input type="hidden" name="FILE_${file.FILE_NO}" value="true"/> --%>
-			                    	</tr>
-			                    </div>
+			                    	<th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile" onclick="addFile()">+</a></th>
+		                        	<td></td>
+		                    	</tr>
+			                    <c:forEach var="file" items="${file}">
+			                    <tr class="file_upload">
+			                    	<th></th>
+		                        	<td>
+										<span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a></span>
+		                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
+		                        	</td>
+		                        	<%-- <input type="hidden" name="FILE_${file.FILE_NO}" value="true"/> --%>
+		                    	</tr>
+		                    	</c:forEach>
+			                    </c:forEach>
 		                    </tbody>
 		                </table>
 		                <div id="btn_wrap">
