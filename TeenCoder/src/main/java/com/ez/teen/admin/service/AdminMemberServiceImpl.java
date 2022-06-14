@@ -28,24 +28,24 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	
 	// 회원관리 리스트
 	@Override
-	public List<MemberModel> memberList(MemberParam memberParam) throws Exception {
+	public List<MemberModel> memberList(MemberParam memberParam) {
 		return adminMapper.memberList(memberParam);
 	}
 	
 	// 회원정보 수정
 	@Override
-	public List<MemberModel> memberModifyForm(MemberModel memberModel) throws Exception {
+	public List<MemberModel> memberModifyForm(MemberModel memberModel) {
 		return adminMapper.memberModifyForm(memberModel);
 	}
 	
 	@Override
-	public void memberModify(MemberModel memberModel) throws Exception {
+	public void memberModify(MemberModel memberModel) {
 		adminMapper.memberModify(memberModel);
 	}
 	
 	// 회원정보 삭제
 	@Override
-	public void memberDelete(MemberModel memberModel) throws Exception {
+	public void memberDelete(MemberModel memberModel) {
 		adminMapper.memberDelete(memberModel);
 	}
 
@@ -84,6 +84,12 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	@Override
 	public void noticeBoardDelete(NoticeModel noticeModel) {
 		adminMapper.noticeBoardDelete(noticeModel);
+	}
+	
+	// 공지글 수정
+	@Override
+	public void noticeBoardModify(NoticeModel noticeModel) {
+		adminMapper.noticeBoardModify(noticeModel);
 	}
 	
 }

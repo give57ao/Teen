@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.admin.service.AdminMemberService;
@@ -32,10 +33,11 @@ public class AdminController {
 	private AdminMemberService adminMemberService;
 	
 	@Autowired
-	BoardService boardService;
+	private BoardService boardService;
 	
 	@Autowired
-	NoticeService noticeService;
+	private NoticeService noticeService;
+	
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 	
@@ -45,7 +47,7 @@ public class AdminController {
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 			@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "keyword", required = false) String keyword) throws Exception {
+			@RequestParam(value = "keyword", required = false) String keyword) {
 		
 		int total = adminMemberService.getMemberCount(memberParam);
 		
@@ -71,7 +73,7 @@ public class AdminController {
 	
 	// 회원정보 수정 폼
 	@GetMapping("/memberModify")
-	public String memberModifyForm(MemberModel memberModel, MemberParam memberParam, Model model) throws Exception {
+	public String memberModifyForm(MemberModel memberModel, MemberParam memberParam, Model model) {
 		int member_no = memberModel.getMember_no();
 		memberModel.setMember_no(member_no);
 		
@@ -82,15 +84,14 @@ public class AdminController {
 	
 	// 회원정보 수정
 	@PostMapping("/memberModify")
-	public String memberModify(MemberModel memberModel) throws Exception {
+	public String memberModify(MemberModel memberModel) {
 		adminMemberService.memberModify(memberModel);
 		return "redirect:/admin/memberList";
 	}
 	
 	// 회원정보 삭제
-	@ResponseBody
-	@PostMapping("/memberDelete")
-	public String memberDelete(MemberModel memberModel) throws Exception {	
+	@RequestMapping("/memberDelete")
+	public String memberDelete(MemberModel memberModel) {	
 		adminMemberService.memberDelete(memberModel);
 		return "redirect:/admin/memberList";
 	}
@@ -186,44 +187,61 @@ public class AdminController {
 	}
 	
 	// 공지글 관리
-		@RequestMapping("/noticeBoard")
-		public String noticeBoard(Model model, BoardParam boardParam, NoticeParam noticeParam,
-				@RequestParam(value = "nowPage", required = false) String nowPage,
-				@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
-				@RequestParam(value = "sort", required = false) String sort,
-				@RequestParam(value = "search", required = false) String search,
-				@RequestParam(value = "keyword", required = false) String keyword) {
+	@GetMapping("/noticeBoard")
+	public String noticeBoard(Model model, BoardParam boardParam, NoticeParam noticeParam,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "keyword", required = false) String keyword) {
 
-			int total = noticeService.getNoticeCount(noticeParam);
-			
-			if (nowPage == null && cntPerPage == null) {
-				nowPage = "1";
-				cntPerPage = "10";
-			} else if (nowPage == null) {
-				nowPage = "1";
-			} else if (cntPerPage == null) {
-				cntPerPage = "10";
-			} 
-			
-			noticeParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-			if(total == 0) {
-				noticeParam.setEndPage(1);
-			}
-			
-			model.addAttribute("paging", noticeParam);
-			model.addAttribute("sort", sort);
-			model.addAttribute("notice", adminMemberService.noticeBoard(noticeParam));
-			
-			return "admin/noticeBoard";
+		int total = noticeService.getNoticeCount(noticeParam);
+		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "10";
+		} 
+		
+		noticeParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		if(total == 0) {
+			noticeParam.setEndPage(1);
 		}
 		
-		// 공지글 삭제
-		@ResponseBody
-		@PostMapping("/noticeBoardDelete")
-		public String noticeBoardDelete(NoticeModel noticeModel) {	
-			adminMemberService.noticeBoardDelete(noticeModel);
-			return "redirect:/admin/noticeBoard";
-		}
-
+		model.addAttribute("paging", noticeParam);
+		model.addAttribute("sort", sort);
+		model.addAttribute("notice", adminMemberService.noticeBoard(noticeParam));
+		
+		return "admin/noticeBoard";
+	}
+	
+	// 공지글 삭제
+	@RequestMapping("/noticeBoardDelete")
+	public String noticeBoardDelete(NoticeModel noticeModel) {	
+		adminMemberService.noticeBoardDelete(noticeModel);
+		return "redirect:/admin/noticeBoard";
+	}
+	
+	// 공지글 수정 폼
+	@GetMapping("/noticeBoardModify")
+	public String noticeBoardModifyForm() {
+		return "admin/noticeBoardModify";
+	}
+		
+	// 공지글 수정
+	@PostMapping("/noticeBoardModify")
+	public String noticeBoardModify(NoticeModel noticeModel, HttpSession session, MultipartHttpServletRequest mpRequest)throws Exception {
+				
+		int member_no = (Integer)session.getAttribute("member_no");
+			
+		noticeModel.setMember_no(member_no);
+			
+		noticeService.insertNotice(noticeModel, mpRequest);
+				
+		return "redirect:/admin/noticeBoard";
+	}
 	
 }

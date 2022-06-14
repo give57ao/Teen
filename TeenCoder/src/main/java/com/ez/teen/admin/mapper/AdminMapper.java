@@ -19,28 +19,25 @@ public interface AdminMapper {
 	public int getMemberCount(MemberParam memberParam);
 	
 	// 회원관리 리스트
-	public List<MemberModel> memberList(MemberParam memberParam) throws Exception;
+	public List<MemberModel> memberList(MemberParam memberParam);
 	
 	// 회원정보 수정
-	public List<MemberModel> memberModifyForm(MemberModel memberModel) throws Exception;
+	public List<MemberModel> memberModifyForm(MemberModel memberModel);
 	
-	public void memberModify(MemberModel memberModel) throws Exception;
+	public void memberModify(MemberModel memberModel);
 	
 	// 회원정보 삭제
-	public void memberDelete(MemberModel memberModel) throws Exception;
-
-	public void insertNotice(NoticeModel noticeModel) throws Exception;
+	public void memberDelete(MemberModel memberModel);
 
 	// 게시글 관리
 	public List<BoardModel> adminBoard(BoardParam boardParam);
 
-	
 	public List<BoardModel> reportList(ReportParam reportParam);
 	
-	//전체 게시글 수
+	// 전체 게시글 수
 	public int getReportCount(ReportParam reportParam);
 	
-	//신고글 삭제
+	// 신고글 삭제
 	public void deleteReportBoard(BoardModel boardModel);
 	
 	// 공지글 리스트
@@ -48,5 +45,8 @@ public interface AdminMapper {
 		
 	// 공지글 삭제
 	public void noticeBoardDelete(NoticeModel noticeModel);
+	
+	// 공지글 수정
+	public void noticeBoardModify(NoticeModel noticeModel);
 
 }

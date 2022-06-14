@@ -12,25 +12,12 @@ function searchBoard() {
 }
 
 // 공지글 삭제 경고 팝업
-function noticeDeletePopup(noti_no) {
-	var notiNo = noti_no;
-	var del = confirm("해당 공지글을 정말 삭제하시겠습니까?");
-	
-	if(del == true) {
-		$.ajax({
-			url : "/teen/admin/noticeBoardDelete",
-			type : "post",
-			dataType : "json",
-			data : {
-				"noti_no" : notiNo
-			},
-			success : function(result) {
-				if(result == 1) {
-					alert("잘못된 접근입니다.");
-				} else if(result == 0) {
-				   	alert("해당 공지글을 삭제하였습니다.");
-				}
-			}
-		});
+function noticeDeletePopup() {
+	if(confirm("해당 공지글을 정말 삭제하시겠습니까?")) {
+		alert("삭제되었습니다.");
+		return true;
+	} else {
+		alert("잘못된 로직입니다.");
+		return false;
 	}
 }
