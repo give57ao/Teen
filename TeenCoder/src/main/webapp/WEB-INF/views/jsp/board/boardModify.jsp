@@ -88,20 +88,21 @@
 			                        </td>
 			                    </tr>
 			                    </c:forEach>
-			                    <tr id="fileDiv" class="file_upload">
-			                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile" onclick="addFile()">+</a></th>
-			                        <td>
-			                        	<c:forEach var="file" items="${file}">
-										<div id="fileGroup">
-											<input type="hidden" name="FILE_${file.FILE_NO}" value="true">
-			                            	<input type="file" id="file" name="file_0">
-			                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
-				                        </div>
-				                        </c:forEach>
-			                        </td>
-			                    </tr>
+			                   
 		                    </tbody>
 		                </table>
+		                <div id="fileDiv">
+			                    <tr class="file_upload">
+			                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile" onclick="addFile()">+</a></th>
+			                         <c:forEach var="file" items="${file}">
+			                        	<td>
+											<span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a></span>
+			                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
+			                        	</td>
+			                        	</c:forEach>
+			                        	<%-- <input type="hidden" name="FILE_${file.FILE_NO}" value="true"/> --%>
+			                    	</tr>
+			                    </div>
 		                <div id="btn_wrap">
 		                	<input type="button" value="취소" class="btn_com btn_main" onClick="goBoard()">
 		                    <input type="submit" value="게시글 작성" class="btn_com btn_main">
@@ -125,13 +126,38 @@
 		    var strData = document.getElementById('updateTag').value;
 		    var arrChk = strData.split('#');
 
-		    $('.board_tag_name').prop('checked', false); // 일단 모두 uncheck
+		    $('.board_tag_name').prop('checked', false);
 
 		    for (var nArrCnt in arrChk) {
 
-		                    $("input[name=board_tag_name][value="+arrChk[nArrCnt]+"]").prop("checked",true);
+		     $("input[name=board_tag_name][value="+arrChk[nArrCnt]+"]").prop("checked",true);
 		    }    
 		});
+	/* ========================================== */
+	    $(document).ready(function() {
+	        $("a[name='deleteFile']").on("click", function(e) {
+	            e.preventDefault();
+				e.remove();
+	            deleteFile($(this));
+	        });
+	    })
+	 
+	     function addFile() {
+	        var str = "<div id="fileGroup"><label class="btn_com btn_sel_file" for="file">파일 선택
+	  					<input type="file" id="file" name="file_0">
+						<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a></div>";
+	        $("#fileDiv").append(str);
+	        $("a[name='deleteFile']").on("click", function(e) {
+	            e.preventDefault();
+				e.remove();
+	            deleteFile($(this));
+	        });
+	    }
+	 
+	    function deleteFile(obj) {
+	        obj.parent().remove();
+	    }
+
 	</script>
 </body>
 </html>
