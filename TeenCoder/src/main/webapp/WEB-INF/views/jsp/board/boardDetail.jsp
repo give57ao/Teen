@@ -102,8 +102,10 @@ function deleteBoard(num) {
 	                            	<li><input type="button" value="스크랩" class="btn_com btn_board">
 		                			<li><input type="button" value="신고" class="btn_com btn_board">
 		                			<li><input type="button" value="추천" class="btn_com btn_board">
+		                			<c:if test="${sessionScope.member_no == boardDetail.member_no }">
 		                			<li><input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
-	                            <c:if test="${sessionScope.member_no == boardDetail.member_no }">
+		                			</c:if>
+	                            	<c:if test="${sessionScope.member_no == boardDetail.member_no }">
 										<input type="button" value="삭제" class="btn_com btn_board" onClick="deleteBoard(${boardModel.board_no})">
 									</c:if>
 									</ul>
