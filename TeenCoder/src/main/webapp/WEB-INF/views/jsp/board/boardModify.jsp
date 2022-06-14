@@ -134,7 +134,7 @@
 		     $("input[name=board_tag_name][value="+arrChk[nArrCnt]+"]").prop("checked",true);
 		    }    
 		});
-	/* =========================================== */
+	/* ============================================ */
 	    $(document).ready(function() {
 	        $("a[name='deleteFile']").on("click", function(e) {
 	            e.preventDefault();
