@@ -118,11 +118,12 @@ function deleteBoard(num) {
                     
                 	<!-- Comment From -->
 	               	 <div class="comment_form">
-	                	
+	                	<form action="comment" method="post" enctype="multipart/form-data">
 		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
 		                	<input type="hidden" name="board_no" value="${board_no}">
 		          	        <input type="reset" value="취소" class="btn_com btn_board btn_cmt">
 		          	      	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
+		          	    </form>
 	               </div>
 	                	  
 	                <!-- 댓글갯수 -->
