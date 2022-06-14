@@ -40,7 +40,7 @@ import com.ez.teen.member.model.MemberModel;
 
 @Controller
 public class BoardController {
-
+//asdf
 	@Autowired
 	BoardService boardService;
 	

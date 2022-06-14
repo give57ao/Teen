@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<!-- asdf -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,7 +81,8 @@ function deleteBoard(num) {
 	                            </div>
 	                            <div class="row_contents">
 	                         	<p>${boardDetail.board_content} --
-	                         	 ${boardModel.board_no} -- ${ sessionScope.member_no} -- ${ boardDetail.member_no }</p>
+	                         	 ${boardModel.board_no} -- ${ sessionScope.member_no} -- ${ boardDetail.member_no } -- ${boardDetail.bcomment_no }
+	                         	 </p>
 	                            	
 	                            	<form name="downFile" role="form" method="post">
 	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
@@ -114,15 +115,14 @@ function deleteBoard(num) {
                     </c:forEach>
                     
                 	<!-- Comment From -->
-	                <div id="comment_form">
-	                	<form action="comment" method="post" enctype="multipart/form-data">
+	               	 <div class="comment_form">
+	                	
 		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
 		                	<input type="hidden" name="board_no" value="${board_no}">
-		                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
-		                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
-	                	</form>
-	                </div>
-	                
+		          	        <input type="reset" value="취소" class="btn_com btn_board btn_cmt">
+		          	      	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
+	               </div>
+	                	  
 	                <!-- 댓글갯수 -->
                     <h2><b class="comment_count">${boardCommentCount}</b>개의 댓글</h2>
                     
@@ -153,6 +153,7 @@ function deleteBoard(num) {
 		                            	<input type="button" value="신고" class="btn_com btn_board">
 			                			<input type="button" value="추천" class="btn_com btn_board">
 			                			<input type="button" value="답글" class="btn_com btn_board" onClick="recomment(${boardComment.ref_step})" >
+			                			<input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="deletecmt(${bcomment_no})">
 		                            </div>
 	                            </div>
 		                	</div>

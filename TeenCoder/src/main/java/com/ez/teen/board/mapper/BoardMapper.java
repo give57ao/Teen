@@ -1,6 +1,6 @@
 package com.ez.teen.board.mapper;
 
-
+//asdf
 import java.util.List;
 import java.util.Map;
 
@@ -16,55 +16,55 @@ import com.ez.teen.board.model.CommentParam;
 @Mapper
 public interface BoardMapper {
 
-	// 전체 이용자 수
+	// �쟾泥� �씠�슜�옄 �닔
 	public int getUserCount();
 
-	//전체 게시글 수
+	//�쟾泥� 寃뚯떆湲� �닔
 	public int getBoardCount(BoardParam boardParam);
 	
-	// 전체 댓글 수
+	// �쟾泥� �뙎湲� �닔
 	public int getCommentCount(CommentParam commentParam);
 
-	// 게시글 리스트 (BGROUP 구별 없이)
+	// 寃뚯떆湲� 由ъ뒪�듃 (BGROUP 援щ퀎 �뾾�씠)
 	public List<BoardModel> boardList(BoardParam boardParam);
 	
-	// 댓글 리스트
+	// �뙎湲� 由ъ뒪�듃
 	public List<CommentModel> commentList(CommentParam commentParam);
 		
-	// 게시글 수정
+	// 寃뚯떆湲� �닔�젙
 	public void updateBoard(BoardModel boardModel);
 
-	// 게시글 디테일 
+	// 寃뚯떆湲� �뵒�뀒�씪 
 	public List<BoardModel> selectBoardDetail(BoardParam boardParam);
 
-	// 게시글 디테일 속 댓글
+	// 寃뚯떆湲� �뵒�뀒�씪 �냽 �뙎湲�
 	public List<BoardCommentModel> selectComment(BoardParam boardParam);
 	
-	// 게시글 디테일 속 답글
+	// 寃뚯떆湲� �뵒�뀒�씪 �냽 �떟湲�
 	public List<BoardAnswerModel> selectAnswer(BoardParam boardParam);
 
-	//게시글 작성
+	//寃뚯떆湲� �옉�꽦
 	public void insertBoard(BoardModel boardModel) throws Exception;
 	
-	//첨부파일 업로드
+	//泥⑤��뙆�씪 �뾽濡쒕뱶
 	public void insertFile(Map<String, Object> map) throws Exception;
 	
-	//첨부파일 조회
+	//泥⑤��뙆�씪 議고쉶
 	public List<Map<String, Object>>selectFile(int board_no) throws Exception;
 		
-	//첨부파일 다운로드
+	//泥⑤��뙆�씪 �떎�슫濡쒕뱶
 	public Map<String, Object> downFile(Map<String, Object> map) throws Exception;
 	
-	//첨부파일 수정
+	//泥⑤��뙆�씪 �닔�젙
 	public void updateFile(Map<String, Object> map) throws Exception;
 
-	//댓글 작성
+	//�뙎湲� �옉�꽦
 	public void insertComment(CommentModel commentModel);
 	
-	//조회수 증가
+	//議고쉶�닔 利앷�
 	public void hitCount(BoardModel boardModel);
 	
-	//추천수 증가
+	//異붿쿇�닔 利앷�
 	public void recommendBoard(BoardModel boardModel);
 
 	public void fileCk(BoardModel boardModel);
@@ -73,7 +73,7 @@ public interface BoardMapper {
 
 	public int getRefLevel(CommentParam commentParam);
 	
-	//답글 작성
+	//�떟湲� �옉�꽦
 	public void insertReComment(CommentModel commentModel);
 
 	public void insertSummerNote(String fileName);
