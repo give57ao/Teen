@@ -299,7 +299,7 @@ ORDER BY board_comment_count DESC
 		UPDATE NOTICE
 		SET NOTI_TITLE = #{noti_title},
 			NOTI_CONTENT = #{noti_content}
-		WHERE NOTI_NO = #{noti_no} AND MEMBER_NO = #{member_no}
+		WHERE NOTI_NO = #{noti_no}
 	</update>
 	
 	<insert id="insertSummerNote" parameterType="String">
