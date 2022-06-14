@@ -1,6 +1,5 @@
 package com.ez.teen.board.mapper;
 
-//asdf
 import java.util.List;
 import java.util.Map;
 
@@ -16,55 +15,55 @@ import com.ez.teen.board.model.CommentParam;
 @Mapper
 public interface BoardMapper {
 
-	// �쟾泥� �씠�슜�옄 �닔
+	// 전체 이용자 수
 	public int getUserCount();
 
-	//�쟾泥� 寃뚯떆湲� �닔
+	//전체 게시글 수
 	public int getBoardCount(BoardParam boardParam);
 	
-	// �쟾泥� �뙎湲� �닔
+	// 전체 댓글 수
 	public int getCommentCount(CommentParam commentParam);
 
-	// 寃뚯떆湲� 由ъ뒪�듃 (BGROUP 援щ퀎 �뾾�씠)
+	// 게시글 리스트 (BGROUP 구별없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
 	
-	// �뙎湲� 由ъ뒪�듃
+	// 댓글 리스트
 	public List<CommentModel> commentList(CommentParam commentParam);
 		
-	// 寃뚯떆湲� �닔�젙
+	// 게시글 수정
 	public void updateBoard(BoardModel boardModel);
 
-	// 寃뚯떆湲� �뵒�뀒�씪 
+	// 게시글 디테일 
 	public List<BoardModel> selectBoardDetail(BoardParam boardParam);
 
-	// 寃뚯떆湲� �뵒�뀒�씪 �냽 �뙎湲�
+	// 게시글 디테일 속 댓글
 	public List<BoardCommentModel> selectComment(BoardParam boardParam);
 	
-	// 寃뚯떆湲� �뵒�뀒�씪 �냽 �떟湲�
+	// 게시글 디테일 속 답글
 	public List<BoardAnswerModel> selectAnswer(BoardParam boardParam);
 
-	//寃뚯떆湲� �옉�꽦
+	//게시글 작성
 	public void insertBoard(BoardModel boardModel) throws Exception;
 	
-	//泥⑤��뙆�씪 �뾽濡쒕뱶
+	//첨부파일 업로드
 	public void insertFile(Map<String, Object> map) throws Exception;
 	
-	//泥⑤��뙆�씪 議고쉶
+	//첨부파일 조회
 	public List<Map<String, Object>>selectFile(int board_no) throws Exception;
 		
-	//泥⑤��뙆�씪 �떎�슫濡쒕뱶
+	//첨부파일 다운로드
 	public Map<String, Object> downFile(Map<String, Object> map) throws Exception;
 	
-	//泥⑤��뙆�씪 �닔�젙
+	//첨부파일 수정
 	public void updateFile(Map<String, Object> map) throws Exception;
 
-	//�뙎湲� �옉�꽦
+	//댓글 작성
 	public void insertComment(CommentModel commentModel);
 	
-	//議고쉶�닔 利앷�
+	//조회수 증가
 	public void hitCount(BoardModel boardModel);
 	
-	//異붿쿇�닔 利앷�
+	//추천수 증가
 	public void recommendBoard(BoardModel boardModel);
 
 	public void fileCk(BoardModel boardModel);
@@ -73,7 +72,7 @@ public interface BoardMapper {
 
 	public int getRefLevel(CommentParam commentParam);
 	
-	//�떟湲� �옉�꽦
+	//답글 작성
 	public void insertReComment(CommentModel commentModel);
 
 	public void insertSummerNote(String fileName);
@@ -81,5 +80,7 @@ public interface BoardMapper {
 	public void updateTagName(BoardModel boardModel);
 	
 	public void deleteBoard(int board_no);
+	
+	public void deleteBcomment(int bcomment_no);
 	
 }

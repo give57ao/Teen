@@ -12,7 +12,6 @@ import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 
- //asdf
 public interface BoardService {
 
 	//전체 이용자 수
@@ -79,4 +78,6 @@ public interface BoardService {
 	
 	public void deleteBoard(int board_no);
 	
+	public void deleteBcomment(int bcomment_no);
+
 }

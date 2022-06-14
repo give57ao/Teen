@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- asdf -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +20,14 @@ function deleteBoard(num) {
 	var chk = confirm("정말 삭제?")
 	if(chk) {
 		location.href='/teen/board/delete?board_no='+num
+	}
+}
+</script>
+<script>
+function deletecmt(num1) {
+	var chk = confirm("정말 삭제?")
+	if(chk) {
+		location.href='/teen/board/delete?bcomment_no='+num1
 	}
 }
 </script>
@@ -81,7 +89,7 @@ function deleteBoard(num) {
 	                            </div>
 	                            <div class="row_contents">
 	                         	<p>${boardDetail.board_content} --
-	                         	 ${boardModel.board_no} -- ${ sessionScope.member_no} -- ${ boardDetail.member_no } -- ${boardDetail.bcomment_no }
+	                         	 ${boardModel.board_no} -- ${ sessionScope.member_no} -- ${ boardDetail.member_no } -- 
 	                         	 </p>
 	                            	
 	                            	<form name="downFile" role="form" method="post">
@@ -156,7 +164,7 @@ function deleteBoard(num) {
 		                            	<input type="button" value="신고" class="btn_com btn_board">
 			                			<input type="button" value="추천" class="btn_com btn_board">
 			                			<input type="button" value="답글" class="btn_com btn_board" onClick="recomment(${boardComment.ref_step})" >
-			                			<input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="deletecmt(${bcomment_no})">
+			                			<input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="deletecmt(${boardComment.bcomment_no})">
 		                            </div>
 	                            </div>
 		                	</div>

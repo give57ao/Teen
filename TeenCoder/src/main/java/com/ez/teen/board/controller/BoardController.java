@@ -40,7 +40,6 @@ import com.ez.teen.member.model.MemberModel;
 
 @Controller
 public class BoardController {
-//asdf
 	@Autowired
 	BoardService boardService;
 	
@@ -315,11 +314,12 @@ public class BoardController {
 		
 	}	
 	@RequestMapping("board/delete")
-	public String deleteBoard(@RequestParam("board_no") int board_no, RedirectAttributes redirect) {
+	public String deleteBoard(@RequestParam("board_no") int board_no,@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
 		
 		try {
 		
 		boardService.deleteBoard(board_no);
+		boardService.deleteBcomment(bcomment_no);
 		
 		redirect.addFlashAttribute("msg", "삭제굿");
 		
@@ -330,6 +330,24 @@ public class BoardController {
 			
 	return "redirect:/board";
 	}
+	
+	@RequestMapping("board/deleteBcomment")
+	public String deleteBcomment(@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
+		try {
+			
+			boardService.deleteBcomment(bcomment_no);
+						
+			redirect.addFlashAttribute("msg", "삭제굿");
+			
+		} catch (Exception e){
+			
+			redirect.addFlashAttribute("msg", "에렁");
+		}
+		
+		return "redirect:/board";
+	}
+	
+	
 }
 
 	
