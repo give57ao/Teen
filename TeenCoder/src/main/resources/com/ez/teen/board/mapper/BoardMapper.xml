@@ -214,13 +214,12 @@ ON B.MEMBER_NO = M.MEMBER_NO
 LEFT OUTER JOIN BCOMMENT C
 ON B.BOARD_NO = C.BOARD_NO
 
+<if test='member_no != 0'>
+WHERE B.MEMBER_NO = #{member_no}
+</if>
 
 <if test='board_group_no != null'>
 WHERE B.BOARD_GROUP_NO = #{board_group_no}
-</if>
-
-<if test='member_no != 0'>
-AND B.MEMBER_NO = #{member_no}
 </if>
 
 <if test='search == "title"'>

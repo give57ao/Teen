@@ -32,7 +32,6 @@
                     <li><a href="/teen/admin/adminBoard">게시글 관리</a></li>
                     <li><a href="/teen/admin/reportBoard">신고글 관리</a></li>
                     <li><a href="/teen/admin/reportCmtList">댓글 관리</a></li>
-                    <li><a href="/teen/admin/reportAnsList">답글 관리</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">
@@ -50,7 +49,6 @@
                         <select class="dropdown" id="selectBoxTest">
                             <option value="all" id="search" selected>전체</option>
                             <option value="title" id="search">제목</option>
-                            <option value="content" id="search">내용</option>
                         </select>
                         <div class="search">
                             <input type="text" id="keyword" placeholder="검색">
@@ -65,7 +63,6 @@
 	                                <tr class="row_title">
 	                                    <td>번호</td>
 	                                    <td>제목</td>
-	                                    <td>내용</td>
 	                                    <td>작성일</td>
 	                                    <td>조회</td>
 	                                    <td>첨부파일</td>
@@ -79,8 +76,7 @@
 	                                <c:forEach items="${notice}" var="notice" varStatus="status">
 		                                <tr class="row">
 		                                   <td class="w5">${notice.noti_no}</td>
-		                                   <td class="w20">${notice.noti_title}</td>
-		                                   <td class="w20">${notice.noti_content}</td>
+		                                   <td class="w30"><a href="/teen/board/notice/detail?board_no=${notice.noti_no}">${notice.noti_title}</a></td>
 		                                   <td class="w10"><fmt:formatDate value="${notice.noti_date}" pattern="yyyy.MM.dd"/></td>
 		                                   <td class="w10">${notice.noti_hit_count}</td>
 		                                   <td class="w10">${notice.noti_file_check}</td>

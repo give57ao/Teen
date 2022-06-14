@@ -47,6 +47,10 @@
 	width: 20%;
 }
 
+#admin_board_list .w30 {
+	width: 30%;
+}
+
 /* Admin Board List : Notice만 해당 */
 .admin_board_list_title .side_menu li:nth-child(2)::after {
     content: "";

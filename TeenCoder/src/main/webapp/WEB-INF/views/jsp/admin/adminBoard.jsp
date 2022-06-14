@@ -34,7 +34,6 @@
                     <li><a href="/teen/admin/adminBoard" class="select">게시글 관리</a></li>
                     <li><a href="/teen/admin/reportBoard">신고글 관리</a></li>
                     <li><a href="/teen/admin/reportCmtList">댓글 관리</a></li>
-                    <li><a href="/teen/admin/reportAnsList">답글 관리</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">

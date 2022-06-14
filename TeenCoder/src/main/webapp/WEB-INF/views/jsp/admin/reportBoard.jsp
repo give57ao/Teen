@@ -32,7 +32,6 @@
                     <li><a href="/teen/admin/adminBoard">게시글 관리</a></li>
                     <li><a href="/teen/admin/reportBoard" class="select">신고글 관리</a></li>
                     <li><a href="/teen/admin/reportCmtList">댓글 관리</a></li>
-                    <li><a href="/teen/admin/reportAnsList">답글 관리</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">
@@ -78,12 +77,12 @@
 	                            <c:forEach items="${reportList}" var="reportList">
 	                                <!-- Row1 -->
 	                                <tr class="row">
-	                                   <td>${reportList.board_no}</td>
-	                                   <td>${reportList.board_title}</td>
-	                                   <td>${reportList.board_content}</td>
-	                                   <td>${reportList.member_nick}</td>
-	                                   <td><fmt:formatDate value="${reportList.board_date}" pattern="yyyy.MM.dd"/></td>
-	                                   <td>${reportList.board_report_count}</td>
+	                                   <td class="w5">${reportList.board_no}</td>
+	                                   <td class="w20">${reportList.board_title}</td>
+	                                   <td class="w20">${reportList.board_content}</td>
+	                                   <td class="w10">${reportList.member_nick}</td>
+	                                   <td class="w10"><fmt:formatDate value="${reportList.board_date}" pattern="yyyy.MM.dd"/></td>
+	                                   <td class="w5">${reportList.board_report_count}</td>
 	                                     <td><a href="/teen/admin/deleteReportBoard?board_no=${reportList.board_no}" onclick="return deleteReportBoard();">삭제</a></td>
 	                                </tr>
 	                              </c:forEach>
