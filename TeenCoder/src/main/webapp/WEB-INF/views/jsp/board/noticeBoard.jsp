@@ -69,7 +69,7 @@
 			                            </div>
 			                            <div class="row_title">
 			                                <h3>
-												<a class="overtext" href="/teen/board/notice/detail?board_no=${notice.noti_no}"> 
+												<a class="overtext" href="/teen/board/notice/	detail?noti_no=${notice.noti_no}"> 
 													<span class="tag_hit">[추천]</span> ${notice.noti_title}
 													<c:if test="${notice.noti_file_check eq 'Y'}">
 														<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">

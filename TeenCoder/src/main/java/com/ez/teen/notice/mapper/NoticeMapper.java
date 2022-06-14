@@ -34,6 +34,12 @@ public interface NoticeMapper {
 
 	//어드민 댓글 삭제
 	public void deleteCmt(CommentModel cmtModel)throws Exception;
+
+	//공지사항 상세페이지
+	public List<NoticeModel> selectNoticeDetail(NoticeParam noticeParam);
+
+	//공지글 조회수 증가
+	public void hitCount(NoticeModel noticeModel);
 	
 
 	

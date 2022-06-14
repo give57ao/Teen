@@ -183,6 +183,10 @@ OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 			OR B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
 			</if>
 			
+			<if test='sort == null'>
+			ORDER BY B.BOARD_DATE DESC
+			</if>
+			
 			<if test='sort == "recent"'>
 			ORDER BY C.BCOMMENT_DATE DESC
 			</if>
@@ -201,6 +205,27 @@ OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 	DELETE FROM BCOMMENT
 	WHERE BCOMMENT_NO = #{bcomment_no}
 	</delete>
+	
+<select id="selectNoticeDetail" parameterType="com.ez.teen.notice.model.NoticeParam" resultType="com.ez.teen.notice.model.NoticeModel">	
+SELECT 
+N.NOTI_NO
+,M.MEMBER_NICK
+,N.NOTI_TITLE
+,N.NOTI_CONTENT
+,N.NOTI_DATE
+,N.NOTI_HIT_COUNT
+,N.NOTI_FILE_CHECK
+FROM NOTICE N
+INNER JOIN MEMBER M
+ON N.MEMBER_NO = M.MEMBER_NO
+
+WHERE N.NOTI_NO = #{noti_no}
+	
+</select>
+
+	<update id="hitCount">
+		UPDATE NOTICE SET NOTI_HIT_COUNT = NOTI_HIT_COUNT + 1 WHERE NOTI_NO = #{noti_no}
+	</update>
 
 
 

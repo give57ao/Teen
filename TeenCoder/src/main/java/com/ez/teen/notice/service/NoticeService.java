@@ -31,4 +31,10 @@ public interface NoticeService {
 	//댓글 삭제
 	public void deleteCmt(CommentModel cmtModel)throws Exception;
 
+	//공지 상세 페이지
+	public List<NoticeModel> selectNoticeDetail(NoticeParam noticeParam);
+
+	//공지글 조회수 증가
+	public void hitCount(NoticeModel noticeModel);
+
 }
