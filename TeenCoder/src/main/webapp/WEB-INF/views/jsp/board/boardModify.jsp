@@ -88,10 +88,7 @@
 			                        </td>
 			                    </tr>
 			                    </c:forEach>
-			                   
-		                    </tbody>
-		                </table>
-		                <div id="fileDiv">
+			                   <div id="fileDiv">
 			                    <tr class="file_upload">
 			                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile" onclick="addFile()">+</a></th>
 			                         <c:forEach var="file" items="${file}">
@@ -100,9 +97,11 @@
 			                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
 			                        	</td>
 			                        	</c:forEach>
-			                        	<%-- <input type="hidden" name="FILE_${file.FILE_NO}" value="true"/> --%><!-- ㅎㅇ -->
+			                        	<%-- <input type="hidden" name="FILE_${file.FILE_NO}" value="true"/> --%>
 			                    	</tr>
 			                    </div>
+		                    </tbody>
+		                </table>
 		                <div id="btn_wrap">
 		                	<input type="button" value="취소" class="btn_com btn_main" onClick="goBoard()">
 		                    <input type="submit" value="게시글 작성" class="btn_com btn_main">
