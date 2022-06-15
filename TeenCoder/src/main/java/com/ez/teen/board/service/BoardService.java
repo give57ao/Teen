@@ -12,7 +12,6 @@ import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 
- //asdf
 public interface BoardService {
 
 	//전체 이용자 수
@@ -81,4 +80,9 @@ public interface BoardService {
 
 	
 	
+	public void deleteBcomment(int bcomment_no);
+
+	//detail내 댓글개수
+	public int commentCount(int board_no);
+
 }

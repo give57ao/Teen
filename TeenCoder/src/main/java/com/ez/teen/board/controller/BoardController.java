@@ -40,7 +40,6 @@ import com.ez.teen.member.model.MemberModel;
 
 @Controller
 public class BoardController {
-//asdf
 	@Autowired
 	BoardService boardService;
 	
@@ -136,12 +135,12 @@ public class BoardController {
 				HttpServletResponse response, HttpServletRequest rq, BoardParam boardParam, Model model,
 				@RequestParam(value="board_no")int board_no, CommentModel commentModel) throws Exception{
 
-			boardParam.setBoard_no(board_no); 
+			boardParam.setBoard_no(board_no);
 			
 			List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
 			List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
 			List<BoardAnswerModel> boardAnswer = boardService.selectAnswer(boardParam);
-			int boardCommentCount = boardService.getRefStep(board_no) + 1;
+			int commentCount = boardService.commentCount(board_no);
 			
 			
 			System.out.println(boardDetail);
@@ -155,12 +154,12 @@ public class BoardController {
 			model.addAttribute("boardComment", boardComment);
 			model.addAttribute("boardAnswer", boardAnswer);
 			model.addAttribute("commentNum", boardComment);
-			model.addAttribute("boardCommentCount", boardCommentCount);
+			model.addAttribute("commentCount", commentCount);
 			boardService.hitCount(boardModel);
 			
 			String index = rq.getParameter("index");
 			System.out.println("인덱스값: " + index);
-			System.out.println(boardCommentCount);
+			System.out.println(commentCount);
 			
 			return "board/boardDetail";
 		}
@@ -315,11 +314,12 @@ public class BoardController {
 		
 	}	
 	@RequestMapping("board/delete")
-	public String deleteBoard(@RequestParam("board_no") int board_no, RedirectAttributes redirect) {
+	public String deleteBoard(@RequestParam("board_no") int board_no,@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
 		
 		try {
 		
 		boardService.deleteBoard(board_no);
+		boardService.deleteBcomment(bcomment_no);
 		
 		redirect.addFlashAttribute("msg", "삭제굿");
 		
@@ -330,6 +330,24 @@ public class BoardController {
 			
 	return "redirect:/board";
 	}
+	
+	@RequestMapping("board/deleteBcomment")
+	public String deleteBcomment(@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
+		try {
+			
+			boardService.deleteBcomment(bcomment_no);
+						
+			redirect.addFlashAttribute("msg", "삭제굿");
+			
+		} catch (Exception e){
+			
+			redirect.addFlashAttribute("msg", "에렁");
+		}
+		
+		return "redirect:/board";
+	}
+	
+	
 }
 
 	

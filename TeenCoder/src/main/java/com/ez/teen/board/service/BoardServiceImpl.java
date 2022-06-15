@@ -15,7 +15,7 @@ import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.common.file.FileUtil;
-//asdf
+
 @Service
 public class BoardServiceImpl implements BoardService {
 
@@ -199,4 +199,16 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 
+	@Override
+	public void deleteBcomment(int bcomment_no) {
+		boardMapper.deleteBcomment(bcomment_no);
+	}
+
+	//detail내 댓글개수
+	@Override
+	public int commentCount(int board_no) {
+		return boardMapper.commentCount(board_no);
+	}
+
+	
 }

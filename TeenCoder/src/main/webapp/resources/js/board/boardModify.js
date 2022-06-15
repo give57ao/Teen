@@ -13,7 +13,7 @@ $(document).ready(function() {
 	});
 	
 	$("a[name='deleteFile']").on("click", function(e) {
-		e.preventDefault();
+		e.stopImmediatePropagation();
 		fn_deleteFile($(this));
 	});
 	
@@ -76,7 +76,7 @@ function fn_addFile() {
 // 파일 삭제
 function fn_deleteFile(obj){
     obj.parent().parent('.file_row').remove();
- }
+}
 
 //글 수정 썸머노트 DB에서 데이터 불러오기
 $(document).ready(function() {
