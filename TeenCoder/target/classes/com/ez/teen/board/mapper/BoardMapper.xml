@@ -171,7 +171,7 @@
 	 STORED_FILE_NAME
 	,ORG_FILE_NAME
 	FROM BFILE
-	WHERE FILE_NO = #{FILE_NO}
+	WHERE FILE_NO = #{file_no}
 	]]>
 	</select>
 	
@@ -548,7 +548,7 @@ ORDER BY board_comment_count DESC
 	
 	<update id="deleteFile">
 		<![CDATA[
-		UPDATE BFILE SET DEL_GB = 'Y' WHERE FILE_NO = #{file_no}
+		UPDATE BFILE SET DEL_GB = 'Y' WHERE FILE_NO = #{FILE_NO}
 		]]>
 	</update>
 	

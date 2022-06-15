@@ -64,7 +64,7 @@ $(document).ready(function() {
 /*============================================================================================================================*/
 // 파일 추가
 function fn_addFile() {
-    var str = "<tr class='filerow'><th></th><td><input type='file' id='file' name='file"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></td></tr>";
+    var str = "<tr class='filerow'><th></th><td><input type='file' id='file' name='file"+(files_count++)+"'/><a href='#' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></td></tr>";
 
     $("#fileDiv").after(str);
     $("a[id='deleteFile']").on("click", function(e) {
@@ -73,6 +73,16 @@ function fn_addFile() {
     });
 }
 
+var fileNoArry = new Array();
+var fileNameArry = new Array();
+function fn_del(value, name) {
+
+	fileNoArry.push(value);
+	fileNameArry.push(name);
+	$("#fileNoDel").attr("value", fileNoArry);
+	$("#fileNameDel").attr("value", fileNameArry);
+}
+ 		
 // 파일 삭제
 function fn_deleteFile(obj){
     obj.parent().parent('.file_row').remove();

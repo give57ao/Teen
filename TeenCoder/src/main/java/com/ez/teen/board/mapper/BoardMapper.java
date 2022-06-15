@@ -91,5 +91,4 @@ public interface BoardMapper {
 	//detail내 댓글개수
 	public int commentCount(int board_no);
 	
-	
 }

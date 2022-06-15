@@ -29,7 +29,7 @@ public class BoardModel {
 	private int board_comment_count;
 	
 	//첨부파일 업로드 추가
-	private int file_no;
+	private int FILE_NO;
 	private String org_file_name;
 	private String stored_file_name;
 	private int file_size;
@@ -123,11 +123,11 @@ public class BoardModel {
 		this.board_tag_name = board_tag_name;
 	}
 
-	public int getFile_no() {
-		return file_no;
+	public int getFILE_NO() {
+		return FILE_NO;
 	}
-	public void setFile_no(int file_no) {
-		this.file_no = file_no;
+	public void setFILE_NO(int FILE_NO) {
+		this.FILE_NO = FILE_NO;
 	}
 	public String getOrg_file_name() {
 		return org_file_name;

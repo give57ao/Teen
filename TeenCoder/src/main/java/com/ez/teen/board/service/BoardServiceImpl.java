@@ -46,7 +46,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 게시글 수정
 	@Override
-	public void updateBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest,Map<String, Object> map) throws Exception {
+	public void updateBoard(BoardModel boardModel, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
 		
 		String replaceTagName = boardModel.getBoard_tag_name();
 		replaceTagName = replaceTagName.replace(",", " #");
@@ -54,25 +54,18 @@ public class BoardServiceImpl implements BoardService {
 		
 		boardMapper.updateBoard(boardModel);
 		
-		List<Map<String, Object>> list = boardMapper.selectFile(boardModel.getBoard_no());
+		List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(boardModel,files, fileNames, mpRequest);
+		Map<String, Object> tempMap = null;
 		int size = list.size();
-		System.out.println("size = " + size);
-		System.out.println("list = " + list);
-		for(int i=0; i<size; i++) {
-			String fileNo = list.get(i).get("FILE_NO").toString();
-			int file_no = Integer.parseInt(fileNo);
-			System.out.println("file_no = " + file_no);
-			if(!map.containsKey(file_no)) {
-				boardMapper.deleteFile(file_no);
-				System.out.println("listaaa" + list.get(i));
+		for(int i = 0;i<size; i++) {
+			tempMap = list.get(i);
+			if(tempMap.get("NEW_FILE").equals("Y")) {
+				boardMapper.insertFile(tempMap);
+			}else {
+				boardMapper.updateFile(tempMap);
 			}
 		}
-		if(list != null) {
-		for (int i = 0; i < size; i++) {
-			boardMapper.insertFile(list.get(i));
-			boardMapper.fileCk(boardModel);
-		}
-	}
+		
 	}
 
 	// 게시글 작성

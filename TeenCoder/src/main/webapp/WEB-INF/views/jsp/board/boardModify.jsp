@@ -39,6 +39,8 @@
                     </div>
                     <!-- Form -->
                     <form id="board_form" method="post" enctype="multipart/form-data">
+                            <input type="hidden" id="fileNoDel" name="fileNoDel[]" value=""> 
+							<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
 		                <table>
 		                	<tbody>
 			                    <tr>
@@ -94,16 +96,18 @@
                                         <a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
                                     </td>
                                 </tr>
-                                <c:forEach var="file" items="${file}">
+                                <c:forEach var="file" items="${file}" varStatus="var">
                                 <tr class="file_row">
                                     <th></th>
                                     <td>
+                                        <input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.FILE_NO }">
+										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FILE_NO_${var.index}">
                                         <span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a>(${file.FILE_SIZE}kb)</a></span>
-                                        <input type="hidden" name="FILE${file.FILE_NO}" value="true">
-                                        <a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
+                                        <a href="#" class="btn_com btn_del_file" id="fileDel" onclick="fn_del('${file.FILE_NO}','FILE_NO_${var.index}');" >파일 삭제</a>
                                     </td>
                                 </tr>
                                 </c:forEach>
+                                
 		                    </tbody>
 		                </table>
 		                <div id="btn_wrap">
@@ -123,7 +127,7 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/board/boardModify.js"></script>
 	
 </body>
 </html>
