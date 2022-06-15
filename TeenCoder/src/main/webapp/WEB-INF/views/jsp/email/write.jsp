@@ -35,7 +35,7 @@
                         <h2>개발 직군 유무 이메일 작성</h2>
                     </div>
                     <!-- Form -->
-                    <form id="board_form" method="post" action="/teen/mail/send">
+                    <form id="board_form" method="post" action="/teen/mail/send" enctype="multipart/form-data">
 		                <table>
 		                	<tbody>
 			                    <tr>
@@ -56,6 +56,13 @@
 				                        <input type='hidden' name="senderMail" value="teencoder@naver.com">
 										<input type='hidden' name="receiveMail" value="teencoder@naver.com">
 				                        <textarea class="summernote" name="message"></textarea>
+			                        </td>
+			                    </tr>
+			                    <tr id="fileDiv" class="file_upload">
+			                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile">+</a></th>
+			                        <td>
+		                            	<input type="file" id="file" name="file">
+		                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
 			                        </td>
 			                    </tr>
 		                    </tbody>

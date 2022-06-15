@@ -1,14 +1,17 @@
 package com.ez.teen.common.mail;
 
+import java.util.Date;
+
 public class MailModel {
 	
 	private String senderName;    //발신자 이름
     private String senderMail;    //발신자 이메일 주소
     private String receiveMail;    //수신자 이메일 주소
     private String subject;            //제목
+ 	private String htmlMessage; //html 본문
     private String message;            //본문
     
-    //getter,setter,toString
+	//getter,setter,toString
     public String getSenderName() {
         return senderName;
     }
@@ -39,10 +42,20 @@ public class MailModel {
     public void setMessage(String message) {
         this.message = message;
     }
-    @Override
+    public String getHtmlMessage() {
+ 		return htmlMessage;
+ 	}
+ 	public void setHtmlMessage(String htmlMessage) {
+ 		this.htmlMessage = htmlMessage;
+ 	}
+    
+	@Override
     public String toString() {
         return "EmailModel [senderName=" + senderName + ", senderMail=" + senderMail + ", receiveMail=" + receiveMail
                 + ", subject=" + subject + ", message=" + message + "]";
     }
+
+	
+	
     
 }

@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 			,MEMBER_PRO_CHECK
 			)
 			VALUES(
-			SEQ_MEMBER_NO.nextval
+			(SELECT NVL(MAX(MEMBER_NO),0)+1 FROM MEMBER)
 			,#{member_id}
 			,#{member_pw}
 			,#{member_name}
