@@ -151,10 +151,10 @@ function checkValue() {
 		return false;
 	}		
 	
-	if(test == false) {
+/*	if(test == false) {
 		alert("전문성 체크가 필요합니다.");
 		return false;
-	}
+	}*/
 	
 	
     if (typeof(grecaptcha) != 'undefined') {
@@ -184,4 +184,9 @@ function checkOne(chk) {
 function goMyPage() {
 	location.href = "/teen/member/";
 }
+//개발직군유무 인증 화면으로 이동
+function goMail() {
+	location.href = "/teen/mail/";
+}
+
 

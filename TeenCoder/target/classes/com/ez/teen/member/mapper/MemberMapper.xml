@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 			,#{member_nick}
 			,sysdate
 			,0
-			,#{member_pro_check}
+			,'N'
 			)
 			]]>
 	</insert>
@@ -66,7 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		 <![CDATA[UPDATE MEMBER SET
 		  MEMBER_PW = #{member_pw}
 		 ,MEMBER_EMAIL = #{member_email}
-		 ,MEMBER_PRO_CHECK = #{member_pro_check}
+		 ,MEMBER_PRO_CHECK = 'N'
 		  WHERE MEMBER_NO = #{member_no}
 		  ]]>
 	</update>
@@ -97,5 +97,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		WHERE MEMBER_NO = #{member_no}
 		AND MEMBER_PW = #{member_pw}
 	 </select>
+	 
 	 
 </mapper>

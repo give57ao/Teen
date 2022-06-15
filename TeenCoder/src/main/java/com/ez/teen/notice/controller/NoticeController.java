@@ -1,5 +1,9 @@
 package com.ez.teen.notice.controller;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,14 +66,36 @@ public class NoticeController {
 		return "board/noticeBoard";
 	}
 	
+	//공지사항 상세페이지
+	@GetMapping("board/notice/detail")
+	public String noticeDetail(NoticeModel noticeModel, HttpSession session, 
+			HttpServletRequest rq, NoticeParam noticeParam, 
+			Model model, @RequestParam(value="noti_no")int noti_no) throws Exception {
+		
+		noticeParam.setNoti_no(noti_no);
+		
+		List<NoticeModel> noticeDetail = noticeService.selectNoticeDetail(noticeParam);
+		List<Map<String, Object>> fileList = noticeService.selectNotiFile(noti_no);
+		noticeService.hitCount(noticeModel);
+
+		
+		model.addAttribute("file", fileList);
+		model.addAttribute("noticeDetail", noticeDetail);
+
+		
+		return "board/noticeDetail";
+	}
+	
+	
+	
 	//공지사항 작성 폼
-	@GetMapping(value = "admin/noticeWrite")
+	@GetMapping(value = "admin/noticeBoardWrite")
 	public String insertNoticeForm() {
-		return "admin/noticeWrite";
+		return "admin/noticeBoardWrite";
 	}
 		
 	//공지사항 작성 기능
-	@PostMapping(value = "admin/noticeWrite")
+	@PostMapping(value = "admin/noticeBoardWrite")
 	public String insertNotice(NoticeModel noticeModel, HttpSession session, MultipartHttpServletRequest mpRequest)throws Exception {
 				
 		int member_no = (Integer)session.getAttribute("member_no");

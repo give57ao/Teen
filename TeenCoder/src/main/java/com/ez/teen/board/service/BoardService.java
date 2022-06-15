@@ -12,80 +12,77 @@ import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentModel;
 import com.ez.teen.board.model.CommentParam;
 
- 
 public interface BoardService {
 
-	//전체 이용자 수
-	public int  getUserCount();
-	
-	//전체 게시글 수
-	public int  getBoardCount(BoardParam boardParam);
+	// 전체 이용자 수
+	public int getUserCount();
 
-	//전체 댓글 수
-	public int  getCommentCount(CommentParam commentParam);
+	// 전체 게시글 수
+	public int getBoardCount(BoardParam boardParam);
 
+	// 전체 댓글 수
+	public int getCommentCount(CommentParam commentParam);
 
-	//게시글 상세
+	// 게시글 상세
 	public List<BoardModel> selectBoardDetail(BoardParam boardParam);
-	
-	//게시글 상세 댓글
+
+	// 게시글 상세 댓글
 	public List<BoardCommentModel> selectComment(BoardParam boardParam);
-	
+
 	// 게시글 디테일 속 답글
-	public List <BoardAnswerModel> selectAnswer(BoardParam boardParam);
+	public List<BoardAnswerModel> selectAnswer(BoardParam boardParam);
 
-	//게시글 리스트 (BGROUP 구별 없이)
+	// 게시글 리스트 (BGROUP 구별 없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
-	
-	//내가 작성한 댓글
-	public List<CommentModel> commentList(CommentParam commentParam);
-	
-	// 게시글 수정
-	public void updateBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception;
 
-	//게시글 작성
+	// 내가 작성한 댓글
+	public List<CommentModel> commentList(CommentParam commentParam);
+
+	// 게시글 수정
+	public void updateBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest, Map<String, Object> map) throws Exception;
+
+	// 게시글 작성
 	public void insertBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception;
-	
-	//첨부파일 조회
-	public List<Map<String, Object>> selectFile(int board_no)throws Exception;
-	
-	//댓글 첨부파일 조회
-	public List<BoardCommentModel> selectCmtFile(int bcno)throws Exception;
-	
-	//댓글번호 불러오기
-	public List<Integer> selectCmtNo(int board_no)throws Exception;
-		
-	//첨부파일 다운로드
+
+	// 첨부파일 조회
+	public List<Map<String, Object>> selectFile(int board_no) throws Exception;
+
+	// 첨부파일 다운로드
 	public Map<String, Object> downFile(Map<String, Object> map) throws Exception;
-	
-	//첨부파일 추가
+
+	// 첨부파일 추가
 	public void insertFile(Map<String, Object> map) throws Exception;
-	
-	//댓글 첨부파일 추가
+
+	// 댓글 첨부파일 추가
 	public void insertCmtFile(Map<String, Object> map) throws Exception;
 
-	public void insertComment(CommentModel commentModel,MultipartHttpServletRequest mpRequest)throws Exception;
+	public void insertComment(CommentModel commentModel, MultipartHttpServletRequest mpRequest) throws Exception;
 
 	public void hitCount(BoardModel boardModel);
 
-	//추천수 증가
+	// 추천수 증가
 	public void recommendBoard(BoardModel boardModel);
-	
-	//ref_step 확인
+
+	// ref_step 확인
 	public int getRefStep(int board_no);
-	
-	//ref_level 확인
+
+	// ref_level 확인
 	public int getRefLevel(CommentParam commentParam);
-	
-	//답글 작성
+
+	// 답글 작성
 	public void insertReComment(CommentModel commentModel);
-	
-	//summernote
+
+	// summernote
 	public void insertSummerNote(String fileName);
-	
-	//update Tag Name
+
+	// update Tag Name
 	public void updateTagName(BoardModel boardModel);
 
-	
-	
+	public void deleteBoard(int board_no);
+
+	public void deleteBcomment(int bcomment_no);
+
+	// detail내 댓글개수
+	public int commentCount(int board_no);
+
 }

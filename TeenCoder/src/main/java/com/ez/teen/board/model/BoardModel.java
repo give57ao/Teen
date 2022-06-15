@@ -9,11 +9,13 @@ public class BoardModel {
 
 
 	private int rn;
+	private int bcomment_no;
 	private int board_no;
 	private int member_no;
 	private String board_title;
 	private String board_content;
 	private Date board_date;
+	
 	private int board_hit_count;
 	private int board_like_count;
 	private int board_report_count;
@@ -163,6 +165,12 @@ public class BoardModel {
 	}
 	public void setRn(int rn) {
 		this.rn = rn;
+	}
+	public int getBcomment_no() {
+		return bcomment_no;
+	}
+	public void setBcomment_no(int bcomment_no) {
+		this.bcomment_no = bcomment_no;
 	}
 	
 

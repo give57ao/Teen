@@ -64,20 +64,19 @@ $(document).ready(function() {
 /*============================================================================================================================*/
 // 파일 추가
 function fn_addFile() {
-    var str = "<tr class='filerow'><th></th><td><input type='file' id='file' name='file"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></td></tr>";
-
-    $("#fileDiv").after(str);
-    $("a[id='deleteFile']").on("click", function(e) {
-        e.preventDefault();
-        fn_deleteFile($(this));
-    });
+	var str = "<tr><th></th><td><input type='file' id='file' name='file_"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></td></tr>";
+	
+	$("#fileDiv").after(str);
+	$("a[id='deleteFile']").on("click", function(e) {
+		e.preventDefault();
+		fn_deleteFile($(this));
+	});
 }
 
 // 파일 삭제
 function fn_deleteFile(obj){
-    obj.parent().parent('.file_row').remove();
- }
-
+	obj.parent().parent().remove();
+	
 //글 수정 썸머노트 DB에서 데이터 불러오기
 $(document).ready(function() {
 		$('#content').summernote({
@@ -87,3 +86,4 @@ $(document).ready(function() {
 			focus: true
 		});
 	});	
+}

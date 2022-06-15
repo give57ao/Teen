@@ -42,7 +42,6 @@ import com.ez.teen.member.model.MemberModel;
 
 @Controller
 public class BoardController {
-
 	@Autowired
 	BoardService boardService;
 	
@@ -85,7 +84,7 @@ public class BoardController {
 	
 	//게시글 수정 기능
 	@PostMapping("board/modify")
-	public String updateBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest) throws Exception{
+	public String updateBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest, Map<String, Object> map) throws Exception{
 		
 		int member_no = (Integer)session.getAttribute("member_no");
 		
@@ -95,7 +94,7 @@ public class BoardController {
 		boardModel.setBoard_tag_name(init_board_tag_name);
 		
 		boardModel.setBoard_tag_name(old_board_tag_name);  //init이후 posting된 값 받아오기
-		boardService.updateBoard(boardModel, mpRequest);
+		boardService.updateBoard(boardModel, mpRequest, map);
 		
 		
 		return "redirect:/board";
@@ -164,7 +163,7 @@ public class BoardController {
 			model.addAttribute("boardDetail", boardDetail);
 			model.addAttribute("boardAnswer", boardAnswer);
 			model.addAttribute("commentNum", boardComment);
-			model.addAttribute("boardCommentCount", boardCommentCount);
+			model.addAttribute("commentCount", boardCommentCount);
 			boardService.hitCount(boardModel);
 
 			
@@ -326,8 +325,46 @@ public class BoardController {
 		return ResponseEntity.ok().body("/summernoteImage/"+savedFileName);
 		
 	}	
+	@RequestMapping("board/delete")
+	public String deleteBoard(@RequestParam("board_no") int board_no,@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
+		
+		try {
+		
+		boardService.deleteBoard(board_no);
+		boardService.deleteBcomment(bcomment_no);
+		
+		redirect.addFlashAttribute("msg", "삭제굿");
+		
+	} catch (Exception e) {
+		
+		redirect.addFlashAttribute("msg", "삭제에러");
+	}
+			
+	return "redirect:/board";
+	}
 	
+	@RequestMapping("board/deleteBcomment")
+	public String deleteBcomment(@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
+		try {
+			
+			boardService.deleteBcomment(bcomment_no);
+						
+			redirect.addFlashAttribute("msg", "삭제굿");
+			
+		} catch (Exception e){
+			
+			redirect.addFlashAttribute("msg", "에렁");
+		}
+		
+		return "redirect:/board";
+	}
+	
+	
+	
+}
+
+
 	
 
 	
-}
+

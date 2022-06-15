@@ -1,6 +1,5 @@
 package com.ez.teen.board.mapper;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +24,7 @@ public interface BoardMapper {
 	// 전체 댓글 수
 	public int getCommentCount(CommentParam commentParam);
 
-	// 게시글 리스트 (BGROUP 구별 없이)
+	// 게시글 리스트 (BGROUP 구별없이)
 	public List<BoardModel> boardList(BoardParam boardParam);
 	
 	// 댓글 리스트
@@ -79,11 +78,18 @@ public interface BoardMapper {
 	public void insertSummerNote(String fileName);
 	
 	public void updateTagName(BoardModel boardModel);
-
-	public List<BoardCommentModel> selectCmtFile(int bcno)throws Exception;
-
-	public List<Integer> selectCmtNo(int board_no)throws Exception;
-
+	
+	//댓글 첨부파일 추가
 	public void insertCmtFile(Map<String, Object> map)throws Exception;
+	
+	public void deleteBoard(int board_no);
+	
+	public void deleteFile(int file_no);
+	
+	public void deleteBcomment(int bcomment_no);
+
+	//detail내 댓글개수
+	public int commentCount(int board_no);
+	
 	
 }

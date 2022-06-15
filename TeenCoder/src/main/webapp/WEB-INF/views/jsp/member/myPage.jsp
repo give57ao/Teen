@@ -42,7 +42,7 @@
 	                			<img src="/teen/resources/images/icon/icon_badge.png" class="badge">
 	                			<div class="info_box">
 		                			<h4>나의 등급 <span class="rank">[Expert]</span></h4>
-		                			<h3>TeenCoder</h3>
+		                			<h3>${board.member_nick}</h3>
 		                			<p>
 		                				환영합니다! <b>${board.member_name}</b>님 (ID : ${board.member_id})<br>
 		                				가입일 : <fmt:formatDate value="${board.member_date}" pattern="yyyy.MM.dd"/> | 이메일 : ${board.member_email}

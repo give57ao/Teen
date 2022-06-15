@@ -39,9 +39,7 @@
                     <div id="board_list_title" class="admin_board_list_title">
                         <h2>공지글 관리</h2>
                         <ul id="board_list_menu" class="side_menu">
-                            <li><a href="?sort=recent&search=${paging.search}&keyword=${paging.keyword}">최신순</a></li>
-							<li><a href="?sort=view&search=${paging.search}&keyword=${paging.keyword}">조회순</a></li>
-                            <li><a href="/teen/admin/noticeWrite" class="btn_com btn_notice">공지글 작성</a></li>
+                            <li><a href="/teen/admin/noticeBoardWrite" class="btn_com btn_notice">공지글 작성</a></li>
                         </ul>
                     </div>
                     <!-- Search -->
@@ -49,6 +47,8 @@
                         <select class="dropdown" id="selectBoxTest">
                             <option value="all" id="search" selected>전체</option>
                             <option value="title" id="search">제목</option>
+                            <option value="content" id="search">내용</option>
+                            <option value="nick" id="search">닉네임</option>
                         </select>
                         <div class="search">
                             <input type="text" id="keyword" placeholder="검색">
@@ -76,13 +76,13 @@
 	                                <c:forEach items="${notice}" var="notice" varStatus="status">
 		                                <tr class="row">
 		                                   <td class="w5">${notice.noti_no}</td>
-		                                   <td class="w30"><a href="/teen/board/notice/detail?board_no=${notice.noti_no}">${notice.noti_title}</a></td>
+		                                   <td class="w30"><a href="/teen/board/notice/detail?noti_no=${notice.noti_no}">${notice.noti_title}</a></td>
 		                                   <td class="w10"><fmt:formatDate value="${notice.noti_date}" pattern="yyyy.MM.dd"/></td>
 		                                   <td class="w10">${notice.noti_hit_count}</td>
 		                                   <td class="w10">${notice.noti_file_check}</td>
 		                                   <td class="w10">
 		                                   	    <a href="/teen/admin/noticeBoardModify?noti_no=${notice.noti_no}">수정</a> /
-		                                   	    <a href="" onClick="noticeDeletePopup(${notice.noti_no})">삭제</a>
+		                                   	    <a href="/teen/admin/noticeBoardDelete?noti_no=${notice.noti_no}" onClick="return noticeBoardDelete()">삭제</a>
 	                                   	   </td>
 		                                </tr>
 	                                </c:forEach>
@@ -96,7 +96,7 @@
                             <!-- 왼쪽 버튼 -->
 							<!-- 시작페이지가 1이 아닐 때 -->
 							<c:if test="${paging.nowPage != 1}">
-								<li><a class="prev" href="/teen/admin/noticeBoard?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}&nowPage=${paging.nowPage - 1}&cntPerPage=${paging.cntPerPage}"></a></li>
+								<li><a class="prev" href="/teen/admin/noticeBoard?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage - 1}&cntPerPage=${paging.cntPerPage}"></a></li>
 							</c:if>
 							<!-- 페이징 숫자가 나오는 부분 -->
 							<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
@@ -105,13 +105,13 @@
 										<li><a class="select">${p}</a></li>
 									</c:when>
 									<c:when test="${p != paging.nowPage}">
-										<li><a href="/teen/admin/noticeBoard?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}&nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a></li>
+										<li><a href="/teen/admin/noticeBoard?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a></li>
 									</c:when>
 								</c:choose>
 							</c:forEach>
 							<!-- 오른쪽 버튼 -->
 							<c:if test="${paging.startPage < paging.endPage}">
-								<li><a class="next" href="/teen/admin/noticeBoard?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&board_group_no=${paging.board_group_no}&board_tag_name=${paging.board_tag_name}&nowPage=${paging.nowPage + 1}&cntPerPage=${paging.cntPerPage}"></a></li>
+								<li><a class="next" href="/teen/admin/noticeBoard?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage + 1}&cntPerPage=${paging.cntPerPage}"></a></li>
 							</c:if>
 						</ul>
                     </div>

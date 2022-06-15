@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<!-- asdf -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +15,14 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/summernote.css">
 </head>
+<script>
+function deleteBoard(num) {
+	var chk = confirm("정말 삭제?")
+	if(chk) {
+		location.href='/teen/board/delete?board_no='+num
+	}
+}
+</script>
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -43,7 +51,7 @@
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2><a href="../board?borad_group_no?=${boardNo}">< 리스트로 이동</a></h2>
+                        <h2><a href="../board?borad_group_no?=${boardNo}">리스트로 이동</a></h2>
                     </div>
                 	<!-- List Row -->
                 	<c:forEach items="${boardDetail}" var="boardDetail" varStatus="status">
@@ -86,19 +94,28 @@
 	                                <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${boardDetail.board_comment_count}</li>
 	                                <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${boardDetail.board_like_count}</li>
 	                            </ul>
+	                            <c:if test="${sessionScope.member_no != null}">
 	                            <div class="btn_group">
-	                            	<input type="button" value="스크랩" class="btn_com btn_board">
-		                			<input type="button" value="신고" class="btn_com btn_board">
-		                			<input type="button" value="추천" class="btn_com btn_board">
-		                			<input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
+	                            <ul>
+	                            	<li><input type="button" value="스크랩" class="btn_com btn_board">
+		                			<li><input type="button" value="신고" class="btn_com btn_board">
+		                			<li><input type="button" value="추천" class="btn_com btn_board">
+		                			<c:if test="${sessionScope.member_no == boardDetail.member_no }">
+		                			<li><input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
+		                			</c:if>
+	                            	<c:if test="${sessionScope.member_no == boardDetail.member_no }">
+										<input type="button" value="삭제" class="btn_com btn_board" onClick="deleteBoard(${boardModel.board_no})">
+									</c:if>
+									</ul>
 	                            </div>
+	                            </c:if>
 	                        </div>
 	                        <hr>
 	                    </div>
                     </c:forEach>
                     
                 	<!-- Comment From -->
-	                <div id="comment_form">
+	               	 <div id="comment_form">
 	                	<form action="comment" method="post" enctype="multipart/form-data">
 		                	<table>
 		                	<tr>
@@ -117,9 +134,8 @@
 		                	</table>
 	                	</form>
 	                </div>
-	                
-	                <!-- 댓글갯수 -->
-                    <h2><b class="comment_count">${boardCommentCount}</b>개의 댓글</h2>
+	 				<!-- 댓글갯수 -->
+                    <h2><b class="comment_count">${commentCount}</b>개의 댓글</h2>
                     
 	                <!-- Comment List -->
 	                <c:forEach items="${boardComment}" var="boardComment" varStatus="status">
@@ -134,7 +150,7 @@
 		                                        <span class="rank">[Expert]</span> ${boardComment.member_nick}
 		                                    </h4>
 		                                </div>
-		                                <span class="row_top date">${boardComment.bcomment_date}</span>
+		                                <span class="row_top date"><fmt:formatDate value="${boardComment.bcomment_date}" pattern="yyyy.MM.dd"/></span>
 		                            </div>
 		                            <div class="row_contents">
 		                            	<p>${boardComment.bcomment_content}</p>
@@ -156,6 +172,7 @@
 		                            	<input type="button" value="신고" class="btn_com btn_board">
 			                			<input type="button" value="추천" class="btn_com btn_board">
 			                			<input type="button" value="답글" class="btn_com btn_board" onClick="recomment(${boardComment.ref_step})" >
+			                			<input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="deletecmt(${bcomment_no})">
 		                            </div>
 	                            </div>
 		                	</div>
@@ -187,7 +204,7 @@
 				                                        <span class="rank">[Expert]</span> ${boardAnswer.member_nick}
 				                                    </h4>
 				                                </div>
-				                                <span class="row_top date">${boardAnswer.bcomment_date}</span>
+				                                <span class="row_top date"><fmt:formatDate value="${boardAnswer.board_date}" pattern="yyyy.MM.dd"/></span>
 				                            </div>
 				                            <div class="row_contents">
 				                            	<p>${boardAnswer.bcomment_content}</p>
@@ -223,4 +240,5 @@
 	<script type="text/javascript" src="/teen/resources/js/board/detail/boardDetail.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
 </body>
+
 </html>

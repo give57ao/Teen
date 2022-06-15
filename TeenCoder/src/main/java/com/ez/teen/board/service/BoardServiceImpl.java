@@ -45,27 +45,29 @@ public class BoardServiceImpl implements BoardService {
 
 	
 	// 게시글 수정
+	@SuppressWarnings("unlikely-arg-type")
 	@Override
-	public void updateBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception {
-	
-
-		System.out.println("=========================================");
-		System.out.println("BEFORE REPLACETAGNAME : " + boardModel.getBoard_tag_name());
-		System.out.println("=========================================");
-		
+	public void updateBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest,Map<String, Object> map) throws Exception {
 		
 		String replaceTagName = boardModel.getBoard_tag_name();
 		replaceTagName = replaceTagName.replace(",", " #");
 		boardModel.setBoard_tag_name(replaceTagName);
-		System.out.println("=========================================");
-		System.out.println("REPLACETAGNAME : " + replaceTagName);
-		System.out.println("=========================================");
 		
 		boardMapper.updateBoard(boardModel);
 		
-		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(boardModel, mpRequest);
-		
+		List<Map<String, Object>> list = boardMapper.selectFile(boardModel.getBoard_no());
 		int size = list.size();
+		System.out.println("size = " + size);
+		System.out.println("list = " + list);
+		for(int i=0; i<size; i++) {
+			String fileNo = list.get(i).get("FILE_NO").toString();
+			int file_no = Integer.parseInt(fileNo);
+			System.out.println("file_no = " + file_no);
+			if(!map.containsKey(file_no)) {
+				boardMapper.deleteFile(file_no);
+				System.out.println("listaaa" + list.get(i));
+			}
+		}
 		if(list != null) {
 		for (int i = 0; i < size; i++) {
 			boardMapper.insertFile(list.get(i));
@@ -198,21 +200,14 @@ public class BoardServiceImpl implements BoardService {
 	public void updateTagName(BoardModel boardModel) {
 		boardMapper.updateTagName(boardModel);
 	}
-
 	
-	//댓글 첨부파일 조회
 	@Override
-	public List<BoardCommentModel> selectCmtFile(int bcno) throws Exception {
-
-		return boardMapper.selectCmtFile(bcno);
-	}
-
-	@Override
-	public List<Integer> selectCmtNo(int board_no) throws Exception {
+	public void deleteBoard(int board_no) {
+		boardMapper.deleteBoard(board_no);
 		
-	  return boardMapper.selectCmtNo(board_no);
 	}
-
+	
+	//댓글 첨부파일 추가
 	@Override
 	public void insertCmtFile(Map<String, Object> map) throws Exception {
 		
@@ -220,4 +215,17 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
+	@Override
+	public void deleteBcomment(int bcomment_no) {
+		boardMapper.deleteBcomment(bcomment_no);
+	}
+
+	//detail내 댓글개수
+	@Override
+	public int commentCount(int board_no) {
+		return boardMapper.commentCount(board_no);
+	}
+
+	
+	
 }

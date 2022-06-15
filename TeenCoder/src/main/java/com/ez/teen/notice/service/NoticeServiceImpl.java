@@ -75,6 +75,16 @@ public class NoticeServiceImpl implements NoticeService{
 		
 		noticeMapper.deleteCmt(cmtModel);
 	}
+
+	@Override
+	public List<NoticeModel> selectNoticeDetail(NoticeParam noticeParam) {
+		return noticeMapper.selectNoticeDetail(noticeParam);
+	}
+
+	@Override
+	public void hitCount(NoticeModel noticeModel) {
+		noticeMapper.hitCount(noticeModel);
+	}
 	
 	
 	

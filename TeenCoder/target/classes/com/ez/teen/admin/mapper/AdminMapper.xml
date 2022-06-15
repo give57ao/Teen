@@ -45,8 +45,7 @@
 					OR MEMBER_NICK LIKE '%'||#{keyword}||'%'
 					</if>
 					
-					ORDER BY MEMBER_NO DESC
-					
+				
 					) A
 			) WHERE RN BETWEEN #{start} AND #{end}
 	</select>
@@ -293,5 +292,84 @@ ORDER BY board_comment_count DESC
 		DELETE FROM NOTICE
 	 	WHERE NOTI_NO = #{noti_no}
  	</delete>
+ 	
+ 	<!-- 공지글 수정 -->
+	<update id="noticeBoardModify" parameterType="com.ez.teen.notice.model.NoticeModel">
+		UPDATE NOTICE
+		SET NOTI_TITLE = #{noti_title},
+			NOTI_CONTENT = #{noti_content}
+		WHERE NOTI_NO = #{noti_no}
+	</update>
+	
+	<insert id="insertSummerNote" parameterType="String">
+		INSERT INTO SUMMERFILE
+		VALUES
+		(
+		SEQ_SUMMER_NO.NEXTVAL,
+		#{fileName}
+		)
+	</insert>
+	
+	<!-- 파일 유무에 따른 체크 업데이트 -->
+	<update id="NotifileCk" parameterType="com.ez.teen.notice.mapper.NoticeMapper">
+		UPDATE NOTICE SET
+		NOTI_FILE_CHECK = 'Y'
+		WHERE NOTI_NO = #{noti_no}
+	</update>
+	
+	<!-- 첨부파일 업로드 -->
+	<insert id="insertNotiFile" parameterType="hashMap">
+		 INSERT INTO BFILE(
+		 FILE_NO
+		,ORG_FILE_NAME
+		,STORED_FILE_NAME
+		,FILE_SIZE
+		,FILE_DATE
+		,NOTI_NO
+		)
+		VALUES(
+		 SEQ_FILE_NO.NEXTVAL
+		,#{ORG_FILE_NAME}
+		,#{STORED_FILE_NAME}
+		,#{FILE_SIZE}
+		,#{FILE_DATE} 
+		,#{NOTI_NO}
+		)
+	</insert>
+	
+	<!-- 첨부파일 조회 -->
+	<select id="selectNotiFile" parameterType="int" resultType="hashMap">
+	<![CDATA[ 
+		SELECT 
+		 FILE_NO
+		,ORG_FILE_NAME
+		,ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+		,DEL_GB
+		FROM BFILE
+		WHERE NOTI_NO = #{noti_no}
+		AND DEL_GB = 'N'
+		ORDER BY FILE_NO ASC
+	]]>
+	</select>
+	
+	<!-- 첨부파일 다운로드 -->
+	<select id="downNotiFile" parameterType="hashMap" resultType="hashMap">
+	<![CDATA[ 
+		SELECT 
+		 STORED_FILE_NAME
+		,ORG_FILE_NAME
+		FROM BFILE
+		WHERE FILE_NO = #{FILE_NO}
+	]]>
+	</select>
+	
+	<!-- 첨부파일 수정 -->
+	<update id="updateNotiFile" parameterType="hashMap">
+	<![CDATA[
+		UPDATE BFILE SET
+		DEL_GB = 'Y'
+		WHERE FILE_NO = #{FILE_NO}
+	]]>
+	</update>
 	
 </mapper>
