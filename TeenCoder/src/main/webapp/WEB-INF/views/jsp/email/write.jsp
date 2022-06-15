@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TeenCoder 게시글 작성</title>
+<title>TeenCoder 개발 직군 유무 인증</title>
 <link rel="shortcut icon" href="/teen/resources/images/icon/icon_favicon.ico" type="image/x-icon"> <!-- favicon -->
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
@@ -44,7 +44,7 @@
 			                           <input type="text" name="senderName" value="${member_nick}(${member_id})" disabled> 
 			                        </td>
 			                    </tr>
-			                   <tr>
+			                    <tr>
 			                        <th>제목</th>
 			                        <td>
 			                           <input type="text" name="subject"> 
@@ -53,9 +53,9 @@
 			                    <tr class="contents_title">
 			                        <th>내용</th>
 			                        <td >
-			                        <input type='hidden' name="senderMail" value="teencoder@naver.com"><br>
-									<input type='hidden' name="receiveMail" value="teencoder@naver.com"><br>
-			                         <textarea class="summernote" name="message"></textarea>
+				                        <input type='hidden' name="senderMail" value="teencoder@naver.com">
+										<input type='hidden' name="receiveMail" value="teencoder@naver.com">
+				                        <textarea class="summernote" name="message"></textarea>
 			                        </td>
 			                    </tr>
 		                    </tbody>
