@@ -80,9 +80,7 @@ function deleteBoard(num) {
 	                                </h3>
 	                            </div>
 	                            <div class="row_contents">
-	                         	<p>${boardDetail.board_content} --
-	                         	 ${boardModel.board_no} -- ${ sessionScope.member_no} -- ${ boardDetail.member_no } -- ${boardDetail.bcomment_no }
-	                         	 </p>
+	                         	<p>${boardDetail.board_content}</p>
 	                            	
 	                            	<form name="downFile" role="form" method="post">
 	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
@@ -117,7 +115,7 @@ function deleteBoard(num) {
                     </c:forEach>
                     
                 	<!-- Comment From -->
-	               	 <div class="comment_form">
+	               	 <div id="comment_form">
 	                	<form action="comment" method="post" enctype="multipart/form-data">
 		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
 		                	<input type="hidden" name="board_no" value="${board_no}">
@@ -127,7 +125,7 @@ function deleteBoard(num) {
 	               </div>
 	                	  
 	                <!-- 댓글갯수 -->
-                    <h2><b class="comment_count">${boardCommentCount}</b>개의 댓글</h2>
+                    <h2><b class="comment_count">${commentCount}</b>개의 댓글</h2>
                     
 	                <!-- Comment List -->
 	                <c:forEach items="${boardComment}" var="boardComment" varStatus="status">
@@ -142,7 +140,7 @@ function deleteBoard(num) {
 		                                        <span class="rank">[Expert]</span> ${boardComment.member_nick}
 		                                    </h4>
 		                                </div>
-		                                <span class="row_top date">${boardComment.bcomment_date}</span>
+		                                <span class="row_top date"><fmt:formatDate value="${boardComment.board_date}" pattern="yyyy.MM.dd"/></span>
 		                            </div>
 		                            <div class="row_contents">
 		                            	<p>${boardComment.bcomment_content}</p>
@@ -188,7 +186,7 @@ function deleteBoard(num) {
 				                                        <span class="rank">[Expert]</span> ${boardAnswer.member_nick}
 				                                    </h4>
 				                                </div>
-				                                <span class="row_top date">${boardAnswer.bcomment_date}</span>
+				                                <span class="row_top date"><fmt:formatDate value="${boardAnswer.board_date}" pattern="yyyy.MM.dd"/></span>
 				                            </div>
 				                            <div class="row_contents">
 				                            	<p>${boardAnswer.bcomment_content}</p>
