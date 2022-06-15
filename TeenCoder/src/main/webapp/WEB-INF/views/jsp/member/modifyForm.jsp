@@ -61,11 +61,9 @@
 		                    <tr class="checkbox">
 		                        <th>개발직군 유무</th>
 		                        <td>
-		                            <input type="checkbox" name="member_pro_check" value="Y" id="yes">
-		                            <label for="yes">네</label>
+		                            <input type="button" value="인증" class="btn_com btn_check" onclick="goMail()">
 		                            <input type="checkbox" name="member_pro_check" value="N" id="no">
 		                            <label for="no">아니오</label>
-		                            <input type="submit" value="인증" class="btn_com btn_check">
 		                        </td>
 		                    </tr>
 	                    </c:forEach>

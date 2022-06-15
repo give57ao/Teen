@@ -70,10 +70,7 @@
 	                    <tr class="checkbox">
 	                        <th>개발직군 유무</th>
 	                        <td>
-	                            <input type="checkbox" name="member_pro_check" id="member_pro_check1" value="Y" onClick="checkOne(this)">
-	                            <label for="yes">네</label>
-	                            <input type="checkbox" name="member_pro_check" id="member_pro_check2" value="N" onClick="checkOne(this)">
-	                            <label for="no">아니오</label>
+	                           <p>회원가입 후 회원정보 수정 시 인증이 가능합니다.</p>
 	                        </td>
 	                    </tr>
 	                    <tr class="captcha">

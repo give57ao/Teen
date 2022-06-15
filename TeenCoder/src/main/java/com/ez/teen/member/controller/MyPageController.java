@@ -157,7 +157,7 @@ public class MyPageController {
 
 		memberService.mypageModify(memberModel);
 
-		return "redirect:/member";
+		return "redirect:/member/";
 	}
 
 	@GetMapping("/delete")

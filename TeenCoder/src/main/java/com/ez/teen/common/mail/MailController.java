@@ -40,7 +40,7 @@ public class MailController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-		return "redirect:/member/";
+		return "redirect:/member//mypageModify";
     }
 	
 	
