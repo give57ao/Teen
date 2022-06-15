@@ -83,7 +83,7 @@ public class BoardController {
 	
 	//게시글 수정 기능
 	@PostMapping("board/modify")
-	public String updateBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest) throws Exception{
+	public String updateBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest, Map<String, Object> map) throws Exception{
 		
 		int member_no = (Integer)session.getAttribute("member_no");
 		
@@ -93,7 +93,7 @@ public class BoardController {
 		boardModel.setBoard_tag_name(init_board_tag_name);
 		
 		boardModel.setBoard_tag_name(old_board_tag_name);  //init이후 posting된 값 받아오기
-		boardService.updateBoard(boardModel, mpRequest);
+		boardService.updateBoard(boardModel, mpRequest, map);
 		
 		
 		return "redirect:/board";

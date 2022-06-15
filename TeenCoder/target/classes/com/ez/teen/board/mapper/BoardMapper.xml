@@ -514,8 +514,14 @@ ORDER BY board_comment_count DESC
 	
 	</update>
 		
-		<delete id="deleteBoard" parameterType="int">
+	<delete id="deleteBoard" parameterType="int">
 		delete from board where board_no = #{board_no}
 	</delete>
 	
+	<update id="deleteFile">
+	<![CDATA[
+      UPDATE BFILE SET DEL_GB = 'Y' WHERE FILE_NO = #{file_no}
+   	]]>
+	</update>
+
 </mapper>

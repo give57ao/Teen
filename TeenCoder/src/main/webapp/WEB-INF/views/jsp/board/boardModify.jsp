@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 게시글 수정</title>
-<link rel="shortcut icon" href="/teen/resources/images/icon/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/teen/resources/images/icon/icon_favicon.ico" type="image/x-icon"> <!-- favicon -->
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
@@ -84,24 +84,26 @@
 			                            <label for="python">Python</label>
 			                            <input type="checkbox" name="board_tag_name" value="SQL" id="sql">
 			                            <label for="sql">SQL</label>
-			                            <%-- <input type="hidden" id="board_tag_name value" name="board_tag_name" value="${updateBoard.board_tag_name}"> --%>
 			                        </td>
-			                    </tr>
-			                    <tr class="file_upload">
-			                    	<th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile" onclick="addFile()">+</a></th>
-		                        	<td></td>
-		                    	</tr>
-			                    <c:forEach var="file" items="${file}">
-			                    <tr class="file_upload">
-			                    	<th></th>
-		                        	<td>
-										<span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a></span>
-		                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
-		                        	</td>
-		                        	<%-- <input type="hidden" name="FILE_${file.FILE_NO}" value="true"/> --%>
-		                    	</tr>
-		                    	</c:forEach>
-			                    </c:forEach>
+			                       </tr>
+			                       </c:forEach>
+			                    <tr id="fileDiv" class="file_upload">
+                                    <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile">+</a></th>
+                                    <td>
+                                        <input type="file" id="file" name="file_0">
+                                        <a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
+                                    </td>
+                                </tr>
+                                <c:forEach var="file" items="${file}">
+                                <tr class="file_row">
+                                    <th></th>
+                                    <td>
+                                        <span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a>(${file.FILE_SIZE}kb)</a></span>
+                                        <input type="hidden" name="FILE${file.FILE_NO}" value="true">
+                                        <a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
+                                    </td>
+                                </tr>
+                                </c:forEach>
 		                    </tbody>
 		                </table>
 		                <div id="btn_wrap">
@@ -122,43 +124,6 @@
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
-	<script>
-	$(document).ready(function() {
-		    var strData = document.getElementById('updateTag').value;
-		    var arrChk = strData.split('#');
-
-		    $('.board_tag_name').prop('checked', false);
-
-		    for (var nArrCnt in arrChk) {
-
-		     $("input[name=board_tag_name][value="+arrChk[nArrCnt]+"]").prop("checked",true);
-		    }    
-		});
-	/* ============================================ */
-	    $(document).ready(function() {
-	        $("a[name='deleteFile']").on("click", function(e) {
-	            e.preventDefault();
-				e.remove();
-	            deleteFile($(this));
-	        });
-	    })
-	 
-	     function addFile() {
-	        var str = "<div id="fileGroup"><label class="btn_com btn_sel_file" for="file">파일 선택
-	  					<input type="file" id="file" name="file_0">
-						<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a></div>";
-	        $("#fileDiv").append(str);
-	        $("a[name='deleteFile']").on("click", function(e) {
-	            e.preventDefault();
-				e.remove();
-	            deleteFile($(this));
-	        });
-	    }
-	 
-	    function deleteFile(obj) {
-	        obj.parent().remove();
-	    }
-
-	</script>
+	
 </body>
 </html>

@@ -41,7 +41,7 @@ public interface BoardService {
 	public List<CommentModel> commentList(CommentParam commentParam);
 	
 	// 게시글 수정
-	public void updateBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception;
+	public void updateBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest, Map<String, Object> map) throws Exception;
 
 	//게시글 작성
 	public void insertBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception;
@@ -78,5 +78,7 @@ public interface BoardService {
 	public void updateTagName(BoardModel boardModel);
 	
 	public void deleteBoard(int board_no);
+
+	
 	
 }

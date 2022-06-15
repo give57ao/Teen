@@ -82,4 +82,6 @@ public interface BoardMapper {
 	
 	public void deleteBoard(int board_no);
 	
+	public void deleteFile(int file_no);
+	
 }
