@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- asdf -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,6 +152,7 @@ function deleteBoard(num) {
 		location.href='/teen/board/delete?board_no='+num
 	}
 }
+
 </script>
 </body>
 </html>

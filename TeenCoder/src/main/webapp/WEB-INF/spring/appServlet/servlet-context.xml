@@ -65,5 +65,12 @@
 		</interceptor>
 	</interceptors>
 	
+	<beans:bean id="javaMailSenderImpl" class="org.springframework.mail.javamail.JavaMailSenderImpl"
+    p:host="smtp.naver.com"
+    p:username="teencoder"
+    p:password="!xlszhej"
+	/>  
+	
+	
 	
 </beans:beans>

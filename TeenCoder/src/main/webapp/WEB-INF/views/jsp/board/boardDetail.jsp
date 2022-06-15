@@ -222,4 +222,5 @@ function deleteBoard(num) {
 	<script type="text/javascript" src="/teen/resources/js/board/detail/boardDetail.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
 </body>
+
 </html>

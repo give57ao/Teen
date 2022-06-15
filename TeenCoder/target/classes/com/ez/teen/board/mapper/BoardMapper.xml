@@ -523,8 +523,6 @@ ORDER BY board_comment_count DESC
       UPDATE BFILE SET DEL_GB = 'Y' WHERE FILE_NO = #{file_no}
    	]]>
 	</update>
-
-	
 	
 	<delete id="deleteBcomment" parameterType="int">
 		DELETE FROM BCOMMENT WHERE BCOMMENT_NO = #{BCOMMENT_NO]
@@ -540,5 +538,6 @@ ORDER BY board_comment_count DESC
 			BOARD_NO = #{board_no} AND 
 			REF_LEVEL=0
 	</select>
+	
 	
 </mapper>

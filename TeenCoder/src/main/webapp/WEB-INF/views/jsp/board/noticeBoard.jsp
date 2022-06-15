@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TeenCoder 게시판</title>
+<title>TeenCoder 공지사항</title>
 <link rel="shortcut icon" href="/teen/resources/images/icon/icon_favicon.ico" type="image/x-icon"> <!-- favicon -->
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
@@ -70,7 +70,7 @@
 			                            <div class="row_title">
 			                                <h3>
 												<a class="overtext" href="/teen/board/notice/	detail?noti_no=${notice.noti_no}"> 
-													<span class="tag_hit">[추천]</span> ${notice.noti_title}
+													<span class="tag_notice">[공지]</span> ${notice.noti_title}
 													<c:if test="${notice.noti_file_check eq 'Y'}">
 														<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
 													</c:if>
@@ -108,7 +108,7 @@
 									</c:when>
 								</c:choose>
 							</c:forEach>
-							<!-- 오른쪽 버튼 -->
+							<!-- 오른쪽 버튼. -->
 							<c:if test="${paging.startPage < paging.endPage}">
 								<li><a class="next" href="/teen/board?search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage + 1}&cntPerPage=${paging.cntPerPage}"></a></li>
 							</c:if>
@@ -131,3 +131,4 @@
 	<script type="text/javascript" src="/teen/resources/js/notice/notice.js"></script>
 </body>
 </html>
+

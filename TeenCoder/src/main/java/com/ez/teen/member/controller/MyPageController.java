@@ -157,7 +157,7 @@ public class MyPageController {
 
 		memberService.mypageModify(memberModel);
 
-		return "redirect:/member";
+		return "redirect:/member/";
 	}
 
 	@GetMapping("/delete")
@@ -202,4 +202,5 @@ public class MyPageController {
 		System.out.println("result : " + result);
 		return result;
 	}
+	
 }
