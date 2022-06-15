@@ -72,11 +72,6 @@
 	                            <ul class="row_top number">
 	                                <li><img src="/teen/resources/images/icon/icon_hit.svg" class="i_hit">${noticeDetail.noti_hit_count}</li>
 	                            </ul>
-	                            <div class="btn_group">
-	                            	<input type="button" value="스크랩" class="btn_com btn_board">
-		                			<input type="button" value="신고" class="btn_com btn_board">
-		                			<input type="button" value="추천" class="btn_com btn_board">
-	                            </div>
 	                        </div>
 	                        <hr>
 	                    </div>

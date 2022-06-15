@@ -62,7 +62,7 @@
                               <th>개발직군 유무</th>
                               <td>
                                   <input type="button" value="인증" class="btn_com btn_check" onclick="goMail()">
-                                  <input type="checkbox" name="member_pro_check" value="N" id="no">
+                                  <input type="checkbox" name="member_pro_check" value="N" id="no" checked>
                                   <label for="no">아니오</label>
                               </td>
                           </tr>

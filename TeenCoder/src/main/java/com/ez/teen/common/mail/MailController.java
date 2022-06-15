@@ -25,7 +25,7 @@ public class MailController {
 		model.addAttribute("member_id", member_id);
 		model.addAttribute("member_nick", member_nick);
 
-        return "/email/write"; 
+        return "/email/devCheckEmail"; 
 	}
 	
 	@RequestMapping("/mail/send") 

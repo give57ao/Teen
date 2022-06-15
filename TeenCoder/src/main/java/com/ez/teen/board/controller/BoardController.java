@@ -42,264 +42,264 @@ import com.ez.teen.member.model.MemberModel;
 
 @Controller
 public class BoardController {
-	@Autowired
-	BoardService boardService;
-	
-	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
-	
-	//Get Main Page
-	// 메인 홈
-	@GetMapping("/")
-	public String main(BoardModel boardModel, MemberModel memberModel, Model model, BoardParam boardParam, CommentParam commentParam) {
-		log.info("메인페이지 실행");
-		
-		boardParam.setMember_no(0);
-		commentParam.setMember_no(0);
-		
-		model.addAttribute("allMemberCount", boardService.getUserCount());
-		model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam));
-		model.addAttribute("allCommentCount", boardService.getCommentCount(commentParam));
-		
-		return "main";
-	}
+   @Autowired
+   BoardService boardService;
+   
+   private static final Logger log = LoggerFactory.getLogger(BoardController.class);
+   
+   //Get Main Page
+   // 메인 홈
+   @GetMapping("/")
+   public String main(BoardModel boardModel, MemberModel memberModel, Model model, BoardParam boardParam, CommentParam commentParam) {
+      log.info("메인페이지 실행");
+      
+      boardParam.setMember_no(0);
+      commentParam.setMember_no(0);
+      
+      model.addAttribute("allMemberCount", boardService.getUserCount());
+      model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam));
+      model.addAttribute("allCommentCount", boardService.getCommentCount(commentParam));
+      
+      return "main";
+   }
 
-	//게시글 수정 폼
-	@GetMapping("board/modify")
-	public String updateBoardForm(@RequestParam(value = "board_no") int board_no, 
-			Model model, BoardParam boardParam)throws Exception{
-		
-		boardParam.setBoard_no(board_no);
-		
-		List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
-		List<Map<String, Object>> fileList = boardService.selectFile(board_no);
-		
-		model.addAttribute("updateBoard", boardDetail);
-		model.addAttribute("file", fileList);
-		
-		System.out.println("asdasd + = " + boardDetail);
-		
+   //게시글 수정 폼
+   @GetMapping("board/modify")
+   public String updateBoardForm(@RequestParam(value = "board_no") int board_no, 
+         Model model, BoardParam boardParam)throws Exception{
+      
+      boardParam.setBoard_no(board_no);
+      
+      List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
+      List<Map<String, Object>> fileList = boardService.selectFile(board_no);
+      
+      model.addAttribute("updateBoard", boardDetail);
+      model.addAttribute("file", fileList);
+      
+      System.out.println("asdasd + = " + boardDetail);
+      
 
-		return "board/boardModify";
-	}
-	
-	//게시글 수정 기능
-	@PostMapping("board/modify")
-	public String updateBoard(BoardModel boardModel, HttpSession session, 
-			RedirectAttributes rttr, 
-			@RequestParam(value="fileNoDel[]") String[] files,
-			@RequestParam(value="fileNameDel[]") String[] fileNames,
-			MultipartHttpServletRequest mpRequest, Map<String, Object> map) throws Exception{
-		
-		int member_no = (Integer)session.getAttribute("member_no");
-		
-		boardModel.setMember_no(member_no);
-		String old_board_tag_name = boardModel.getBoard_tag_name();
-		String init_board_tag_name = "";
-		boardModel.setBoard_tag_name(init_board_tag_name);
-		
-		boardModel.setBoard_tag_name(old_board_tag_name);  //init이후 posting된 값 받아오기
-		boardService.updateBoard(boardModel, files, fileNames, mpRequest);
-		
-		
-		return "redirect:/board";
-	}
+      return "board/boardModify";
+   }
+   
+   //게시글 수정 기능
+   @PostMapping("board/modify")
+   public String updateBoard(BoardModel boardModel, HttpSession session, 
+         RedirectAttributes rttr, 
+         @RequestParam(value="fileNoDel[]") String[] files,
+         @RequestParam(value="fileNameDel[]") String[] fileNames,
+         MultipartHttpServletRequest mpRequest, Map<String, Object> map) throws Exception{
+      
+      int member_no = (Integer)session.getAttribute("member_no");
+      
+      boardModel.setMember_no(member_no);
+      String old_board_tag_name = boardModel.getBoard_tag_name();
+      String init_board_tag_name = "";
+      boardModel.setBoard_tag_name(init_board_tag_name);
+      
+      boardModel.setBoard_tag_name(old_board_tag_name);  //init이후 posting된 값 받아오기
+      boardService.updateBoard(boardModel, files, fileNames, mpRequest);
+      
+      
+      return "redirect:/board";
+   }
 
-	//게시글 작성 폼
-	@GetMapping(value = "board/boardWrite")
-	public String insertBoardForm() {
-	
-		return "board/boardWrite";
-	}
-	
-	
-	//게시글 작성 완료
-	  
-	@PostMapping(value = "board/boardWrite")
-	public String insertBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest) throws Exception{
+   //게시글 작성 폼
+   @GetMapping(value = "board/boardWrite")
+   public String insertBoardForm() {
+   
+      return "board/boardWrite";
+   }
+   
+   
+   //게시글 작성 완료
+     
+   @PostMapping(value = "board/boardWrite")
+   public String insertBoard(BoardModel boardModel, HttpSession session, MultipartHttpServletRequest mpRequest) throws Exception{
 
-		
-	int member_no = (Integer)session.getAttribute("member_no");
+      
+   int member_no = (Integer)session.getAttribute("member_no");
 
-	boardModel.setMember_no(member_no);
+   boardModel.setMember_no(member_no);
 
-	boardService.insertBoard(boardModel, mpRequest);
+   boardService.insertBoard(boardModel, mpRequest);
 
-	return "redirect:/board"; 
-	}
-	
-	
-	// 게시글 목록 메인
-	@RequestMapping(value = "board/mainBoard")
-	public String mainBoard() {
-		
-		return "board/mainBoard";
-	}
-	 
-	//게시글 내용 디테일
-		@RequestMapping("board/detail")
-		public String selectBoardDetail(BoardModel boardModel, HttpSession session,
-				HttpServletResponse response, HttpServletRequest rq, BoardParam boardParam, Model model,
-				@RequestParam(value="board_no")int board_no, CommentModel commentModel) throws Exception{
+   return "redirect:/board"; 
+   }
+   
+   
+   // 게시글 목록 메인
+   @RequestMapping(value = "board/mainBoard")
+   public String mainBoard() {
+      
+      return "board/mainBoard";
+   }
+    
+   //게시글 내용 디테일
+      @RequestMapping("board/detail")
+      public String selectBoardDetail(BoardModel boardModel, HttpSession session,
+            HttpServletResponse response, HttpServletRequest rq, BoardParam boardParam, Model model,
+            @RequestParam(value="board_no")int board_no, CommentModel commentModel) throws Exception{
 
-			boardParam.setBoard_no(board_no); 
-			List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
-			
-			List<BoardAnswerModel> boardAnswer = boardService.selectAnswer(boardParam);
-			List<Map<String, Object>> fileList = boardService.selectFile(board_no);
-			int boardCommentCount = boardService.getRefStep(board_no) + 1;
-			
-			
-			List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
-							
-			System.out.println("*************************************");
-			System.out.println("*************************************");
-			System.out.println("*************************************");
-			System.out.println("boardcomment : " +boardComment);
-			System.out.println("*************************************");
-			System.out.println("*************************************");
-			System.out.println("*************************************");	
+         boardParam.setBoard_no(board_no); 
+         List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
+         
+         List<BoardAnswerModel> boardAnswer = boardService.selectAnswer(boardParam);
+         List<Map<String, Object>> fileList = boardService.selectFile(board_no);
+         int boardCommentCount = boardService.getRefStep(board_no) + 1;
+         
+         
+         List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
+                     
+         System.out.println("*************************************");
+         System.out.println("*************************************");
+         System.out.println("*************************************");
+         System.out.println("boardcomment : " +boardComment);
+         System.out.println("*************************************");
+         System.out.println("*************************************");
+         System.out.println("*************************************");   
 
-			
-			
-			model.addAttribute("boardComment", boardComment);
-			model.addAttribute("board_no", board_no); //댓글 작성을 위해 board_no 받아오는 코드 추가
-			model.addAttribute("file", fileList);
-			model.addAttribute("boardDetail", boardDetail);
-			model.addAttribute("boardAnswer", boardAnswer);
-			model.addAttribute("commentNum", boardComment);
-			model.addAttribute("commentCount", boardCommentCount);
-			boardService.hitCount(boardModel);
+         
+         
+         model.addAttribute("boardComment", boardComment);
+         model.addAttribute("board_no", board_no); //댓글 작성을 위해 board_no 받아오는 코드 추가
+         model.addAttribute("file", fileList);
+         model.addAttribute("boardDetail", boardDetail);
+         model.addAttribute("boardAnswer", boardAnswer);
+         model.addAttribute("commentNum", boardComment);
+         model.addAttribute("commentCount", boardCommentCount);
+         boardService.hitCount(boardModel);
 
-			
-			
-			
-			String index = rq.getParameter("index");
-			System.out.println("인덱스값: " + index);
-			System.out.println(boardCommentCount);
-			
-			return "board/boardDetail";
-		}
-		
-		//댓글 작성
-		@PostMapping("board/comment")
-		public String insertComment(BoardModel boardModel, CommentModel commentModel, HttpSession session, MultipartHttpServletRequest mpRequest
-			,RedirectAttributes rttr) throws Exception {
-			
-			commentModel.setMember_no((int)session.getAttribute("member_no"));
-			int board_no = commentModel.getBoard_no();
-			
-			//ref_step 구별 후 댓글 작성 로직
-			int refStep = boardService.getRefStep(board_no);
-			System.out.println("============================================================");
-			System.out.println("board_no :"+board_no);
-			System.out.println("refStep :" + refStep);
-			System.out.println("============================================================");
+         
+         
+         
+         String index = rq.getParameter("index");
+         System.out.println("인덱스값: " + index);
+         System.out.println(boardCommentCount);
+         
+         return "board/boardDetail";
+      }
+      
+      //댓글 작성
+      @PostMapping("board/comment")
+      public String insertComment(BoardModel boardModel, CommentModel commentModel, HttpSession session, MultipartHttpServletRequest mpRequest
+         ,RedirectAttributes rttr) throws Exception {
+         
+         commentModel.setMember_no((int)session.getAttribute("member_no"));
+         int board_no = commentModel.getBoard_no();
+         
+         //ref_step 구별 후 댓글 작성 로직
+         int refStep = boardService.getRefStep(board_no);
+         System.out.println("============================================================");
+         System.out.println("board_no :"+board_no);
+         System.out.println("refStep :" + refStep);
+         System.out.println("============================================================");
 
-			
-			commentModel.setRef_step(refStep+1);
-			boardService.insertComment(commentModel, mpRequest);
-			
-			rttr.addAttribute("board_no", board_no);
-			return "redirect:/board/detail";
-		}
+         
+         commentModel.setRef_step(refStep+1);
+         boardService.insertComment(commentModel, mpRequest);
+         
+         rttr.addAttribute("board_no", board_no);
+         return "redirect:/board/detail";
+      }
 
-				//답글 작성
-				@PostMapping("board/recomment")
-				public String insertReComment(BoardModel boardModel, CommentParam commentParam,CommentModel commentModel, HttpSession session, RedirectAttributes rttr) {
-					
-					commentModel.setMember_no((int)session.getAttribute("member_no"));
-					
-					int board_no = commentParam.getBoard_no();
-					int ref_step = commentModel.getRef_step();
-					
-					commentParam.setBoard_no(board_no);
-					commentParam.setRef_step(ref_step);
-					
-					//ref_step 구별 후 답글 작성 로직
-					int ref_level = boardService.getRefLevel(commentParam);
-					System.out.println("============================================================");
-					System.out.println("board_no :"+board_no);
-					System.out.println("ref_step :"+ref_step);
-					System.out.println("ref_level :" + ref_level);
-					System.out.println("============================================================");
+            //답글 작성
+            @PostMapping("board/recomment")
+            public String insertReComment(BoardModel boardModel, CommentParam commentParam,CommentModel commentModel, HttpSession session, RedirectAttributes rttr) {
+               
+               commentModel.setMember_no((int)session.getAttribute("member_no"));
+               
+               int board_no = commentParam.getBoard_no();
+               int ref_step = commentModel.getRef_step();
+               
+               commentParam.setBoard_no(board_no);
+               commentParam.setRef_step(ref_step);
+               
+               //ref_step 구별 후 답글 작성 로직
+               int ref_level = boardService.getRefLevel(commentParam);
+               System.out.println("============================================================");
+               System.out.println("board_no :"+board_no);
+               System.out.println("ref_step :"+ref_step);
+               System.out.println("ref_level :" + ref_level);
+               System.out.println("============================================================");
 
 
-						commentModel.setRef_level(ref_level+1);
-						boardService.insertReComment(commentModel);
-					
-						rttr.addAttribute("board_no", board_no);
-						return "redirect:/board/detail";
-				}
+                  commentModel.setRef_level(ref_level+1);
+                  boardService.insertReComment(commentModel);
+               
+                  rttr.addAttribute("board_no", board_no);
+                  return "redirect:/board/detail";
+            }
 
-		
+      
 
-	//첨부파일 다운로드 구현
-		@RequestMapping(value = "board/downFile")
-		public void downFile(@RequestParam Map<String, Object> map, HttpServletResponse response) throws Exception{
-			Map<String, Object> resultMap = boardService.downFile(map);
-			
-			String storedFileName = (String)resultMap.get("STORED_FILE_NAME");
-			String originalFileName = (String)resultMap.get("ORG_FILE_NAME");
-			
-			FileUtil fileUtils = new FileUtil();
-			byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(fileUtils.getFilePath()+storedFileName));
-			
-			response.setContentType("application/octet-stream");
-			response.setContentLength(fileByte.length);
-			response.setHeader("Content-Disposition",  "attachment; fileName=\""+URLEncoder.encode(originalFileName, "UTF-8")+"\";");
-			response.getOutputStream().write(fileByte);
-			response.getOutputStream().flush();
-			response.getOutputStream().close();
-			
-		}
-	
-	
-	//게시판
-	@GetMapping("/board")
-	public String goBoard(Model model, BoardParam boardParam, 
-			@RequestParam(value = "nowPage", required = false) String nowPage,
-			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
-			@RequestParam(value = "sort", required = false) String sort,
-			@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "keyword", required = false) String keyword,
-			@RequestParam(value="board_tag_name", required = false)String board_tag_name,
-			@RequestParam(value="board_group_no", required = false)String board_group_no) {
-		
+   //첨부파일 다운로드 구현
+      @RequestMapping(value = "board/downFile")
+      public void downFile(@RequestParam Map<String, Object> map, HttpServletResponse response) throws Exception{
+         Map<String, Object> resultMap = boardService.downFile(map);
+         
+         String storedFileName = (String)resultMap.get("STORED_FILE_NAME");
+         String originalFileName = (String)resultMap.get("ORG_FILE_NAME");
+         
+         FileUtil fileUtils = new FileUtil();
+         byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(fileUtils.getFilePath()+storedFileName));
+         
+         response.setContentType("application/octet-stream");
+         response.setContentLength(fileByte.length);
+         response.setHeader("Content-Disposition",  "attachment; fileName=\""+URLEncoder.encode(originalFileName, "UTF-8")+"\";");
+         response.getOutputStream().write(fileByte);
+         response.getOutputStream().flush();
+         response.getOutputStream().close();
+         
+      }
+   
+   
+   //게시판
+   @GetMapping("/board")
+   public String goBoard(Model model, BoardParam boardParam, 
+         @RequestParam(value = "nowPage", required = false) String nowPage,
+         @RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+         @RequestParam(value = "sort", required = false) String sort,
+         @RequestParam(value = "search", required = false) String search,
+         @RequestParam(value = "keyword", required = false) String keyword,
+         @RequestParam(value="board_tag_name", required = false)String board_tag_name,
+         @RequestParam(value="board_group_no", required = false)String board_group_no) {
+      
 
-			if(board_group_no == null) {
-				boardParam.setBoard_group_no("1");
-			}
-			System.out.println("====================================");
-			System.out.println("BOARD_TAG_NAME :" + board_tag_name );
-			System.out.println("====================================");
+         if(board_group_no == null) {
+            boardParam.setBoard_group_no("1");
+         }
+         System.out.println("====================================");
+         System.out.println("BOARD_TAG_NAME :" + board_tag_name );
+         System.out.println("====================================");
 
-			
-			int total = boardService.getBoardCount(boardParam);
-			
-			if (nowPage == null && cntPerPage == null) {
-				nowPage = "1";
-				cntPerPage = "10";
-			} else if (nowPage == null) {
-				nowPage = "1";
-			} else if (cntPerPage == null) {
-				cntPerPage = "10";
-			} 
-			boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-			if(total == 0) {
-				boardParam.setEndPage(1);
-			}
-			
-			
-			model.addAttribute("paging", boardParam);
-			model.addAttribute("sort", sort);
-			model.addAttribute("board", boardService.boardList(boardParam));
-			model.addAttribute("board_group_no",board_group_no);
-			
-			
-			return "board/mainBoard";
-	}
-	
-	@RequestMapping("/board/recommend")
+         
+         int total = boardService.getBoardCount(boardParam);
+         
+         if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "10";
+         } else if (nowPage == null) {
+            nowPage = "1";
+         } else if (cntPerPage == null) {
+            cntPerPage = "10";
+         } 
+         boardParam.PagingModel(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+         if(total == 0) {
+            boardParam.setEndPage(1);
+         }
+         
+         
+         model.addAttribute("paging", boardParam);
+         model.addAttribute("sort", sort);
+         model.addAttribute("board", boardService.boardList(boardParam));
+         model.addAttribute("board_group_no",board_group_no);
+         
+         
+         return "board/mainBoard";
+   }
+   
+   @RequestMapping("/board/recommend")
     public String recommendBoard(BoardModel boardModel) throws Exception {
         
         boardService.recommendBoard(boardModel);
@@ -307,68 +307,67 @@ public class BoardController {
         return "forward:/board/detail";
     }
 
-	@RequestMapping(value="/uploadSummernoteImageFile", method=RequestMethod.POST)
-	public ResponseEntity<?> summerimage(@RequestParam("file") MultipartFile img, HttpServletRequest request) 
-	throws IOException {
-		String fileRoot = "C:\\summernote_image\\";	//저장될 외부 파일 경로
-		String originalFileName = img.getOriginalFilename();	//오리지날 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
-				
-		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
-		
-		File targetFile = new File(fileRoot + savedFileName);
-		
-		
-		InputStream fileStream = img.getInputStream();
-		FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-		
-		System.out.println("===============SUMMER_IMAGE START================");
-		System.out.println("/summernoteImage/"+savedFileName);
-		System.out.println("===============SUMMER_IMAGE END==================");
+   @RequestMapping(value="/uploadSummernoteImageFile", method=RequestMethod.POST)
+   public ResponseEntity<?> summerimage(@RequestParam("file") MultipartFile img, HttpServletRequest request) 
+   throws IOException {
+      String fileRoot = "C:\\summernote_image\\";   //저장될 외부 파일 경로
+      String originalFileName = img.getOriginalFilename();   //오리지날 파일명
+      String extension = originalFileName.substring(originalFileName.lastIndexOf("."));   //파일 확장자
+            
+      String savedFileName = UUID.randomUUID() + extension;   //저장될 파일 명
+      
+      File targetFile = new File(fileRoot + savedFileName);
+      
+      
+      InputStream fileStream = img.getInputStream();
+      FileUtils.copyInputStreamToFile(fileStream, targetFile);   //파일 저장
+      
+      System.out.println("===============SUMMER_IMAGE START================");
+      System.out.println("/summernoteImage/"+savedFileName);
+      System.out.println("===============SUMMER_IMAGE END==================");
 
-		return ResponseEntity.ok().body("/summernoteImage/"+savedFileName);
-		
-	}	
-	@RequestMapping("board/delete")
-	public String deleteBoard(@RequestParam("board_no") int board_no,@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
-		
-		try {
-		
-		boardService.deleteBoard(board_no);
-		boardService.deleteBcomment(bcomment_no);
-		
-		redirect.addFlashAttribute("msg", "삭제굿");
-		
-	} catch (Exception e) {
-		
-		redirect.addFlashAttribute("msg", "삭제에러");
-	}
-			
-	return "redirect:/board";
-	}
-	
-	@RequestMapping("board/deleteBcomment")
-	public String deleteBcomment(@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
-		try {
-			
-			boardService.deleteBcomment(bcomment_no);
-						
-			redirect.addFlashAttribute("msg", "삭제굿");
-			
-		} catch (Exception e){
-			
-			redirect.addFlashAttribute("msg", "에렁");
-		}
-		
-		return "redirect:/board";
-	}
-	
-	
-	
+      return ResponseEntity.ok().body("/summernoteImage/"+savedFileName);
+      
+   }   
+   @RequestMapping("board/delete")
+   public String deleteBoard(@RequestParam("board_no") int board_no,@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
+      
+      try {
+      
+      boardService.deleteBoard(board_no);
+      boardService.deleteBcomment(bcomment_no);
+      
+      redirect.addFlashAttribute("msg", "삭제굿");
+      
+   } catch (Exception e) {
+      
+      redirect.addFlashAttribute("msg", "삭제에러");
+   }
+         
+   return "redirect:/board";
+   }
+   
+   @RequestMapping("board/deleteBcomment")
+   public String deleteBcomment(@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
+      try {
+         
+         boardService.deleteBcomment(bcomment_no);
+                  
+         redirect.addFlashAttribute("msg", "삭제굿");
+         
+      } catch (Exception e){
+         
+         redirect.addFlashAttribute("msg", "에렁");
+      }
+      
+      return "redirect:/board";
+   }
+   
+   
+   
 }
 
 
-	
+   
 
-	
-
+   

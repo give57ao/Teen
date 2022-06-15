@@ -58,7 +58,7 @@ public class FileUtil {
 				file = new File(filePath + storedFileName);
 				multpartFile.transferTo(file);
 				listMap = new HashMap<String, Object>();
-				listMap.put("NEW_FILE", 'Y');
+				listMap.put("NEW_FILE", "Y");
 				listMap.put("BOARD_NO", board_no);
 				listMap.put("ORG_FILE_NAME", originalFileName);
 				listMap.put("STORED_FILE_NAME", storedFileName);
@@ -182,7 +182,7 @@ public List<Map<String, Object>> parseInsertCmtFileInfo(CommentModel commentMode
 				Date date = new Date();
 				
 				listMap = new HashMap<String,Object>();
-				listMap.put("NEW_FILE", 'Y');
+				listMap.put("NEW_FILE", "Y");
 				listMap.put("BOARD_NO", board_no);
 				listMap.put("ORG_FILE_NAME", originalFileName);
 				listMap.put("STORED_FILE_NAME", storedFileName);
