@@ -45,7 +45,6 @@ public class BoardServiceImpl implements BoardService {
 
 	
 	// 게시글 수정
-	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public void updateBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest,Map<String, Object> map) throws Exception {
 		

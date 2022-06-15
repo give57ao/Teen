@@ -547,9 +547,9 @@ ORDER BY board_comment_count DESC
 	</delete>
 	
 	<update id="deleteFile">
-	<![CDATA[
-      UPDATE BFILE SET DEL_GB = 'Y' WHERE FILE_NO = #{file_no}
-   	]]>
+		<![CDATA[
+		UPDATE BFILE SET DEL_GB = 'Y' WHERE FILE_NO = #{file_no}
+		]]>
 	</update>
 	
 	<delete id="deleteBcomment" parameterType="int">
