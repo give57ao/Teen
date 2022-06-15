@@ -48,14 +48,23 @@ public interface BoardService {
 	
 	//첨부파일 조회
 	public List<Map<String, Object>> selectFile(int board_no)throws Exception;
+	
+	//댓글 첨부파일 조회
+	public List<BoardCommentModel> selectCmtFile(int bcno)throws Exception;
+	
+	//댓글번호 불러오기
+	public List<Integer> selectCmtNo(int board_no)throws Exception;
 		
 	//첨부파일 다운로드
 	public Map<String, Object> downFile(Map<String, Object> map) throws Exception;
 	
 	//첨부파일 추가
 	public void insertFile(Map<String, Object> map) throws Exception;
+	
+	//댓글 첨부파일 추가
+	public void insertCmtFile(Map<String, Object> map) throws Exception;
 
-	public void insertComment(CommentModel commentModel);
+	public void insertComment(CommentModel commentModel,MultipartHttpServletRequest mpRequest)throws Exception;
 
 	public void hitCount(BoardModel boardModel);
 
@@ -76,5 +85,7 @@ public interface BoardService {
 	
 	//update Tag Name
 	public void updateTagName(BoardModel boardModel);
+
+	
 	
 }

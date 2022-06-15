@@ -100,10 +100,21 @@
                 	<!-- Comment From -->
 	                <div id="comment_form">
 	                	<form action="comment" method="post" enctype="multipart/form-data">
+		                	<table>
+		                	<tr>
+		                	<td>
 		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
-		                	<input type="hidden" name="board_no" value="${board_no}">
-		                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
-		                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
+							<td><input type="hidden" name="board_no" value="${board_no}"></td>
+		                	</tr>
+		                	<tr id="fileDiv" class="file_upload">
+			                    <th>첨부파일&nbsp;&nbsp;&nbsp;
+			                <td>
+	                			<input type="file" id="file" name="file_0">	                        	
+                       		</td>
+		                	<td><input type="reset" value="취소" class="btn_com btn_board btn_cmt"></td>
+		                	<td><input type="submit" value="작성" class="btn_com btn_board btn_cmt"></td>
+			                </tr>
+		                	</table>
 	                	</form>
 	                </div>
 	                
@@ -127,7 +138,15 @@
 		                            </div>
 		                            <div class="row_contents">
 		                            	<p>${boardComment.bcomment_content}</p>
-		                            </div>
+		                            	
+<!-- ***************************************************************************************************************************************************** -->		                            	
+		                            
+		                            	<form name="downCmtFile" role="form" method="post">
+	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
+										<span><a href="#" onClick="fn_fileDown(${boardComment.file_no}); return false;">${boardComment.org_file_name}</a>(${boardComment.file_size}kb)</span>
+										</form>
+						           </div>
+<!-- ***************************************************************************************************************************************************** -->		                            
 		                            <ul class="row_top number">
 	                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${boardComment.ref_level}</li>
 	                                    <!-- boardCommen.ref_level 말고 count하는걸 새로 받아와야 할 것 같음 -->

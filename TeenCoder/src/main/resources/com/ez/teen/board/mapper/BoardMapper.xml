@@ -376,9 +376,9 @@ ORDER BY board_comment_count DESC
 	</select>
 	
 	<select id="selectComment"
-		parameterType="com.ez.teen.board.model.BoardParam"
+		parameterType="com.ez.teen.board.model.BoardCommentModel"
 		resultType="com.ez.teen.board.model.BoardCommentModel">
-	  SELECT 
+ 	  	  SELECT 
 	  	C.BCOMMENT_NO AS BCOMMENT_NO,
     	C.BOARD_NO AS BOARD_NO,
 	  	M.MEMBER_NICK AS MEMBER_NICK,
@@ -386,17 +386,23 @@ ORDER BY board_comment_count DESC
 	  	C.BCOMMENT_CONTENT AS BCOMMENT_CONTENT,
 	  	C.BCOMMENT_LIKE_COUNT AS BCOMMENT_LIKE_COUNT,
 	  	C.REF_STEP AS REF_STEP,
-	  	C.REF_LEVEL AS REF_LEVEL
-	  FROM
-    	MEMBER M INNER JOIN BCOMMENT C
-    	ON M.MEMBER_NO = C.MEMBER_NO
+	  	C.REF_LEVEL AS REF_LEVEL,
+        F.FILE_NO AS FILE_NO,
+        F.ORG_FILE_NAME AS ORG_FILE_NAME,
+        F.FILE_SIZE AS FILE_SIZE
+        
+	  FROM BCOMMENT C
+      INNER JOIN MEMBER M
+      ON C.MEMBER_NO = M.MEMBER_NO 
+      INNER JOIN BOARD B
+      ON C.BOARD_NO = B.BOARD_NO
+      INNER JOIN BFILE F
+      ON C.BCOMMENT_NO = F.BCOMMENT_NO
 	  WHERE 
-    	C.BOARD_NO= #{board_no} AND
-    	C.REF_LEVEL = 0
-      ORDER BY
-      	REF_STEP, REF_LEVEL 
-		
+    	C.BOARD_NO = #{board_no} AND
+        C.REF_LEVEL = 0
 	</select>
+
 	
 	<select id="selectAnswer"
 		parameterType="com.ez.teen.board.model.BoardParam"
@@ -437,6 +443,26 @@ ORDER BY board_comment_count DESC
 	,0
 	)
 ]]>
+	</insert>
+	
+	<!-- 첨부파일 업로드 -->
+	<insert id="insertCmtFile" parameterType="hashMap">
+	 INSERT INTO BFILE(
+	 FILE_NO
+	,BCOMMENT_NO
+	,ORG_FILE_NAME
+	,STORED_FILE_NAME
+	,FILE_SIZE
+	,FILE_DATE
+	)
+	VALUES(
+	 SEQ_FILE_NO.NEXTVAL
+	,#{BCOMMENT_NO}
+	,#{ORG_FILE_NAME}
+	,#{STORED_FILE_NAME}
+	,#{FILE_SIZE}
+	,#{FILE_DATE} 
+	)
 	</insert>
 	
 	<update id="hitCount">

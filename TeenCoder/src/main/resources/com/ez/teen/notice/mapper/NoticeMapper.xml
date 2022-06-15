@@ -199,7 +199,7 @@ OR N.NOTI_CONTENT LIKE '%'||#{keyword}||'%'
 	<!-- 신고 댓글 삭제 -->
 	<delete id="deleteCmt" parameterType="com.ez.teen.board.model.CommentModel">
 	DELETE FROM BCOMMENT
-	WHERE BCOMMENT_NO = #{bcomment_no}
+	WHERE REF_STEP = #{ref_step} AND BOARD_NO = #{board_no}
 	</delete>
 
 

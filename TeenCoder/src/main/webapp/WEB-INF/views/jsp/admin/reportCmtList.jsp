@@ -79,15 +79,20 @@
 	                                <!-- Row1 -->
 	                                <c:forEach items="${comment}" var="cmt" >
 	                                <tr class="row">
-	                                   <td>${cmt.bcomment_no }</td>
-	                                   <td>${cmt.board_title }</td>
-	                                   <td>${cmt.bcomment_content }</td>
-	                                   <td>${cmt.member_nick }</td>
-	                                   <td>${cmt.bcomment_date }</td>
-	                                   <td>${cmt.bcomment_like_count }</td>
-	                                   <td>${cmt.bcomment_report_count }</td>
-	                                   <td>${cmt.board_file_check }</td>
-	                                   <td><a href="/teen/admin/deleteCmt?bcomment_no=${cmt.bcomment_no }" onclick="return delCk();" >삭제</a></td>
+	                                   <td style="width: 5%;">${cmt.bcomment_no }</td>
+	                                   <td style="width: 20%;"><a href="/teen/board/detail?board_no=${cmt.board_no}">${cmt.board_title} </a></td>
+	                                   <c:if test="${cmt.ref_level != 0 }">
+	                                   <td style="width: 20%;">[답글]${cmt.bcomment_content }</td>
+	                                   </c:if>
+	                                   <c:if test="${cmt.ref_level == 0 }">
+	                                   <td style="width: 20%;">${cmt.bcomment_content }</td>
+	                                   </c:if>
+	                                   <td style="width: 10%;">${cmt.member_nick }</td>
+	                                   <td style="width: 10%;"><fmt:formatDate value="${cmt.bcomment_date }" pattern="yyyy.MM.dd"/></td>
+	                                   <td style="width: 10%;">${cmt.bcomment_like_count }</td>
+	                                   <td style="width: 10%;">${cmt.bcomment_report_count }</td>
+	                                   <td style="width: 10%;">${cmt.board_file_check }</td>
+	                                   <td ><a style="width: 20%;" href="/teen/admin/deleteCmt?ref_step=${cmt.ref_step }&board_no=${cmt.board_no}" onclick="return delCk();" >삭제</a></td>
 	                                </tr>
 	                                </c:forEach>
 	                            </tbody>
@@ -136,7 +141,6 @@
 			alert("삭제되었습니다.");
 			return true;
 		} else {
-			alert("잘못된 로직입니다.");
 			return false;
 		}
 	}

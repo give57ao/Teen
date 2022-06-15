@@ -79,5 +79,11 @@ public interface BoardMapper {
 	public void insertSummerNote(String fileName);
 	
 	public void updateTagName(BoardModel boardModel);
+
+	public List<BoardCommentModel> selectCmtFile(int bcno)throws Exception;
+
+	public List<Integer> selectCmtNo(int board_no)throws Exception;
+
+	public void insertCmtFile(Map<String, Object> map)throws Exception;
 	
 }

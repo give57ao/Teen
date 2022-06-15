@@ -17,6 +17,53 @@ public class CommentModel {
 	private String board_title;
 	private String board_file_check;
 	
+	// 첨부파일 업로드 추가
+	private int file_no;
+	private String org_file_name;
+	private String stored_file_name;
+	private int file_size;
+	private Date file_date;
+	private String del_gb;
+	
+	
+	
+	
+	public int getFile_no() {
+		return file_no;
+	}
+	public String getOrg_file_name() {
+		return org_file_name;
+	}
+	public String getStored_file_name() {
+		return stored_file_name;
+	}
+	public int getFile_size() {
+		return file_size;
+	}
+	public Date getFile_date() {
+		return file_date;
+	}
+	public String getDel_gb() {
+		return del_gb;
+	}
+	public void setFile_no(int file_no) {
+		this.file_no = file_no;
+	}
+	public void setOrg_file_name(String org_file_name) {
+		this.org_file_name = org_file_name;
+	}
+	public void setStored_file_name(String stored_file_name) {
+		this.stored_file_name = stored_file_name;
+	}
+	public void setFile_size(int file_size) {
+		this.file_size = file_size;
+	}
+	public void setFile_date(Date file_date) {
+		this.file_date = file_date;
+	}
+	public void setDel_gb(String del_gb) {
+		this.del_gb = del_gb;
+	}
 	public int getBcomment_no() {
 		return bcomment_no;
 	}

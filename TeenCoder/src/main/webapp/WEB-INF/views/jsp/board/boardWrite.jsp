@@ -35,7 +35,7 @@
                         <h2>게시글 작성</h2>
                     </div>
                     <!-- Form -->
-                    <form id="board_form" method="post" enctype="multipart/form-data">
+                    <form id="board_form" name="board_form" method="post" enctype="multipart/form-data" onSubmit="return checkValue()" >
 		                <table>
 		                	<tbody>
 			                    <tr>
@@ -105,5 +105,6 @@
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/board/boardWrite.js"></script>
 </body>
 </html>

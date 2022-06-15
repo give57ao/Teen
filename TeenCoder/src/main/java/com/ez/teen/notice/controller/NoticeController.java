@@ -63,13 +63,13 @@ public class NoticeController {
 	}
 	
 	//공지사항 작성 폼
-	@GetMapping(value = "notice/boardWrite")
+	@GetMapping(value = "admin/noticeWrite")
 	public String insertNoticeForm() {
-		return "notice/noticeBoardWrite";
+		return "admin/noticeWrite";
 	}
 		
 	//공지사항 작성 기능
-	@PostMapping(value = "notice/boardWrite")
+	@PostMapping(value = "admin/noticeWrite")
 	public String insertNotice(NoticeModel noticeModel, HttpSession session, MultipartHttpServletRequest mpRequest)throws Exception {
 				
 		int member_no = (Integer)session.getAttribute("member_no");

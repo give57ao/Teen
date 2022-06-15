@@ -39,7 +39,7 @@ public class NoticeServiceImpl implements NoticeService{
 	
 		noticeMapper.insertNotice(noticeModel);
 		
-		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(noticeModel, mpRequest);
+		List<Map<String, Object>> list = fileUtils.parseInsertnoticeFileInfo(noticeModel, mpRequest);
 			
 		int size = list.size();
 		if(list != null) {

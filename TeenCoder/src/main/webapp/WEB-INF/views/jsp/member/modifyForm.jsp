@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,7 @@
         </div>
         <div id="contents_detail">
             <!-- Form -->
-            <form id="join_form" class="modify_form" method="post">
+            <form id="join_form" name="join_form" class="modify_form" method="post" onSubmit="return checkValue()" >
                 <table>
                 	<tbody>
                 		<c:forEach var="member" items="${list}">
@@ -61,9 +62,9 @@
 		                    <tr class="checkbox">
 		                        <th>개발직군 유무</th>
 		                        <td>
-		                            <input type="checkbox" name="member_pro_check" value="Y" id="yes">
+		                            <input type="checkbox" name="member_pro_check"  value="Y" id="member_pro_check1" onClick="checkOne(this)" >
 		                            <label for="yes">네</label>
-		                            <input type="checkbox" name="member_pro_check" value="N" id="no">
+		                            <input type="checkbox" name="member_pro_check" value="N" id="member_pro_check2" onClick="checkOne(this)" >
 		                            <label for="no">아니오</label>
 		                            <input type="submit" value="인증" class="btn_com btn_check">
 		                        </td>
@@ -83,6 +84,6 @@
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
 	<!-- JS -->
-	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/member/memberModify.js"></script>
 </body>
 </html>

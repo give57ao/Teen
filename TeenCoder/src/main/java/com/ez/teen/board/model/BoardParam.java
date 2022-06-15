@@ -12,8 +12,30 @@ public class BoardParam {
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
 	private int cntPage = 10;
 	private int ref_level;
+	private int bcomment_no;
+	private int file_no;
+	
+	
+	
 
 	
+	
+	public int getFile_no() {
+		return file_no;
+	}
+
+	public void setFile_no(int file_no) {
+		this.file_no = file_no;
+	}
+
+	public int getBcomment_no() {
+		return bcomment_no;
+	}
+
+	public void setBcomment_no(int bcomment_no) {
+		this.bcomment_no = bcomment_no;
+	}
+
 	public int getRef_level() {
 		return ref_level;
 	}

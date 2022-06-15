@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -137,26 +139,36 @@ public class BoardController {
 				@RequestParam(value="board_no")int board_no, CommentModel commentModel) throws Exception{
 
 			boardParam.setBoard_no(board_no); 
-			
 			List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
-			List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
+			
 			List<BoardAnswerModel> boardAnswer = boardService.selectAnswer(boardParam);
+			List<Map<String, Object>> fileList = boardService.selectFile(board_no);
 			int boardCommentCount = boardService.getRefStep(board_no) + 1;
 			
 			
-			System.out.println(boardDetail);
-			System.out.println(boardComment);
-			System.out.println(boardAnswer);
-						
-			List<Map<String, Object>> fileList = boardService.selectFile(board_no);
+			List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
+							
+			System.out.println("*************************************");
+			System.out.println("*************************************");
+			System.out.println("*************************************");
+			System.out.println("boardcomment : " +boardComment);
+			System.out.println("*************************************");
+			System.out.println("*************************************");
+			System.out.println("*************************************");	
+
+			
+			
+			model.addAttribute("boardComment", boardComment);
 			model.addAttribute("board_no", board_no); //댓글 작성을 위해 board_no 받아오는 코드 추가
 			model.addAttribute("file", fileList);
 			model.addAttribute("boardDetail", boardDetail);
-			model.addAttribute("boardComment", boardComment);
 			model.addAttribute("boardAnswer", boardAnswer);
 			model.addAttribute("commentNum", boardComment);
 			model.addAttribute("boardCommentCount", boardCommentCount);
 			boardService.hitCount(boardModel);
+
+			
+			
 			
 			String index = rq.getParameter("index");
 			System.out.println("인덱스값: " + index);
@@ -168,7 +180,7 @@ public class BoardController {
 		//댓글 작성
 		@PostMapping("board/comment")
 		public String insertComment(BoardModel boardModel, CommentModel commentModel, HttpSession session, MultipartHttpServletRequest mpRequest
-			,RedirectAttributes rttr) {
+			,RedirectAttributes rttr) throws Exception {
 			
 			commentModel.setMember_no((int)session.getAttribute("member_no"));
 			int board_no = commentModel.getBoard_no();
@@ -182,7 +194,7 @@ public class BoardController {
 
 			
 			commentModel.setRef_step(refStep+1);
-			boardService.insertComment(commentModel);
+			boardService.insertComment(commentModel, mpRequest);
 			
 			rttr.addAttribute("board_no", board_no);
 			return "redirect:/board/detail";

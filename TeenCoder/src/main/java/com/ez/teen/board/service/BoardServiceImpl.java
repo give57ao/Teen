@@ -146,11 +146,21 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardAnswerModel> selectAnswer(BoardParam boardParam) {
 		return boardMapper.selectAnswer(boardParam);
 	}
+	
+	//댓글 작성
 	@Override
-	public void insertComment(CommentModel commentModel) {
+	public void insertComment(CommentModel commentModel, MultipartHttpServletRequest mpRequest) throws Exception {
+		
 		boardMapper.insertComment(commentModel);
 		
+		List<Map<String, Object>> list = fileUtils.parseInsertCmtFileInfo(commentModel, mpRequest);
+		
+		int size = list.size();
+		for (int i = 0; i < size; i++) {
+		boardMapper.insertCmtFile(list.get(i));
+		
 	}
+}
 
 	@Override
 	public void hitCount(BoardModel boardModel) {
@@ -187,6 +197,27 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void updateTagName(BoardModel boardModel) {
 		boardMapper.updateTagName(boardModel);
+	}
+
+	
+	//댓글 첨부파일 조회
+	@Override
+	public List<BoardCommentModel> selectCmtFile(int bcno) throws Exception {
+
+		return boardMapper.selectCmtFile(bcno);
+	}
+
+	@Override
+	public List<Integer> selectCmtNo(int board_no) throws Exception {
+		
+	  return boardMapper.selectCmtNo(board_no);
+	}
+
+	@Override
+	public void insertCmtFile(Map<String, Object> map) throws Exception {
+		
+		boardMapper.insertCmtFile(map);
+		
 	}
 
 }
