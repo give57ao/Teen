@@ -88,9 +88,7 @@ function deletecmt(num1) {
 	                                </h3>
 	                            </div>
 	                            <div class="row_contents">
-	                         	<p>${boardDetail.board_content} --
-	                         	 ${boardModel.board_no} -- ${ sessionScope.member_no} -- ${ boardDetail.member_no } -- 
-	                         	 </p>
+	                         	<p>${boardDetail.board_content}</p>
 	                            	
 	                            	<form name="downFile" role="form" method="post">
 	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
@@ -125,7 +123,7 @@ function deletecmt(num1) {
                     </c:forEach>
                     
                 	<!-- Comment From -->
-	               	 <div class="comment_form">
+	               	 <div id="comment_form">
 	                	<form action="comment" method="post" enctype="multipart/form-data">
 		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
 		                	<input type="hidden" name="board_no" value="${board_no}">
@@ -135,7 +133,7 @@ function deletecmt(num1) {
 	               </div>
 	                	  
 	                <!-- 댓글갯수 -->
-                    <h2><b class="comment_count">${boardCommentCount}</b>개의 댓글</h2>
+                    <h2><b class="comment_count">${commentCount}</b>개의 댓글</h2>
                     
 	                <!-- Comment List -->
 	                <c:forEach items="${boardComment}" var="boardComment" varStatus="status">

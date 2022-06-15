@@ -524,4 +524,15 @@ ORDER BY board_comment_count DESC
 		DELETE FROM BCOMMENT WHERE BCOMMENT_NO = #{BCOMMENT_NO]
 	</delete>
 	
+	<!-- 댓글개수 구하기 -->
+	<select id="commentCount" parameterType="int" resultType="int">
+		SELECT
+			NVL(COUNT(REF_STEP),0) 
+		FROM 
+			BCOMMENT
+		WHERE 
+			BOARD_NO = #{board_no} AND 
+			REF_LEVEL=0
+	</select>
+	
 </mapper>

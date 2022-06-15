@@ -82,5 +82,8 @@ public interface BoardMapper {
 	public void deleteBoard(int board_no);
 	
 	public void deleteBcomment(int bcomment_no);
+
+	//detail내 댓글개수
+	public int commentCount(int board_no);
 	
 }

@@ -200,5 +200,11 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.deleteBcomment(bcomment_no);
 	}
 
+	//detail내 댓글개수
+	@Override
+	public int commentCount(int board_no) {
+		return boardMapper.commentCount(board_no);
+	}
+
 	
 }
