@@ -45,8 +45,6 @@
 					OR MEMBER_NICK LIKE '%'||#{keyword}||'%'
 					</if>
 					
-					ORDER BY MEMBER_NO DESC
-					
 					) A
 			) WHERE RN BETWEEN #{start} AND #{end}
 	</select>
