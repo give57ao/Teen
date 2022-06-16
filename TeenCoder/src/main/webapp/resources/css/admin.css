@@ -35,6 +35,12 @@
     font-weight: bold;
 }
 
+#admin_board_list table img {
+	width: 10px;
+	height: 10px;
+	vertical-align: middle;
+}
+
 #admin_board_list .w5 {
 	width: 5%;
 }
