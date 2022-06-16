@@ -20,7 +20,7 @@ import com.ez.teen.notice.model.NoticeModel;
 @Component("fileUtils")
 public class FileUtil {
 	
-	private static final String filePath = "C:\\upload\\";
+	private static final String filePath = "D:\\JAVA\\SpringTool\\upload\\";
 	public String getFilePath() {
 		return filePath;
 	}

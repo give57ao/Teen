@@ -147,11 +147,16 @@ function deleteBoard(num) {
 		                            	<p>${boardComment.bcomment_content}</p>
 		                            	
 <!-- ***************************************************************************************************************************************************** -->		                            	
-		                            
-		                            	<form name="downCmtFile" role="form" method="post">
+		                            	<c:choose>
+		                            	<c:when test="${boardComment.file_no eq 0}">
+										</c:when>
+										<c:otherwise>
+										<form name="downCmtFile" role="form" method="post">
 	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
-										<span><a href="#" onClick="fn_fileDown(${boardComment.file_no}); return false;">${boardComment.org_file_name}</a>(${boardComment.file_size}kb)</span>
+										<span><a href="#" onClick="fn_fileDown(${boardComment.file_no}); return false;">${boardComment.org_file_name}</a>(${boardComment.file_size}kb)</span>										
 										</form>
+										</c:otherwise>
+										</c:choose>
 						           </div>
 <!-- ***************************************************************************************************************************************************** -->		                            
 		                            <ul class="row_top number">
