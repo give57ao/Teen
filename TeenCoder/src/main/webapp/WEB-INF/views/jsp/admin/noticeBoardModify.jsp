@@ -55,22 +55,23 @@
 					                        </td>
 					                    </tr>
 	                                    <tr id="fileDiv" class="file_upload">
-					                        <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile">+</a></th>
-					                        <td>
-				                            	<input type="file" id="file" name="file_0">
-				                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
-					                        </td>
-					                    </tr>
-					                    <c:forEach var="file" items="${file}">
-						                    <tr class="file_upload file_modify">
-						                    	<th></th>
-					                        	<td>
-													<span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a></span>
-													<input type="hidden" name="FILE_${file.FILE_NO}" value="true"/>
-					                            	<a href="#this" class="btn_com btn_del_file" id="deleteFile" name="deleteFile">파일 삭제</a>
-					                        	</td>
-					                    	</tr>
-				                    	</c:forEach>
+		                                    <th>첨부파일&nbsp;&nbsp;&nbsp;<a href="#this" class="btn_com btn_add_file" id="addFile">+</a></th>
+		                                    <td>
+		                                        <input type="file" id="file" name="file_0">
+		                                        <a href="#this" class="btn_com btn_del_file" id="deleteFile">파일 삭제</a>
+		                                    </td>
+		                                </tr>
+					                    <c:forEach var="file" items="${file}" varStatus="var">
+			                                <tr class="file_row">
+			                                    <th></th>
+			                                    <td>
+			                                        <input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.FILE_NO }">
+													<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FILE_NO_${var.index}">
+			                                        <span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a>(${file.FILE_SIZE}kb)</a></span>
+			                                        <a href="#" class="btn_com btn_del_file" id="fileDel" onclick="fn_del('${file.FILE_NO}','FILE_NO_${var.index}');" >파일 삭제</a>
+			                                    </td>
+			                                </tr>
+		                                </c:forEach>
 				                    </c:forEach>
                                 </tbody>
                             </table>
