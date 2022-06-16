@@ -117,21 +117,12 @@ function deleteBoard(num) {
                 	<!-- Comment From -->
 	               	 <div id="comment_form">
 	                	<form action="comment" method="post" enctype="multipart/form-data">
-		                	<table>
-		                	<tr>
-		                	<td>
+		                	<input type="hidden" name="board_no" value="${board_no}">
 		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
-							<td><input type="hidden" name="board_no" value="${board_no}"></td>
-		                	</tr>
-		                	<tr id="fileDiv" class="file_upload">
-			                    <th>첨부파일&nbsp;&nbsp;&nbsp;
-			                <td>
-	                			<input type="file" id="file" name="file_0">	                        	
-                       		</td>
-		                	<td><input type="reset" value="취소" class="btn_com btn_board btn_cmt"></td>
-		                	<td><input type="submit" value="작성" class="btn_com btn_board btn_cmt"></td>
-			                </tr>
-		                	</table>
+			                    첨부파일&nbsp;&nbsp;&nbsp;
+	                		<input type="file" id="file" name="file_0">	                        	
+		                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
+		                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 	                	</form>
 	                </div>
 	 				<!-- 댓글갯수 -->
