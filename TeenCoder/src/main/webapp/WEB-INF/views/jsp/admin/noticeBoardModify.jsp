@@ -67,10 +67,10 @@
 			                                <tr class="file_row">
 			                                    <th></th>
 			                                    <td>
-			                                        <input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.FILE_NO }">
+			                                        <input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.FILE_NO}">
 													<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FILE_NO_${var.index}">
-			                                        <span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}(${file.FILE_SIZE}kb)</a></span>
-			                                        <a href="#" class="btn_com btn_del_file" id="fileDel" onclick="fn_del('${file.FILE_NO}','FILE_NO_${var.index}');" >파일 삭제</a>
+                                        			<span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}(${file.FILE_SIZE}kb)</a></span>
+                                        			<a href="#" class="btn_com btn_del_file" id="fileDel" onclick="fn_del('${file.FILE_NO}','FILE_NO_${var.index}');"  >파일 삭제</a>
 			                                    </td>
 			                                </tr>
 		                                </c:forEach>
@@ -95,7 +95,7 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/board/boardModify.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/admin/admin.js"></script>
 </body>
 </html>
