@@ -44,4 +44,7 @@ public interface MemberMapper {
 	
 	public int passChk(MemberModel memberModel);
 
+	//암호화 pw 찾기
+	public String getUserPw(String member_id);
+
 }

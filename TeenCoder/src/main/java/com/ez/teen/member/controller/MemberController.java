@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +32,11 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	//비밀번호 암호화,복호화
+	@Autowired
+    PasswordEncoder passwordEncoder;
+	
 	// 로그 설정
 	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 	
@@ -43,11 +50,26 @@ public class MemberController {
 	@RequestMapping("/login")
 	public ModelAndView loginCheck(MemberModel memberModel, HttpSession session, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		//암호화된 pw -> 복호화
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String rawPw = memberModel.getMember_pw();
+		
+		String userPw = loginService.getUserPw(memberModel.getMember_id());
+		
+		memberModel.setMember_pw(userPw);
 		MemberModel member = loginService.login(memberModel);
+		
+		System.out.println("==========================================");
+		System.out.println("사용자가 입력한 pw : " + rawPw);
+		System.out.println("DB에 저장된 암호화 pw :" + userPw);
+		System.out.println("MEMBER :" + member);
+		System.out.println("==========================================");
+
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 				
-    	if(member != null) {
+    	if(encoder.matches(rawPw, userPw)) {
             session.setAttribute("member_no", member.getMember_no());
             session.setAttribute("member_admin", member.getMember_admin());
             session.setAttribute("member_id", member.getMember_id());
@@ -93,7 +115,7 @@ public class MemberController {
     
     @PostMapping("/findPw")
     public String findPwResult(Model model, MemberModel memberModel) throws Exception {
-    	
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     	model.addAttribute("findPw", loginService.findPw(memberModel));
     	System.out.println(loginService.findPw(memberModel));
     	return "member/findPw";

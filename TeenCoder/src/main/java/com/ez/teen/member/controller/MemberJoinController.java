@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,10 @@ public class MemberJoinController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	//비밀번호 암호화,복호화
+	@Autowired
+    PasswordEncoder passwordEncoder;
 
 	private static final Logger log = LoggerFactory.getLogger(MemberJoinController.class);
 
@@ -55,6 +60,14 @@ public class MemberJoinController {
 
 		int idResult = memberService.checkId(member_id);
 		int nickResult = memberService.checkNick(member_nick);
+		
+		//회원가입 시 pw 암호화
+		String encPassword = passwordEncoder.encode(memberModel.getMember_pw());
+		memberModel.setMember_pw(encPassword);
+		System.out.println("================================================");
+		System.out.println("인코딩한 PW : " + encPassword);
+		System.out.println("================================================");
+
 
 		try {
 			if (idResult == 1 || nickResult == 1) {

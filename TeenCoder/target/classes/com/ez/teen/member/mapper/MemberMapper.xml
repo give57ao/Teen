@@ -98,5 +98,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		AND MEMBER_PW = #{member_pw}
 	 </select>
 	 
+	 <!-- 암호화 pw 찾기 -->
+	 <select id="getUserPw" resultType="String" parameterType="com.ez.teen.member.model.MemberModel">
+	 SELECT MEMBER_PW FROM MEMBER
+	 WHERE MEMBER_ID =  #{member_id}
+	 </select>
 	 
 </mapper>
