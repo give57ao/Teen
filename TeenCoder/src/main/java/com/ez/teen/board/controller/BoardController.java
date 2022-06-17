@@ -145,6 +145,7 @@ public class BoardController {
          List<BoardModel> boardDetail = boardService.selectBoardDetail(boardParam);
          
          List<BoardAnswerModel> boardAnswer = boardService.selectAnswer(boardParam);
+         System.out.println(boardAnswer);
          List<Map<String, Object>> fileList = boardService.selectFile(board_no);
          int boardCommentCount = boardService.getRefStep(board_no) + 1;
          

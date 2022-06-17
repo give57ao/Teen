@@ -200,7 +200,7 @@ function deleteBoard(num) {
 				                                        <span class="rank">[Expert]</span> ${boardAnswer.member_nick}
 				                                    </h4>
 				                                </div>
-				                                <span class="row_top date"><fmt:formatDate value="${boardAnswer.board_date}" pattern="yyyy.MM.dd"/></span>
+				                                <span class="row_top date"><fmt:formatDate value="${boardAnswer.bcomment_date}" pattern="yyyy.MM.dd"/></span>
 				                            </div>
 				                            <div class="row_contents">
 				                            	<p>${boardAnswer.bcomment_content}</p>

@@ -35,7 +35,7 @@ public class MyPageController {
 	private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
 
 	@GetMapping("/")
-	public String myPageList(MemberModel memberModel, Model model, HttpServletRequest request, BoardParam boardParam,
+	public String myPage(MemberModel memberModel, Model model, HttpServletRequest request, BoardParam boardParam,
 			CommentParam commentParam) throws Exception {
 
 		HttpSession session = request.getSession();

@@ -27,7 +27,7 @@ public class MemberJoinController {
 
 	// 회원가입 화면
 	@GetMapping(value = "/join")
-	public String insertMember() throws Exception {
+	public String insertMemberForm() throws Exception {
 		return "/member/joinForm";
 	}
 

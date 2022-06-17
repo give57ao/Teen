@@ -29,7 +29,7 @@ public class MailController {
 	}
 	
 	@RequestMapping("/mail/send") 
-    public String send(HttpSession session, @ModelAttribute MailModel mailModel, Model model,
+    public String divSend(HttpSession session, @ModelAttribute MailModel mailModel, Model model,
     		MultipartHttpServletRequest mpRequest) {
         try {
     		String member_id = (String)session.getAttribute("member_id");
