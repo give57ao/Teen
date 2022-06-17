@@ -38,7 +38,7 @@
                     </c:if>
                     <li><a href="/teen/member/logout" class="log" onClick="logout()">로그아웃</a></li>
                     <li><a href="/teen/member/" class="log">마이페이지</a></li>
-                    <li><a href="#"><img src="/teen/resources/images/icon/icon_alarm_n.svg"></a></li>
+                    <li><a href="#" onclick="msgList()" ><img src="/teen/resources/images/icon/icon_alarm_n.svg"></a></li>
                     <li><a href="/teen/member/"><img src="/teen/resources/images/icon/icon_badge.png"></a></li>
                 </ul>
             </div>

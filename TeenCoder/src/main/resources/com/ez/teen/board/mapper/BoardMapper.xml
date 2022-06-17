@@ -171,7 +171,7 @@
 	 STORED_FILE_NAME
 	,ORG_FILE_NAME
 	FROM BFILE
-	WHERE FILE_NO = #{file_no}
+	WHERE FILE_NO = #{FILE_N}
 	]]>
 	</select>
 	

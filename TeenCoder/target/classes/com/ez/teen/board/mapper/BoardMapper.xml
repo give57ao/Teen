@@ -171,7 +171,7 @@
 	 STORED_FILE_NAME
 	,ORG_FILE_NAME
 	FROM BFILE
-	WHERE FILE_NO = #{file_no}
+	WHERE FILE_NO = #{FILE_N}
 	]]>
 	</select>
 	
@@ -565,6 +565,20 @@ ORDER BY board_comment_count DESC
 		WHERE 
 			BOARD_NO = #{board_no} AND 
 			REF_LEVEL=0
+	</select>
+	
+	<!-- 답글개수 구하기 -->
+	<select id="answerCount" parameterType="com.ez.teen.board.model.BoardParam"
+		resultType="com.ez.teen.board.model.BoardAnswerModel">
+		SELECT
+			REF_STEP,
+    		COUNT(*) AS BOARD_ANSWER_COUNT
+		FROM 
+			BCOMMENT
+		WHERE 
+			BOARD_NO = #{board_no}
+		GROUP BY
+			REF_STEP
 	</select>
 	
 	
