@@ -64,5 +64,10 @@ public class MemberServiceImpl implements MemberService {
 		int result = memberMapper.passChk(memberModel); 
 	    return result; 
 	}
+
+	@Override
+	public void temPwUpdate(MemberModel memberModel) {
+		memberMapper.temPwUpdate(memberModel);
+	}
 	 
 }

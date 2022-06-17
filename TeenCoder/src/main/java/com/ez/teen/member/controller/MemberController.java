@@ -1,7 +1,6 @@
 package com.ez.teen.member.controller;
 
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.service.LoginService;
@@ -69,7 +67,7 @@ public class MemberController {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 				
-    	if(encoder.matches(rawPw, userPw)) {
+    	if(encoder.matches(rawPw, userPw) || rawPw == userPw) {
             session.setAttribute("member_no", member.getMember_no());
             session.setAttribute("member_admin", member.getMember_admin());
             session.setAttribute("member_id", member.getMember_id());
@@ -115,13 +113,41 @@ public class MemberController {
     
     @PostMapping("/findPw")
     public String findPwResult(Model model, MemberModel memberModel) throws Exception {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    	model.addAttribute("findPw", loginService.findPw(memberModel));
-    	System.out.println(loginService.findPw(memberModel));
+    	
+    	String randomPw = getRandom(10); //사용자에게 보여줄 임시 비밀번호
+    	String temPw = passwordEncoder.encode(randomPw); //db에 들어갈 암호화된 비밀번호
+    	
+    	memberModel.setMember_pw(temPw);
+    	memberService.temPwUpdate(memberModel);
+    	
+    	System.out.println("=================================================");
+    	System.out.println("임시 PW : " + randomPw + "실제 암호화 PW :" + temPw);
+    	System.out.println("=================================================");
+
+    	model.addAttribute("findPw", randomPw);
     	return "member/findPw";
     }
     
-    
+	private String getRandom(int i) {
+		String theAlphaNumericS;
+		StringBuilder builder;
+
+		theAlphaNumericS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789";
+
+		// create the StringBuffer
+		builder = new StringBuilder(i);
+
+		for (int m = 0; m < i; m++) {
+
+			// generate numeric
+			int myindex = (int) (theAlphaNumericS.length() * Math.random());
+
+			// add the characters
+			builder.append(theAlphaNumericS.charAt(myindex));
+		}
+
+		return builder.toString();
+	}    
    
 
 

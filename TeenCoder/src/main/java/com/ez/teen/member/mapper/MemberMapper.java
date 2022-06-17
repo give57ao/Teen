@@ -22,7 +22,7 @@ public interface MemberMapper {
 	public MemberModel findId(MemberModel memberModel) throws Exception;
 
 	// 비밀번호 찾기
-	public MemberModel findPw(MemberModel memberModel) throws Exception;
+	public String findPw(MemberModel memberModel) throws Exception;
 
 	// 마이페이지
 	public List<MemberModel> myPageList(MemberModel memberModel) throws Exception;
@@ -46,5 +46,8 @@ public interface MemberMapper {
 
 	//암호화 pw 찾기
 	public String getUserPw(String member_id);
+	
+	//임시 비밀번호 발급
+	public void temPwUpdate(MemberModel memberModel);
 
 }

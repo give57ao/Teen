@@ -17,7 +17,7 @@ public interface LoginService {
 	public MemberModel findId(MemberModel memberModel)throws Exception;
 	
 	// 비밀번호 찾기
-	public MemberModel findPw(MemberModel memberModel)throws Exception;
+	public String findPw(MemberModel memberModel)throws Exception;
 
 	//암호화된 비밀번호
 	public String getUserPw(String member_id);

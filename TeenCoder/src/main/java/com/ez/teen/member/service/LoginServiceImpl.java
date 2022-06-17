@@ -38,7 +38,7 @@ public class LoginServiceImpl implements LoginService {
 	
 	// 비밀번호 찾기
 	@Override
-	public MemberModel findPw(MemberModel memberModel) throws Exception {
+	public String findPw(MemberModel memberModel) throws Exception {
 		return memberMapper.findPw(memberModel);
 	}
 

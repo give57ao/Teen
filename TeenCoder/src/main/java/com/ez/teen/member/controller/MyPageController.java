@@ -1,5 +1,6 @@
 package com.ez.teen.member.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,7 @@ import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
 import com.ez.teen.member.model.MemberModel;
+import com.ez.teen.member.service.LoginService;
 import com.ez.teen.member.service.MemberService;
 
 @Controller
@@ -31,6 +35,13 @@ public class MyPageController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private LoginService loginService;
+	
+	//비밀번호 암호화,복호화
+	@Autowired
+    PasswordEncoder passwordEncoder;
 
 	private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
 
@@ -153,7 +164,11 @@ public class MyPageController {
 	public String mypageModify(MemberModel memberModel, HttpSession session) throws Exception {
 
 		int member_no = (Integer) session.getAttribute("member_no");
+		//암호화 적용
 		memberModel.setMember_no(member_no);
+		String encodePw = passwordEncoder.encode(memberModel.getMember_pw());
+		
+		memberModel.setMember_pw(encodePw);
 
 		memberService.mypageModify(memberModel);
 
@@ -168,41 +183,48 @@ public class MyPageController {
 		return "member/deleteForm";
 	}
 
-	@PostMapping("/delete")
-	public String deleteMember(MemberModel memberModel, RedirectAttributes rttr,HttpServletRequest request) throws Exception{
-    	
-    	HttpSession session = request.getSession();
-		int member_no = (Integer)session.getAttribute("member_no");
-		memberModel.setMember_no(member_no);
-		MemberModel model = (MemberModel) session.getAttribute("member"); //기존 로그인했을 때 회원 정보 값
-		
-		
-		System.out.println("asdasdasd :" + model);
-		
-		String sessionPass = model.getMember_pw();
-		
-		String modelPass = memberModel.getMember_pw(); //사용자 입력값
-		
-		System.out.println(sessionPass);
-		System.out.println(modelPass);
-		
-		if(!(sessionPass.equals(modelPass))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:/member/delete";
-		}
-		memberService.deleteMember(memberModel);
-		session.invalidate();
-		return "redirect:/";
-	}
+//	@PostMapping("/delete")
+//	public String deleteMember(MemberModel memberModel, RedirectAttributes rttr,HttpServletRequest request, HttpSession session) throws Exception{
+//    	
+//		memberModel.setMember_no((Integer)session.getAttribute("member_no"));
+//    	memberService.deleteMember(memberModel);
+//		session.invalidate();
+//		return "redirect:/";
+//	}
 
 	@ResponseBody
 	@PostMapping("/passChk")
-	public int passChk(MemberModel memberModel, HttpSession session) {
+	public int passChk(MemberModel memberModel, HttpSession session) throws Exception {
 		int member_no = (Integer) session.getAttribute("member_no");
 		memberModel.setMember_no(member_no);
-		int result = memberService.passChk(memberModel);
-		System.out.println("result : " + result);
-		return result;
+		//암호화된 pw -> 복호화
+				BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+				String rawPw = memberModel.getMember_pw();
+				
+				String userPw = loginService.getUserPw((String)session.getAttribute("member_id"));
+				
+				memberModel.setMember_pw(userPw);
+				MemberModel member = loginService.login(memberModel);
+				
+				System.out.println("==========================================");
+				System.out.println("사용자가 입력한 pw : " + rawPw);
+				System.out.println("DB에 저장된 암호화 pw :" + userPw);
+				System.out.println("MEMBER :" + member);
+				System.out.println("==========================================");
+
+		    	if(encoder.matches(rawPw, userPw)) {
+		    		System.out.println("회원탈퇴 로직 성공");
+		    		
+		    		memberModel.setMember_no((Integer)session.getAttribute("member_no"));
+		        	memberService.deleteMember(memberModel);
+		    		session.invalidate();
+
+		    		return 1;
+		    		}else {
+		    		System.out.println("회원탈퇴 로직 실패");
+		    		return 0;
+		    	}
+		
 	}
 	
 }

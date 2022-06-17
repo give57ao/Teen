@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TeenCoder 비밀번호 찾기</title>
+<title>TeenCoder 임시 비밀번호 발급</title>
 <link rel="shortcut icon" href="/teen/resources/images/icon/icon_favicon.ico" type="image/x-icon"> <!-- favicon -->
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
@@ -18,18 +18,18 @@
 	<!-- Contents -->
 	<div id="contents">
 		<div id="contents_title">
-			<h1>비밀번호 찾기</h1>
-			<h2>아이디와 이메일을 입력하시면 비밀번호를 찾으실 수 있습니다.</h2>
+			<h1>임시 비밀번호 발급</h1>
+			<h2>아이디와 이메일을 입력하시면 임시 비밀번호를 발급받을 수 있습니다.</h2>
 		</div>
 		<div id="contents_detail">
 			<!-- Form -->
 			<form id="join_form" class="find_form">
 				<c:choose>
-					<c:when test="${findPw.member_pw eq null}">
-						<h2>해당 회원의 아이디를 찾을 수 없습니다.</h2>
+					<c:when test="${findPw eq null}">
+						<h2>해당 회원의 정보를 찾을 수 없습니다.</h2>
 					</c:when>
 					<c:otherwise>
-						<h2>해당 회원의 비밀번호는 <b><c:out value="${findPw.member_pw}"/></b> 입니다.</h2>
+						<h2>회원님의 임시 비밀번호는 <b><c:out value="${findPw}"/></b> 입니다.</h2>
 					</c:otherwise>
 				</c:choose>
 				<div id="btn_wrap">

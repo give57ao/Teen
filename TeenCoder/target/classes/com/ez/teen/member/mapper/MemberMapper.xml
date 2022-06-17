@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	</select>
 	
 	<!-- 비밀번호 찾기 -->
-	<select id="findPw" resultType="com.ez.teen.member.model.MemberModel">
+	<select id="findPw" resultType="String">
 		SELECT MEMBER_PW
 		FROM MEMBER
 		WHERE MEMBER_ID = #{member_id}
@@ -70,12 +70,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		  WHERE MEMBER_NO = #{member_no}
 		  ]]>
 	</update>
+	
+	<!-- 임시 비밀변호 업데이트 -->
+ 	<update id="temPwUpdate" parameterType="com.ez.teen.member.model.MemberModel">
+		 <![CDATA[UPDATE MEMBER SET
+		  MEMBER_PW = #{member_pw}
+		  WHERE MEMBER_EMAIL = #{member_email}
+		  AND MEMBER_ID = #{member_id}
+		  ]]>
+	</update>
+	
 	 
 	<!-- 회원 탈퇴 -->
 	 <delete id="deleteMember" parameterType="com.ez.teen.member.model.MemberModel">
 	 DELETE FROM MEMBER 
 	 WHERE MEMBER_NO = #{member_no} 
-	 AND MEMBER_PW = #{member_pw}
  	</delete>
  	
 	 <!-- 아이디 중복검사 -->
@@ -103,5 +112,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	 SELECT MEMBER_PW FROM MEMBER
 	 WHERE MEMBER_ID =  #{member_id}
 	 </select>
+
 	 
 </mapper>

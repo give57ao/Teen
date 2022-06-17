@@ -26,5 +26,7 @@ public interface MemberService {
 	public void mypageModify(MemberModel memberModel);
 
 	public int passChk(MemberModel memberModel);
+
+	public void temPwUpdate(MemberModel memberModel);
 	
 }

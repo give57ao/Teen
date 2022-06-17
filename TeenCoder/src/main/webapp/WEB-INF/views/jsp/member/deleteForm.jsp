@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -23,26 +24,26 @@
 			})
 		
 			$("#submit").on("click", function(){
+				//비밀번호 미 입력시
 				if($("#member_pw").val()== ""){
 					alert("비밀번호를 입력해주세요.");
 					$("#member_pw").focus();
 					location.href = "/teen/member/delete";
 					return false;
 				}
+				// 비밀번호 입력 시 검증 함수
 				$.ajax({
 					url : "/teen/member/passChk",
 					type : "POST",
 					dataType : "json",
-					data : $("#join_form").serializeArray(),
+					data : {"member_pw" : document.getElementById("member_pw").value},
 					success: function(data){
-						console.log(data);
 						if(data == 0){
 							alert("비밀번호가 틀렸습니다.");
 							return false;
-						}else{
-							if(confirm("회원탈퇴하시겠습니까?")){
-								$("#join_form").submit();
-							}
+						}else if(data == 1){
+							confirm("회원탈퇴하시겠습니까?");
+							location.href="/teen"
 						}
 					}
 				})
@@ -57,7 +58,7 @@
         </div>
         <div id="contents_detail">
             <!-- Form -->
-            <form id="join_form" class="find_form" method="post">
+            <form id="join_form" class="find_form">
                 <table>
                 	<tbody>
 	                    <tr>

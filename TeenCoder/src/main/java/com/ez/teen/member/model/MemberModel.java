@@ -7,6 +7,9 @@ public class MemberModel {
 	private int member_no; // 회원 고유 번호
 	private String member_id; // 회원 아이디
 	private String member_pw; // 비밀번호
+	private String temPw;
+
+
 	private String member_name; // 회원 이름
 	private String member_email; // 회원 이메일
 	private String member_email_check; // 회원 이메일 체크
@@ -18,6 +21,12 @@ public class MemberModel {
 	
 	
 	
+	public String getTemPw() {
+		return temPw;
+	}
+	public void setTemPw(String temPw) {
+		this.temPw = temPw;
+	}
 	
 	public int getMember_no() {
 		return member_no;
