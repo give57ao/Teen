@@ -43,53 +43,53 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.getCommentCount(commentParam);
 	}
 
-	
 	// 게시글 수정
 	@Override
-	public void updateBoard(BoardModel boardModel, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
-		
+	public void updateBoard(BoardModel boardModel, String[] files, String[] fileNames,
+			MultipartHttpServletRequest mpRequest) throws Exception {
+
 		String replaceTagName = boardModel.getBoard_tag_name();
 		replaceTagName = replaceTagName.replace(",", " #");
 		boardModel.setBoard_tag_name(replaceTagName);
-		
+
 		boardMapper.updateBoard(boardModel);
-		
-		List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(boardModel,files, fileNames, mpRequest);
+
+		List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(boardModel, files, fileNames, mpRequest);
 		Map<String, Object> tempMap = null;
 		int size = list.size();
-		for(int i = 0;i<size; i++) {
+		for (int i = 0; i < size; i++) {
 			tempMap = list.get(i);
-			if(tempMap.get("NEW_FILE").equals("Y")) {
+			if (tempMap.get("NEW_FILE").equals("Y")) {
 				boardMapper.insertFile(tempMap);
-			}else {
+			} else {
 				boardMapper.updateFile(tempMap);
 			}
 		}
-		
+
 	}
 
 	// 게시글 작성
 	@Override
 	public void insertBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception {
-		
-		//받아온 태그 이름이 (java,c,html)으로 들어온다면 쉼표를 해시태그로 변경하면 된다
+
+		// 받아온 태그 이름이 (java,c,html)으로 들어온다면 쉼표를 해시태그로 변경하면 된다
 		String replaceTagName = boardModel.getBoard_tag_name();
-		//replace([기존문자],[바꿀문자])
+		// replace([기존문자],[바꿀문자])
 		replaceTagName = replaceTagName.replace(",", " #");
 		boardModel.setBoard_tag_name(replaceTagName);
-		
+
 		boardMapper.insertBoard(boardModel);
 
 		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(boardModel, mpRequest);
-		
+
 		int size = list.size();
-		if(list != null) {
-		for (int i = 0; i < size; i++) {
-			boardMapper.insertFile(list.get(i));
-			boardMapper.fileCk(boardModel);
+		if (list != null) {
+			for (int i = 0; i < size; i++) {
+				boardMapper.insertFile(list.get(i));
+				boardMapper.fileCk(boardModel);
+			}
 		}
 	}
-}
 
 	// 첨부파일 추가
 	@Override
@@ -98,21 +98,21 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.insertFile(map);
 
 	}
-	//첨부파일 조회
+
+	// 첨부파일 조회
 	@Override
 	public List<Map<String, Object>> selectFile(int board_no) throws Exception {
 
 		return boardMapper.selectFile(board_no);
 	}
 
-	//첨부파일 다운로드
+	// 첨부파일 다운로드
 	@Override
 	public Map<String, Object> downFile(Map<String, Object> map) throws Exception {
 
 		return boardMapper.downFile(map);
 	}
 
-	
 	@Override
 	public List<BoardModel> boardList(BoardParam boardParam) {
 		return boardMapper.boardList(boardParam);
@@ -134,27 +134,27 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardCommentModel> selectComment(BoardParam boardParam) {
 		return boardMapper.selectComment(boardParam);
 	}
-	
+
 	// 게시글 디테일 속 답변
 	@Override
 	public List<BoardAnswerModel> selectAnswer(BoardParam boardParam) {
 		return boardMapper.selectAnswer(boardParam);
 	}
-	
-	//댓글 작성
+
+	// 댓글 작성
 	@Override
 	public void insertComment(CommentModel commentModel, MultipartHttpServletRequest mpRequest) throws Exception {
-		
+
 		boardMapper.insertComment(commentModel);
-		
+
 		List<Map<String, Object>> list = fileUtils.parseInsertCmtFileInfo(commentModel, mpRequest);
-		
+
 		int size = list.size();
 		for (int i = 0; i < size; i++) {
-		boardMapper.insertCmtFile(list.get(i));
-		
+			boardMapper.insertCmtFile(list.get(i));
+
+		}
 	}
-}
 
 	@Override
 	public void hitCount(BoardModel boardModel) {
@@ -165,14 +165,14 @@ public class BoardServiceImpl implements BoardService {
 	public void recommendBoard(BoardModel boardModel) {
 		boardMapper.recommendBoard(boardModel);
 	}
-	
-	//댓글 작성 전 순서 검사
+
+	// 댓글 작성 전 순서 검사
 	@Override
 	public int getRefStep(int board_no) {
 		return boardMapper.getRefStep(board_no);
 	}
-	
-	//답글 작성 전 순서 검사
+
+	// 답글 작성 전 순서 검사
 	@Override
 	public int getRefLevel(CommentParam commentParam) {
 		return boardMapper.getRefLevel(commentParam);
@@ -180,7 +180,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void insertReComment(CommentModel commentModel) {
-		 boardMapper.insertReComment(commentModel);
+		boardMapper.insertReComment(commentModel);
 	}
 
 	@Override
@@ -192,19 +192,19 @@ public class BoardServiceImpl implements BoardService {
 	public void updateTagName(BoardModel boardModel) {
 		boardMapper.updateTagName(boardModel);
 	}
-	
+
 	@Override
 	public void deleteBoard(int board_no) {
 		boardMapper.deleteBoard(board_no);
-		
+
 	}
-	
-	//댓글 첨부파일 추가
+
+	// 댓글 첨부파일 추가
 	@Override
 	public void insertCmtFile(Map<String, Object> map) throws Exception {
-		
+
 		boardMapper.insertCmtFile(map);
-		
+
 	}
 
 	@Override
@@ -212,12 +212,16 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.deleteBcomment(bcomment_no);
 	}
 
-	//detail내 댓글개수
+	// detail내 댓글개수
 	@Override
 	public int commentCount(int board_no) {
 		return boardMapper.commentCount(board_no);
 	}
 
-	
-	
+	// detail내 답글개수
+	@Override
+	public List<BoardAnswerModel> answerCount(BoardParam boardParam) {
+		return boardMapper.answerCount(boardParam);
+	}
+
 }

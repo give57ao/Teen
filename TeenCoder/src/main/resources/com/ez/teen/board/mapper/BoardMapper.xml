@@ -567,5 +567,19 @@ ORDER BY board_comment_count DESC
 			REF_LEVEL=0
 	</select>
 	
+	<!-- 답글개수 구하기 -->
+	<select id="answerCount" parameterType="com.ez.teen.board.model.BoardParam"
+		resultType="com.ez.teen.board.model.BoardAnswerModel">
+		SELECT
+			REF_STEP,
+    		COUNT(*) AS BOARD_ANSWER_COUNT
+		FROM 
+			BCOMMENT
+		WHERE 
+			BOARD_NO = #{board_no}
+		GROUP BY
+			REF_STEP
+	</select>
+	
 	
 </mapper>

@@ -39,7 +39,8 @@ public interface BoardService {
 	public List<CommentModel> commentList(CommentParam commentParam);
 
 	// 게시글 수정
-	public void updateBoard(BoardModel boardModel, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
+	public void updateBoard(BoardModel boardModel, String[] files, String[] fileNames,
+			MultipartHttpServletRequest mpRequest) throws Exception;
 
 	// 게시글 작성
 	public void insertBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception;
@@ -84,5 +85,8 @@ public interface BoardService {
 
 	// detail내 댓글개수
 	public int commentCount(int board_no);
+
+	// detail내 답글
+	public List<BoardAnswerModel> answerCount(BoardParam boardParam);
 
 }

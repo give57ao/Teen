@@ -51,7 +51,7 @@ function deleteBoard(num) {
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2><a href="../board?borad_group_no?=${boardNo}">리스트로 이동</a></h2>
+                        <h2><a href="../board?borad_group_no?=${boardNo}">< 리스트로 이동</a></h2>
                     </div>
                 	<!-- List Row -->
                 	<c:forEach items="${boardDetail}" var="boardDetail" varStatus="status">
@@ -160,9 +160,12 @@ function deleteBoard(num) {
 						           </div>
 <!-- ***************************************************************************************************************************************************** -->		                            
 		                            <ul class="row_top number">
-	                                    <li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${boardComment.ref_level}</li>
-	                                    <!-- boardCommen.ref_level 말고 count하는걸 새로 받아와야 할 것 같음 -->
-	                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${boardComment.bcomment_like_count}</li>
+		                            	<c:forEach items="${answerCount}" var="answerCount">
+		                            		<c:if test="${status.index+1 eq answerCount.ref_step}">
+	                                    		<li><img src="/teen/resources/images/icon/icon_comment.svg" class="i_cmt">${answerCount.board_answer_count-1}</li>
+	                                    		<li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${boardComment.bcomment_like_count}</li>
+	                                    	</c:if>
+	                                    </c:forEach>
 	                                </ul>
 	                                <div class="btn_group">
 		                            	<input type="button" value="신고" class="btn_com btn_board">
@@ -183,8 +186,13 @@ function deleteBoard(num) {
 				                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 				                </form>
 			                </div>
-		                	<input type="button" value="답글 더 보기" class="getAnswerBtn" onClick="dis(${boardComment.ref_step})">
-		                	
+			                <c:forEach items="${answerCount}" var="answerCount">
+			                	<c:if test="${status.index+1 eq answerCount.ref_step}">
+			                		<c:if test="${answerCount.board_answer_count>1 }">
+		                				<input type="button" value="답글 더 보기" class="getAnswerBtn" onClick="dis(${boardComment.ref_step})">
+		                			</c:if>
+		                		</c:if>
+		                	</c:forEach>
 		                	<!-- Answer List -->
 		                	<c:forEach items="${boardAnswer}" var="boardAnswer" varStatus="status"> 
 								<c:if test="${boardComment.ref_step eq boardAnswer.ref_step}">
