@@ -75,12 +75,15 @@ function fn_addFile() {
 
 var fileNoArry = new Array();
 var fileNameArry = new Array();
-function fn_del(value, name) {
 
+
+function fn_del(value, name) {
+var deleteElement = 	document.getElementById('fileDel').parentNode.parentNode;
 	fileNoArry.push(value);
 	fileNameArry.push(name);
 	$("#fileNoDel").attr("value", fileNoArry);
 	$("#fileNameDel").attr("value", fileNameArry);
+	deleteElement.remove();
 }
  		
 // 파일 삭제
