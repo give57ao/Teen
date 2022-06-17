@@ -3,7 +3,8 @@ package com.ez.teen.notice.model;
 import java.util.Date;
 
 public class NoticeModel {
-
+	
+	private int rn;
 	private int noti_no;
 	private int member_no;
 	private String noti_title;
@@ -12,6 +13,14 @@ public class NoticeModel {
 	private int noti_hit_count;
 	private String noti_file_check;
 	private String member_nick;
+	
+	//첨부파일 업로드 추가
+	private int FILE_NO;
+	private String org_file_name;
+	private String stored_file_name;
+	private int file_size;
+	private Date file_date;
+	private String del_gb;
 	
 	
 	public int getNoti_no() {
@@ -61,6 +70,51 @@ public class NoticeModel {
 	}
 	public void setMember_nick(String member_nick) {
 		this.member_nick = member_nick;
+	}
+	
+	public int getRn() {
+		return rn;
+	}
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+	
+	//첨부파일 업로드 추가
+	public int getFILE_NO() {
+		return FILE_NO;
+	}
+	public void setFILE_NO(int FILE_NO) {
+		this.FILE_NO = FILE_NO;
+	}
+	public String getOrg_file_name() {
+		return org_file_name;
+	}
+	public void setOrg_file_name(String org_file_name) {
+		this.org_file_name = org_file_name;
+	}
+	public String getStored_file_name() {
+		return stored_file_name;
+	}
+	public void setStored_file_name(String stored_file_name) {
+		this.stored_file_name = stored_file_name;
+	}
+	public int getFile_size() {
+		return file_size;
+	}
+	public void setFile_size(int file_size) {
+		this.file_size = file_size;
+	}
+	public Date getFile_date() {
+		return file_date;
+	}
+	public void setFile_date(Date file_date) {
+		this.file_date = file_date;
+	}
+	public String getDel_gb() {
+		return del_gb;
+	}
+	public void setDel_gb(String del_gb) {
+		this.del_gb = del_gb;
 	}
 	
 }

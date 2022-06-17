@@ -246,8 +246,12 @@ public class AdminController {
 		
 	// 공지글 수정
 	@PostMapping("/noticeBoardModify")
-	public String noticeBoardModify(NoticeModel noticeModel) {
-		adminMemberService.noticeBoardModify(noticeModel);
+	public String noticeBoardModify(NoticeModel noticeModel,
+			@RequestParam(value="fileNoDel[]") String[] files,
+	        @RequestParam(value="fileNameDel[]") String[] fileNames,
+	        MultipartHttpServletRequest mpRequest, Map<String, Object> map) throws Exception {
+		adminMemberService.noticeBoardModify(noticeModel, files, fileNames, mpRequest);
+		
 		return "redirect:/admin/noticeBoard";
 	}
 	

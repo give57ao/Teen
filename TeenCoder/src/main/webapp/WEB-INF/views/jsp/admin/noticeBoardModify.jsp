@@ -35,8 +35,10 @@
                         <h2>공지글 수정</h2>
                     </div>
                 	<!-- Form -->
-                	<div id="admin_form" class="board_form">
+                	<div id="admin_form" class="board_form" >
                         <form id="board_form" class="admin_board_form" method="post" enctype="multipart/form-data">
+                            <input type="hidden" id="fileNoDel" name="fileNoDel[]" value=""> 
+							<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
                             <table>
                                 <tbody>
                                 	<c:forEach items="${noticeBoardModify}" var="noticeBoardModify">
@@ -67,7 +69,7 @@
 			                                    <td>
 			                                        <input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.FILE_NO }">
 													<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FILE_NO_${var.index}">
-			                                        <span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a>(${file.FILE_SIZE}kb)</a></span>
+			                                        <span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}(${file.FILE_SIZE}kb)</a></span>
 			                                        <a href="#" class="btn_com btn_del_file" id="fileDel" onclick="fn_del('${file.FILE_NO}','FILE_NO_${var.index}');" >파일 삭제</a>
 			                                    </td>
 			                                </tr>

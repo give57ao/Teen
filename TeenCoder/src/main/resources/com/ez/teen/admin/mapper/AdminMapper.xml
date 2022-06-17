@@ -45,7 +45,6 @@
 					OR MEMBER_NICK LIKE '%'||#{keyword}||'%'
 					</if>
 					
-				
 					) A
 			) WHERE RN BETWEEN #{start} AND #{end}
 	</select>
@@ -317,26 +316,6 @@ ORDER BY board_comment_count DESC
 		WHERE NOTI_NO = #{noti_no}
 	</update>
 	
-	<!-- 첨부파일 업로드 -->
-	<insert id="insertNotiFile" parameterType="hashMap">
-		 INSERT INTO BFILE(
-		 FILE_NO
-		,ORG_FILE_NAME
-		,STORED_FILE_NAME
-		,FILE_SIZE
-		,FILE_DATE
-		,NOTI_NO
-		)
-		VALUES(
-		 SEQ_FILE_NO.NEXTVAL
-		,#{ORG_FILE_NAME}
-		,#{STORED_FILE_NAME}
-		,#{FILE_SIZE}
-		,#{FILE_DATE} 
-		,#{NOTI_NO}
-		)
-	</insert>
-	
 	<!-- 첨부파일 조회 -->
 	<select id="selectNotiFile" parameterType="int" resultType="hashMap">
 	<![CDATA[ 
@@ -352,6 +331,43 @@ ORDER BY board_comment_count DESC
 	]]>
 	</select>
 	
+	<!-- 첨부파일 추가 -->
+	<insert id="insertNotiFile" parameterType="hashMap">
+		 INSERT INTO BFILE(
+		 FILE_NO
+		,NOTI_NO
+		,ORG_FILE_NAME
+		,STORED_FILE_NAME
+		,FILE_SIZE
+		,FILE_DATE
+		)
+		VALUES(
+		 SEQ_FILE_NO.NEXTVAL
+		,#{NOTI_NO}
+		,#{ORG_FILE_NAME}
+		,#{STORED_FILE_NAME}
+		,#{FILE_SIZE}
+		,#{FILE_DATE}
+		)
+	</insert>
+	
+	<!-- 첨부파일 수정 -->
+	<update id="updateNotiFile" parameterType="hashMap">
+	<![CDATA[
+		UPDATE BFILE SET
+		DEL_GB = 'Y'
+		WHERE FILE_NO = #{FILE_NO}
+	]]>
+	</update>
+	
+	<!-- 첨부파일 삭제 -->
+	<update id="deleteNotiFile">
+	<![CDATA[
+		UPDATE BFILE SET
+		DEL_GB = 'Y' WHERE FILE_NO = #{FILE_NO}
+	]]>
+	</update>
+	
 	<!-- 첨부파일 다운로드 -->
 	<select id="downNotiFile" parameterType="hashMap" resultType="hashMap">
 	<![CDATA[ 
@@ -362,14 +378,5 @@ ORDER BY board_comment_count DESC
 		WHERE FILE_NO = #{FILE_NO}
 	]]>
 	</select>
-	
-	<!-- 첨부파일 수정 -->
-	<update id="updateNotiFile" parameterType="hashMap">
-	<![CDATA[
-		UPDATE BFILE SET
-		DEL_GB = 'Y'
-		WHERE FILE_NO = #{FILE_NO}
-	]]>
-	</update>
 	
 </mapper>

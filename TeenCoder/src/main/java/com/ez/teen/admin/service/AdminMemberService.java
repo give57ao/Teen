@@ -3,6 +3,8 @@ package com.ez.teen.admin.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
@@ -46,19 +48,20 @@ public interface AdminMemberService {
 	public void noticeBoardDelete(NoticeModel noticeModel);
 	
 	// 공지글 수정
-	public void noticeBoardModify(NoticeModel noticeModel);
+	public void noticeBoardModify(NoticeModel noticeModel, String[] files, String[] fileNames,
+			MultipartHttpServletRequest mpRequest) throws Exception;
 	
 	// 공지글 첨부파일 조회
-	public List<Map<String, Object>> selectNotiFile(int noti_no)throws Exception;
+	public List<Map<String, Object>> selectNotiFile(int noti_no);
 	
 	// 공지글 첨부파일 추가
-	public void insertNotiFile(Map<String, Object> map)throws Exception;
+	public void insertNotiFile(Map<String, Object> map);
 	
 	// 공지글 첨부파일 수정
-	public void updateNotiFile(Map<String, Object> map) throws Exception;
+	public void updateNotiFile(Map<String, Object> map);
 	
 	// 공지글 첨부파일 다운로드
-	public Map<String, Object> downNotiFile(Map<String, Object> map) throws Exception;
+	public Map<String, Object> downNotiFile(Map<String, Object> map);
 	
 	// summernote
 	public void insertSummerNote(String fileName);

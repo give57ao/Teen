@@ -205,5 +205,48 @@ public List<Map<String, Object>> parseInsertCmtFileInfo(CommentModel commentMode
 	public static String getRandomString() {
 		return UUID.randomUUID().toString().replace("-", "");
 	}
+	
+	public List<Map<String, Object>> parseUpdateNoticeFileInfo(NoticeModel noticeModel, String[] files,String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
+	
+		Iterator<String> iterator = mpRequest.getFileNames();
+		MultipartFile multipartFile = null; 
+		String originalFileName = null; 
+		String originalFileExtension = null; 
+		String storedFileName = null; 
+		
+		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+		Map<String, Object> listMap = null;
+		int noti_no = noticeModel.getNoti_no();
+		
+		while(iterator.hasNext()){ 
+			multipartFile = mpRequest.getFile(iterator.next()); 
+			if(multipartFile.isEmpty() == false){ 
+				originalFileName = multipartFile.getOriginalFilename(); 
+				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf(".")); 
+				storedFileName = getRandomString() + originalFileExtension; 
+				multipartFile.transferTo(new File(filePath + storedFileName)); 
+				
+				Date date = new Date();
+				
+				listMap = new HashMap<String,Object>();
+				listMap.put("NEW_FILE", "Y");
+				listMap.put("NOTI_NO", noti_no);
+				listMap.put("ORG_FILE_NAME", originalFileName);
+				listMap.put("STORED_FILE_NAME", storedFileName);
+				listMap.put("FILE_SIZE", multipartFile.getSize());
+				listMap.put("FILE_DATE", date);
+				list.add(listMap);
+			}
+		}
+		if(files != null && fileNames != null){ 
+			for(int i = 0; i<fileNames.length; i++) {
+					listMap = new HashMap<String,Object>();
+                    listMap.put("NEW_FILE", "N");
+					listMap.put("FILE_NO", files[i]); 
+					list.add(listMap); 
+			}
+		}
+		return list;
+	}
 
 }

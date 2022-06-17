@@ -59,6 +59,9 @@ public interface AdminMapper {
 	// 공지글 첨부파일 수정
 	public void updateNotiFile(Map<String, Object> map);
 	
+	// 공지글 첨부파일 삭제
+	public void deleteNotiFile(int file_no);
+	
 	// 공지글 첨부파일 다운로드
 	public Map<String, Object> downNotiFile(Map<String, Object> map);
 	
