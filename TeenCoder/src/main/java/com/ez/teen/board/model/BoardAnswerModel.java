@@ -15,7 +15,15 @@ public class BoardAnswerModel {
 	private int bcomment_like_count;;
 	private int ref_step;
 	private int ref_level;
-	private int board_comment_count;
+	private int board_answer_count; // 갯수 카운트용 변수 선언
+	
+	public int getBoard_answer_count() {
+		return board_answer_count;
+	}
+
+	public void setBoard_answer_count(int board_answer_count) {
+		this.board_answer_count = board_answer_count;
+	}
 
 	public String getMember_nick() {
 		return member_nick;
@@ -23,14 +31,6 @@ public class BoardAnswerModel {
 
 	public void setMember_nick(String member_nick) {
 		this.member_nick = member_nick;
-	}
-
-	public int getBoard_comment_count() {
-		return board_comment_count;
-	}
-
-	public void setBoard_comment_count(int board_comment_count) {
-		this.board_comment_count = board_comment_count;
 	}
 
 	public int getBcomment_no() {
