@@ -183,14 +183,6 @@ public class MyPageController {
 		return "member/deleteForm";
 	}
 
-//	@PostMapping("/delete")
-//	public String deleteMember(MemberModel memberModel, RedirectAttributes rttr,HttpServletRequest request, HttpSession session) throws Exception{
-//    	
-//		memberModel.setMember_no((Integer)session.getAttribute("member_no"));
-//    	memberService.deleteMember(memberModel);
-//		session.invalidate();
-//		return "redirect:/";
-//	}
 
 	@ResponseBody
 	@PostMapping("/passChk")
@@ -215,16 +207,24 @@ public class MyPageController {
 		    	if(encoder.matches(rawPw, userPw)) {
 		    		System.out.println("회원탈퇴 로직 성공");
 		    		
-		    		memberModel.setMember_no((Integer)session.getAttribute("member_no"));
-		        	memberService.deleteMember(memberModel);
-		    		session.invalidate();
-
-		    		return 1;
+		    		int result = 1;
+		    		return result;
 		    		}else {
 		    		System.out.println("회원탈퇴 로직 실패");
-		    		return 0;
+		    		int result = 0;
+		    		return result;
 		    	}
 		
 	}
+	
+	@GetMapping("/deleteMember")
+	public String deleteMember(MemberModel memberModel, RedirectAttributes rttr,HttpServletRequest request, HttpSession session) throws Exception{
+    	System.out.println("deleteMember GetMapping!!!");
+		memberModel.setMember_no((Integer)session.getAttribute("member_no"));
+//    	memberService.deleteMember(memberModel);
+//		session.invalidate();
+		return "redirect:/"; // 곧 구현 예정
+	}
+
 	
 }

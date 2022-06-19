@@ -37,13 +37,19 @@
 					type : "POST",
 					dataType : "json",
 					data : {"member_pw" : document.getElementById("member_pw").value},
-					success: function(data){
-						if(data == 0){
+					async: false,
+					success: function(result){
+						console.log(result);
+						if(result == 0){
 							alert("비밀번호가 틀렸습니다.");
-							return false;
-						}else if(data == 1){
-							confirm("회원탈퇴하시겠습니까?");
-							location.href="/teen"
+							location.href="/teen/member/delete";
+						}else{
+							 if (!confirm("회원탈퇴하시겠습니까?")) {
+								 return false;
+							 } else {
+								 location.href="/teen/member/deleteMember"
+							    }
+							
 						}
 					}
 				})
@@ -71,7 +77,7 @@
                 </table>
                 <div id="btn_wrap">
                     <input type="button" value="취소" class="btn_com btn_main" onClick="goMyPage()">
-                    <input type="submit" value="탈퇴" class="btn_com btn_main" id="submit">
+                    <input type="button" value="탈퇴" class="btn_com btn_main" id="submit">
                 </div>
             </form>
         </div>
