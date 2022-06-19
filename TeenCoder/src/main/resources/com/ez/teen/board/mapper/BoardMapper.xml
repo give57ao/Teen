@@ -600,7 +600,7 @@ ORDER BY board_comment_count DESC
 		WHERE BOARD_NO = #{board_no}
 	</select>
 
-	<select id="getBoardLike" resultType="int">
+	<select id="getBoardLike" resultType="int" parameterType="com.ez.teen.board.model.BoardParam">
 		SELECT COUNT(LIKE_NO) FROM LIKE_TABLE WHERE BOARD_NO = #{board_no}
 		AND MEMBER_NO = #{member_no}
 	</select>

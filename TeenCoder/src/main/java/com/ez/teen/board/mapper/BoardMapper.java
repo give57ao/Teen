@@ -95,7 +95,7 @@ public interface BoardMapper {
 	// detail내 답글개수
 	public List<BoardAnswerModel> answerCount(BoardParam boardParam);
 	
-	public int getBoardLike(int board_nol) throws Exception;
+	public int getBoardLike(BoardParam boardParam) throws Exception;
 	
 	public void insertBoardLike(BoardModel boardModel) throws Exception;
 	

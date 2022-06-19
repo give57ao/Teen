@@ -226,8 +226,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int getBoardLike(int board_no) throws Exception {
-		return boardMapper.getBoardLike(board_no);
+	public int getBoardLike(BoardParam boardParam) throws Exception {
+		return boardMapper.getBoardLike(boardParam);
 	}
 
 	@Override

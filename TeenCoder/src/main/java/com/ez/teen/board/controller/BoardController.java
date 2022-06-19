@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,7 +149,14 @@ public class BoardController {
          System.out.println(boardAnswer);
          List<Map<String, Object>> fileList = boardService.selectFile(board_no);
          int boardCommentCount = boardService.getRefStep(board_no) + 1;
-         int boardLike = boardService.getBoardLike(board_no);
+         
+        
+        int member_no = (Integer) session.getAttribute("member_no");
+         
+  	   	boardParam.setBoard_no(board_no);
+  	   	boardParam.setMember_no(member_no);
+         
+         int boardLike = boardService.getBoardLike(boardParam);
          
          List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
                      
@@ -369,11 +375,15 @@ public class BoardController {
  
    @ResponseBody
    @PostMapping("board/detail/like")
-   public int boardLike(HttpServletRequest request, HttpSession session,BoardModel boardModel) throws Exception{
+   public int boardLike(HttpServletRequest request, HttpSession session,BoardModel boardModel, BoardParam boardParam) throws Exception{
 	   
 	   int board_no = Integer.parseInt(request.getParameter("board_no"));
 	   int member_no = (Integer) session.getAttribute("member_no");
-	   int boardLike = boardService.getBoardLike(board_no);
+	   
+	   boardParam.setBoard_no(board_no);
+	   boardParam.setMember_no(member_no);
+	   
+	   int boardLike = boardService.getBoardLike(boardParam);
 	   
 	   System.out.println("boardLike = " + boardLike);
 	   

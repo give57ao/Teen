@@ -274,21 +274,17 @@ function deleteBoard(num) {
                 url :'/teen/board/detail/like',
                 type :'POST',
                 data : sendData,
-                success : function(data){
-                    that.prop('name',data);
-                    if(data==1) {
-                    	confirm('해당 게시글의 추천을 취소하시겠습니까?');
+                success : function(){	
+                    if(heartval==1) {
+                    	alert('해당 게시글의 추천을 취소하였습니다');
                     	location.reload();
                         $("#heart").prop("src","/teen/resources/images/icon/heart-fill.svg");
                     }
                     else{
-                    	confirm('해당 게시글을 추천하시겠습니까?');
+                    	alert('해당 게시글을 추천하였습니다');
                     	location.reload();
                         $("#heart").prop("src","/teen/resources/images/icon/heart.svg");
                     }
-
-
-                    
                 }
             });
         });
