@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -147,9 +149,8 @@ public class BoardController {
          List<BoardAnswerModel> boardAnswer = boardService.selectAnswer(boardParam);
          System.out.println(boardAnswer);
          List<Map<String, Object>> fileList = boardService.selectFile(board_no);
-         int commentCount = boardService.commentCount(board_no);
-		 List<BoardAnswerModel> answerCount = boardService.answerCount(boardParam);
-         
+         int boardCommentCount = boardService.getRefStep(board_no) + 1;
+         int boardLike = boardService.getBoardLike(board_no);
          
          List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
                      
@@ -159,8 +160,8 @@ public class BoardController {
          System.out.println("boardcomment : " +boardComment);
          System.out.println("*************************************");
          System.out.println("*************************************");
-         System.out.println("*************************************");   
-
+         System.out.println("*************************************");  
+         
          
          
          model.addAttribute("boardComment", boardComment);
@@ -169,9 +170,8 @@ public class BoardController {
          model.addAttribute("boardDetail", boardDetail);
          model.addAttribute("boardAnswer", boardAnswer);
          model.addAttribute("commentNum", boardComment);
-         model.addAttribute("commentCount", commentCount);
-		 model.addAttribute("answerCount", answerCount);
-         
+         model.addAttribute("commentCount", boardCommentCount);
+         model.addAttribute("boardLike", boardLike);
          boardService.hitCount(boardModel);
 
          
@@ -179,7 +179,7 @@ public class BoardController {
          
          String index = rq.getParameter("index");
          System.out.println("인덱스값: " + index);
-         
+         System.out.println(boardCommentCount);
          
          return "board/boardDetail";
       }
@@ -366,11 +366,32 @@ public class BoardController {
       
       return "redirect:/board";
    }
-   
-   
+ 
+   @ResponseBody
+   @PostMapping("board/detail/like")
+   public int boardLike(HttpServletRequest request, HttpSession session,BoardModel boardModel) throws Exception{
+	   
+	   int board_no = Integer.parseInt(request.getParameter("board_no"));
+	   int member_no = (Integer) session.getAttribute("member_no");
+	   int boardLike = boardService.getBoardLike(board_no);
+	   
+	   System.out.println("boardLike = " + boardLike);
+	   
+	   boardModel.setBoard_no(board_no);
+	   boardModel.setMember_no(member_no);
+	   
+	   if(boardLike >= 1) {
+		   boardService.deleteBoardLike(boardModel);
+		   boardLike = 0;
+	   }else {
+		   boardService.insertBoardLike(boardModel);
+		   boardLike = 1;
+	   }
+	   
+	   return boardLike;
+   }
    
 }
-
 
    
 

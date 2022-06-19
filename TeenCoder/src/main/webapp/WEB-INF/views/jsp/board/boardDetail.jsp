@@ -51,9 +51,13 @@ function deleteBoard(num) {
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2><a href="../board?borad_group_no?=${boardNo}">< 리스트로 이동</a></h2>
+                        <h2><a href="../board?borad_group_no?=${boardNo}"> 리스트로 이동</a></h2>
                     </div>
-                	<!-- List Row -->
+					<div style="text-align: right;">
+						<a class="btn btn-outline-dark heart"> <img id="heart" src="/teen/resources/images/icon/heart.svg">
+						</a>
+					</div>
+					<!-- List Row -->
                 	<c:forEach items="${boardDetail}" var="boardDetail" varStatus="status">
 	                    <div id="board_list_row">
 	                        <div class="row">
@@ -243,6 +247,52 @@ function deleteBoard(num) {
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/detail/boardDetail.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
+	<script>
+    $(document).ready(function () {
+
+        var heartval = ${boardLike};
+		var heart = document.getElementById('heart').value;
+		
+        if(heartval>0) {
+            console.log(heartval);
+            $("#heart").prop("src", "/teen/resources/images/icon/heart-fill.svg");
+            $(".heart").prop('name',heartval)
+        }
+        else {
+            console.log(heartval);
+            $("#heart").prop("src", "/teen/resources/images/icon/heart.svg");
+            $(".heart").prop('name',heartval)
+        }
+
+        $(".heart").on("click", function () {
+
+            var that = $(".heart");
+
+            var sendData = {'board_no' : '${boardModel.board_no}','heart' : that.prop('name')};
+            console.log(sendData);
+            $.ajax({
+                url :'/teen/board/detail/like',
+                type :'POST',
+                data : sendData,
+                success : function(data){
+                    that.prop('name',data);
+                    if(data==1) {
+                    	confirm('해당 게시글의 추천을 취소하시겠습니까?');
+                    	location.reload();
+                        $("#heart").prop("src","/teen/resources/images/icon/heart-fill.svg");
+                    }
+                    else{
+                    	confirm('해당 게시글을 추천하시겠습니까?');
+                    	location.reload();
+                        $("#heart").prop("src","/teen/resources/images/icon/heart.svg");
+                    }
+
+
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

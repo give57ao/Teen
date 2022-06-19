@@ -35,7 +35,12 @@ public class BoardModel {
 	private int file_size;
 	private Date file_date;
 	private String del_gb;
-
+	
+	//
+	private int like_no;
+	private int like_check;
+	
+	
 	public int getBoard_comment_count() {
 		return board_comment_count;
 	}
@@ -172,6 +177,19 @@ public class BoardModel {
 	public void setBcomment_no(int bcomment_no) {
 		this.bcomment_no = bcomment_no;
 	}
+	public int getLike_no() {
+		return like_no;
+	}
+	public void setLike_no(int like_no) {
+		this.like_no = like_no;
+	}
+	public int getLike_check() {
+		return like_check;
+	}
+	public void setLike_check(int like_check) {
+		this.like_check = like_check;
+	}
+	
 	
 
 	

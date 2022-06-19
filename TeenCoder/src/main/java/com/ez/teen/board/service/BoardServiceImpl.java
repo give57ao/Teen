@@ -1,5 +1,6 @@
 package com.ez.teen.board.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -223,5 +224,25 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardAnswerModel> answerCount(BoardParam boardParam) {
 		return boardMapper.answerCount(boardParam);
 	}
+
+	@Override
+	public int getBoardLike(int board_no) throws Exception {
+		return boardMapper.getBoardLike(board_no);
+	}
+
+	@Override
+	public void insertBoardLike(BoardModel boardModel) throws Exception {
+			boardMapper.insertBoardLike(boardModel);
+			boardMapper.updateBoardLike(boardModel.getBoard_no());
+		
+	}
+
+	@Override
+	public void deleteBoardLike(BoardModel boardModel) throws Exception {
+		boardMapper.deleteBoardLike(boardModel);
+		boardMapper.updateBoardLike(boardModel.getBoard_no());
+		
+	}
+
 
 }

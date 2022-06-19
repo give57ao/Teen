@@ -1,5 +1,6 @@
 package com.ez.teen.board.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -88,5 +89,12 @@ public interface BoardService {
 
 	// detail내 답글
 	public List<BoardAnswerModel> answerCount(BoardParam boardParam);
+	
+	public int getBoardLike(int board_nol) throws Exception;
+	
+	public void insertBoardLike(BoardModel boardModel) throws Exception;
+	
+	public void deleteBoardLike(BoardModel boardModel) throws Exception;
+	
 
 }

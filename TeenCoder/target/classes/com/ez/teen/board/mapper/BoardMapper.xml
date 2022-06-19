@@ -581,5 +581,29 @@ ORDER BY board_comment_count DESC
 			REF_STEP
 	</select>
 	
+	<insert id="insertBoardLike">
+	INSERT INTO LIKE_TABLE (LIKE_NO,BOARD_NO, MEMBER_NO)
+	VALUES (SEQ_LIKE_NO.nextval,#{board_no}, #{member_no})
+</insert>
+
+	<delete id="deleteBoardLike">
+		DELETE FROM LIKE_TABLE
+		WHERE BOARD_NO = #{board_no} AND MEMBER_NO = #{member_no}
+	</delete>
+
+	<select id="updateBoardLike">
+		UPDATE BOARD
+		SET
+		BOARD_LIKE_COUNT = (SELECT COUNT(*)
+		FROM LIKE_TABLE
+		WHERE BOARD_NO = #{board_no})
+		WHERE BOARD_NO = #{board_no}
+	</select>
+
+	<select id="getBoardLike" resultType="int">
+		SELECT COUNT(LIKE_NO) FROM LIKE_TABLE WHERE BOARD_NO = #{board_no}
+		AND BOARD_NO = #{board_no}
+	</select>
+	
 	
 </mapper>
