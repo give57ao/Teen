@@ -602,7 +602,7 @@ ORDER BY board_comment_count DESC
 
 	<select id="getBoardLike" resultType="int">
 		SELECT COUNT(LIKE_NO) FROM LIKE_TABLE WHERE BOARD_NO = #{board_no}
-		AND BOARD_NO = #{board_no}
+		AND MEMBER_NO = #{member_no}
 	</select>
 	
 	
