@@ -103,4 +103,5 @@ public interface BoardMapper {
 	
 	public void updateBoardLike(int board_no) throws Exception;
 
+	
 }

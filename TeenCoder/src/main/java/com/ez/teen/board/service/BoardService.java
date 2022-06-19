@@ -90,11 +90,12 @@ public interface BoardService {
 	// detail내 답글
 	public List<BoardAnswerModel> answerCount(BoardParam boardParam);
 	
-	public int getBoardLike(int board_nol) throws Exception;
+	public int getBoardLike(int board_no) throws Exception;
 	
 	public void insertBoardLike(BoardModel boardModel) throws Exception;
 	
 	public void deleteBoardLike(BoardModel boardModel) throws Exception;
 	
 
+	
 }

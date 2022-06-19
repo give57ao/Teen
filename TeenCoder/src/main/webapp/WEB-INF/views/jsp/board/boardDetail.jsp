@@ -288,6 +288,7 @@ function deleteBoard(num) {
                     }
 
 
+                    
                 }
             });
         });

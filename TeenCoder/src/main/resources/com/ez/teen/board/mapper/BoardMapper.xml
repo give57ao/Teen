@@ -606,4 +606,5 @@ ORDER BY board_comment_count DESC
 	</select>
 	
 	
+	
 </mapper>
