@@ -1,3 +1,28 @@
+//파일 삭제 버튼
+function deleteFileBox(){
+var filebox = document.getElementById('filebox');
+console.log(filebox);
+filebox.remove();
+$('#makeBox').show();
+$('#delbox').hide();
+}
+
+
+var fileNoArry = new Array();
+var fileNameArry = new Array();
+
+
+function fn_del(value, name) {
+var filebox = document.getElementById('filebox');
+
+	fileNoArry.push(value);
+	fileNameArry.push(name);
+	$("#fileNoDel").attr("value", fileNoArry);
+	$("#fileNameDel").attr("value", fileNameArry);
+	filebox.remove();
+}
+
+
 //답글 작성 폼 생성/제거
 function recomment(num){
 	console.log('ref_step : '  + num);
