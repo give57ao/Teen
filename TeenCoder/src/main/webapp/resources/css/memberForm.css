@@ -128,3 +128,22 @@
 	font-size: 1.6em;
 	color: #5573E8;
 }
+
+.emailChk .doubleChk {
+	margin-top: 5px;
+	height: 38px;
+	text-align: center;
+	width: 100px;
+	float: right;
+	background: #111;
+	border: none;
+	border-radius: 10px;
+	color: #FFF;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 38px;
+	transition: all 0.2s;
+}
+.emailChk .doubleChk:hover{
+	background: #5573E8;
+}
