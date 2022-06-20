@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ez.teen.follow.mapper.FollowMapper">
+
+
+	<select id="followBoardList"
+		resultType="com.ez.teen.follow.model.MemberFollowModel"
+		parameterType="com.ez.teen.follow.model.MemberFollowParam">
+SELECT
+		B.BOARD_NO
+		,B.BOARD_GROUP_NO
+		,B.BOARD_TAG_NAME
+		,B.BOARD_TITLE
+		,B.BOARD_DATE
+		,B.BOARD_HIT_COUNT
+		,B.BOARD_LIKE_COUNT
+		,B.BOARD_REPORT_COUNT
+		,B.BOARD_FILE_CHECK
+		,G.BGROUP_NAME
+		,M.MEMBER_NICK
+
+		FROM BOARD B
+		INNER JOIN BGROUP G
+		ON B.BOARD_GROUP_NO = G.BOARD_GROUP_NO
+		INNER JOIN MEMBER M
+		ON B.MEMBER_NO = M.MEMBER_NO
+        
+		WHERE B.MEMBER_NO IN (SELECT
+		FOLLOWING_MEMBER_NO
+		FROM FOLLOW
+		WHERE MEMBER_NO = #{member_no})
+		
+	</select>
+
+
+	<!-- 전체 게시글 수 -->
+	<select id="getFollowCount" resultType="int"
+		parameterType="com.ez.teen.follow.model.MemberFollowParam">
+		SELECT COUNT(*) AS allBoardCount FROM BOARD B
+		INNER JOIN MEMBER M
+		ON
+		B.MEMBER_NO = M.MEMBER_NO
+
+		<if test='board_group_no != null'>
+			WHERE B.BOARD_GROUP_NO = #{board_group_no}
+		</if>
+
+		<if test='member_no != 0'>
+			AND B.MEMBER_NO = #{member_no}
+		</if>
+
+		<if test='search == "title"'>
+			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		</if>
+
+		<if test='search == "content"'>
+			AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+		</if>
+
+		<if test='search == "nick"'>
+			AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+		</if>
+
+		<if test='search == "all"'>
+			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+			OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+			OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+		</if>
+
+
+		<if test='board_tag_name == null'>
+			AND REGEXP_LIKE (B.BOARD_TAG_NAME,
+			'^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
+		</if>
+
+		<if test='board_tag_name != null'>
+		<![CDATA[
+		AND LOWER(B.BOARD_TAG_NAME) LIKE '%'||#{board_tag_name}||'%'
+		]]>
+		</if>
+
+	</select>
+
+
+
+
+
+
+
+
+</mapper>
