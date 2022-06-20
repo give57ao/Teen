@@ -93,10 +93,20 @@ function fn_deleteFile(obj){
 
 //글 수정 썸머노트 DB에서 데이터 불러오기
 $(document).ready(function() {
-		$('#content').summernote({
-			height: 700,
-			fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
-			fontNamesIgnoreCheck : [ '맑은고딕' ],
-			focus: true
-		});
-	});	
+	$('#content').summernote({
+		height: 700,
+		fontNames: ['맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',],
+		fontNamesIgnoreCheck: ['맑은고딕'],
+		focus: true
+	});
+
+	var strData = document.getElementById('updateTag').value;
+	var arrChk = strData.split('#');
+
+	$('.board_tag_name').prop('checked', false);
+
+	for (var nArrCnt in arrChk) {
+
+		$("input[name=board_tag_name][value=" + arrChk[nArrCnt] + "]").prop("checked", true);
+	}
+});	

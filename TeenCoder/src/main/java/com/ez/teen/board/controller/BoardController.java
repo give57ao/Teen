@@ -89,7 +89,7 @@ public class BoardController {
          RedirectAttributes rttr, 
          @RequestParam(value="fileNoDel[]") String[] files,
          @RequestParam(value="fileNameDel[]") String[] fileNames,
-         MultipartHttpServletRequest mpRequest, Map<String, Object> map) throws Exception{
+         MultipartHttpServletRequest mpRequest) throws Exception{
       
       int member_no = (Integer)session.getAttribute("member_no");
       
@@ -105,12 +105,36 @@ public class BoardController {
       return "redirect:/board";
    }
 
+
+   @PostMapping("board/modifyComment")
+   public String modifyComment(HttpSession session, MultipartHttpServletRequest mpRequest,
+		   CommentModel commentModel,
+	         RedirectAttributes rttr, 
+	         @RequestParam(value="fileNoDel[]") String[] files,
+	         @RequestParam(value="fileNameDel[]") String[] fileNames) throws Exception {
+
+	   
+//	      commentParam.setBcomment_content("[수정] " +commentModel.getBcomment_content());
+
+	      boardService.modifyComment(commentModel,files, fileNames, mpRequest);
+	      
+	   
+	   
+	   
+	   return "redirect:/board/detail?board_no=" +commentModel.getBoard_no();
+   }
+   
+   
+   
+   
+   
    //게시글 작성 폼
    @GetMapping(value = "board/boardWrite")
    public String insertBoardForm() {
    
       return "board/boardWrite";
    }
+   
    
    
    //게시글 작성 완료
@@ -158,6 +182,7 @@ public class BoardController {
   	   	boardParam.setMember_no(member_no);
          
          int boardLike = boardService.getBoardLike(boardParam);
+         int boardReport = boardService.getBoardReport(boardParam);
          
          List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
                      
@@ -180,6 +205,7 @@ public class BoardController {
          model.addAttribute("commentCount", commentCount);
          model.addAttribute("answerCount", answerCount);
          model.addAttribute("boardLike", boardLike);
+         model.addAttribute("boardReport", boardReport);
          boardService.hitCount(boardModel);
 
          
@@ -403,6 +429,33 @@ public class BoardController {
 	   return boardLike;
    }
    
+   @ResponseBody
+   @PostMapping("board/detail/report")
+   public int boardReport(HttpServletRequest request, HttpSession session,BoardModel boardModel, BoardParam boardParam) throws Exception{
+	   
+	   int board_no = Integer.parseInt(request.getParameter("board_no"));
+	   int member_no = (Integer) session.getAttribute("member_no");
+	   
+	   boardParam.setBoard_no(board_no);
+	   boardParam.setMember_no(member_no);
+	   
+	   int boardReport = boardService.getBoardReport(boardParam);
+	   
+	   System.out.println("Report = " + boardReport);
+	   
+	   boardModel.setBoard_no(board_no);
+	   boardModel.setMember_no(member_no);
+	   
+	   if(boardReport >= 1) {
+		   boardService.deleteBoardReport(boardModel);
+		   boardReport = 0;
+	   }else {
+		   boardService.insertBoardReport(boardModel);
+		   boardReport = 1;
+	   }
+	   
+	   return boardReport;
+   }
    
 }
 

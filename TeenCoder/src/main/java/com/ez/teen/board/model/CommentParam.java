@@ -4,8 +4,25 @@ public class CommentParam {
 	
 	private int ref_step;
 	private int board_no;
+	private int bcomment_no;
+	private String bcomment_content;
 	
-	
+	public String getBcomment_content() {
+		return bcomment_content;
+	}
+
+	public void setBcomment_content(String bcomment_content) {
+		this.bcomment_content = bcomment_content;
+	}
+
+	public int getBcomment_no() {
+		return bcomment_no;
+	}
+
+	public void setBcomment_no(int bcomment_no) {
+		this.bcomment_no = bcomment_no;
+	}
+
 	public int getRef_step() {
 		return ref_step;
 	}

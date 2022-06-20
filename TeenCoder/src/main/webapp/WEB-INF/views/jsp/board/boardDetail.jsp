@@ -7,6 +7,49 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 게시판 상세</title>
+<style type="text/css">
+.filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+/* 댓글 수정 시 첨부파일 디자인 */
+.filebox .upload-name-m {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+  </style>
 <link rel="shortcut icon" href="/teen/resources/images/icon/icon_favicon.ico" type="image/x-icon"> <!-- favicon -->
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
@@ -14,6 +57,10 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/summernote.css">
+<style>
+
+ 
+</style>
 </head>
 <script>
 function deleteBoard(num) {
@@ -62,7 +109,7 @@ function deleteBoard(num) {
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2><a href="/teen/board?borad_group_no?=${boardNo}">< 리스트로 이동</a></h2>
+                        <h2><a href="../board?borad_group_no?=${boardNo}">< 리스트로 이동</a></h2>
                     </div>
 					<!-- List Row -->
                 	<c:forEach items="${boardDetail}" var="boardDetail" varStatus="status">
@@ -79,11 +126,10 @@ function deleteBoard(num) {
 	                                    </h4>
 	                                </div>
 	                                <span class="row_top date"><fmt:formatDate value="${boardDetail.board_date}" pattern="yyyy.MM.dd"/></span>
-	                           		<div class="heart">
-										<a class="btn btn-outline-dark heart">
-											<img id="heart" src="/teen/resources/images/icon/heart.svg">
-										</a>
-									</div>
+	                           		<ul class="detail_count">
+										<li><a class="heart"><img id="heart" src="/teen/resources/images/icon/heart.svg"></a></li>
+										<li><a class="report"><img id="report" src="/teen/resources/images/icon/siren.png"></a></li>
+									</ul>
 	                            </div>
 	                            <div class="row_title">
 	                                <h3>
@@ -98,7 +144,7 @@ function deleteBoard(num) {
 	                            <div class="row_contents">
                          			<p>${boardDetail.board_content}</p>
 	                            	<form name="downFile" role="form" method="post">
-	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
+	                            		<input type="hidden" class="FILE_NO" name="FILE_NO" value="">
 										<c:forEach var="file" items="${file}">
 											<span><a href="#" onClick="fn_fileDown(${file.FILE_NO}); return false;">${file.ORG_FILE_NAME}</a>(${file.FILE_SIZE}kb)</span>
 										</c:forEach>
@@ -113,7 +159,7 @@ function deleteBoard(num) {
 	                            <div class="btn_group">
 	                            <ul>
 	                            	<li><input type="button" value="스크랩" class="btn_com btn_board">
-		                			<li><input type="button" value="신고" class="btn_com btn_board">
+		                			<!-- <li><input type="button" value="신고" class="btn_com btn_board"> -->
 		                			<!-- <li><input type="button" value="추천" class="btn_com btn_board"> -->
 		                			<c:if test="${sessionScope.member_no == boardDetail.member_no }">
 		                			<li><input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
@@ -134,13 +180,17 @@ function deleteBoard(num) {
 	                	<form action="comment" method="post" enctype="multipart/form-data">
 		                	<input type="hidden" name="board_no" value="${board_no}">
 		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
-			                <b>첨부파일&nbsp;&nbsp;&nbsp;</b>
-	                		<input type="file" id="file" name="file_0">	                        	
+	                		<div class="filebox">
+							<input class="upload-name" value="첨부파일" placeholder="첨부파일">
+							<label for="file">파일찾기</label> <input type="file" id="file" name="file">
+							</div>
+	                		                  	
 		                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
 		                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
-	                	</form>
-	                	<hr>
+	                	</form>	
+	                	
 	                </div>
+	                
 	 				<!-- 댓글갯수 -->
                     <h2><b class="comment_count">${commentCount}</b>개의 댓글</h2>
                     
@@ -148,7 +198,38 @@ function deleteBoard(num) {
 	                <c:forEach items="${boardComment}" var="boardComment" varStatus="status">
 	                	 <!-- 댓글 넘버 추가 -->
 		                <div id="comment_list">
-		                	<div class="comment_box">
+		                
+							<!-- modify form -->
+							<div id="comment_form-${boardComment.ref_step}" style="display: none;">
+								<form action="modifyComment" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="bcomment_no" value="${boardComment.bcomment_no}">
+									<input type="hidden" name="board_no" value="${board_no}">
+
+									<!-- 첨부파일 수정 값  -->
+									<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
+									<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
+
+									<!-- <div class="row_contents"> -->
+									<textarea class="summernote" name="bcomment_content">
+									${boardComment.bcomment_content}
+									</textarea>
+
+
+									<!-- 첨부파일 -->
+									<div class="filebox">
+										<input class="upload-name-m" value="" placeholder="${boardComment.org_file_name}"> 
+										<label for="file-m">파일찾기</label> <input type="file" id="file-m"name="file"> <input type="hidden" name="file_no" value="${boardComment.file_no}">
+									</div>
+
+									<input type="reset" value="취소" class="btn_com btn_board btn_cmt" onClick="modifyCancel(${boardComment.ref_step})">
+									 <input type="submit" value="작성" class="btn_com btn_board btn_cmt">
+								</form>
+							</div>
+							<!-- modify form end -->
+
+
+
+							<div class="comment_box cb-${boardComment.ref_step}">
 		                		<div class="row">
 		                            <div class="row_info">
 		                                <div class="row_top member">
@@ -167,8 +248,8 @@ function deleteBoard(num) {
 		                            	<c:when test="${boardComment.file_no eq 0}">
 										</c:when>
 										<c:otherwise>
-										<form name="downCmtFile" role="form" method="post">
-	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
+										<form name="downFile" role="form" method="post">
+	                            		<input type="hidden" class="FILE_NO" name="FILE_NO" value="${boardComment.file_no}">
 										<span><a href="#" onClick="fn_fileDown(${boardComment.file_no}); return false;">${boardComment.org_file_name}</a>(${boardComment.file_size}kb)</span>										
 										</form>
 										</c:otherwise>
@@ -184,6 +265,9 @@ function deleteBoard(num) {
 	                                    </c:forEach>
 	                                </ul>
 	                                <div class="btn_group">
+			                             <c:if test="${sessionScope.member_nick == boardComment.member_nick}">
+		                                 <input type="button" value="수정" class="btn_com btn_board" onClick="modifyComment(${boardComment.ref_step})">
+		                                 </c:if>
 		                            	<input type="button" value="신고" class="btn_com btn_board">
 			                			<input type="button" value="추천" class="btn_com btn_board">
 			                			<input type="button" value="답글" class="btn_com btn_board" onClick="recomment(${boardComment.ref_step})" >
@@ -276,10 +360,25 @@ function deleteBoard(num) {
             $(".heart").prop('name',heartval)
         }
 
+        var reportval = ${boardReport};
+    	var report = document.getElementById('report').value;
+    	
+        if(reportval>0) {
+            console.log(report);
+            $("#report").prop("src", "/teen/resources/images/icon/siren-fill.png");
+            $(".report").prop('name',reportval)
+        }
+        else {
+            console.log(report);
+            $("#report").prop("src", "/teen/resources/images/icon/siren.png");
+            $(".report").prop('name',reportval)
+        }
+    });
+      
         $(".heart").on("click", function () {
 
             var that = $(".heart");
-
+            var heartval = ${boardLike};
             var sendData = {'board_no' : '${boardModel.board_no}','heart' : that.prop('name')};
             console.log(sendData);
             $.ajax({
@@ -299,6 +398,31 @@ function deleteBoard(num) {
                     }
                 }
             });
+        });
+    
+  $(".report").on("click", function () {
+
+        var that1 = $(".report");
+        var reportval = ${boardReport};
+        var report = document.getElementById('report').value;
+        var sendData1 = {'board_no' : '${boardModel.board_no}','report' : that1.prop('name')};
+        console.log(sendData1);
+        $.ajax({
+            url :'/teen/board/detail/report',
+            type :'POST',
+            data : sendData1,
+            success : function(){	
+                if(reportval==1) {
+                	alert('해당 게시글의 신고를 취소하였습니다');
+                	location.reload();
+                    $("#report").prop("src","/teen/resources/images/icon/siren-fill.png");
+                }
+                else{
+                	alert('해당 게시글을 신고하였습니다');
+                	location.reload();
+                    $("#report").prop("src","/teen/resources/images/icon/siren.png");
+                }
+            }
         });
     });
 </script>

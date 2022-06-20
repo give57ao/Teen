@@ -140,7 +140,6 @@
 	border-radius: 10px;
 	color: #FFF;
 	cursor: pointer;
-	display: inline-block;
 	line-height: 38px;
 	transition: all 0.2s;
 }

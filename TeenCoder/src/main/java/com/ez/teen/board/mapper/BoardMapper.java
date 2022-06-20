@@ -103,5 +103,18 @@ public interface BoardMapper {
 	
 	public void updateBoardLike(int board_no) throws Exception;
 
+	public int getBoardReport(BoardParam boardParam) throws Exception;
+	
+	public void insertBoardReport(BoardModel boardModel) throws Exception;
+	
+	public void deleteBoardReport(BoardModel boardModel) throws Exception;
+	
+	public void updateBoardReport(int board_no) throws Exception;
+	// 댓글 수정
+	public void modifyComment(CommentModel commentModel) throws Exception;
+
+	//댓글 첨부파일 수정
+	public void updateCmtFile(CommentModel commentModel);
+
 	
 }

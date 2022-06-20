@@ -388,3 +388,23 @@
 #member_info a.btn_com {
 	background: #5573E8;
 }
+
+ .detail_count{
+ float: right;
+ }
+ 
+ .detail_count li{
+ float: left;
+ margin-left: 10px;
+ }
+ 
+ .detail_count li a{
+ display: inline-block;
+ cursor: pointer;
+ }
+ 
+ .detail_count li a img{
+  width: 20px;
+ height: 20px;
+ vertical-align: middle;
+ }

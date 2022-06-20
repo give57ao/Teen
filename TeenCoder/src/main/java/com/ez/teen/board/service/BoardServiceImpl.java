@@ -69,6 +69,35 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
+	//댓글 수정
+	@Override
+	public void modifyComment(CommentModel commentModel, String[] files, String[] fileNames,
+			MultipartHttpServletRequest mpRequest) throws Exception {
+		boardMapper.modifyComment(commentModel);
+		
+		List<Map<String, Object>> list = fileUtils.parseUpdateCommentFileInfo(commentModel, files, fileNames, mpRequest);
+		Map<String, Object> tempMap = null;
+		int size = list.size();
+		for (int i = 0; i < size; i++) {
+			tempMap = list.get(i);
+			if (tempMap.get("NEW_FILE").equals("Y")) {
+				
+				commentModel.setOrg_file_name((String)tempMap.get("ORG_FILE_NAME"));
+				commentModel.setStored_file_name((String)tempMap.get("STORED_FILE_NAME"));
+				commentModel.setFile_size(123);
+				
+				System.out.println("=========== COMMENT MODEL :"  + commentModel);
+				
+				boardMapper.updateCmtFile(commentModel);
+			} else {
+				boardMapper.updateFile(tempMap);
+			}
+		}
+		
+
+		
+	}
+	
 	// 게시글 작성
 	@Override
 	public void insertBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception {
@@ -244,6 +273,22 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
-	
+	@Override
+	public int getBoardReport(BoardParam boardParam) throws Exception {
+		return boardMapper.getBoardReport(boardParam);
+	}
+
+	@Override
+	public void insertBoardReport(BoardModel boardModel) throws Exception {
+			boardMapper.insertBoardReport(boardModel);
+			boardMapper.updateBoardReport(boardModel.getBoard_no());
+	}
+
+	@Override
+	public void deleteBoardReport(BoardModel boardModel) throws Exception {
+		boardMapper.deleteBoardReport(boardModel);
+		boardMapper.updateBoardReport(boardModel.getBoard_no());
+	}
+
 
 }

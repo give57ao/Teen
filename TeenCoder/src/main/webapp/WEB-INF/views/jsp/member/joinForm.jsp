@@ -70,11 +70,10 @@
 								<span id="emailChk2" class="doubleChk">이메일인증</span></br>
 								<span class="point successEmailChk">이메일 입력후 인증번호 보내기를 해주십시오.</span>
 								<input type="hidden" id="emailDoubleChk"/>
-								<br><br><br>
+								<br/><br/><br/><br/><br/><br/><br/>
 	                        </td>
 	                    </tr>
-	                    
-	                   <tr class="checkbox">
+	                    <tr class="checkbox">
 	                        <th>개발직군 유무</th>
 	                        <td>
 	                           <p>회원가입 후 회원정보 수정 시 인증이 가능합니다.</p>
