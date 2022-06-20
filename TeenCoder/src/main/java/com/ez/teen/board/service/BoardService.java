@@ -95,6 +95,9 @@ public interface BoardService {
 	public void insertBoardLike(BoardModel boardModel) throws Exception;
 	
 	public void deleteBoardLike(BoardModel boardModel) throws Exception;
+
+	//댓글 수정
+	public void modifyComment(CommentModel commentModel, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 
 	

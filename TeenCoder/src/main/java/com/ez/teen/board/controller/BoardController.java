@@ -89,7 +89,7 @@ public class BoardController {
          RedirectAttributes rttr, 
          @RequestParam(value="fileNoDel[]") String[] files,
          @RequestParam(value="fileNameDel[]") String[] fileNames,
-         MultipartHttpServletRequest mpRequest, Map<String, Object> map) throws Exception{
+         MultipartHttpServletRequest mpRequest) throws Exception{
       
       int member_no = (Integer)session.getAttribute("member_no");
       
@@ -105,12 +105,36 @@ public class BoardController {
       return "redirect:/board";
    }
 
+
+   @PostMapping("board/modifyComment")
+   public String modifyComment(HttpSession session, MultipartHttpServletRequest mpRequest,
+		   CommentModel commentModel,
+	         RedirectAttributes rttr, 
+	         @RequestParam(value="fileNoDel[]") String[] files,
+	         @RequestParam(value="fileNameDel[]") String[] fileNames) throws Exception {
+
+	   
+//	      commentParam.setBcomment_content("[수정] " +commentModel.getBcomment_content());
+
+	      boardService.modifyComment(commentModel,files, fileNames, mpRequest);
+	      
+	   
+	   
+	   
+	   return "redirect:/board/detail?board_no=" +commentModel.getBoard_no();
+   }
+   
+   
+   
+   
+   
    //게시글 작성 폼
    @GetMapping(value = "board/boardWrite")
    public String insertBoardForm() {
    
       return "board/boardWrite";
    }
+   
    
    
    //게시글 작성 완료

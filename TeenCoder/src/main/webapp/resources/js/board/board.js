@@ -7,6 +7,21 @@ function goBoard() {
 var files_count = 1;
 
 $(document).ready(function() {
+	
+	/*첨부파일 업로드 시  text 보여지는 기능*/
+$("#file").on('change',function(){
+  var fileName = $("#file").val();
+  $(".upload-name").val(fileName);
+});
+
+	/*첨부파일 수정 업로드 시  text 보여지는 기능*/
+$("#file-m").on('change',function(){
+  var fileName = $("#file-m").val();
+  $(".upload-name-m").val(fileName);
+ alert(fileName);
+});
+	
+	
 	$("#addFile").on("click", function(e) {
 		e.preventDefault();
 		fn_addFile();
@@ -62,6 +77,9 @@ $(document).ready(function() {
 	}
 	);
 /*============================================================================================================================*/
+
+
+
 // 파일 추가
 function fn_addFile() {
     var str = "<tr class='file_row'><th></th><td><input type='file' id='file' name='file"+(files_count++)+"'/><a href='#this' class='btn_com btn_del_file' id='deleteFile'>파일 삭제</a></td></tr>";
