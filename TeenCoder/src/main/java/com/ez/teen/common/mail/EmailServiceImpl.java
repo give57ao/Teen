@@ -44,7 +44,7 @@ public class EmailServiceImpl implements EmailService{
 	            StringBuffer sb = new StringBuffer();
 	            sb.append("<html><body>");
 	     		sb.append("<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>");
-	     		sb.append(mailModel.getHtmlMessage());
+	     		sb.append(mailModel.getMessage());
 	     		sb.append("</body></html>");
 	     		String str=sb.toString();
 	     		mailModel.setMessage(str);
