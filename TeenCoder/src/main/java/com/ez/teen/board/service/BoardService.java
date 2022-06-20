@@ -96,6 +96,10 @@ public interface BoardService {
 	
 	public void deleteBoardLike(BoardModel boardModel) throws Exception;
 	
-
+	public int getBoardReport(BoardParam boardParam) throws Exception;
+	
+	public void insertBoardReport(BoardModel boardModel) throws Exception;
+	
+	public void deleteBoardReport(BoardModel boardModel) throws Exception;
 	
 }

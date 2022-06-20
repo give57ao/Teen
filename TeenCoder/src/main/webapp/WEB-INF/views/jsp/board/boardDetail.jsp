@@ -14,6 +14,10 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/summernote.css">
+<style>
+
+ 
+</style>
 </head>
 <script>
 function deleteBoard(num) {
@@ -79,11 +83,10 @@ function deleteBoard(num) {
 	                                    </h4>
 	                                </div>
 	                                <span class="row_top date"><fmt:formatDate value="${boardDetail.board_date}" pattern="yyyy.MM.dd"/></span>
-	                           		<div class="heart">
-										<a class="btn btn-outline-dark heart">
-											<img id="heart" src="/teen/resources/images/icon/heart.svg">
-										</a>
-									</div>
+	                           		<ul class="detail_count">
+										<li><a class="heart"><img id="heart" src="/teen/resources/images/icon/heart.svg"></a></li>
+										<li><a class="report"><img id="report" src="/teen/resources/images/icon/siren.png"></a></li>
+									</ul>
 	                            </div>
 	                            <div class="row_title">
 	                                <h3>
@@ -113,7 +116,7 @@ function deleteBoard(num) {
 	                            <div class="btn_group">
 	                            <ul>
 	                            	<li><input type="button" value="스크랩" class="btn_com btn_board">
-		                			<li><input type="button" value="신고" class="btn_com btn_board">
+		                			<!-- <li><input type="button" value="신고" class="btn_com btn_board"> -->
 		                			<!-- <li><input type="button" value="추천" class="btn_com btn_board"> -->
 		                			<c:if test="${sessionScope.member_no == boardDetail.member_no }">
 		                			<li><input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
@@ -276,10 +279,25 @@ function deleteBoard(num) {
             $(".heart").prop('name',heartval)
         }
 
+        var reportval = ${boardReport};
+    	var report = document.getElementById('report').value;
+    	
+        if(reportval>0) {
+            console.log(report);
+            $("#report").prop("src", "/teen/resources/images/icon/siren-fill.png");
+            $(".report").prop('name',reportval)
+        }
+        else {
+            console.log(report);
+            $("#report").prop("src", "/teen/resources/images/icon/siren.png");
+            $(".report").prop('name',reportval)
+        }
+    });
+      
         $(".heart").on("click", function () {
 
             var that = $(".heart");
-
+            var heartval = ${boardLike};
             var sendData = {'board_no' : '${boardModel.board_no}','heart' : that.prop('name')};
             console.log(sendData);
             $.ajax({
@@ -299,6 +317,31 @@ function deleteBoard(num) {
                     }
                 }
             });
+        });
+    
+  $(".report").on("click", function () {
+
+        var that1 = $(".report");
+        var reportval = ${boardReport};
+        var report = document.getElementById('report').value;
+        var sendData1 = {'board_no' : '${boardModel.board_no}','report' : that1.prop('name')};
+        console.log(sendData1);
+        $.ajax({
+            url :'/teen/board/detail/report',
+            type :'POST',
+            data : sendData1,
+            success : function(){	
+                if(reportval==1) {
+                	alert('해당 게시글의 신고를 취소하였습니다');
+                	location.reload();
+                    $("#report").prop("src","/teen/resources/images/icon/siren-fill.png");
+                }
+                else{
+                	alert('해당 게시글을 신고하였습니다');
+                	location.reload();
+                    $("#report").prop("src","/teen/resources/images/icon/siren.png");
+                }
+            }
         });
     });
 </script>

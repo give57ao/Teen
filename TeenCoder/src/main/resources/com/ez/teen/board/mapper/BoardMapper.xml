@@ -607,6 +607,29 @@ ORDER BY board_comment_count DESC
 		AND MEMBER_NO = #{member_no}
 	</select>
 	
+	<insert id="insertBoardReport">
+	INSERT INTO REPORT (REPORT_NO,BOARD_NO, MEMBER_NO)
+	VALUES (SEQ_REPORT_NO.nextval,#{board_no}, #{member_no})
+</insert>
+
+	<delete id="deleteBoardReport">
+		DELETE FROM REPORT
+		WHERE BOARD_NO = #{board_no} AND MEMBER_NO = #{member_no}
+	</delete>
+
+	<select id="updateBoardReport">
+		UPDATE BOARD
+		SET
+		BOARD_REPORT_COUNT = (SELECT COUNT(*)
+		FROM REPORT
+		WHERE BOARD_NO = #{board_no})
+		WHERE BOARD_NO = #{board_no}
+	</select>
+
+	<select id="getBoardReport" resultType="int" parameterType="com.ez.teen.board.model.BoardParam">
+		SELECT COUNT(REPORT_NO) FROM REPORT WHERE BOARD_NO = #{board_no}
+		AND MEMBER_NO = #{member_no}
+	</select>
 	
 	
 </mapper>

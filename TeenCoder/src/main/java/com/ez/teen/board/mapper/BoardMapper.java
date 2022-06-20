@@ -103,5 +103,12 @@ public interface BoardMapper {
 	
 	public void updateBoardLike(int board_no) throws Exception;
 
+	public int getBoardReport(BoardParam boardParam) throws Exception;
+	
+	public void insertBoardReport(BoardModel boardModel) throws Exception;
+	
+	public void deleteBoardReport(BoardModel boardModel) throws Exception;
+	
+	public void updateBoardReport(int board_no) throws Exception;
 	
 }

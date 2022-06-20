@@ -244,6 +244,23 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
+	@Override
+	public int getBoardReport(BoardParam boardParam) throws Exception {
+		return boardMapper.getBoardReport(boardParam);
+	}
+
+	@Override
+	public void insertBoardReport(BoardModel boardModel) throws Exception {
+			boardMapper.insertBoardReport(boardModel);
+			boardMapper.updateBoardReport(boardModel.getBoard_no());
+	}
+
+	@Override
+	public void deleteBoardReport(BoardModel boardModel) throws Exception {
+		boardMapper.deleteBoardReport(boardModel);
+		boardMapper.updateBoardReport(boardModel.getBoard_no());
+	}
+
 	
 
 }

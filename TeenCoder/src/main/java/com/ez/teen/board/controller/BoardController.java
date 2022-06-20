@@ -158,6 +158,7 @@ public class BoardController {
   	   	boardParam.setMember_no(member_no);
          
          int boardLike = boardService.getBoardLike(boardParam);
+         int boardReport = boardService.getBoardReport(boardParam);
          
          List<BoardCommentModel> boardComment = boardService.selectComment(boardParam);
                      
@@ -180,6 +181,7 @@ public class BoardController {
          model.addAttribute("commentCount", commentCount);
          model.addAttribute("answerCount", answerCount);
          model.addAttribute("boardLike", boardLike);
+         model.addAttribute("boardReport", boardReport);
          boardService.hitCount(boardModel);
 
          
@@ -403,6 +405,33 @@ public class BoardController {
 	   return boardLike;
    }
    
+   @ResponseBody
+   @PostMapping("board/detail/report")
+   public int boardReport(HttpServletRequest request, HttpSession session,BoardModel boardModel, BoardParam boardParam) throws Exception{
+	   
+	   int board_no = Integer.parseInt(request.getParameter("board_no"));
+	   int member_no = (Integer) session.getAttribute("member_no");
+	   
+	   boardParam.setBoard_no(board_no);
+	   boardParam.setMember_no(member_no);
+	   
+	   int boardReport = boardService.getBoardReport(boardParam);
+	   
+	   System.out.println("Report = " + boardReport);
+	   
+	   boardModel.setBoard_no(board_no);
+	   boardModel.setMember_no(member_no);
+	   
+	   if(boardReport >= 1) {
+		   boardService.deleteBoardReport(boardModel);
+		   boardReport = 0;
+	   }else {
+		   boardService.insertBoardReport(boardModel);
+		   boardReport = 1;
+	   }
+	   
+	   return boardReport;
+   }
    
 }
 
