@@ -148,7 +148,8 @@ public class BoardController {
          List<BoardAnswerModel> boardAnswer = boardService.selectAnswer(boardParam);
          System.out.println(boardAnswer);
          List<Map<String, Object>> fileList = boardService.selectFile(board_no);
-         int boardCommentCount = boardService.getRefStep(board_no) + 1;
+         int commentCount = boardService.commentCount(board_no);
+         List<BoardAnswerModel> answerCount = boardService.answerCount(boardParam);
          
         
         int member_no = (Integer) session.getAttribute("member_no");
@@ -176,7 +177,8 @@ public class BoardController {
          model.addAttribute("boardDetail", boardDetail);
          model.addAttribute("boardAnswer", boardAnswer);
          model.addAttribute("commentNum", boardComment);
-         model.addAttribute("commentCount", boardCommentCount);
+         model.addAttribute("commentCount", commentCount);
+         model.addAttribute("answerCount", answerCount);
          model.addAttribute("boardLike", boardLike);
          boardService.hitCount(boardModel);
 
@@ -185,7 +187,7 @@ public class BoardController {
          
          String index = rq.getParameter("index");
          System.out.println("인덱스값: " + index);
-         System.out.println(boardCommentCount);
+         System.out.println(commentCount);
          
          return "board/boardDetail";
       }

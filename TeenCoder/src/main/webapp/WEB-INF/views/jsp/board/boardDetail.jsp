@@ -51,7 +51,7 @@ function deleteBoard(num) {
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2><a href="../board?borad_group_no?=${boardNo}"> 리스트로 이동</a></h2>
+                        <h2><a href="../board?borad_group_no?=${boardNo}">< 리스트로 이동</a></h2>
                     </div>
 					<div style="text-align: right;">
 						<a class="btn btn-outline-dark heart"> <img id="heart" src="/teen/resources/images/icon/heart.svg">
