@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- asdf -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,33 +30,40 @@ function deleteBoard(num) {
 	<!-- Contents -->
     <div id="contents">
         <div id="contents_title">
-            <h1>커뮤니티</h1>
-            <h2>커뮤니티를 통해 IT 정보를 공유하고 소통할 수 있습니다.</h2>
+            <c:if test="${boardDetail.get(0).board_group_no eq '1'}">
+            	<h1>커뮤니티</h1>
+            	<h2>커뮤니티를 통해 IT 정보를 공유하고 소통할 수 있습니다.</h2>
+            </c:if>
+            <c:if test="${boardDetail.get(0).board_group_no eq '2'}">
+            	<h1>Q&amp;A</h1>
+            	<h2>전문가와의 Q&amp;A를 통해 더 유익한 IT 정보를 공유하고 소통할 수 있습니다.</h2>
+            </c:if>
         </div>
         <div id="contents_detail">
             <div id="contents_wrap">
             <!-- Category -->
                 <ul id="contents_category">
-                	<li><a href="/teen/board?board_group_no=1" class="select">COMMUNITY</a></li>
+                	<c:if test="${boardDetail.get(0).board_group_no eq '1'}">
+						<li><a href="/teen/board?board_group_no=1" class="select">COMMUNITY</a></li>
+                    </c:if>
+                    <c:if test="${boardDetail.get(0).board_group_no eq '2'}">
+						<li><a href="/teen/board?board_group_no=2" class="select">Q&amp;A</a></li>
+                    </c:if>
                     
-                    <li><a href="/teen/board?board_tag_name=html">#HTML</a></li>
-                    <li><a href="/teen/board?board_tag_name=css">#CSS</a></li>
-                    <li><a href="/teen/board?board_tag_name=js">#JS</a></li>
-                    <li><a href="/teen/board?board_tag_name=java">#Java</a></li>
-                    <li><a href="/teen/board?board_tag_name=c language">#C Language</a></li>
-                    <li><a href="/teen/board?board_tag_name=python">#Python</a></li>
-                    <li><a href="/teen/board?board_tag_name=sql">#SQL</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=html">#HTML</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=css">#CSS</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=js">#JS</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=java">#Java</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=c language">#C Language</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=python">#Python</a></li>
+                    <li><a href="/teen/board?board_group_no=${board_group_no}&board_tag_name=sql">#SQL</a></li>
                 </ul>
                 <!-- Board -->
                 <div id="board_list">
                     <!-- Title -->
                     <div id="board_list_title">
-                        <h2><a href="../board?borad_group_no?=${boardNo}">< 리스트로 이동</a></h2>
+                        <h2><a href="/teen/board?borad_group_no?=${boardNo}">< 리스트로 이동</a></h2>
                     </div>
-					<div style="text-align: right;">
-						<a class="btn btn-outline-dark heart"> <img id="heart" src="/teen/resources/images/icon/heart.svg">
-						</a>
-					</div>
 					<!-- List Row -->
                 	<c:forEach items="${boardDetail}" var="boardDetail" varStatus="status">
 	                    <div id="board_list_row">
@@ -72,20 +79,24 @@ function deleteBoard(num) {
 	                                    </h4>
 	                                </div>
 	                                <span class="row_top date"><fmt:formatDate value="${boardDetail.board_date}" pattern="yyyy.MM.dd"/></span>
+	                           		<div class="heart">
+										<a class="btn btn-outline-dark heart">
+											<img id="heart" src="/teen/resources/images/icon/heart.svg">
+										</a>
+									</div>
 	                            </div>
 	                            <div class="row_title">
 	                                <h3>
 	                                    <a>
 	                                        <span class="tag_hit">[추천]</span> ${boardDetail.board_title}
-												<c:if test="${boardDetail.board_file_check == 'Y' }">
-	                                        	<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
-	                                        	</c:if>
+											<c:if test="${boardDetail.board_file_check == 'Y' }">
+                                        		<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
+                                        	</c:if>
 	                                    </a>
 	                                </h3>
 	                            </div>
 	                            <div class="row_contents">
-	                         	<p>${boardDetail.board_content}</p>
-	                            	
+                         			<p>${boardDetail.board_content}</p>
 	                            	<form name="downFile" role="form" method="post">
 	                            		<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
 										<c:forEach var="file" items="${file}">
@@ -103,7 +114,7 @@ function deleteBoard(num) {
 	                            <ul>
 	                            	<li><input type="button" value="스크랩" class="btn_com btn_board">
 		                			<li><input type="button" value="신고" class="btn_com btn_board">
-		                			<li><input type="button" value="추천" class="btn_com btn_board">
+		                			<!-- <li><input type="button" value="추천" class="btn_com btn_board"> -->
 		                			<c:if test="${sessionScope.member_no == boardDetail.member_no }">
 		                			<li><input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
 		                			</c:if>
@@ -123,11 +134,12 @@ function deleteBoard(num) {
 	                	<form action="comment" method="post" enctype="multipart/form-data">
 		                	<input type="hidden" name="board_no" value="${board_no}">
 		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
-			                    첨부파일&nbsp;&nbsp;&nbsp;
+			                <b>첨부파일&nbsp;&nbsp;&nbsp;</b>
 	                		<input type="file" id="file" name="file_0">	                        	
 		                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
 		                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 	                	</form>
+	                	<hr>
 	                </div>
 	 				<!-- 댓글갯수 -->
                     <h2><b class="comment_count">${commentCount}</b>개의 댓글</h2>
@@ -181,8 +193,8 @@ function deleteBoard(num) {
 		                	</div>
 		                	
 		                	<!-- Answer Form -->
-		                	<div id=answer  class="answer_form-${boardComment.ref_step}" style="display : none;">
-			                	<form id =answer_form action="recomment" method="post">
+		                	<div id="answer"  class="answer_form-${boardComment.ref_step}" style="display : none;">
+			                	<form id="answer_form" action="recomment" method="post">
 				                	<textarea name="bcomment_content" placeholder="답글 작성"></textarea>
 				                	<input type="hidden" name="ref_step" value="${boardComment.ref_step}">
 				                	<input type="hidden" name="board_no" value="${boardComment.board_no}">

@@ -17,6 +17,10 @@
 	display: none;
 }
 
+.note-insert button:nth-child(3) {
+	display: none;
+}
+
 .panel {
 	box-shadow: none;
 }

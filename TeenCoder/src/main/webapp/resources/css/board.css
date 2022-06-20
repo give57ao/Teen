@@ -104,6 +104,9 @@
     float: right;
 }
 
+.row_info .heart {
+	text-align: right;
+}
 
 .row_title a {
     display: inline-block;
@@ -287,13 +290,21 @@
 
 /* Board Comment */
 #comment_form {
-	margin: -35px 0 30px;
+	margin: -35px 0 60px;
 	overflow: hidden;
+}
+
+#comment_form form {
+	margin-bottom: 30px;
 }
 
 #comment_form textarea {
 	margin-bottom: 5px;
 	border: 1px solid #CCC;
+}
+
+#comment_form #file {
+	display: inline-block;
 }
 
 #comment_list h2 b {
