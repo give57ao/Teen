@@ -136,6 +136,7 @@ public class BoardController {
    }
    
    
+   
    //게시글 작성 완료
      
    @PostMapping(value = "board/boardWrite")
