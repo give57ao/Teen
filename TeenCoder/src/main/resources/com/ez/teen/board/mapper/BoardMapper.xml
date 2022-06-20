@@ -171,7 +171,7 @@
 	 STORED_FILE_NAME
 	,ORG_FILE_NAME
 	FROM BFILE
-	WHERE FILE_NO = #{FILE_N}
+	WHERE FILE_NO = #{FILE_NO}
 	]]>
 	</select>
 	
@@ -630,6 +630,29 @@ ORDER BY board_comment_count DESC
 		SELECT COUNT(REPORT_NO) FROM REPORT WHERE BOARD_NO = #{board_no}
 		AND MEMBER_NO = #{member_no}
 	</select>
+	
+	<update id= "modifyComment" parameterType="com.ez.teen.board.model.CommentModel">
+		UPDATE BCOMMENT
+		SET
+		BCOMMENT_DATE = SYSDATE,
+		BCOMMENT_CONTENT = #{bcomment_content}
+		WHERE 
+		BCOMMENT_NO = #{bcomment_no}
+		
+	</update>
+	
+		<update id= "updateCmtFile" parameterType="com.ez.teen.board.model.CommentModel">
+		UPDATE BFILE
+		SET
+		ORG_FILE_NAME = #{org_file_name},
+		STORED_FILE_NAME = #{stored_file_name},
+		FILE_SIZE = #{file_size},
+		FILE_DATE = SYSDATE
+		WHERE 
+		FILE_NO = #{file_no}
+	</update>
+	
+	
 	
 	
 </mapper>
