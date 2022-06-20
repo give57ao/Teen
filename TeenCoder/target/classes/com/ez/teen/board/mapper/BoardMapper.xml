@@ -185,6 +185,8 @@
 		
 	</update>
 	
+
+	
 	
 	
 <select id ="boardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.board.model.BoardParam">
