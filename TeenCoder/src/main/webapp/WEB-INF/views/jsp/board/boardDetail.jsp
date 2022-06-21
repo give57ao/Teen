@@ -276,7 +276,7 @@ function deleteBoard(num) {
 		                            	<input type="button" value="신고" class="btn_com btn_board">
 			                			<input type="button" value="추천" class="btn_com btn_board">
 			                			<input type="button" value="답글" class="btn_com btn_board" onClick="recomment(${boardComment.ref_step})" >
-			                			<input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="deletecmt(${bcomment_no})">
+			                			<input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="location.href='/teen/board/deleteComment?board_no=${boardComment.board_no}&bcomment_no=${boardComment.bcomment_no}&ref_step=${boardComment.ref_step}'">
 		                            </div>
 	                            </div>
 		                	</div>

@@ -82,7 +82,8 @@ public interface BoardService {
 
 	public void deleteBoard(int board_no);
 
-	public void deleteBcomment(int bcomment_no);
+	// 댓글 삭제 및 업데이트
+	public void deleteComment(CommentParam commentParam);
 
 	// detail내 댓글개수
 	public int commentCount(int board_no);
@@ -104,5 +105,7 @@ public interface BoardService {
 	public void insertBoardReport(BoardModel boardModel) throws Exception;
 	
 	public void deleteBoardReport(BoardModel boardModel) throws Exception;
+
+	public void deleteBcomment(int bcomment_no);
 	
 }

@@ -367,6 +367,7 @@ public class BoardController {
       return ResponseEntity.ok().body("/summernoteImage/"+savedFileName);
       
    }   
+   
    @RequestMapping("board/delete")
    public String deleteBoard(@RequestParam("board_no") int board_no,@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
       
@@ -382,23 +383,21 @@ public class BoardController {
       redirect.addFlashAttribute("msg", "삭제에러");
    }
          
-   return "redirect:/board";
+   return "redirect:/board/detail?board_no="+board_no;
    }
    
-   @RequestMapping("board/deleteBcomment")
-   public String deleteBcomment(@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
-      try {
-         
-         boardService.deleteBcomment(bcomment_no);
-                  
-         redirect.addFlashAttribute("msg", "삭제굿");
-         
-      } catch (Exception e){
-         
-         redirect.addFlashAttribute("msg", "에렁");
-      }
+// 댓글 삭제
+   @RequestMapping("board/deleteComment")
+   public String deleteBcomment(@RequestParam("board_no") int board_no, @RequestParam("bcomment_no") int bcomment_no,
+		   @RequestParam("ref_step") int ref_step, RedirectAttributes redirect, CommentParam commentParam) {
       
-      return "redirect:/board";
+    	  commentParam.setBoard_no(board_no);
+    	  commentParam.setBcomment_no(bcomment_no);
+    	  commentParam.setBcomment_no(ref_step);
+    	  
+    	  boardService.deleteComment(commentParam); // 삭제 및 업데이트 같이 작동
+    
+      return "redirect:/board/detail?board_no="+board_no;
    }
  
    @ResponseBody

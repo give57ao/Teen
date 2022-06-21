@@ -551,6 +551,25 @@ ORDER BY board_comment_count DESC
 		delete from board where board_no = #{board_no}
 	</delete>
 	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteBcomment" parameterType="com.ez.teen.board.model.CommentParam">
+		DELETE FROM BCOMMENT
+        WHERE 
+            BOARD_NO=#{board_no} AND
+            REF_STEP=#{ref_step}
+	</delete>
+
+    <!-- 댓글 업데이트 -->
+    <select id="updateComment" parameterType="com.ez.teen.board.model.CommentParam">
+        UPDATE 
+            BCOMMENT
+        SET 
+            REF_STEP = REF_STEP-1
+        WHERE
+            BOARD_NO=#{board_no}
+            and ref_step > #{ref_step}
+    </select>
+	
 	<update id="deleteFile">
 		<![CDATA[
 		UPDATE BFILE SET DEL_GB = 'Y' WHERE FILE_NO = #{FILE_NO}
