@@ -369,12 +369,12 @@ public class BoardController {
    }   
    
    @RequestMapping("board/delete")
-   public String deleteBoard(@RequestParam("board_no") int board_no,@RequestParam("bcomment_no") int bcomment_no, RedirectAttributes redirect) {
+   public String deleteBoard(@RequestParam("board_no") int board_no, RedirectAttributes redirect) {
       
       try {
       
       boardService.deleteBoard(board_no);
-      boardService.deleteBcomment(bcomment_no);
+//      boardService.deleteBcomment(bcomment_no);
       
       redirect.addFlashAttribute("msg", "삭제굿");
       
@@ -383,7 +383,7 @@ public class BoardController {
       redirect.addFlashAttribute("msg", "삭제에러");
    }
          
-   return "redirect:/board/detail?board_no="+board_no;
+   return "redirect:/board/";
    }
    
 // 댓글 삭제

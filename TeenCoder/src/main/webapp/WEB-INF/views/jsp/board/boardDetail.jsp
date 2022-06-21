@@ -58,14 +58,6 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/summernote.css">
 </head>
-<script>
-function deleteBoard(num) {
-	var chk = confirm("정말 삭제?")
-	if(chk) {
-		location.href='/teen/board/delete?board_no='+num
-	}
-}
-</script>
 <body>
 	<!-- Header -->
 	<jsp:include page="../template/header.jsp" flush="false" />
@@ -161,7 +153,7 @@ function deleteBoard(num) {
 		                			<li><input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
 		                			</c:if>
 	                            	<c:if test="${sessionScope.member_no == boardDetail.member_no }">
-										<input type="button" value="삭제" class="btn_com btn_board" onClick="deleteBoard(${boardModel.board_no})">
+										<input type="button" value="삭제" class="btn_com btn_board" onClick="location.href='/teen/board/delete?board_no='+ ${board_no}">
 									</c:if>
 									</ul>
 	                            </div>
