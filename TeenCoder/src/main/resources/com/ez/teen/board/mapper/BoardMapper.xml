@@ -650,7 +650,8 @@ ORDER BY board_comment_count DESC
 		ORG_FILE_NAME = #{org_file_name},
 		STORED_FILE_NAME = #{stored_file_name},
 		FILE_SIZE = #{file_size},
-		FILE_DATE = SYSDATE
+		FILE_DATE = SYSDATE,
+		DEL_GB = 'N'
 		WHERE 
 		FILE_NO = #{file_no}
 	</update>
