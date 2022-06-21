@@ -9,7 +9,7 @@
 		SELECT COUNT(*) AS allMemberCount FROM MEMBER
 		
 	</select>
-	
+	 
 	<!-- 전체 게시글 수 -->
 	<select id="getBoardCount" resultType="int" parameterType="com.ez.teen.board.model.BoardParam"> 
 		SELECT COUNT(*) AS allBoardCount FROM BOARD B
@@ -550,6 +550,25 @@ ORDER BY board_comment_count DESC
 	<delete id="deleteBoard" parameterType="int">
 		delete from board where board_no = #{board_no}
 	</delete>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComment" parameterType="com.ez.teen.board.model.CommentParam">
+		DELETE FROM BCOMMENT
+        WHERE 
+            BOARD_NO=#{board_no} AND
+            REF_STEP=#{ref_step}
+	</delete>
+
+    <!-- 댓글 업데이트 -->
+    <select id="updateComment" parameterType="com.ez.teen.board.model.CommentParam">
+        UPDATE 
+            BCOMMENT
+        SET 
+            REF_STEP = REF_STEP-1
+        WHERE
+            BOARD_NO=#{board_no}
+            and ref_step > #{ref_step}
+    </select>
 	
 	<update id="deleteFile">
 		<![CDATA[

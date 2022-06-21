@@ -1,19 +1,10 @@
 var filebox = document.getElementById('filebox');
 
-//파일 삭제 버튼
-function deleteFileBox(){
-var filebox = document.getElementById('filebox');
-console.log(filebox);
-filebox.remove();
-$('#makeBox').show();
-$('#delbox').hide();
-}
-
 
 var fileNoArry = new Array();
 var fileNameArry = new Array();
 
-
+//파일 삭제 기능
 function fn_del(value, name) {
 
 	fileNoArry.push(value);
@@ -26,12 +17,11 @@ function fn_del(value, name) {
 	$('#makeBox').show();
 }
 
+//파일 추가 버튼 함수
 function makeFileBox(){
 	$('#makeFileBox').append(filebox);
-		$('#makeBox').hide();
+	$('#makeBox').hide();
 	$('#delbox').show();
-
-
 }
 
 

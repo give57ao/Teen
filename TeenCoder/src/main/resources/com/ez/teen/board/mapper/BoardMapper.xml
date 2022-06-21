@@ -9,7 +9,7 @@
 		SELECT COUNT(*) AS allMemberCount FROM MEMBER
 		
 	</select>
-	
+	 
 	<!-- 전체 게시글 수 -->
 	<select id="getBoardCount" resultType="int" parameterType="com.ez.teen.board.model.BoardParam"> 
 		SELECT COUNT(*) AS allBoardCount FROM BOARD B
@@ -552,7 +552,7 @@ ORDER BY board_comment_count DESC
 	</delete>
 	
 	<!-- 댓글 삭제 -->
-	<delete id="deleteBcomment" parameterType="com.ez.teen.board.model.CommentParam">
+	<delete id="deleteComment" parameterType="com.ez.teen.board.model.CommentParam">
 		DELETE FROM BCOMMENT
         WHERE 
             BOARD_NO=#{board_no} AND
