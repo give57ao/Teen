@@ -57,10 +57,6 @@
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/board.css">
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/summernote.css">
-<style>
-
- 
-</style>
 </head>
 <script>
 function deleteBoard(num) {
@@ -159,7 +155,7 @@ function deleteBoard(num) {
 	                            <div class="btn_group">
 	                            <ul>
 	                            	<li><input type="button" value="스크랩" class="btn_com btn_board">
-		                			<!-- <li><input type="button" value="신고" class="btn_com btn_board"> -->
+		                			<li><input type="button" value="신고" class="btn_com btn_board">
 		                			<!-- <li><input type="button" value="추천" class="btn_com btn_board"> -->
 		                			<c:if test="${sessionScope.member_no == boardDetail.member_no }">
 		                			<li><input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
@@ -182,9 +178,9 @@ function deleteBoard(num) {
 		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
 	                		<div class="filebox">
 							<input class="upload-name" value="첨부파일" placeholder="첨부파일">
-							<label for="file">파일찾기</label> <input type="file" id="file" name="file">
+							<label for="file">파일찾기</label> 
+							<input type="file" id="file" name="file">
 							</div>
-	                		                  	
 		                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
 		                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 	                	</form>	
@@ -216,11 +212,18 @@ function deleteBoard(num) {
 
 
 									<!-- 첨부파일 -->
-									<div class="filebox">
+									<div id="makeFileBox">
+									<div class="filebox -${boardComment.file_no}" id="filebox">				
 										<input class="upload-name-m" value="" placeholder="${boardComment.org_file_name}"> 
 										<label for="file-m">파일찾기</label> <input type="file" id="file-m"name="file"> <input type="hidden" name="file_no" value="${boardComment.file_no}">
 									</div>
-
+									</div>
+									<div id="delbox" >
+										<input type="button" value="파일삭제" class="btn_com btn_board btn_cmt" onclick="fn_del('${boardComment.file_no}','FILE_NO_0')">	
+									</div>	
+										<div id="makeBox" style="display : none;">
+										<input type="button" value="파일추가"  class="btn_com btn_board btn_cmt" onclick="makeFileBox()" >
+										</div>
 									<input type="reset" value="취소" class="btn_com btn_board btn_cmt" onClick="modifyCancel(${boardComment.ref_step})">
 									 <input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 								</form>
@@ -248,10 +251,12 @@ function deleteBoard(num) {
 		                            	<c:when test="${boardComment.file_no eq 0}">
 										</c:when>
 										<c:otherwise>
+										<c:if test="${boardComment.del_gb eq 'N'}">
 										<form name="downFile" role="form" method="post">
 	                            		<input type="hidden" class="FILE_NO" name="FILE_NO" value="${boardComment.file_no}">
 										<span><a href="#" onClick="fn_fileDown(${boardComment.file_no}); return false;">${boardComment.org_file_name}</a>(${boardComment.file_size}kb)</span>										
 										</form>
+										</c:if>
 										</c:otherwise>
 										</c:choose>
 						           </div>
@@ -344,7 +349,7 @@ function deleteBoard(num) {
 	<script type="text/javascript" src="/teen/resources/js/board/detail/boardDetail.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/board/board.js"></script>
 	<script>
-    $(document).ready(function () {
+   $(document).ready(function () {
 
         var heartval = ${boardLike};
 		var heart = document.getElementById('heart').value;

@@ -75,6 +75,7 @@ public class BoardServiceImpl implements BoardService {
 			MultipartHttpServletRequest mpRequest) throws Exception {
 		boardMapper.modifyComment(commentModel);
 		
+		System.out.println("====================" + files + "============" + fileNames);
 		List<Map<String, Object>> list = fileUtils.parseUpdateCommentFileInfo(commentModel, files, fileNames, mpRequest);
 		Map<String, Object> tempMap = null;
 		int size = list.size();
@@ -89,7 +90,8 @@ public class BoardServiceImpl implements BoardService {
 				System.out.println("=========== COMMENT MODEL :"  + commentModel);
 				
 				boardMapper.updateCmtFile(commentModel);
-			} else {
+			} 
+			else {
 				boardMapper.updateFile(tempMap);
 			}
 		}

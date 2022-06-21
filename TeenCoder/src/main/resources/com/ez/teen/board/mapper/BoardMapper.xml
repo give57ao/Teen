@@ -403,7 +403,8 @@ ORDER BY board_comment_count DESC
 		C.REF_LEVEL AS REF_LEVEL,
 		NVL (F.FILE_NO, 0) AS FILE_NO,
 		F.ORG_FILE_NAME AS ORG_FILE_NAME,
-		F.FILE_SIZE AS FILE_SIZE
+		F.FILE_SIZE AS FILE_SIZE,
+		F.DEL_GB AS DEL_GB
 
 		FROM BCOMMENT C
 		INNER JOIN MEMBER M
@@ -413,8 +414,8 @@ ORDER BY board_comment_count DESC
 		LEFT OUTER JOIN BFILE F
 		ON C.BCOMMENT_NO = F.BCOMMENT_NO
 		WHERE
-		C.BOARD_NO = #{board_no} AND
-		C.REF_LEVEL = 0
+		C.BOARD_NO = #{board_no} 
+		AND C.REF_LEVEL = 0
 		ORDER BY
 		REF_STEP, REF_LEVEL
 	</select>
@@ -649,7 +650,8 @@ ORDER BY board_comment_count DESC
 		ORG_FILE_NAME = #{org_file_name},
 		STORED_FILE_NAME = #{stored_file_name},
 		FILE_SIZE = #{file_size},
-		FILE_DATE = SYSDATE
+		FILE_DATE = SYSDATE,
+		DEL_GB = 'N'
 		WHERE 
 		FILE_NO = #{file_no}
 	</update>
