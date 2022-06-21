@@ -1,3 +1,5 @@
+var filebox = document.getElementById('filebox');
+
 //파일 삭제 버튼
 function deleteFileBox(){
 var filebox = document.getElementById('filebox');
@@ -13,13 +15,23 @@ var fileNameArry = new Array();
 
 
 function fn_del(value, name) {
-var filebox = document.getElementById('filebox');
 
 	fileNoArry.push(value);
 	fileNameArry.push(name);
 	$("#fileNoDel").attr("value", fileNoArry);
 	$("#fileNameDel").attr("value", fileNameArry);
 	filebox.remove();
+	
+	$('#delbox').hide();
+	$('#makeBox').show();
+}
+
+function makeFileBox(){
+	$('#makeFileBox').append(filebox);
+		$('#makeBox').hide();
+	$('#delbox').show();
+
+
 }
 
 

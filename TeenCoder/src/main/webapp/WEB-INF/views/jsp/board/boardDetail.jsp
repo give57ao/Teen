@@ -212,16 +212,18 @@ function deleteBoard(num) {
 
 
 									<!-- 첨부파일 -->
-									<div class="filebox -${boardComment.file_no}" id="filebox">
-									                                <%-- <c:forEach var="file" items="${file}" varStatus="var"> --%>
-									<%-- 
-										<input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.FILE_NO }">
-										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FILE_NO_${var.index}">	 --%>									
+									<div id="makeFileBox">
+									<div class="filebox -${boardComment.file_no}" id="filebox">				
 										<input class="upload-name-m" value="" placeholder="${boardComment.org_file_name}"> 
 										<label for="file-m">파일찾기</label> <input type="file" id="file-m"name="file"> <input type="hidden" name="file_no" value="${boardComment.file_no}">
 									</div>
-										<input type="button" value="파일삭제" class="btn_com btn_board btn_cmt" id="delbox" onclick="fn_del('${boardComment.file_no}','FILE_NO_0')">	
-										<input type="button" value="파일추가"  class="btn_com btn_board btn_cmt" onclick="makeFileBox()" id="makeBox" style="display : none;">
+									</div>
+									<div id="delbox" >
+										<input type="button" value="파일삭제" class="btn_com btn_board btn_cmt" onclick="fn_del('${boardComment.file_no}','FILE_NO_0')">	
+									</div>	
+										<div id="makeBox" style="display : none;">
+										<input type="button" value="파일추가"  class="btn_com btn_board btn_cmt" onclick="makeFileBox()" >
+										</div>
 									<input type="reset" value="취소" class="btn_com btn_board btn_cmt" onClick="modifyCancel(${boardComment.ref_step})">
 									 <input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 								</form>
