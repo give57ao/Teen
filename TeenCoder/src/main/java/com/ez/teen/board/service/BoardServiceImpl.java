@@ -69,37 +69,35 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
-	//댓글 수정
+	// 댓글 수정
 	@Override
 	public void modifyComment(CommentModel commentModel, String[] files, String[] fileNames,
 			MultipartHttpServletRequest mpRequest) throws Exception {
 		boardMapper.modifyComment(commentModel);
-		
+
 		System.out.println("====================" + files + "============" + fileNames);
-		List<Map<String, Object>> list = fileUtils.parseUpdateCommentFileInfo(commentModel, files, fileNames, mpRequest);
+		List<Map<String, Object>> list = fileUtils.parseUpdateCommentFileInfo(commentModel, files, fileNames,
+				mpRequest);
 		Map<String, Object> tempMap = null;
 		int size = list.size();
 		for (int i = 0; i < size; i++) {
 			tempMap = list.get(i);
 			if (tempMap.get("NEW_FILE").equals("Y")) {
-				
-				commentModel.setOrg_file_name((String)tempMap.get("ORG_FILE_NAME"));
-				commentModel.setStored_file_name((String)tempMap.get("STORED_FILE_NAME"));
+
+				commentModel.setOrg_file_name((String) tempMap.get("ORG_FILE_NAME"));
+				commentModel.setStored_file_name((String) tempMap.get("STORED_FILE_NAME"));
 				commentModel.setFile_size(123);
-				
-				System.out.println("=========== COMMENT MODEL :"  + commentModel);
-				
+
+				System.out.println("=========== COMMENT MODEL :" + commentModel);
+
 				boardMapper.updateCmtFile(commentModel);
-			} 
-			else {
+			} else {
 				boardMapper.updateFile(tempMap);
 			}
 		}
-		
 
-		
 	}
-	
+
 	// 게시글 작성
 	@Override
 	public void insertBoard(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception {
@@ -188,6 +186,13 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
+	// 댓글 삭제 및 업데이트
+	@Override
+	public void deleteComment(CommentParam commentParam) {
+		boardMapper.deleteComment(commentParam);
+		boardMapper.updateComment(commentParam);
+	}
+
 	@Override
 	public void hitCount(BoardModel boardModel) {
 		boardMapper.hitCount(boardModel);
@@ -239,11 +244,6 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
-	@Override
-	public void deleteBcomment(int bcomment_no) {
-		boardMapper.deleteBcomment(bcomment_no);
-	}
-
 	// detail내 댓글개수
 	@Override
 	public int commentCount(int board_no) {
@@ -263,16 +263,16 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void insertBoardLike(BoardModel boardModel) throws Exception {
-			boardMapper.insertBoardLike(boardModel);
-			boardMapper.updateBoardLike(boardModel.getBoard_no());
-		
+		boardMapper.insertBoardLike(boardModel);
+		boardMapper.updateBoardLike(boardModel.getBoard_no());
+
 	}
 
 	@Override
 	public void deleteBoardLike(BoardModel boardModel) throws Exception {
 		boardMapper.deleteBoardLike(boardModel);
 		boardMapper.updateBoardLike(boardModel.getBoard_no());
-		
+
 	}
 
 	@Override
@@ -282,8 +282,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void insertBoardReport(BoardModel boardModel) throws Exception {
-			boardMapper.insertBoardReport(boardModel);
-			boardMapper.updateBoardReport(boardModel.getBoard_no());
+		boardMapper.insertBoardReport(boardModel);
+		boardMapper.updateBoardReport(boardModel.getBoard_no());
 	}
 
 	@Override
@@ -292,5 +292,10 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.updateBoardReport(boardModel.getBoard_no());
 	}
 
+	@Override
+	public void deleteBcomment(int bcomment_no) {
+		boardMapper.deleteBcomment(bcomment_no);
+		
+	}
 
 }

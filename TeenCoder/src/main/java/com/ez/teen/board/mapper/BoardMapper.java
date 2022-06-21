@@ -87,7 +87,10 @@ public interface BoardMapper {
 
 	public void deleteFile(int file_no);
 
-	public void deleteBcomment(int bcomment_no);
+	//댓글 삭제 및 업데이트
+	public void deleteComment(CommentParam commentParam);
+		
+	public void updateComment(CommentParam commentParam);
 
 	// detail내 댓글개수
 	public int commentCount(int board_no);
@@ -115,6 +118,8 @@ public interface BoardMapper {
 
 	//댓글 첨부파일 수정
 	public void updateCmtFile(CommentModel commentModel);
+
+	public void deleteBcomment(int bcomment_no);
 
 	
 }
