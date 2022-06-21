@@ -63,6 +63,7 @@
 	                                <tr class="row_title">
 	                                    <td>번호</td>
 	                                    <td>제목</td>
+	                                    <td>내용</td>
 	                                    <td>작성일</td>
 	                                    <td>조회</td>
 	                                    <td>첨부파일</td>
@@ -76,7 +77,8 @@
 	                                <c:forEach items="${notice}" var="notice" varStatus="status">
 		                                <tr class="row">
 		                                   <td class="w5">${notice.noti_no}</td>
-		                                   <td class="w30"><a href="/teen/board/notice/detail?noti_no=${notice.noti_no}">${notice.noti_title}</a></td>
+		                                   <td class="w20"><a href="/teen/board/notice/detail?noti_no=${notice.noti_no}">${notice.noti_title}</a></td>
+		                                   <td class="w20">${notice.noti_content}</td>
 		                                   <td class="w10"><fmt:formatDate value="${notice.noti_date}" pattern="yyyy.MM.dd"/></td>
 		                                   <td class="w10">${notice.noti_hit_count}</td>
 		                                   <td class="w10">${notice.noti_file_check}</td>
