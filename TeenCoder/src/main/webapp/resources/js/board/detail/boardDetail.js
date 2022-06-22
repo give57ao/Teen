@@ -1,9 +1,42 @@
 var filebox = document.getElementById('filebox');
-
-
 var fileNoArry = new Array();
 var fileNameArry = new Array();
 
+
+//댓글 작성&수정 시 값 확인 함수
+function checkValue() {
+
+
+	var ext = $('#file').val().split('.').pop().toLowerCase();
+	if(ext != ""){
+	if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg', 'doc', 'docx', 'xls', 'xlsx', 'hwp', 'pdf', 'zip']) == -1) {
+		alert(ext + ' 확장자는 업로드 할 수 없습니다.');
+		$("#file").val("");
+		return false;
+	}
+	}else{
+		return true;
+	}
+
+
+}
+
+function modicheckValue() {
+
+
+	var ext = $('#file-m').val().split('.').pop().toLowerCase();
+	if(ext != ""){
+	if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg', 'doc', 'docx', 'xls', 'xlsx', 'hwp', 'pdf', 'zip']) == -1) {
+		alert(ext + ' 확장자는 업로드 할 수 없습니다.');
+		$("#file").val("");
+		return false;
+	}
+	}else{
+		return true;
+	}
+
+
+}
 //파일 삭제 기능
 function fn_del(value, name) {
 
@@ -26,12 +59,11 @@ function makeFileBox(){
 
 
 //답글 작성 폼 생성/제거
-function recomment(num){
-	console.log('ref_step : '  + num);
-	if ($('.answer_form-'+num).css('display') == 'none') {
-		$('.answer_form-'+num).show();
+function recomment(ref_step, ref_level){
+	if ($('.answer_form-'+ref_step+'-'+ref_level).css('display') == 'none') {
+		$('.answer_form-'+ref_step+'-'+ref_level).show();
     } else {
-		$('.answer_form-'+num).hide();
+		$('.answer_form-'+ref_step+'-'+ref_level).hide();
     }
 }
 

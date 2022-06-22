@@ -1,3 +1,24 @@
+//글 수정 시 값 확인 함수
+function checkValue() {
+	var form = document.board_form;
+	var test = $("input:checkbox[name='board_tag_name']").is(":checked");
+
+	if (test == false) {
+		alert("말머리 태그를 설정해 주세요.");
+		return false;
+	}
+
+	var ext = $('#file').val().split('.').pop().toLowerCase();
+	console.log(ext);
+	if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg', 'doc', 'docx', 'xls', 'xlsx', 'hwp', 'pdf', 'zip']) == -1) {
+		alert(ext + ' 확장자는 업로드 할 수 없습니다.');
+		$("#file").val("");
+		return false;
+	}
+
+
+}
+
 // 게시글 리스트로 이동
 function goBoard() {
 	location.href = "/teen/board?board_group_no=1";

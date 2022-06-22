@@ -175,9 +175,9 @@
                     
                 	<!-- Comment From -->
 	               	 <div id="comment_form">
-	                	<form action="comment" method="post" enctype="multipart/form-data">
+	                	<form action="comment" method="post" enctype="multipart/form-data" onSubmit="return checkValue()" >
 		                	<input type="hidden" name="board_no" value="${board_no}">
-		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성"></textarea>
+		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성" id="bcomment_content"></textarea>
 	                		<div class="filebox">
 							<input class="upload-name" value="첨부파일" placeholder="첨부파일">
 							<label for="file">파일찾기</label> 
@@ -199,7 +199,7 @@
 		                
 							<!-- modify form -->
 							<div id="comment_form-${boardComment.ref_step}" style="display: none;">
-								<form action="modifyComment" method="post" enctype="multipart/form-data">
+								<form action="modifyComment" method="post" enctype="multipart/form-data" onSubmit="return modicheckValue()" >
 									<input type="hidden" name="bcomment_no" value="${boardComment.bcomment_no}">
 									<input type="hidden" name="board_no" value="${board_no}">
 
@@ -277,7 +277,7 @@
 		                                 </c:if>
 		                            	<input type="button" value="신고" class="btn_com btn_board">
 			                			<input type="button" value="추천" class="btn_com btn_board">
-			                			<input type="button" value="답글" class="btn_com btn_board" onClick="recomment(${boardComment.ref_step})" >
+			                			<input type="button" value="답글" class="btn_com btn_board" onClick="recomment(${boardComment.ref_step}, ${boardComment.ref_level})" >
 			                			<input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="location.href='/teen/board/deleteComment?board_no=${boardComment.board_no}&bcomment_no=${boardComment.bcomment_no}&ref_step=${boardComment.ref_step}'">
 		                            </div>
 	                            </div>
@@ -289,7 +289,7 @@
 				                	<textarea name="bcomment_content" placeholder="답글 작성"></textarea>
 				                	<input type="hidden" name="ref_step" value="${boardComment.ref_step}">
 				                	<input type="hidden" name="board_no" value="${boardComment.board_no}">
-				                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt">
+				                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt" onClick="recomment(${boardComment.ref_step}, ${boardComment.ref_level})">
 				                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 				                </form>
 			                </div>

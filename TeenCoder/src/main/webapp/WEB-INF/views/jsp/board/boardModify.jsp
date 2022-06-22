@@ -38,7 +38,7 @@
                         <h2>게시글 수정</h2>
                     </div>
                     <!-- Form -->
-                    <form id="board_form" method="post" enctype="multipart/form-data">
+                    <form id="board_form" method="post" enctype="multipart/form-data" onSubmit="return checkValue()" >
                             <input type="hidden" id="fileNoDel" name="fileNoDel[]" value=""> 
 							<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
 		                <table>
