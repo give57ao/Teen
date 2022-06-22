@@ -368,10 +368,6 @@ button {
 	cursor: pointer;
 }
 
-#my_card .tap_list li.active {
-	opacity: 0.3;
-}
-
 #my_card .tap_list .tap_list_top .row_top {
     float: left;
     margin-right: 5px;
@@ -395,6 +391,14 @@ button {
 #my_card .tap_list .tap_list_del a img {
 	width: 10px;
 	height: 10px;
+}
+
+#my_card .tap_list .view_active {
+	width: 180px;
+}
+
+#my_card .tap_list .view_active.active {
+	opacity: 0.3;
 }
 
 #my_card .tap_wrap {

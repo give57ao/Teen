@@ -65,7 +65,7 @@ $(window).on('load', function() {
 
 // 쪽지, 팔로잉, 스크랩 리스트 클릭 시 비활성화
 $(function() {
-	$('.tap_list li').click(function() {
+	$('.tap_list .view_active').click(function() {
 		$(this).addClass('active');
 	});
 });

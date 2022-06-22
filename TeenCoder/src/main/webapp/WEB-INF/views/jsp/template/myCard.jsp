@@ -53,13 +53,15 @@
 	           	<ul class="tap_list">
 	           		<!-- 반복문 필요 부분 -->
 	           		<li class="tap_wrap">
-	           			<div class="tap_list_top tap_overtext">
-	            			<h4 class="row_top"><span class="rank">[Expert]</span> 닉네임</h4>
-	            			<span class="row_top date">2022-06-22</span>
+	           			<div class="view_active">
+		           			<div class="tap_list_top tap_overtext">
+		            			<h4 class="row_top"><span class="rank">[Expert]</span> 닉네임</h4>
+		            			<span class="row_top date">2022-06-22</span>
+		           			</div>
+		           			<p class="tap_overtext">쪽지가 도착하였습니다. 쪽지가 도착하였습니다.</p>
 	           			</div>
-	           			<p class="tap_overtext">쪽지가 도착하였습니다. 쪽지가 도착하였습니다.</p>
 	           			<div class="tap_list_del">
-	           				<a><img src="/teen/resources/images/icon/icon_delete.svg"></a>
+	           				<a href="#"><img src="/teen/resources/images/icon/icon_delete.svg"></a>
 	           			</div>
 	           		</li>
 	           	</ul>
@@ -70,13 +72,15 @@
             	<ul class="tap_list">
 	           		<!-- 반복문 필요 부분 -->
 	           		<li class="tap_wrap">
-	           			<div class="tap_list_top tap_overtext">
-	            			<h4 class="row_top"><span class="rank">[Expert]</span> 닉네임</h4>
-	            			<span class="row_top date">2022-06-22</span>
+	           			<div class="view_active">
+		           			<div class="tap_list_top tap_overtext">
+		            			<h4 class="row_top"><span class="rank">[Expert]</span> 닉네임</h4>
+		            			<span class="row_top date">2022-06-22</span>
+		           			</div>
+		           			<p class="tap_overtext">팔로우 하였습니다. 팔로우 하였습니다.</p>
 	           			</div>
-	           			<p class="tap_overtext">팔로우 하였습니다. 팔로우 하였습니다.</p>
 	           			<div class="tap_list_del">
-	           				<a><img src="/teen/resources/images/icon/icon_delete.svg"></a>
+	           				<a href="#"><img src="/teen/resources/images/icon/icon_delete.svg"></a>
 	           			</div>
 	           		</li>
 	        	</ul>
@@ -87,13 +91,15 @@
             	<ul class="tap_list">
 	           		<!-- 반복문 필요 부분 -->
 	           		<li class="tap_wrap">
-	           			<div class="tap_list_top tap_overtext">
-	            			<h4 class="row_top"><span class="rank">[Expert]</span> 닉네임</h4>
-	            			<span class="row_top date">2022-06-22</span>
+	           			<div class="view_active">
+		           			<div class="tap_list_top tap_overtext">
+		            			<h4 class="row_top"><span class="rank">[Expert]</span> 닉네임</h4>
+		            			<span class="row_top date">2022-06-22</span>
+		           			</div>
+		           			<p class="tap_overtext">스크랩 하였습니다. 스크랩 하였습니다.</p>
 	           			</div>
-	           			<p class="tap_overtext">스크랩 하였습니다. 스크랩 하였습니다.</p>
 	           			<div class="tap_list_del">
-	           				<a><img src="/teen/resources/images/icon/icon_delete.svg"></a>
+	           				<a href="#"><img src="/teen/resources/images/icon/icon_delete.svg"></a>
 	           			</div>
 	           		</li>
 	        	</ul>
