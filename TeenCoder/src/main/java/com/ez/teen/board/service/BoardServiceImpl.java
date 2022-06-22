@@ -298,4 +298,10 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
+	//답글 수정
+	@Override
+	public void modifyReComment(CommentModel commentModel) {
+		boardMapper.modifyReComment(commentModel);
+	}
+
 }

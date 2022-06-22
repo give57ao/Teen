@@ -35,13 +35,27 @@ function recomment(num){
     }
 }
 
+//답글 수정 폼 생성
+function modifyReComment(ref_step, ref_level){
+	/*선택한 기존 답글 리스트를 숨기고, 숨겨뒀던 답글 폼을 보여준다 */
+	$('#comment_list-'+ref_step+'-'+ref_level).hide();
+	$('.answer_form-'+ref_step+'-'+ref_level).show();
+
+}
+//답글 수정 폼 생성 
+function reCommentCancel(ref_step, ref_level){
+	$('#comment_list-'+ref_step+'-'+ref_level).show();
+	$('.answer_form-'+ref_step+'-'+ref_level).hide();
+}
+
+
+
 //댓글 접기 펼치기
-function dis(num) {
-	console.log('ref_step : '  + num);
-	if ($('#comment_list .answer_list-'+num).css('display') == 'none') {
-		$('#comment_list .answer_list-'+num).show();
+function dis(ref_step, ref_level) {
+	if ($('#comment_list .answer_list-'+ref_step+'-'+ref_level).css('display') == 'none') {
+		$('#comment_list .answer_list-'+ref_step+'-'+ref_level).show();
     } else {
-		$('#comment_list .answer_list-'+num).hide();
+		$('#comment_list .answer_list-'+ref_step+'-'+ref_level).hide();
     }
 }
 

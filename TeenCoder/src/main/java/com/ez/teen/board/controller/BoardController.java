@@ -269,6 +269,19 @@ public class BoardController {
                   return "redirect:/board/detail";
             }
 
+            
+            //답글 수정
+            @PostMapping("board/modifyRecomment")
+            public String modifyReComment(BoardModel boardModel, CommentParam commentParam,CommentModel commentModel, HttpSession session, RedirectAttributes rttr) {
+               
+               
+               int board_no = commentModel.getBoard_no();
+              
+               boardService.modifyReComment(commentModel);
+               	
+                  rttr.addAttribute("board_no", board_no);
+                  return "redirect:/board/detail";
+            }
       
 
    //첨부파일 다운로드 구현

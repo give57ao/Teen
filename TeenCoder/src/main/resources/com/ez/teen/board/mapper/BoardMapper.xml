@@ -675,6 +675,20 @@ ORDER BY board_comment_count DESC
 		FILE_NO = #{file_no}
 	</update>
 	
+	<!-- 답글 수정 -->
+	<update id="modifyReComment" parameterType="com.ez.teen.board.model.CommentModel">
+	UPDATE BCOMMENT
+	SET
+	BCOMMENT_CONTENT = #{bcomment_content},
+	BCOMMENT_DATE = SYSDATE
+	WHERE
+	BOARD_NO = #{board_no}
+	AND
+	REF_STEP = #{ref_step}
+	AND
+	REF_LEVEL = #{ref_level}
+	
+	</update>
 	
 	
 	

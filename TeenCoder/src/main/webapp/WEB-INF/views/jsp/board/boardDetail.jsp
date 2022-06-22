@@ -282,7 +282,7 @@
 		                	</div>
 		                	
 		                	<!-- Answer Form -->
-		                	<div id="answer"  class="answer_form-${boardComment.ref_step}" style="display : none;">
+		                	<div id="answer"  class="answer_form-${boardComment.ref_step}-${boardComment.ref_level}" style="display : none;">
 			                	<form id="answer_form" action="recomment" method="post">
 				                	<textarea name="bcomment_content" placeholder="답글 작성"></textarea>
 				                	<input type="hidden" name="ref_step" value="${boardComment.ref_step}">
@@ -294,7 +294,7 @@
 			                <c:forEach items="${answerCount}" var="answerCount">
 			                	<c:if test="${status.index+1 eq answerCount.ref_step}">
 			                		<c:if test="${answerCount.board_answer_count>1 }">
-		                				<input type="button" value="답글 더 보기" class="getAnswerBtn" onClick="dis(${boardComment.ref_step})">
+		                				<input type="button" value="답글 더 보기" class="getAnswerBtn" onClick="dis(${boardComment.ref_step}, ${boardComment.ref_level})">
 		                			</c:if>
 		                		</c:if>
 		                	</c:forEach>
@@ -303,7 +303,8 @@
 								<c:if test="${boardComment.ref_step eq boardAnswer.ref_step}">
 								<c:set var="num" value="${boardAnswer.ref_step}" />
 								<input type="hidden" id="refNo" value="${num}"/>
-			                	<div id="comment_list" class="answer_list-${boardComment.ref_step}" style="display : none;" >
+								<!-- 답글 갯수에 따라 반복 -->
+			                	<div id="comment_list-${boardAnswer.ref_step}-${boardAnswer.ref_level}" class="answer_list-${boardComment.ref_step}-${boardComment.ref_level}" style="display : none;" >
 				                	<div class="comment_box answer_box">
 				                		<div class="row">
 				                            <div class="row_info">
@@ -323,12 +324,27 @@
 			                                    <li><img src="/teen/resources/images/icon/icon_like.svg" class="i_like">${boardAnswer.bcomment_like_count}</li>
 			                                </ul>
 			                                <div class="btn_group">
+					                            <c:if test="${sessionScope.member_nick == boardAnswer.member_nick}">
+				                                <input type="button" value="수정" class="btn_com btn_board" onClick="modifyReComment(${boardAnswer.ref_step} ,${boardAnswer.ref_level})">
+				                                </c:if>
 				                            	<input type="button" value="신고" class="btn_com btn_board">
 					                			<input type="button" value="추천" class="btn_com btn_board">
 				                            </div>
 			                            </div>
 				                	</div>
 			                	</div>
+			                	
+			                <!-- Answer Modify Form -->
+		                	<div id="answer"  class="answer_form-${boardAnswer.ref_step}-${boardAnswer.ref_level}" style="display : none;">
+			                	<form id="answer_form" action="modifyRecomment" method="post">
+				                	<textarea name="bcomment_content" placeholder="답글 작성">${boardAnswer.bcomment_content}</textarea>
+				                	<input type="hidden" name="ref_step" value="${boardAnswer.ref_step}">
+				                	<input type="hidden" name="ref_level" value="${boardAnswer.ref_level}">
+				                	<input type="hidden" name="board_no" value="${boardAnswer.board_no}">
+				                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt" onClick="reCommentCancel(${boardAnswer.ref_step} ,${boardAnswer.ref_level})">
+				                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
+				                </form>
+			                </div>
 			                	</c:if>
 		                	</c:forEach>
 

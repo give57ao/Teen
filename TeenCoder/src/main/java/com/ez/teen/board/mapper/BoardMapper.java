@@ -121,5 +121,8 @@ public interface BoardMapper {
 
 	public void deleteBcomment(int bcomment_no);
 
+	//답글 수정
+	public void modifyReComment(CommentModel commentModel);
+
 	
 }
