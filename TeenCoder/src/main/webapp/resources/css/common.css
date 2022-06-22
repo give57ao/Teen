@@ -108,7 +108,7 @@ button {
 }
 
 .tap_overtext {
-	width: 180px;
+	width: 200px;
 	text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -288,12 +288,10 @@ button {
 
 #my_card .card_info_box p {
 	margin-top: 5px;
-	font-size: 0.9em;
 }
 
 #my_card .card_info_icon {
 	margin-top: 20px;
-	font-size: 0.9em;
 	display: inline-block;
 }
 
@@ -353,10 +351,6 @@ button {
 	text-align: left;
 }
 
-#my_card .tap_list {
-	font-size: 0.9em;
-}
-
 #my_card .tap_list p {
 	margin-top: -3px;
 }
@@ -407,7 +401,6 @@ button {
 }
 
 #my_card .tap_side_menu {
-	font-size: 0.9em;
 	text-align: left;
 	overflow: hidden;
 }
