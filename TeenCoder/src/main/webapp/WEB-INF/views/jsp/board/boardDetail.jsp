@@ -116,9 +116,11 @@
 												<div style="display: none; position: absolute;" id="drop-content">
 													<input type="hidden" id="member_nick" name="member_nick"  value="${boardDetail.member_nick }">
 													<input type="hidden" id="member_no" name="member_no" value="${boardDetail.member_no }">
+	                            					<c:if test="${sessionScope.member_no != boardDetail.member_no }">
 													<div><button onclick="follow()" >팔로우 하기</button></div> 
 													<div><button onclick="msg()" >쪽지 보내기</button></div> 
 													<div><button onclick="board()" >게시글 보기</button></div>
+													</c:if>
 												</div>
 	                                </div>
 	                                <span class="row_top date"><fmt:formatDate value="${boardDetail.board_date}" pattern="yyyy.MM.dd"/></span>
