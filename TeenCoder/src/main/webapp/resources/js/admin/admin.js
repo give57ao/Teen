@@ -14,6 +14,31 @@ function memberDelete() {
 	}
 }
 
+// 회원정보수정 체크박스
+$(document).on('click', "#pro input[type='checkbox']", function() {
+    if(this.checked) {
+        var pro = $("#pro input[type='checkbox']");
+        for(var i = 0; i < pro.length; i++){
+            pro[i].checked = false;
+        }
+        this.checked = true;
+    } else {
+        this.checked = false;
+    }
+});
+
+$(document).on('click', "#admin input[type='checkbox']", function() {
+    if(this.checked) {
+        var admin = $("#admin input[type='checkbox']");
+        for(var i = 0; i < admin.length; i++){
+            admin[i].checked = false;
+        }
+        this.checked = true;
+    } else {
+        this.checked = false;
+    }
+});
+
 // 공지글 리스트 화면으로 이동
 function goNoticeBoard() {
 	location.href = "/teen/admin/noticeBoard";

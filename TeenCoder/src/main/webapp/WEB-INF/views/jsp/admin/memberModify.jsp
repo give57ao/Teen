@@ -51,17 +51,49 @@
 	                                        <td><input type="hidden" name="member_no" value="${member.member_no}"></td>
 	                                    </tr>
 	                                    <tr>
-	                                        <th>비밀번호</th>
-	                                        <td>
-	                                            <input type="password" name="member_pw" placeholder="비밀번호">
-	                                        </td>
-	                                    </tr>
-	                                    <tr>
 	                                        <th>닉네임</th>
 	                                        <td>
 	                                            <input type="text" name="member_nick" placeholder="닉네임">
 	                                        </td>
 	                                    </tr>
+	                                    <tr id="pro" class="checkbox">
+			                                <th>개발직군 유무</th>
+			                                <c:if test="${member.member_pro_check == 'Y'}">
+			                                	<td>
+				                                    <input type="checkbox" name="member_pro_check" value="Y" id="yes" checked>
+				                                    <label for="yes">예</label>
+				                                    <input type="checkbox" name="member_pro_check" value="N" id="no">
+				                                    <label for="no">아니오</label>
+			                                	</td>
+			                                </c:if>
+			                                <c:if test="${member.member_pro_check == 'N'}">
+			                                	<td>
+				                                    <input type="checkbox" name="member_pro_check" value="Y" id="yes">
+				                                    <label for="yes">예</label>
+				                                    <input type="checkbox" name="member_pro_check" value="N" id="no" checked>
+				                                    <label for="no">아니오</label>
+			                                	</td>
+			                                </c:if>
+			                            </tr>
+			                            <tr id="admin" class="checkbox">
+			                                <th>관리자 유무</th>
+			                                <c:if test="${member.member_admin == 'Y'}">
+				                                <td>
+				                                    <input type="checkbox" name="member_admin" value="Y" id="yes" checked>
+				                                    <label for="yes">예</label>
+				                                    <input type="checkbox" name="member_admin" value="N" id="no">
+				                                    <label for="no">아니오</label>
+				                                </td>
+			                                </c:if>
+			                                <c:if test="${member.member_admin == 'N'}">
+				                                <td>
+				                                    <input type="checkbox" name="member_admin" value="Y" id="yes">
+				                                    <label for="yes">예</label>
+				                                    <input type="checkbox" name="member_admin" value="N" id="no" checked>
+				                                    <label for="no">아니오</label>
+				                                </td>
+			                                </c:if>
+			                            </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>

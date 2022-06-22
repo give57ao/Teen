@@ -69,10 +69,6 @@
     margin-top: 5px;
 }
 
-#join_form table .checkbox {
-    margin: 40px 0 0;
-}
-
 #join_form table .checkbox input[type="checkbox"] {
     width: 20px;
     height: 20px;
@@ -94,7 +90,7 @@
 
 #join_form table .checkbox label {
     margin-left: 5px;
-    margin-right: 100px;
+    margin-right: 150px;
     vertical-align: middle;
 }
 

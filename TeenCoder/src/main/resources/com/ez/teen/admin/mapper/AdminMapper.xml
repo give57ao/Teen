@@ -58,8 +58,9 @@
  	<update id="memberModify" parameterType="com.ez.teen.member.model.MemberModel">
 		 <![CDATA[
 		 UPDATE MEMBER SET
-		 MEMBER_PW = #{member_pw},
-		 MEMBER_NICK = #{member_nick}
+		 MEMBER_NICK = #{member_nick},
+		 MEMBER_PRO_CHECK = #{member_pro_check},
+		 MEMBER_ADMIN = #{member_admin}
 		 WHERE MEMBER_NO = #{member_no}
 		 ]]>
 	</update>
