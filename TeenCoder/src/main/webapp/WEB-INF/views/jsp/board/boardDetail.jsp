@@ -110,8 +110,16 @@
 	                                <div class="row_top member">
 	                                    <h4>
 	                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-	                                        <span class="rank">[Expert]</span> ${boardDetail.member_nick}
-	                                    </h4>
+	                                        <span class="rank">[Expert]</span>
+	                                        <button onclick="dp_menu()">${boardDetail.member_nick}</button>
+												</h4>
+												<div style="display: none; position: absolute;" id="drop-content">
+													<input type="hidden" id="member_nick" name="member_nick"  value="${boardDetail.member_nick }">
+													<input type="hidden" id="member_no" name="member_no" value="${boardDetail.member_no }">
+													<div><button onclick="follow()" >팔로우 하기</button></div> 
+													<div><button onclick="msg()" >쪽지 보내기</button></div> 
+													<div><button onclick="board()" >게시글 보기</button></div>
+												</div>
 	                                </div>
 	                                <span class="row_top date"><fmt:formatDate value="${boardDetail.board_date}" pattern="yyyy.MM.dd"/></span>
 	                           		<ul class="detail_count">

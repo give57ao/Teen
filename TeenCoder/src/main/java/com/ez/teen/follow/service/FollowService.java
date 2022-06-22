@@ -14,4 +14,10 @@ public interface FollowService {
 	// 전체 댓글 수
 	public int getFollowCount(MemberFollowParam followParam);
 	
+	//팔로우 하기
+	public void insertFollow(MemberFollowModel followMdoel)throws Exception;
+	
+	//팔로우 중복확인
+	public int countFollow(MemberFollowModel followModel)throws Exception;
+	
 }

@@ -6,20 +6,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
 	<select id="followBoardList"
 		resultType="com.ez.teen.follow.model.MemberFollowModel"
-		parameterType="com.ez.teen.follow.model.MemberFollowParam">
+		parameterType="com.ez.teen.follow.model.MemberFollowModel">
+		
 SELECT
-		B.BOARD_NO
-		,B.BOARD_GROUP_NO
-		,B.BOARD_TAG_NAME
-		,B.BOARD_TITLE
-		,B.BOARD_DATE
-		,B.BOARD_HIT_COUNT
-		,B.BOARD_LIKE_COUNT
-		,B.BOARD_REPORT_COUNT
-		,B.BOARD_FILE_CHECK
-		,G.BGROUP_NAME
-		,M.MEMBER_NICK
-
+		B.BOARD_NO 
+		,B.BOARD_GROUP_NO 
+		,B.BOARD_TAG_NAME 
+		,B.BOARD_TITLE 
+		,B.BOARD_DATE 
+		,B.BOARD_HIT_COUNT 
+		,B.BOARD_LIKE_COUNT 
+		,B.BOARD_REPORT_COUNT 
+		,B.BOARD_FILE_CHECK 
+		,G.BGROUP_NAME 
+		,M.MEMBER_NICK 
+		,M.MEMBER_NO 
+		
 		FROM BOARD B
 		INNER JOIN BGROUP G
 		ON B.BOARD_GROUP_NO = G.BOARD_GROUP_NO
@@ -29,7 +31,7 @@ SELECT
 		WHERE B.MEMBER_NO IN (SELECT
 		FOLLOWING_MEMBER_NO
 		FROM FOLLOW
-		WHERE MEMBER_NO = #{member_no})
+		WHERE FOLLOW_NO = #{member_no})
 		
 	</select>
 
@@ -82,9 +84,27 @@ SELECT
 
 	</select>
 
+	<insert id="insertFollow"
+	parameterType="com.ez.teen.follow.model.MemberFollowModel">
+	INSERT INTO FOLLOW(
+	 FOLLOW_DATE
+	,FOLLOW_NO
+	,FOLLOWING_MEMBER_NO
+	,MEMBER_NICK
+	)
+	VALUES(
+	SYSDATE
+	,#{follow_no}
+	,#{member_no}
+	,#{member_nick}
+	)
+</insert>
 
-
-
+<!-- 중복팔로우 확인 결과 -->
+<select id="countFollow" parameterType="com.ez.teen.follow.model.MemberFollowModel" resultType="int">
+SELECT COUNT(*) FROM FOLLOW
+WHERE FOLLOW_NO = #{follow_no} AND FOLLOWING_MEMBER_NO = #{member_no}
+</select>
 
 
 

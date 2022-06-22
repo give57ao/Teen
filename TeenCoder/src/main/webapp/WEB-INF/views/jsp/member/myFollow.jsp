@@ -72,9 +72,17 @@
 											</ul>
 											<div class="row_top member">
 												<h4>
-													<img src="/teen/resources/images/icon/icon_badge.png" class="i_badge"> 
-													<span class="rank">[Expert]</span> ${follow.member_nick}
+													<img src="/teen/resources/images/icon/icon_badge.png"
+														class="i_badge">
+													<button onclick="dp_menu()">${follow.member_nick}</button>
 												</h4>
+												<div style="display: none; position: absolute;" id="drop-content">
+													<input type="hidden" id="member_nick" value="${follow.member_nick }">
+													<input type="hidden" id="member_no" value="${follow.member_no }">
+													<div><button onclick="follow()" >팔로우 하기</button></div> 
+													<div><button onclick="msg()" >쪽지 보내기</button></div> 
+													<div><button onclick="board()" >게시글 보기</button></div>
+												</div>
 											</div>
 											<span class="row_top date"><fmt:formatDate value="${follow.board_date}" pattern="yyyy.MM.dd"/></span>
 											<ul class="row_top number">
@@ -92,8 +100,6 @@
 													</c:if>
 												</a>
 											</h3>
-											<%-- <input type="hidden" id="board_no" value="${board.board_no}"> --%>
-											<input type="button" value="삭제" class="btn_com btn_del_list" onClick="deleteBoard(${follow.board_no})">
 										</div>
 									</div>
 									<hr>
@@ -144,15 +150,6 @@
 	<jsp:include page="../template/footer.jsp" flush="false" />
 	
 	<!-- JS -->
-	<script type="text/javascript" src="/teen/resources/js/member/myPage/myBoard.js"></script>
-			<script>
-function deleteBoard(num) {
-	var chk = confirm("정말 삭제?")
-	if(chk) {
-		location.href='/teen/board/delete?board_no='+num
-	}
-}
-
-</script>
+	<script type="text/javascript" src="/teen/resources/js/member/myPage/myFollow.js"></script>
 </body>
 </html>

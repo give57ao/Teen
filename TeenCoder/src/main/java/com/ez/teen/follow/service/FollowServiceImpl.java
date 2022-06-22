@@ -24,11 +24,25 @@ public class FollowServiceImpl implements FollowService{
 		return followMapper.followBoardList(followModel);
 	}
 
-
+	// 페이징
 	@Override
 	public int getFollowCount(MemberFollowParam followParam) {
 		
 		return followMapper.getFollowCount(followParam);
+	}
+
+	//팔로우 하기
+	@Override
+	public void insertFollow(MemberFollowModel followMdoel) throws Exception {
+		 
+		followMapper.insertFollow(followMdoel);
+	}
+
+	//팔로우 중복확인
+	@Override
+	public int countFollow(MemberFollowModel followModel) throws Exception {
+
+		return followMapper.countFollow(followModel);
 	}
 
 }

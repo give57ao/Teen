@@ -9,6 +9,7 @@ public class MemberFollowModel {
 	private int member_no;
 	private int following_member_no;
 	private String member_id;
+	private int follow_no;
 	
 	private int rn;
 	private int bcomment_no;
@@ -36,6 +37,12 @@ public class MemberFollowModel {
 	private String del_gb;
 
 	
+	public int getFollow_no() {
+		return follow_no;
+	}
+	public void setFollow_no(int follow_no) {
+		this.follow_no = follow_no;
+	}
 	public int getRn() {
 		return rn;
 	}
