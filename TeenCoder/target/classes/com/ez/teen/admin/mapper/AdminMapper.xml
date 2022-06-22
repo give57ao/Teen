@@ -25,11 +25,11 @@
 	
 	<!-- 회원관리 리스트 -->
 	<select id ="memberList" resultType="com.ez.teen.member.model.MemberModel" parameterType="com.ez.teen.member.model.MemberParam">
-		SELECT RN, MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_NICK, MEMBER_EMAIL, MEMBER_DATE, MEMBER_PRO_CHECK
+		SELECT RN, MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_NICK, MEMBER_EMAIL, MEMBER_DATE, MEMBER_ADMIN, MEMBER_PRO_CHECK
 			FROM (
 				SELECT ROWNUM RN, A.* 
 				FROM (
-	            	SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_NICK, MEMBER_EMAIL, MEMBER_DATE, MEMBER_PRO_CHECK
+	            	SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_NICK, MEMBER_EMAIL, MEMBER_DATE, MEMBER_ADMIN, MEMBER_PRO_CHECK
 					FROM MEMBER
 					
 					<if test='search == "id"'>
@@ -59,8 +59,8 @@
 		 <![CDATA[
 		 UPDATE MEMBER SET
 		 MEMBER_NICK = #{member_nick},
-		 MEMBER_PRO_CHECK = #{member_pro_check},
-		 MEMBER_ADMIN = #{member_admin}
+		 MEMBER_ADMIN = #{member_admin},
+		 MEMBER_PRO_CHECK = #{member_pro_check}
 		 WHERE MEMBER_NO = #{member_no}
 		 ]]>
 	</update>

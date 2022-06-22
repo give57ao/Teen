@@ -63,6 +63,7 @@
 	                                    <td>닉네임</td>
 	                                    <td>이메일</td>
 	                                    <td>가입일</td>
+	                                    <td>관리자</td>
 	                                    <td>개발직군</td>
 	                                    <td>회원정보</td>
 	                                </tr>
@@ -79,6 +80,7 @@
 		                                   <td class="w10">${member.member_nick}</td>
 		                                   <td class="w20">${member.member_email}</td>
 		                                   <td class="w10"><fmt:formatDate value="${member.member_date}" pattern="yyyy.MM.dd"/></td>
+		                                   <td class="w10">${member.member_admin}</td>
 		                                   <td class="w10">${member.member_pro_check}</td>
 		                                   <td class="w10">
 		                                   	    <a href="/teen/admin/memberModify?member_no=${member.member_no}">수정</a> /
