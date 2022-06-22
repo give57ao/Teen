@@ -22,3 +22,50 @@ $(window).on('load', function() {
         $('#header_nav a').eq(3).addClass('active');
     }
 });
+
+// 마이카드 탭 전환
+$(window).on('load', function() {
+	$('.card_tap li:nth-child(1) a').addClass('active');
+	$('.tap_c').hide();
+	$('.tap_board').show();
+	
+	// 글
+	$('.card_tap li:nth-child(1) a').click(function() {
+		$('.card_tap li a').removeClass('active');
+		$('.tap_c').hide();
+		$(this).addClass('active');
+		$('.tap_board').show();
+	})
+	
+	// 쪽지
+	$('.card_tap li:nth-child(2) a').click(function() {
+		$('.card_tap li a').removeClass('active');
+		$('.tap_c').hide();
+		$(this).addClass('active');
+		$('.tap_message').show();
+	})
+	
+	// 팔로잉
+	$('.card_tap li:nth-child(3) a').click(function() {
+		$('.card_tap li a').removeClass('active');
+		$('.tap_c').hide();
+		$(this).addClass('active');
+		$('.tap_follow').show();
+	})
+	
+	// 스크랩
+	$('.card_tap li:nth-child(4) a').click(function() {
+		$('.card_tap li a').removeClass('active');
+		$('.tap_c').hide();
+		$(this).addClass('active');
+		$('.tap_scrap').show();
+	})
+});
+
+
+// 쪽지, 팔로잉, 스크랩 리스트 클릭 시 비활성화
+$(function() {
+	$('.tap_list li').click(function() {
+		$(this).addClass('active');
+	});
+});

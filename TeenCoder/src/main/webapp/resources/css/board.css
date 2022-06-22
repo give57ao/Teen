@@ -11,13 +11,6 @@
     display: flex;
 }
 
-.overtext {
-	width: 500px;
-	text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
 .dropdown {
     width: 100%;
     height: 100%;
@@ -373,38 +366,29 @@
     margin-left: 30px;
 }
 
-#member_info .mycard {
-    width: 100%;
-    height: 250px;
-    background: #FFF;
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #CCC;
-    border-radius: 10px;
-    box-sizing: border-box;
-    display: none;
-}
 
-#member_info a.btn_com {
+#member_info>a.btn_com {
 	background: #5573E8;
 }
 
+
+/* Board Detail Count */
  .detail_count{
- float: right;
+ 	float: right;
  }
  
  .detail_count li{
- float: left;
- margin-left: 10px;
+ 	float: left;
+ 	margin-left: 10px;
  }
  
  .detail_count li a{
- display: inline-block;
- cursor: pointer;
+ 	display: inline-block;
+ 	cursor: pointer;
  }
  
  .detail_count li a img{
-  width: 20px;
- height: 20px;
- vertical-align: middle;
+ 	width: 20px;
+ 	height: 20px;
+ 	vertical-align: middle;
  }
