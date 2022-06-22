@@ -384,6 +384,7 @@ button {
 #my_card .tap_list .tap_list_del {
 	float: right;
 	margin-top: -28px;
+	z-index: 10;
 }
 
 #my_card .tap_list .tap_list_del a {
