@@ -163,3 +163,29 @@ function follow() {
 	});
 	}
 }
+
+//스크랩 하기
+function scrap() {
+   var board_no = document.getElementById('board_no').value;
+   var member_nick = document.getElementById('member_nick').value;
+   console.log(board_no);
+   
+   if(confirm("해당 글을 스크랩 하시겠습니까?")){
+   $.ajax({
+      url : "/teen/scrap/insertScrap",
+      type : "post",
+      dataType : "json",
+      data : {board_no, member_nick},
+      success : function(data) {
+      if(data == 1){
+         alert("해당 게시글을 스크랩 했습니다.");
+      
+      } else if(data == 0) {
+         alert("이미 스크랩한 게시글입니다.")
+         }
+      }
+   });
+   }
+   
+   
+}

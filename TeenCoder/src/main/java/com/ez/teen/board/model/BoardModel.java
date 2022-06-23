@@ -40,7 +40,18 @@ public class BoardModel {
 	private int like_no;
 	private int like_check;
 	
+	//스크랩 게시글 취소를 위한 데이터
+	private int scrap_no;
 	
+	
+	
+	
+	public int getScrap_no() {
+		return scrap_no;
+	}
+	public void setScrap_no(int scrap_no) {
+		this.scrap_no = scrap_no;
+	}
 	public int getBoard_comment_count() {
 		return board_comment_count;
 	}

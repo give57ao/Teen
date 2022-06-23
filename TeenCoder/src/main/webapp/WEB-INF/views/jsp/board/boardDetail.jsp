@@ -113,7 +113,7 @@
 	                            <c:if test="${sessionScope.member_no != null}">
 	                            <div class="btn_group">
 	                            <ul>
-	                            	<li><input type="button" value="스크랩" class="btn_com btn_board">
+	                            	<li><button onclick="scrap()" class="btn_com btn_board">스크랩</button>
 		                			<li><input type="button" value="신고" class="btn_com btn_board">
 		                			<!-- <li><input type="button" value="추천" class="btn_com btn_board"> -->
 		                			<c:if test="${sessionScope.member_no == boardDetail.member_no }">

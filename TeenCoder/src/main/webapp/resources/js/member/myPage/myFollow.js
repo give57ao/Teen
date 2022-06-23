@@ -8,7 +8,7 @@ function searchBoard() {
 		alert('검색 설정을 확인 해주세요.');
 		return false;
 	}
-	location.href = '/teen/member/boardList?search='+optionVal+'&keyword='+ keyword;
+	location.href = '/teen/follow/followList?search='+optionVal+'&keyword='+ keyword;
 }
 
 

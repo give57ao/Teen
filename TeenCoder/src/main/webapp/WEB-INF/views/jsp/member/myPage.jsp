@@ -33,7 +33,7 @@
 	                    <li><a href="/teen/member/commentList">내가 작성한 댓글</a></li>
 	                    <li><a href="#">나의 포인트</a></li>
 	                    <li><a href="/teen/follow/followList">팔로잉</a></li>
-	                    <li><a href="#">스크랩</a></li>
+	                    <li><a href="/teen/scrap/scrapList">스크랩</a></li>
 	                </ul>
 	                <!-- My Page -->
 	                <div id="board_list" class="my_page">

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ez.teen.scrap.mapper.ScrapMapper">
+
+
+<insert id="insertScrap" parameterType="com.ez.teen.board.model.BoardModel">
+INSERT INTO SCRAP(
+SCRAP_NO,
+MEMBER_NO,
+BOARD_NO,
+MEMBER_NICK
+)
+VALUES(
+SEQ_SCRAP_NO.NEXTVAL,
+#{member_no},
+#{board_no},
+#{member_nick}
+)
+
+</insert>
+
+
+<!-- 중복팔로우 확인 결과 -->
+<select id="countScrap" parameterType="com.ez.teen.board.model.BoardModel" resultType="int">
+SELECT COUNT(*) FROM SCRAP
+WHERE MEMBER_NO = #{member_no} AND BOARD_NO = #{board_no}
+</select>
+
+
+
+<!-- 스크렙한 게시글 전체 수 -->
+<select id="getScrapCount" resultType="int" parameterType="com.ez.teen.board.model.BoardParam">
+	SELECT COUNT(*) AS allBoardCount FROM BOARD B
+	INNER JOIN SCRAP S
+	ON B.MEMBER_NO = S.MEMBER_NO
+
+	<if test='board_group_no != null'>
+		WHERE B.BOARD_GROUP_NO = #{board_group_no}
+	</if>
+
+	<if test='member_no != 0'>
+		AND S.MEMBER_NO = #{member_no}
+	</if>
+
+	<if test='search == "title"'>
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+	</if>
+
+	<if test='search == "content"'>
+		AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+	</if>
+
+	<if test='search == "nick"'>
+		AND S.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+	</if>
+
+	<if test='search == "all"'>
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		OR S.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+		OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+	</if>
+
+
+	<if test='board_tag_name == null'>
+		AND REGEXP_LIKE (B.BOARD_TAG_NAME,
+		'^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
+	</if>
+
+	<if test='board_tag_name != null'>
+		<![CDATA[
+		AND LOWER(B.BOARD_TAG_NAME) LIKE '%'||#{board_tag_name}||'%'
+		]]>
+	</if>
+
+</select>
+
+
+<!-- 내가 스크렙한 게시글 리스트 -->
+<select id="scrapList"
+	resultType="com.ez.teen.board.model.BoardModel"
+	parameterType="com.ez.teen.board.model.BoardModel">
+	SELECT rn, board_no, board_group_no, board_tag_name, board_title,
+	board_date, board_hit_count, board_like_count, board_report_count,
+	board_file_check, bgroup_name, member_nick, board_comment_count, scrap_no
+	FROM (
+	SELECT ROWNUM RN, A.*
+	FROM (
+	SELECT
+	S.BOARD_NO
+	,B.BOARD_GROUP_NO
+	,B.BOARD_TAG_NAME
+	,B.BOARD_TITLE
+	,B.BOARD_DATE
+	,B.BOARD_HIT_COUNT
+	,B.BOARD_LIKE_COUNT
+	,B.BOARD_REPORT_COUNT
+	,B.BOARD_FILE_CHECK
+	,G.BGROUP_NAME
+	,S.MEMBER_NICK
+	,S.SCRAP_NO
+	,COUNT(C.BOARD_NO) AS board_comment_count
+
+	FROM BOARD B
+	INNER JOIN BGROUP G
+	ON B.BOARD_GROUP_NO = G.BOARD_GROUP_NO
+	INNER JOIN SCRAP S
+	ON B.BOARD_NO = S.BOARD_NO
+	LEFT OUTER JOIN BCOMMENT C
+	ON B.BOARD_NO = C.BOARD_NO
+    
+    WHERE S.BOARD_NO IN (SELECT BOARD_NO FROM SCRAP WHERE MEMBER_NO = #{member_no}) AND S.MEMBER_NO = #{member_no}
+
+	<if test='board_group_no != null'>
+		WHERE B.BOARD_GROUP_NO = #{board_group_no}
+	</if>
+
+	<if test='search == "title"'>
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+	</if>
+
+	<if test='search == "content"'>
+		AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+	</if>
+
+	<if test='search == "nick"'>
+		AND S.MEMBER_NICK LIKE '%'||#{keyword}||'%'
+	</if>
+
+	<if test='search == "all"'>
+		AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
+		OR S.MEMBER_NICK
+		LIKE '%'||#{keyword}||'%'
+		OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+	</if>
+
+	<if test='board_tag_name == null'>
+		AND REGEXP_LIKE (B.BOARD_TAG_NAME,
+		'^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
+	</if>
+
+	<if test='board_tag_name != null'>
+<![CDATA[
+	AND LOWER(B.BOARD_TAG_NAME) LIKE '%'||#{board_tag_name}||'%'
+]]>
+	</if>
+
+
+	GROUP BY S.BOARD_NO, B.BOARD_GROUP_NO, B.BOARD_TAG_NAME,
+	B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,G.BGROUP_NAME,S.MEMBER_NICK,S.SCRAP_NO
+
+	<if test='sort == null'>
+		ORDER BY B.BOARD_DATE DESC
+	</if>
+
+	<if test='sort == "recent"'>
+		ORDER BY B.BOARD_DATE DESC
+	</if>
+
+	<if test='sort == "view"'>
+		ORDER BY B.BOARD_HIT_COUNT DESC
+	</if>
+
+	<if test='sort == "recommend"'>
+		ORDER BY B.BOARD_LIKE_COUNT DESC
+	</if>
+
+	<if test='sort == "comment"'>
+		ORDER BY board_comment_count DESC
+	</if>
+
+	) A
+	)
+	WHERE RN BETWEEN #{start} AND #{end}
+</select>
+
+<delete id="deleteScrap" parameterType="int" >
+DELETE FROM SCRAP
+WHERE SCRAP_NO = #{scrap_no}
+</delete>
+
+</mapper>
