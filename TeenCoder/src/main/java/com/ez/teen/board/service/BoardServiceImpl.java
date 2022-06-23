@@ -304,4 +304,16 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.modifyReComment(commentModel);
 	}
 
+	// 게시글 삭제시 boardPk 비활(cascade적용)
+	@Override
+	public void updateBoardPkNo() {
+		boardMapper.updateBoardPkNo();	
+	}
+
+	// 게시글 삭제시 boardPk 활성화
+	@Override
+	public void updateBoardPkYes() {
+		boardMapper.updateBoardPkYes();
+	}
+
 }

@@ -124,5 +124,11 @@ public interface BoardMapper {
 	//답글 수정
 	public void modifyReComment(CommentModel commentModel);
 
+	// 게시글 삭제시 boardPk 비활(cascade적용)
+	public void updateBoardPkNo();
+
+	// 게시글 삭제시 boardPk 활성화
+	public void updateBoardPkYes();
+
 	
 }

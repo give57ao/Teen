@@ -123,11 +123,11 @@
 	
 	<!-- 파일 유무에 따른 체크 업데이트 -->
 	<update id="fileCk" parameterType="com.ez.teen.board.mapper.BoardMapper" >
-	UPDATE BOARD SET
-	BOARD_FILE_CHECK = 'Y'
-	WHERE BOARD_NO = #{board_no}
+		UPDATE BOARD SET
+		BOARD_FILE_CHECK = 'Y'
+		WHERE BOARD_NO = #{board_no}
 	</update>
-	
+
 	<!-- 첨부파일 업로드 -->
 	<insert id="insertFile" parameterType="hashMap">
 	 INSERT INTO BFILE(
@@ -546,11 +546,24 @@ ORDER BY board_comment_count DESC
 	WHERE BOARD_NO = #{board_no}
 	
 	</update>
-		
+	
+	<!-- board삭제 -->
 	<delete id="deleteBoard" parameterType="int">
-		delete from board where board_no = #{board_no}
+		DELETE FROM BOARD
+		WHERE BOARD_NO = #{board_no}
 	</delete>
 	
+	<!-- board삭제시 Pk 비활 -->
+	<update id="updateBoardPkNo">
+		ALTER TABLE BOARD
+		DISABLE CONSTRAINT SYS_C007710 CASCADE
+	</update>
+	
+	<!-- board삭제시 Pk 활성화 -->
+	<update id="updateBoardPkYes">
+		ALTER TABLE BOARD
+		ENABLE CONSTRAINT SYS_C007710
+	</update>
 	<!-- 댓글 삭제 -->
 	<delete id="deleteComment" parameterType="com.ez.teen.board.model.CommentParam">
 		DELETE FROM BCOMMENT

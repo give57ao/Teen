@@ -385,9 +385,10 @@ public class BoardController {
    public String deleteBoard(@RequestParam("board_no") int board_no, RedirectAttributes redirect) {
       
       try {
-      
+      boardService.updateBoardPkNo();
       boardService.deleteBoard(board_no);
-//      boardService.deleteBcomment(bcomment_no);
+      boardService.updateBoardPkYes();
+      
       
       redirect.addFlashAttribute("msg", "삭제굿");
       
