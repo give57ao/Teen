@@ -7,49 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>TeenCoder 게시판 상세</title>
-<style type="text/css">
-.filebox .upload-name {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 78%;
-    color: #999999;
-}
-
-.filebox label {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    vertical-align: middle;
-    background-color: #999999;
-    cursor: pointer;
-    height: 40px;
-    margin-left: 10px;
-}
-
-.filebox input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-}
-
-/* 댓글 수정 시 첨부파일 디자인 */
-.filebox .upload-name-m {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 78%;
-    color: #999999;
-}
-
-  </style>
 <link rel="shortcut icon" href="/teen/resources/images/icon/icon_favicon.ico" type="image/x-icon"> <!-- favicon -->
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
@@ -111,15 +68,15 @@
 	                                    <h4>
 	                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
 	                                        <span class="rank">[Expert]</span>
-	                                        <button onclick="dp_menu()">${boardDetail.member_nick}</button>
+	                                        <button  id="dropdown-menu" onclick="dp_menu()">${boardDetail.member_nick}</button>
 												</h4>
 												<div style="display: none; position: absolute;" id="drop-content">
 													<input type="hidden" id="member_nick" name="member_nick"  value="${boardDetail.member_nick }">
 													<input type="hidden" id="member_no" name="member_no" value="${boardDetail.member_no }">
 	                            					<c:if test="${sessionScope.member_no != boardDetail.member_no }">
-													<div><button onclick="follow()" >팔로우 하기</button></div> 
-													<div><button onclick="msg()" >쪽지 보내기</button></div> 
-													<div><button onclick="board()" >게시글 보기</button></div>
+													<div><button class= "drop-button" id="drop-button1" onclick="follow()" >팔로우 하기</button></div> 
+													<div><button class= "drop-button" id="drop-button2" onclick="msg()" >쪽지 보내기</button></div> 
+													<div><button class= "drop-button" id="drop-button3" onclick="board()" >게시글 보기</button></div>
 													</c:if>
 												</div>
 	                                </div>

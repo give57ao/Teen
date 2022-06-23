@@ -392,3 +392,71 @@
  	height: 20px;
  	vertical-align: middle;
  }
+ 
+ .filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+/* 댓글 수정 시 첨부파일 디자인 */
+.filebox .upload-name-m {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+   #dropdown-menu{
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+}
+
+.drop-button {
+	width: 93px;
+	height: 32px;
+	background: #111;
+	color: #fff;
+	border: 1px solid #fff;
+	outline: none;
+}
+
+#drop-button1 {
+	margin-bottom: -1px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+#drop-button3 {
+	margin-top: -1px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
