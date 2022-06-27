@@ -18,8 +18,19 @@ public class MemberModel {
 	private Date member_date; // 회원가입 날짜
 	private String member_pro_check; // 전문가 유무 확인,
 	private Integer member_point; // 멤버 포인트
+	private String member_profile;// 멤버 프로필 사진
 	
 	
+
+	
+	
+	
+	public String getMember_profile() {
+		return member_profile;
+	}
+	public void setMember_profile(String member_profile) {
+		this.member_profile = member_profile;
+	}
 	
 	public String getTemPw() {
 		return temPw;
@@ -104,7 +115,7 @@ public class MemberModel {
 				+ ", member_name=" + member_name + ", member_email=" + member_email + ", member_email_check="
 				+ member_email_check + ", member_nick=" + member_nick + ", member_admin=" + member_admin
 				+ ", member_date=" + member_date + ", member_pro_check=" + member_pro_check + ", member_point="
-				+ member_point + "]";
+				+ member_point + "member_profile= "+ member_profile+ "]";
 	}
 	
 

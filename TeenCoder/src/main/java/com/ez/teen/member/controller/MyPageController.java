@@ -55,7 +55,15 @@ public class MyPageController {
 		boardParam.setMember_no(member_no);
 		commentParam.setMember_no(member_no);
 		List<MemberModel> myPageList = memberService.myPageList(memberModel);
+		
+		System.out.println("==============================");
+		System.out.println(myPageList);
+		System.out.println("==============================");
+
+		
+		
 		model.addAttribute("list", myPageList);
+		model.addAttribute("path", "/summernoteImage/");
 
 		model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam));
 		model.addAttribute("allCommentCount", boardService.getCommentCount(commentParam));
@@ -225,6 +233,21 @@ public class MyPageController {
 //		session.invalidate();
 		return "redirect:/"; // 곧 구현 예정
 	}
+	
+	
+	@GetMapping("/profile")
+	public String profileMember(MemberModel memberModel, HttpSession session, Model model) throws Exception {
+		
+		int member_no = (Integer) session.getAttribute("member_no");
+		memberModel.setMember_no(member_no);
+		List<MemberModel> myPageList = memberService.myPageList(memberModel);
+
+
+		model.addAttribute("profile", myPageList);
+		model.addAttribute("path", "/summernoteImage/");
+		return "member/profileModify";
+	}
+	
 
 	
 }

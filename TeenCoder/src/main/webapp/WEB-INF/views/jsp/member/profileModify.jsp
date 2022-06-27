@@ -41,27 +41,34 @@
 	                		<div class="member_info">
 	                			
 	                			<form action="/teen/member/updateProfile" enctype="multipart/form-data" method="post">    
+	                			<!-- 기존 프로필 이미지 , 이미지 변경 시 바로 보여져야 함-->
+	                				<c:forEach items="${profile}" var="profile">
+	                			
+	                			<c:choose>
+									<c:when test="${profile.member_profile eq 'N'}">
+								<!-- 프로필 사진이 없을 경우 -->
+	                			<img src="/teen/resources/images/icon/icon_profile.svg" class="badge">	                			
+									</c:when>
+									<c:otherwise>
+	                			<!-- 프로필 사진이 있을 경우 -->	
+	                			<img src="${path}${profile.member_profile}.jpg" class="badge">	
+									</c:otherwise>
+								</c:choose>
+								</c:forEach>
+	                			
 	                			<input type="file" name="member_profile" />    
 	                			<input type="submit" value="이미지저장"/>
 	                			</form>
 	                            
 	                		</div>
-	                		<div class="member_board">
-		                		
-		                	</div>
+
 	                	</div>
 	                </div>
-	              <%--   <!-- Member Info -->
-	                <div id="member_info">
-	                    <a href="/teen/board/boardWrite" class="btn_com btn_main">게시글 작성</a>
-	                    
-	                    <!-- My Card -->
-						<jsp:include page="../template/myCard.jsp" flush="false" /> --%>
+
 	                    
 	                </div>
 	            </div>
 	        </div>
-	    </div>
 
     
 	<!-- Footer -->

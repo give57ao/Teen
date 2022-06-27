@@ -39,7 +39,17 @@
 	                <div id="board_list" class="my_page">
 	                	<div class="profile">
 	                		<div class="member_info">
-	                			<img src="/teen/resources/images/icon/icon_badge.png" class="badge">
+
+								<c:choose>
+									<c:when test="${board.member_profile eq 'N'}">
+								<!-- 프로필 사진이 없을 경우 -->
+	                			<img src="/teen/resources/images/icon/icon_profile.svg" class="badge">	                			
+									</c:when>
+									<c:otherwise>
+	                			<!-- 프로필 사진이 있을 경우 -->	
+	                			<img src="${path}${board.member_profile}.jpg" class="badge">	
+									</c:otherwise>
+								</c:choose>
 	                			<div class="info_box">
 		                			<h4>나의 등급 <span class="rank">[Expert]</span></h4>
 		                			<h3>${board.member_nick}</h3>
@@ -53,6 +63,7 @@
 	                                <li><img src="/teen/resources/images/icon/icon_follow.svg" class="i_follow">0</li>
 	                                <li><img src="/teen/resources/images/icon/icon_scrap.svg" class="i_scrap">0</li>
 	                            </ul>
+	                            <a href="/teen/member/profile" class="btn_com btn_mod_profile">프로필사진</a>
 	                			<a href="/teen/member/mypageModify" class="btn_com btn_mod_member">회원정보 수정</a>
 	                		</div>
 	                		<div class="member_board">

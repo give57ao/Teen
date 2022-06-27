@@ -28,5 +28,6 @@ public interface MemberService {
 	public int passChk(MemberModel memberModel);
 
 	public void temPwUpdate(MemberModel memberModel);
+
 	
 }
