@@ -47,7 +47,7 @@
 									</c:when>
 									<c:otherwise>
 	                			<!-- 프로필 사진이 있을 경우 -->	
-	                			<img src="${path}${board.member_profile}.jpg" class="badge">	
+	                			<img src="${path}${board.member_profile}" class="badge">	
 									</c:otherwise>
 								</c:choose>
 	                			<div class="info_box">

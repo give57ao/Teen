@@ -2,6 +2,8 @@ package com.ez.teen.member.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 
@@ -28,6 +30,9 @@ public interface MemberService {
 	public int passChk(MemberModel memberModel);
 
 	public void temPwUpdate(MemberModel memberModel);
+
+	//프로필 수정
+	public void profileModifyMember(MemberModel memberModel, MultipartHttpServletRequest mpRequest) throws Exception;
 
 	
 }

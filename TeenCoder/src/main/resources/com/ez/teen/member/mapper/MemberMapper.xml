@@ -112,6 +112,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	 SELECT MEMBER_PW FROM MEMBER
 	 WHERE MEMBER_ID =  #{member_id}
 	 </select>
-
+	 
+	 <!-- 프로필 사진 변경 -->
+	<select id="profileModifyMember" parameterType="com.ez.teen.member.model.MemberModel">
+	UPDATE MEMBER SET MEMBER_PROFILE = #{member_profile}
+	WHERE MEMBER_NO = #{member_no} 
+	</select>
 	 
 </mapper>

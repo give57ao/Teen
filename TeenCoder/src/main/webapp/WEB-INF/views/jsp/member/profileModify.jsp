@@ -40,23 +40,28 @@
 	                	<div class="profile">
 	                		<div class="member_info">
 	                			
-	                			<form action="/teen/member/updateProfile" enctype="multipart/form-data" method="post">    
+	                			<form action="/teen/member/updateProfile" enctype="multipart/form-data" method="post" onSubmit="return checkValue()">    
 	                			<!-- 기존 프로필 이미지 , 이미지 변경 시 바로 보여져야 함-->
 	                				<c:forEach items="${profile}" var="profile">
-	                			
-	                			<c:choose>
+									
+									<c:choose>
 									<c:when test="${profile.member_profile eq 'N'}">
 								<!-- 프로필 사진이 없을 경우 -->
-	                			<img src="/teen/resources/images/icon/icon_profile.svg" class="badge">	                			
+	                				<div class="image-container">
+										<img style="width: 500px;" id="preview-image" src="/teen/resources/images/icon/icon_profile.svg" class="badge">
+										<input style="display: block;" type="file" id="input-image" accept=".jpg">
+									</div>	                			
 									</c:when>
 									<c:otherwise>
 	                			<!-- 프로필 사진이 있을 경우 -->	
-	                			<img src="${path}${profile.member_profile}.jpg" class="badge">	
+	                			<div class="image-container">
+										<img style="width: 500px;" id="preview-image" src="${path}${profile.member_profile}" class="badge">
+										<input style="display: block;" type="file" id="input-image" accept=".jpg" value="">
+									</div>
 									</c:otherwise>
 								</c:choose>
 								</c:forEach>
 	                			
-	                			<input type="file" name="member_profile" />    
 	                			<input type="submit" value="이미지저장"/>
 	                			</form>
 	                            
@@ -69,9 +74,12 @@
 	                </div>
 	            </div>
 	        </div>
-
+	
     
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
+	<!-- JS -->
+	<script type="text/javascript" src="/teen/resources/js/member/myPage/profile.js"></script>
+	
 </body>
 </html>

@@ -1,19 +1,25 @@
 package com.ez.teen.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.common.file.FileUtil;
 import com.ez.teen.member.mapper.MemberMapper;
 import com.ez.teen.member.model.MemberModel;
-import com.ez.teen.member.model.MemberParam;
 
 @Service
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private MemberMapper memberMapper;
+	
+
+	@Autowired
+	FileUtil fileUtils;
 	
 	// 마이페이지
 	@Override
@@ -68,6 +74,28 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void temPwUpdate(MemberModel memberModel) {
 		memberMapper.temPwUpdate(memberModel);
+	}
+
+	//프로필 수정
+	@Override
+	public void profileModifyMember(MemberModel memberModel, MultipartHttpServletRequest mpRequest) throws Exception {
+	System.out.println("기모띠");
+		List<Map<String, Object>> list = fileUtils.parseInsertProFileInfo(memberModel, mpRequest);
+		System.out.println(list);
+	
+			Map<String, Object> tempMap = null;
+			int size = list.size();
+			System.out.println("size : " + size);
+			for (int i = 0; i < size; i++) {
+			tempMap = list.get(i);
+			String savedname = (String)tempMap.get("STORED_FILE_NAME");
+			System.out.println("================================");
+			System.out.println(memberModel.getMember_profile());
+			memberModel.setMember_profile(savedname);
+			memberMapper.profileModifyMember(memberModel);
+			}
+	
+		
 	}
 	 
 }

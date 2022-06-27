@@ -50,4 +50,7 @@ public interface MemberMapper {
 	//임시 비밀번호 발급
 	public void temPwUpdate(MemberModel memberModel);
 
+	//프로필 변경
+	public void profileModifyMember(MemberModel memberModel);
+
 }
