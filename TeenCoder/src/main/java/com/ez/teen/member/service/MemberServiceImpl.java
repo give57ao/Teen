@@ -79,20 +79,27 @@ public class MemberServiceImpl implements MemberService {
 	//프로필 수정
 	@Override
 	public void profileModifyMember(MemberModel memberModel, MultipartHttpServletRequest mpRequest) throws Exception {
-	System.out.println("기모띠");
-		List<Map<String, Object>> list = fileUtils.parseInsertProFileInfo(memberModel, mpRequest);
-		System.out.println(list);
-	
-			Map<String, Object> tempMap = null;
+		
+		/*
+		 * List<Map<String, Object>> list =
+		 * fileUtils.parseInsertProFileInfo(memberModel, mpRequest);
+		 * 
+		 * Map<String, Object> tempMap = null; tempMap = list.get(0); String savedname =
+		 * (String)tempMap.get("STORED_FILE_NAME");
+		 * memberModel.setMember_profile(savedname);
+		 * 
+		 * memberMapper.profileModifyMember(memberModel);
+		 */
+				
+			List<Map<String, Object>> list = fileUtils.parseInsertProFileInfo(memberModel, mpRequest); //list가 0임
+
 			int size = list.size();
-			System.out.println("size : " + size);
-			for (int i = 0; i < size; i++) {
-			tempMap = list.get(i);
-			String savedname = (String)tempMap.get("STORED_FILE_NAME");
-			System.out.println("================================");
-			System.out.println(memberModel.getMember_profile());
-			memberModel.setMember_profile(savedname);
-			memberMapper.profileModifyMember(memberModel);
+			if (list != null) {
+				for (int i = 0; i < size; i++) {
+					String savedname = (String)list.get(i).get("STORED_FILE_NAME");
+					memberModel.setMember_profile(savedname);
+					memberMapper.profileModifyMember(memberModel);
+				}
 			}
 	
 		

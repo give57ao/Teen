@@ -22,6 +22,8 @@ import com.ez.teen.notice.model.NoticeModel;
 public class FileUtil {
 	
 	private static final String filePath = "C:\\upload\\";
+	private static final String profilePath = "C:\\profile_image\\";
+	
 //	private static final String filePath = "D:\\JAVA\\SpringTool\\upload\\";
 	public String getFilePath() {
 		return filePath;
@@ -169,28 +171,26 @@ public List<Map<String, Object>> parseInsertProFileInfo(MemberModel memberModel,
 	String originalFileName = null;
 	String originalFileExtension = null;
 	String storedFileName = null;
-	
+
 	List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
-	
+
 	Map<String, Object> listMap = null;
-	
-	String profilePath = "C:\\profile_image\\";
-	
+		
 	File file = new File(profilePath);
 	if(file.exists() == false) {
 		file.mkdirs();
 	} 
-	
+
 	while (iterator.hasNext()) {
 		multpartFile = mpRequest.getFile(iterator.next());
-		
+	
 		if(multpartFile.isEmpty() == false) {
 			originalFileName = multpartFile.getOriginalFilename();
 			originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-			
+		
 			storedFileName = getRandomString() + originalFileExtension;
 			Date date = new Date();
-			
+		
 			file = new File(profilePath + storedFileName);
 			multpartFile.transferTo(file);
 			listMap = new HashMap<String, Object>();

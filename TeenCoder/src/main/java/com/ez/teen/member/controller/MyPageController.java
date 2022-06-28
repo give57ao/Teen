@@ -256,16 +256,14 @@ public class MyPageController {
 	
 	@PostMapping("/updateProfile")
 	public String profileModifyMember(MemberModel memberModel, HttpSession session, MultipartHttpServletRequest mpRequest) throws Exception {
-	      
-		// 이미지 저장 로직
-		
-	      
+	   
+
 		int member_no = (Integer) session.getAttribute("member_no");	
 		memberModel.setMember_no(member_no);
 		
+		
 		memberService.profileModifyMember(memberModel, mpRequest);
 
-		
 		return "redirect:/member/";
 	}
 	
