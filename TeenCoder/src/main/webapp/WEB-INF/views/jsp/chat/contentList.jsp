@@ -12,7 +12,7 @@
 		<div class="incoming_msg">
 			<div class="incoming_msg_img">
 				<a href="other_profile.do?other_nick=${tmp.send_nick }">
-					<img src="./upload/profile/${tmp.profile }" alt="보낸사람 프로필">
+					<img src="./upload/profile/${tmp.member_profile }" alt="보낸사람 프로필">
 				</a>
 			</div>
 			<div class="received_msg">

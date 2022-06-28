@@ -70,7 +70,7 @@ public class ChatController {
 				@RequestParam String content, HttpSession session, ChatModel chatModel){
 			
 			chatModel.setRoom(room);
-			chatModel.setRecv_nick((String) session.getAttribute("member_nick"));
+			chatModel.setSend_nick((String) session.getAttribute("member_nick"));
 			chatModel.setRecv_nick(other_nick);
 			chatModel.setContent(content);
 			

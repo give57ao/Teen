@@ -5,10 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
 <!-- 메세지 리스트 가져오기 -->
 <select id="message_list" parameterType="com.ez.teen.chat.model.ChatModel" resultType="com.ez.teen.chat.model.ChatModel">
-    select chat_no, room, send_nick, recv_nick, to_date(send_time, 'yyyy-mm-dd hh24:mi:ss') send_time, read_time, content, read_chk
+    select chat_no, room, send_nick, recv_nick, send_time, content, read_chk
     from chat
     where chat_no in (select max(chat_no) from chat group by room) and (send_nick = #{member_nick} or recv_nick=#{member_nick})
-    order by chat_no desc
+    order by SEND_TIME ASC
 </select>
 
 <!-- 메세지 list에서 상대방 profile 가져오기 -->
@@ -32,9 +32,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
 <!-- 메세지 내용 가져오기 -->
 <select id="room_content_list" parameterType="com.ez.teen.chat.model.ChatModel" resultType="com.ez.teen.chat.model.ChatModel">
-    select c.chat_no, c.room, c.send_nick, c.recv_nick, date_format(c.send_time, '%Y-%m-%d %H:%i') send_time, c.read_time, c.content, c.read_chk, m.member_profile
+    select c.chat_no, c.room, c.send_nick, c.recv_nick, c.send_time, c.content, c.read_chk, m.member_profile
     from chat c left outer join member m
-    on c.send_nick = m.nick
+    on c.recv_nick = m.member_nick
     <choose>
         <when test="room != 0">
             where room=#{room}
@@ -43,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
             where (recv_nick = #{recv_nick} and send_nick = #{member_nick}) or (send_nick = #{recv_nick} and recv_nick = #{member_nick})
         </otherwise>
     </choose>
-
+	order by send_time asc
 </select>
 
 <!-- 메세지 읽음 처리 -->
@@ -64,10 +64,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 <insert id="messageSendInlist" parameterType="com.ez.teen.chat.model.ChatModel">
     <choose>
         <when test="room != 0">
-            insert into chat values(SEQ_CHAT_NO.NEXTVAL, #{room}, #{send_nick}, #{recv_nick}, SYSDATE, SYSDATE, #{content}, 0);
+            insert into chat values(SEQ_CHAT_NO.NEXTVAL, #{room}, #{send_nick}, #{recv_nick}, TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI'), #{content}, 0)
         </when>
         <otherwise>
-            insert into chat values(SEQ_CHAT_NO.NEXTVAL, #{room}, #{send_nick}, #{recv_nick}, SYSDATE, SYSDATE, #{content}, 0);
+            insert into chat values(SEQ_CHAT_NO.NEXTVAL, #{room}, #{send_nick}, #{recv_nick}, TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI'), #{content}, 0)
         </otherwise>
     </choose>
 </insert>

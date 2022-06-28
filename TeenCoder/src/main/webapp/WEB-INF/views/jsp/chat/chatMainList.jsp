@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,8 +73,13 @@
 	      
 	    </div>
 	</div>
-	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>
+	
+	$(document).ready(function(){
+		// 메세지 리스트 리로드
+		FirstMessageList();
+	});
 	
 	// 가장 처음 메세지 리스트를 가져온다.
 	const FirstMessageList = function(){
@@ -267,11 +273,6 @@
 		}
 		
 	};
-	
-	$(document).ready(function(){
-		// 메세지 리스트 리로드
-		FirstMessageList();
-	});
 	
 	
 	
