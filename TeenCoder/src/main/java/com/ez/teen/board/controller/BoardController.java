@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -40,18 +38,22 @@ import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
 import com.ez.teen.common.file.FileUtil;
 import com.ez.teen.member.model.MemberModel;
+import com.ez.teen.member.service.MemberService;
 
 @Controller
 public class BoardController {
    @Autowired
    BoardService boardService;
    
+   @Autowired
+   MemberService memberService;
+   
    private static final Logger log = LoggerFactory.getLogger(BoardController.class);
    
    //Get Main Page
    // 메인 홈
    @GetMapping("/")
-   public String main(BoardModel boardModel, MemberModel memberModel, Model model, BoardParam boardParam, CommentParam commentParam) {
+   public String main(BoardModel boardModel, MemberModel memberModel, Model model, BoardParam boardParam, CommentParam commentParam, HttpSession session) throws Exception {
       log.info("메인페이지 실행");
       
       boardParam.setMember_no(0);
@@ -60,9 +62,13 @@ public class BoardController {
       model.addAttribute("allMemberCount", boardService.getUserCount());
       model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam));
       model.addAttribute("allCommentCount", boardService.getCommentCount(commentParam));
+    
+      
+      
       
       return "main";
    }
+  
 
    //게시글 수정 폼
    @GetMapping("board/modify")

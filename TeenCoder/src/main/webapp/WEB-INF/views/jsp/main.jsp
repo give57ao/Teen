@@ -24,7 +24,9 @@
             </h2>
             <div id="contents_pro">
 	            <ul class="display-container">
+	           
 				    <li class="note-display" data-note="${allMemberCount}.00">
+				  
 				    	<div class="circle">
 				    		<svg width="84" height="84" class="circle__svg">
 				    			<circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
@@ -37,7 +39,9 @@
 				      	</div>
 				      	<span class="label">전체 회원</span>
 				    </li>
+				    
 				    <li class="note-display" data-note="${allBoardCount}.00">
+				    
 				    	<div class="circle">
 				    		<svg width="84" height="84" class="circle__svg">
 				    			<circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
@@ -50,7 +54,9 @@
 				      	</div>
 				      	<span class="label">전체 게시글</span>
 				    </li>
+				   
 				    <li class="note-display" data-note="${allCommentCount}.00">
+				     
 				    	<div class="circle">
 				    		<svg width="84" height="84" class="circle__svg">
 				    			<circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>

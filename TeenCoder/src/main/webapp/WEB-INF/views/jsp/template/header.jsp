@@ -39,7 +39,19 @@
                     <li><a href="/teen/member/logout" class="log" onClick="logout()">로그아웃</a></li>
                     <li><a href="/teen/member/" class="log">마이페이지</a></li>
                     <li><a href="#" onclick="msgList()" ><img src="/teen/resources/images/icon/icon_alarm_n.svg"></a></li>
-                    <li><a href="/teen/member/"><img src="/teen/resources/images/icon/icon_badge.png"></a></li>
+                  
+                  <!--프로필 이미지 -->
+                  	<c:forEach items="${icon}" var="profile">
+                  	<c:choose>
+                    <c:when test="${profile.member_profile eq 'N'}">
+                	<li><a href="/teen/member/"><img src="/teen/resources/images/icon/icon_profile.svg"></a></li>
+                	</c:when>
+                	<c:otherwise>
+               		 <li><a href="/teen/member/"><img src="${path}${profile.member_profile}"></a></li>
+                	</c:otherwise>
+                	</c:choose>
+                	</c:forEach>
+         
                 </ul>
             </div>
         </c:if>

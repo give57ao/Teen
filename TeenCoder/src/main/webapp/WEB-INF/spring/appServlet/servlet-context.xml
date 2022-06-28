@@ -45,6 +45,7 @@
 	<beans:bean id="AuthInterceptor"
 		class="com.ez.teen.AuthInterceptor" />
 		
+		
 	<!-- 로그인여부를 추적하는 인터셉터 추가 -->
 	<interceptors>
 		<interceptor>
@@ -57,13 +58,26 @@
 			<mapping path="/*/**/myBoard" />
 			<mapping path="/*/**/myComment" />
 			<mapping path="/*/**/modifyForm" />
-			
-			
-			
-			
 			<beans:ref bean="AuthInterceptor"/>
 		</interceptor>
+		
+		
 	</interceptors>
+	
+<!-- Interceptors -->
+
+<mvc:interceptors>
+
+         <mvc:interceptor>
+
+                  <mvc:mapping path="/**" /> 
+
+                  <beans:bean class="com.ez.teen.HeaderIntercepter" />
+         </mvc:interceptor>
+
+</mvc:interceptors>
+		
+
 	
 	<!-- navermail설정 -->
 <beans:bean id="javaMailSenderImpl" class="org.springframework.mail.javamail.JavaMailSenderImpl">
