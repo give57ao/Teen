@@ -32,7 +32,7 @@
 					<li><a href="/teen/member/commentList">내가 작성한 댓글</a></li>
 					<li><a href="#">나의 포인트</a></li>
 					<li><a href="/teen/follow/followList" class="select" >팔로잉</a></li>
-					<li><a href="#">스크랩</a></li>
+					<li><a href="/teen/scrap/scrapList">스크랩</a></li>
 				</ul>
 				<!-- Board -->
 				<div id="board_list">
@@ -141,7 +141,7 @@
 				<div id="member_info">
                     <a href="/teen/board/boardWrite" class="btn_com btn_main">게시글 작성</a>
 					<!-- My Card -->
-						<jsp:include page="../template/myCard.jsp"/>
+						<jsp:include page="../template/myCard.jsp" flush="false" />
 				</div>
 			</div>
 		</div>

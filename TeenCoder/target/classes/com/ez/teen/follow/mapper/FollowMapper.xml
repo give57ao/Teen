@@ -109,4 +109,5 @@ WHERE FOLLOW_NO = #{follow_no} AND FOLLOWING_MEMBER_NO = #{member_no}
 
 
 
+
 </mapper>

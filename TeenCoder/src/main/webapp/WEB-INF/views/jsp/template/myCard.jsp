@@ -109,7 +109,7 @@ int member_no = (Integer)session.getAttribute("member_no");
 		           			</a>
 	           			</div>
 	           			<div class="tap_list_del">
-	           				<a href="#"><img src="/teen/resources/images/icon/icon_delete.svg"></a>
+	           				<a href="#" onclick="deleteScrap(${scrap.scrap_no})"><img src="/teen/resources/images/icon/icon_delete.svg"></a>
 	           			</div>
 	           		</li>
 	           		</c:forEach>
@@ -122,5 +122,14 @@ int member_no = (Integer)session.getAttribute("member_no");
 		</div>
 	</div>
 </form>
+<script type="text/javascript">
+function deleteScrap(num) {
+	var chk = confirm("해당 게시물 스크랩을 취소하시겠습니까?")
+	if(chk) {
+		location.href='/teen/scrap/deleteCardScrap?scrap_no='+num
+		location.reload(true);
+	}
+}
+</script>
 </body>
 </html>  

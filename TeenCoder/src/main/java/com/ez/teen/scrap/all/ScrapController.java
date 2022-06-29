@@ -111,4 +111,11 @@ public class ScrapController {
 		return "redirect:/scrap/scrapList";
 	}
 	
+	@RequestMapping(value = "/deleteCardScrap")
+	public void deleteCardScrap(@RequestParam("scrap_no")int scrap_no, HttpServletRequest request)throws Exception{
+			
+		scrapService.deleteScrap(scrap_no);
+		
+	}
+	
 }

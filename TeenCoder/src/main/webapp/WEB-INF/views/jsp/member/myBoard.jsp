@@ -31,8 +31,8 @@
 					<li><a href="/teen/member/boardList" class="select">내가 작성한 게시글</a></li>
 					<li><a href="/teen/member/commentList">내가 작성한 댓글</a></li>
 					<li><a href="#">나의 포인트</a></li>
-					<li><a href="#">팔로잉</a></li>
-					<li><a href="#">스크랩</a></li>
+					<li><a href="/teen/follow/followList">팔로잉</a></li>
+					<li><a href="/teen/scrap/scrapList">스크랩</a></li>
 				</ul>
 				<!-- Board -->
 				<div id="board_list">

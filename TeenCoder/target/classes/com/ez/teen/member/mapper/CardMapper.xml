@@ -55,7 +55,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		B.BOARD_TITLE,
 		S.BOARD_NO,
 		S.MEMBER_NICK,
-		S.SCRAP_DATE
+		S.SCRAP_DATE,
+		S.SCRAP_NO
 
 		FROM SCRAP S
 		INNER JOIN BOARD B
