@@ -40,11 +40,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
 	<!-- 내가 팔로우 한 사람 정보 -->
 	<select id="getFollowList" parameterType="com.ez.teen.member.model.MemberCardModel" resultType="com.ez.teen.member.model.MemberCardModel">
-		SELECT
-		FOLLOW_DATE,
-		MEMBER_NICK
-		FROM FOLLOW
-		WHERE FOLLOW_NO = #{member_no}
+SELECT
+		F.FOLLOW_DATE,
+		F.MEMBER_NICK AS FOLLOW_NICK,
+        F.FOLLOW_NO,
+        M.MEMBER_NICK AS MEMBER_NICK
+		FROM FOLLOW F
+        INNER JOIN MEMBER M
+        ON F.FOLLOW_NO = M.MEMBER_NO
+		WHERE F.FOLLOW_NO = #{member_no}
+        OR F.FOLLOWING_MEMBER_NO = #{member_no}
 		ORDER BY FOLLOW_DATE DESC
 
 	</select>

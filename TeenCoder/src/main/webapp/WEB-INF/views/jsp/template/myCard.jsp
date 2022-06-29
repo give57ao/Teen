@@ -7,7 +7,7 @@
 <%
 int member_no = (Integer)session.getAttribute("member_no");
 %>
-<input type="hidden" id="member_no" value="<%=member_no %>">
+<input type="hidden" id="member_no" name="member_no" value="<%=member_no %>">
 <form id="myCard" name="myCard">
 	<div id="my_card">
 		<div class="my_card_wrap">
@@ -77,18 +77,36 @@ int member_no = (Integer)session.getAttribute("member_no");
             	<ul class="tap_list">
 	           		<!-- 반복문 필요 부분 -->
 	           		<c:forEach items="${followList }" var="follow" >
+	           		<c:choose>
+	           		<c:when test="${follow.follow_no eq sessionScope.member_no}">
+	           		<li class="tap_wrap">
+	           			<div class="view_active">
+		           			<div class="tap_list_top tap_overtext">
+		            			<h4 class="row_top"><span class="rank">[Expert]</span> ${follow.follow_nick}</h4>
+		            			<span class="row_top date"><fmt:formatDate value="${follow.follow_date}" pattern="yyyy.MM.dd"/></span>
+		           			</div>
+		           			<p class="tap_overtext">${follow.follow_nick }님을 팔로우 했습니다.</p>
+	           			</div>
+	           			<div class="tap_list_del">
+	           				<a href="#"><img src="/teen/resources/images/icon/icon_delete.svg"></a>
+	           			</div>
+	           		</li>
+	           		</c:when>
+	           		<c:when test="${follow.follow_no ne sessionScope.member_no}">
 	           		<li class="tap_wrap">
 	           			<div class="view_active">
 		           			<div class="tap_list_top tap_overtext">
 		            			<h4 class="row_top"><span class="rank">[Expert]</span> ${follow.member_nick }</h4>
 		            			<span class="row_top date"><fmt:formatDate value="${follow.follow_date}" pattern="yyyy.MM.dd"/></span>
 		           			</div>
-		           			<p class="tap_overtext">${follow.member_nick }님을 팔로우 하였습니다.</p>
-	           			</div>
-	           			<div class="tap_list_del">
-	           				<a href="#"><img src="/teen/resources/images/icon/icon_delete.svg"></a>
+		           			<p class="tap_overtext">${follow.member_nick }님이 회원님을 팔로우 했습니다.</p>
 	           			</div>
 	           		</li>
+	           		</c:when>
+	           		<c:otherwise>
+	           		팔로우한 회원이 없습니다.
+	           		</c:otherwise>
+	           		</c:choose>
 	           		</c:forEach>
 	        	</ul>
             </div>
