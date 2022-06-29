@@ -140,7 +140,8 @@
 				<!-- Member Info -->
 				<div id="member_info">
                     <a href="/teen/board/boardWrite" class="btn_com btn_main">게시글 작성</a>
-					<div class="mycard"></div>
+					<!-- My Card -->
+						<jsp:include page="../template/myCard.jsp"/>
 				</div>
 			</div>
 		</div>

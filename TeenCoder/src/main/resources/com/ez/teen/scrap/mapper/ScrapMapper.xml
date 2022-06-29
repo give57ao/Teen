@@ -9,13 +9,15 @@ INSERT INTO SCRAP(
 SCRAP_NO,
 MEMBER_NO,
 BOARD_NO,
-MEMBER_NICK
+MEMBER_NICK,
+SCRAP_DATE
 )
 VALUES(
 SEQ_SCRAP_NO.NEXTVAL,
 #{member_no},
 #{board_no},
-#{member_nick}
+#{member_nick},
+SYSDATE
 )
 
 </insert>
@@ -178,5 +180,8 @@ WHERE MEMBER_NO = #{member_no} AND BOARD_NO = #{board_no}
 DELETE FROM SCRAP
 WHERE SCRAP_NO = #{scrap_no}
 </delete>
+
+
+
 
 </mapper>

@@ -1,26 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html>
 <body>
+<%
+int member_no = (Integer)session.getAttribute("member_no");
+%>
+<input type="hidden" id="member_no" value="<%=member_no %>">
+<form id="myCard" name="myCard">
 	<div id="my_card">
 		<div class="my_card_wrap">
 			<!-- Info -->
 			<c:forEach items="${list}" var="my">
 				<img src="/teen/resources/images/icon/icon_badge.png" class="card_badge">
 				<div class="card_info_box">
-					<h4>나의 등급 <span class="rank">[Expert]</span></h4>
+					<h4>나의 등급 <span class="rank"></span></h4>
 					<h3>${my.member_nick}</h3>
 					<p>포인트 ${my.member_point}p</p>
 				</div>
-				<ul class="card_info_icon number">
+			 </c:forEach>
+			
+				<ul class="card_info_icon number" id="test">
 	                <li><a href="#"><img src="/teen/resources/images/icon/icon_message.svg" class="i_msg">쪽지 0</a></li>
-	                <li><a href="#"><img src="/teen/resources/images/icon/icon_follow.svg" class="i_follow">팔로우 0</a></li>
-	                <li><a href="#"><img src="/teen/resources/images/icon/icon_scrap.svg" class="i_scrap">스크랩 0</a></li>
+	                <li><a href="#"><img src="/teen/resources/images/icon/icon_follow.svg" class="i_follow">${allFollowCount}개</a></li>
+	                <li><a href="#"><img src="/teen/resources/images/icon/icon_scrap.svg" class="i_scrap">${allScrapCount}개 </a></li>
 	            </ul>
-            </c:forEach>
 		</div>
 		
         <!-- Tab -->
@@ -71,18 +76,20 @@
             <div class="tap_c tap_follow">
             	<ul class="tap_list">
 	           		<!-- 반복문 필요 부분 -->
+	           		<c:forEach items="${followList }" var="follow" >
 	           		<li class="tap_wrap">
 	           			<div class="view_active">
 		           			<div class="tap_list_top tap_overtext">
-		            			<h4 class="row_top"><span class="rank">[Expert]</span> 닉네임</h4>
-		            			<span class="row_top date">2022-06-22</span>
+		            			<h4 class="row_top"><span class="rank">[Expert]</span> ${follow.member_nick }</h4>
+		            			<span class="row_top date"><fmt:formatDate value="${follow.follow_date}" pattern="yyyy.MM.dd"/></span>
 		           			</div>
-		           			<p class="tap_overtext">팔로우 하였습니다. 팔로우 하였습니다.</p>
+		           			<p class="tap_overtext">${follow.member_nick }님을 팔로우 하였습니다.</p>
 	           			</div>
 	           			<div class="tap_list_del">
 	           				<a href="#"><img src="/teen/resources/images/icon/icon_delete.svg"></a>
 	           			</div>
 	           		</li>
+	           		</c:forEach>
 	        	</ul>
             </div>
             
@@ -90,18 +97,22 @@
             <div class="tap_c tap_scrap">
             	<ul class="tap_list">
 	           		<!-- 반복문 필요 부분 -->
+	           		<c:forEach items="${scrapList }" var="scrap" >
 	           		<li class="tap_wrap">
 	           			<div class="view_active">
 		           			<div class="tap_list_top tap_overtext">
-		            			<h4 class="row_top"><span class="rank">[Expert]</span> 닉네임</h4>
-		            			<span class="row_top date">2022-06-22</span>
+		            			<h4 class="row_top"><span class="rank">[Expert]</span> ${scrap.member_nick }</h4>
+		            			<span class="row_top date"><fmt:formatDate value="${scrap.scrap_date}" pattern="yyyy.MM.dd"/></span>
 		           			</div>
-		           			<p class="tap_overtext">스크랩 하였습니다. 스크랩 하였습니다.</p>
+		           			<a class="overtext" href="/teen/board/detail?board_no=${scrap.board_no}"> 
+		           			${scrap.board_title }
+		           			</a>
 	           			</div>
 	           			<div class="tap_list_del">
 	           				<a href="#"><img src="/teen/resources/images/icon/icon_delete.svg"></a>
 	           			</div>
 	           		</li>
+	           		</c:forEach>
 	        	</ul>
             </div>
         </div>
@@ -110,5 +121,6 @@
 			<a href="/teen/member/" class="btn_com btn_mypage">마이페이지</a>
 		</div>
 	</div>
+</form>
 </body>
 </html>  

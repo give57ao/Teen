@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.member.model.MemberCardModel;
 
 @Mapper
 public interface ScrapMapper {
@@ -24,6 +25,8 @@ public interface ScrapMapper {
 
 	//스크랩한 게시글 삭제
 	public void deleteScrap(int scrap_no);
+
+	
 
 
 	

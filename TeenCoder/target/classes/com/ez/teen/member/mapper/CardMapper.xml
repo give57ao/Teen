@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ez.teen.member.mapper.CardMapper">
+
+
+	<!-- 캐릭터카드 내 정보-->
+	<select id="myPageCardList"
+		resultType="com.ez.teen.member.model.MemberModel"
+		parameterType="com.ez.teen.member.model.MemberCardModel">
+		SELECT MEMBER_NAME, MEMBER_ID, MEMBER_EMAIL,
+		MEMBER_DATE, MEMBER_NICK, MEMBER_POINT FROM MEMBER
+		WHERE MEMBER_NO = #{member_no}
+	</select>
+
+	<!-- 스크랩 게시글 총 수 -->
+	<select id="getScrapCount"
+		parameterType="com.ez.teen.member.model.MemberCardModel" resultType="int">
+		select count(*) from SCRAP
+		WHERE MEMBER_NO = #{member_no}
+	</select>
+
+	<!-- 팔로우한 회원 총 수 -->
+	<select id="getFollowCount" parameterType="com.ez.teen.member.model.MemberCardModel" resultType="int">
+		SELECT COUNT(*) FROM FOLLOW
+		WHERE FOLLOW_NO = #{member_no}
+	</select>
+	
+	<!-- 내가 쓴 글 총 수 -->
+	<select id="getBoardCount" parameterType="com.ez.teen.member.model.MemberCardModel" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+		WHERE MEMBER_NO = #{member_no}
+	</select>
+	
+	<!-- 내가 쓴 댓글 총 수 -->
+	<select id="getCommentCount" parameterType="com.ez.teen.member.model.MemberCardModel" resultType="int">
+		SELECT COUNT(*) FROM BCOMMENT
+		WHERE MEMBER_NO = #{member_no}
+	</select>
+
+	<!-- 내가 팔로우 한 사람 정보 -->
+	<select id="getFollowList" parameterType="com.ez.teen.member.model.MemberCardModel" resultType="com.ez.teen.member.model.MemberCardModel">
+		SELECT
+		FOLLOW_DATE,
+		MEMBER_NICK
+		FROM FOLLOW
+		WHERE FOLLOW_NO = #{member_no}
+		ORDER BY FOLLOW_DATE DESC
+
+	</select>
+
+	<!-- 내가 스크랩한 게시글 정보 -->
+	<select id="getScrapList" parameterType="com.ez.teen.member.model.MemberCardModel" resultType="com.ez.teen.member.model.MemberCardModel">
+		SELECT
+		B.BOARD_TITLE,
+		S.BOARD_NO,
+		S.MEMBER_NICK,
+		S.SCRAP_DATE
+
+		FROM SCRAP S
+		INNER JOIN BOARD B
+		ON B.BOARD_NO = S.BOARD_NO
+
+		WHERE S.MEMBER_NO = #{member_no}
+
+		ORDER BY SCRAP_DATE DESC
+
+	</select>
+
+
+</mapper>

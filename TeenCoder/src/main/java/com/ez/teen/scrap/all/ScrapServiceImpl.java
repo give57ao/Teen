@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.member.model.MemberCardModel;
 import com.ez.teen.scrap.mapper.ScrapMapper;
 
 @Service
@@ -51,6 +52,8 @@ public class ScrapServiceImpl implements ScrapService{
 		scrapMapper.deleteScrap(scrap_no);
 		
 	}
+
+	
 	
 	
 	

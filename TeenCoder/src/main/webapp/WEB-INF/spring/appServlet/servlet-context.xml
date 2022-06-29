@@ -72,7 +72,7 @@
 
                   <mvc:mapping path="/**" /> 
 
-                  <beans:bean class="com.ez.teen.HeaderIntercepter" />
+                  <beans:bean class="com.ez.teen.HeaderInterceptor" />
          </mvc:interceptor>
 
 </mvc:interceptors>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.ez.teen.follow.model.MemberFollowModel;
 import com.ez.teen.follow.model.MemberFollowParam;
+import com.ez.teen.member.model.MemberCardModel;
 
 @Mapper
 public interface FollowMapper {
@@ -19,5 +20,7 @@ public interface FollowMapper {
 	public void insertFollow(MemberFollowModel followMdoel)throws Exception;
 
 	public int countFollow(MemberFollowModel followModel)throws Exception;
+
+	
 
 }

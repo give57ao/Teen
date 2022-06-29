@@ -133,7 +133,7 @@
                 	<!-- Comment From -->
 	               	 <div id="comment_form">
 	                	<form action="comment" method="post" enctype="multipart/form-data" onSubmit="return checkValue()" >
-		                	<input type="hidden" name="board_no" value="${board_no}">
+		                	<input type="hidden" id="board_no" name="board_no" value="${board_no}">
 		                	<textarea class="summernote" name="bcomment_content" placeholder="댓글 작성" id="bcomment_content"></textarea>
 	                		<div class="filebox">
 							<input class="upload-name" value="첨부파일" placeholder="첨부파일">

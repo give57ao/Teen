@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.member.model.MemberCardModel;
 
 public interface ScrapService {
 
@@ -21,5 +22,6 @@ public interface ScrapService {
 	
 	//스크랩한 게시물 삭제
 	public void deleteScrap(int scrap_no);
+	
 	
 }

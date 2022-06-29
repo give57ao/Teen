@@ -42,10 +42,18 @@ public class BoardModel {
 	
 	//스크랩 게시글 취소를 위한 데이터
 	private int scrap_no;
+	private Date scrap_date;
 	
 	
 	
 	
+	
+	public Date getScrap_date() {
+		return scrap_date;
+	}
+	public void setScrap_date(Date scrap_date) {
+		this.scrap_date = scrap_date;
+	}
 	public int getScrap_no() {
 		return scrap_no;
 	}

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ez.teen.follow.mapper.FollowMapper;
 import com.ez.teen.follow.model.MemberFollowModel;
 import com.ez.teen.follow.model.MemberFollowParam;
+import com.ez.teen.member.model.MemberCardModel;
 
 @Service
 public class FollowServiceImpl implements FollowService{
@@ -45,4 +46,5 @@ public class FollowServiceImpl implements FollowService{
 		return followMapper.countFollow(followModel);
 	}
 
+	
 }

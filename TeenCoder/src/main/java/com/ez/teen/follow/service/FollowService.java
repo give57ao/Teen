@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ez.teen.follow.model.MemberFollowModel;
 import com.ez.teen.follow.model.MemberFollowParam;
+import com.ez.teen.member.model.MemberCardModel;
 
 public interface FollowService {
 
@@ -19,5 +20,7 @@ public interface FollowService {
 	
 	//팔로우 중복확인
 	public int countFollow(MemberFollowModel followModel)throws Exception;
+	
+	
 	
 }
