@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:forEach var="tmp" items="${list }">
+<c:forEach var="tmp" items="${chatlist }">
 	<div class="chat_list_box${tmp.room } chat_list_box">
 		<div type="button" class="chat_list" room="${tmp.room }" other-nick="${tmp.other_nick }">
 			<!-- active-chat -->

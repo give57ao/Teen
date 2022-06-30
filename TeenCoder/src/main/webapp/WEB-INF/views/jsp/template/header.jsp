@@ -38,6 +38,7 @@
                     </c:if>
                     <li><a href="/teen/member/logout" class="log" onClick="logout()">로그아웃</a></li>
                     <li><a href="/teen/member/" class="log">마이페이지</a></li>
+                    <li><a class="chat" >쪽지</a></li>
                     <li><a href="#" onclick="msgList()" ><img src="/teen/resources/images/icon/icon_alarm_n.svg"></a></li>
                   
                   <!--프로필 이미지 -->
@@ -60,5 +61,17 @@
     <!-- JS -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/common.js"></script>
+	<script type="text/javascript">
+	$('.chat').on("click",function(e){
+		
+		e.preventDefault();
+		
+		let popUrl = "/teen/chatMainList";
+		let popOption = "width = 650px, height=550px, top=300px, left=300px, scrollbars=";
+		
+		window.open(popUrl,"쪽지",popOption);
+		
+	});
+	</script>
 </body>
 </html>

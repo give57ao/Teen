@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ez.teen.chat.model.ChatModel;
 import com.ez.teen.member.model.MemberCardModel;
 
 @Mapper
@@ -29,4 +30,6 @@ public interface CardMapper {
 
 	// 내가 스크랩한 게시글 정보 
 	List<MemberCardModel> getScrapList(MemberCardModel cardModel);
+	
+	public List<ChatModel> getRecvMessageList(MemberCardModel cardModel) throws Exception;
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.ez.teen.chat.model.ChatModel;
 import com.ez.teen.member.model.MemberCardModel;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.service.CardService;
@@ -42,13 +43,14 @@ public class HeaderInterceptor extends HandlerInterceptorAdapter{
 			request.setAttribute("allCommentCount", cardService.getCommentCount(cardModel));
 			request.setAttribute("followList", cardService.getFollowList(cardModel));
 			request.setAttribute("scrapList", cardService.getScrapList(cardModel));
-			
+			request.setAttribute("recvChatList", cardService.getRecvMessageList(cardModel));
 		}
 
 		System.out.println("===================================");
 		System.out.println(memberModel);
 		System.out.println(session.getAttribute("member_no"));
 		System.out.println(memberService.myPageList(memberModel));
+		
 		System.out.println("===================================");
 
 	}	

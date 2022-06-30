@@ -57,10 +57,11 @@ int member_no = (Integer)session.getAttribute("member_no");
 	           	</div>
 	           	<ul class="tap_list">
 	           		<!-- 반복문 필요 부분 -->
+	           		<c:forEach items="${recvChatList}" var="chat">
 	           		<li class="tap_wrap">
 	           			<div class="view_active">
 		           			<div class="tap_list_top tap_overtext">
-		            			<h4 class="row_top"><span class="rank">[Expert]</span> 닉네임</h4>
+		            			<h4 class="row_top"><span class="rank">[Expert]</span> ${chat.send_nick }</h4>
 		            			<span class="row_top date">2022-06-22</span>
 		           			</div>
 		           			<p class="tap_overtext">쪽지가 도착하였습니다. 쪽지가 도착하였습니다.</p>
@@ -69,6 +70,7 @@ int member_no = (Integer)session.getAttribute("member_no");
 	           				<a href="#"><img src="/teen/resources/images/icon/icon_delete.svg"></a>
 	           			</div>
 	           		</li>
+	           		</c:forEach>
 	           	</ul>
             </div>
             

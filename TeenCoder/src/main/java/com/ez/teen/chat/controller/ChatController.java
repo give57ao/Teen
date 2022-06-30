@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,14 +23,15 @@ public class ChatController {
 		
 		@RequestMapping("/chatMainList")
 		public String chatMainList(HttpServletRequest request, 
-				ChatModel chatModel, HttpSession session) {
+				ChatModel chatModel, HttpSession session, Model model) {
 				
 				String member_nick = (String) session.getAttribute("member_nick");
 				
 				chatModel.setMember_nick(member_nick);
 				System.out.println("member_nick =" + member_nick);
-				ArrayList<ChatModel> list = chatService.message_list(chatModel);
-				request.setAttribute("list", list);
+//				ArrayList<ChatModel> list = chatService.message_list(chatModel);
+				//request.setAttribute("list", list);
+//				model.addAttribute("chatlist", list);
 				
 				return "chat/chatMainList";
 		}
@@ -43,7 +45,7 @@ public class ChatController {
 			chatModel.setMember_nick(member_nick);
 			System.out.println("member_nick =" + member_nick);
 			ArrayList<ChatModel> list = chatService.message_list(chatModel);
-			request.setAttribute("list", list);
+			request.setAttribute("chatlist", list);
 			
 			return "chat/chatList";
 		}

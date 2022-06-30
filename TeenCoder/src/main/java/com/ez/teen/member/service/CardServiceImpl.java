@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentParam;
+import com.ez.teen.chat.model.ChatModel;
 import com.ez.teen.member.mapper.CardMapper;
 import com.ez.teen.member.model.MemberCardModel;
 
@@ -63,7 +64,8 @@ public class CardServiceImpl implements CardService{
 		return cardMapper.getScrapList(cardModel);
 	}
 	
-	
-	
-	
+	public List<ChatModel> getRecvMessageList(MemberCardModel cardModel) throws Exception{
+		
+		return cardMapper.getRecvMessageList(cardModel);
+	}
 }

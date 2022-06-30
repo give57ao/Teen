@@ -72,6 +72,11 @@ SELECT
 		ORDER BY SCRAP_DATE DESC
 
 	</select>
-
+	
+	<select id="getRecvMessageList" parameterType="com.ez.teen.member.model.MemberModel" resultType="com.ez.teen.chat.model.ChatModel">
+		SELECT
+		* FROM CHAT
+		WHERE RECV_NICK = #{member_nick}
+	</select>
 
 </mapper>

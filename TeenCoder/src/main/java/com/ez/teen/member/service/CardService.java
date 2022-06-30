@@ -2,6 +2,7 @@ package com.ez.teen.member.service;
 
 import java.util.List;
 
+import com.ez.teen.chat.model.ChatModel;
 import com.ez.teen.member.model.MemberCardModel;
 
 public interface CardService {
@@ -27,4 +28,7 @@ public interface CardService {
 
 	// 내가 스크랩한 게시글 정보
 	public List<MemberCardModel> getScrapList(MemberCardModel cardModel)throws Exception;
+	
+	//받은 쪽지 리스트 받아오기
+	public List<ChatModel> getRecvMessageList(MemberCardModel cardModell) throws Exception;
 }

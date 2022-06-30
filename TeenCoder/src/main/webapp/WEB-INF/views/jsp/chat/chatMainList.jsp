@@ -9,13 +9,17 @@
 <meta charset="UTF-8">
 <title>TeenCoder 쪽지</title>
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <!-- CSS File -->
 <link rel="stylesheet" type="text/css" href="/teen/resources/css/message_list.css" rel="stylesheet">
 
 <!-- 메세지 전송 아이콘(종이비행기) 때문에 필요 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"/>
-
+<style>
+html{
+overflow:hidden;
+}
+</style>
 </head>
 
 <body>
@@ -40,7 +44,7 @@
 	        <div class="inbox_people">
 	          <div class="headind_srch">
 	            <div class="recent_heading">
-	              <h4>Recent</h4>
+	              <h4>Teen</h4>
 	            </div>
 	            <!-- 메세지 검색 -->
 	            <div class="srch_bar">
@@ -74,6 +78,8 @@
 	    </div>
 	</div>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+	
 	<script>
 	
 	$(document).ready(function(){
@@ -83,6 +89,8 @@
 	
 	// 가장 처음 메세지 리스트를 가져온다.
 	const FirstMessageList = function(){
+		
+		
 		$.ajax({
 			url:"/teen/chatList",
 			method:"get",
@@ -216,7 +224,6 @@
 			},
 			success:function(data){
 				console.log("메세지 내용 가져오기 성공");
-				
 				// 메세지 내용을 html에 넣는다
 				$('.msg_history').html(data);
 				
@@ -273,9 +280,7 @@
 		}
 		
 	};
-	
-	
-	
+		
 	
 	</script>
 </body>
