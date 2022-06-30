@@ -21,6 +21,7 @@ public interface FollowService {
 	//팔로우 중복확인
 	public int countFollow(MemberFollowModel followModel)throws Exception;
 	
-	
+	//인스타감성 팔로우 리스트
+	public List<MemberFollowModel> myFollowPage(MemberFollowModel followModel)throws Exception;
 	
 }

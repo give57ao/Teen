@@ -21,6 +21,9 @@ public interface FollowMapper {
 
 	public int countFollow(MemberFollowModel followModel)throws Exception;
 
+	//인스타감성 팔로우 리스트
+	public List<MemberFollowModel> myFollowPage(MemberFollowModel followModel)throws Exception;
+
 	
 
 }

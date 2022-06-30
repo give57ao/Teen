@@ -30,15 +30,16 @@ public class FollowController {
 	
 	//팔로우 한 사람들의 게시글 보기
 	@RequestMapping(value = "/followList")
-	public String followListForm(MemberFollowModel followModel,Model model, HttpSession session,
+	public String followListForm(MemberFollowModel followModel,Model model, HttpServletRequest request,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 	         @RequestParam(value = "cntPerPage", required = false) String cntPerPage,
 	         @RequestParam(value = "sort", required = false) String sort,
 	         @RequestParam(value = "search", required = false) String search,
 	         @RequestParam(value = "keyword", required = false) String keyword,
+	         @RequestParam(value = "member_no" , required = false)int member_no,
 	         MemberFollowParam followParam )throws Exception {
 		
-		int member_no = (Integer)session.getAttribute("member_no");
+		//int member_no = Integer.parseInt(request.getParameter("member_no"));
 		followModel.setMember_no(member_no);
 		List<MemberFollowModel> followList = followService.followBoardList(followModel);	
 
@@ -108,6 +109,25 @@ public class FollowController {
 
 		}
 
-		return "redirect:/follow/followList";
+		return "redirect:/follow/myFollowPage";
 	}
+	
+	@RequestMapping(value = "myFollowPage")
+	public String myFollowPageForm(MemberFollowModel followModel, HttpSession session, Model model)throws Exception {
+		
+		int member_no = (Integer)session.getAttribute("member_no");
+		followModel.setMember_no(member_no);
+		
+		List<MemberFollowModel> myFollowPage = followService.myFollowPage(followModel);
+		
+		model.addAttribute("followPage", myFollowPage);
+		
+		
+		
+		return "member/myFollowPage";
+	}
+	
+	
+	
+	
 }

@@ -28,10 +28,7 @@ SELECT
 		INNER JOIN MEMBER M
 		ON B.MEMBER_NO = M.MEMBER_NO
         
-		WHERE B.MEMBER_NO IN (SELECT
-		FOLLOWING_MEMBER_NO
-		FROM FOLLOW
-		WHERE FOLLOW_NO = #{member_no})
+		WHERE B.MEMBER_NO = #{member_no}
 		
 	</select>
 
@@ -107,6 +104,25 @@ WHERE FOLLOW_NO = #{follow_no} AND FOLLOWING_MEMBER_NO = #{member_no}
 </select>
 
 
+<!-- 미니캐릭터 카드 팔로우 리스트 -->
+<select id="myFollowPage" parameterType="com.ez.teen.follow.model.MemberFollowModel" resultType="com.ez.teen.follow.model.MemberFollowModel" >
+SELECT 
+M.MEMBER_NO,
+M.MEMBER_NAME,
+M.MEMBER_ID,
+M.MEMBER_EMAIL,
+F.FOLLOW_DATE,
+M.MEMBER_NICK,
+M.MEMBER_POINT,
+M.MEMBER_PROFILE 
+
+
+FROM MEMBER M
+INNER JOIN FOLLOW F
+ON M.MEMBER_NICK = F.MEMBER_NICK
+
+WHERE M.MEMBER_NO IN (SELECT FOLLOWING_MEMBER_NO FROM FOLLOW WHERE FOLLOW_NO = #{member_no})
+</select>
 
 
 

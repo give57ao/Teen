@@ -47,4 +47,12 @@ public class FollowServiceImpl implements FollowService{
 	}
 
 	
+	//인스타감성 팔로우 리스트
+	@Override
+	public List<MemberFollowModel> myFollowPage(MemberFollowModel followModel) throws Exception {
+		
+		return followMapper.myFollowPage(followModel);
+	}
+
+	
 }
