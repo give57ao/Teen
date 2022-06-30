@@ -124,6 +124,10 @@ ON M.MEMBER_NICK = F.MEMBER_NICK
 WHERE M.MEMBER_NO IN (SELECT FOLLOWING_MEMBER_NO FROM FOLLOW WHERE FOLLOW_NO = #{member_no})
 </select>
 
+<delete id="myFollowDelete" parameterType="com.ez.teen.follow.model.MemberFollowModel">
+DELETE FROM FOLLOW
+WHERE FOLLOW_NO = #{member_no} AND FOLLOWING_MEMBER_NO = #{following_member_no}
 
+</delete>
 
 </mapper>

@@ -54,5 +54,12 @@ public class FollowServiceImpl implements FollowService{
 		return followMapper.myFollowPage(followModel);
 	}
 
+	@Override
+	public void myFollowDelete(MemberFollowModel followModel) {
+		
+		followMapper.myFollowDelete(followModel);
+		
+	}
+
 	
 }

@@ -128,6 +128,20 @@ public class FollowController {
 	}
 	
 	
+	@RequestMapping(value = "myFollowDelete")
+	public String myFollowDelete(HttpSession session, MemberFollowModel followModel,
+			@RequestParam(value = "following_member_no")int following_member_no, HttpServletRequest request ) throws Exception {
+		
+		int member_no = (Integer)session.getAttribute("member_no");
+		followModel.setMember_no(member_no);
+		followModel.setFollowing_member_no(following_member_no);
+		
+		followService.myFollowDelete(followModel);
+		
+		
+		return "redirect:/follow/myFollowPage";
+		
+	}
 	
 	
 }

@@ -23,5 +23,7 @@ public interface FollowService {
 	
 	//인스타감성 팔로우 리스트
 	public List<MemberFollowModel> myFollowPage(MemberFollowModel followModel)throws Exception;
+
+	public void myFollowDelete(MemberFollowModel followModel);
 	
 }

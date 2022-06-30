@@ -46,3 +46,23 @@ function follow() {
 	});
 	}
 }
+
+function deleteFollow(following_member_no) {
+	var chk = confirm("해당 게시물 스크랩을 취소하시겠습니까?")
+	if(chk) {
+		location.href='/teen/follow/myFollowDelete?following_member_no='+following_member_no;
+	}	
+		
+		/*if(confirm("해당 유저를 언팔하시겠습니까?")){
+		$.ajax({
+			url : "/teen/follow/myFollowDelete",
+			type : "post",
+			dataType : "json",
+			data : {following_member_no},
+			success : function() {
+				
+			}
+		});
+	}*/
+}
+	

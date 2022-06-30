@@ -35,10 +35,13 @@
 	                    <li><a href="/teen/scrap/scrapList">스크랩</a></li>
 	                </ul>
 	                <!-- My Page -->
-	               <c:forEach items="${followPage}" var="board">
 	                <div id="board_list" class="my_page">
+	                	<div id="board_list_title">
+						<h2>나의 팔로우 목록</h2>
+						</div>
 	                	<div class="profile">
 	                		<div class="member_info">
+	              				 <c:forEach items="${followPage}" var="board">
 
 								<c:choose>
 									<c:when test="${board.member_profile eq 'N'}">
@@ -58,16 +61,17 @@
 		                				팔로우한 날짜 : <fmt:formatDate value="${board.follow_date}" pattern="yyyy.MM.dd"/>
 		                			</p>
 	                			</div>
-	                            <button class="btn_com btn_mod_profile" onclick="location.href='/teen/follow/followList?member_no=${board.member_no }';" value="${board.member_no }" >게시글 보러가기</button>
-	                            <button class="btn_com btn_mod_member" onclick="">팔로우 취소하기</button>
+	                            <button class="btn_com btn_mod_profile" onclick="location.href='/teen/follow/followList?member_no=${board.member_no }';">게시글 보러가기</button>
+	                            <button class="btn_com btn_mod_member" onclick="deleteFollow(${board.member_no })" > 팔로우 취소하기 </button>
+	                            </c:forEach>
 	                		</div>
 		                </div>
 	                </div>
-	                </c:forEach>
                 </div>
 	        </div>
 	    </div>
 	<!-- Footer -->
 	<jsp:include page="../template/footer.jsp" flush="false" />
+	<script type="text/javascript" src="/teen/resources/js/member/myPage/myFollow.js"></script>
 </body>
 </html>
