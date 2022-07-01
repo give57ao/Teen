@@ -30,5 +30,5 @@ public interface CardService {
 	public List<MemberCardModel> getScrapList(MemberCardModel cardModel)throws Exception;
 	
 	//받은 쪽지 리스트 받아오기
-	public List<ChatModel> getRecvMessageList(MemberCardModel cardModell) throws Exception;
+	public List<ChatModel> getRecvMessageList(MemberCardModel cardModel) throws Exception;
 }

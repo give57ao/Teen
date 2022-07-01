@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -58,7 +59,7 @@ public class BoardController {
       
       boardParam.setMember_no(0);
       commentParam.setMember_no(0);
-      
+            
       model.addAttribute("allMemberCount", boardService.getUserCount());
       model.addAttribute("allBoardCount", boardService.getBoardCount(boardParam));
       model.addAttribute("allCommentCount", boardService.getCommentCount(commentParam));

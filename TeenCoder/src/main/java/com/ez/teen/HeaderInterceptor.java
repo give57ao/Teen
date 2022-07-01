@@ -43,14 +43,12 @@ public class HeaderInterceptor extends HandlerInterceptorAdapter{
 			request.setAttribute("allCommentCount", cardService.getCommentCount(cardModel));
 			request.setAttribute("followList", cardService.getFollowList(cardModel));
 			request.setAttribute("scrapList", cardService.getScrapList(cardModel));
+			cardModel.setMember_nick((String)session.getAttribute("member_nick"));
 			request.setAttribute("recvChatList", cardService.getRecvMessageList(cardModel));
 		}
 
 		System.out.println("===================================");
-		System.out.println(memberModel);
-		System.out.println(session.getAttribute("member_no"));
-		System.out.println(memberService.myPageList(memberModel));
-		
+		System.out.println(cardService.getRecvMessageList(cardModel));
 		System.out.println("===================================");
 
 	}	
