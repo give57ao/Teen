@@ -62,7 +62,7 @@
 	                        <div class="row">
 	                            <div class="row_info">
 	                                <ul class="row_top tag_category">
-	                                    <li>${boardDetail.board_tag_name}</li>
+	                                    <li>#${boardDetail.board_tag_name}</li>
 	                                </ul>
 	                                <div class="row_top member">
 	                                    <h4>
@@ -405,6 +405,17 @@
             }
         });
     });
+  
+  $('#drop-button2').on("click",function(e){
+		
+		e.preventDefault();
+		var nick = document.getElementById('member_nick').value;
+		let popUrl = "/teen/chatMainList?nick="+nick;
+		let popOption = "width = 650px, height=550px, top=300px, left=300px, scrollbars=";
+		
+		window.open(popUrl,"쪽지",popOption);
+		
+	});
 </script>
 </body>
 

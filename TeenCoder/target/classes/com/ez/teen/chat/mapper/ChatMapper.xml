@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     on c.recv_nick = m.member_nick
     <choose>
         <when test="room != 0">
-            where room=#{room}
+            where room=#{room} and  content is not null
         </when>
         <otherwise>
             where (recv_nick = #{recv_nick} and send_nick = #{member_nick}) or (send_nick = #{recv_nick} and recv_nick = #{member_nick})
@@ -67,7 +67,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
             insert into chat values(SEQ_CHAT_NO.NEXTVAL, #{room}, #{send_nick}, #{recv_nick}, TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI'), #{content}, 0)
         </when>
         <otherwise>
-            insert into chat values(SEQ_CHAT_NO.NEXTVAL, #{room}, #{send_nick}, #{recv_nick}, TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI'), #{content}, 0)
+            insert into chat(chat_no,room,send_nick,recv_nick,send_time) 
+            values(SEQ_CHAT_NO.NEXTVAL, #{room}, #{send_nick}, #{recv_nick}, TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI'))
         </otherwise>
     </choose>
 </insert>
