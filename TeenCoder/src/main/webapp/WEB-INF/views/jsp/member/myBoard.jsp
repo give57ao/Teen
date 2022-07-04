@@ -145,9 +145,9 @@
 	
 	<!-- JS -->
 	<script type="text/javascript" src="/teen/resources/js/member/myPage/myBoard.js"></script>
-			<script>
+	<script>
 function deleteBoard(num) {
-	var chk = confirm("정말 삭제?")
+	var chk = confirm("해당 게시글을 삭제하시겠습니까?")
 	if(chk) {
 		location.href='/teen/board/delete?board_no='+num
 	}

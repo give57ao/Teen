@@ -128,5 +128,6 @@
 	<!-- JS -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/admin/admin.js"></script>
+	<script type="text/javascript" src="/teen/resources/js/admin/adminBoard.js"></script>
 </body>
 </html>

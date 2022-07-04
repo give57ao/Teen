@@ -14,9 +14,9 @@ function searchBoard() {
 
 
 
-function deleteBoard(board_no) {
+function deleteComment(bcomment_no) {
 	// var board_no = document.getElementById('board_no').value;
-	console.log(board_no);
+	console.log(bcomment_no);
 
 	//	location.href = 'teen/board/delete?' + board_no
 }

@@ -417,8 +417,10 @@ public class BoardController {
    
 // 댓글 삭제
 	@RequestMapping("board/deleteComment")
-	public String deleteBcomment(@RequestParam("board_no") int board_no, @RequestParam("bcomment_no") int bcomment_no,
-			@RequestParam("ref_step") int ref_step, HttpServletRequest request, RedirectAttributes redirect,
+	public String deleteBcomment(@RequestParam(value="board_no", required = false) int board_no, 
+																@RequestParam(value="bcomment_no", required = false) int bcomment_no,
+																@RequestParam(value="ref_step", required = false) int ref_step, 
+			HttpServletRequest request, RedirectAttributes redirect,
 			CommentParam commentParam) {
 
 		commentParam.setBoard_no(board_no);
@@ -427,6 +429,7 @@ public class BoardController {
 
 		String referer = (String) request.getHeader("REFERER");
 		System.out.println("nowUrl =" + referer);
+		
 		if (referer.contains("/board/detail")) {
 			boardService.deleteComment(commentParam); // 삭제 및 업데이트 같이 작동
 			return "redirect:/board/detail?board_no=" + board_no;
