@@ -61,11 +61,17 @@ $(document).ready(function() {
 });
 
 function fn_checkId() {
-	var member_id = {member_id : $("#member_id").val()}
+	var id = document.getElementById("member_id").value;
+	member_id = /^[a-z]+[a-z0-9]{5,19}$/g;
 
 	if($("#member_id").val() == "") {
 		alert("아이디를 입력하세요.");
 		$("#member_id").focus();
+		return false;
+	}
+	
+	if(!member_id.test(id)) {
+		alert("아이디는 영문자로 시작하는 최소6자 ~ 최대20자(영문자+숫자가능)로 입력해 주세요");
 		return false;
 	}
 	
@@ -88,11 +94,17 @@ function fn_checkId() {
 }
 
 function fn_checkNick() {
-	var member_nick = {member_nick : $("#member_nick").val()}
+	var nick = document.getElementById("member_nick").value;
 
+	member_nick = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{1,10}$/;
+	
 	if($("#member_nick").val() == "") {
 		alert("닉네임을 입력하세요.");
 		$("#member_nick").focus();
+		return false;
+	}
+	if(!member_nick.test(nick)) {
+		alert("닉네임은 한글, 영문, 숫자만 가능하며 2-10자리 가능합니다.");
 		return false;
 	}
 	
@@ -114,8 +126,23 @@ function fn_checkNick() {
 
 function checkValue() {
 	var form = document.userInfo;
-	var test = $("input:checkbox[name='member_pro_check']").is(":checked");
+	var email = document.getElementById("member_email").value;
+	var id = document.getElementById("member_id").value;
+	var pw = document.getElementById("member_pw").value;
+	var nick = document.getElementById("member_nick").value;
+	var name = document.getElementById("member_name").value;
 
+	//이름 형식 : 한글만 입력
+	member_name = /[ㄱ-힣].{1,10}$/;
+	// 닉네임 형식 : 한글,영문,숫자 2~10자리
+	member_nick = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{1,10}$/;
+	// 이메일 형식 : 영문 +숫자 @ 영문 .com
+	member_email =/^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+	// 아이디 형식 : 영문자로 시작하는 6~20자 영문자 + 숫자 
+	member_id =/^[a-z]+[a-z0-9]{5,19}$/g;
+	// 비밀번호 형식 : 8~16자 영문 + 숫자
+	member_pw =/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+	
 	if(!form.member_id.value) {
 		alert("아이디를 입력하세요.")
 		return false;
@@ -151,10 +178,30 @@ function checkValue() {
 		return false;
 	}		
 	
-/*	if(test == false) {
-		alert("전문성 체크가 필요합니다.");
+	if(!member_email.test(email)) {
+		alert("이메일 형식이 잘못 되었습니다.");
 		return false;
-	}*/
+	}
+	
+	if(!member_id.test(id)) {
+		alert("아이디는 영문자로 시작하는 최소6자 ~ 최대20자(영문자+숫자가능)로 입력해 주세요");
+		return false;
+	}
+	
+	if(!member_pw.test(pw)) {
+		alert("비밀번호는 영문자 + 숫자로 조합된 최소 8자 ~ 최대 16자로 입력해 주세요.");
+		return false;
+	}
+	
+	if(!member_nick.test(nick)) {
+		alert("닉네임은 한글, 영문, 숫자만 가능하며 2-10자리 가능합니다.");
+		return false;
+	}
+	
+	if(!member_name.test(name)) {
+		alert("이름은 한글만 입력 가능합니다.");
+		return false;
+	}
 	
 	
     if (typeof(grecaptcha) != 'undefined') {

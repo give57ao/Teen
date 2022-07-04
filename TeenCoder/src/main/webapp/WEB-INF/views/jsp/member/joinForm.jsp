@@ -38,7 +38,7 @@
 	                    <tr>
 	                        <th>비밀번호</th>
 	                        <td>
-	                            <input type="password" name="member_pw" placeholder="비밀번호">
+	                            <input type="password" id="member_pw" name="member_pw" placeholder="비밀번호">
 	                        </td>
 	                    </tr>
 	                    <tr>
@@ -50,7 +50,7 @@
 	                    <tr>
 	                        <th>이름</th>
 	                        <td>
-	                            <input type="text" name="member_name" placeholder="이름">
+	                            <input type="text" id="member_name" name="member_name" placeholder="이름">
 	                        </td>
 	                    </tr>
 	                    <tr class="check">
