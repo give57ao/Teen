@@ -391,18 +391,19 @@ public class BoardController {
    @RequestMapping("board/delete")
    public String deleteBoard(@RequestParam("board_no") int board_no, RedirectAttributes redirect) {
       
-      try {
-      boardService.updateBoardPkNo();
-      boardService.deleteBoard(board_no);
-      boardService.updateBoardPkYes();
-      
-      
-      redirect.addFlashAttribute("msg", "삭제굿");
-      
-   } catch (Exception e) {
-      
-      redirect.addFlashAttribute("msg", "삭제에러");
-   }
+		/*
+		 * try { boardService.updateBoardPkNo(); boardService.deleteBoard(board_no);
+		 * boardService.updateBoardPkYes();
+		 * 
+		 * 
+		 * redirect.addFlashAttribute("msg", "삭제굿");
+		 * 
+		 * } catch (Exception e) {
+		 * 
+		 * redirect.addFlashAttribute("msg", "삭제에러"); }
+		 */
+	   System.out.println("asdasdasd =" + board_no);
+	   boardService.deleteBoard(board_no);
          
    return "redirect:/board/";
    }
@@ -414,7 +415,7 @@ public class BoardController {
       
     	  commentParam.setBoard_no(board_no);
     	  commentParam.setBcomment_no(bcomment_no);
-    	  commentParam.setBcomment_no(ref_step);
+    	  commentParam.setBcomment_no(ref_step);	
     	  
     	  boardService.deleteComment(commentParam); // 삭제 및 업데이트 같이 작동
     

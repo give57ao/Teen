@@ -53,7 +53,7 @@
 	                                    <tr>
 	                                        <th>닉네임</th>
 	                                        <td>
-	                                            <input type="text" name="member_nick" placeholder="닉네임">
+	                                            <input type="text" name="member_nick" value="${member.member_nick }" placehold="닉네임">
 	                                        </td>
 	                                    </tr>
 	                                    <tr id="pro" class="checkbox">

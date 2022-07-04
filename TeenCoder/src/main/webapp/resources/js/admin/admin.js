@@ -9,7 +9,6 @@ function memberDelete() {
 		alert("삭제되었습니다.");
 		return true;
 	} else {
-		alert("잘못된 로직입니다.");
 		return false;
 	}
 }

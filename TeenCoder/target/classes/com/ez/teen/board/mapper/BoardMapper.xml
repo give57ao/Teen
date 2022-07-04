@@ -553,17 +553,6 @@ ORDER BY board_comment_count DESC
 		WHERE BOARD_NO = #{board_no}
 	</delete>
 	
-	<!-- board삭제시 Pk 비활 -->
-	<update id="updateBoardPkNo">
-		ALTER TABLE BOARD
-		DISABLE CONSTRAINT SYS_C007710 CASCADE
-	</update>
-	
-	<!-- board삭제시 Pk 활성화 -->
-	<update id="updateBoardPkYes">
-		ALTER TABLE BOARD
-		ENABLE CONSTRAINT SYS_C007710
-	</update>
 	<!-- 댓글 삭제 -->
 	<delete id="deleteComment" parameterType="com.ez.teen.board.model.CommentParam">
 		DELETE FROM BCOMMENT
