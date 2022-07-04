@@ -389,38 +389,55 @@ public class BoardController {
    }   
    
    @RequestMapping("board/delete")
-   public String deleteBoard(@RequestParam("board_no") int board_no, RedirectAttributes redirect) {
-      
-		/*
-		 * try { boardService.updateBoardPkNo(); boardService.deleteBoard(board_no);
-		 * boardService.updateBoardPkYes();
-		 * 
-		 * 
-		 * redirect.addFlashAttribute("msg", "삭제굿");
-		 * 
-		 * } catch (Exception e) {
-		 * 
-		 * redirect.addFlashAttribute("msg", "삭제에러"); }
-		 */
-	   System.out.println("asdasdasd =" + board_no);
-	   boardService.deleteBoard(board_no);
-         
-   return "redirect:/board/";
+   public String deleteBoard(@RequestParam("board_no") int board_no, RedirectAttributes redirect, 
+		   HttpServletRequest request) {
+      String referer = (String)request.getHeader("REFERER");
+	   System.out.println("nowUrl =" + referer);
+	   
+	   if(referer.contains("/board/detail")) {
+		   boardService.deleteBoard(board_no);
+		   return "redirect:/board/";
+	   }else if(referer.contains("/member/boardList")) {
+		   boardService.deleteBoard(board_no);
+		   return "redirect:/member/boardList";
+	   }else if(referer.contains("/admin/noticeBoard")) {
+		   boardService.deleteBoard(board_no);
+		   return "redictect:/admin/noticeBoard";
+	   }else if(referer.contains("/admin/adminBoard")) {
+		   boardService.deleteBoard(board_no);
+		   return "redictect:/admin/adminBoard";
+	   }else if(referer.contains("/admin/reportBoard")) {
+		   boardService.deleteBoard(board_no);
+		   return "redictect:/admin/reportBoard";
+	   }else {
+		   boardService.deleteBoard(board_no);
+		   return "redirect:/board/";
+	   }
    }
    
 // 댓글 삭제
-   @RequestMapping("board/deleteComment")
-   public String deleteBcomment(@RequestParam("board_no") int board_no, @RequestParam("bcomment_no") int bcomment_no,
-		   @RequestParam("ref_step") int ref_step, RedirectAttributes redirect, CommentParam commentParam) {
-      
-    	  commentParam.setBoard_no(board_no);
-    	  commentParam.setBcomment_no(bcomment_no);
-    	  commentParam.setBcomment_no(ref_step);	
-    	  
-    	  boardService.deleteComment(commentParam); // 삭제 및 업데이트 같이 작동
-    
-      return "redirect:/board/detail?board_no="+board_no;
-   }
+	@RequestMapping("board/deleteComment")
+	public String deleteBcomment(@RequestParam("board_no") int board_no, @RequestParam("bcomment_no") int bcomment_no,
+			@RequestParam("ref_step") int ref_step, HttpServletRequest request, RedirectAttributes redirect,
+			CommentParam commentParam) {
+
+		commentParam.setBoard_no(board_no);
+		commentParam.setBcomment_no(bcomment_no);
+		commentParam.setBcomment_no(ref_step);
+
+		String referer = (String) request.getHeader("REFERER");
+		System.out.println("nowUrl =" + referer);
+		if (referer.contains("/board/detail")) {
+			boardService.deleteComment(commentParam); // 삭제 및 업데이트 같이 작동
+			return "redirect:/board/detail?board_no=" + board_no;
+		} else if (referer.contains("/member/commentList")) {
+			boardService.deleteComment(commentParam);
+			return "redirect:/member/commentList";
+		} else {
+			boardService.deleteComment(commentParam);
+			return "redirect:/board/";
+		}
+	}
  
    @ResponseBody
    @PostMapping("board/detail/like")

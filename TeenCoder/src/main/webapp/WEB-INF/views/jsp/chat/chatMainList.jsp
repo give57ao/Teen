@@ -18,11 +18,12 @@
 <style>
 html{
 overflow:hidden;
+min-width:1080px;
 }
 </style>
 </head>
 
-<body>
+<body onload='resizeWindow(this)'>
 
 	<!-- 메뉴바 
        현재페이지 뭔지 param.thisPage에 넣어서 navbar.jsp에  던짐 -->
@@ -30,11 +31,6 @@ overflow:hidden;
 		<jsp:param value="message" name="thisPage" />
 	</jsp:include>
  --%>
-	<br />
-	<br />
-	<br /> 
-	<br /> 
-	<br /> 
 	
 	<div class="msg-container">
 	
@@ -79,7 +75,7 @@ overflow:hidden;
 	</div>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-	
+	<script type="text/javascript" src="/teen/resources/js/autoSizePopup.js"></script>
 	<script>
 	
 	$(document).ready(function(){
@@ -282,6 +278,10 @@ overflow:hidden;
 	};
 		
 	
+	
+	</script>
+	<script type="text/javascript">
+	autoSizePopup();
 	</script>
 </body>
 </html>
