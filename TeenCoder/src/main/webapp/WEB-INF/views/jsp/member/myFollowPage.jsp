@@ -39,9 +39,9 @@
 	                	<div id="board_list_title">
 						<h2>나의 팔로우 목록</h2>
 						</div>
+	<c:forEach items="${followPage}" var="board">
 	                	<div class="profile">
 	                		<div class="member_info">
-	              				 <c:forEach items="${followPage}" var="board">
 
 								<c:choose>
 									<c:when test="${board.member_profile eq 'N'}">
@@ -63,9 +63,17 @@
 	                			</div>
 	                            <button class="btn_com btn_mod_profile" onclick="location.href='/teen/follow/followList?member_no=${board.member_no }';">게시글 보러가기</button>
 	                            <button class="btn_com btn_mod_member" onclick="deleteFollow(${board.member_no })" > 팔로우 취소하기 </button>
-	                            </c:forEach>
 	                		</div>
 		                </div>
+	</c:forEach>	                
+	                </div>
+	                <!-- Member Info -->
+	                <div id="member_info">
+	                    <a href="/teen/board/boardWrite" class="btn_com btn_main">게시글 작성</a>
+	                    
+	                    <!-- My Card -->
+						<jsp:include page="../template/myCard.jsp" flush="false" />
+	                    
 	                </div>
                 </div>
 	        </div>

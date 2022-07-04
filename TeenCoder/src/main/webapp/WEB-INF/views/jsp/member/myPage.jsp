@@ -60,8 +60,8 @@
 	                			</div>
 	                			<ul class="info_icon number">
 	                                <li><img src="/teen/resources/images/icon/icon_message.svg" class="i_msg">0</li>
-	                                <li><img src="/teen/resources/images/icon/icon_follow.svg" class="i_follow">0</li>
-	                                <li><img src="/teen/resources/images/icon/icon_scrap.svg" class="i_scrap">0</li>
+	                                <li><img src="/teen/resources/images/icon/icon_follow.svg" class="i_follow">${allFollowCount}</li>
+	                                <li><img src="/teen/resources/images/icon/icon_scrap.svg" class="i_scrap">${allScrapCount}</li>
 	                            </ul>
 	                            <a href="/teen/member/profile" class="btn_com btn_mod_profile">프로필사진</a>
 	                			<a href="/teen/member/mypageModify" class="btn_com btn_mod_member">회원정보 수정</a>

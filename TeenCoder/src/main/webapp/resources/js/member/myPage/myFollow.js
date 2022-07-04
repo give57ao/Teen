@@ -48,7 +48,7 @@ function follow() {
 }
 
 function deleteFollow(following_member_no) {
-	var chk = confirm("해당 게시물 스크랩을 취소하시겠습니까?")
+	var chk = confirm("해당 유저를 언팔 하시겠습니까???")
 	if(chk) {
 		location.href='/teen/follow/myFollowDelete?following_member_no='+following_member_no;
 	}	
