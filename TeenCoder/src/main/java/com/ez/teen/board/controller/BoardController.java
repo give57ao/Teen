@@ -156,7 +156,7 @@ public class BoardController {
 
    boardService.insertBoard(boardModel, mpRequest);
 
-   return "redirect:/board"; 
+   return "redirect:/board?board_group_no=1"; 
    }
    
    

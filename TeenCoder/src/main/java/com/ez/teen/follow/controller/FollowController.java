@@ -37,8 +37,6 @@ public class FollowController {
 	         @RequestParam(value = "search", required = false) String search,
 	         @RequestParam(value = "keyword", required = false) String keyword,
 	         @RequestParam(value = "member_no" , required = false)int member_no,
-	         @RequestParam(value = "board_group_no" , required = false)String board_group_no,
-	         @RequestParam(value = "board_tag_name" , required = false)String board_tag_name,
 	         MemberFollowParam followParam )throws Exception {
 		
 		followModel.setMember_no(member_no);
