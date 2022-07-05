@@ -93,7 +93,15 @@
 			                                <div class="row_top member">
 			                                    <h4>
 			                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-			                                        <span class="rank">[Expert]</span> ${board.member_nick}
+			                                        <span class="rank">
+			                                        <c:if test="${board.member_pro_check eq 'Y' }">
+			                                        [Expert]
+			                                        </c:if>
+			                                        <c:if test="${board.board_count > 50 }">
+			                                        [글쟁이]
+			                                        </c:if>
+			                                        </span>
+			                                         ${board.member_nick}
 			                                    </h4>
 			                                </div>
 											<span class="row_top date"><fmt:formatDate value="${board.board_date}" pattern="yyyy.MM.dd"/></span>

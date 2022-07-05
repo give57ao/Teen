@@ -39,6 +39,8 @@
 	                	<div id="board_list_title">
 						<h2>나의 팔로우 목록</h2>
 						</div>
+						<c:choose>
+	<c:when test="">
 	<c:forEach items="${followPage}" var="board">
 	                	<div class="profile">
 	                		<div class="member_info">
@@ -65,7 +67,13 @@
 	                            <button class="btn_com btn_mod_member" onclick="deleteFollow(${board.member_no })" > 팔로우 취소하기 </button>
 	                		</div>
 		                </div>
-	</c:forEach>	                
+	</c:forEach>
+	</c:when>
+	<c:otherwise>
+	해당 목록이 없습니다.
+	</c:otherwise>
+	</c:choose>
+		                
 	                </div>
 	                <!-- Member Info -->
 	                <div id="member_info">

@@ -190,7 +190,7 @@
 	
 	
 <select id ="boardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.board.model.BoardParam">
-SELECT rn, board_no, board_group_no, board_tag_name, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check, bgroup_name, member_nick, board_comment_count
+SELECT rn, board_no, board_group_no, board_tag_name, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check, bgroup_name, member_nick, board_comment_count,board_count,member_pro_check
 		FROM (
 			SELECT ROWNUM RN, A.* 
 				FROM (
@@ -206,6 +206,8 @@ SELECT rn, board_no, board_group_no, board_tag_name, board_title, board_date, bo
 ,B.BOARD_FILE_CHECK
 ,G.BGROUP_NAME
 ,M.MEMBER_NICK
+,M.MEMBER_PRO_CHECK
+,COUNT(B.BOARD_NO) AS board_count
 ,COUNT(C.BOARD_NO) AS board_comment_count
 
 FROM BOARD B
@@ -257,7 +259,7 @@ AND REGEXP_LIKE (B.BOARD_TAG_NAME, '^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
 
 
 
-GROUP BY B.BOARD_NO, B.BOARD_GROUP_NO, B.BOARD_TAG_NAME,  B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,G.BGROUP_NAME,M.MEMBER_NICK
+GROUP BY B.BOARD_NO, B.BOARD_GROUP_NO, B.BOARD_TAG_NAME,  B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,G.BGROUP_NAME,M.MEMBER_NICK,M.MEMBER_PRO_CHECK
 
 <if test='sort == null'>
 ORDER BY B.BOARD_DATE DESC
