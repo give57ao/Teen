@@ -39,26 +39,8 @@
 					<!-- Title -->
 					<div id="board_list_title">
 						<h2>나의 팔로우 목록</h2>
-						<ul id="board_list_menu" class="side_menu">
-							<li><a href="followList?sort=recent&search=${paging.search}&keyword=${paging.keyword}">최신순</a></li>
-							<li><a href="followList?sort=view&search=${paging.search}&keyword=${paging.keyword}">조회순</a></li>
-							<li><a href="followList?sort=recommend&search=${paging.search}&keyword=${paging.keyword}">추천순</a></li>
-							<li><a href="followList?sort=comment&search=${paging.search}&keyword=${paging.keyword}">댓글순</a></li>
-						</ul>
 					</div>
 					<!-- Search -->
-					<div id="board_list_search">
-						<select class="dropdown" id="selectBoxTest">
-							<option value="" id="search" disabled>선택</option>
-							<option value="all" id="search">전체</option>
-							<option value="title" id="search">제목</option>
-							<option value="content" id="search">내용</option>
-						</select>
-						<div class="search">
-							<input type="text" id="keyword" placeholder="검색">
-							<button class="btn_search" onClick="searchBoard()"></button>
-						</div>
-					</div>
 					<!-- List Row -->
 					<div id="board_list_row">
 						<!-- Row1 -->

@@ -68,6 +68,7 @@ public class ScrapController {
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "search", required = false) String search,
 			@RequestParam(value = "keyword", required = false) String keyword,
+			@RequestParam(value = "board_group_no", required = false) String board_group_no,
 	         BoardParam boardParam)throws Exception {
 		
 		int member_no = (Integer)session.getAttribute("member_no");
@@ -75,7 +76,6 @@ public class ScrapController {
 		
 		int total = scrapService.getScrapCount(boardParam);
 
-		System.out.println("total :" + total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -89,8 +89,7 @@ public class ScrapController {
 			boardParam.setEndPage(1);
 		}
 		
-		
-		
+	
 		List<BoardModel> scrapList = scrapService.scrapList(boardParam);
 		
 		model.addAttribute("scrapList", scrapList);

@@ -37,9 +37,10 @@ public class FollowController {
 	         @RequestParam(value = "search", required = false) String search,
 	         @RequestParam(value = "keyword", required = false) String keyword,
 	         @RequestParam(value = "member_no" , required = false)int member_no,
+	         @RequestParam(value = "board_group_no" , required = false)String board_group_no,
+	         @RequestParam(value = "board_tag_name" , required = false)String board_tag_name,
 	         MemberFollowParam followParam )throws Exception {
 		
-		//int member_no = Integer.parseInt(request.getParameter("member_no"));
 		followModel.setMember_no(member_no);
 		List<MemberFollowModel> followList = followService.followBoardList(followModel);	
 
@@ -84,13 +85,6 @@ public class FollowController {
 		followModel.setMember_nick(member_nick);
 		
 		int followResult = followService.countFollow(followModel);
-		System.out.println("***************************************************");
-		System.out.println("***************************************************");
-		System.out.println("***************************************************");
-		System.out.println(followResult);
-		System.out.println("***************************************************");
-		System.out.println("***************************************************");
-		System.out.println("***************************************************");
 		
 		try {
 			if (followResult == 0) {
