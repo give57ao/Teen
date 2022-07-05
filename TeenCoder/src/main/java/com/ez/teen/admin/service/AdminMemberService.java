@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.admin.model.ChatParam;
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
@@ -65,5 +66,11 @@ public interface AdminMemberService {
 	
 	// summernote
 	public void insertSummerNote(String fileName);
+
+	//회원정보수정시 채팅 닉네임 변경 로직
+	public void chatMemberModify(ChatParam chatParam);
+
+	//기존 닉네임 가져오기
+	public String getNick(int member_no);
 
 }

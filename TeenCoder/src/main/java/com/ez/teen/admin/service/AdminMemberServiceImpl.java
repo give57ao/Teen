@@ -8,14 +8,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ez.teen.admin.mapper.AdminMapper;
+import com.ez.teen.admin.model.ChatParam;
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
+import com.ez.teen.common.file.FileUtil;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 import com.ez.teen.notice.model.NoticeModel;
 import com.ez.teen.notice.model.NoticeParam;
-import com.ez.teen.common.file.FileUtil;
 
 @Service
 public class AdminMemberServiceImpl implements AdminMemberService {
@@ -138,6 +139,18 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	@Override
 	public void insertSummerNote(String fileName) {
 		adminMapper.insertSummerNote(fileName);
+	}
+
+	//채팅 닉네임 변경
+	@Override
+	public void chatMemberModify(ChatParam chatParam) {
+		adminMapper.chatMemberModify(chatParam);
+		adminMapper.chatMemberModify2(chatParam);
+	}
+
+	@Override
+	public String getNick(int member_no) {
+		return adminMapper.getNick(member_no);
 	}
 	
 }

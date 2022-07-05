@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.admin.model.ChatParam;
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.admin.service.AdminMemberService;
 import com.ez.teen.board.model.BoardModel;
@@ -87,8 +87,23 @@ public class AdminController {
 	
 	// 회원정보 수정
 	@PostMapping("/memberModify")
-	public String memberModify(MemberModel memberModel) {
+	public String memberModify(MemberModel memberModel, ChatParam chatParam, HttpSession session) {
+		int member_no = memberModel.getMember_no();
+		
+		//기존 닉네임을 chatParam에 담기
+		chatParam.setMember_nick(adminMemberService.getNick(member_no));
+		//수정된 닉네임 chatParam에 담기
+		chatParam.setMod_member_nick(memberModel.getMember_nick());
+		
+		System.out.println("==================================");
+		System.out.println("기존닉네임 :"+chatParam.getMember_nick());
+		System.out.println("변경될 닉네임 :"+chatParam.getMod_member_nick());
+		System.out.println("==================================");
+
+		
+		adminMemberService.chatMemberModify(chatParam);
 		adminMemberService.memberModify(memberModel);
+
 		return "redirect:/admin/memberList";
 	}
 	

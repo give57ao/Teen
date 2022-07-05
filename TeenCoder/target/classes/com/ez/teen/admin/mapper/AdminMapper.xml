@@ -380,4 +380,21 @@ ORDER BY board_comment_count DESC
 	]]>
 	</select>
 	
+	<update id="chatMemberModify" parameterType="com.ez.teen.admin.model.ChatParam">
+	 UPDATE chat SET SEND_NICK = #{mod_member_nick}
+	 WHERE SEND_NICK = #{member_nick}
+	</update>
+	
+	
+	<update id="chatMemberModify2" parameterType="com.ez.teen.admin.model.ChatParam">
+	 UPDATE chat SET RECV_NICK = #{mod_member_nick}
+     WHERE RECV_NICK = #{member_nick}
+	</update>
+	
+	
+	<select id="getNick" parameterType="Int" resultType="String">
+	SELECT MEMBER_NICK FROM MEMBER
+	WHERE MEMBER_NO = #{member_no}
+	</select>
+	
 </mapper>
