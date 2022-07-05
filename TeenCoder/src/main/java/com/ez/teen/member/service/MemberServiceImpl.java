@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.chat.model.ChatModel;
 import com.ez.teen.common.file.FileUtil;
 import com.ez.teen.member.mapper.MemberMapper;
 import com.ez.teen.member.model.MemberModel;
@@ -103,6 +104,12 @@ public class MemberServiceImpl implements MemberService {
 			}
 	
 		
+	}
+
+	@Override
+	public void deleteChatMember(ChatModel chatModel) {
+		memberMapper.deleteChatMember(chatModel);
+		memberMapper.deleteChatMember2(chatModel);
 	}
 	 
 }

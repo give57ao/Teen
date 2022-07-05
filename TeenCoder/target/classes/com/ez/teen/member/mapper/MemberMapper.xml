@@ -119,4 +119,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	WHERE MEMBER_NO = #{member_no} 
 	</select>
 	 
+	 <!-- 회원 탈퇴 시 채팅 닉네임 변경 -->
+	 
+	 <update id="deleteChatMember" parameterType="com.ez.teen.chat.model.ChatModel">
+	 UPDATE chat SET
+	 RECV_NICK = '탈퇴한 회원'
+	 WHERE RECV_NICK = #{member_nick}
+	 </update>
+	 
+	 <update id="deleteChatMember2" parameterType="com.ez.teen.chat.model.ChatModel">
+	 UPDATE chat SET
+	 SEND_NICK = '탈퇴한 회원'
+	 WHERE SEND_NICK = #{member_nick}
+	 </update>
+	 
 </mapper>

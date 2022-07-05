@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ez.teen.admin.service.AdminMemberService;
 import com.ez.teen.board.model.BoardParam;
 import com.ez.teen.board.model.CommentParam;
 import com.ez.teen.board.service.BoardService;
+import com.ez.teen.chat.model.ChatModel;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.service.LoginService;
 import com.ez.teen.member.service.MemberService;
@@ -42,6 +44,9 @@ public class MyPageController {
    //비밀번호 암호화,복호화
    @Autowired
     PasswordEncoder passwordEncoder;
+   
+   @Autowired
+   AdminMemberService adminMemberService;
 
    private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
 
@@ -167,7 +172,7 @@ public class MyPageController {
       return "member/modifyForm";
    }
 
-   // 회원정보 수정
+   // 회원정보 
    @PostMapping(value = "/mypageModify")
    public String mypageModify(MemberModel memberModel, HttpSession session) throws Exception {
 
@@ -226,11 +231,26 @@ public class MyPageController {
    }
    
    @RequestMapping("/deleteMember")
-   public String deleteMember(MemberModel memberModel, RedirectAttributes rttr,HttpServletRequest request, HttpSession session) throws Exception{
+   public String deleteMember(MemberModel memberModel, RedirectAttributes rttr,HttpServletRequest request, HttpSession session, ChatModel chatModel) throws Exception{
        System.out.println("deleteMember GetMapping!!!");
       memberModel.setMember_no((Integer)session.getAttribute("member_no"));
-      session.invalidate();
+       //기존회원의 닉네임 받아와야 함그걸 채트모델에 넣어야함
+      //멤버넘버가 있는 멤버모델을 만든 뒤에 가공을 해야함..
+      String member_nick = adminMemberService.getNick((Integer)session.getAttribute("member_no"));
+      
+
+      
+       chatModel.setMember_nick(member_nick); 
+       memberService.deleteChatMember(chatModel); 
+       System.out.println("============================================");
+       System.out.println("삭제될 닉네임 : " + member_nick); 
+       System.out.println("chat model에 담긴 nick : " +chatModel.getMember_nick()); 
+       System.out.println("============================================");
+
+       
        memberService.deleteMember(memberModel);
+       session.invalidate();
+
       return "redirect:/member/login";
    }
    

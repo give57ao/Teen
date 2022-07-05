@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.ez.teen.chat.model.ChatModel;
 import com.ez.teen.member.model.MemberModel;
 import com.ez.teen.member.model.MemberParam;
 
@@ -33,6 +34,9 @@ public interface MemberService {
 
 	//프로필 수정
 	public void profileModifyMember(MemberModel memberModel, MultipartHttpServletRequest mpRequest) throws Exception;
+
+	//회원 탈퇴 시 채팅 부분 수정
+	public void deleteChatMember(ChatModel chatModel);
 
 	
 }

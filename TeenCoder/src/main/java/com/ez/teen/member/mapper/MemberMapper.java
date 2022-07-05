@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ez.teen.chat.model.ChatModel;
 import com.ez.teen.member.model.MemberModel;
 
 @Mapper
@@ -52,5 +53,11 @@ public interface MemberMapper {
 
 	//프로필 변경
 	public void profileModifyMember(MemberModel memberModel);
+
+	//탈퇴한회원 채팅처리
+	public void deleteChatMember(ChatModel chatModel);
+
+	//탈퇴한회원 채팅처리2
+	public void deleteChatMember2(ChatModel chatModel);
 
 }
