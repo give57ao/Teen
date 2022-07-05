@@ -225,7 +225,7 @@ public class MyPageController {
 		
 	}
 	
-	@PostMapping("/deleteMember")
+	@RequestMapping("/deleteMember")
 	public String deleteMember(MemberModel memberModel, RedirectAttributes rttr,HttpServletRequest request, HttpSession session) throws Exception{
     	System.out.println("deleteMember GetMapping!!!");
 		memberModel.setMember_no((Integer)session.getAttribute("member_no"));
