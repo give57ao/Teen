@@ -50,7 +50,7 @@
                             <option value="nick" id="search">닉네임</option>
                         </select>
                         <div class="search">
-                            <input type="text" id="keyword"onkeyup="enterkey()" placeholder="검색">
+                            <input type="text" id="keyword"onkeyup="enterkey()"  placeholder="검색">
                             <button class="btn_search" onclick="searchBoard()"></button>
                         </div>
                     </div>
