@@ -75,7 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
 <!-- room 번호 최댓값 구하기 -->
 <select id="max_room"  parameterType="com.ez.teen.chat.model.ChatModel" resultType="Int">
-    select max(room) from chat
+    select NVL(max(room),0) from chat
 </select>
 
 <!-- 메세지 이력이 있는지 검색 -->

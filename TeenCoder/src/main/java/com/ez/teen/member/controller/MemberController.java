@@ -79,7 +79,6 @@ public class MemberController {
     		out.println("<script type='text/javascript'>alert('로그인 정보를 확인할 수 없습니다. 다시 로그인 해주세요.')</script>");
     		out.flush();
 	    	mv.setViewName("member/loginForm");
-	    	mv.addObject("msg", false);
     	}    			
     	return mv;
 	}

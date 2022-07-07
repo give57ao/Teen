@@ -36,48 +36,25 @@ SELECT
 	<!-- 전체 게시글 수 -->
 	<select id="getFollowCount" resultType="int"
 		parameterType="com.ez.teen.follow.model.MemberFollowParam">
-		SELECT COUNT(*) AS allBoardCount FROM BOARD B
+		SELECT COUNT(*) AS allBoardCount 
+		
+		FROM FOLLOW F
+		
 		INNER JOIN MEMBER M
-		ON
-		B.MEMBER_NO = M.MEMBER_NO
-
-		<if test='board_group_no != null'>
-			WHERE B.BOARD_GROUP_NO = #{board_group_no}
-		</if>
+		ON F.FOLLOW_NO = M.MEMBER_NO
+		
+		INNER JOIN BOARD B
+		ON F.FOLLOW_NO = B.BOARD_NO
 
 		<if test='member_no != 0'>
-			AND B.MEMBER_NO = #{member_no}
-		</if>
-
-		<if test='search == "title"'>
-			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
-		</if>
-
-		<if test='search == "content"'>
-			AND B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
-		</if>
-
-		<if test='search == "nick"'>
-			AND M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
-		</if>
-
-		<if test='search == "all"'>
-			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
-			OR M.MEMBER_NICK LIKE '%'||#{keyword}||'%'
-			OR B.BOARD_CONTENT LIKE '%'||#{keyword}||'%'
+			AND F.FOLLOWING_MEMBER_NO = #{member_no}
 		</if>
 
 
-		<if test='board_tag_name == null'>
-			AND REGEXP_LIKE (B.BOARD_TAG_NAME,
-			'^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
-		</if>
 
-		<if test='board_tag_name != null'>
-		<![CDATA[
-		AND LOWER(B.BOARD_TAG_NAME) LIKE '%'||#{board_tag_name}||'%'
-		]]>
-		</if>
+
+
+
 
 	</select>
 
@@ -122,6 +99,7 @@ INNER JOIN FOLLOW F
 ON M.MEMBER_NICK = F.MEMBER_NICK
 
 WHERE M.MEMBER_NO IN (SELECT FOLLOWING_MEMBER_NO FROM FOLLOW WHERE FOLLOW_NO = #{member_no})
+ORDER BY F.FOLLOW_DATE DESC
 </select>
 
 <delete id="myFollowDelete" parameterType="com.ez.teen.follow.model.MemberFollowModel">

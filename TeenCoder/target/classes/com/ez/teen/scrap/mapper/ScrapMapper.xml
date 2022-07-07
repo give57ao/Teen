@@ -33,9 +33,10 @@ WHERE MEMBER_NO = #{member_no} AND BOARD_NO = #{board_no}
 
 <!-- 스크렙한 게시글 전체 수 -->
 <select id="getScrapCount" resultType="int" parameterType="com.ez.teen.board.model.BoardParam">
-	SELECT COUNT(*) AS allBoardCount FROM BOARD B
-	INNER JOIN SCRAP S
-	ON B.MEMBER_NO = S.MEMBER_NO
+	SELECT COUNT(*) AS allBoardCount
+	FROM SCRAP S
+	INNER JOIN BOARD B
+	ON B.BOARD_NO = S.BOARD_NO
 
 	<if test='board_group_no != null'>
 		WHERE B.BOARD_GROUP_NO = #{board_group_no}

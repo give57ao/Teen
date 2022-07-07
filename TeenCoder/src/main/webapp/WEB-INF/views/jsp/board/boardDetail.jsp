@@ -68,7 +68,7 @@
 	                                    <h4>
 	                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
 	                                        <span class="rank">[Expert]</span>
-	                                        <button  id="dropdown-menu" onclick="dp_menu()">${boardDetail.member_nick}</button>
+	                                        <button  id="dropdown-menu" onclick="dp_menu()" style="text-decoration: underline;" >${boardDetail.member_nick}</button>
 												</h4>
 												<div style="display: none; position: absolute;" id="drop-content">
 													<input type="hidden" id="member_nick" name="member_nick"  value="${boardDetail.member_nick }">

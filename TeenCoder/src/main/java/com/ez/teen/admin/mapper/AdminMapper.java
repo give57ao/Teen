@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ez.teen.admin.model.ChatParam;
 import com.ez.teen.admin.model.ReportParam;
 import com.ez.teen.board.model.BoardModel;
 import com.ez.teen.board.model.BoardParam;
@@ -67,5 +68,14 @@ public interface AdminMapper {
 	
 	// summernote
 	public void insertSummerNote(String fileName);
+
+	//채팅방 닉네임 변경
+	public void chatMemberModify(ChatParam chatParam);
+
+	//기존 닉네임 가져오기
+	public String getNick(int member_no);
+	
+	//채팅방 닉네임 변경2
+	public void chatMemberModify2(ChatParam chatParam);
 
 }

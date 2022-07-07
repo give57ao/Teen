@@ -39,7 +39,6 @@ public class FollowController {
 	         @RequestParam(value = "member_no" , required = false)int member_no,
 	         MemberFollowParam followParam )throws Exception {
 		
-		//int member_no = Integer.parseInt(request.getParameter("member_no"));
 		followModel.setMember_no(member_no);
 		List<MemberFollowModel> followList = followService.followBoardList(followModel);	
 
@@ -84,13 +83,6 @@ public class FollowController {
 		followModel.setMember_nick(member_nick);
 		
 		int followResult = followService.countFollow(followModel);
-		System.out.println("***************************************************");
-		System.out.println("***************************************************");
-		System.out.println("***************************************************");
-		System.out.println(followResult);
-		System.out.println("***************************************************");
-		System.out.println("***************************************************");
-		System.out.println("***************************************************");
 		
 		try {
 			if (followResult == 0) {
