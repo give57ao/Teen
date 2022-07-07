@@ -16,9 +16,11 @@
 <!-- 메세지 전송 아이콘(종이비행기) 때문에 필요 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"/>
 <style>
-html{
-overflow:hidden;
+html,body{
+width:100%;
+height:100%;
 min-width:1080px;
+margin: 0;
 }
 </style>
 </head>
@@ -113,7 +115,7 @@ min-width:1080px;
 					send_msg += "<div class='type_msg'>";
 					send_msg += "	<div class='input_msg_write row'>";
 					send_msg += "		<div class='col-11'>";
-					send_msg += "			<input type='text' class='write_msg form-control' placeholder='메세지를 입력...' />";
+					send_msg += "			<textarea class='write_msg form-control' placeholder='메세지를 입력...' />";
 					send_msg += "		</div>";
 					send_msg += "		<div class='col-1'>";
 					send_msg += "			<button class='msg_send_btn' type='button'><i class='fa fa-paper-plane-o' aria-hidden='true'></i></button>";

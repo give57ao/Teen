@@ -11,10 +11,20 @@
 		<!-- 받은 메세지 -->
 		<div class="incoming_msg">
 			<div class="incoming_msg_img">
-				<a href="other_profile.do?other_nick=${tmp.send_nick }">
-					<img src="./upload/profile/${tmp.member_profile }" alt="보낸사람 프로필">
-				</a>
-			</div>
+					<a href="other_profile.do?other_nick=${tmp.send_nick }">
+					 <c:choose>
+							<c:when test="${tmp.member_profile eq 'N'}">
+								<!-- 프로필 사진이 없을 경우 -->
+								<img src="/teen/resources/images/icon/icon_profile.svg"
+									class="badge">
+							</c:when>
+							<c:otherwise>
+								<!-- 프로필 사진이 있을 경우 -->
+								<img src="${path}${tmp.member_profile}" class="badge">
+							</c:otherwise>
+						</c:choose>
+					</a>
+				</div>
 			<div class="received_msg">
 				<div class="received_withd_msg">
 					<p>${tmp.content }</p>

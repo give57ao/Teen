@@ -67,7 +67,7 @@
 		e.preventDefault();
 		
 		let popUrl = "/teen/chatMainList";
-		let popOption = "width = 1080px, height=625px, top=200px, left=400px, scrollbars=no, resizable=yes, toolbars=no, menubar=no" ;
+		let popOption = "width = 1080px, height=600px, top=200px, left=400px, status=no,  toolbar=no, menubar=no" ;
 		
 		window.open(popUrl,"쪽지",popOption);
 		

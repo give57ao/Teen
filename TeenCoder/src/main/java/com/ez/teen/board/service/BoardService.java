@@ -106,8 +106,6 @@ public interface BoardService {
 	
 	public void deleteBoardReport(BoardModel boardModel) throws Exception;
 
-	public void deleteBcomment(int bcomment_no);
-
 	//답글 수정
 	public void modifyReComment(CommentModel commentModel);
 
@@ -116,5 +114,7 @@ public interface BoardService {
 
 	// 게시글 삭제시 boardPk 활성화
 	public void updateBoardPkYes();
+	
+	public void deleteRecomment(CommentParam commentParam);
 	
 }

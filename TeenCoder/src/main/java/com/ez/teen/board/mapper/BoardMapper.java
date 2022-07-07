@@ -119,7 +119,6 @@ public interface BoardMapper {
 	//댓글 첨부파일 수정
 	public void updateCmtFile(CommentModel commentModel);
 
-	public void deleteBcomment(int bcomment_no);
 
 	//답글 수정
 	public void modifyReComment(CommentModel commentModel);
@@ -130,5 +129,5 @@ public interface BoardMapper {
 	// 게시글 삭제시 boardPk 활성화
 	public void updateBoardPkYes();
 
-	
+	public void deleteRecomment(CommentParam commentParam);
 }

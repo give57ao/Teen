@@ -3,6 +3,7 @@ package com.ez.teen.board.model;
 public class CommentParam {
 	
 	private int ref_step;
+	private int ref_level;
 	private int board_no;
 	private int bcomment_no;
 	private String bcomment_content;
@@ -29,6 +30,15 @@ public class CommentParam {
 
 	public void setRef_step(int ref_step) {
 		this.ref_step = ref_step;
+	}
+
+	
+	public int getRef_level() {
+		return ref_level;
+	}
+
+	public void setRef_level(int ref_level) {
+		this.ref_level = ref_level;
 	}
 
 	public int getBoard_no() {

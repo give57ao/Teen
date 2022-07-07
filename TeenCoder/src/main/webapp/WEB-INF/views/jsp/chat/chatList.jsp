@@ -9,7 +9,17 @@
 			<div class="chat_people">
 				<div class="chat_img" >
 					<a href="other_profile.do?other_nick=${tmp.other_nick }">
-						<img src="./upload/profile/${tmp.member_profile}" alt="sunil" >
+						<c:choose>
+							<c:when test="${tmp.member_profile eq 'N'}">
+								<!-- 프로필 사진이 없을 경우 -->
+								<img src="/teen/resources/images/icon/icon_profile.svg"
+									class="badge">
+							</c:when>
+							<c:otherwise>
+								<!-- 프로필 사진이 있을 경우 -->
+								<img src="${path}${tmp.member_profile}" class="badge">
+							</c:otherwise>
+						</c:choose>
 					</a>
 				</div>
 				<div class="chat_ib">

@@ -1,5 +1,39 @@
 @charset "UTF-8";
 
+::scrollbar {
+	width: 10px;
+}
+
+::scrollbar-thumb{
+	background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+
+::scrollbar-track{
+	background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+
+::-webkit-scrollbar-track{
+	background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+
 img {
 	/*글쓴이의 프로필 사진을 둥글게*/
 	width: 40px;
@@ -18,13 +52,9 @@ p {
 	margin-left: 15px;
 }
 
-.msg-container {
-	max-width: 1170px;
-	margin: auto;
-}
-
-img {
-	max-width: 100%;
+.msg-container,
+.messaging {
+	height:100%;	
 }
 
 .inbox_people {
@@ -32,14 +62,16 @@ img {
 	float: left;
 	overflow: hidden;
 	width: 40%;
+	height:100%;
 	border-right: 1px solid #f7f7f7;
+	box-sizing:border-box;
 }
 
 .inbox_msg {
-	border: 1px solid #f7f7f7;
 	border-radius: 15px;
 	clear: both;
 	overflow: hidden;
+	height:100%;
 }
 
 .top_spac {
@@ -138,8 +170,8 @@ img {
 }
 
 .inbox_chat {
-	height: 550px;
-	overflow-y: scroll;
+	height:100%;
+	overflow: auto;
 }
 
 .active_chat {
@@ -181,9 +213,11 @@ img {
 }
 
 .mesgs {
+	position:relative;
 	float: left;
-	padding: 30px 15px 0 25px;
 	width: 60%;
+	height:100%;
+	background: #eee;
 }
 
 .sent_msg p {
@@ -202,18 +236,36 @@ img {
 	margin: 26px 0 26px;
 }
 
+.send_message {
+	width:100%;
+	position:absolute;
+	bottom:0;
+	left:0;
+	background:#fff;
+}
+
 .sent_msg {
 	float: right;
 	width: 46%;
 	font-family: '맑은 고딕', '돋움', 'Malgun Gothic', 'Dotum', Arial, Roboto, sans-serif;
 }
 
+.input_msg_write {
+	padding:10px;
+}
+
+.write_msg{
+	height: auto;
+	width: 93%;
+	border: 0;
+	resize: none;
+}
 .input_msg_write input {
 	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
 	border: medium none;
 	color: #4c4c4c;
 	font-size: 15px;
-	min-height: 48px;
+	height: 48px;
 	width: 100%;
 }
 
@@ -231,27 +283,17 @@ img {
 	font-size: 17px;
 	height: 33px;
 	position: absolute;
-	right: 0;
-	top: 11px;
+	right: 10px;
+	top: 50%;
 	width: 33px;
+	transform: translateY(-50%);
 }
 
 .msg_send_btn:hover {
 	background: #5fcd58 none repeat scroll 0 0;
 }
 
-.messaging {
-	padding: 0 0 50px 0;
-}
-
 .msg_history {
-	height: 516px;
-	overflow-y: auto;
-}
-
-.mesgs{
-	height: auto;
-    position: absolute;
-    width: 30%;
-    left: 43%;	
+	overflow:auto;
+	height:90%;
 }

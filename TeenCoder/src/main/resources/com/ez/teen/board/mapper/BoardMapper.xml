@@ -563,6 +563,14 @@ ORDER BY board_comment_count DESC
             REF_STEP=#{ref_step}
 	</delete>
 
+	<!-- 답글 삭제 -->
+	<delete id="deleteRecomment" parameterType="com.ez.teen.board.model.CommentParam">
+		DELETE FROM BCOMMENT
+        WHERE 
+            BOARD_NO=#{board_no} AND
+            REF_STEP=#{ref_step} AND REF_LEVEL=#{ref_level}
+	</delete>
+	
     <!-- 댓글 업데이트 -->
     <select id="updateComment" parameterType="com.ez.teen.board.model.CommentParam">
         UPDATE 

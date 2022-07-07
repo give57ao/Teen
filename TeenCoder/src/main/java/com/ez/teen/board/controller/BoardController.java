@@ -420,6 +420,7 @@ public class BoardController {
 	public String deleteBcomment(@RequestParam(value="board_no", required = false) int board_no, 
 																@RequestParam(value="bcomment_no", required = false) int bcomment_no,
 																@RequestParam(value="ref_step", required = false) int ref_step, 
+																@RequestParam(value="ref_level", required = false) int ref_level, 
 			HttpServletRequest request, RedirectAttributes redirect,
 			CommentParam commentParam) {
 
@@ -430,18 +431,33 @@ public class BoardController {
 		String referer = (String) request.getHeader("REFERER");
 		System.out.println("nowUrl =" + referer);
 		
+		
 		if (referer.contains("/board/detail")) {
-			boardService.deleteComment(commentParam); // 삭제 및 업데이트 같이 작동
-			return "redirect:/board/detail?board_no=" + board_no;
+			if(ref_level>=1) {
+				boardService.deleteRecomment(commentParam);
+				return "redirect:/board/detail?board_no=" + board_no;
+			}else {
+				boardService.deleteComment(commentParam); // 삭제 및 업데이트 같이 작동
+				return "redirect:/board/detail?board_no=" + board_no;
+			}
 		} else if (referer.contains("/member/commentList")) {
-			boardService.deleteComment(commentParam);
-			return "redirect:/member/commentList";
+			if(ref_level>=1) {
+				boardService.deleteRecomment(commentParam);
+				return "redirect:/member/commentList";
+			}else {
+				boardService.deleteComment(commentParam); // 삭제 및 업데이트 같이 작동
+				return "redirect:/member/commentList";
+			}
 		} else {
-			boardService.deleteComment(commentParam);
-			return "redirect:/board/";
+			if(ref_level>=1) {
+				boardService.deleteRecomment(commentParam);
+				return "redirect:/board/";
+			}else {
+				boardService.deleteComment(commentParam); // 삭제 및 업데이트 같이 작동
+				return "redirect:/board/";
+			}
 		}
 	}
- 
    @ResponseBody
    @PostMapping("board/detail/like")
    public int boardLike(HttpServletRequest request, HttpSession session,BoardModel boardModel, BoardParam boardParam) throws Exception{

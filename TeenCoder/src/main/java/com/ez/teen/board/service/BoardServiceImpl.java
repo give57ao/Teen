@@ -292,11 +292,6 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.updateBoardReport(boardModel.getBoard_no());
 	}
 
-	@Override
-	public void deleteBcomment(int bcomment_no) {
-		boardMapper.deleteBcomment(bcomment_no);
-		
-	}
 
 	//답글 수정
 	@Override
@@ -315,5 +310,12 @@ public class BoardServiceImpl implements BoardService {
 	public void updateBoardPkYes() {
 		boardMapper.updateBoardPkYes();
 	}
+
+	@Override
+	public void deleteRecomment(CommentParam commentParam) {
+		boardMapper.deleteRecomment(commentParam);
+	}
+
+
 
 }
