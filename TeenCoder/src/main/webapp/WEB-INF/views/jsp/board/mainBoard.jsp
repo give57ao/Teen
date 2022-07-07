@@ -75,7 +75,7 @@
                             <option value="nick" id="search">작성자</option>
                         </select>
                         <div class="search">
-                            <input type="text" id="keyword" placeholder="검색">
+                            <input type="text" id="keyword" onkeyup="enterkey()" placeholder="검색">
                             <button class="btn_search" onClick="searchBoard()"></button>
                         </div>
                     </div>
