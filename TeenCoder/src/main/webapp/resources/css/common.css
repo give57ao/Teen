@@ -208,6 +208,10 @@ button {
 	background: #5573E8;
 }
 
+.header_profile{
+	border-radius: 50%;
+}
+
 /* Contents */
 #contents {
 	position: relative;

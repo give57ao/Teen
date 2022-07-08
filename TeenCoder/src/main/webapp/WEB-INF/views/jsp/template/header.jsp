@@ -48,7 +48,7 @@
                 	<li><a href="/teen/member/"><img src="/teen/resources/images/icon/icon_profile.svg"></a></li>
                 	</c:when>
                 	<c:otherwise>
-               		 <li><a href="/teen/member/"><img src="${path}${profile.member_profile}"></a></li>
+               		 <li><a href="/teen/member/"><img src="${path}${profile.member_profile}" class="header_profile"></a></li>
                 	</c:otherwise>
                 	</c:choose>
                 	</c:forEach>
@@ -56,6 +56,7 @@
                 </ul>
             </div>
         </c:if>
+        
     </header>
     
     <!-- JS -->

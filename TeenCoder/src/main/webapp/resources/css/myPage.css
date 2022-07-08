@@ -91,3 +91,8 @@
     top: 44px;
     right: 0;
 }
+
+.badge{
+	border-radius: 50%;
+    border: 1px solid #fff;
+}
