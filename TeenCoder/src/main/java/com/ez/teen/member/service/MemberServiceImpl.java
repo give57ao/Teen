@@ -111,5 +111,10 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.deleteChatMember(chatModel);
 		memberMapper.deleteChatMember2(chatModel);
 	}
+
+	@Override
+	public int emailCheck(String member_email) {
+		return memberMapper.emailCheck(member_email);
+	}
 	 
 }

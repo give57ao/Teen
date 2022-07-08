@@ -59,5 +59,6 @@ public interface MemberMapper {
 
 	//탈퇴한회원 채팅처리2
 	public void deleteChatMember2(ChatModel chatModel);
-
+	
+	public int emailCheck(String member_email);
 }

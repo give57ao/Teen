@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page trimDirectiveWhitespaces="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -70,6 +71,7 @@
 								<span id="emailChk2" class="doubleChk">이메일인증</span></br>
 								<span class="point successEmailChk">이메일 입력후 인증번호 보내기를 해주십시오.</span>
 								<input type="hidden" id="emailDoubleChk"/>
+								<input type="hidden" name="emailDuplication" id="emailDuplication"/>
 								<br/><br/><br/><br/><br/><br/><br/>
 	                        </td>
 	                    </tr>
@@ -102,47 +104,7 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/member/member.js"></script>
 	<script type="text/javascript" src="/teen/resources/js/member/memberJoin.js"></script>
-	<script>
-	var code = "";
-	$("#emailChk").click(function(){
-		var member_email = $("#member_email").val();
-		
-		$.ajax({
-	        type:"GET",
-	        url:"mailCheck?member_email=" + member_email,
-	        cache : false,
-	        success:function(data){
-	        	if(data == "error"){
-	        		alert("이메일 주소가 올바르지 않습니다. 유효한 이메일 주소를 입력해주세요.");
-					$("#member_email").attr("autofocus",true);
-					$(".successEmailChk").text("유효한 이메일 주소를 입력해주세요.");
-	        	}else{	        		
-					alert("인증번호 발송이 완료되었습니다.\n입력한 이메일에서 인증번호 확인을 해주십시오.");
-	        		$("#member_emailChk").attr("disabled",false);
-	        		$("#emailChk2").css("display","inline-block");
-	        		$(".successEmailChk").text("인증번호를 입력한 뒤 이메일 인증을 눌러주십시오.");
-	        		code = data;
-	        	}
-	        }
-	    });
-	});
-	
-	$("#emailChk2").click(function(){
-		if($("#member_emailChk").val() == code){
-			$(".successEmailChk").text("인증번호가 일치합니다.");
-			$(".successEmailChk").css("color","green");
-			$("#emailDoubleChk").val("true");
-			$("#member_emailChk").attr("disabled",true);
-			//$("#sm_email").attr("disabled",true);
-		}else{
-			$(".successEmailChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
-			$(".successEmailChk").css("color","red");
-			$("#emailDoubleChk").val("false");
-			$("#member_emailChk").attr("autofocus",true);
-		}
-	});
-	</script>
-	
+
 	
 </body>
 </html>

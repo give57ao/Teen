@@ -38,5 +38,5 @@ public interface MemberService {
 	//회원 탈퇴 시 채팅 부분 수정
 	public void deleteChatMember(ChatModel chatModel);
 
-	
+	public int emailCheck(String member_email);
 }

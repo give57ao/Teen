@@ -86,8 +86,9 @@
 		 											${comment.bcomment_content}
 												</a>
 											</h3>
-											<input type="button" value="삭제" class="btn_com btn_del_list" onClick="deleteComment(${comment.bcomment_no})">
+											<input type="button" value="삭제" class="btn_com btn_del_list" onclick="deleteComment()" />
 											<input type="hidden" id="board_no" value="${comment.board_no }"/>
+											<input type="hidden" id="bcomment_no" value="${comment.bcomment_no }"/>
 											<input type="hidden" id="ref_step" value="${comment.ref_step }"/>
 											<input type="hidden" id="ref_level" value="${comment.ref_level }"/>
 										</div>
@@ -141,17 +142,5 @@
 	
 	<!-- JS -->
 	<script type="text/javascript" src="/teen/resources/js/member/myPage/myComment.js"></script>
-	<script>
-function deleteComment(num) {
-	var chk = confirm("해당 댓글을 삭제하시겠습니까?")
-	var board_no = document.getElementById('board_no').value;
-	var ref_step = document.getElementById('ref_step').value;
-	var ref_level = document.getElementById('ref_level').value;
-	if(chk) {
-		location.href='/teen/board/deleteComment?board_no='+board_no+'&bcomment_no='+num+'&ref_step='+ref_step+'&ref_level='+ref_level
-	}
-}
-
-</script>
 </body>
 </html>

@@ -230,8 +230,8 @@
 	                                </ul>
 	                                <div class="btn_group">
 			                             <c:if test="${sessionScope.member_nick == boardComment.member_nick}">
+		                                 <input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="deleteComment()">
 		                                 <input type="button" value="수정" class="btn_com btn_board" onClick="modifyComment(${boardComment.ref_step})">
-		                                 <input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="location.href='/teen/board/deleteComment?board_no=${boardComment.board_no}&bcomment_no=${boardComment.bcomment_no}&ref_step=${boardComment.ref_step}&ref_level=${boardComment.ref_level}'">
 		                                 </c:if>
 		                            	<input type="button" value="신고" class="btn_com btn_board">
 			                			<input type="button" value="추천" class="btn_com btn_board">
@@ -248,6 +248,7 @@
 				                	<input type="hidden" name="ref_step" value="${boardComment.ref_step}">
 				                	<input type="hidden" name="board_no" value="${boardComment.board_no}">
 				                	<input type="hidden" name="ref_level" value="${boardComment.ref_level}">
+				                	<input type="hidden" name="bcomment_no" value="${boardComment.bcomment_no}">
 				                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt" onClick="recomment(${boardComment.ref_step}, ${boardComment.ref_level})">
 				                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 				                </form>
@@ -419,6 +420,20 @@
 		window.open(popUrl,"쪽지",popOption);
 		
 	});
+  
+  function deleteComment() {
+		var board_no = document.getElementById('board_no').value;
+		var bcomment_no = document.getElementById('bcomment_no').value;
+		var board_no = document.getElementById('board_no').value;
+		var ref_step = document.getElementById('ref_step').value;
+		var ref_level = document.getElementById('ref_level').value;
+		if(confirm("해당 댓글을 삭제하시겠습니까?")) {
+			alert("해당 댓글을 삭제하였습니다.");
+			location.href='/teen/board/deleteComment?board_no='+board_no+'&bcomment_no='+bcomment_no+'&ref_step='+ref_step+'&ref_level='+ref_level
+		}else{
+			return false;
+		}
+	}
 </script>
 </body>
 

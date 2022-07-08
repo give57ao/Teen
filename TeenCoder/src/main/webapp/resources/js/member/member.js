@@ -183,6 +183,11 @@ function checkValue() {
 		return false;
 	}
 	
+	if(form.emailDuplication.value != "true"){
+		alert("이메일 인증이 필요합니다");
+		return false;
+	}
+	
 	if(!member_id.test(id)) {
 		alert("아이디는 영문자로 시작하는 최소6자 ~ 최대20자(영문자+숫자가능)로 입력해 주세요");
 		return false;
@@ -236,4 +241,49 @@ function goMail() {
 	location.href = "/teen/mail/";
 }
 
+var code = "";
+
+$("#emailChk").click(function() {
+	var member_email = $("#member_email").val();
+
+	$.ajax({
+		type: "GET",
+		url: "mailCheck?member_email=" + member_email,
+		cache: false,
+		success: function(data) {
+			console.log(data);
+			if (data == "error") {
+				alert("이메일 주소가 올바르지 않습니다. 유효한 이메일 주소를 입력해주세요.");
+				$("#member_email").attr("autofocus", true);
+				$(".successEmailChk").text("유효한 이메일 주소를 입력해주세요.");
+			} else if (data == "checkFail") {
+				alert("중복된 이메일입니다. 다른 이메일을 입력해주세요.")
+				$("#member_email").attr("autofocus", true);
+				$(".successEmailChk").text("중복된 이메일입니다.");
+			} else {
+				alert("인증번호 발송이 완료되었습니다.\n입력한 이메일에서 인증번호 확인을 해주십시오.");
+				$("#member_emailChk").attr("disabled", false);
+				$("#emailChk2").css("display", "inline-block");
+				$(".successEmailChk").text("인증번호를 입력한 뒤 이메일 인증을 눌러주십시오.");
+				code = data;
+			}
+		}
+	});
+});
+	
+	$("#emailChk2").click(function(){
+		if($("#member_emailChk").val() == code){
+			$(".successEmailChk").text("인증번호가 일치합니다.");
+			$(".successEmailChk").css("color","green");
+			$("#emailDoubleChk").val("true");
+			$("#member_emailChk").attr("disabled",true);
+			$("#emailDuplication").attr("value", true);
+			//$("#sm_email").attr("disabled",true);
+		}else{
+			$(".successEmailChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
+			$(".successEmailChk").css("color","red");
+			$("#emailDoubleChk").val("false");
+			$("#member_emailChk").attr("autofocus",true);
+		}
+	});
 

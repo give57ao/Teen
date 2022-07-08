@@ -1,4 +1,4 @@
-package com.ez.teen.board.controller;
+	package com.ez.teen.board.controller;
 
 import java.io.File;
 import java.io.IOException;

@@ -291,7 +291,7 @@ ORDER BY board_comment_count DESC
  
 
 		<select id ="commentList" resultType="com.ez.teen.board.model.CommentModel" parameterType="com.ez.teen.board.model.CommentParam">
-	SELECT rn, board_no, board_title, board_file_check, member_nick, bcomment_no, bcomment_content, bcomment_date, bcomment_like_count
+	SELECT rn, board_no, board_title, board_file_check, member_nick, bcomment_no, bcomment_content, bcomment_date, bcomment_like_count, ref_step, ref_level
       FROM (
          SELECT ROWNUM RN, A.* 
             FROM (
@@ -305,7 +305,8 @@ ORDER BY board_comment_count DESC
 			,C.BCOMMENT_CONTENT
 			,C.BCOMMENT_DATE
 			,C.BCOMMENT_LIKE_COUNT
-			
+			,C.REF_STEP
+			,C.REF_LEVEL
 			
 			FROM BOARD B
 			INNER JOIN BCOMMENT C
