@@ -112,7 +112,7 @@
 								</c:choose>
 							</c:forEach>
 							<!-- 오른쪽 버튼 -->
-							<c:if test="${paging.startPage < paging.endPage}">
+							<c:if test="${paging.nowPage < paging.endPage}">
 								<li><a class="next" href="/teen/admin/noticeBoard?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage + 1}&cntPerPage=${paging.cntPerPage}"></a></li>
 							</c:if>
 						</ul>

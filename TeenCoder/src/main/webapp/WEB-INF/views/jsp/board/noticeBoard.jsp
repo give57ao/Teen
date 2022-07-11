@@ -44,7 +44,7 @@
                             <option value="nick" id="search">작성자</option>
                         </select>
                         <div class="search">
-                            <input type="text" id="keyword" placeholder="검색">
+                            <input type="text" id="keyword" onkeyup="enterkey()" placeholder="검색">
                             <button class="btn_search" onClick="searchBoard()"></button>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
 								</c:choose>
 							</c:forEach>
 							<!-- 오른쪽 버튼. -->
-							<c:if test="${paging.startPage < paging.endPage}">
+							<c:if test="${paging.nowPage < paging.endPage}">
 								<li><a class="next" href="/teen/board?search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage + 1}&cntPerPage=${paging.cntPerPage}"></a></li>
 							</c:if>
 	                	</ul>

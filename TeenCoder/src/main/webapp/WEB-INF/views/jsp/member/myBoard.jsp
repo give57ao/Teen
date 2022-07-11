@@ -55,7 +55,7 @@
 							<option value="content" id="search">내용</option>
 						</select>
 						<div class="search">
-							<input type="text" id="keyword" placeholder="검색">
+							<input type="text" id="keyword" onkeyup="enterkey()" placeholder="검색">
 							<button class="btn_search" onClick="searchBoard()"></button>
 						</div>
 					</div>
@@ -125,7 +125,7 @@
 								</c:choose>
 							</c:forEach>
 							<!-- 오른쪽 버튼 -->
-							<c:if test="${paging.startPage < paging.endPage}">
+							<c:if test="${paging.nowPage < paging.endPage}">
 								<li><a class="next" href="/teen/member/boardList?sort=${sort}&search=${paging.search}&keyword=${paging.keyword}&nowPage=${paging.nowPage + 1}&cntPerPage=${paging.cntPerPage}"></a></li>
 							</c:if>
 						</ul>
@@ -145,14 +145,5 @@
 	
 	<!-- JS -->
 	<script type="text/javascript" src="/teen/resources/js/member/myPage/myBoard.js"></script>
-	<script>
-function deleteBoard(num) {
-	var chk = confirm("해당 게시글을 삭제하시겠습니까?")
-	if(chk) {
-		location.href='/teen/board/delete?board_no='+num
-	}
-}
-
-</script>
 </body>
 </html>
