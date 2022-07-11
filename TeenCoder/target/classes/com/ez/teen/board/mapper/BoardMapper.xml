@@ -266,6 +266,11 @@ GROUP BY B.BOARD_NO, B.BOARD_GROUP_NO, B.BOARD_TAG_NAME,  B.BOARD_TITLE,B.BOARD_
 ORDER BY B.BOARD_DATE DESC
 </if>
 
+<if test='sort == null'>
+ORDER BY B.BOARD_DATE DESC
+</if>
+
+
 <if test='sort == "recent"'>
 ORDER BY B.BOARD_DATE DESC
 </if>
