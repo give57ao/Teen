@@ -414,19 +414,7 @@
 		window.open(popUrl,"쪽지",popOption);
 		
 	});
-  
-  function deleteComment(board_no, ref_step, ref_level) {
-		/* var board_no = document.getElementById('board_no').value;
-		var bcomment_no = document.getElementById('bcomment_no').value;
-		var ref_step = document.getElementById('ref_step').value;
-		var ref_level = document.getElementById('ref_level').value; */
-		if(confirm("해당 댓글을 삭제하시겠습니까?")) {
-			alert("해당 댓글을 삭제하였습니다.");
-			location.href='/teen/board/deleteComment?board_no='+board_no+'&ref_step='+ref_step+'&ref_level='+ref_level
-		}else{
-			return false;
-		}
-	}
+
 </script>
 </body>
 

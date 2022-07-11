@@ -2,6 +2,14 @@ var filebox = document.getElementById('filebox');
 var fileNoArry = new Array();
 var fileNameArry = new Array();
 
+function deleteComment(board_no, ref_step, ref_level) {
+		if(confirm("해당 댓글을 삭제하시겠습니까?")) {
+			alert("해당 댓글을 삭제하였습니다.");
+			location.href='/teen/board/deleteComment?board_no='+board_no+'&ref_step='+ref_step+'&ref_level='+ref_level
+		}else{
+			return false;
+		}
+	}
 
 //댓글 작성&수정 시 값 확인 함수
 function checkValue() {
@@ -186,6 +194,7 @@ function scrap() {
       }
    });
    }
+   
    
    
    

@@ -86,7 +86,7 @@
 		 											${comment.bcomment_content}
 												</a>
 											</h3>
-											<input type="button" value="삭제" class="btn_com btn_del_list" onclick="deleteComment()" />
+											<input type="button" value="삭제" class="btn_com btn_del_list" onclick="deleteComment(${comment.board_no}, ${comment.ref_step}, ${comment.ref_level })" />
 											<input type="hidden" id="board_no" value="${comment.board_no }"/>
 											<input type="hidden" id="bcomment_no" value="${comment.bcomment_no }"/>
 											<input type="hidden" id="ref_step" value="${comment.ref_step }"/>
