@@ -44,8 +44,7 @@
 		                        <div class="row_info">
 		                        	<div class="row_top member">
 	                                    <h4>
-	                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-	                                        <span class="rank">[Expert]</span> ${noticeDetail.member_nick}
+	                                         ${noticeDetail.member_nick}
 	                                    </h4>
 	                                </div>
 	                                <span class="row_top date"><fmt:formatDate value="${noticeDetail.noti_date}" pattern="yyyy.MM.dd"/></span>

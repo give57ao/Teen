@@ -10,10 +10,12 @@ function checkValue() {
 
 	var ext = $('#file').val().split('.').pop().toLowerCase();
 	console.log(ext);
+	if(! $("#file").val("")){ //첨부파일 값이 있을 떄만 기능 수행
 	if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg', 'doc', 'docx', 'xls', 'xlsx', 'hwp', 'pdf', 'zip']) == -1) {
 		alert(ext + ' 확장자는 업로드 할 수 없습니다.');
 		$("#file").val("");
 		return false;
+	}
 	}
 
 

@@ -65,11 +65,9 @@
 	                                    <li>#${boardDetail.board_tag_name}</li>
 	                                </ul>
 	                                <div class="row_top member">
-	                                    <h4>
-	                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-	                                        <span class="rank">[Expert]</span>
+	                                    	<h4>
 	                                        <button  id="dropdown-menu" onclick="dp_menu()" style="text-decoration: underline;" >${boardDetail.member_nick}</button>
-												</h4>
+											</h4>
 												<div style="display: none; position: absolute;" id="drop-content">
 													<input type="hidden" id="member_nick" name="member_nick"  value="${boardDetail.member_nick }">
 													<input type="hidden" id="member_no" name="member_no" value="${boardDetail.member_no }">
@@ -89,10 +87,11 @@
 	                            <div class="row_title">
 	                                <h3>
 	                                    <a>
-	                                        <span class="tag_hit">[추천]</span> ${boardDetail.board_title}
-											<c:if test="${boardDetail.board_file_check == 'Y' }">
+	                                        	<c:if test="${boardDetail.board_like_count >= 5 }"><span class="tag_hit">[추천]</span> </c:if>
+												${boardDetail.board_title}	                                        		
+												<c:if test="${boardDetail.board_file_check == 'Y' }">
                                         		<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
-                                        	</c:if>
+                                        		</c:if>
 	                                    </a>
 	                                </h3>
 	                            </div>
@@ -194,8 +193,7 @@
 		                            <div class="row_info">
 		                                <div class="row_top member">
 		                                    <h4>
-		                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-		                                        <span class="rank">[Expert]</span> ${boardComment.member_nick}
+		                                        ${boardComment.member_nick}
 		                                    </h4>
 		                                </div>
 		                                <span class="row_top date"><fmt:formatDate value="${boardComment.bcomment_date}" pattern="yyyy.MM.dd"/></span>
@@ -268,8 +266,7 @@
 				                            <div class="row_info">
 				                                <div class="row_top member">
 				                                    <h4>
-				                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-				                                        <span class="rank">[Expert]</span> ${boardAnswer.member_nick}
+				                                        ${boardAnswer.member_nick}
 				                                    </h4>
 				                                </div>
 				                                <span class="row_top date"><fmt:formatDate value="${boardAnswer.bcomment_date}" pattern="yyyy.MM.dd"/></span>

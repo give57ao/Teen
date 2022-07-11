@@ -92,15 +92,9 @@
 			                                </ul>
 			                                <div class="row_top member">
 			                                    <h4>
-			                                        <img src="/teen/resources/images/icon/icon_badge.png" class="i_badge">
-			                                        <span class="rank">
-			                                        <c:if test="${board.member_pro_check eq 'Y' }">
-			                                        [Expert]
-			                                        </c:if>
 			                                        <c:if test="${board.board_count > 50 }">
 			                                        [글쟁이]
 			                                        </c:if>
-			                                        </span>
 			                                         ${board.member_nick}
 			                                    </h4>
 			                                </div>
@@ -115,7 +109,7 @@
 			                                <h3>
 												<a class="overtext" href="/teen/board/detail?board_no=${board.board_no}"> 
 													<span class="tag_hit">
-													<c:if test="${board.board_like_count >= 10 }">
+													<c:if test="${board.board_like_count >= 5 }">
 													[추천]
 													</c:if>
 													</span> ${board.board_title}

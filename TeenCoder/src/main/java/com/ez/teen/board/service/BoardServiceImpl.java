@@ -92,7 +92,7 @@ public class BoardServiceImpl implements BoardService {
 
 				boardMapper.updateCmtFile(commentModel);
 			} else {
-				boardMapper.updateFile(tempMap);
+				boardMapper.updateFile(tempMap); //DEL_GB = 'Y' 삭제 완료
 			}
 		}
 
