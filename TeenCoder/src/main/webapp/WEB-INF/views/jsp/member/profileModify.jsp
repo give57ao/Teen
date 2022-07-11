@@ -48,14 +48,14 @@
 									<c:when test="${profile.member_profile eq 'N'}">
 								<!-- 프로필 사진이 없을 경우 -->
 	                				<div class="image-container">
-										<img style="width: 500px;" id="preview-image" src="/teen/resources/images/icon/icon_profile.svg" class="badge">
+										<img id="preview-image" src="/teen/resources/images/icon/icon_profile.svg" class="badge">
 										<input style="display: block;" type="file" id="input-image" accept=".jpg" name="file">
 									</div>	                			
 									</c:when>
 									<c:otherwise>
 	                			<!-- 프로필 사진이 있을 경우 -->	
 	                			<div class="image-container">
-										<img style="width: 500px;" id="preview-image" src="${path}${profile.member_profile}" class="badge">
+										<img id="preview-image" src="${path}${profile.member_profile}" class="badge">
 										<input style="display: block;" type="file" id="input-image" accept=".jpg" name="file">
 									</div>
 									</c:otherwise>

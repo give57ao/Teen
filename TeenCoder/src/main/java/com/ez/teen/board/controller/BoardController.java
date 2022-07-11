@@ -419,16 +419,14 @@ public class BoardController {
 // 댓글 삭제
 	@RequestMapping("board/deleteComment")
 	public String deleteBcomment(@RequestParam(value="board_no", required = false) int board_no, 
-																@RequestParam(value="bcomment_no", required = false) int bcomment_no,
 																@RequestParam(value="ref_step", required = false) int ref_step, 
 																@RequestParam(value="ref_level", required = false) int ref_level, 
 			HttpServletRequest request, RedirectAttributes redirect,
 			CommentParam commentParam) {
 
 		commentParam.setBoard_no(board_no);
-		commentParam.setBcomment_no(bcomment_no);
-		commentParam.setBcomment_no(ref_step);
-
+		commentParam.setRef_step(ref_step);
+		commentParam.setRef_level(ref_level);
 		String referer = (String) request.getHeader("REFERER");
 		System.out.println("nowUrl =" + referer);
 		

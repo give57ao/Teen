@@ -113,15 +113,13 @@
 	                            <c:if test="${sessionScope.member_no != null}">
 	                            <div class="btn_group">
 	                            <ul>
-	                            	<li><button onclick="scrap()" class="btn_com btn_board">스크랩</button>
-		                			<li><input type="button" value="신고" class="btn_com btn_board">
+	                            	
 		                			<!-- <li><input type="button" value="추천" class="btn_com btn_board"> -->
 		                			<c:if test="${sessionScope.member_no == boardDetail.member_no }">
+		                			<input type="button" value="삭제" class="btn_com btn_board" onClick="location.href='/teen/board/delete?board_no='+ ${board_no}">
 		                			<li><input type="button" value="수정" class="btn_com btn_board" onclick="location.href='/teen/board/modify?board_no=' + ${board_no}">
 		                			</c:if>
-	                            	<c:if test="${sessionScope.member_no == boardDetail.member_no }">
-										<input type="button" value="삭제" class="btn_com btn_board" onClick="location.href='/teen/board/delete?board_no='+ ${board_no}">
-									</c:if>
+									<li><button onclick="scrap()" class="btn_com btn_board">스크랩</button>
 									</ul>
 	                            </div>
 	                            </c:if>
@@ -230,11 +228,9 @@
 	                                </ul>
 	                                <div class="btn_group">
 			                             <c:if test="${sessionScope.member_nick == boardComment.member_nick}">
-		                                 <input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="deleteComment()">
+		                                 <input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="deleteComment(${boardComment.board_no}, ${boardComment.ref_step}, ${boardComment.ref_level })">
 		                                 <input type="button" value="수정" class="btn_com btn_board" onClick="modifyComment(${boardComment.ref_step})">
 		                                 </c:if>
-		                            	<input type="button" value="신고" class="btn_com btn_board">
-			                			<input type="button" value="추천" class="btn_com btn_board">
 			                			<input type="button" value="답글" class="btn_com btn_board" onClick="recomment(${boardComment.ref_step}, ${boardComment.ref_level})" >
 			                			
 		                            </div>
@@ -245,10 +241,10 @@
 		                	<div id="answer"  class="answer_form-${boardComment.ref_step}-${boardComment.ref_level}" style="display : none;">
 			                	<form id="answer_form" action="recomment" method="post">
 				                	<textarea name="bcomment_content" placeholder="답글 작성"></textarea>
-				                	<input type="hidden" name="ref_step" value="${boardComment.ref_step}">
-				                	<input type="hidden" name="board_no" value="${boardComment.board_no}">
-				                	<input type="hidden" name="ref_level" value="${boardComment.ref_level}">
-				                	<input type="hidden" name="bcomment_no" value="${boardComment.bcomment_no}">
+				                	<input type="hidden" name="ref_step" id="ref_step" value="${boardComment.ref_step}">
+				                	<input type="hidden" name="board_no" id="board_no" value="${boardComment.board_no}">
+				                	<input type="hidden" name="ref_level" id="ref_level" value="${boardComment.ref_level}">
+				                	<input type="hidden" name="bcomment_no" id="bcomment_no" value="${boardComment.bcomment_no}">
 				                	<input type="reset" value="취소" class="btn_com btn_board btn_cmt" onClick="recomment(${boardComment.ref_step}, ${boardComment.ref_level})">
 				                	<input type="submit" value="작성" class="btn_com btn_board btn_cmt">
 				                </form>
@@ -287,11 +283,9 @@
 			                                </ul>
 			                                <div class="btn_group">
 					                            <c:if test="${sessionScope.member_nick == boardAnswer.member_nick}">
+					                            <input type="button" value="삭제" class="btn_com btn_board" onclick="deleteComment(${boardAnswer.board_no}, ${boardAnswer.ref_step}, ${boardAnswer.ref_level })">
 				                                <input type="button" value="수정" class="btn_com btn_board" onClick="modifyReComment(${boardAnswer.ref_step} ,${boardAnswer.ref_level})">
-				                                <input type="button" value="삭제" class="btn_com btn_board btn_cmt" onclick="location.href='/teen/board/deleteComment?board_no=${boardAnswer.board_no}&bcomment_no=${boardAnswer.bcomment_no}&ref_step=${boardAnswer.ref_step}&ref_level=${boardAnswer.ref_level}'">
 				                                </c:if>
-				                            	<input type="button" value="신고" class="btn_com btn_board">
-					                			<input type="button" value="추천" class="btn_com btn_board">
 				                            </div>
 			                            </div>
 				                	</div>
@@ -421,15 +415,14 @@
 		
 	});
   
-  function deleteComment() {
-		var board_no = document.getElementById('board_no').value;
+  function deleteComment(board_no, ref_step, ref_level) {
+		/* var board_no = document.getElementById('board_no').value;
 		var bcomment_no = document.getElementById('bcomment_no').value;
-		var board_no = document.getElementById('board_no').value;
 		var ref_step = document.getElementById('ref_step').value;
-		var ref_level = document.getElementById('ref_level').value;
+		var ref_level = document.getElementById('ref_level').value; */
 		if(confirm("해당 댓글을 삭제하시겠습니까?")) {
 			alert("해당 댓글을 삭제하였습니다.");
-			location.href='/teen/board/deleteComment?board_no='+board_no+'&bcomment_no='+bcomment_no+'&ref_step='+ref_step+'&ref_level='+ref_level
+			location.href='/teen/board/deleteComment?board_no='+board_no+'&ref_step='+ref_step+'&ref_level='+ref_level
 		}else{
 			return false;
 		}
