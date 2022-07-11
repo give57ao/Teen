@@ -51,7 +51,19 @@
 									</c:otherwise>
 								</c:choose>
 	                			<div class="info_box">
-		                			<h4>나의 등급 <span class="rank">[Expert]</span></h4>
+		                			<h4>나의 등급 
+		                			<c:choose>
+		                			<c:when test="${board.member_pro_check == 'Y' }">
+		                			<span class="rank">[Expert]</span>
+		                			</c:when>
+		                			<c:when test="${board.member_admin == 'Y'}">
+		                			<span class="rank" style="color:#FF0105;">[Admin]</span>
+		                			</c:when>
+		                			<c:otherwise>
+		                			<span class="rank" style="color:#111;">[TeenCoder]</span>
+		                			</c:otherwise>
+		                			</c:choose>
+		                			</h4>
 		                			<h3>${board.member_nick}</h3>
 		                			<p>
 		                				환영합니다! <b>${board.member_name}</b>님 (ID : ${board.member_id})<br>

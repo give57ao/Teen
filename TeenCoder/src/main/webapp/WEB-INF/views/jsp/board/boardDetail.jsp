@@ -66,7 +66,18 @@
 	                                </ul>
 	                                <div class="row_top member">
 	                                    	<h4>
-	                                        <button  id="dropdown-menu" onclick="dp_menu()" style="text-decoration: underline;" >${boardDetail.member_nick}</button>
+											<c:choose>
+												<c:when test="${boardDetail.member_pro_check == 'Y' }">
+													<span class="rank">[Expert]</span>
+												</c:when>
+												<c:when test="${boardDetail.member_admin == 'Y'}">
+													<span class="rank" style="color: #FF0105;">[Admin]</span>
+												</c:when>
+												<c:otherwise>
+													<span class="rank" style="color: #111;">[TeenCoder]</span>
+												</c:otherwise>
+											</c:choose>
+											<button  id="dropdown-menu" onclick="dp_menu()" style="text-decoration: underline;" >${boardDetail.member_nick}</button>
 											</h4>
 												<div style="display: none; position: absolute;" id="drop-content">
 													<input type="hidden" id="member_nick" name="member_nick"  value="${boardDetail.member_nick }">
@@ -193,7 +204,18 @@
 		                            <div class="row_info">
 		                                <div class="row_top member">
 		                                    <h4>
-		                                        ${boardComment.member_nick}
+												<c:choose>
+													<c:when test="${boardComment.member_pro_check == 'Y' }">
+														<span class="rank">[Expert]</span>
+													</c:when>
+													<c:when test="${boardComment.member_admin == 'Y'}">
+														<span class="rank" style="color: #FF0105;">[Admin]</span>
+													</c:when>
+													<c:otherwise>
+														<span class="rank" style="color: #111;">[TeenCoder]</span>
+													</c:otherwise>
+												</c:choose>
+												${boardComment.member_nick}
 		                                    </h4>
 		                                </div>
 		                                <span class="row_top date"><fmt:formatDate value="${boardComment.bcomment_date}" pattern="yyyy.MM.dd"/></span>
@@ -266,7 +288,18 @@
 				                            <div class="row_info">
 				                                <div class="row_top member">
 				                                    <h4>
-				                                        ${boardAnswer.member_nick}
+															<c:choose>
+																<c:when test="${boardAnswer.member_pro_check == 'Y' }">
+																	<span class="rank">[Expert]</span>
+																</c:when>
+																<c:when test="${boardAnswer.member_admin == 'Y'}">
+																	<span class="rank" style="color: #FF0105;">[Admin]</span>
+																</c:when>
+																<c:otherwise>
+																	<span class="rank" style="color: #111;">[TeenCoder]</span>
+																</c:otherwise>
+															</c:choose>
+															${boardAnswer.member_nick}
 				                                    </h4>
 				                                </div>
 				                                <span class="row_top date"><fmt:formatDate value="${boardAnswer.bcomment_date}" pattern="yyyy.MM.dd"/></span>

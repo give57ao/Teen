@@ -16,6 +16,8 @@ public class BoardAnswerModel {
 	private int ref_step;
 	private int ref_level;
 	private int board_answer_count; // 갯수 카운트용 변수 선언
+	private String member_pro_check;
+	private String member_admin;
 	
 	public int getBoard_answer_count() {
 		return board_answer_count;
@@ -112,4 +114,22 @@ public class BoardAnswerModel {
 	public void setRef_level(int ref_level) {
 		this.ref_level = ref_level;
 	}
+
+	public String getMember_pro_check() {
+		return member_pro_check;
+	}
+
+	public void setMember_pro_check(String member_pro_check) {
+		this.member_pro_check = member_pro_check;
+	}
+
+	public String getMember_admin() {
+		return member_admin;
+	}
+
+	public void setMember_admin(String member_admin) {
+		this.member_admin = member_admin;
+	}
+	
+	
 }

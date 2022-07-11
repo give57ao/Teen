@@ -13,7 +13,8 @@ public class BoardModel {
 	private String board_content;
 	private Date board_date;
 	private String member_pro_check;
-
+	private String member_admin;
+	
 	private int board_hit_count;
 	private int board_like_count;
 	private int board_report_count;
@@ -42,7 +43,6 @@ public class BoardModel {
 	private int scrap_no;
 	private Date scrap_date;
 
-	
 	
 	
 	
@@ -270,4 +270,13 @@ public class BoardModel {
 		this.like_check = like_check;
 	}
 
+	public String getMember_admin() {
+		return member_admin;
+	}
+
+	public void setMember_admin(String member_admin) {
+		this.member_admin = member_admin;
+	}
+
+	
 }

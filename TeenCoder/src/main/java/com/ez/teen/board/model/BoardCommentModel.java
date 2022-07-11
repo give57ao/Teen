@@ -16,6 +16,8 @@ public class BoardCommentModel {
 	private int ref_step;
 	private int ref_level;
 	private int board_comment_count;
+	private String member_pro_check;
+	private String member_admin;
 	
 	// 첨부파일 업로드 추가
 	private int file_no;
@@ -136,6 +138,19 @@ public class BoardCommentModel {
 	public void setRef_level(int ref_level) {
 		this.ref_level = ref_level;
 	}
+	public String getMember_pro_check() {
+		return member_pro_check;
+	}
+	public void setMember_pro_check(String member_pro_check) {
+		this.member_pro_check = member_pro_check;
+	}
+	public String getMember_admin() {
+		return member_admin;
+	}
+	public void setMember_admin(String member_admin) {
+		this.member_admin = member_admin;
+	}
+	
 	
 	
 }

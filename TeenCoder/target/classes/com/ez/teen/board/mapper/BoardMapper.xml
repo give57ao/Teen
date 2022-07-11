@@ -190,7 +190,7 @@
 	
 	
 <select id ="boardList" resultType="com.ez.teen.board.model.BoardModel" parameterType="com.ez.teen.board.model.BoardParam">
-SELECT rn, board_no, board_group_no, board_tag_name, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check, bgroup_name, member_nick, board_comment_count,board_count,member_pro_check
+SELECT rn, board_no, board_group_no, board_tag_name, board_title, board_date, board_hit_count, board_like_count, board_report_count, board_file_check, bgroup_name, member_nick, board_comment_count,board_count,member_pro_check, member_admin
 		FROM (
 			SELECT ROWNUM RN, A.* 
 				FROM (
@@ -207,6 +207,7 @@ SELECT rn, board_no, board_group_no, board_tag_name, board_title, board_date, bo
 ,G.BGROUP_NAME
 ,M.MEMBER_NICK
 ,M.MEMBER_PRO_CHECK
+,M.MEMBER_ADMIN
 ,COUNT(B.BOARD_NO) AS board_count
 ,COUNT(C.BOARD_NO) AS board_comment_count
 
@@ -259,7 +260,7 @@ AND REGEXP_LIKE (B.BOARD_TAG_NAME, '^HTML|^JAVA|^CSS|^C|^JS|^SQL|^PYTHON')
 
 
 
-GROUP BY B.BOARD_NO, B.BOARD_GROUP_NO, B.BOARD_TAG_NAME,  B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,G.BGROUP_NAME,M.MEMBER_NICK,M.MEMBER_PRO_CHECK
+GROUP BY B.BOARD_NO, B.BOARD_GROUP_NO, B.BOARD_TAG_NAME,  B.BOARD_TITLE,B.BOARD_DATE,B.BOARD_HIT_COUNT,B.BOARD_LIKE_COUNT,B.BOARD_REPORT_COUNT,B.BOARD_FILE_CHECK,G.BGROUP_NAME,M.MEMBER_NICK,M.MEMBER_PRO_CHECK, M.MEMBER_ADMIN
 
 <if test='sort == null'>
 ORDER BY B.BOARD_DATE DESC
@@ -354,7 +355,7 @@ ORDER BY board_comment_count DESC
 		parameterType="com.ez.teen.board.model.BoardParam"
 		resultType="com.ez.teen.board.model.BoardModel">
 		SELECT
-		C.BOARD_NO AS BOARD_NO
+		B.BOARD_NO AS BOARD_NO
 		,B.BOARD_GROUP_NO AS BOARD_GROUP_NO
 		,B.BOARD_CONTENT AS BOARD_CONTENT
 		,B.BOARD_TITLE AS BOARD_TITLE
@@ -366,6 +367,8 @@ ORDER BY board_comment_count DESC
 		,M.MEMBER_NICK AS MEMBER_NICK
 		,M.MEMBER_NO AS MEMBER_NO
 		,COUNT(C.BOARD_NO) AS board_comment_count
+		,M.MEMBER_PRO_CHECK AS MEMBER_PRO_CHECK
+		,M.MEMBER_ADMIN AS MEMBER_ADMIN
 
 		FROM BOARD B 
 		INNER JOIN BGROUP G
@@ -377,7 +380,7 @@ ORDER BY board_comment_count DESC
 
 		WHERE B.BOARD_NO = #{board_no}
 
-		GROUP BY C.BOARD_NO
+		GROUP BY B.BOARD_NO
 		,B.BOARD_GROUP_NO
 		,B.BOARD_CONTENT
 		,B.BOARD_TITLE
@@ -388,7 +391,8 @@ ORDER BY board_comment_count DESC
 		,B.BOARD_FILE_CHECK
 		,M.MEMBER_NICK
 		,M.MEMBER_NO
-
+		,M.MEMBER_PRO_CHECK
+		,M.MEMBER_ADMIN
 	</select>
 
 
@@ -399,6 +403,8 @@ ORDER BY board_comment_count DESC
 		C.BCOMMENT_NO AS BCOMMENT_NO,
 		C.BOARD_NO AS BOARD_NO,
 		M.MEMBER_NICK AS MEMBER_NICK,
+		M.MEMBER_PRO_CHECK AS MEMBER_PRO_CHECK,
+		M.MEMBER_ADMIN AS MEMBER_ADMIN,
 		C.BCOMMENT_DATE AS BCOMMENT_DATE,
 		C.BCOMMENT_CONTENT AS BCOMMENT_CONTENT,
 		C.BCOMMENT_LIKE_COUNT AS BCOMMENT_LIKE_COUNT,
@@ -433,7 +439,9 @@ ORDER BY board_comment_count DESC
 	  	C.BCOMMENT_CONTENT AS BCOMMENT_CONTENT,
 	  	C.BCOMMENT_LIKE_COUNT AS BCOMMENT_LIKE_COUNT,
 	  	C.REF_STEP AS REF_STEP,
-	  	C.REF_LEVEL AS REF_LEVEL
+	  	C.REF_LEVEL AS REF_LEVEL,
+	  	M.MEMBER_PRO_CHECK AS MEMBER_PRO_CHECK,
+	  	M.MEMBER_ADMIN AS MEMBER_ADMIN
 	  FROM
     	MEMBER M INNER JOIN BCOMMENT C
     	ON M.MEMBER_NO = C.MEMBER_NO
