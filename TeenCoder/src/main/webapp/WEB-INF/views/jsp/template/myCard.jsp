@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <body>
+        <c:if test="${sessionScope.member_no != null}">
+
+
 <%
 int member_no = (Integer)session.getAttribute("member_no");
 %>
@@ -12,6 +15,7 @@ int member_no = (Integer)session.getAttribute("member_no");
 	<div id="my_card">
 		<div class="my_card_wrap">
 			<!-- Info -->
+			
 			<c:forEach items="${list}" var="my">
 				<img src="/teen/resources/images/icon/icon_badge.png" class="card_badge">
 				<div class="card_info_box">
@@ -151,5 +155,7 @@ function deleteScrap(num) {
 	}
 }
 </script>
+
+</c:if>
 </body>
 </html>  
