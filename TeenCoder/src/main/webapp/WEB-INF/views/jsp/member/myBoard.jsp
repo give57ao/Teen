@@ -73,7 +73,21 @@
 											<div class="row_top member">
 												<h4>
 													<img src="/teen/resources/images/icon/icon_badge.png" class="i_badge"> 
-													<span class="rank">[Expert]</span> ${board.member_nick}
+													<c:choose>
+														<c:when test="${board.member_pro_check == 'Y' }">
+															<span class="rank">[Expert]</span>
+														</c:when>
+														<c:when test="${board.member_admin == 'Y'}">
+															<span class="rank" style="color: #FF0105;">[Admin]</span>
+														</c:when>
+														<c:when test="${board.board_count > 50 }">
+															<span class="rank">[글쟁이]</span>
+														</c:when>
+														<c:otherwise>
+															<span class="rank" style="color: #111;">[TeenCoder]</span>
+														</c:otherwise>
+													</c:choose>
+													${board.member_nick}
 												</h4>
 											</div>
 											<span class="row_top date"><fmt:formatDate value="${board.board_date}" pattern="yyyy.MM.dd"/></span>
@@ -86,7 +100,10 @@
 										<div class="row_title">
 											<h3>
 												<a class="overtext" href="/teen/board/detail?board_no=${board.board_no}"> 
-													<span class="tag_hit">[추천]</span> ${board.board_title}
+													<c:if test="${board.board_like_count >= 10 }">
+													<span class="tag_hit">[추천]</span>
+													</c:if>
+													 ${board.board_title}
 													<c:if test="${board.board_file_check eq 'Y'}">
 														<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
 													</c:if>

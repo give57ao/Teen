@@ -56,7 +56,7 @@
 												<h4>
 													<img src="/teen/resources/images/icon/icon_badge.png"
 														class="i_badge">
-													<button onclick="dp_menu()">${follow.member_nick}</button>
+													<button  id="dropdown-menu" onclick="dp_menu()" style="text-decoration: underline;" >${follow.member_nick}</button>
 												</h4>
 												<div style="display: none; position: absolute;" id="drop-content">
 													<input type="hidden" id="member_nick" value="${follow.member_nick }">
@@ -76,7 +76,17 @@
 										<div class="row_title">
 											<h3>
 												<a class="overtext" href="/teen/board/detail?board_no=${follow.board_no}"> 
-													<span class="tag_hit">[추천]</span> ${follow.board_title}
+														<c:choose>
+														<c:when test="${follow.member_pro_check == 'Y' }">
+															<span class="rank">[Expert]</span>
+														</c:when>
+														<c:when test="${follow.member_admin == 'Y'}">
+															<span class="rank" style="color: #FF0105;">[Admin]</span>
+														</c:when>
+														<c:otherwise>
+															<span class="rank" style="color: #111;">[TeenCoder]</span>
+														</c:otherwise>
+													</c:choose>${follow.board_title}
 													<c:if test="${follow.board_file_check eq 'Y'}">
 														<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
 													</c:if>

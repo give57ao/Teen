@@ -17,6 +17,10 @@ public class CommentModel {
 	private String board_title;
 	private String board_file_check;
 	
+	private String member_pro_check;
+	private String member_admin;
+	private int board_count;
+	
 	// 첨부파일 업로드 추가
 	private int file_no;
 	private String org_file_name;
@@ -28,6 +32,24 @@ public class CommentModel {
 	
 	
 	
+	public int getBoard_count() {
+		return board_count;
+	}
+	public void setBoard_count(int board_count) {
+		this.board_count = board_count;
+	}
+	public String getMember_pro_check() {
+		return member_pro_check;
+	}
+	public void setMember_pro_check(String member_pro_check) {
+		this.member_pro_check = member_pro_check;
+	}
+	public String getMember_admin() {
+		return member_admin;
+	}
+	public void setMember_admin(String member_admin) {
+		this.member_admin = member_admin;
+	}
 	public int getFile_no() {
 		return file_no;
 	}

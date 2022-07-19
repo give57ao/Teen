@@ -39,9 +39,29 @@ public class MemberFollowModel {
 	private Date file_date;
 	private String del_gb;
 
+	private String member_pro_check;
+	private String member_admin;
 	
 	
 	
+	
+	
+	public String getMember_pro_check() {
+		return member_pro_check;
+	}
+
+	public void setMember_pro_check(String member_pro_check) {
+		this.member_pro_check = member_pro_check;
+	}
+
+	public String getMember_admin() {
+		return member_admin;
+	}
+
+	public void setMember_admin(String member_admin) {
+		this.member_admin = member_admin;
+	}
+
 	public String getMember_name() {
 		return member_name;
 	}

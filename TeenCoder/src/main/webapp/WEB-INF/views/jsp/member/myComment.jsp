@@ -68,7 +68,21 @@
 											<div class="row_top member">
 												<h4>
 													<a class="overtext" href="/teen/board/detail?board_no=${comment.board_no}"> <!-- 링크확인필요 -->
-														<span class="tag_hit">[추천]</span> ${comment.board_title}
+														<c:choose>
+														<c:when test="${comment.member_pro_check == 'Y' }">
+															<span class="rank">[Expert]</span>
+														</c:when>
+														<c:when test="${comment.member_admin == 'Y'}">
+															<span class="rank" style="color: #FF0105;">[Admin]</span>
+														</c:when>
+														<c:when test="${comment.board_count > 50 }">
+															<span class="rank">[글쟁이]</span>
+														</c:when>
+														<c:otherwise>
+															<span class="rank" style="color: #111;">[TeenCoder]</span>
+														</c:otherwise>
+													</c:choose>
+													${comment.board_title}
 														<c:if test="${comment.board_file_check eq 'Y'}">
 															<img src="/teen/resources/images/icon/icon_file.svg" class="i_file">
 														</c:if>

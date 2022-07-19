@@ -24,7 +24,8 @@ public class HeaderInterceptor extends HandlerInterceptorAdapter{
 	
 	//캐릭터 카드 정보 셋팅 
 	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,ModelAndView modelAndView) throws Exception {
+	public void postHandle(HttpServletRequest request, HttpServletResponse response,
+						   Object handler,ModelAndView modelAndView) throws Exception {
 		
 		HttpSession session = request.getSession();
 		

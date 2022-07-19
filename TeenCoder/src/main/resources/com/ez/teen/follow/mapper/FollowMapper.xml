@@ -21,7 +21,9 @@ SELECT
 		,G.BGROUP_NAME 
 		,M.MEMBER_NICK 
 		,M.MEMBER_NO 
-		
+		,M.MEMBER_ADMIN
+        ,M.MEMBER_PRO_CHECK
+        
 		FROM BOARD B
 		INNER JOIN BGROUP G
 		ON B.BOARD_GROUP_NO = G.BOARD_GROUP_NO
@@ -91,8 +93,9 @@ M.MEMBER_EMAIL,
 F.FOLLOW_DATE,
 M.MEMBER_NICK,
 M.MEMBER_POINT,
-M.MEMBER_PROFILE 
-
+M.MEMBER_PROFILE,
+M.MEMBER_PRO_CHECK,
+M.MEMBER_ADMIN
 
 FROM MEMBER M
 INNER JOIN FOLLOW F
@@ -107,5 +110,13 @@ DELETE FROM FOLLOW
 WHERE FOLLOW_NO = #{member_no} AND FOLLOWING_MEMBER_NO = #{following_member_no}
 
 </delete>
+
+<update id="deleteFollowMember" parameterType="com.ez.teen.follow.model.MemberFollowModel" >
+UPDATE FOLLOW SET
+MEMBER_NICK = '탈퇴한 회원입니다.'
+WHERE FOLLOWING_MEMBER_NO = #{member_no}
+</update>
+
+
 
 </mapper>

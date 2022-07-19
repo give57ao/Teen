@@ -60,6 +60,7 @@ $(document).ready(function() {
 	});
 });
 
+//아이디 중복확인
 function fn_checkId() {
 	var id = document.getElementById("member_id").value;
 	member_id = /^[a-z]+[a-z0-9]{5,19}$/g;

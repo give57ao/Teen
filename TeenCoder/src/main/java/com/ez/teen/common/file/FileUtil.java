@@ -29,36 +29,37 @@ public class FileUtil {
 		return filePath;
 	}
 	
-	public List<Map<String, Object>> parseInsertFileInfo(BoardModel boardModel, MultipartHttpServletRequest mpRequest) throws Exception{
-		
+	public List<Map<String, Object>> parseInsertFileInfo(BoardModel boardModel, MultipartHttpServletRequest mpRequest)
+			throws Exception {
+
 		Iterator<String> iterator = mpRequest.getFileNames();
-		
+
 		MultipartFile multpartFile = null;
 		String originalFileName = null;
 		String originalFileExtension = null;
 		String storedFileName = null;
-		
-		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
-		
+
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+
 		Map<String, Object> listMap = null;
-		
+
 		int board_no = boardModel.getBoard_no();
-		
+
 		File file = new File(filePath);
-		if(file.exists() == false) {
+		if (file.exists() == false) {
 			file.mkdirs();
-		} 
-		
+		}
+
 		while (iterator.hasNext()) {
 			multpartFile = mpRequest.getFile(iterator.next());
-			
-			if(multpartFile.isEmpty() == false) {
+
+			if (multpartFile.isEmpty() == false) {
 				originalFileName = multpartFile.getOriginalFilename();
 				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-				
+
 				storedFileName = getRandomString() + originalFileExtension;
 				Date date = new Date();
-				
+
 				file = new File(filePath + storedFileName);
 				multpartFile.transferTo(file);
 				listMap = new HashMap<String, Object>();

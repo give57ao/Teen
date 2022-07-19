@@ -297,7 +297,7 @@ ORDER BY board_comment_count DESC
  
 
 		<select id ="commentList" resultType="com.ez.teen.board.model.CommentModel" parameterType="com.ez.teen.board.model.CommentParam">
-	SELECT rn, board_no, board_title, board_file_check, member_nick, bcomment_no, bcomment_content, bcomment_date, bcomment_like_count, ref_step, ref_level
+	SELECT rn, board_no, board_title, board_file_check, member_nick, bcomment_no, bcomment_content, bcomment_date, bcomment_like_count, ref_step, ref_level,board_count,member_pro_check, member_admin
       FROM (
          SELECT ROWNUM RN, A.* 
             FROM (
@@ -306,6 +306,7 @@ ORDER BY board_comment_count DESC
 			B.BOARD_NO
 			,B.BOARD_TITLE
 			,B.BOARD_FILE_CHECK
+			,B.BOARD_DATE
 			,M.MEMBER_NICK
 			,C.BCOMMENT_NO
 			,C.BCOMMENT_CONTENT
@@ -313,6 +314,9 @@ ORDER BY board_comment_count DESC
 			,C.BCOMMENT_LIKE_COUNT
 			,C.REF_STEP
 			,C.REF_LEVEL
+            ,M.MEMBER_PRO_CHECK
+            ,M.MEMBER_ADMIN
+            ,COUNT(B.BOARD_NO) AS board_count
 			
 			FROM BOARD B
 			INNER JOIN BCOMMENT C
@@ -323,6 +327,7 @@ ORDER BY board_comment_count DESC
 			<if test='member_no != 0'>
 			WHERE C.MEMBER_NO = #{member_no}
 			</if>
+			
 			
 			<if test='search == "title"'>
 			AND B.BOARD_TITLE LIKE '%'||#{keyword}||'%'
@@ -337,6 +342,11 @@ ORDER BY board_comment_count DESC
 			OR C.BCOMMENT_CONTENT LIKE '%'||#{keyword}||'%'
 			</if>
 			
+			group by B.BOARD_NO, B.BOARD_TITLE, B.BOARD_FILE_CHECK,B.BOARD_DATE, M.MEMBER_NICK, C.BCOMMENT_NO, 
+            C.BCOMMENT_CONTENT, C.BCOMMENT_DATE, C.BCOMMENT_LIKE_COUNT, C.REF_STEP, C.REF_LEVEL, 
+            M.MEMBER_PRO_CHECK, M.MEMBER_ADMIN
+            
+            
 			<if test='sort == null'>
 			ORDER BY B.BOARD_DATE DESC
 			</if>
@@ -348,6 +358,8 @@ ORDER BY board_comment_count DESC
 			<if test='sort == "recent"'>
 			ORDER BY C.BCOMMENT_DATE DESC
 			</if>
+			
+			
 			
 			   ) A
 			   )
